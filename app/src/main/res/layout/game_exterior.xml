@@ -31,37 +31,49 @@
             android:layout_gravity="center"
             app:donut_finished_color="@color/SaddleBrown"
             app:donut_finished_stroke_width="5dp"
+            app:donut_inner_bottom_text_color="@color/Black"
             app:donut_max="40"
             app:donut_progress="30"
             app:donut_show_text="false"
+            app:donut_text="12345"
             app:donut_text_color="@color/UbuntuOrange"
             app:donut_text_size="@dimen/bootstrap_h6_text_size"
             app:donut_unfinished_color="@color/Goldenrod"
-            app:donut_unfinished_stroke_width="10dp"
-            app:donut_inner_bottom_text_color="@color/Black"
-            app:donut_text="12345"/>
+            app:donut_unfinished_stroke_width="10dp" />
 
-        <com.beardedhen.androidbootstrap.BootstrapProgressBar
-            android:id="@+id/progressBar"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            app:roundedCorners="true"
-            app:animated="true"
-            app:bootstrapBrand="warning"
-            app:bootstrapProgress="50"
-            app:striped="true" />
+            android:layout_height="wrap_content">
 
-        <!--android:layout_margin="20dp"-->
+            <TextView
+                android:id="@+id/pointsText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:text="@string/bar_points"/>
 
+            <com.beardedhen.androidbootstrap.BootstrapProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                app:animated="true"
+                app:bootstrapBrand="warning"
+                app:bootstrapProgress="50"
+                app:roundedCorners="true"
+                app:striped="true" />
+
+            <!--android:layout_margin="20dp"-->
+        </FrameLayout>
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/player1FragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="230dp"
-        android:rotation = "180"></FrameLayout>
+        android:rotation="180"></FrameLayout>
 
     <FrameLayout
         android:id="@+id/player2FragmentContainer"
@@ -100,7 +112,7 @@
             app:donut_text_color="@color/UbuntuOrange"
             app:donut_text_size="@dimen/bootstrap_h6_text_size"
             app:donut_unfinished_color="@color/Goldenrod"
-            app:donut_unfinished_stroke_width="10dp"/>
+            app:donut_unfinished_stroke_width="10dp" />
 
         <com.beardedhen.androidbootstrap.BootstrapProgressBar
             android:id="@+id/progressBar2"
@@ -109,9 +121,9 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             app:animated="true"
-            app:roundedCorners="true"
             app:bootstrapBrand="warning"
             app:bootstrapProgress="50"
+            app:roundedCorners="true"
             app:striped="true" />
         <!--android:layout_margin="20dp"-->
 

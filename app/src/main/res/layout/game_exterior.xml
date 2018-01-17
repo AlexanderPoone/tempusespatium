@@ -49,9 +49,10 @@
                 android:id="@+id/pointsText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:text="@string/bar_points"
                 android:textAlignment="center"
-                android:textStyle="bold"
-                android:text="@string/bar_points"/>
+                android:textColor="@color/AliceBlue"
+                android:textStyle="bold" />
 
             <com.beardedhen.androidbootstrap.BootstrapProgressBar
                 android:id="@+id/progressBar"
@@ -114,19 +115,32 @@
             app:donut_unfinished_color="@color/Goldenrod"
             app:donut_unfinished_stroke_width="10dp" />
 
-        <com.beardedhen.androidbootstrap.BootstrapProgressBar
-            android:id="@+id/progressBar2"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            app:animated="true"
-            app:bootstrapBrand="warning"
-            app:bootstrapProgress="50"
-            app:roundedCorners="true"
-            app:striped="true" />
-        <!--android:layout_margin="20dp"-->
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/pointsText2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/bar_points"
+                android:textAlignment="center"
+                android:textColor="@color/AliceBlue"
+                android:textStyle="bold" />
+
+            <com.beardedhen.androidbootstrap.BootstrapProgressBar
+                android:id="@+id/progressBar2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                app:animated="true"
+                app:bootstrapBrand="primary"
+                app:bootstrapProgress="50"
+                app:roundedCorners="true"
+                app:striped="true" />
+            <!--android:layout_margin="20dp"-->
+        </FrameLayout>
     </LinearLayout>
 
 </LinearLayout>

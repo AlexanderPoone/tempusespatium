@@ -1,0 +1,107 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    tools:context="hk.edu.cuhk.cse.tempusespatium.MenuActivity">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+    <TextView
+        android:id="@+id/fullscreen_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:keepScreenOn="true"
+        android:text="@string/dummy_content"
+        android:textColor="#33b5e5"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+        </LinearLayout>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/menuLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="89dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@color/AliceBlue"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/playButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+                android:textStyle="bold"
+                app:bootstrapBrand="info"
+                app:bootstrapSize="xl"
+                app:bootstrapText="{fa_gamepad} PLAY!"
+                app:buttonMode="regular"
+                app:roundedCorners="true"
+                app:showOutline="false" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/settingsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+                app:bootstrapBrand="warning"
+                app:bootstrapSize="xl"
+                app:bootstrapText="{fa_cog} Settings"
+                app:buttonMode="regular"
+                app:roundedCorners="true"
+                app:showOutline="false" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/quitButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+                app:bootstrapBrand="danger"
+                app:bootstrapSize="xl"
+                app:bootstrapText="{fa_sign-out} Quit Game"
+                app:buttonMode="regular"
+                app:roundedCorners="true"
+                app:showOutline="false" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</FrameLayout>

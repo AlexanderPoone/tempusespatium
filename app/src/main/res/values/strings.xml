@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Tempus E Spatium</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="question_anthem">Which country does this anthem belong to?</string>
+    <string name="question_flags">Choose the matching flag.</string>
+    <string name="question_anagram">Reassemble the letters.</string>
+    <string name="a">A. </string>
+    <string name="b">B. </string>
+    <string name="c">C. </string>
+    <string name="d">D.</string>
+</resources>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/CosmicLatte"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:rotation="180">
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/pauseGame"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:bootstrapBrand="info"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
+            app:fontAwesomeIcon="fa_pause"
+            app:roundedCorners="true"
+            app:showOutline="false" />
+
+        <com.github.lzyzsd.circleprogress.DonutProgress
+            android:id="@+id/donutTime"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            app:donut_finished_color="@color/SaddleBrown"
+            app:donut_finished_stroke_width="5dp"
+            app:donut_max="40"
+            app:donut_progress="30"
+            app:donut_show_text="false"
+            app:donut_text_color="@color/UbuntuOrange"
+            app:donut_text_size="@dimen/bootstrap_h6_text_size"
+            app:donut_unfinished_color="@color/Goldenrod"
+            app:donut_unfinished_stroke_width="10dp"
+            app:donut_inner_bottom_text_color="@color/Black"
+            app:donut_text="12345"/>
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            app:roundedCorners="true"
+            app:animated="true"
+            app:bootstrapBrand="warning"
+            app:bootstrapProgress="50"
+            app:striped="true" />
+
+        <!--android:layout_margin="20dp"-->
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/player1FragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:rotation = "180"></FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/player2FragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"></FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/pauseGame2"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            app:bootstrapBrand="info"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
+            app:fontAwesomeIcon="fa_pause"
+            app:roundedCorners="true"
+            app:showOutline="false" />
+
+        <com.github.lzyzsd.circleprogress.DonutProgress
+            android:id="@+id/donutTime2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            app:donut_finished_color="@color/SaddleBrown"
+            app:donut_finished_stroke_width="5dp"
+            app:donut_max="40"
+            app:donut_progress="30"
+            app:donut_show_text="false"
+            app:donut_text_color="@color/UbuntuOrange"
+            app:donut_text_size="@dimen/bootstrap_h6_text_size"
+            app:donut_unfinished_color="@color/Goldenrod"
+            app:donut_unfinished_stroke_width="10dp"/>
+
+        <com.beardedhen.androidbootstrap.BootstrapProgressBar
+            android:id="@+id/progressBar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            app:animated="true"
+            app:roundedCorners="true"
+            app:bootstrapBrand="warning"
+            app:bootstrapProgress="50"
+            app:striped="true" />
+        <!--android:layout_margin="20dp"-->
+
+    </LinearLayout>
+
+</LinearLayout>

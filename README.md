@@ -1,0 +1,20 @@
+# Rampant Sphinges
+Papyrus font
+Spectres/Sand dunes of the Sphinges
+
+Hello professor, could you comment on my project idea? It is an educational, labyrinthine board game for adults and young adults. Let's call it 'Rampant Sphinges'. The main idea is scraping Wikipedia and minimal parsing to generate adult-level questions about various fields.
+
+An adventurer/archaeologists on a camelback got lost in the Valley of the Dead in Egypt, which is maze-like with many divergent paths. Having five HP (four limbs and the main body), the adventurer must flee from the sand dunes (desert hills). The camel may walk one tile, or prance through two tiles. As such, the user has a slight freedom to pick the subject they liked, but they do not know the actual question. A sphinx pops up and blocks the way. Akin to legends, the sphinx ask the player to answer questions to let him go. Once the question is revealed, it cannot be cancelled. If the player answers incorrectly, the sphinx will eat one limb and he will lose one health.
+
+At the start, the players choose three subjects which is available as a WikiProject. The scraper will download relevant articles parsed by XPath. This means, each question is generated on the fly. Titles will be coloured in three ways, each representing one of the three subjects. The order is randomised.
+Question types include : 
+1. Complete the sentence. Each question of this type is generated from one paragraph. They take advantage of the fact that hyperlinked words are more important than those that are not. They appear in two foms. In the first form, some letters will be given, or else it would be too difficult to guess: let's say the word is 'palimpsest', p________t. In the second form, an anagram will be provided instead.
+2. Map pinning. The target could be a historic event, birthplace of a celebrity, or a heritage site. for instance Where did the Battle of a Hastings take place? (I will use WebKit to hold Google Maps API stuff and JavaScript)
+
+Bridge tiles are more challenging, as the adventurer has to confront the crocodile god Sobek, who is mad at the protagonists for looting artefacts.
+
+To introduce more RNG, quicksand (25%) and breaking bridges (50%) has a chance of instantly losing one life and has no questions. They may appear adjacently and hence unavoidable. The adventurer should choose the safest path. Some tiles the adventurer may pick up ankhs, to lower the chance of falling in quicksand and falling bridges, scarabs to skip a question, and dead bushes to make the camel prance three tiles. The ankh,  scarab, and dead bushes will be consumed (breaks, vanishes, digested) after use.
+
+I wonder if I can add more question types to the game. Perhaps something fun like 'draw the border between England and Scotland' (the problem is these are not general questions but geography questions) and 'rearrange symbols to form IPAs of a difficult English word' (given a usage frequency database).
+
+I am planning to implement it using Python and SDL. Is there anything that I should be aware of, like shortcuts / pitfalls? Thank you!

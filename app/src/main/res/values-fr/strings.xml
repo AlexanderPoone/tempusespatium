@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="play">JOUER</string>
+    <string name="settings">Paramètres</string>
+    <string name="quit">Quitter</string>
+    <string name="anthem_cl">Hymne national du Chili</string>
+    <string name="anthem_fr">La Marseillaise</string>
+    <string name="anthem_es">Marche royale</string>
+    <string name="anthem_in">Tu es le souverain de toutes les âmes</string>
+    <string name="anthem_ua">Ni la gloire ni la liberté de l\'Ukraine ne sont mortes</string>
+</resources>

@@ -12,8 +12,11 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolygonOptions;
 
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -57,6 +60,7 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback {
         // TODO: Get html from Wikipedia
         try {
             String html = run("https://en.wikipedia.org/wiki/Gallery_of_sovereign_state_flags");
+            Log.wtf("WTF: ", html);
             Document doc = DocumentBuilderFactory.newInstance()
                     .newDocumentBuilder().parse(new InputSource(new StringReader(html)));
 
@@ -64,7 +68,6 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback {
                     .newXPath().compile("//*[@id='mw-content-text']/div/table[1]/tr[1]/td[1]/table/tr[1]/td/a/img/@src");
 
             String result = (String) xpath.evaluate(doc, XPathConstants.STRING);
-            Log.wtf("WTF: ", result);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -84,6 +87,15 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                if (mMarker!=null) {
+                    mMarker.remove();
+                }
+                mMarker=mMap.addMarker(new MarkerOptions().position(latLng));
+            }
+        });
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         if (!mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(
                 getContext(), R.raw.minimalist))) {
@@ -91,5 +103,12 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback {
         }
 //        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(0.0, 0.0), 0.0f);
 //        mMap.moveCamera(cameraUpdate);
+    }
+
+    public void revealAnswer() {
+        mMap.addPolygon(new PolygonOptions()
+                .add()
+                .strokeColor(R.color.AndroidGreen)
+                .fillColor(R.color.YellowGreen));
     }
 }

@@ -8,4 +8,5 @@ class Constants {
     static final String SHAREDPREFS_NAME = "settings";
     static final String SHAREDPREFS_LOCALE = "LOCALE";
     static final String SHAREDPREFS_LOCALE_SET = "LOCALE_SET";
+    static final String SHAREDPREFS_DIFFICULTY = "DIFFICULTY";
 }

@@ -31,7 +31,7 @@ public class Round1Activity extends AppCompatActivity {
     }
 
     public void randomPuzzle() {
-        Random random=new Random();
+        Random random = new Random();
         int type;
         do {
             type = random.nextInt(4);           // Generate integer from 0 to 3.
@@ -86,6 +86,10 @@ public class Round1Activity extends AppCompatActivity {
     }
 
     public void generateFlagsPuzzle() {
+        // TODO: Database stuff
+        // TODO:
+
+
         // Create new fragment and transaction
         PuzzleMapFragment mapFragment0 = new PuzzleMapFragment();
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
@@ -143,14 +147,18 @@ public class Round1Activity extends AppCompatActivity {
         countDown(10000);
     }
 
-    public void countDown(int millis) {
+    public void countDown(final int millis) {
+        mDonutTime.setMax(millis / 1000);
+        mDonutTime2.setMax(millis / 1000);
         new CountDownTimer(millis, 1000) {
             @Override
             public void onTick(long l) {
-                mDonutTime.setDonut_progress();
-                mDonutTime.setText();
-                mDonutTime2.setDonut_progress();
-                mDonutTime2.setText();
+                String seconds = Integer.toString((int) l / 1000);
+                String percentage = Integer.toString((int) l / millis);
+                mDonutTime.setDonut_progress(percentage);
+                mDonutTime.setText(seconds);
+                mDonutTime2.setDonut_progress(percentage);
+                mDonutTime2.setText(seconds);
             }
 
             @Override

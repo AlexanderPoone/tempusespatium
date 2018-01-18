@@ -10,9 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/question_anthem"
-        android:textSize="@dimen/bootstrap_h5_text_size" />
-
-
+        android:textSize="@dimen/bootstrap_h5_text_size"
+        android:paddingBottom="5dp"/>
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -22,23 +21,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="right">
+        android:gravity="right"
+        android:paddingTop="10dp" >
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/submit0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="{fa_paper-plane} Submit!"
             app:bootstrapBrand="success"
-            app:roundedCorners="true"
-            android:text="Submit!"
-            android:layout_marginRight="10dp"/>
+            app:roundedCorners="true" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/clear0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="{fa_undo} Clear"
             app:bootstrapBrand="danger"
-            app:roundedCorners="true"
-            android:text="Clear"/>
+            app:roundedCorners="true" />
     </LinearLayout>
 </LinearLayout>

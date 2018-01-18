@@ -58,6 +58,8 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         // TODO: Get html from Wikipedia
+        // TODO: https://raw.githubusercontent.com/matej-pavla/Google-Maps-Examples/master/BoundariesExample/geojsons/world.countries.geo.json
+
         try {
             String html = run("https://en.wikipedia.org/wiki/Gallery_of_sovereign_state_flags");
             Log.wtf("WTF: ", html);

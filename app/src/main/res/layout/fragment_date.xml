@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="2dp">
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:text="@string/question_anthem"
+        android:textSize="@dimen/bootstrap_h5_text_size" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3">
+
+        <com.shawnlin.numberpicker.NumberPicker
+            android:id="@+id/year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="1"
+            android:background="@color/DarkSlateBlue"
+            app:np_dividerColor="@color/CornflowerBlue"
+            app:np_max="1900"
+            app:np_min="1700"
+            app:np_selectedTextColor="@color/Platinum"
+            app:np_selectedTextSize="35sp"
+            app:np_textColor="@android:color/white"
+            app:np_wheelItemCount="5" />
+
+        <com.shawnlin.numberpicker.NumberPicker
+            android:id="@+id/month"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="@color/SlateBlue"
+            app:np_dividerColor="@color/bootstrap_brand_success"
+            app:np_max="12"
+            app:np_min="1"
+            app:np_selectedTextColor="@color/Platinum"
+            app:np_selectedTextSize="35sp"
+            app:np_textColor="@android:color/white"
+            app:np_wheelItemCount="3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:paddingTop="10dp">
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/submit0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            app:bootstrapBrand="success"
+            app:bootstrapText="@string/submit"
+            app:roundedCorners="true" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/clear0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bootstrapBrand="danger"
+            app:bootstrapText="@string/clear"
+            app:roundedCorners="true" />
+    </LinearLayout>
+</LinearLayout>

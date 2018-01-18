@@ -109,9 +109,13 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public enum Anthems {
+        CAMBODIA(R.string.anthem_kh, "https://upload.wikimedia.org/wikipedia/commons/a/af/United_States_Navy_Band_-_Nokoreach.ogg"),
         CHILE(R.string.anthem_cl, "https://upload.wikimedia.org/wikipedia/commons/6/6e/United_States_Navy_Band_-_National_Anthem_of_Chile.ogg"),
         FRANCE(R.string.anthem_fr, "https://upload.wikimedia.org/wikipedia/commons/3/30/La_Marseillaise.ogg"),
+        GERMANY(R.string.anthem_de, "https://upload.wikimedia.org/wikipedia/commons/3/30/La_Marseillaise.ogg"),
         INDIA(R.string.anthem_in, "https://upload.wikimedia.org/wikipedia/commons/9/94/Jana_Gana_Mana_instrumental.ogg"),
+        ISRAEL(R.string.anthem_il, "https://upload.wikimedia.org/wikipedia/commons/2/26/Hatikvah_instrumental.ogg"),
+        JAPAN(R.string.anthem_jp, "https://upload.wikimedia.org/wikipedia/commons/a/a3/Kimi_ga_Yo_instrumental.ogg"),
         SPAIN(R.string.anthem_es, "https://upload.wikimedia.org/wikipedia/commons/c/c8/Marcha_Real-Royal_March_by_US_Navy_Band.ogg"),
         UKRAINE(R.string.anthem_ua, "https://upload.wikimedia.org/wikipedia/commons/6/6d/National_anthem_of_Ukraine%2C_instrumental.oga");
 
@@ -181,7 +185,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 soundPool.play(poolDict.get(1), .5f, .5f, 1, 0, 1.f);
-                Intent refresh = new Intent(getBaseContext(), MenuActivity.class);
+                Intent refresh = new Intent(getBaseContext(), PrefsFragment.class);
                 startActivity(refresh);
                 finish();
             }

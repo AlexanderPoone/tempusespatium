@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
@@ -11,6 +12,7 @@ import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceScreen;
 
+import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_DIFFICULTY;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_LOCALE_SET;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_NAME;
 
@@ -18,7 +20,7 @@ import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_NAME;
  * Created by Alex Poon on 1/17/2018.
  */
 
-public class PrefsFragment extends PreferenceFragmentCompat {
+public class PrefsFragment extends PreferenceActivity {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferenceScreen(createScreen());
@@ -30,7 +32,7 @@ public class PrefsFragment extends PreferenceFragmentCompat {
             DialogFragment dialogFragment;
             dialogFragment = PDFC.newInstance(preference.getKey());
 
-            if (true) {
+            if (true) { // TODO: ??
                 dialogFragment.setTargetFragment(this, 0);
                 dialogFragment.show(this.getFragmentManager(),"android.support.v7.preference.PreferenceFragment.DIALOG");
             }
@@ -55,16 +57,16 @@ public class PrefsFragment extends PreferenceFragmentCompat {
         general.addPreference(appVersion);
         general.addPreference(localePreference);
 
-        ListPreference portrait = new ListPreference(getContext());
-        portrait.setTitle(getString(R.string.pref_difficulty));
-        portrait.setSummary(getString(R.string.pref_difficulty));
-        portrait.setKey("135");
-        portrait.setDialogIcon(R.drawable.ic_view_squares_white_24dp);
-        portrait.setDialogTitle(getString(R.string.pref_tab_c_portrait));
-        portrait.setValueIndex(2);
-        portrait.setEntries(new String[] {"1", "2", "3", "4", "5", "6"});
-        portrait.setEntryValues(new String[] {"1", "2", "3", "4", "5", "6"});
-        portrait.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+        ListPreference difficulty = new ListPreference(getContext());
+        difficulty.setTitle(getString(R.string.pref_difficulty));
+        difficulty.setSummary(getString(R.string.pref_difficulty));
+        difficulty.setKey("135");
+        difficulty.setDialogIcon(R.drawable.ic_view_squares_white_24dp);
+        difficulty.setDialogTitle(getString(R.string.pref_tab_c_portrait));
+        difficulty.setValueIndex(2);
+        difficulty.setEntries(new String[] {"Easy", "Medium", "Hard"});
+        difficulty.setEntryValues(new String[] {"Easy", "Medium", "Hard"});
+        difficulty.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 SharedPreferences sharedPreferences=getActivity().getSharedPreferences(SHAREDPREFS_NAME, Context.MODE_PRIVATE);
@@ -72,7 +74,7 @@ public class PrefsFragment extends PreferenceFragmentCompat {
                 editor.putInt(SHAREDPREFS_DIFFICULTY, Integer.parseInt(newValue.toString()));
                 editor.putInt(SHAREDPREFS_LOCALE_SET, 1);
                 editor.apply();
-                Intent intent = new Intent(getActivity(), MainActivity.class);
+                Intent intent = new Intent(getActivity(), MenuActivity.class);
                 getActivity().finish();
                 startActivity(intent);
                 return false;
@@ -83,8 +85,7 @@ public class PrefsFragment extends PreferenceFragmentCompat {
         PreferenceCategory tab_c = new PreferenceCategory(getContext());
         tab_c.setTitle(getString(R.string.pref_tab_c));
         mainScreen.addPreference(tab_c);
-        tab_c.addPreference(portrait);
-        tab_c.addPreference(landscape);
+        tab_c.addPreference(difficulty);
 
         return mainScreen;
     }

@@ -22,7 +22,6 @@ public class Round1Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        // TODO: https://raw.githubusercontent.com/matej-pavla/Google-Maps-Examples/master/BoundariesExample/geojsons/world.countries.geo.json
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_exterior);
 
@@ -85,36 +84,37 @@ public class Round1Activity extends AppCompatActivity {
         countDown(5000);
     }
 
-    public void generateFlagsPuzzle() {
+    public void generateDatePuzzle() {
         // TODO: Database stuff
-        // TODO:
 
-
-        // Create new fragment and transaction
-        PuzzleMapFragment mapFragment0 = new PuzzleMapFragment();
+        PuzzleFlagsFragment mapFragment0 = new PuzzleFlagsFragment();
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
-
-        // Replace whatever is in the fragment_container view with this fragment,
-        // and add the transaction to the back stack
         transaction0.add(R.id.player1FragmentContainer, mapFragment0);
-//        transaction0.addToBackStack(null);
-
-        // Commit the transaction
         int commit = transaction0.commit();
 
-
-        // Create new fragment and transaction
-        PuzzleMapFragment mapFragment1 = new PuzzleMapFragment();
+        PuzzleFlagsFragment mapFragment1 = new PuzzleFlagsFragment();
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
-
-        // Replace whatever is in the fragment_container view with this fragment,
-        // and add the transaction to the back stack
         transaction1.add(R.id.player2FragmentContainer, mapFragment1);
-//        transaction1.addToBackStack(null);
-
-
-        // Commit the transaction
         int commit1 = transaction1.commit();
+
+        countDown(5000);
+    }
+
+    public void generateFlagsPuzzle() {
+        // TODO: Database stuff
+//        "SELECT COUNT(*) FROM FLAGS;"
+//        "LIKE"
+
+        PuzzleFlagsFragment mapFragment0 = new PuzzleFlagsFragment();
+        FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
+        transaction0.add(R.id.player1FragmentContainer, mapFragment0);
+        int commit = transaction0.commit();
+
+        PuzzleFlagsFragment mapFragment1 = new PuzzleFlagsFragment();
+        FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+        transaction1.add(R.id.player2FragmentContainer, mapFragment1);
+        int commit1 = transaction1.commit();
+
         countDown(5000);
     }
 
@@ -167,4 +167,23 @@ public class Round1Activity extends AppCompatActivity {
             }
         }.start();
     }
-}
+}    public void generateFlagsPuzzle() {
+        // TODO: Database stuff
+        "SELECT COUNT(*) FROM FLAGS;"
+        ""
+
+
+
+
+        PuzzleFlagsFragment mapFragment0 = new PuzzleFlagsFragment();
+        FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
+        transaction0.add(R.id.player1FragmentContainer, mapFragment0);
+        int commit = transaction0.commit();
+
+        PuzzleFlagsFragment mapFragment1 = new PuzzleFlagsFragment();
+        FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+        transaction1.add(R.id.player2FragmentContainer, mapFragment1);
+        int commit1 = transaction1.commit();
+
+        countDown(5000);
+    }

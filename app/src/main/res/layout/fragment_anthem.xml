@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="2dp">
 
     <TextView
         android:id="@+id/question"
@@ -28,8 +29,8 @@
             android:id="@+id/submit0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="{fa_paper-plane} Submit!"
+            android:layout_marginEnd="10dp"
+            app:bootstrapText="@string/submit"
             app:bootstrapBrand="success"
             app:roundedCorners="true" />
 
@@ -37,7 +38,7 @@
             android:id="@+id/clear0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="{fa_undo} Clear"
+            app:bootstrapText="@string/clear"
             app:bootstrapBrand="danger"
             app:roundedCorners="true" />
     </LinearLayout>

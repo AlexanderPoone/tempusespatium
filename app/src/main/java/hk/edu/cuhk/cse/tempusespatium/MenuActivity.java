@@ -1,9 +1,12 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
@@ -12,6 +15,7 @@ import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,14 +25,19 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 import java.io.IOException;
 import java.util.Locale;
 
+import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_LOCALE;
+import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_NAME;
+
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
 public class MenuActivity extends AppCompatActivity {
-    private static MediaPlayer mediaPlayer;
-    private static SoundPool soundPool;
-    private SparseIntArray poolDict;
+
+    private SharedPreferences mSharedPref;
+    private static MediaPlayer mMediaPlayer;
+    private static SoundPool mSoundPool;
+    private SparseIntArray mPoolDict;
 
     /**
      * Whether or not the system UI should be auto-hidden after
@@ -101,22 +110,30 @@ public class MenuActivity extends AppCompatActivity {
     };
 
     private void setLocale(String locale) {
-        Locale myLocale = new Locale(locale);
-        Locale.setDefault(myLocale);
-        Configuration config = getBaseContext().getResources().getConfiguration();
-        config.setLocale(myLocale);
-        getBaseContext().createConfigurationContext(config);
+        Resources resources = getResources();
+        Configuration configuration = resources.getConfiguration();
+        Locale lc;
+        if (locale.length() > 2) {
+            lc = new Locale(locale.substring(0,2), locale.substring(3,5));
+        } else {
+            lc = new Locale(locale);
+        }
+        if (!configuration.locale.equals(lc)) {
+            configuration.setLocale(lc);
+            resources.updateConfiguration(configuration, null);
+        }
     }
 
     public enum Anthems {
         CAMBODIA(R.string.anthem_kh, "https://upload.wikimedia.org/wikipedia/commons/a/af/United_States_Navy_Band_-_Nokoreach.ogg"),
         CHILE(R.string.anthem_cl, "https://upload.wikimedia.org/wikipedia/commons/6/6e/United_States_Navy_Band_-_National_Anthem_of_Chile.ogg"),
         FRANCE(R.string.anthem_fr, "https://upload.wikimedia.org/wikipedia/commons/3/30/La_Marseillaise.ogg"),
-        GERMANY(R.string.anthem_de, "https://upload.wikimedia.org/wikipedia/commons/3/30/La_Marseillaise.ogg"),
+        GERMANY(R.string.anthem_de, "https://upload.wikimedia.org/wikipedia/commons/a/a6/German_national_anthem_performed_by_the_US_Navy_Band.ogg"),
         INDIA(R.string.anthem_in, "https://upload.wikimedia.org/wikipedia/commons/9/94/Jana_Gana_Mana_instrumental.ogg"),
         ISRAEL(R.string.anthem_il, "https://upload.wikimedia.org/wikipedia/commons/2/26/Hatikvah_instrumental.ogg"),
         JAPAN(R.string.anthem_jp, "https://upload.wikimedia.org/wikipedia/commons/a/a3/Kimi_ga_Yo_instrumental.ogg"),
         SPAIN(R.string.anthem_es, "https://upload.wikimedia.org/wikipedia/commons/c/c8/Marcha_Real-Royal_March_by_US_Navy_Band.ogg"),
+        PORTUGAL(R.string.anthem_pt, "https://upload.wikimedia.org/wikipedia/commons/5/58/A_Portuguesa.ogg"),
         UKRAINE(R.string.anthem_ua, "https://upload.wikimedia.org/wikipedia/commons/6/6d/National_anthem_of_Ukraine%2C_instrumental.oga");
 
         private final int name;
@@ -129,25 +146,25 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void playSong() {
-        if (mediaPlayer == null) {
-            mediaPlayer = new MediaPlayer();
-            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+        if (mMediaPlayer == null) {
+            mMediaPlayer = new MediaPlayer();
+            mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mediaPlayer) {
                     mediaPlayer.start();
                 }
             });
             try {
-                mediaPlayer.setAudioAttributes(new AudioAttributes.Builder()
+                mMediaPlayer.setAudioAttributes(new AudioAttributes.Builder()
                         .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
                         .setUsage(AudioAttributes.USAGE_MEDIA).build());
-                mediaPlayer.setDataSource(Anthems.valueOf("Spain".toUpperCase()).url);
+                mMediaPlayer.setDataSource(Anthems.valueOf("Spain".toUpperCase()).url);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            mediaPlayer.prepareAsync();
+            mMediaPlayer.prepareAsync();
         } else {
-            mediaPlayer.start();
+            mMediaPlayer.start();
         }
     }
 
@@ -155,41 +172,47 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        setLocale("fr");
+
+        mSharedPref = getSharedPreferences(SHAREDPREFS_NAME, Context.MODE_PRIVATE);
+        Log.i("Test", mSharedPref.getString(SHAREDPREFS_LOCALE, "zh-HK"));
+        setLocale(mSharedPref.getString(SHAREDPREFS_LOCALE, "zh-HK"));
+
         playSong();
 
         AudioAttributes audioAttributes=new AudioAttributes.Builder()
                 .setUsage(AudioAttributes.USAGE_MEDIA)
                 .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
                 .build();
-        soundPool = new SoundPool.Builder()
+        mSoundPool = new SoundPool.Builder()
                 .setAudioAttributes(audioAttributes)
                 .setMaxStreams(2)
                 .build();
-        poolDict=new SparseIntArray();
-        poolDict.put(0, soundPool.load(this, R.raw.space_swoosh, 1));
-        poolDict.put(1, soundPool.load(this, R.raw.beep_space_button, 1));
-        poolDict.put(2, soundPool.load(this, R.raw.plunger_pop, 1));
+        mPoolDict =new SparseIntArray();
+        mPoolDict.put(0, mSoundPool.load(this, R.raw.space_swoosh, 1));
+        mPoolDict.put(1, mSoundPool.load(this, R.raw.beep_space_button, 1));
+        mPoolDict.put(2, mSoundPool.load(this, R.raw.plunger_pop, 1));
         final BootstrapButton playButton = (BootstrapButton) findViewById(R.id.playButton);
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                soundPool.play(poolDict.get(0), .5f, .5f, 1, 0, 1.f);
+                mSoundPool.play(mPoolDict.get(0), .5f, .5f, 1, 0, 1.f);
                 Intent jump = new Intent(getBaseContext(), Round1Activity.class);
                 startActivity(jump);
                 finish();
             }
         });
+
         final BootstrapButton settingsButton = (BootstrapButton) findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                soundPool.play(poolDict.get(1), .5f, .5f, 1, 0, 1.f);
+                mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
                 Intent refresh = new Intent(getBaseContext(), PrefsFragment.class);
                 startActivity(refresh);
                 finish();
             }
         });
+
         final BootstrapButton quitButton = (BootstrapButton) findViewById(R.id.quitButton);
         final AlertDialog alertDialog=new AlertDialog.Builder(this)
                 .setTitle("Really quit?")
@@ -209,7 +232,7 @@ public class MenuActivity extends AppCompatActivity {
         quitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                soundPool.play(poolDict.get(2), .5f, .5f, 1, 0, 1.f);
+                mSoundPool.play(mPoolDict.get(2), .5f, .5f, 1, 0, 1.f);
                 alertDialog.show();
             }
         });
@@ -231,8 +254,6 @@ public class MenuActivity extends AppCompatActivity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
 //        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
-
-
     }
 
     @Override

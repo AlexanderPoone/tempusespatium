@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="play">JOUER</string>
-    <string name="settings">Paramètres</string>
-    <string name="quit">Quitter</string>
+    <string name="play">{fa_gamepad} JOUER !</string>
+    <string name="settings">{fa_cog} Paramètres</string>
+    <string name="quit">{fa_sign-out} Quitter</string>
+
+    <string name="reveal_anthem">L\'hymne est… %s\n%s</string>
     <string name="anthem_cl">Hymne national du Chili</string>
+    <string name="anthem_de">Unité et droit et liberté</string>
     <string name="anthem_fr">La Marseillaise</string>
     <string name="anthem_es">Marche royale</string>
+    <string name="anthem_il">L\'Espoir</string>
     <string name="anthem_in">Tu es le souverain de toutes les âmes</string>
+    <string name="anthem_jp">Votre règne</string>
+    <string name="anthem_kh">Majestueux Royaume</string>
     <string name="anthem_ua">Ni la gloire ni la liberté de l\'Ukraine ne sont mortes</string>
 </resources>

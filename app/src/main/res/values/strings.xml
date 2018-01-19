@@ -1,18 +1,34 @@
 <resources>
     <string name="app_name">Tempus E Spatium</string>
 
+    <string name="play">{fa_gamepad} PLAY!</string>
+    <string name="settings">{fa_cog} Settings</string>
+    <string name="quit">{fa_sign-out} Quit game</string>
+
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="question_anagram">Reassemble the letters.</string>
     <string name="question_anthem">Which country does this anthem belong to?</string>
     <string name="question_flags">Choose the matching flag.</string>
-    <string name="question_anagram">Reassemble the letters.</string>
-    <string name="question_history_1">When did </string>
-    <string name="question_history_2"> take place?</string>
-    <string name="bar_points">Points: </string>
+    <string name="question_history">When did the historical event <i>%s</i> take place?</string>
+
+    <string name="bar_points">Points: %d</string>
     <string name="submit">{fa_paper-plane} Submit!</string>
     <string name="clear">{fa_undo} Clear</string>
     <string name="a">A. </string>
     <string name="b">B. </string>
     <string name="c">C. </string>
-    <string name="d">D.</string>
+    <string name="d">D. </string>
+
+    <string name="reveal_anthem">The anthem is… %s\n%s</string>
+    <string name="anthem_cl">Hymne national du Chili</string>
+    <string name="anthem_de">Unité et droit et liberté</string>
+    <string name="anthem_fr">La Marseillaise</string>
+    <string name="anthem_es">Marche royale</string>
+    <string name="anthem_il">L\'Espoir</string>
+    <string name="anthem_in">Tu es le souverain de toutes les âmes</string>
+    <string name="anthem_jp">Votre règne</string>
+    <string name="anthem_kh">Majestueux Royaume</string>
+    <string name="anthem_pt">La Portugaise</string>
+    <string name="anthem_ua">Ni la gloire ni la liberté de l\'Ukraine ne sont mortes</string>
 </resources>

@@ -5,6 +5,8 @@ import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
 
@@ -16,9 +18,14 @@ import java.util.Random;
 
 public class Round1Activity extends AppCompatActivity {
 
+    int mScore, mScore2, mLastQuestionType;
+
     DonutProgress mDonutTime;
     DonutProgress mDonutTime2;
-    int mLastType;
+    ProgressBar mScoreBar;
+    ProgressBar mScoreBar2;
+    TextView mScoreText;
+    TextView mScoreText2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,6 +34,12 @@ public class Round1Activity extends AppCompatActivity {
 
         mDonutTime = (DonutProgress) findViewById(R.id.donutTime);
         mDonutTime2 = (DonutProgress) findViewById(R.id.donutTime2);
+        mScoreBar = (ProgressBar) findViewById(R.id.progressBar);
+        mScoreBar2 = (ProgressBar) findViewById(R.id.progressBar2);
+        mScoreText = (TextView) findViewById(R.id.pointsText);
+        mScoreText2 = (TextView) findViewById(R.id.pointsText2);
+
+        mScoreText2.setText(getResources().getString(R.string.bar_points, 10));
     }
 
     public void randomPuzzle() {
@@ -34,17 +47,16 @@ public class Round1Activity extends AppCompatActivity {
         int type;
         do {
             type = random.nextInt(4);           // Generate integer from 0 to 3.
-        } while (type == mLastType);
-        mLastType = type;
+        } while (type == mLastQuestionType);
+        mLastQuestionType = type;
 
-        int abcdInt = random.nextInt(4);
 
         switch (type) {
             case 0:
                 generateAnagramPuzzle();
                 break;
             case 1:
-                generateFlagsPuzzle();
+                generateFlagsPuzzle(random.nextInt(4)); // 0=A, 1=B, 2=C, 3=D
                 break;
             case 2:
                 generateMapPuzzle();
@@ -100,7 +112,7 @@ public class Round1Activity extends AppCompatActivity {
         countDown(5000);
     }
 
-    public void generateFlagsPuzzle() {
+    public void generateFlagsPuzzle(int abcdInt) {
         // TODO: Database stuff
 //        "SELECT COUNT(*) FROM FLAGS;"
 //        "LIKE"
@@ -164,15 +176,15 @@ public class Round1Activity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 // TODO: Reveal answer.
+                //
             }
         }.start();
     }
-}    public void generateFlagsPuzzle() {
+
+    public void generateFlagsPuzzle() {
         // TODO: Database stuff
         "SELECT COUNT(*) FROM FLAGS;"
         ""
-
-
 
 
         PuzzleFlagsFragment mapFragment0 = new PuzzleFlagsFragment();
@@ -187,3 +199,4 @@ public class Round1Activity extends AppCompatActivity {
 
         countDown(5000);
     }
+}

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -84,6 +85,16 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        BootstrapButton submitButton = (BootstrapButton) view.findViewById(R.id.submit0);
+
+        BootstrapButton clearButton = (BootstrapButton) view.findViewById(R.id.clear0);
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mMarker.remove();
+                mMarker = null;
+            }
+        });
     }
 
     @Override
@@ -92,10 +103,10 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback {
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
-                if (mMarker!=null) {
+                if (mMarker != null) {
                     mMarker.remove();
                 }
-                mMarker=mMap.addMarker(new MarkerOptions().position(latLng));
+                mMarker = mMap.addMarker(new MarkerOptions().position(latLng));
             }
         });
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);

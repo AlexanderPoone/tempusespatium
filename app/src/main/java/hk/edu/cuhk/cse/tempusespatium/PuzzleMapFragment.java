@@ -13,7 +13,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
@@ -77,7 +76,7 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
             e.printStackTrace();
         }
 
-        View view = inflater.inflate(R.layout.fragment_anthem, container, false);
+        View view = inflater.inflate(R.layout.fragment_map, container, false);
         return view;
     }
 

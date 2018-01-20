@@ -62,7 +62,7 @@ public class Round1Activity extends AppCompatActivity {
                 generateMapPuzzle();
                 break;
             case 3:
-                //generateAnthemPuzzle();
+                generateDatePuzzle();
                 break;
         }
     }

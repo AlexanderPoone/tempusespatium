@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -18,6 +19,7 @@ import org.xml.sax.InputSource;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.Random;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPathConstants;
@@ -32,16 +34,18 @@ import okhttp3.Response;
  * Created by Alex Poon on 1/16/2018.
  */
 
-public class PuzzleFlagsFragment extends Fragment {
+public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInterface {
 
-    private String mCountry;
-    private String mFlagURL;
+    private int mCorrectCountryIndex;
+    private String[] mCountries;
+    private String[] mFlagURLs;
+
+    private int mUserAnswerIndex;
+
+
     private OkHttpClient mClient;
 
-
-    PuzzleMapFragment(String country, String flagURL) {
-        mCountry=country;
-        mFlagURL=flagURL;
+    public PuzzleFlagsFragment() {
     }
 
 //    String run(String url) throws IOException, NullPointerException {
@@ -56,7 +60,8 @@ public class PuzzleFlagsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_flags, container, false);
+        return view;
     }
 
     @Override
@@ -78,20 +83,67 @@ public class PuzzleFlagsFragment extends Fragment {
 //            e.printStackTrace();
 //        }
 
+        mCountries = new String[4];
+        mFlagURLs = new String[4];
+        Random random = new Random();
+        mCorrectCountryIndex = random.nextInt();
+
         TextView cName = (TextView) view.findViewById(R.id.flag_country_name);
-        cName.setText(mCountry);
+        cName.setText(mCountries[mCorrectCountryIndex]);
 
         ImageView flagA = (ImageView) view.findViewById(R.id.aImageView);
         ImageView flagB = (ImageView) view.findViewById(R.id.bImageView);
         ImageView flagC = (ImageView) view.findViewById(R.id.cImageView);
         ImageView flagD = (ImageView) view.findViewById(R.id.dImageView);
 
-        Picasso.with(getContext()).load(mFlagURL).into(flagA);
-        Picasso.with(getContext()).load(mFlagURL).into(flagB);
-        Picasso.with(getContext()).load(mFlagURL).into(flagC);
-        Picasso.with(getContext()).load(mFlagURL).into(flagD);
+        Picasso.with(getContext()).load(mFlagURLs[0]).into(flagA);
+        Picasso.with(getContext()).load(mFlagURLs[1]).into(flagB);
+        Picasso.with(getContext()).load(mFlagURLs[2]).into(flagC);
+        Picasso.with(getContext()).load(mFlagURLs[3]).into(flagD);
+    }
 
-//        "Flag of  ".replace("^Flag of  ", "");
-
+    @Override
+    public void revealAnswer() {
+        switch (mCorrectCountryIndex) {
+            case 0:
+                RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);
+                relA.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
+                break;
+            case 1:
+                RelativeLayout relB = (RelativeLayout) getView().findViewById(R.id.bRelLayout);
+                relB.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
+                break;
+            case 2:
+                RelativeLayout relC = (RelativeLayout) getView().findViewById(R.id.cRelLayout);
+                relC.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
+                break;
+            case 3:
+                RelativeLayout relD = (RelativeLayout) getView().findViewById(R.id.dRelLayout);
+                relD.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
+                break;
+        }
+        if (mUserAnswerIndex == mCorrectCountryIndex) {
+            //TODO: Add points
+        } else {
+            //TODO: Deduct points
+            switch (mCorrectCountryIndex) {
+                case 0:
+                    RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);
+                    relA.setBackground(getResources().getDrawable(R.drawable.rounded_choice_incorrect, null));
+                    break;
+                case 1:
+                    RelativeLayout relB = (RelativeLayout) getView().findViewById(R.id.bRelLayout);
+                    relB.setBackground(getResources().getDrawable(R.drawable.rounded_choice_incorrect, null));
+                    break;
+                case 2:
+                    RelativeLayout relC = (RelativeLayout) getView().findViewById(R.id.cRelLayout);
+                    relC.setBackground(getResources().getDrawable(R.drawable.rounded_choice_incorrect, null));
+                    break;
+                case 3:
+                    RelativeLayout relD = (RelativeLayout) getView().findViewById(R.id.dRelLayout);
+                    relD.setBackground(getResources().getDrawable(R.drawable.rounded_choice_incorrect, null));
+                    break;
+            }
+        }
     }
 }

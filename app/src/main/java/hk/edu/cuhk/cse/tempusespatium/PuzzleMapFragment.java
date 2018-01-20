@@ -13,6 +13,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
@@ -38,7 +40,7 @@ import okhttp3.Response;
  * Created by Alex Poon on 10/17/2017.
  */
 
-public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback {
+public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, PuzzleFragmentInterface {
 
     private GoogleMap mMap;
     private UiSettings mUiSettings;
@@ -106,7 +108,10 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback {
                 if (mMarker != null) {
                     mMarker.remove();
                 }
-                mMarker = mMap.addMarker(new MarkerOptions().position(latLng));
+                mMarker = mMap.addMarker(new MarkerOptions()
+                        .draggable(true)
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.rocket_pointer))
+                        .position(latLng));
             }
         });
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
@@ -118,6 +123,7 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback {
 //        mMap.moveCamera(cameraUpdate);
     }
 
+    @Override
     public void revealAnswer() {
         mMap.addPolygon(new PolygonOptions()
                 .add()

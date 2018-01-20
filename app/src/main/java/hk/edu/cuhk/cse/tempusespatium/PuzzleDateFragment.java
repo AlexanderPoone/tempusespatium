@@ -12,11 +12,11 @@ import android.view.ViewGroup;
  * Created by Alex Poon on 1/16/2018.
  */
 
-public class PuzzleAnagramFragment extends Fragment implements PuzzleFragmentInterface {
+public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterface {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_flags, container, false);
+        View view = inflater.inflate(R.layout.fragment_date, container, false);
         return view;
     }
 

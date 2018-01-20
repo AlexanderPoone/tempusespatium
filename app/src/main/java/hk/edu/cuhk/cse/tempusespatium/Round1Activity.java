@@ -69,47 +69,42 @@ public class Round1Activity extends AppCompatActivity {
 
     public void generateAnagramPuzzle() {
         // Create new fragment and transaction
-        PuzzleMapFragment mapFragment0 = new PuzzleMapFragment();
+        PuzzleAnagramFragment anagramFragment0 = new PuzzleAnagramFragment();
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
-
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
-        transaction0.add(R.id.player1FragmentContainer, mapFragment0);
+        transaction0.add(R.id.player1FragmentContainer, anagramFragment0);
 //        transaction0.addToBackStack(null);
-
         // Commit the transaction
         int commit = transaction0.commit();
 
-
         // Create new fragment and transaction
-        PuzzleMapFragment mapFragment1 = new PuzzleMapFragment();
+        PuzzleAnagramFragment anagramFragment1 = new PuzzleAnagramFragment();
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
-
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
-        transaction1.add(R.id.player2FragmentContainer, mapFragment1);
+        transaction1.add(R.id.player2FragmentContainer, anagramFragment1);
 //        transaction1.addToBackStack(null);
-
-
         // Commit the transaction
         int commit1 = transaction1.commit();
-        countDown(5000);
+
+        countDown(anagramFragment0, anagramFragment1, 5000);
     }
 
     public void generateDatePuzzle() {
         // TODO: Database stuff
 
-        PuzzleFlagsFragment mapFragment0 = new PuzzleFlagsFragment();
+        PuzzleDateFragment dateFragment0 = new PuzzleDateFragment();
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
-        transaction0.add(R.id.player1FragmentContainer, mapFragment0);
+        transaction0.add(R.id.player1FragmentContainer, dateFragment0);
         int commit = transaction0.commit();
 
-        PuzzleFlagsFragment mapFragment1 = new PuzzleFlagsFragment();
+        PuzzleDateFragment dateFragment1 = new PuzzleDateFragment();
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
-        transaction1.add(R.id.player2FragmentContainer, mapFragment1);
+        transaction1.add(R.id.player2FragmentContainer, dateFragment1);
         int commit1 = transaction1.commit();
 
-        countDown(5000);
+        countDown(dateFragment0, dateFragment1, 5000);
     }
 
     public void generateFlagsPuzzle(int abcdInt) {
@@ -117,49 +112,44 @@ public class Round1Activity extends AppCompatActivity {
 //        "SELECT COUNT(*) FROM FLAGS;"
 //        "LIKE"
 
-        PuzzleFlagsFragment mapFragment0 = new PuzzleFlagsFragment();
+        PuzzleFlagsFragment flagFragment0 = new PuzzleFlagsFragment();
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
-        transaction0.add(R.id.player1FragmentContainer, mapFragment0);
+        transaction0.add(R.id.player1FragmentContainer, flagFragment0);
         int commit = transaction0.commit();
 
-        PuzzleFlagsFragment mapFragment1 = new PuzzleFlagsFragment();
+        PuzzleFlagsFragment flagFragment1 = new PuzzleFlagsFragment();
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
-        transaction1.add(R.id.player2FragmentContainer, mapFragment1);
+        transaction1.add(R.id.player2FragmentContainer, flagFragment1);
         int commit1 = transaction1.commit();
 
-        countDown(5000);
+        countDown(flagFragment0, flagFragment1, 5000);
     }
 
     public void generateMapPuzzle() {
         // Create new fragment and transaction
         PuzzleMapFragment mapFragment0 = new PuzzleMapFragment();
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
-
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
         transaction0.add(R.id.player1FragmentContainer, mapFragment0);
 //        transaction0.addToBackStack(null);
-
         // Commit the transaction
         int commit = transaction0.commit();
-
 
         // Create new fragment and transaction
         PuzzleMapFragment mapFragment1 = new PuzzleMapFragment();
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
-
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
         transaction1.add(R.id.player2FragmentContainer, mapFragment1);
 //        transaction1.addToBackStack(null);
-
-
         // Commit the transaction
         int commit1 = transaction1.commit();
-        countDown(10000);
+
+        countDown(mapFragment0, mapFragment1, 10000);
     }
 
-    public void countDown(final int millis) {
+    public void countDown(final PuzzleFragmentInterface f1, final PuzzleFragmentInterface f2, final int millis) {
         mDonutTime.setMax(millis / 1000);
         mDonutTime2.setMax(millis / 1000);
         new CountDownTimer(millis, 1000) {
@@ -176,27 +166,9 @@ public class Round1Activity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 // TODO: Reveal answer.
-                //
+                f1.revealAnswer();
+                f2.revealAnswer();
             }
         }.start();
-    }
-
-    public void generateFlagsPuzzle() {
-        // TODO: Database stuff
-        "SELECT COUNT(*) FROM FLAGS;"
-        ""
-
-
-        PuzzleFlagsFragment mapFragment0 = new PuzzleFlagsFragment();
-        FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
-        transaction0.add(R.id.player1FragmentContainer, mapFragment0);
-        int commit = transaction0.commit();
-
-        PuzzleFlagsFragment mapFragment1 = new PuzzleFlagsFragment();
-        FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
-        transaction1.add(R.id.player2FragmentContainer, mapFragment1);
-        int commit1 = transaction1.commit();
-
-        countDown(5000);
     }
 }

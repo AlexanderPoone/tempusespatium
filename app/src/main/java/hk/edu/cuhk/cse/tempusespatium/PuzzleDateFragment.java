@@ -15,7 +15,17 @@ import com.shawnlin.numberpicker.NumberPicker;
  */
 
 public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterface {
+
+    private boolean mFirst;
     NumberPicker mYearPicker, mMonthPicker;
+
+    public PuzzleDateFragment() {
+    }
+
+    public PuzzleDateFragment(boolean first) {
+        mFirst = first;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,7 +41,11 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
     }
 
     @Override
-    public void revealAnswer() {
-
+    public int[] revealAnswer() {
+        if (mFirst) {
+            return new int[]{10, 0};
+        } else {
+            return new int[]{0, 10};
+        }
     }
 }

@@ -13,6 +13,16 @@ import android.view.ViewGroup;
  */
 
 public class PuzzleAnagramFragment extends Fragment implements PuzzleFragmentInterface {
+
+    private boolean mFirst;
+
+    public PuzzleAnagramFragment() {
+    }
+
+    public PuzzleAnagramFragment(boolean first) {
+        mFirst = first;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -26,7 +36,11 @@ public class PuzzleAnagramFragment extends Fragment implements PuzzleFragmentInt
     }
 
     @Override
-    public void revealAnswer() {
-
+    public int[] revealAnswer() {
+        if (mFirst) {
+            return new int[]{10, 0};
+        } else {
+            return new int[]{0, 10};
+        }
     }
 }

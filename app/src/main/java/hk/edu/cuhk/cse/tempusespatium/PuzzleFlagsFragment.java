@@ -36,16 +36,20 @@ import okhttp3.Response;
 
 public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInterface {
 
+    private boolean mFirst;
     private int mCorrectCountryIndex;
     private String[] mCountries;
     private String[] mFlagURLs;
 
     private int mUserAnswerIndex;
-
-
     private OkHttpClient mClient;
 
     public PuzzleFlagsFragment() {
+
+    }
+
+    public PuzzleFlagsFragment(boolean first) {
+        mFirst = first;
     }
 
 //    String run(String url) throws IOException, NullPointerException {
@@ -103,7 +107,7 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
     }
 
     @Override
-    public void revealAnswer() {
+    public int[] revealAnswer() {
         switch (mCorrectCountryIndex) {
             case 0:
                 RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);
@@ -123,9 +127,8 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
                 break;
         }
         if (mUserAnswerIndex == mCorrectCountryIndex) {
-            //TODO: Add points
+            return new int[]{10, -10};
         } else {
-            //TODO: Deduct points
             switch (mCorrectCountryIndex) {
                 case 0:
                     RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);
@@ -144,6 +147,7 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
                     relD.setBackground(getResources().getDrawable(R.drawable.rounded_choice_incorrect, null));
                     break;
             }
+            return new int[]{10, -10};
         }
     }
 }

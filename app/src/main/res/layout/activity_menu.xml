@@ -35,8 +35,7 @@
             android:layout_gravity="bottom|center_horizontal"
             android:background="@color/black_overlay"
             android:orientation="horizontal"
-            tools:ignore="UselessParent">
-        </LinearLayout>
+            tools:ignore="UselessParent" />
     </FrameLayout>
 
     <RelativeLayout
@@ -48,15 +47,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="50dp"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="89dp">
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@color/AliceBlue"/>
+                android:src="@color/AliceBlue" />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/playButton"
@@ -68,7 +65,21 @@
                 android:textStyle="bold"
                 app:bootstrapBrand="info"
                 app:bootstrapSize="xl"
-                app:bootstrapText="{fa_gamepad} PLAY!"
+                app:bootstrapText="@string/play"
+                app:buttonMode="regular"
+                app:roundedCorners="true"
+                app:showOutline="false" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/rulesButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+                app:bootstrapBrand="warning"
+                app:bootstrapSize="xl"
+                app:bootstrapText="@string/rules"
                 app:buttonMode="regular"
                 app:roundedCorners="true"
                 app:showOutline="false" />
@@ -80,12 +91,13 @@
                 android:layout_margin="20dp"
                 android:layout_weight="1"
                 android:fontFamily="casual"
-                app:bootstrapBrand="warning"
+                app:bootstrapBrand="regular"
                 app:bootstrapSize="xl"
-                app:bootstrapText="{fa_cog} Settings"
+                app:bootstrapText="@string/settings"
                 app:buttonMode="regular"
                 app:roundedCorners="true"
                 app:showOutline="false" />
+
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/quitButton"
@@ -96,7 +108,7 @@
                 android:fontFamily="casual"
                 app:bootstrapBrand="danger"
                 app:bootstrapSize="xl"
-                app:bootstrapText="{fa_sign-out} Quit Game"
+                app:bootstrapText="@string/quit"
                 app:buttonMode="regular"
                 app:roundedCorners="true"
                 app:showOutline="false" />

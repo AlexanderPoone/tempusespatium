@@ -18,6 +18,7 @@
         android:id="@+id/questionHistoryPic"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
+        android:paddingBottom="5dp"
         app:srcCompat="@drawable/bayeux_tapestry" />
 
     <LinearLayout

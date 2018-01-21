@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="play">{fa_gamepad} JOUER !</string>
+    <string name="rules">{fa_leanpub} Règles</string>
     <string name="settings">{fa_cog} Paramètres</string>
     <string name="quit">{fa_sign-out} Quitter</string>
 

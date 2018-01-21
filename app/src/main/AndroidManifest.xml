@@ -21,6 +21,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name=".MenuActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -36,8 +37,7 @@
             android:name=".Round1Activity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
-            android:theme="@style/FullscreenTheme">
-        </activity>
+            android:theme="@style/FullscreenTheme"></activity>
     </application>
 
 </manifest>

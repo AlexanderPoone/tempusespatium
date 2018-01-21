@@ -69,7 +69,7 @@ public class Round1Activity extends AppCompatActivity {
 
     public void generateAnagramPuzzle() {
         // Create new fragment and transaction
-        PuzzleAnagramFragment anagramFragment0 = new PuzzleAnagramFragment();
+        PuzzleAnagramFragment anagramFragment0 = new PuzzleAnagramFragment(true);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
@@ -79,7 +79,7 @@ public class Round1Activity extends AppCompatActivity {
         int commit = transaction0.commit();
 
         // Create new fragment and transaction
-        PuzzleAnagramFragment anagramFragment1 = new PuzzleAnagramFragment();
+        PuzzleAnagramFragment anagramFragment1 = new PuzzleAnagramFragment(false);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
@@ -94,12 +94,12 @@ public class Round1Activity extends AppCompatActivity {
     public void generateDatePuzzle() {
         // TODO: Database stuff
 
-        PuzzleDateFragment dateFragment0 = new PuzzleDateFragment();
+        PuzzleDateFragment dateFragment0 = new PuzzleDateFragment(true);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         transaction0.add(R.id.player1FragmentContainer, dateFragment0);
         int commit = transaction0.commit();
 
-        PuzzleDateFragment dateFragment1 = new PuzzleDateFragment();
+        PuzzleDateFragment dateFragment1 = new PuzzleDateFragment(false);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         transaction1.add(R.id.player2FragmentContainer, dateFragment1);
         int commit1 = transaction1.commit();
@@ -112,12 +112,12 @@ public class Round1Activity extends AppCompatActivity {
 //        "SELECT COUNT(*) FROM FLAGS;"
 //        "LIKE"
 
-        PuzzleFlagsFragment flagFragment0 = new PuzzleFlagsFragment();
+        PuzzleFlagsFragment flagFragment0 = new PuzzleFlagsFragment(true);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         transaction0.add(R.id.player1FragmentContainer, flagFragment0);
         int commit = transaction0.commit();
 
-        PuzzleFlagsFragment flagFragment1 = new PuzzleFlagsFragment();
+        PuzzleFlagsFragment flagFragment1 = new PuzzleFlagsFragment(false);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         transaction1.add(R.id.player2FragmentContainer, flagFragment1);
         int commit1 = transaction1.commit();
@@ -127,7 +127,7 @@ public class Round1Activity extends AppCompatActivity {
 
     public void generateMapPuzzle() {
         // Create new fragment and transaction
-        PuzzleMapFragment mapFragment0 = new PuzzleMapFragment();
+        PuzzleMapFragment mapFragment0 = new PuzzleMapFragment(true);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
@@ -137,7 +137,7 @@ public class Round1Activity extends AppCompatActivity {
         int commit = transaction0.commit();
 
         // Create new fragment and transaction
-        PuzzleMapFragment mapFragment1 = new PuzzleMapFragment();
+        PuzzleMapFragment mapFragment1 = new PuzzleMapFragment(false);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
@@ -166,6 +166,7 @@ public class Round1Activity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 // TODO: Reveal answer.
+                int pointsChange;
                 f1.revealAnswer();
                 f2.revealAnswer();
             }

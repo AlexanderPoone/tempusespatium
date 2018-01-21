@@ -41,11 +41,20 @@ import okhttp3.Response;
 
 public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, PuzzleFragmentInterface {
 
+    private boolean mFirst;
     private GoogleMap mMap;
     private UiSettings mUiSettings;
     private OkHttpClient mClient;
 
     private Marker mMarker = null;
+
+    public PuzzleMapFragment() {
+
+    }
+
+    public PuzzleMapFragment(boolean first) {
+        mFirst = first;
+    }
 
     String run(String url) throws IOException, NullPointerException {
         mClient = new OkHttpClient();
@@ -123,10 +132,15 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
     }
 
     @Override
-    public void revealAnswer() {
+    public int[] revealAnswer() {
         mMap.addPolygon(new PolygonOptions()
                 .add()
                 .strokeColor(R.color.AndroidGreen)
                 .fillColor(R.color.YellowGreen));
+        if (mFirst) {
+            return new int[]{10, 0};
+        } else {
+            return new int[]{0, 10};
+        }
     }
 }

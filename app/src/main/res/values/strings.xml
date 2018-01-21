@@ -2,6 +2,7 @@
     <string name="app_name">Tempus E Spatium</string>
 
     <string name="play">{fa_gamepad} PLAY!</string>
+    <string name="rules">{fa_leanpub} Rules</string>
     <string name="settings">{fa_cog} Settings</string>
     <string name="quit">{fa_sign-out} Quit game</string>
 

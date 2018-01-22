@@ -5,6 +5,7 @@ package hk.edu.cuhk.cse.tempusespatium;
  */
 
 class Constants {
+    static final int ACCEPTANCE_RADIUS_METRES = 50000;
     static final String SHAREDPREFS_NAME = "settings";
     static final String SHAREDPREFS_LOCALE = "LOCALE";
     static final String SHAREDPREFS_LOCALE_SET = "LOCALE_SET";

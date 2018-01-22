@@ -1,5 +1,9 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,17 +18,35 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
+import com.google.android.gms.maps.model.Dash;
+import com.google.android.gms.maps.model.Gap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PatternItem;
+import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.services.fusiontables.Fusiontables;
+import com.google.api.services.fusiontables.model.Sqlresponse;
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPathConstants;
@@ -34,6 +56,8 @@ import javax.xml.xpath.XPathFactory;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+
+import static hk.edu.cuhk.cse.tempusespatium.Constants.ACCEPTANCE_RADIUS_METRES;
 
 /**
  * Created by Alex Poon on 10/17/2017.
@@ -46,7 +70,10 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
     private UiSettings mUiSettings;
     private OkHttpClient mClient;
 
-    private Marker mMarker = null;
+    private Marker mUserMarker = null;
+    private Marker mActualMarker = null;
+    private LatLng mActualCoords = null;
+    private Circle mAcceptanceRange = null;
 
     public PuzzleMapFragment() {
 
@@ -68,23 +95,6 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        // TODO: Get html from Wikipedia
-        // TODO: https://raw.githubusercontent.com/matej-pavla/Google-Maps-Examples/master/BoundariesExample/geojsons/world.countries.geo.json
-
-        try {
-            String html = run("https://en.wikipedia.org/wiki/Gallery_of_sovereign_state_flags");
-            Log.wtf("WTF: ", html);
-            Document doc = DocumentBuilderFactory.newInstance()
-                    .newDocumentBuilder().parse(new InputSource(new StringReader(html)));
-
-            XPathExpression xpath = XPathFactory.newInstance()
-                    .newXPath().compile("//*[@id='mw-content-text']/div/table[1]/tr[1]/td[1]/table/tr[1]/td/a/img/@src");
-
-            String result = (String) xpath.evaluate(doc, XPathConstants.STRING);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         View view = inflater.inflate(R.layout.fragment_map, container, false);
         return view;
     }
@@ -101,8 +111,8 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mMarker.remove();
-                mMarker = null;
+                mUserMarker.remove();
+                mUserMarker = null;
             }
         });
     }
@@ -113,10 +123,10 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
-                if (mMarker != null) {
-                    mMarker.remove();
+                if (mUserMarker != null) {
+                    mUserMarker.remove();
                 }
-                mMarker = mMap.addMarker(new MarkerOptions()
+                mUserMarker = mMap.addMarker(new MarkerOptions()
                         .draggable(true)
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.rocket_pointer))
                         .position(latLng));
@@ -133,10 +143,90 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
 
     @Override
     public int[] revealAnswer() {
-        mMap.addPolygon(new PolygonOptions()
-                .add()
-                .strokeColor(R.color.AndroidGreen)
-                .fillColor(R.color.YellowGreen));
+
+        // Ask if the location user pointer belongs to the right country
+        Geocoder geoCoder = new Geocoder(getContext());
+        List<Address> matches = null;
+        try {
+            matches = geoCoder.getFromLocation(mUserMarker.getPosition().latitude, mUserMarker.getPosition().longitude, 1);
+            Address bestMatch = (matches.isEmpty() ? null : matches.get(0));
+            bestMatch.getCountryName();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        // Display the country boundaries
+        // TODO: Maybe https://developers.google.com/maps/documentation/javascript/examples/layer-data-simple
+        String json = null;
+        try {
+            InputStream is = getActivity().getAssets().open("world.countries.geo.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray jsonArray = jsonObject.getJSONArray("features");
+            Random random = new Random();
+            JSONObject randomCountry = jsonArray.getJSONObject(random.nextInt(jsonArray.length()));
+            String cname = randomCountry.getJSONObject("properties").getString("name");
+            String geometryType = randomCountry.getJSONObject("geometry").getString("type");
+            JSONArray areas = randomCountry.getJSONObject("geometry").getJSONArray("coordinates");
+
+            if (geometryType.equals("Polygon")) {
+                PolygonOptions polygonOptions = new PolygonOptions()
+                        .fillColor(0x77A4C639)
+                        .strokeColor(R.color.AndroidGreen);
+                for (int i = 0; i < areas.length(); i++) {
+                    List<LatLng> regions = new ArrayList<>();
+                    JSONArray coordinates = areas.getJSONArray(i);
+                    for (int j = 0; j < coordinates.length(); j++) {
+                        regions.add(new LatLng(coordinates.getJSONArray(j).getDouble(0),
+                                coordinates.getJSONArray(j).getDouble(1)));
+                    }
+                    if (i == 0) polygonOptions.addAll(regions);
+                    else polygonOptions.addHole(regions);
+                }
+                mMap.addPolygon(polygonOptions);
+            } else if (geometryType.equals("MultiPolygon")) {
+                //TODO: United States name is not right
+                for (int i = 0; i < areas.length(); i++) {
+                    PolygonOptions polygonOptions = new PolygonOptions()
+                            .fillColor(0x77A4C639)
+                            .strokeColor(R.color.AndroidGreen);
+                    List<LatLng> regions = new ArrayList<>();
+                    JSONArray coordinates = areas.getJSONArray(i);
+                    for (int j = 0; j < coordinates.length(); j++) {
+                        regions.add(new LatLng(coordinates.getJSONArray(j).getDouble(0),
+                                coordinates.getJSONArray(j).getDouble(1)));
+                    }
+                    polygonOptions.addAll(regions);
+                    mMap.addPolygon(polygonOptions);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        // Centroid ?
+        mActualMarker = mMap.addMarker(new MarkerOptions()
+                .position(mActualCoords)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.correct_pointer)));
+
+        PatternItem DASH = new Dash(50);
+        PatternItem GAP = new Gap(10);
+        List<PatternItem> PATTERN_POLYLINE_DASH = Arrays.asList(GAP, DASH);
+        mAcceptanceRange = mMap.addCircle(new CircleOptions().center(mActualCoords)
+                .fillColor(0x77A4C639)
+                .strokeColor(getResources().getColor(R.color.ForestGreen, null))
+                .strokePattern(PATTERN_POLYLINE_DASH)
+                .radius(ACCEPTANCE_RADIUS_METRES));
+
+
+        // Return score change
         if (mFirst) {
             return new int[]{10, 0};
         } else {

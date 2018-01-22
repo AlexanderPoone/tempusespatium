@@ -56,7 +56,7 @@ public class Round1Activity extends AppCompatActivity {
                 generateAnagramPuzzle();
                 break;
             case 1:
-                generateFlagsPuzzle(random.nextInt(4)); // 0=A, 1=B, 2=C, 3=D
+                generateFlagsPuzzle();
                 break;
             case 2:
                 generateMapPuzzle();
@@ -107,11 +107,7 @@ public class Round1Activity extends AppCompatActivity {
         countDown(dateFragment0, dateFragment1, 5000);
     }
 
-    public void generateFlagsPuzzle(int abcdInt) {
-        // TODO: Database stuff
-//        "SELECT COUNT(*) FROM FLAGS;"
-//        "LIKE"
-
+    public void generateFlagsPuzzle() {
         PuzzleFlagsFragment flagFragment0 = new PuzzleFlagsFragment(true);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         transaction0.add(R.id.player1FragmentContainer, flagFragment0);

@@ -59,15 +59,6 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         mFirst = first;
     }
 
-//    String run(String url) throws IOException, NullPointerException {
-//        mClient = new OkHttpClient();
-//        Request request = new Request.Builder()
-//                .url(url)
-//                .build();
-//        Response response = mClient.newCall(request).execute();
-//        return response.body().string();
-//    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -112,7 +103,6 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         Random random = new Random();
         SQLiteAssetHelper sqLiteAssetHelper = new DBAssetHelper(getContext());
         SQLiteDatabase sqLiteDatabase = sqLiteAssetHelper.getReadableDatabase();
-        List<List<Object>> largerAL = new ArrayList<>();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT " +
                 DBAssetHelper.COLUMN_COUNTRY + ", " +
                 DBAssetHelper.COLUMN_ANTHEM + ", " +
@@ -130,7 +120,7 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         similarFlag1 = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_SIMILAR_FLAG_1));
         similarFlag2 = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_SIMILAR_FLAG_2));
 
-        mCorrectCountryIndex = random.nextInt(); // 0=A, 1=B, 2=C, 3=D
+        mCorrectCountryIndex = random.nextInt();                // 0=A, 1=B, 2=C, 3=D
         mCountries[mCorrectCountryIndex] = mCountry;
         mFlagURLs[mCorrectCountryIndex] = mFlagUrl;
 
@@ -210,10 +200,46 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         Picasso.with(getContext()).load(mFlagURLs[1]).into(flagB);
         Picasso.with(getContext()).load(mFlagURLs[2]).into(flagC);
         Picasso.with(getContext()).load(mFlagURLs[3]).into(flagD);
+
+        RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);
+        relA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mUserAnswerIndex = 0;
+                ((Round1Activity) getActivity()).callReveal(mFirst);
+            }
+        });
+        RelativeLayout relB = (RelativeLayout) getView().findViewById(R.id.bRelLayout);
+        relB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mUserAnswerIndex = 1;
+                ((Round1Activity) getActivity()).callReveal(mFirst);
+            }
+        });
+        RelativeLayout relC = (RelativeLayout) getView().findViewById(R.id.cRelLayout);
+        relC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mUserAnswerIndex = 2;
+                ((Round1Activity) getActivity()).callReveal(mFirst);
+            }
+        });
+        RelativeLayout relD = (RelativeLayout) getView().findViewById(R.id.dRelLayout);
+        relD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mUserAnswerIndex = 3;
+                ((Round1Activity) getActivity()).callReveal(mFirst);
+            }
+        });
+
     }
 
     @Override
     public int[] revealAnswer() {
+        // TODO: Disable the other player.
+
         switch (mCorrectCountryIndex) {
             case 0:
                 RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);
@@ -255,5 +281,10 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
             }
             return new int[]{10, -10};
         }
+    }
+
+    @Override
+    public void disableControls() {
+
     }
 }

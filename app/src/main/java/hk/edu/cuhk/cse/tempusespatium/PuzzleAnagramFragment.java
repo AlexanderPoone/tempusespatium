@@ -43,4 +43,9 @@ public class PuzzleAnagramFragment extends Fragment implements PuzzleFragmentInt
             return new int[]{0, 10};
         }
     }
+
+    @Override
+    public void disableControls() {
+
+    }
 }

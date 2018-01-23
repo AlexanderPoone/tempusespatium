@@ -2,6 +2,7 @@ package hk.edu.cuhk.cse.tempusespatium;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -27,11 +28,14 @@ public class Round1Activity extends AppCompatActivity {
     TextView mScoreText;
     TextView mScoreText2;
 
+    Handler mHandler;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_exterior);
 
+        mScore = mScore2 = 0;
         mDonutTime = (DonutProgress) findViewById(R.id.donutTime);
         mDonutTime2 = (DonutProgress) findViewById(R.id.donutTime2);
         mScoreBar = (ProgressBar) findViewById(R.id.progressBar);
@@ -73,7 +77,7 @@ public class Round1Activity extends AppCompatActivity {
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
-        transaction0.add(R.id.player1FragmentContainer, anagramFragment0);
+        transaction0.replace(R.id.player1FragmentContainer, anagramFragment0, "player1");
 //        transaction0.addToBackStack(null);
         // Commit the transaction
         int commit = transaction0.commit();
@@ -83,7 +87,7 @@ public class Round1Activity extends AppCompatActivity {
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
-        transaction1.add(R.id.player2FragmentContainer, anagramFragment1);
+        transaction1.replace(R.id.player2FragmentContainer, anagramFragment1, "player2");
 //        transaction1.addToBackStack(null);
         // Commit the transaction
         int commit1 = transaction1.commit();
@@ -96,12 +100,12 @@ public class Round1Activity extends AppCompatActivity {
 
         PuzzleDateFragment dateFragment0 = new PuzzleDateFragment(true);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
-        transaction0.add(R.id.player1FragmentContainer, dateFragment0);
+        transaction0.replace(R.id.player1FragmentContainer, dateFragment0, "player1");
         int commit = transaction0.commit();
 
         PuzzleDateFragment dateFragment1 = new PuzzleDateFragment(false);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
-        transaction1.add(R.id.player2FragmentContainer, dateFragment1);
+        transaction1.replace(R.id.player2FragmentContainer, dateFragment1, "player2");
         int commit1 = transaction1.commit();
 
         countDown(dateFragment0, dateFragment1, 5000);
@@ -110,12 +114,12 @@ public class Round1Activity extends AppCompatActivity {
     public void generateFlagsPuzzle() {
         PuzzleFlagsFragment flagFragment0 = new PuzzleFlagsFragment(true);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
-        transaction0.add(R.id.player1FragmentContainer, flagFragment0);
+        transaction0.replace(R.id.player1FragmentContainer, flagFragment0, "player1");
         int commit = transaction0.commit();
 
         PuzzleFlagsFragment flagFragment1 = new PuzzleFlagsFragment(false);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
-        transaction1.add(R.id.player2FragmentContainer, flagFragment1);
+        transaction1.replace(R.id.player2FragmentContainer, flagFragment1, "player2");
         int commit1 = transaction1.commit();
 
         countDown(flagFragment0, flagFragment1, 5000);
@@ -127,7 +131,7 @@ public class Round1Activity extends AppCompatActivity {
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
-        transaction0.add(R.id.player1FragmentContainer, mapFragment0);
+        transaction0.replace(R.id.player1FragmentContainer, mapFragment0, "player1");
 //        transaction0.addToBackStack(null);
         // Commit the transaction
         int commit = transaction0.commit();
@@ -137,7 +141,7 @@ public class Round1Activity extends AppCompatActivity {
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
-        transaction1.add(R.id.player2FragmentContainer, mapFragment1);
+        transaction1.replace(R.id.player2FragmentContainer, mapFragment1, "player2");
 //        transaction1.addToBackStack(null);
         // Commit the transaction
         int commit1 = transaction1.commit();
@@ -161,11 +165,62 @@ public class Round1Activity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                // TODO: Reveal answer.
-                int pointsChange;
-                f1.revealAnswer();
-                f2.revealAnswer();
+                deductPoints(true, f1.revealAnswer()[0]);
+                deductPoints(false, f2.revealAnswer()[1]);
+
+                /*
+                TODO: Wait for 10 seconds then replace the fragment.
+                 */
+                if (mHandler != null) mHandler.removeCallbacksAndMessages(null);
+                mHandler = new Handler();
+                final int delay = 10000; //10 seconds
+
+                mHandler.postDelayed(new Runnable() {
+                    public void run() {
+                        randomPuzzle();
+                    }
+                }, delay);
             }
         }.start();
+    }
+
+    public void addPoints(boolean isFirst, int points) {
+        if (isFirst) {
+            mScore += points;
+            mScoreBar.setProgress(mScore);
+            mScoreText.setText("+" + points);
+            mScoreText.setTextColor(getResources().getColor(R.color.ForestGreen, null));
+        } else {
+            mScore2 += points;
+            mScoreBar2.setProgress(mScore2);
+            mScoreText2.setText("+" + points);
+            mScoreText2.setTextColor(getResources().getColor(R.color.ForestGreen, null));
+        }
+    }
+
+    public void deductPoints(boolean isFirst, int points) {
+        if (isFirst) {
+            mScore -= points;
+            mScoreBar.setProgress(mScore);
+            mScoreText.setText("-" + points);
+            mScoreText.setTextColor(getResources().getColor(R.color.FireBrick, null));
+        } else {
+            mScore2 -= points;
+            mScoreBar2.setProgress(mScore2);
+            mScoreText2.setText("-" + points);
+            mScoreText2.setTextColor(getResources().getColor(R.color.FireBrick, null));
+        }
+    }
+
+    public void callReveal(boolean isFirst) {
+        PuzzleFragmentInterface player1 = ((PuzzleFragmentInterface) (getSupportFragmentManager().findFragmentByTag("player1")));
+        PuzzleFragmentInterface player2 = ((PuzzleFragmentInterface) (getSupportFragmentManager().findFragmentByTag("player2")));
+        player1.revealAnswer();
+        player2.revealAnswer();
+        if (isFirst) {
+            player2.disableControls();
+        } else {
+            player1.disableControls();
+        }
     }
 }

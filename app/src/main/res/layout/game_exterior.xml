@@ -77,7 +77,7 @@
                     android:layout_margin="10dp"
                     app:animated="true"
                     app:bootstrapBrand="warning"
-                    app:bootstrapMaxProgress="10"
+                    app:bootstrapMaxProgress="500"
                     app:bootstrapProgress="0"
                     app:roundedCorners="true"
                     app:striped="true" />
@@ -157,7 +157,7 @@
                     android:layout_margin="10dp"
                     app:animated="true"
                     app:bootstrapBrand="primary"
-                    app:bootstrapMaxProgress="10"
+                    app:bootstrapMaxProgress="500"
                     app:bootstrapProgress="0"
                     app:roundedCorners="true"
                     app:striped="true" />

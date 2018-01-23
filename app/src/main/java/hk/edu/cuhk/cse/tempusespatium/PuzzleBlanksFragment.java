@@ -9,4 +9,10 @@ public class PuzzleBlanksFragment implements PuzzleFragmentInterface {
     public int[] revealAnswer() {
         return new int[]{0, -10};
     }
+
+    @Override
+    public void disableControls() {
+
+    }
+
 }

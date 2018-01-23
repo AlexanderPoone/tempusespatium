@@ -15,6 +15,11 @@
         <br /><p>The questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he will lose 5 points.</p>
     </string>
 
+    <string name="pref_general">General</string>
+    <string name="pref_general_locale">Locale</string>
+    <string name="pref_version">Version</string>
+    <string name="pref_difficulty">Difficulty</string>
+
     <string name="question_anagram">Reassemble the letters.</string>
     <string name="question_anthem">Which country does this anthem belong to?</string>
     <string name="question_flags">Choose the matching flag.</string>

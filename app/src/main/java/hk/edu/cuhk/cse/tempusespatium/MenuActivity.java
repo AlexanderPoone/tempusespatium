@@ -19,6 +19,7 @@ import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
@@ -114,7 +115,7 @@ public class MenuActivity extends AppCompatActivity {
         Configuration configuration = resources.getConfiguration();
         Locale lc;
         if (locale.length() > 2) {
-            lc = new Locale(locale.substring(0,2), locale.substring(3,5));
+            lc = new Locale(locale.substring(0, 2), locale.substring(3, 5));
         } else {
             lc = new Locale(locale);
         }
@@ -179,7 +180,7 @@ public class MenuActivity extends AppCompatActivity {
 
         playSong();
 
-        AudioAttributes audioAttributes=new AudioAttributes.Builder()
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
                 .setUsage(AudioAttributes.USAGE_MEDIA)
                 .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
                 .build();
@@ -187,7 +188,7 @@ public class MenuActivity extends AppCompatActivity {
                 .setAudioAttributes(audioAttributes)
                 .setMaxStreams(2)
                 .build();
-        mPoolDict =new SparseIntArray();
+        mPoolDict = new SparseIntArray();
         mPoolDict.put(0, mSoundPool.load(this, R.raw.space_swoosh, 1));
         mPoolDict.put(1, mSoundPool.load(this, R.raw.beep_space_button, 1));
         mPoolDict.put(2, mSoundPool.load(this, R.raw.plunger_pop, 1));
@@ -199,6 +200,18 @@ public class MenuActivity extends AppCompatActivity {
                 Intent jump = new Intent(getBaseContext(), Round1Activity.class);
                 startActivity(jump);
                 finish();
+            }
+        });
+
+        final BootstrapButton rulesButton = (BootstrapButton) findViewById(R.id.rulesButton);
+        // TODO: May as well be a blue circle at the top right corner.
+        rulesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
+                // TODO: Custom popup
+                //https://stackoverflow.com/questions/23672335/how-to-make-this-beautiful-dialog
+                //https://stackoverflow.com/questions/41015691/custom-dialog-like-view
             }
         });
 
@@ -214,7 +227,7 @@ public class MenuActivity extends AppCompatActivity {
         });
 
         final BootstrapButton quitButton = (BootstrapButton) findViewById(R.id.quitButton);
-        final AlertDialog alertDialog=new AlertDialog.Builder(this)
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setTitle("Really quit?")
                 .setPositiveButton(getString(android.R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
@@ -264,6 +277,31 @@ public class MenuActivity extends AppCompatActivity {
         // created, to briefly hint to the user that UI controls
         // are available.
         delayedHide(100);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        hideStatusBar();
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        hideStatusBar();
+    }
+
+    @Override
+    public void onWindowAttributesChanged(WindowManager.LayoutParams params) {
+        super.onWindowAttributesChanged(params);
+        hideStatusBar();
+    }
+
+    private void hideStatusBar() {
+        //Hide the status bar
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
     }
 
     private void toggle() {

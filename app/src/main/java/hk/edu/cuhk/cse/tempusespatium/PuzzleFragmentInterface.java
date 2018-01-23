@@ -6,5 +6,6 @@ package hk.edu.cuhk.cse.tempusespatium;
 
 public interface PuzzleFragmentInterface {
     int[] revealAnswer();
+
     void disableControls();
 }

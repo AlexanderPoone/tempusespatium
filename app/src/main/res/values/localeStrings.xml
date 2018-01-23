@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="locale_native">
+        <item name="zh_HK">中文 (香港正體)</item>
+        <item name="en_GB">English (United Kingdom)</item>
+        <item name="ca">Català (Catalunya)</item>
+        <item name="es_ES">Español (España)</item>
+        <item name="de_DE">Deutsch (Deutschland)</item>
+        <item name="fr_FR">Français (France)</item>
+        <item name="ja">日本語</item>
+        <item name="ua">Українська</item>
+    </string-array>
+    <string-array name="locale">
+        <item name="zh_HK">Chinese (Standard, Hong Kong)</item>
+        <item name="en_GB">English (United Kingdom)</item>
+        <item name="ca">Catalan (Catalonia)</item>
+        <item name="es_ES">Spanish (Spain)</item>
+        <item name="de_DE">German (Germany)</item>
+        <item name="fr_FR">French (France)</item>
+        <item name="ja">Japanese</item>
+        <item name="ua">Ukrainian</item>
+    </string-array>
+</resources>

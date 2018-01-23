@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,23 +16,9 @@ import android.widget.TextView;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
-
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathFactory;
-
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 /**
  * Created by Alex Poon on 1/16/2018.
@@ -99,7 +84,8 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
 //            }
 //        }
 
-        mCountries = mFlagURLs = new String[]{null, null, null, null};      //new String[4];
+        mCountries = new String[]{null, null, null, null};      //new String[4];
+        mFlagURLs = new String[]{null, null, null, null};      //new String[4];
         Random random = new Random();
         SQLiteAssetHelper sqLiteAssetHelper = new DBAssetHelper(getContext());
         SQLiteDatabase sqLiteDatabase = sqLiteAssetHelper.getReadableDatabase();
@@ -110,8 +96,11 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
                 DBAssetHelper.COLUMN_SIMILAR_FLAG_1 + ", " +
                 DBAssetHelper.COLUMN_SIMILAR_FLAG_2 + " " +
                 "FROM geog " +
-                "ORDER BY " + (random.nextInt(195) + 1) + " " +
-                "LIMIT 1", null);
+                "LIMIT 1 " +
+                "OFFSET " + (random.nextInt(195) + 1)
+//                "ORDER BY " + (random.nextInt(195) + 1) + " " +
+//                "LIMIT 1"
+                , null);
         cursor.moveToNext();
         String similarFlag1, similarFlag2;
         mCountry = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_COUNTRY));
@@ -120,7 +109,7 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         similarFlag1 = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_SIMILAR_FLAG_1));
         similarFlag2 = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_SIMILAR_FLAG_2));
 
-        mCorrectCountryIndex = random.nextInt();                // 0=A, 1=B, 2=C, 3=D
+        mCorrectCountryIndex = random.nextInt(4);                // 0=A, 1=B, 2=C, 3=D
         mCountries[mCorrectCountryIndex] = mCountry;
         mFlagURLs[mCorrectCountryIndex] = mFlagUrl;
 
@@ -131,8 +120,8 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         cursor = sqLiteDatabase.rawQuery("SELECT " +
                 DBAssetHelper.COLUMN_FLAG_URL + " " +
                 "FROM geog " +
-                "WHERE " + DBAssetHelper.COLUMN_FLAG_URL + " = '" + similarFlag1 +
-                "' OR " + DBAssetHelper.COLUMN_FLAG_URL + " = '" + similarFlag2 +
+                "WHERE " + DBAssetHelper.COLUMN_COUNTRY + " = '" + similarFlag1 +
+                "' OR " + DBAssetHelper.COLUMN_COUNTRY + " = '" + similarFlag2 +
                 "'", null);
         cursor.moveToNext();
         tmpUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_FLAG_URL));

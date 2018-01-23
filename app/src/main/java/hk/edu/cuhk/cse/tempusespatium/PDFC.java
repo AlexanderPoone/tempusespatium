@@ -17,9 +17,10 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
-import static hk.edu.cuhk.cse.cubuslocator.Constants.SHAREDPREFS_LOCALE;
-import static hk.edu.cuhk.cse.cubuslocator.Constants.SHAREDPREFS_LOCALE_SET;
-import static hk.edu.cuhk.cse.cubuslocator.Constants.SHAREDPREFS_NAME;
+import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_LOCALE;
+import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_LOCALE_SET;
+import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_NAME;
+
 
 public class PDFC extends PreferenceDialogFragmentCompat {
 
@@ -40,7 +41,7 @@ public class PDFC extends PreferenceDialogFragmentCompat {
         String[] supTxt = getContext().getResources().getStringArray(R.array.locale_native);
         LocAdapter locAdapter = new LocAdapter(getContext(), 0, android.R.layout.simple_spinner_item, supTxt);
         builder.setAdapter(locAdapter, null);
-        builder.setIcon(getContext().getResources().getDrawable(R.drawable.ic_language_white_24dp));
+        builder.setIcon(getContext().getResources().getDrawable(R.drawable.ic_language_white_24dp, null));
         builder.setTitle(getContext().getResources().getString(R.string.pref_general_locale)); //Title of the DIALOG, NOT Preference!
         builder.setPositiveButton(null, null);
 //        builder.setNegativeButton(null, null);
@@ -111,38 +112,38 @@ public class PDFC extends PreferenceDialogFragmentCompat {
                     String locale;
                     switch (position) {
                         case 0:
-                            locale="zh-HK";
+                            locale = "zh-HK";
                             break;
                         case 1:
-                            locale="en-GB";
+                            locale = "en-GB";
                             break;
                         case 2:
-                            locale="ca";
+                            locale = "ca";
                             break;
                         case 3:
-                            locale="es-ES";
+                            locale = "es-ES";
                             break;
                         case 4:
-                            locale="de-DE";
+                            locale = "de-DE";
                             break;
                         case 5:
-                            locale="fr-FR";
+                            locale = "fr-FR";
                             break;
                         case 6:
-                            locale="ja";
+                            locale = "ja";
                             break;
                         case 7:
-                            locale="uK";
+                            locale = "uK";
                             break;
                         default:
-                            locale="zh-HK";
+                            locale = "zh-HK";
                             break;
                     }
                     editor.putString(SHAREDPREFS_LOCALE, locale);
                     editor.putInt(SHAREDPREFS_LOCALE_SET, 1);
                     editor.apply();
 
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    Intent intent = new Intent(getActivity(), MenuActivity.class);
                     getActivity().finish();
                     startActivity(intent);
                 }

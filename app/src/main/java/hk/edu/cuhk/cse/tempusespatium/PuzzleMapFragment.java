@@ -1,7 +1,5 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -27,31 +25,17 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PatternItem;
-import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
-import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.api.services.fusiontables.Fusiontables;
-import com.google.api.services.fusiontables.model.Sqlresponse;
-import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathFactory;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -111,7 +95,7 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mUserMarker.remove();
+                if (mUserMarker != null) mUserMarker.remove();
                 mUserMarker = null;
             }
         });
@@ -232,5 +216,10 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
         } else {
             return new int[]{0, 10};
         }
+    }
+
+    @Override
+    public void disableControls() {
+
     }
 }

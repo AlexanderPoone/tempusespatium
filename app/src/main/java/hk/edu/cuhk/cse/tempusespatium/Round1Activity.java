@@ -1,14 +1,17 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ProgressBar;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.BootstrapProgressBar;
 import com.github.lzyzsd.circleprogress.DonutProgress;
 
 import java.util.Random;
@@ -23,8 +26,8 @@ public class Round1Activity extends AppCompatActivity {
 
     DonutProgress mDonutTime;
     DonutProgress mDonutTime2;
-    ProgressBar mScoreBar;
-    ProgressBar mScoreBar2;
+    BootstrapProgressBar mScoreBar;
+    BootstrapProgressBar mScoreBar2;
     TextView mScoreText;
     TextView mScoreText2;
 
@@ -38,12 +41,39 @@ public class Round1Activity extends AppCompatActivity {
         mScore = mScore2 = 0;
         mDonutTime = (DonutProgress) findViewById(R.id.donutTime);
         mDonutTime2 = (DonutProgress) findViewById(R.id.donutTime2);
-        mScoreBar = (ProgressBar) findViewById(R.id.progressBar);
-        mScoreBar2 = (ProgressBar) findViewById(R.id.progressBar2);
+        mScoreBar = (BootstrapProgressBar) findViewById(R.id.progressBar);
+        mScoreBar2 = (BootstrapProgressBar) findViewById(R.id.progressBar2);
         mScoreText = (TextView) findViewById(R.id.pointsText);
         mScoreText2 = (TextView) findViewById(R.id.pointsText2);
 
         mScoreText2.setText(getResources().getString(R.string.bar_points, 10));
+
+        randomPuzzle();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        hideStatusBar();
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        hideStatusBar();
+    }
+
+    @Override
+    public void onWindowAttributesChanged(WindowManager.LayoutParams params) {
+        super.onWindowAttributesChanged(params);
+        hideStatusBar();
+    }
+
+    private void hideStatusBar() {
+        //Hide the status bar
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
     }
 
     public void randomPuzzle() {
@@ -222,5 +252,11 @@ public class Round1Activity extends AppCompatActivity {
         } else {
             player1.disableControls();
         }
+    }
+
+    public void endRound() {
+        Intent intent = new Intent(this, Round1Activity.class);
+        finish();
+        startActivity(intent);
     }
 }

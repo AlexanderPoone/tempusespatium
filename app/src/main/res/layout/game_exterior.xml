@@ -43,8 +43,6 @@
                 app:donut_inner_bottom_text_color="@color/Black"
                 app:donut_max="40"
                 app:donut_progress="30"
-                app:donut_show_text="false"
-                app:donut_text="12345"
                 app:donut_text_color="@color/UbuntuOrange"
                 app:donut_text_size="@dimen/bootstrap_h6_text_size"
                 app:donut_unfinished_color="@color/Goldenrod"
@@ -139,8 +137,7 @@
                 app:donut_finished_stroke_width="5dp"
                 app:donut_max="40"
                 app:donut_progress="30"
-                app:donut_show_text="false"
-                app:donut_text_color="@color/AliceBlue"
+                app:donut_text_color="@color/DarkViolet"
                 app:donut_text_size="@dimen/bootstrap_h6_text_size"
                 app:donut_unfinished_color="@color/Thistle"
                 app:donut_unfinished_stroke_width="10dp" />

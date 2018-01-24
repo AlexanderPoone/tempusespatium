@@ -160,7 +160,7 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
 
     @Override
     public int[] revealAnswer() {
-
+        mMediaPlayer.stop();
         mMediaPlayer.release();
 
         // Ask if the location user pointer belongs to the right country

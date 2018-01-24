@@ -152,7 +152,7 @@ public class Round1Activity extends AppCompatActivity {
         transaction1.replace(R.id.player2FragmentContainer, flagFragment1, "player2");
         int commit1 = transaction1.commit();
 
-        countDown(flagFragment0, flagFragment1, 10000);
+        countDown(flagFragment0, flagFragment1, 5000);
     }
 
     public void generateMapPuzzle() {
@@ -176,7 +176,7 @@ public class Round1Activity extends AppCompatActivity {
         // Commit the transaction
         int commit1 = transaction1.commit();
 
-        countDown(mapFragment0, mapFragment1, 10000);
+        countDown(mapFragment0, mapFragment1, 12000);
     }
 
     public void countDown(final PuzzleFragmentInterface f1, final PuzzleFragmentInterface f2, final int millis) {

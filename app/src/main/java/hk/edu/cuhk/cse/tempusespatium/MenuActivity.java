@@ -138,7 +138,7 @@ public class MenuActivity extends AppCompatActivity {
         UKRAINE(R.string.anthem_ua, "https://upload.wikimedia.org/wikipedia/commons/6/6d/National_anthem_of_Ukraine%2C_instrumental.oga");
 
         private final int name;
-        private final String url;
+        final String url;
 
         Anthems(int name, String url) {
             this.name = name;
@@ -345,5 +345,11 @@ public class MenuActivity extends AppCompatActivity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mMediaPlayer.release();
     }
 }

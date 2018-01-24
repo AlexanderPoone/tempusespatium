@@ -49,8 +49,8 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
                 DBAssetHelper.COLUMN_MONTH + ", " +
                 DBAssetHelper.COLUMN_PIC_URL + " " +
                 "FROM hist " +
-                "ORDER BY " + (random.nextInt(16) + 1) + " " +
-                "LIMIT 1", null);
+                "LIMIT 1 " +
+                "OFFSET " + (random.nextInt(15) + 1), null);
         cursor.moveToNext();
         mHistoricEvent = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_HISTORIC_EVENT));
         mYear = cursor.getInt(cursor.getColumnIndex(DBAssetHelper.COLUMN_YEAR));
@@ -71,10 +71,10 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
 
         Random random = new Random();
         mYearPicker = (NumberPicker) view.findViewById(R.id.year);
-        int min = mYear - (random.nextInt(50) + 50);
+        final int min = mYear - (random.nextInt(50) + 50);
         mYearPicker.setMinValue(min);
-        mYearPicker.setValue(min);
         mYearPicker.setMaxValue(mYear + (random.nextInt(50) + 50));
+        mYearPicker.setValue(min);
 
         mMonthPicker = (NumberPicker) view.findViewById(R.id.month);
 
@@ -85,6 +85,15 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
                 ((Round1Activity) getActivity()).callReveal(mFirst);
             }
         });
+
+        BootstrapButton clearButton = (BootstrapButton) view.findViewById(R.id.hist_clear);
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mYearPicker.setValue(min);
+                mMonthPicker.setValue(1);
+            }
+        });
     }
 
     @Override
@@ -93,9 +102,9 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
 
         int playerYear = mYearPicker.getValue();
         int playerMonth = mMonthPicker.getValue();
-        mYearPicker.setBackgroundColor(getResources().getColor(R.color.Sienna, null));
+        mYearPicker.setBackgroundColor(getResources().getColor(R.color.FireBrick, null));
         mYearPicker.setValue(mYear);
-        mMonthPicker.setBackgroundColor(getResources().getColor(R.color.DarkKhaki, null));
+        mMonthPicker.setBackgroundColor(getResources().getColor(R.color.IndianRed, null));
         mMonthPicker.setValue(mMonth);
 
         if (playerYear == mYear) {

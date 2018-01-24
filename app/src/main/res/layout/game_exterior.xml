@@ -6,25 +6,19 @@
     android:orientation="vertical"
     android:weightSum="2">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical">
-
-        <FrameLayout
-            android:id="@+id/player1FragmentContainer"
-            android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:background="@color/CosmicLatte"
-            android:rotation="180" />
+        android:orientation="vertical"
+        android:rotation="180">
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/CosmicLatte"
-            android:orientation="horizontal"
-            android:rotation="180">
+            android:orientation="horizontal">
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/pauseGame"
@@ -57,7 +51,7 @@
                 app:donut_unfinished_stroke_width="10dp" />
 
             <FrameLayout
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center">
 
@@ -65,10 +59,13 @@
                     android:id="@+id/pointsText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:text="@string/bar_points"
                     android:textAlignment="center"
                     android:textColor="@color/AliceBlue"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:translationZ="1dp" />
 
                 <com.beardedhen.androidbootstrap.BootstrapProgressBar
                     android:id="@+id/progressBar"
@@ -90,22 +87,34 @@
                 android:id="@+id/addDeduct"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="+20"
                 android:textColor="@color/bootstrap_brand_success"
                 android:textStyle="bold" />
         </LinearLayout>
-    </LinearLayout>
 
-    <LinearLayout
+        <FrameLayout
+            android:id="@+id/player1FragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/linearLayout"
+            android:background="@color/CosmicLatte" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/LavenderBlush"
+            android:background="@color/Lavender"
             android:orientation="horizontal">
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -137,7 +146,7 @@
                 app:donut_unfinished_stroke_width="10dp" />
 
             <FrameLayout
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center">
 
@@ -145,10 +154,13 @@
                     android:id="@+id/pointsText2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:text="@string/bar_points"
                     android:textAlignment="center"
                     android:textColor="@color/AliceBlue"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:translationZ="1dp" />
 
                 <com.beardedhen.androidbootstrap.BootstrapProgressBar
                     android:id="@+id/progressBar2"
@@ -169,6 +181,7 @@
                 android:id="@+id/addDeduct2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="+20"
                 android:textColor="@color/bootstrap_brand_success"
                 android:textStyle="bold" />
@@ -177,7 +190,10 @@
         <FrameLayout
             android:id="@+id/player2FragmentContainer"
             android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:background="@color/LavenderBlush" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/linearLayout2"
+            android:background="@color/Lavender" />
+    </RelativeLayout>
 </LinearLayout>

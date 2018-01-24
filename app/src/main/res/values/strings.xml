@@ -27,7 +27,7 @@
 
     <string name="bar_points">Points: %d</string>
     <string name="submit">{fa_paper-plane} Submit!</string>
-    <string name="clear">{fa_undo} Clear</string>
+    <string name="reset">{fa_undo} Reset</string>
     <string name="a">A. </string>
     <string name="b">B. </string>
     <string name="c">C. </string>

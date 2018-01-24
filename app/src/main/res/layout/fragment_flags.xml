@@ -10,7 +10,7 @@
         android:id="@+id/flag_country_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
+        android:paddingBottom="5dp"
         android:text="Bangladesh"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
@@ -19,6 +19,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
         android:weightSum="2">
 
         <RelativeLayout
@@ -41,6 +43,13 @@
                 android:layout_width="100dp"
                 android:layout_height="80dp"
                 android:layout_centerInParent="true" />
+
+            <ImageView
+                android:id="@+id/aIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -63,12 +72,21 @@
                 android:layout_width="100dp"
                 android:layout_height="80dp"
                 android:layout_centerInParent="true" />
+
+            <ImageView
+                android:id="@+id/bIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true" />
         </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
         android:weightSum="2">
 
         <RelativeLayout
@@ -91,6 +109,13 @@
                 android:layout_width="100dp"
                 android:layout_height="80dp"
                 android:layout_centerInParent="true" />
+
+            <ImageView
+                android:id="@+id/cIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -113,31 +138,15 @@
                 android:layout_width="100dp"
                 android:layout_height="80dp"
                 android:layout_centerInParent="true" />
+
+            <ImageView
+                android:id="@+id/dIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true" />
         </RelativeLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:paddingTop="10dp">
-
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/submit0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            app:bootstrapBrand="success"
-            app:bootstrapText="@string/submit"
-            app:roundedCorners="true" />
-
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/clear0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:bootstrapBrand="danger"
-            app:bootstrapText="@string/clear"
-            app:roundedCorners="true" />
-    </LinearLayout>
 </LinearLayout>

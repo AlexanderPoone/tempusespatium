@@ -18,7 +18,7 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="160dp" />
+        android:layout_height="180dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
             android:id="@+id/clear0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:bootstrapText="@string/clear"
+            app:bootstrapText="@string/reset"
             app:bootstrapBrand="danger"
             app:roundedCorners="true" />
     </LinearLayout>

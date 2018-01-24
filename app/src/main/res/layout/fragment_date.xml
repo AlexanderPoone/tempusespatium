@@ -17,19 +17,23 @@
     <ImageView
         android:id="@+id/questionHistoryPic"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
         android:paddingBottom="5dp"
         app:srcCompat="@drawable/bayeux_tapestry" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:weightSum="3">
 
+        <!--android:layout_marginStart="120dp"-->
         <com.shawnlin.numberpicker.NumberPicker
             android:id="@+id/year"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:layout_marginEnd="2dp"
             android:layout_weight="1"
             android:background="@color/ForestGreen"
@@ -37,22 +41,25 @@
             app:np_max="1900"
             app:np_min="1700"
             app:np_selectedTextColor="@color/Platinum"
-            app:np_selectedTextSize="35sp"
+            app:np_selectedTextSize="@dimen/bootstrap_h3_text_size"
             app:np_textColor="@android:color/white"
+            app:np_textSize="@dimen/bootstrap_h6_text_size"
             app:np_wheelItemCount="5" />
 
+        <!--android:layout_marginEnd="120dp"-->
         <com.shawnlin.numberpicker.NumberPicker
             android:id="@+id/month"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:layout_weight="2"
             android:background="@color/AndroidGreen"
             app:np_dividerColor="@color/Honeydew"
             app:np_max="12"
             app:np_min="1"
             app:np_selectedTextColor="@color/Platinum"
-            app:np_selectedTextSize="35sp"
+            app:np_selectedTextSize="@dimen/bootstrap_h3_text_size"
             app:np_textColor="@android:color/white"
+            app:np_textSize="@dimen/bootstrap_h6_text_size"
             app:np_wheelItemCount="3" />
     </LinearLayout>
 
@@ -76,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:bootstrapBrand="danger"
-            app:bootstrapText="@string/clear"
+            app:bootstrapText="@string/reset"
             app:roundedCorners="true" />
     </LinearLayout>
 </LinearLayout>

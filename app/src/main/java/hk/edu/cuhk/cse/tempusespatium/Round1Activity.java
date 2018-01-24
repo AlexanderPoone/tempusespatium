@@ -122,7 +122,7 @@ public class Round1Activity extends AppCompatActivity {
         // Commit the transaction
         int commit1 = transaction1.commit();
 
-        countDown(anagramFragment0, anagramFragment1, 5000);
+        countDown(anagramFragment0, anagramFragment1, 10000);
     }
 
     public void generateDatePuzzle() {
@@ -138,7 +138,7 @@ public class Round1Activity extends AppCompatActivity {
         transaction1.replace(R.id.player2FragmentContainer, dateFragment1, "player2");
         int commit1 = transaction1.commit();
 
-        countDown(dateFragment0, dateFragment1, 5000);
+        countDown(dateFragment0, dateFragment1, 10000);
     }
 
     public void generateFlagsPuzzle() {
@@ -152,7 +152,7 @@ public class Round1Activity extends AppCompatActivity {
         transaction1.replace(R.id.player2FragmentContainer, flagFragment1, "player2");
         int commit1 = transaction1.commit();
 
-        countDown(flagFragment0, flagFragment1, 5000);
+        countDown(flagFragment0, flagFragment1, 10000);
     }
 
     public void generateMapPuzzle() {
@@ -186,17 +186,28 @@ public class Round1Activity extends AppCompatActivity {
             @Override
             public void onTick(long l) {
                 String seconds = Integer.toString((int) l / 1000);
-                String percentage = Integer.toString((int) l / millis);
-                mDonutTime.setDonut_progress(percentage);
+//                String percentage = Integer.toString((int) l / millis);
+//                Log.e(seconds, percentage);
+                mDonutTime.setDonut_progress(seconds);
                 mDonutTime.setText(seconds);
-                mDonutTime2.setDonut_progress(percentage);
+                mDonutTime2.setDonut_progress(seconds);
                 mDonutTime2.setText(seconds);
             }
 
             @Override
             public void onFinish() {
-                deductPoints(true, f1.revealAnswer()[0]);
-                deductPoints(false, f2.revealAnswer()[1]);
+                mDonutTime.setDonut_progress("0");
+                mDonutTime.setText("0");
+                mDonutTime2.setDonut_progress("0");
+                mDonutTime2.setText("0");
+
+//                deductPoints(true, f1.revealAnswer()[0]);
+//                deductPoints(false, f2.revealAnswer()[1]);
+                //TODO: Remove placeholder.
+                deductPoints(true, 0);
+                deductPoints(false, 0);
+                //TODO: Remove placeholder.
+
 
                 /*
                 TODO: Wait for 10 seconds then replace the fragment.
@@ -231,12 +242,20 @@ public class Round1Activity extends AppCompatActivity {
     public void deductPoints(boolean isFirst, int points) {
         if (isFirst) {
             mScore -= points;
-            mScoreBar.setProgress(mScore);
+            if (mScore >= 0) {
+                mScoreBar.setProgress(mScore);
+            } else {
+                mScoreBar.setProgress(0);
+            }
             mScoreText.setText("-" + points);
             mScoreText.setTextColor(getResources().getColor(R.color.FireBrick, null));
         } else {
             mScore2 -= points;
-            mScoreBar2.setProgress(mScore2);
+            if (mScore >= 0) {
+                mScoreBar2.setProgress(mScore2);
+            } else {
+                mScoreBar.setProgress(0);
+            }
             mScoreText2.setText("-" + points);
             mScoreText2.setTextColor(getResources().getColor(R.color.FireBrick, null));
         }

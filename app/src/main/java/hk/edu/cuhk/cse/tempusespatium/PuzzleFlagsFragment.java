@@ -47,9 +47,8 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //        // TODO: Get html from Wikipedia
-//        // TODO: https://raw.githubusercontent.com/matej-pavla/Google-Maps-Examples/master/BoundariesExample/geojsons/world.countries.geo.json
-
+// TODO: Get html from Wikipedia
+// TODO: https://raw.githubusercontent.com/matej-pavla/Google-Maps-Examples/master/BoundariesExample/geojsons/world.countries.geo.json
 
 //        try {
 //            String html = run("https://en.wikipedia.org/wiki/Gallery_of_sovereign_state_flags");
@@ -83,21 +82,42 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
 //                largerAL.add(smallerAL);
 //            }
 //        }
+        View view = inflater.inflate(R.layout.fragment_flags, container, false);
+        return view;
+    }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+//        // TODO: Get html from Wikipedia
+//        try {
+//            String html = run("https://en.wikipedia.org/wiki/Gallery_of_sovereign_state_flags");
+//            Log.wtf("WTF: ", html);
+//            Document doc = DocumentBuilderFactory.newInstance()
+//                    .newDocumentBuilder().parse(new InputSource(new StringReader(html)));
+//
+//            XPathExpression imgPathXPath = XPathFactory.newInstance()
+//                    .newXPath().compile("//*[@id='mw-content-text']/div/table[1]/tr[1]/td[1]/table/tr[1]/td/a/img/@src");
+//
+//            String result = (String) imgPathXPath.evaluate(doc, XPathConstants.STRING);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         mCountries = new String[]{null, null, null, null};      //new String[4];
         mFlagURLs = new String[]{null, null, null, null};      //new String[4];
         Random random = new Random();
         SQLiteAssetHelper sqLiteAssetHelper = new DBAssetHelper(getContext());
         SQLiteDatabase sqLiteDatabase = sqLiteAssetHelper.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT " +
-                DBAssetHelper.COLUMN_COUNTRY + ", " +
-                DBAssetHelper.COLUMN_ANTHEM + ", " +
-                DBAssetHelper.COLUMN_FLAG_URL + ", " +
-                DBAssetHelper.COLUMN_SIMILAR_FLAG_1 + ", " +
-                DBAssetHelper.COLUMN_SIMILAR_FLAG_2 + " " +
-                "FROM geog " +
-                "LIMIT 1 " +
-                "OFFSET " + (random.nextInt(195) + 1)
+                        DBAssetHelper.COLUMN_COUNTRY + ", " +
+                        DBAssetHelper.COLUMN_ANTHEM + ", " +
+                        DBAssetHelper.COLUMN_FLAG_URL + ", " +
+                        DBAssetHelper.COLUMN_SIMILAR_FLAG_1 + ", " +
+                        DBAssetHelper.COLUMN_SIMILAR_FLAG_2 + " " +
+                        "FROM geog " +
+                        "LIMIT 1 " +
+                        "OFFSET " + (random.nextInt(195) + 0)
 //                "ORDER BY " + (random.nextInt(195) + 1) + " " +
 //                "LIMIT 1"
                 , null);
@@ -145,7 +165,8 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
                 "FROM geog " +
                 "WHERE " + DBAssetHelper.COLUMN_COUNTRY +
                 " <> '" + mCountry + "' " +
-                "LIMIT 1", null);
+                "LIMIT 1 " +
+                "OFFSET " + (random.nextInt(194) + 0), null);
         cursor.moveToNext();
         tmpUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_FLAG_URL));
         do {
@@ -153,29 +174,10 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         } while (mFlagURLs[tmpIndex] != null);
         mFlagURLs[tmpIndex] = tmpUrl;
         cursor.close();
+        sqLiteDatabase.close();
+        sqLiteAssetHelper.close();
 
-        View view = inflater.inflate(R.layout.fragment_flags, container, false);
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-//        // TODO: Get html from Wikipedia
-//        try {
-//            String html = run("https://en.wikipedia.org/wiki/Gallery_of_sovereign_state_flags");
-//            Log.wtf("WTF: ", html);
-//            Document doc = DocumentBuilderFactory.newInstance()
-//                    .newDocumentBuilder().parse(new InputSource(new StringReader(html)));
-//
-//            XPathExpression imgPathXPath = XPathFactory.newInstance()
-//                    .newXPath().compile("//*[@id='mw-content-text']/div/table[1]/tr[1]/td[1]/table/tr[1]/td/a/img/@src");
-//
-//            String result = (String) imgPathXPath.evaluate(doc, XPathConstants.STRING);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
         TextView cName = (TextView) view.findViewById(R.id.flag_country_name);
         cName.setText(mCountries[mCorrectCountryIndex]);
@@ -184,6 +186,11 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         ImageView flagB = (ImageView) view.findViewById(R.id.bImageView);
         ImageView flagC = (ImageView) view.findViewById(R.id.cImageView);
         ImageView flagD = (ImageView) view.findViewById(R.id.dImageView);
+
+        mFlagURLs[0] = mFlagURLs[0].replaceAll("\u200B", "");
+        mFlagURLs[1] = mFlagURLs[1].replaceAll("\u200B", "");
+        mFlagURLs[2] = mFlagURLs[2].replaceAll("\u200B", "");
+        mFlagURLs[3] = mFlagURLs[3].replaceAll("\u200B", "");
 
         Picasso.with(getContext()).load(mFlagURLs[0]).into(flagA);
         Picasso.with(getContext()).load(mFlagURLs[1]).into(flagB);
@@ -229,43 +236,69 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
     public int[] revealAnswer() {
         // TODO: Disable the other player.
 
+        disableControls();
+
         switch (mCorrectCountryIndex) {
             case 0:
                 RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);
                 relA.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
+                ImageView indA = (ImageView) getView().findViewById(R.id.aIndicator);
+                indA.setImageResource(R.drawable.ic_check_white_24dp);
+                indA.setBackgroundColor(getResources().getColor(R.color.AndroidGreen, null));
                 break;
             case 1:
                 RelativeLayout relB = (RelativeLayout) getView().findViewById(R.id.bRelLayout);
                 relB.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
+                ImageView indB = (ImageView) getView().findViewById(R.id.bIndicator);
+                indB.setImageResource(R.drawable.ic_check_white_24dp);
+                indB.setBackgroundColor(getResources().getColor(R.color.AndroidGreen, null));
                 break;
             case 2:
                 RelativeLayout relC = (RelativeLayout) getView().findViewById(R.id.cRelLayout);
                 relC.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
+                ImageView indC = (ImageView) getView().findViewById(R.id.cIndicator);
+                indC.setImageResource(R.drawable.ic_check_white_24dp);
+                indC.setBackgroundColor(getResources().getColor(R.color.AndroidGreen, null));
                 break;
             case 3:
                 RelativeLayout relD = (RelativeLayout) getView().findViewById(R.id.dRelLayout);
                 relD.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
+                ImageView indD = (ImageView) getView().findViewById(R.id.dIndicator);
+                indD.setImageResource(R.drawable.ic_check_white_24dp);
+                indD.setBackgroundColor(getResources().getColor(R.color.AndroidGreen, null));
                 break;
         }
         if (mUserAnswerIndex == mCorrectCountryIndex) {
             return new int[]{10, -10};
         } else {
-            switch (mCorrectCountryIndex) {
+            switch (mUserAnswerIndex) {
                 case 0:
                     RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);
                     relA.setBackground(getResources().getDrawable(R.drawable.rounded_choice_incorrect, null));
+                    ImageView indA = (ImageView) getView().findViewById(R.id.aIndicator);
+                    indA.setImageResource(R.drawable.ic_close_white_24dp);
+                    indA.setBackgroundColor(getResources().getColor(R.color.Fraternity, null));
                     break;
                 case 1:
                     RelativeLayout relB = (RelativeLayout) getView().findViewById(R.id.bRelLayout);
                     relB.setBackground(getResources().getDrawable(R.drawable.rounded_choice_incorrect, null));
+                    ImageView indB = (ImageView) getView().findViewById(R.id.bIndicator);
+                    indB.setImageResource(R.drawable.ic_close_white_24dp);
+                    indB.setBackgroundColor(getResources().getColor(R.color.Fraternity, null));
                     break;
                 case 2:
                     RelativeLayout relC = (RelativeLayout) getView().findViewById(R.id.cRelLayout);
                     relC.setBackground(getResources().getDrawable(R.drawable.rounded_choice_incorrect, null));
+                    ImageView indC = (ImageView) getView().findViewById(R.id.cIndicator);
+                    indC.setImageResource(R.drawable.ic_close_white_24dp);
+                    indC.setBackgroundColor(getResources().getColor(R.color.Fraternity, null));
                     break;
                 case 3:
                     RelativeLayout relD = (RelativeLayout) getView().findViewById(R.id.dRelLayout);
                     relD.setBackground(getResources().getDrawable(R.drawable.rounded_choice_incorrect, null));
+                    ImageView indD = (ImageView) getView().findViewById(R.id.dIndicator);
+                    indD.setImageResource(R.drawable.ic_close_white_24dp);
+                    indD.setBackgroundColor(getResources().getColor(R.color.Fraternity, null));
                     break;
             }
             return new int[]{10, -10};
@@ -274,6 +307,13 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
 
     @Override
     public void disableControls() {
-
+        RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);
+        relA.setOnClickListener(null);
+        RelativeLayout relB = (RelativeLayout) getView().findViewById(R.id.bRelLayout);
+        relB.setOnClickListener(null);
+        RelativeLayout relC = (RelativeLayout) getView().findViewById(R.id.cRelLayout);
+        relC.setOnClickListener(null);
+        RelativeLayout relD = (RelativeLayout) getView().findViewById(R.id.dRelLayout);
+        relD.setOnClickListener(null);
     }
 }

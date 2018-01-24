@@ -2,6 +2,8 @@ package hk.edu.cuhk.cse.tempusespatium;
 
 import android.location.Address;
 import android.location.Geocoder;
+import android.media.AudioAttributes;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -59,6 +63,8 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
     private LatLng mActualCoords = null;
     private Circle mAcceptanceRange = null;
 
+    private static MediaPlayer mMediaPlayer;
+
     public PuzzleMapFragment() {
 
     }
@@ -76,6 +82,29 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
         return response.body().string();
     }
 
+    private void playSong() {
+        if (mMediaPlayer == null) {
+            mMediaPlayer = new MediaPlayer();
+            mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mediaPlayer) {
+                    mediaPlayer.start();
+                }
+            });
+            try {
+                mMediaPlayer.setAudioAttributes(new AudioAttributes.Builder()
+                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                        .setUsage(AudioAttributes.USAGE_MEDIA).build());
+                mMediaPlayer.setDataSource(MenuActivity.Anthems.valueOf("Israel".toUpperCase()).url);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            mMediaPlayer.prepareAsync();
+        } else {
+            mMediaPlayer.start();
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -86,6 +115,7 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        playSong();
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -104,6 +134,7 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mUiSettings = mMap.getUiSettings();
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
@@ -116,17 +147,21 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
                         .position(latLng));
             }
         });
-        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+//        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         if (!mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(
                 getContext(), R.raw.minimalist))) {
             Log.e(PuzzleMapFragment.class.getSimpleName(), "Style parsing failed.");
         }
+        mUiSettings.setMapToolbarEnabled(false);
+
 //        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(0.0, 0.0), 0.0f);
 //        mMap.moveCamera(cameraUpdate);
     }
 
     @Override
     public int[] revealAnswer() {
+
+        mMediaPlayer.release();
 
         // Ask if the location user pointer belongs to the right country
         Geocoder geoCoder = new Geocoder(getContext());
@@ -196,9 +231,16 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
         }
 
         // Centroid ?
+        // TODO: Remove placeholder
+        mActualCoords = new LatLng(48.804404, 2.123162);
+        // TODO: Remove placeholder
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(mActualCoords, 5.5f);
+        mMap.moveCamera(cameraUpdate);
+
         mActualMarker = mMap.addMarker(new MarkerOptions()
                 .position(mActualCoords)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.correct_pointer)));
+
 
         PatternItem DASH = new Dash(50);
         PatternItem GAP = new Gap(10);

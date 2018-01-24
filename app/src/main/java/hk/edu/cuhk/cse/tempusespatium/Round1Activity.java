@@ -30,6 +30,8 @@ public class Round1Activity extends AppCompatActivity {
     BootstrapProgressBar mScoreBar2;
     TextView mScoreText;
     TextView mScoreText2;
+    TextView mScoreChangeText;
+    TextView mScoreChangeText2;
 
     Handler mHandler;
 
@@ -45,6 +47,8 @@ public class Round1Activity extends AppCompatActivity {
         mScoreBar2 = (BootstrapProgressBar) findViewById(R.id.progressBar2);
         mScoreText = (TextView) findViewById(R.id.pointsText);
         mScoreText2 = (TextView) findViewById(R.id.pointsText2);
+        mScoreChangeText = (TextView) findViewById(R.id.addDeduct);
+        mScoreChangeText2 = (TextView) findViewById(R.id.addDeduct2);
 
         mScoreText2.setText(getResources().getString(R.string.bar_points, 10));
 
@@ -229,13 +233,15 @@ public class Round1Activity extends AppCompatActivity {
         if (isFirst) {
             mScore += points;
             mScoreBar.setProgress(mScore);
-            mScoreText.setText("+" + points);
-            mScoreText.setTextColor(getResources().getColor(R.color.ForestGreen, null));
+            mScoreText.setText(mScore);
+            mScoreChangeText.setText("+" + points);
+            mScoreChangeText.setTextColor(getResources().getColor(R.color.ForestGreen, null));
         } else {
             mScore2 += points;
             mScoreBar2.setProgress(mScore2);
-            mScoreText2.setText("+" + points);
-            mScoreText2.setTextColor(getResources().getColor(R.color.ForestGreen, null));
+            mScoreText2.setText(mScore2);
+            mScoreChangeText2.setText("+" + points);
+            mScoreChangeText2.setTextColor(getResources().getColor(R.color.ForestGreen, null));
         }
     }
 
@@ -247,17 +253,19 @@ public class Round1Activity extends AppCompatActivity {
             } else {
                 mScoreBar.setProgress(0);
             }
-            mScoreText.setText("-" + points);
-            mScoreText.setTextColor(getResources().getColor(R.color.FireBrick, null));
+            mScoreText.setText(mScore);
+            mScoreChangeText.setText("-" + points);
+            mScoreChangeText.setTextColor(getResources().getColor(R.color.FireBrick, null));
         } else {
             mScore2 -= points;
             if (mScore >= 0) {
                 mScoreBar2.setProgress(mScore2);
             } else {
-                mScoreBar.setProgress(0);
+                mScoreBar2.setProgress(0);
             }
-            mScoreText2.setText("-" + points);
-            mScoreText2.setTextColor(getResources().getColor(R.color.FireBrick, null));
+            mScoreText2.setText(mScore2);
+            mScoreChangeText2.setText("-" + points);
+            mScoreChangeText2.setTextColor(getResources().getColor(R.color.FireBrick, null));
         }
     }
 

@@ -160,8 +160,14 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
 
     @Override
     public int[] revealAnswer() {
-        mMediaPlayer.stop();
-        mMediaPlayer.release();
+//        mMediaPlayer.stop();
+//        mMediaPlayer.release();
+
+        if (mMediaPlayer != null) {
+            mMediaPlayer.stop();
+            mMediaPlayer.release();
+            mMediaPlayer = null;
+        }
 
         // Ask if the location user pointer belongs to the right country
         Geocoder geoCoder = new Geocoder(getContext());
@@ -263,5 +269,15 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
     @Override
     public void disableControls() {
 
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mMediaPlayer != null) {
+            mMediaPlayer.stop();
+            mMediaPlayer.release();
+            mMediaPlayer = null;
+        }
     }
 }

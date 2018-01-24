@@ -106,6 +106,8 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
         mYearPicker.setValue(mYear);
         mMonthPicker.setBackgroundColor(getResources().getColor(R.color.IndianRed, null));
         mMonthPicker.setValue(mMonth);
+        mYearPicker.setEnabled(false);
+        mMonthPicker.setEnabled(false);
 
         if (playerYear == mYear) {
             if (playerMonth == mMonth) {

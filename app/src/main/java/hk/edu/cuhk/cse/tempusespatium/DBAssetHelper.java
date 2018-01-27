@@ -15,6 +15,7 @@ public class DBAssetHelper extends SQLiteAssetHelper {
     static final String TABLE_GEOG = "geog",
             COLUMN_COUNTRY = "country",
             COLUMN_ANTHEM = "anthem",
+            COLUMN_ANTHEM_URL = "anthemUrl",
             COLUMN_FLAG_URL = "flagUrl",
             COLUMN_SIMILAR_FLAG_1 = "similarFlag1",
             COLUMN_SIMILAR_FLAG_2 = "similarFlag2";

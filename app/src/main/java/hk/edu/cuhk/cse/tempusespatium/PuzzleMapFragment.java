@@ -1,5 +1,7 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Address;
 import android.location.Geocoder;
 import android.media.AudioAttributes;
@@ -30,6 +32,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PatternItem;
 import com.google.android.gms.maps.model.PolygonOptions;
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -42,8 +45,6 @@ import java.util.List;
 import java.util.Random;
 
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 import static hk.edu.cuhk.cse.tempusespatium.Constants.ACCEPTANCE_RADIUS_METRES;
 
@@ -87,7 +88,24 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
                 mMediaPlayer.setAudioAttributes(new AudioAttributes.Builder()
                         .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
                         .setUsage(AudioAttributes.USAGE_MEDIA).build());
-                mMediaPlayer.setDataSource(MenuActivity.Anthems.valueOf("Israel".toUpperCase()).url);
+
+                Random random = new Random();
+                SQLiteAssetHelper sqLiteAssetHelper = new DBAssetHelper(getContext());
+                SQLiteDatabase sqLiteDatabase = sqLiteAssetHelper.getReadableDatabase();
+                Cursor cursor = sqLiteDatabase.rawQuery("SELECT " +
+                                DBAssetHelper.COLUMN_COUNTRY + ", " +
+                                DBAssetHelper.COLUMN_ANTHEM + ", " +
+                                DBAssetHelper.COLUMN_ANTHEM_URL + " " +
+                                "FROM geog " +
+                                "LIMIT 1 " +
+                                "OFFSET " + random.nextInt(195)
+                        , null);
+                cursor.moveToNext();
+                mMediaPlayer.setDataSource(cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_ANTHEM_URL)));
+//                mMediaPlayer.setDataSource(MenuActivity.Anthems.valueOf("Israel".toUpperCase()).url);
+                cursor.close();
+                sqLiteAssetHelper.close();
+                sqLiteDatabase.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

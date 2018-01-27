@@ -73,14 +73,6 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
         mFirst = first;
     }
 
-    String run(String url) throws IOException, NullPointerException {
-        mClient = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-        Response response = mClient.newCall(request).execute();
-        return response.body().string();
-    }
 
     private void playSong() {
         if (mMediaPlayer == null) {

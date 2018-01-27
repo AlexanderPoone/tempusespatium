@@ -84,7 +84,7 @@ public class Round1Activity extends AppCompatActivity {
         Random random = new Random();
         int type;
         do {
-            type = random.nextInt(4);           // Generate integer from 0 to 3.
+            type = random.nextInt(5);           // Generate integer from 0 to 3.
         } while (type == mLastQuestionType);
         mLastQuestionType = type;
 
@@ -102,31 +102,34 @@ public class Round1Activity extends AppCompatActivity {
             case 3:
                 generateDatePuzzle();
                 break;
+            case 4:
+                generateBlanksPuzzle();
         }
     }
 
     public void generateAnagramPuzzle() {
-        // Create new fragment and transaction
-        PuzzleAnagramFragment anagramFragment0 = new PuzzleAnagramFragment(true);
-        FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
-        // Replace whatever is in the fragment_container view with this fragment,
-        // and add the transaction to the back stack
-        transaction0.replace(R.id.player1FragmentContainer, anagramFragment0, "player1");
-//        transaction0.addToBackStack(null);
-        // Commit the transaction
-        int commit = transaction0.commit();
-
-        // Create new fragment and transaction
-        PuzzleAnagramFragment anagramFragment1 = new PuzzleAnagramFragment(false);
-        FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
-        // Replace whatever is in the fragment_container view with this fragment,
-        // and add the transaction to the back stack
-        transaction1.replace(R.id.player2FragmentContainer, anagramFragment1, "player2");
-//        transaction1.addToBackStack(null);
-        // Commit the transaction
-        int commit1 = transaction1.commit();
-
-        countDown(anagramFragment0, anagramFragment1, 10000);
+        generateBlanksPuzzle();
+//        // Create new fragment and transaction
+//        PuzzleAnagramFragment anagramFragment0 = new PuzzleAnagramFragment(true);
+//        FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
+//        // Replace whatever is in the fragment_container view with this fragment,
+//        // and add the transaction to the back stack
+//        transaction0.replace(R.id.player1FragmentContainer, anagramFragment0, "player1");
+////        transaction0.addToBackStack(null);
+//        // Commit the transaction
+//        int commit = transaction0.commit();
+//
+//        // Create new fragment and transaction
+//        PuzzleAnagramFragment anagramFragment1 = new PuzzleAnagramFragment(false);
+//        FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+//        // Replace whatever is in the fragment_container view with this fragment,
+//        // and add the transaction to the back stack
+//        transaction1.replace(R.id.player2FragmentContainer, anagramFragment1, "player2");
+////        transaction1.addToBackStack(null);
+//        // Commit the transaction
+//        int commit1 = transaction1.commit();
+//
+//        countDown(anagramFragment0, anagramFragment1, 10000);
     }
 
     public void generateDatePuzzle() {
@@ -183,6 +186,20 @@ public class Round1Activity extends AppCompatActivity {
         countDown(mapFragment0, mapFragment1, 12000);
     }
 
+    public void generateBlanksPuzzle() {
+        PuzzleBlanksFragment blanksFragment0 = new PuzzleBlanksFragment(true);
+        FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
+        transaction0.replace(R.id.player1FragmentContainer, blanksFragment0, "player1");
+        int commit = transaction0.commit();
+
+        PuzzleBlanksFragment blanksFragment1 = new PuzzleBlanksFragment(false);
+        FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+        transaction1.replace(R.id.player2FragmentContainer, blanksFragment1, "player2");
+        int commit1 = transaction1.commit();
+
+        countDown(blanksFragment0, blanksFragment1, 12000);
+    }
+
     public void countDown(final PuzzleFragmentInterface f1, final PuzzleFragmentInterface f2, final int millis) {
         mDonutTime.setMax(millis / 1000);
         mDonutTime2.setMax(millis / 1000);
@@ -233,13 +250,13 @@ public class Round1Activity extends AppCompatActivity {
         if (isFirst) {
             mScore += points;
             mScoreBar.setProgress(mScore);
-            mScoreText.setText(mScore);
+            mScoreText.setText(String.format("%d", mScore));
             mScoreChangeText.setText("+" + points);
             mScoreChangeText.setTextColor(getResources().getColor(R.color.ForestGreen, null));
         } else {
             mScore2 += points;
             mScoreBar2.setProgress(mScore2);
-            mScoreText2.setText(mScore2);
+            mScoreText2.setText(String.format("%d", mScore2));
             mScoreChangeText2.setText("+" + points);
             mScoreChangeText2.setTextColor(getResources().getColor(R.color.ForestGreen, null));
         }
@@ -253,7 +270,7 @@ public class Round1Activity extends AppCompatActivity {
             } else {
                 mScoreBar.setProgress(0);
             }
-            mScoreText.setText(mScore);
+            mScoreText.setText(String.format("%d", mScore));
             mScoreChangeText.setText("-" + points);
             mScoreChangeText.setTextColor(getResources().getColor(R.color.FireBrick, null));
         } else {
@@ -263,7 +280,7 @@ public class Round1Activity extends AppCompatActivity {
             } else {
                 mScoreBar2.setProgress(0);
             }
-            mScoreText2.setText(mScore2);
+            mScoreText2.setText(String.format("%d", mScore2));
             mScoreChangeText2.setText("-" + points);
             mScoreChangeText2.setTextColor(getResources().getColor(R.color.FireBrick, null));
         }

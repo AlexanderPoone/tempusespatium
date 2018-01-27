@@ -34,8 +34,6 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
 
     private String[] mCountries, mFlagURLs;
 
-    private OkHttpClient mClient;
-
     public PuzzleFlagsFragment() {
 
     }
@@ -47,22 +45,8 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-// TODO: Get html from Wikipedia
 // TODO: https://raw.githubusercontent.com/matej-pavla/Google-Maps-Examples/master/BoundariesExample/geojsons/world.countries.geo.json
 
-//        try {
-//            String html = run("https://en.wikipedia.org/wiki/Gallery_of_sovereign_state_flags");
-//            Log.wtf("WTF: ", html);
-//            Document doc = DocumentBuilderFactory.newInstance()
-//                    .newDocumentBuilder().parse(new InputSource(new StringReader(html)));
-//
-//            XPathExpression xpath = XPathFactory.newInstance()
-//                    .newXPath().compile("//*[@id='mw-content-text']/div/table[1]/tr[1]/td[1]/table/tr[1]/td/a/img/@src");
-//
-//            String result = (String) xpath.evaluate(doc, XPathConstants.STRING);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
 //        Cursor cursor = sqLiteDatabase.query(DBAssetHelper.TABLE_GEOG,
 //                new String[]{"country", "anthem", "flagUrl", "similarFlag1", "similarFlag2"},
 //                "country <> 'Bahamas'",
@@ -90,20 +74,6 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        // TODO: Get html from Wikipedia
-//        try {
-//            String html = run("https://en.wikipedia.org/wiki/Gallery_of_sovereign_state_flags");
-//            Log.wtf("WTF: ", html);
-//            Document doc = DocumentBuilderFactory.newInstance()
-//                    .newDocumentBuilder().parse(new InputSource(new StringReader(html)));
-//
-//            XPathExpression imgPathXPath = XPathFactory.newInstance()
-//                    .newXPath().compile("//*[@id='mw-content-text']/div/table[1]/tr[1]/td[1]/table/tr[1]/td/a/img/@src");
-//
-//            String result = (String) imgPathXPath.evaluate(doc, XPathConstants.STRING);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
         mCountries = new String[]{null, null, null, null};      //new String[4];
         mFlagURLs = new String[]{null, null, null, null};      //new String[4];
         Random random = new Random();

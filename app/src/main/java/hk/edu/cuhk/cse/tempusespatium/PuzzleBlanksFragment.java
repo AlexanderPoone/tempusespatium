@@ -72,8 +72,12 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
 
                     result = "";
                     for (int i = 0; i < test.getLength(); i++) {
-                        if (test.item(i).getParentNode().getNodeName().equals("b") || test.item(i).getParentNode().getNodeName().equals("p")) {
+                        if (test.item(i).getParentNode().getNodeName().equals("p")) {
                             result += test.item(i).getTextContent();
+                        } else if (test.item(i).getParentNode().getNodeName().equals("b")) {
+                            result += "<strong>";
+                            result += test.item(i).getTextContent();
+                            result += "</strong>";
                         } else {
                             StringTokenizer stringTokenizer = new StringTokenizer(test.item(i).getTextContent(), " ");
                             while (stringTokenizer.hasMoreTokens()) {

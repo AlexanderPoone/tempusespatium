@@ -84,7 +84,11 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                                 String token = stringTokenizer.nextToken();
                                 String blank = " ";
                                 blank += token.substring(0, 1);
-                                blank += "_____";
+                                blank += "<input type=\"text\" name=\"";
+                                blank += Integer.toString(i);
+                                blank += "\" size=\"";
+                                blank += Integer.toString(token.length()-2);
+                                blank += "\">";
                                 blank += token.substring(token.length() - 1);
                                 blank += " ";
                                 result += blank;
@@ -125,6 +129,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mWebView = (WebView) view.findViewById(R.id.webview);
+
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {

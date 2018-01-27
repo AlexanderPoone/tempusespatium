@@ -16,6 +16,7 @@ import org.xml.sax.InputSource;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.StringTokenizer;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPathConstants;
@@ -61,35 +62,28 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                     Document doc = DocumentBuilderFactory.newInstance()
                             .newDocumentBuilder().parse(new InputSource(new StringReader(result)));
 
-                    XPathExpression paraXPath = XPathFactory.newInstance()
-                            .newXPath().compile("//div/p[1]");
-                    XPathExpression staticXPath = XPathFactory.newInstance()
-                            .newXPath().compile("//div/p[1]/text()|//div/p[1]/b/text()");
+//                    XPathExpression paraXPath = XPathFactory.newInstance()
+//                            .newXPath().compile("//div/p[1]");
 //                    XPathExpression imgPathXPath = XPathFactory.newInstance()
 //                            .newXPath().compile("//*[@id='mw-content-text']/div/table[1]/tr[1]/td[1]/table/tr[1]/td/a/img/@src");
-
+                    XPathExpression staticXPath = XPathFactory.newInstance()
+                            .newXPath().compile("//div/p[1]/text()|//div/p[1]/b/text()|//div/p[1]/a/text()");
                     NodeList test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
+
                     result = "";
-//                    result = (String) staticXPath.evaluate(doc, XPathConstants.STRING);
-//                    result += (String) staticXPath.evaluate(doc, XPathConstants.STRING);
-
-
-                    XPathExpression urlXPath = XPathFactory.newInstance()
-                            .newXPath().compile("//div/p[1]/a/text()");
-                    NodeList result_n = (NodeList) urlXPath.evaluate(doc, XPathConstants.NODESET);
-                    int foo = 0;
                     for (int i = 0; i < test.getLength(); i++) {
-                        result += test.item(i).getTextContent();
-                        if (i != test.getLength() - 1) {
-                            Log.i("Want", test.item(i).getParentNode().getNodeName());
-                            if (!(test.item(i).getParentNode().getNodeName().startsWith("b"))) {
+                        if (test.item(i).getParentNode().getNodeName().equals("b") || test.item(i).getParentNode().getNodeName().equals("p")) {
+                            result += test.item(i).getTextContent();
+                        } else {
+                            StringTokenizer stringTokenizer = new StringTokenizer(test.item(i).getTextContent(), " ");
+                            while (stringTokenizer.hasMoreTokens()) {
+                                String token = stringTokenizer.nextToken();
                                 String blank = " ";
-                                blank += result_n.item(foo).getTextContent().substring(0, 1);
+                                blank += token.substring(0, 1);
                                 blank += "_____";
-                                blank += result_n.item(foo).getTextContent().substring(result_n.item(foo).getTextContent().length() - 1);
+                                blank += token.substring(token.length() - 1);
                                 blank += " ";
                                 result += blank;
-                                foo++;
                             }
                         }
                     }

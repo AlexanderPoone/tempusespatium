@@ -231,11 +231,11 @@ public class Round1Activity extends AppCompatActivity {
 
 
                 /*
-                TODO: Wait for 10 seconds then replace the fragment.
+                TODO: Wait for 5 seconds then replace the fragment.
                  */
                 if (mHandler != null) mHandler.removeCallbacksAndMessages(null);
                 mHandler = new Handler();
-                final int delay = 10000; //10 seconds
+                final int delay = 5000; //5 seconds
 
                 mHandler.postDelayed(new Runnable() {
                     public void run() {

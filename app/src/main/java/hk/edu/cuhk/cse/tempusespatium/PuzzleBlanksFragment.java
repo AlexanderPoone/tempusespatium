@@ -82,7 +82,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                         result += test.item(i).getTextContent();
                         if (i != test.getLength() - 1) {
                             Log.i("Want", test.item(i).getParentNode().getNodeName());
-                            if (!test.item(i).getParentNode().getNodeName().equals("b")) {
+                            if (!(test.item(i).getParentNode().getNodeName().startsWith("b"))) {
                                 String blank = " ";
                                 blank += result_n.item(foo).getTextContent().substring(0, 1);
                                 blank += "_____";

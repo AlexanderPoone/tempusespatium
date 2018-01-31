@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rules_dialog_root"
-    style="@android:style/Animation.Dialog"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/rounded_choice"
-    android:backgroundTint="@color/DarkOliveGreen"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:layout_width="fill_parent"
+    android:layout_height="80dp"
+    android:background="@drawable/dialog_shape"
+    android:orientation="vertical">
+
+    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:id="@+id/rules_dialog_root"-->
+    <!--style="@android:style/Animation.Dialog"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@drawable/rounded_choice"-->
+    <!--android:backgroundTint="@color/DarkOliveGreen"-->
+    <!--android:orientation="vertical"-->
+    <!--android:padding="20dp">-->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -26,7 +33,7 @@
                 android:scrollbars="vertical"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/bootstrap_h1_text_size"
-                app:bootstrapText="@string/rules" />
+                app:bootstrapText="@string/paused" />
 
             <TextView
                 android:id="@+id/rules_text"
@@ -47,4 +54,5 @@
         android:layout_alignParentEnd="true"
         android:background="@drawable/ic_close_white_24dp"
         android:translationZ="10dp" />
-</RelativeLayout>
+    <!--</RelativeLayout>-->
+</LinearLayout>

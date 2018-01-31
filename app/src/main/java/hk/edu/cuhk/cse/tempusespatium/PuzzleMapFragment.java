@@ -1,7 +1,5 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.location.Address;
 import android.location.Geocoder;
 import android.media.AudioAttributes;
@@ -31,18 +29,12 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PatternItem;
-import com.google.android.gms.maps.model.PolygonOptions;
-import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.google.maps.android.data.geojson.GeoJsonLayer;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
+import java.util.Locale;
 
 import okhttp3.OkHttpClient;
 
@@ -59,6 +51,8 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
     private UiSettings mUiSettings;
     private OkHttpClient mClient;
 
+    private String mCountry, mAnthem, mAnthemUrl;
+
     private Marker mUserMarker = null;
     private Marker mActualMarker = null;
     private LatLng mActualCoords = null;
@@ -70,8 +64,11 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
 
     }
 
-    public PuzzleMapFragment(boolean first) {
+    public PuzzleMapFragment(boolean first, String country, String anthem, String anthemUrl) {
         mFirst = first;
+        mCountry = country;
+        mAnthem = anthem;
+        mAnthemUrl = anthemUrl;
     }
 
 
@@ -89,23 +86,8 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
                         .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
                         .setUsage(AudioAttributes.USAGE_MEDIA).build());
 
-                Random random = new Random();
-                SQLiteAssetHelper sqLiteAssetHelper = new DBAssetHelper(getContext());
-                SQLiteDatabase sqLiteDatabase = sqLiteAssetHelper.getReadableDatabase();
-                Cursor cursor = sqLiteDatabase.rawQuery("SELECT " +
-                                DBAssetHelper.COLUMN_COUNTRY + ", " +
-                                DBAssetHelper.COLUMN_ANTHEM + ", " +
-                                DBAssetHelper.COLUMN_ANTHEM_URL + " " +
-                                "FROM geog " +
-                                "LIMIT 1 " +
-                                "OFFSET " + random.nextInt(195)
-                        , null);
-                cursor.moveToNext();
-                mMediaPlayer.setDataSource(cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_ANTHEM_URL)));
+                mMediaPlayer.setDataSource(mAnthemUrl);
 //                mMediaPlayer.setDataSource(MenuActivity.Anthems.valueOf("Israel".toUpperCase()).url);
-                cursor.close();
-                sqLiteAssetHelper.close();
-                sqLiteDatabase.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -180,12 +162,13 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
         }
 
         // Ask if the location user pointer belongs to the right country
-        Geocoder geoCoder = new Geocoder(getContext());
-        List<Address> matches = null;
+        Geocoder geoCoder = new Geocoder(getContext(), new Locale("en", "gb"));
+        List<Address> matches;
+        String couuntry = null;
         try {
             matches = geoCoder.getFromLocation(mUserMarker.getPosition().latitude, mUserMarker.getPosition().longitude, 1);
             Address bestMatch = (matches.isEmpty() ? null : matches.get(0));
-            bestMatch.getCountryName();
+            couuntry = bestMatch.getCountryName();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -195,52 +178,57 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
         // TODO: Maybe https://developers.google.com/maps/documentation/javascript/examples/layer-data-simple
         String json = null;
         try {
-            InputStream is = getActivity().getAssets().open("world.countries.geo.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
+            GeoJsonLayer layer = new GeoJsonLayer(mMap, R.raw.world, getContext());
+            layer.addLayerToMap();
+            Log.e("Testing...", layer.getFeatures().iterator().next().getPolygonOptions().toString());
 
-            JSONObject jsonObject = new JSONObject(json);
-            JSONArray jsonArray = jsonObject.getJSONArray("features");
-            Random random = new Random();
-            JSONObject randomCountry = jsonArray.getJSONObject(random.nextInt(jsonArray.length()));
-            String cname = randomCountry.getJSONObject("properties").getString("name");
-            String geometryType = randomCountry.getJSONObject("geometry").getString("type");
-            JSONArray areas = randomCountry.getJSONObject("geometry").getJSONArray("coordinates");
 
-            if (geometryType.equals("Polygon")) {
-                PolygonOptions polygonOptions = new PolygonOptions()
-                        .fillColor(0x77A4C639)
-                        .strokeColor(R.color.AndroidGreen);
-                for (int i = 0; i < areas.length(); i++) {
-                    List<LatLng> regions = new ArrayList<>();
-                    JSONArray coordinates = areas.getJSONArray(i);
-                    for (int j = 0; j < coordinates.length(); j++) {
-                        regions.add(new LatLng(coordinates.getJSONArray(j).getDouble(0),
-                                coordinates.getJSONArray(j).getDouble(1)));
-                    }
-                    if (i == 0) polygonOptions.addAll(regions);
-                    else polygonOptions.addHole(regions);
-                }
-                mMap.addPolygon(polygonOptions);
-            } else if (geometryType.equals("MultiPolygon")) {
-                //TODO: United States name is not right
-                for (int i = 0; i < areas.length(); i++) {
-                    PolygonOptions polygonOptions = new PolygonOptions()
-                            .fillColor(0x77A4C639)
-                            .strokeColor(R.color.AndroidGreen);
-                    List<LatLng> regions = new ArrayList<>();
-                    JSONArray coordinates = areas.getJSONArray(i);
-                    for (int j = 0; j < coordinates.length(); j++) {
-                        regions.add(new LatLng(coordinates.getJSONArray(j).getDouble(0),
-                                coordinates.getJSONArray(j).getDouble(1)));
-                    }
-                    polygonOptions.addAll(regions);
-                    mMap.addPolygon(polygonOptions);
-                }
-            }
+//            InputStream is = getActivity().getAssets().open("world.countries.geo.json");
+//            int size = is.available();
+//            byte[] buffer = new byte[size];
+//            is.read(buffer);
+//            is.close();
+//            json = new String(buffer, "UTF-8");
+//
+//            JSONObject jsonObject = new JSONObject(json);
+//            JSONArray jsonArray = jsonObject.getJSONArray("features");
+//            Random random = new Random();
+//            JSONObject randomCountry = jsonArray.getJSONObject(random.nextInt(jsonArray.length()));
+//            String cname = randomCountry.getJSONObject("properties").getString("name");
+//            String geometryType = randomCountry.getJSONObject("geometry").getString("type");
+//            JSONArray areas = randomCountry.getJSONObject("geometry").getJSONArray("coordinates");
+//
+//            if (geometryType.equals("Polygon")) {
+//                PolygonOptions polygonOptions = new PolygonOptions()
+//                        .fillColor(0x77A4C639)
+//                        .strokeColor(R.color.AndroidGreen);
+//                for (int i = 0; i < areas.length(); i++) {
+//                    List<LatLng> regions = new ArrayList<>();
+//                    JSONArray coordinates = areas.getJSONArray(i);
+//                    for (int j = 0; j < coordinates.length(); j++) {
+//                        regions.add(new LatLng(coordinates.getJSONArray(j).getDouble(0),
+//                                coordinates.getJSONArray(j).getDouble(1)));
+//                    }
+//                    if (i == 0) polygonOptions.addAll(regions);
+//                    else polygonOptions.addHole(regions);
+//                }
+//                mMap.addPolygon(polygonOptions);
+//            } else if (geometryType.equals("MultiPolygon")) {
+//                //TODO: United States name is npot right
+//                for (int i = 0; i < areas.length(); i++) {
+//                    PolygonOptions polygonOptions = new PolygonOptions()
+//                            .fillColor(0x77A4C639)
+//                            .strokeColor(R.color.AndroidGreen);
+//                    List<LatLng> regions = new ArrayList<>();
+//                    JSONArray coordinates = areas.getJSONArray(i);
+//                    for (int j = 0; j < coordinates.length(); j++) {
+//                        regions.add(new LatLng(coordinates.getJSONArray(j).getDouble(0),
+//                                coordinates.getJSONArray(j).getDouble(1)));
+//                    }
+//                    polygonOptions.addAll(regions);
+//                    mMap.addPolygon(polygonOptions);
+//                }
+//            }
         } catch (Exception e) {
             e.printStackTrace();
             return null;

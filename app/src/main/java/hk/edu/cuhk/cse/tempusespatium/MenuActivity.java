@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
@@ -209,7 +211,9 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
-                // TODO: Custom popup
+                RulesDialog rulesDialog=new RulesDialog(MenuActivity.this);
+                rulesDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                rulesDialog.show();
                 //https://stackoverflow.com/questions/23672335/how-to-make-this-beautiful-dialog
                 //https://stackoverflow.com/questions/41015691/custom-dialog-like-view
             }

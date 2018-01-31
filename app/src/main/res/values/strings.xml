@@ -33,6 +33,8 @@
     <string name="c">C. </string>
     <string name="d">D. </string>
 
+    <string name="paused">{fa_pause} Game paused</string>
+
     <string name="reveal_anthem">The anthem is… %s\n%s</string>
     <string name="anthem_cl">Hymne national du Chili</string>
     <string name="anthem_de">Unité et droit et liberté</string>

@@ -10,12 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.StringTokenizer;
 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -37,7 +42,12 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
 
     private OkHttpClient mClient;
     private boolean mFirst;
+    private String mWikipediaArt;
     private WebView mWebView;
+    private int mNumOfFields;
+    private List<String> mHiddenText;
+
+    private BlanksChromeClient mBlanksChromeClient;
 
     void fetchWp(String url) throws IOException, NullPointerException {
         mClient = new OkHttpClient();
@@ -85,13 +95,15 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                                 String blank = " ";
                                 blank += token.substring(0, 1);
                                 blank += "<input type=\"text\" name=\"";
-                                blank += Integer.toString(i);
+                                blank += Integer.toString(mNumOfFields);
                                 blank += "\" size=\"";
-                                blank += Integer.toString(token.length()-2);
+                                blank += Integer.toString(token.length() - 2);
                                 blank += "\">";
                                 blank += token.substring(token.length() - 1);
                                 blank += " ";
                                 result += blank;
+                                mHiddenText.add(token.substring(1, token.length() - 2));
+                                mNumOfFields++;
                             }
                         }
                     }
@@ -125,27 +137,11 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
     public PuzzleBlanksFragment() {
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mWebView = (WebView) view.findViewById(R.id.webview);
-
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    fetchWp("https://en.wikipedia.org/wiki/Emu_War");
-//                    fetchWp("https://en.wikipedia.org/wiki/Gallery_of_sovereign_state_flags");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        thread.start();
-    }
-
-    public PuzzleBlanksFragment(boolean first) {
+    public PuzzleBlanksFragment(boolean first, String wikipediaArt) {
         mFirst = first;
+        mWikipediaArt = wikipediaArt;
+        mNumOfFields = 0;
+        mHiddenText = new ArrayList<>();
     }
 
     @Nullable
@@ -156,13 +152,73 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mWebView = (WebView) view.findViewById(R.id.webview);
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mBlanksChromeClient = new BlanksChromeClient();
+        mWebView.setWebChromeClient(mBlanksChromeClient);
+
+        BootstrapButton submitButton = (BootstrapButton) view.findViewById(R.id.submit_blanks);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((Round1Activity) getActivity()).callReveal(mFirst);
+            }
+        });
+        BootstrapButton clearButton = (BootstrapButton) view.findViewById(R.id.clear_blanks);
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String JS = String.format(new Locale("en"),
+                        "javascript:document.activeElement.value='';");
+                mWebView.loadUrl(JS);
+            }
+        });
+
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    fetchWp(mWikipediaArt);
+//                    fetchWp("https://en.wikipedia.org/wiki/Gallery_of_sovereign_state_flags");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+    }
+
+    @Override
     public int[] revealAnswer() {
-        return new int[]{0, -10};
+        int correctNum = 0;
+        for (int i = 0; i < mNumOfFields; i++) {
+            String JS = String.format(new Locale("en"),
+                    "javascript:var field = document.getElementByName('%d');" +
+                            "if (field.value.toLowerCase() == '%s') { " +
+                            "field.setAttribute('style', 'background-color: yellowGreen;'); " +
+                            "alert('1'); } else { " +
+                            "field.setAttribute('style', 'background-color: coral;'); " +
+                            "alert('0'); } " +
+                            "field.value = '%s'; " +
+                            "field.setAttribute('readonly', true);",
+                    i, mHiddenText.get(i).toLowerCase(), mHiddenText.get(i));
+            mWebView.loadUrl(JS);
+            correctNum += Integer.parseInt(mBlanksChromeClient.getmVal());                  // May have sync problems?
+        }
+        int pointsChange = correctNum * 20 - mNumOfFields * -15;
+        if (mFirst) return new int[]{pointsChange, 0};
+        else return new int[]{0, pointsChange};
+
+//        mWebView.loadUrl("javascript:document.getElementById('username').value = ;");
+        // document.getElementsByTagName("p")[0].setAttribute("readonly", true);
     }
 
     @Override
     public void disableControls() {
-
+        // TODO: Remove the send button.
     }
 
 }

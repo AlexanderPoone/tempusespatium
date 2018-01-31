@@ -1,6 +1,8 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapProgressBar;
 import com.github.lzyzsd.circleprogress.DonutProgress;
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 import java.util.Random;
 
@@ -133,28 +136,120 @@ public class Round1Activity extends AppCompatActivity {
     }
 
     public void generateDatePuzzle() {
-        // TODO: Database stuff
+        Random random = new Random();
+        SQLiteAssetHelper sqLiteAssetHelper = new DBAssetHelper(this);
+        SQLiteDatabase sqLiteDatabase = sqLiteAssetHelper.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT " +
+                DBAssetHelper.COLUMN_HISTORIC_EVENT + ", " +
+                DBAssetHelper.COLUMN_YEAR + ", " +
+                DBAssetHelper.COLUMN_MONTH + ", " +
+                DBAssetHelper.COLUMN_PIC_URL + " " +
+                "FROM hist " +
+                "LIMIT 1 " +
+                "OFFSET " + (random.nextInt(15) + 1), null);
+        cursor.moveToNext();
+        String historicEvent = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_HISTORIC_EVENT));
+        int year = cursor.getInt(cursor.getColumnIndex(DBAssetHelper.COLUMN_YEAR));
+        int month = cursor.getInt(cursor.getColumnIndex(DBAssetHelper.COLUMN_MONTH));
+        String picUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_PIC_URL));
 
-        PuzzleDateFragment dateFragment0 = new PuzzleDateFragment(true);
+        PuzzleDateFragment dateFragment0 = new PuzzleDateFragment(true, historicEvent, year, month, picUrl);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         transaction0.replace(R.id.player1FragmentContainer, dateFragment0, "player1");
         int commit = transaction0.commit();
 
-        PuzzleDateFragment dateFragment1 = new PuzzleDateFragment(false);
+        PuzzleDateFragment dateFragment1 = new PuzzleDateFragment(false, historicEvent, year, month, picUrl);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         transaction1.replace(R.id.player2FragmentContainer, dateFragment1, "player2");
         int commit1 = transaction1.commit();
+
+        cursor.close();
+        sqLiteAssetHelper.close();
+        sqLiteDatabase.close();
 
         countDown(dateFragment0, dateFragment1, 10000);
     }
 
     public void generateFlagsPuzzle() {
-        PuzzleFlagsFragment flagFragment0 = new PuzzleFlagsFragment(true);
+        String[] countries = new String[]{null, null, null, null};      //new String[4];
+        String[] flagURLs = new String[]{null, null, null, null};      //new String[4];
+        Random random = new Random();
+        SQLiteAssetHelper sqLiteAssetHelper = new DBAssetHelper(this);
+        SQLiteDatabase sqLiteDatabase = sqLiteAssetHelper.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT " +
+                        DBAssetHelper.COLUMN_COUNTRY + ", " +
+                        DBAssetHelper.COLUMN_ANTHEM + ", " +
+                        DBAssetHelper.COLUMN_FLAG_URL + ", " +
+                        DBAssetHelper.COLUMN_SIMILAR_FLAG_1 + ", " +
+                        DBAssetHelper.COLUMN_SIMILAR_FLAG_2 + " " +
+                        "FROM geog " +
+                        "LIMIT 1 " +
+                        "OFFSET " + (random.nextInt(195) + 0)
+//                "ORDER BY " + (random.nextInt(195) + 1) + " " +
+//                "LIMIT 1"
+                , null);
+        cursor.moveToNext();
+        String similarFlag1, similarFlag2;
+        String country = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_COUNTRY));
+        String anthem = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_ANTHEM));
+        String flagUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_FLAG_URL));
+        similarFlag1 = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_SIMILAR_FLAG_1));
+        similarFlag2 = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_SIMILAR_FLAG_2));
+
+        int correctCountryIndex = random.nextInt(4);                // 0=A, 1=B, 2=C, 3=D
+        countries[correctCountryIndex] = country;
+        flagURLs[correctCountryIndex] = flagUrl;
+
+        cursor.close();
+
+
+        String tmpUrl;
+        cursor = sqLiteDatabase.rawQuery("SELECT " +
+                DBAssetHelper.COLUMN_FLAG_URL + " " +
+                "FROM geog " +
+                "WHERE " + DBAssetHelper.COLUMN_COUNTRY + " = '" + similarFlag1 +
+                "' OR " + DBAssetHelper.COLUMN_COUNTRY + " = '" + similarFlag2 +
+                "'", null);
+        cursor.moveToNext();
+        tmpUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_FLAG_URL));
+        int tmpIndex;
+        do {
+            tmpIndex = random.nextInt(4);
+        } while (flagURLs[tmpIndex] != null);
+        flagURLs[tmpIndex] = tmpUrl;
+
+        cursor.moveToNext();
+        tmpUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_FLAG_URL));
+        do {
+            tmpIndex = random.nextInt(4);
+        } while (flagURLs[tmpIndex] != null);
+        flagURLs[tmpIndex] = tmpUrl;
+        cursor.close();
+
+
+        cursor = sqLiteDatabase.rawQuery("SELECT " +
+                DBAssetHelper.COLUMN_FLAG_URL + " " +
+                "FROM geog " +
+                "WHERE " + DBAssetHelper.COLUMN_COUNTRY +
+                " <> '" + country + "' " +
+                "LIMIT 1 " +
+                "OFFSET " + (random.nextInt(194) + 0), null);
+        cursor.moveToNext();
+        tmpUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_FLAG_URL));
+        do {
+            tmpIndex = random.nextInt(4);
+        } while (flagURLs[tmpIndex] != null);
+        flagURLs[tmpIndex] = tmpUrl;
+        cursor.close();
+        sqLiteAssetHelper.close();
+        sqLiteDatabase.close();
+
+        PuzzleFlagsFragment flagFragment0 = new PuzzleFlagsFragment(true, correctCountryIndex, countries, flagURLs);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         transaction0.replace(R.id.player1FragmentContainer, flagFragment0, "player1");
         int commit = transaction0.commit();
 
-        PuzzleFlagsFragment flagFragment1 = new PuzzleFlagsFragment(false);
+        PuzzleFlagsFragment flagFragment1 = new PuzzleFlagsFragment(false, correctCountryIndex, countries, flagURLs);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         transaction1.replace(R.id.player2FragmentContainer, flagFragment1, "player2");
         int commit1 = transaction1.commit();
@@ -163,8 +258,29 @@ public class Round1Activity extends AppCompatActivity {
     }
 
     public void generateMapPuzzle() {
+        Random random = new Random();
+        SQLiteAssetHelper sqLiteAssetHelper = new DBAssetHelper(this);
+        SQLiteDatabase sqLiteDatabase = sqLiteAssetHelper.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT " +
+                        DBAssetHelper.COLUMN_COUNTRY + ", " +
+                        DBAssetHelper.COLUMN_ANTHEM + ", " +
+                        DBAssetHelper.COLUMN_ANTHEM_URL + " " +
+                        "FROM geog " +
+                        "LIMIT 1 " +
+                        "OFFSET " + random.nextInt(195)
+                , null);
+        cursor.moveToNext();
+        String country = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_COUNTRY));
+        String anthem = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_ANTHEM));
+        String anthemUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_ANTHEM_URL));
+
+        cursor.close();
+        sqLiteAssetHelper.close();
+        sqLiteDatabase.close();
+
+
         // Create new fragment and transaction
-        PuzzleMapFragment mapFragment0 = new PuzzleMapFragment(true);
+        PuzzleMapFragment mapFragment0 = new PuzzleMapFragment(true, country, anthem, anthemUrl);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
@@ -174,7 +290,7 @@ public class Round1Activity extends AppCompatActivity {
         int commit = transaction0.commit();
 
         // Create new fragment and transaction
-        PuzzleMapFragment mapFragment1 = new PuzzleMapFragment(false);
+        PuzzleMapFragment mapFragment1 = new PuzzleMapFragment(false, country, anthem, anthemUrl);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
@@ -187,12 +303,14 @@ public class Round1Activity extends AppCompatActivity {
     }
 
     public void generateBlanksPuzzle() {
-        PuzzleBlanksFragment blanksFragment0 = new PuzzleBlanksFragment(true);
+        // TODO: !!!!!!!!!!!!!! https://en.wikipedia.org/wiki/Category:WikiProjects_by_topic !!!!!!!!!!!!!!!!!!!!!!!!
+
+        PuzzleBlanksFragment blanksFragment0 = new PuzzleBlanksFragment(true, "https://en.wikipedia.org/wiki/Emu_War");
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         transaction0.replace(R.id.player1FragmentContainer, blanksFragment0, "player1");
         int commit = transaction0.commit();
 
-        PuzzleBlanksFragment blanksFragment1 = new PuzzleBlanksFragment(false);
+        PuzzleBlanksFragment blanksFragment1 = new PuzzleBlanksFragment(false, "https://en.wikipedia.org/wiki/Emu_War");
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         transaction1.replace(R.id.player2FragmentContainer, blanksFragment1, "player2");
         int commit1 = transaction1.commit();
@@ -284,6 +402,7 @@ public class Round1Activity extends AppCompatActivity {
             mScoreChangeText2.setText("-" + points);
             mScoreChangeText2.setTextColor(getResources().getColor(R.color.FireBrick, null));
         }
+        callReveal(true);
     }
 
     public void callReveal(boolean isFirst) {

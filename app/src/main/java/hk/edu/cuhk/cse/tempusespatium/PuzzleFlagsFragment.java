@@ -30,7 +30,7 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
     private int mCorrectCountryIndex;
     private int mUserAnswerIndex;
 
-    private String mCountry, mAnthem, mFlagUrl;
+//    private String mCountry, mAnthem, mFlagUrl;
 
     private String[] mCountries, mFlagURLs;
 
@@ -38,8 +38,11 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
 
     }
 
-    public PuzzleFlagsFragment(boolean first) {
+    public PuzzleFlagsFragment(boolean first, int correctCountryIndex, String[] countries, String[] flagURLs) {
         mFirst = first;
+        mCorrectCountryIndex = correctCountryIndex;
+        mCountries = countries;
+        mFlagURLs = flagURLs;
     }
 
     @Nullable
@@ -73,79 +76,6 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        mCountries = new String[]{null, null, null, null};      //new String[4];
-        mFlagURLs = new String[]{null, null, null, null};      //new String[4];
-        Random random = new Random();
-        SQLiteAssetHelper sqLiteAssetHelper = new DBAssetHelper(getContext());
-        SQLiteDatabase sqLiteDatabase = sqLiteAssetHelper.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT " +
-                        DBAssetHelper.COLUMN_COUNTRY + ", " +
-                        DBAssetHelper.COLUMN_ANTHEM + ", " +
-                        DBAssetHelper.COLUMN_FLAG_URL + ", " +
-                        DBAssetHelper.COLUMN_SIMILAR_FLAG_1 + ", " +
-                        DBAssetHelper.COLUMN_SIMILAR_FLAG_2 + " " +
-                        "FROM geog " +
-                        "LIMIT 1 " +
-                        "OFFSET " + (random.nextInt(195) + 0)
-//                "ORDER BY " + (random.nextInt(195) + 1) + " " +
-//                "LIMIT 1"
-                , null);
-        cursor.moveToNext();
-        String similarFlag1, similarFlag2;
-        mCountry = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_COUNTRY));
-        mAnthem = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_ANTHEM));
-        mFlagUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_FLAG_URL));
-        similarFlag1 = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_SIMILAR_FLAG_1));
-        similarFlag2 = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_SIMILAR_FLAG_2));
-
-        mCorrectCountryIndex = random.nextInt(4);                // 0=A, 1=B, 2=C, 3=D
-        mCountries[mCorrectCountryIndex] = mCountry;
-        mFlagURLs[mCorrectCountryIndex] = mFlagUrl;
-
-        cursor.close();
-
-
-        String tmpUrl;
-        cursor = sqLiteDatabase.rawQuery("SELECT " +
-                DBAssetHelper.COLUMN_FLAG_URL + " " +
-                "FROM geog " +
-                "WHERE " + DBAssetHelper.COLUMN_COUNTRY + " = '" + similarFlag1 +
-                "' OR " + DBAssetHelper.COLUMN_COUNTRY + " = '" + similarFlag2 +
-                "'", null);
-        cursor.moveToNext();
-        tmpUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_FLAG_URL));
-        int tmpIndex;
-        do {
-            tmpIndex = random.nextInt(4);
-        } while (mFlagURLs[tmpIndex] != null);
-        mFlagURLs[tmpIndex] = tmpUrl;
-
-        cursor.moveToNext();
-        tmpUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_FLAG_URL));
-        do {
-            tmpIndex = random.nextInt(4);
-        } while (mFlagURLs[tmpIndex] != null);
-        mFlagURLs[tmpIndex] = tmpUrl;
-        cursor.close();
-
-
-        cursor = sqLiteDatabase.rawQuery("SELECT " +
-                DBAssetHelper.COLUMN_FLAG_URL + " " +
-                "FROM geog " +
-                "WHERE " + DBAssetHelper.COLUMN_COUNTRY +
-                " <> '" + mCountry + "' " +
-                "LIMIT 1 " +
-                "OFFSET " + (random.nextInt(194) + 0), null);
-        cursor.moveToNext();
-        tmpUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_FLAG_URL));
-        do {
-            tmpIndex = random.nextInt(4);
-        } while (mFlagURLs[tmpIndex] != null);
-        mFlagURLs[tmpIndex] = tmpUrl;
-        cursor.close();
-        sqLiteDatabase.close();
-        sqLiteAssetHelper.close();
 
         /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 

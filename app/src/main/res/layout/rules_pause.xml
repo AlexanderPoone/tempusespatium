@@ -1,44 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rules_dialog_root"
-    style="@android:style/Animation.Dialog"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/rounded_choice"
-    android:backgroundTint="@color/DarkOliveGreen"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:layout_width="fill_parent"
+    android:layout_height="240dp"
+    android:background="@drawable/dialog_shape_blue"
+    android:orientation="vertical">
 
-    <ScrollView
+    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:id="@+id/rules_dialog_root"-->
+    <!--style="@android:style/Animation.Dialog"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@drawable/rounded_choice"-->
+    <!--android:backgroundTint="@color/DarkOliveGreen"-->
+    <!--android:orientation="vertical"-->
+    <!--android:padding="20dp">-->
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <com.beardedhen.androidbootstrap.AwesomeTextView
+            android:id="@+id/rules_caption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:scrollbars="vertical"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/bootstrap_h1_text_size"
+            app:bootstrapText="@string/rules" />
 
-            <com.beardedhen.androidbootstrap.AwesomeTextView
-                android:id="@+id/rules_caption"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="vertical"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/bootstrap_h1_text_size"
-                app:bootstrapText="@string/rules" />
+        <TextView
+            android:id="@+id/rules_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            android:text="Paused"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/bootstrap_h3_text_size" />
 
-            <TextView
-                android:id="@+id/rules_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="vertical"
-                android:text="@string/rules_tirade"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/bootstrap_h3_text_size" />
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bootstrapText="@string/play"/>
 
-        </LinearLayout>
-    </ScrollView>
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/close"
@@ -47,4 +63,5 @@
         android:layout_alignParentEnd="true"
         android:background="@drawable/ic_close_white_24dp"
         android:translationZ="10dp" />
-</RelativeLayout>
+    <!--</RelativeLayout>-->
+</LinearLayout>

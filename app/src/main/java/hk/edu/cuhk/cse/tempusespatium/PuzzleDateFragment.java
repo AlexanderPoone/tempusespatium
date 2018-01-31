@@ -33,30 +33,17 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
     public PuzzleDateFragment() {
     }
 
-    public PuzzleDateFragment(boolean first) {
+    public PuzzleDateFragment(boolean first, String historicEvent, int year, int month, String picUrl) {
         mFirst = first;
+        mHistoricEvent = historicEvent;
+        mYear = year;
+        mMonth = month;
+        mPicUrl = picUrl;
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Random random = new Random();
-        SQLiteAssetHelper sqLiteAssetHelper = new DBAssetHelper(getContext());
-        SQLiteDatabase sqLiteDatabase = sqLiteAssetHelper.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT " +
-                DBAssetHelper.COLUMN_HISTORIC_EVENT + ", " +
-                DBAssetHelper.COLUMN_YEAR + ", " +
-                DBAssetHelper.COLUMN_MONTH + ", " +
-                DBAssetHelper.COLUMN_PIC_URL + " " +
-                "FROM hist " +
-                "LIMIT 1 " +
-                "OFFSET " + (random.nextInt(15) + 1), null);
-        cursor.moveToNext();
-        mHistoricEvent = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_HISTORIC_EVENT));
-        mYear = cursor.getInt(cursor.getColumnIndex(DBAssetHelper.COLUMN_YEAR));
-        mMonth = cursor.getInt(cursor.getColumnIndex(DBAssetHelper.COLUMN_MONTH));
-        mPicUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_PIC_URL));
-
         View view = inflater.inflate(R.layout.fragment_date, container, false);
         return view;
     }

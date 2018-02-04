@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Search for topic"
+        android:text="Search for ANY topic"
         android:textColor="@color/Black"
         android:textSize="@dimen/bootstrap_h1_text_size"
         android:textStyle="bold|italic" />
@@ -21,8 +21,7 @@
         android:layout_height="wrap_content"
         android:completionThreshold="0"
         android:lines="1"
-        android:maxLines="1"
-        android:text="AutoCompleteTextView" />
+        android:maxLines="1"/>
 
     <LinearLayout
         android:id="@+id/topic_searcher_button_controls"
@@ -32,15 +31,15 @@
         android:gravity="right"
         android:paddingTop="10dp">
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/topic_search_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            app:bootstrapBrand="primary"
-            app:bootstrapSize="lg"
-            app:bootstrapText="{fa_search} Search"
-            app:roundedCorners="true" />
+        <!--<com.beardedhen.androidbootstrap.BootstrapButton-->
+            <!--android:id="@+id/topic_search_button"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginEnd="10dp"-->
+            <!--app:bootstrapBrand="primary"-->
+            <!--app:bootstrapSize="lg"-->
+            <!--app:bootstrapText="{fa_search} Search"-->
+            <!--app:roundedCorners="true" />-->
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/topic_submit_button"

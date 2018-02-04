@@ -6,6 +6,8 @@
     <string name="settings">{fa_cog} Settings</string>
     <string name="quit">{fa_sign-out} Quit game</string>
 
+    <string name="resume">{fa_play-circle} Resume</string>
+
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
@@ -46,4 +48,7 @@
     <string name="anthem_kh">Majestueux Royaume</string>
     <string name="anthem_pt">La Portugaise</string>
     <string name="anthem_ua">Ni la gloire ni la liberté de l\'Ukraine ne sont mortes</string>
+
+    <string name="simple_ime">Simple IME</string>
+    <string name="subtype_en_US">English (US)</string>
 </resources>

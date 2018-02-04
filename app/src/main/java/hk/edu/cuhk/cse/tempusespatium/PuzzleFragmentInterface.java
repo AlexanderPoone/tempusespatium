@@ -5,7 +5,7 @@ package hk.edu.cuhk.cse.tempusespatium;
  */
 
 public interface PuzzleFragmentInterface {
-    int[] revealAnswer();
+    int[] revealAnswer(boolean isEarlier);
 
     void disableControls();
 }

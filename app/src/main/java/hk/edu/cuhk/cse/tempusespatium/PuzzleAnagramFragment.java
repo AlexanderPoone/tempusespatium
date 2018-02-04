@@ -36,7 +36,7 @@ public class PuzzleAnagramFragment extends Fragment implements PuzzleFragmentInt
     }
 
     @Override
-    public int[] revealAnswer() {
+    public int[] revealAnswer(boolean isEarlier) {
         if (mFirst) {
             return new int[]{10, 0};
         } else {

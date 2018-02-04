@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/OrangeRed"
     android:orientation="vertical">
 
-    <WebView
-        android:id="@+id/webview"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/blank_button_controls"
-        android:layout_alignParentTop="true" />
+        android:gravity="center"
+        android:text="Search for topic"
+        android:textColor="@color/Black"
+        android:textSize="@dimen/bootstrap_h1_text_size"
+        android:textStyle="bold|italic" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AutoCompleteTextView" />
 
     <LinearLayout
         android:id="@+id/blank_button_controls"
@@ -38,18 +47,4 @@
             app:roundedCorners="true" />
 
     </LinearLayout>
-
-    <android.inputmethodservice.KeyboardView
-        android:id="@+id/qwerty"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/DarkGreen"
-        android:keyBackground="@color/ForestGreen"
-        android:keyPreviewLayout="@layout/qwerty_key_preview"
-        android:keyTextColor="@color/CanaryYellow"
-        android:keyTextSize="16sp"
-        android:shadowColor="@color/DarkCyan"
-        android:shadowRadius="10.5"
-        android:visibility="visible" />
-</RelativeLayout>
+</LinearLayout>

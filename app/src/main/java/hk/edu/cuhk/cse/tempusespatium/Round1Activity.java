@@ -3,6 +3,8 @@ package hk.edu.cuhk.cse.tempusespatium;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapProgressBar;
 import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
@@ -42,6 +45,20 @@ public class Round1Activity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_exterior);
+
+        BootstrapButton pauseButton = (BootstrapButton) findViewById(R.id.pauseGame);
+        BootstrapButton pauseButton2 = (BootstrapButton) findViewById(R.id.pauseGame2);
+        View.OnClickListener pauseClickedListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO: SoundPool
+                PauseDialog pauseDialog = new PauseDialog(Round1Activity.this);
+                pauseDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                pauseDialog.show();
+            }
+        };
+        pauseButton.setOnClickListener(pauseClickedListener);
+        pauseButton2.setOnClickListener(pauseClickedListener);
 
         mScore = mScore2 = 0;
         mDonutTime = (DonutProgress) findViewById(R.id.donutTime);
@@ -79,7 +96,9 @@ public class Round1Activity extends AppCompatActivity {
     private void hideStatusBar() {
         //Hide the status bar
         View decorView = getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN |
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
     }
 
@@ -153,12 +172,15 @@ public class Round1Activity extends AppCompatActivity {
         int month = cursor.getInt(cursor.getColumnIndex(DBAssetHelper.COLUMN_MONTH));
         String picUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_PIC_URL));
 
-        PuzzleDateFragment dateFragment0 = new PuzzleDateFragment(true, historicEvent, year, month, picUrl);
+        int randMinYear = year - (random.nextInt(50) + 50);
+        int randMaxYear = year + (random.nextInt(50) + 50);
+
+        PuzzleDateFragment dateFragment0 = new PuzzleDateFragment(true, historicEvent, year, month, picUrl, randMinYear, randMaxYear);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         transaction0.replace(R.id.player1FragmentContainer, dateFragment0, "player1");
         int commit = transaction0.commit();
 
-        PuzzleDateFragment dateFragment1 = new PuzzleDateFragment(false, historicEvent, year, month, picUrl);
+        PuzzleDateFragment dateFragment1 = new PuzzleDateFragment(false, historicEvent, year, month, picUrl, randMinYear, randMaxYear);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         transaction1.replace(R.id.player2FragmentContainer, dateFragment1, "player2");
         int commit1 = transaction1.commit();
@@ -304,8 +326,10 @@ public class Round1Activity extends AppCompatActivity {
 
     public void generateBlanksPuzzle() {
         // TODO: !!!!!!!!!!!!!! https://en.wikipedia.org/wiki/Category:WikiProjects_by_topic !!!!!!!!!!!!!!!!!!!!!!!!
+        String wikipediaArt = "https://en.wikipedia.org/wiki/Emu_War";
+        wikipediaArt = "https://de.wikipedia.org/wiki/Eisenach";
 
-        PuzzleBlanksFragment blanksFragment0 = new PuzzleBlanksFragment(true, "https://en.wikipedia.org/wiki/Emu_War");
+        PuzzleBlanksFragment blanksFragment0 = new PuzzleBlanksFragment(true, wikipediaArt);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         transaction0.replace(R.id.player1FragmentContainer, blanksFragment0, "player1");
         int commit = transaction0.commit();
@@ -368,13 +392,13 @@ public class Round1Activity extends AppCompatActivity {
         if (isFirst) {
             mScore += points;
             mScoreBar.setProgress(mScore);
-            mScoreText.setText(String.format("%d", mScore));
+            mScoreText.setText(getString(R.string.bar_points, mScore));
             mScoreChangeText.setText("+" + points);
             mScoreChangeText.setTextColor(getResources().getColor(R.color.ForestGreen, null));
         } else {
             mScore2 += points;
             mScoreBar2.setProgress(mScore2);
-            mScoreText2.setText(String.format("%d", mScore2));
+            mScoreText2.setText(getString(R.string.bar_points, mScore2));
             mScoreChangeText2.setText("+" + points);
             mScoreChangeText2.setTextColor(getResources().getColor(R.color.ForestGreen, null));
         }
@@ -388,7 +412,7 @@ public class Round1Activity extends AppCompatActivity {
             } else {
                 mScoreBar.setProgress(0);
             }
-            mScoreText.setText(String.format("%d", mScore));
+            mScoreText.setText(getString(R.string.bar_points, mScore));
             mScoreChangeText.setText("-" + points);
             mScoreChangeText.setTextColor(getResources().getColor(R.color.FireBrick, null));
         } else {
@@ -398,7 +422,7 @@ public class Round1Activity extends AppCompatActivity {
             } else {
                 mScoreBar2.setProgress(0);
             }
-            mScoreText2.setText(String.format("%d", mScore2));
+            mScoreText2.setText(getString(R.string.bar_points, mScore2));
             mScoreChangeText2.setText("-" + points);
             mScoreChangeText2.setTextColor(getResources().getColor(R.color.FireBrick, null));
         }
@@ -408,8 +432,8 @@ public class Round1Activity extends AppCompatActivity {
     public void callReveal(boolean isFirst) {
         PuzzleFragmentInterface player1 = ((PuzzleFragmentInterface) (getSupportFragmentManager().findFragmentByTag("player1")));
         PuzzleFragmentInterface player2 = ((PuzzleFragmentInterface) (getSupportFragmentManager().findFragmentByTag("player2")));
-        player1.revealAnswer();
-        player2.revealAnswer();
+        player1.revealAnswer(isFirst);
+        player2.revealAnswer(!isFirst);
         if (isFirst) {
             player2.disableControls();
         } else {

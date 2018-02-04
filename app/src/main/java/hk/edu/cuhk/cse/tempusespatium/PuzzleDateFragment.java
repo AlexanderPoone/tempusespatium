@@ -1,7 +1,5 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,11 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
-import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import com.shawnlin.numberpicker.NumberPicker;
 import com.squareup.picasso.Picasso;
-
-import java.util.Random;
 
 /**
  * Created by Alex Poon on 1/16/2018.
@@ -28,17 +23,19 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
     private boolean mFirst;
     NumberPicker mYearPicker, mMonthPicker;
     String mHistoricEvent, mPicUrl;
-    int mYear, mMonth;
+    int mYear, mMonth, mRandMinYear, mRandMaxYear;
 
     public PuzzleDateFragment() {
     }
 
-    public PuzzleDateFragment(boolean first, String historicEvent, int year, int month, String picUrl) {
+    public PuzzleDateFragment(boolean first, String historicEvent, int year, int month, String picUrl, int randMinYear, int randMaxYear) {
         mFirst = first;
         mHistoricEvent = historicEvent;
         mYear = year;
         mMonth = month;
         mPicUrl = picUrl;
+        mRandMinYear = randMinYear;
+        mRandMaxYear = randMaxYear;
     }
 
     @Nullable
@@ -56,12 +53,10 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
         ImageView imageView = (ImageView) view.findViewById(R.id.questionHistoryPic);
         Picasso.with(getContext()).load(mPicUrl).into(imageView);
 
-        Random random = new Random();
         mYearPicker = (NumberPicker) view.findViewById(R.id.year);
-        final int min = mYear - (random.nextInt(50) + 50);
-        mYearPicker.setMinValue(min);
-        mYearPicker.setMaxValue(mYear + (random.nextInt(50) + 50));
-        mYearPicker.setValue(min);
+        mYearPicker.setMinValue(mRandMinYear);
+        mYearPicker.setMaxValue(mRandMaxYear);
+        mYearPicker.setValue(mRandMinYear);
 
         mMonthPicker = (NumberPicker) view.findViewById(R.id.month);
 
@@ -77,14 +72,14 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mYearPicker.setValue(min);
+                mYearPicker.setValue(mRandMinYear);
                 mMonthPicker.setValue(1);
             }
         });
     }
 
     @Override
-    public int[] revealAnswer() {
+    public int[] revealAnswer(boolean isEarlier) {
         // TODO: Disable the other player.
 
         int playerYear = mYearPicker.getValue();

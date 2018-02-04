@@ -112,6 +112,12 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         BootstrapButton submitButton = (BootstrapButton) view.findViewById(R.id.submit0);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((Round1Activity) getActivity()).callReveal(mFirst);
+            }
+        });
 
         BootstrapButton clearButton = (BootstrapButton) view.findViewById(R.id.clear0);
         clearButton.setOnClickListener(new View.OnClickListener() {
@@ -150,8 +156,9 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
 //        mMap.moveCamera(cameraUpdate);
     }
 
+    //TODO:GooGLE Maps label
     @Override
-    public int[] revealAnswer() {
+    public int[] revealAnswer(boolean isEarlier) {
 //        mMediaPlayer.stop();
 //        mMediaPlayer.release();
 
@@ -164,11 +171,11 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
         // Ask if the location user pointer belongs to the right country
         Geocoder geoCoder = new Geocoder(getContext(), new Locale("en", "gb"));
         List<Address> matches;
-        String couuntry = null;
+        String country = null;
         try {
             matches = geoCoder.getFromLocation(mUserMarker.getPosition().latitude, mUserMarker.getPosition().longitude, 1);
             Address bestMatch = (matches.isEmpty() ? null : matches.get(0));
-            couuntry = bestMatch.getCountryName();
+            country = bestMatch.getCountryName();
         } catch (Exception e) {
             e.printStackTrace();
         }

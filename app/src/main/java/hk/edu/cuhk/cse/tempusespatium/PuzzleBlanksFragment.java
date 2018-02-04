@@ -1,5 +1,7 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
+import android.inputmethodservice.Keyboard;
+import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,6 +10,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
+import android.webkit.JsResult;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
@@ -22,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
+import java.util.concurrent.CountDownLatch;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPathConstants;
@@ -94,7 +100,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                                 String token = stringTokenizer.nextToken();
                                 String blank = " ";
                                 blank += token.substring(0, 1);
-                                blank += "<input type=\"text\" name=\"";
+                                blank += "<input type=\"text\" name=\"b";
                                 blank += Integer.toString(mNumOfFields);
                                 blank += "\" size=\"";
                                 blank += Integer.toString(token.length() - 2);
@@ -102,7 +108,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                                 blank += token.substring(token.length() - 1);
                                 blank += " ";
                                 result += blank;
-                                mHiddenText.add(token.substring(1, token.length() - 2));
+                                mHiddenText.add(token.substring(1, token.length() - 1));
                                 mNumOfFields++;
                             }
                         }
@@ -152,8 +158,16 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Keyboard mKeyboard = new Keyboard(getContext(), R.xml.diminished_qwerty);
+
+        // Lookup the KeyboardView
+        KeyboardView mKeyboardView = (KeyboardView) view.findViewById(R.id.qwerty);
+
+        // Attach the keyboard to the view
+        mKeyboardView.setKeyboard(mKeyboard);
+
         mWebView = (WebView) view.findViewById(R.id.webview);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mBlanksChromeClient = new BlanksChromeClient();
@@ -167,11 +181,108 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
             }
         });
         BootstrapButton clearButton = (BootstrapButton) view.findViewById(R.id.clear_blanks);
+//        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+//
+//        mWebView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+//                inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+//            }
+//        });
+//        mWebView.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+//                inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+//                return false;
+//            }
+//        });
+        mWebView.setFocusable(false);
+//        mWebView.setFocusableInTouchMode(true);
+
+        mKeyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
+            @Override
+            public void onPress(int i) {
+
+            }
+
+            @Override
+            public void onRelease(int i) {
+
+            }
+
+            @Override
+            public void onKey(int i, int[] ints) {
+                switch (i) {
+                    case 8:
+                        String JS = "javascript:(function() {" +
+                                "if (window.myReadOnly == 1) return;" +
+                                "var ele=document.activeElement;" +
+                                "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                "ele.value = ele.value.substr(0, position-1) + ele.value.substr(position);" +
+                                "ele.focus();" +
+                                "if (position != 0) ele.setSelectionRange(position-1, position-1);})()";
+                        mWebView.loadUrl(JS);
+                        break;
+                    case Keyboard.KEYCODE_DELETE:
+                        String JS_ = "javascript:(function() {" +
+                                "if (window.myReadOnly == 1) return;" +
+                                "var ele=document.activeElement;" +
+                                "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                "ele.value = ele.value.substr(0, position) + ele.value.substr(position+1);" +
+                                "ele.focus();" +
+                                "ele.setSelectionRange(position, position);})()";
+                        mWebView.loadUrl(JS_);
+                        break;
+                    default:
+                        String JS__ = String.format(new Locale("en"),
+                                "javascript:(function() {" +
+                                        "if (window.myReadOnly == 1) return;" +
+                                        "var ele=document.activeElement;" +
+                                        "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                        "ele.value = ele.value.substr(0, position) + '%c' + ele.value.substr(position);" +
+                                        "ele.focus();" +
+                                        "ele.setSelectionRange(position+1, position+1);})()", (char) i);
+                        mWebView.loadUrl(JS__);
+                        break;
+                }
+            }
+
+            @Override
+            public void onText(CharSequence charSequence) {
+
+            }
+
+            @Override
+            public void swipeLeft() {
+
+            }
+
+            @Override
+            public void swipeRight() {
+
+            }
+
+            @Override
+            public void swipeDown() {
+
+            }
+
+            @Override
+            public void swipeUp() {
+
+            }
+        });
+
+//        clearButton.setFocusable(false);
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String JS = String.format(new Locale("en"),
-                        "javascript:document.activeElement.value='';");
+                        "javascript:(function() {" +
+                                "if (window.myReadOnly == 1) return;" +
+                                "var ele=document.activeElement; ele.value='';})()");
                 mWebView.loadUrl(JS);
             }
         });
@@ -192,21 +303,30 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
     }
 
     @Override
-    public int[] revealAnswer() {
+    public int[] revealAnswer(boolean isEarlier) {
         int correctNum = 0;
         for (int i = 0; i < mNumOfFields; i++) {
+            Log.i("Loop", Integer.toString(i));
             String JS = String.format(new Locale("en"),
-                    "javascript:var field = document.getElementByName('%d');" +
+                    "javascript:(function() {" +
+                            "window.myReadOnly = 1;" +
+                            "var field = document.getElementsByName('b%d')[0];" +
                             "if (field.value.toLowerCase() == '%s') { " +
                             "field.setAttribute('style', 'background-color: yellowGreen;'); " +
                             "alert('1'); } else { " +
                             "field.setAttribute('style', 'background-color: coral;'); " +
                             "alert('0'); } " +
                             "field.value = '%s'; " +
-                            "field.setAttribute('readonly', true);",
+                            "field.setAttribute('readonly', true);})()",
                     i, mHiddenText.get(i).toLowerCase(), mHiddenText.get(i));
             mWebView.loadUrl(JS);
-            correctNum += Integer.parseInt(mBlanksChromeClient.getmVal());                  // May have sync problems?
+//            try {
+//                mCountDownLatch.await();
+//                correctNum += Integer.parseInt(mBlanksChromeClient.getmVal());
+//                mCountDownLatch = new CountDownLatch(1);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
         }
         int pointsChange = correctNum * 20 - mNumOfFields * -15;
         if (mFirst) return new int[]{pointsChange, 0};
@@ -221,4 +341,34 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
         // TODO: Remove the send button.
     }
 
+    class JSInterface {
+        @JavascriptInterface
+        public void processHTML(String html) {
+            //called by javascript
+        }
+    }
+
+    private static CountDownLatch mCountDownLatch = new CountDownLatch(1);
+
+    /**
+     * Created by Alex Poon on 1/31/2018.
+     */
+
+    public static class BlanksChromeClient extends WebChromeClient {
+
+        private String mVal;
+
+        public String getmVal() {
+            return mVal;
+        }
+
+        @Override
+        public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
+            Log.i("Triggered", "abc");
+            mVal = message;
+            result.confirm();
+            mCountDownLatch.countDown();
+            return true;
+        }
+    }
 }

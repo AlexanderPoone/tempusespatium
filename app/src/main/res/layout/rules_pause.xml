@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
-    android:layout_height="240dp"
+    android:layout_width="match_parent"
+    android:layout_height="680dp"
+    android:layout_marginEnd="60dp"
+    android:layout_marginStart="60dp"
     android:background="@drawable/dialog_shape_blue"
     android:orientation="vertical">
 
@@ -23,36 +25,41 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!--You can change the color by setting the BootstrapBrand to a custom implementation.-->
+        <!--android:textColor="@android:color/white"-->
         <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/rules_caption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="vertical"
-            android:textColor="@android:color/white"
             android:textSize="@dimen/bootstrap_h1_text_size"
-            app:bootstrapText="@string/rules" />
+            app:bootstrapBrand="secondary"
+            app:bootstrapText="@string/paused" />
 
-        <TextView
-            android:id="@+id/rules_text"
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/paused_resume"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="vertical"
-            android:text="Paused"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/bootstrap_h3_text_size" />
+            android:layout_margin="30dp"
+            app:bootstrapBrand="success"
+            app:bootstrapText="@string/resume" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
-            android:layout_width="wrap_content"
+            android:id="@+id/paused_rules"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:bootstrapText="@string/play"/>
+            android:layout_margin="30dp"
+            app:bootstrapBrand="warning"
+            app:bootstrapText="@string/rules" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:id="@+id/paused_quit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:textStyle="bold"
+            app:bootstrapBrand="danger"
+            app:bootstrapText="@string/quit" />
 
     </LinearLayout>
 
@@ -64,4 +71,4 @@
         android:background="@drawable/ic_close_white_24dp"
         android:translationZ="10dp" />
     <!--</RelativeLayout>-->
-</LinearLayout>
+</RelativeLayout>

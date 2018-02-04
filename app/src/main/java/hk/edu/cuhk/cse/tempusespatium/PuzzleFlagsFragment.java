@@ -1,7 +1,5 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,12 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import com.squareup.picasso.Picasso;
-
-import java.util.Random;
-
-import okhttp3.OkHttpClient;
 
 /**
  * Created by Alex Poon on 1/16/2018.
@@ -133,7 +126,7 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
     }
 
     @Override
-    public int[] revealAnswer() {
+    public int[] revealAnswer(boolean isEarlier) {
         // TODO: Disable the other player.
 
         disableControls();

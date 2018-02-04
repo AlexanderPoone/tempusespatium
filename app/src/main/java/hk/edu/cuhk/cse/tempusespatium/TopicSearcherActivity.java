@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -154,6 +155,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                                 public void run() {
                                                     TextView textView = (TextView) findViewById(R.id.result);
                                                     textView.setText(mArts.keySet().toString());
+                                                    textView.setMovementMethod(new ScrollingMovementMethod());
 
                                                     BootstrapButton submitButton = (BootstrapButton) findViewById(R.id.topic_submit_button);
                                                     submitButton.setEnabled(true);

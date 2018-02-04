@@ -51,10 +51,7 @@ public class Round1Activity extends AppCompatActivity {
         View.OnClickListener pauseClickedListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: SoundPool
-                PauseDialog pauseDialog = new PauseDialog(Round1Activity.this);
-                pauseDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                pauseDialog.show();
+                pauseGame();
             }
         };
         pauseButton.setOnClickListener(pauseClickedListener);
@@ -70,9 +67,23 @@ public class Round1Activity extends AppCompatActivity {
         mScoreChangeText = (TextView) findViewById(R.id.addDeduct);
         mScoreChangeText2 = (TextView) findViewById(R.id.addDeduct2);
 
-        mScoreText2.setText(getResources().getString(R.string.bar_points, 10));
+        mScoreText.setText(getResources().getString(R.string.bar_points, 0));
+        mScoreText2.setText(getResources().getString(R.string.bar_points, 0));
 
         randomPuzzle();
+    }
+
+    void pauseGame() {
+        //TODO: SoundPool
+        PauseDialog pauseDialog = new PauseDialog(Round1Activity.this);
+        pauseDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        pauseDialog.show();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        pauseGame();
     }
 
     @Override
@@ -334,7 +345,7 @@ public class Round1Activity extends AppCompatActivity {
         transaction0.replace(R.id.player1FragmentContainer, blanksFragment0, "player1");
         int commit = transaction0.commit();
 
-        PuzzleBlanksFragment blanksFragment1 = new PuzzleBlanksFragment(false, "https://en.wikipedia.org/wiki/Emu_War");
+        PuzzleBlanksFragment blanksFragment1 = new PuzzleBlanksFragment(false, wikipediaArt);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         transaction1.replace(R.id.player2FragmentContainer, blanksFragment1, "player2");
         int commit1 = transaction1.commit();

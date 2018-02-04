@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="680dp"
+    android:layout_height="480dp"
     android:layout_marginEnd="60dp"
     android:layout_marginStart="60dp"
     android:background="@drawable/dialog_shape_blue"

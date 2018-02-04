@@ -14,6 +14,7 @@ import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.widget.RelativeLayout;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
@@ -160,13 +161,22 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Keyboard mKeyboard = new Keyboard(getContext(), R.xml.diminished_qwerty);
+        Keyboard keyboard;
+        KeyboardView keyboardView;
+        if (false) {
+            keyboard = new Keyboard(getContext(), R.xml.diminished_qwerty);
 
-        // Lookup the KeyboardView
-        KeyboardView mKeyboardView = (KeyboardView) view.findViewById(R.id.qwerty);
+            // Lookup the KeyboardView
+            keyboardView = (KeyboardView) view.findViewById(R.id.qwerty);
 
-        // Attach the keyboard to the view
-        mKeyboardView.setKeyboard(mKeyboard);
+            // Attach the keyboard to the view
+            keyboardView.setKeyboard(keyboard);
+        } else {
+            keyboard = new Keyboard(getContext(), R.xml.diminished_qwertz);
+            keyboardView = (KeyboardView) view.findViewById(R.id.qwerty);
+            keyboardView.setKeyboard(keyboard);
+            keyboardView.setBackgroundColor(getResources().getColor(R.color.SmokeyBlack, null));
+        }
 
         mWebView = (WebView) view.findViewById(R.id.webview);
         mWebView.getSettings().setJavaScriptEnabled(true);
@@ -201,7 +211,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
         mWebView.setFocusable(false);
 //        mWebView.setFocusableInTouchMode(true);
 
-        mKeyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
+        keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
             @Override
             public void onPress(int i) {
 
@@ -323,7 +333,6 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
 //            try {
 //                mCountDownLatch.await();
 //                correctNum += Integer.parseInt(mBlanksChromeClient.getmVal());
-//                mCountDownLatch = new CountDownLatch(1);
 //            } catch (InterruptedException e) {
 //                e.printStackTrace();
 //            }
@@ -368,6 +377,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
             mVal = message;
             result.confirm();
             mCountDownLatch.countDown();
+//            mCountDownLatch = new CountDownLatch(1);
             return true;
         }
     }

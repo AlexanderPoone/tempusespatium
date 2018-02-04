@@ -21,7 +21,7 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
 
     private boolean mFirst;
     private int mCorrectCountryIndex;
-    private int mUserAnswerIndex;
+    private int mUserAnswerIndex=Integer.MAX_VALUE;
 
 //    private String mCountry, mAnthem, mFlagUrl;
 
@@ -161,7 +161,7 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
                 indD.setBackgroundColor(getResources().getColor(R.color.AndroidGreen, null));
                 break;
         }
-        if (mUserAnswerIndex == mCorrectCountryIndex) {
+        if (mCorrectCountryIndex == mUserAnswerIndex) {
             return new int[]{10, -10};
         } else {
             switch (mUserAnswerIndex) {

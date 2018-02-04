@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/OrangeRed"
+    android:background="@color/PortlandOrange"
     android:orientation="vertical">
 
     <TextView
@@ -19,10 +19,13 @@
         android:id="@+id/autoCompleteTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:completionThreshold="0"
+        android:lines="1"
+        android:maxLines="1"
         android:text="AutoCompleteTextView" />
 
     <LinearLayout
-        android:id="@+id/blank_button_controls"
+        android:id="@+id/topic_searcher_button_controls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/qwerty"
@@ -30,21 +33,29 @@
         android:paddingTop="10dp">
 
         <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/submit_blanks"
+            android:id="@+id/topic_search_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            app:bootstrapBrand="success"
-            app:bootstrapText="@string/submit"
+            app:bootstrapBrand="primary"
+            app:bootstrapSize="lg"
+            app:bootstrapText="{fa_search} Search"
             app:roundedCorners="true" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/clear_blanks"
+            android:id="@+id/topic_submit_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:bootstrapBrand="danger"
-            app:bootstrapText="@string/reset"
+            app:bootstrapBrand="info"
+            app:bootstrapSize="lg"
+            app:bootstrapText="{fa_gamepad} Submit and play!"
             app:roundedCorners="true" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="TextView" />
 </LinearLayout>

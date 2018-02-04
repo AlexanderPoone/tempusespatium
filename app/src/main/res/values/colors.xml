@@ -167,6 +167,7 @@
     <color name="PlaceholderPlatinum">#ECEBE9</color>
     <color name="Platinum">#E5E4E2</color>
     <color name="PortlandOrange">#FF5A36</color>
+    <color name="SmokeyBlack">#100C08</color>
     <color name="UbuntuOrange">#DD4814</color>
     <!--
     Bountiful color system
@@ -317,6 +318,7 @@
         <item>@color/SkyBlue</item>
         <item>@color/SlateBlue</item>
         <item>@color/SlateGray</item>
+        <item>@color/SmokeyBlack</item>
         <item>@color/Snow</item>
         <item>@color/SpringGreen</item>
         <item>@color/SteelBlue</item>

@@ -8,12 +8,14 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -176,6 +178,8 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        Typeface baker_signet = ResourcesCompat.getFont(this, R.font.baker_signet_bt);
+
         mSharedPref = getSharedPreferences(SHAREDPREFS_NAME, Context.MODE_PRIVATE);
         Log.i("Test", mSharedPref.getString(SHAREDPREFS_LOCALE, "zh-HK"));
         setLocale(mSharedPref.getString(SHAREDPREFS_LOCALE, "zh-HK"));
@@ -199,11 +203,12 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mSoundPool.play(mPoolDict.get(0), .5f, .5f, 1, 0, 1.f);
-                Intent jump = new Intent(getBaseContext(), Round1Activity.class);
+                Intent jump = new Intent(getBaseContext(), TopicSearcherActivity.class);
                 startActivity(jump);
                 finish();
             }
         });
+        playButton.setTypeface(baker_signet, Typeface.BOLD_ITALIC);
 
         final BootstrapButton rulesButton = (BootstrapButton) findViewById(R.id.rulesButton);
         // TODO: May as well be a blue circle at the top right corner.
@@ -218,6 +223,7 @@ public class MenuActivity extends AppCompatActivity {
                 //https://stackoverflow.com/questions/41015691/custom-dialog-like-view
             }
         });
+        rulesButton.setTypeface(baker_signet, Typeface.BOLD);
 
         final BootstrapButton settingsButton = (BootstrapButton) findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(new View.OnClickListener() {
@@ -229,6 +235,7 @@ public class MenuActivity extends AppCompatActivity {
                 finish();
             }
         });
+        settingsButton.setTypeface(baker_signet, Typeface.BOLD);
 
         final BootstrapButton quitButton = (BootstrapButton) findViewById(R.id.quitButton);
         final AlertDialog alertDialog = new AlertDialog.Builder(this)
@@ -253,6 +260,7 @@ public class MenuActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
+        quitButton.setTypeface(baker_signet, Typeface.BOLD);
 
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);

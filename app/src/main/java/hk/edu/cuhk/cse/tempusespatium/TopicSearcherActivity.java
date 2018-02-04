@@ -61,13 +61,15 @@ public class TopicSearcherActivity extends AppCompatActivity {
 
         // TODO: !!!!!!!!!!!!!! https://en.wikipedia.org/wiki/Category:WikiProjects_by_topic !!!!!!!!!!!!!!!!!!!!!!!!
         // Talk, file talk...
-//        BootstrapButton searchButton = (BootstrapButton) findViewById(R.id.topic_search_button);
-//        searchButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
+        BootstrapButton clearButton = (BootstrapButton) findViewById(R.id.topic_clear_button);
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+                autoCompleteTextView.setText("");
+                autoCompleteTextView.showDropDown();
+            }
+        });
 
         BootstrapButton submitButton = (BootstrapButton) findViewById(R.id.topic_submit_button);
         submitButton.setEnabled(false);
@@ -100,7 +102,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     //URL
                                     Log.i("Test", test.item(i).getAttributes().item(0).getTextContent());
                                     //Topics
-                                    mTopics.put(test.item(i).getTextContent().replaceFirst("Wikipedia:(WikiProject )?", "").replaceFirst("/Popular pages", "").replaceFirst("( task force| work group)", "").replaceFirst("Taskforces/(BPH/)?", "").replaceFirst("/", " > "), "https://en.wikipedia.org" + test.item(i).getAttributes().item(0).getTextContent());
+                                    mTopics.put(test.item(i).getTextContent().replaceFirst("Wikipedia:(WikiProject )?", "").replaceFirst("/(Popular|Most-viewed|Favourite) pages", "").replaceFirst("( task force| work group)", "").replaceFirst("Taskforces/(BPH/)?", "").replaceFirst("/", " > "), "https://en.wikipedia.org" + test.item(i).getAttributes().item(0).getTextContent());
 //                                    Log.i("Test", test.item(i).getAttributes().item(1).getTextContent());
                                 }
 

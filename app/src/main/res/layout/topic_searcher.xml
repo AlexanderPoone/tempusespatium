@@ -31,15 +31,15 @@
         android:gravity="right"
         android:paddingTop="10dp">
 
-        <!--<com.beardedhen.androidbootstrap.BootstrapButton-->
-        <!--android:id="@+id/topic_search_button"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginEnd="10dp"-->
-        <!--app:bootstrapBrand="primary"-->
-        <!--app:bootstrapSize="lg"-->
-        <!--app:bootstrapText="{fa_search} Search"-->
-        <!--app:roundedCorners="true" />-->
+        <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/topic_clear_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        app:bootstrapBrand="danger"
+        app:bootstrapSize="lg"
+        app:bootstrapText="@string/reset"
+        app:roundedCorners="true" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/topic_submit_button"

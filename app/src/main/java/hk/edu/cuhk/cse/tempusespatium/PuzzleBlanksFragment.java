@@ -115,6 +115,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                                 blank += token.substring(token.length() - 1);
                                 blank += " ";
                                 result += blank;
+                                if (token.substring(1, token.length() - 1).isEmpty()) continue;
                                 mHiddenText.add(token.substring(1, token.length() - 1));
                                 mNumOfFields++;
                             }

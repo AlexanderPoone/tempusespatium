@@ -151,7 +151,8 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void playSong() {
-        if (mMediaPlayer == null) {
+//        if (mMediaPlayer == null)
+        {
             mMediaPlayer = new MediaPlayer();
             mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
@@ -168,9 +169,10 @@ public class MenuActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             mMediaPlayer.prepareAsync();
-        } else {
-            mMediaPlayer.start();
         }
+//        else {
+//            mMediaPlayer.start();
+//        }
     }
 
     @Override
@@ -216,7 +218,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
-                RulesDialog rulesDialog=new RulesDialog(MenuActivity.this);
+                RulesDialog rulesDialog = new RulesDialog(MenuActivity.this);
                 rulesDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 rulesDialog.show();
                 //https://stackoverflow.com/questions/23672335/how-to-make-this-beautiful-dialog

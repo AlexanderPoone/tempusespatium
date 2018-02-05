@@ -8,6 +8,7 @@
 
 
     <string name="resume">{fa_play-circle} Resume</string>
+    <string name="return_main_menu">{fa_sign-out} Return to main menu</string>
     <string name="topic_searcher_heading">Search for ANY topic</string>
     <string name="loading">Loading, please wait…</string>
 

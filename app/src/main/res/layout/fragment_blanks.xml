@@ -54,16 +54,16 @@
         android:visibility="visible" />
 
     <!--<android.inputmethodservice.KeyboardView-->
-        <!--android:id="@+id/qwertz"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:background="@color/SmokeyBlack"-->
-        <!--android:keyBackground="@color/DarkSlateGray"-->
-        <!--android:keyPreviewLayout="@layout/qwerty_key_preview"-->
-        <!--android:keyTextColor="@color/CanaryYellow"-->
-        <!--android:keyTextSize="16sp"-->
-        <!--android:shadowColor="@color/DarkCyan"-->
-        <!--android:shadowRadius="10.5"-->
-        <!--android:visibility="visible" />-->
+    <!--android:id="@+id/qwertz"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:background="@color/SmokeyBlack"-->
+    <!--android:keyBackground="@color/DarkSlateGray"-->
+    <!--android:keyPreviewLayout="@layout/qwerty_key_preview"-->
+    <!--android:keyTextColor="@color/CanaryYellow"-->
+    <!--android:keyTextSize="16sp"-->
+    <!--android:shadowColor="@color/DarkCyan"-->
+    <!--android:shadowRadius="10.5"-->
+    <!--android:visibility="visible" />-->
 </RelativeLayout>

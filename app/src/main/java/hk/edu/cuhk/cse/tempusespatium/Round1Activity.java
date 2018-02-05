@@ -1,12 +1,12 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
@@ -24,6 +24,8 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+
+//import android.os.CountDownTimer;
 
 /**
  * Created by Alex Poon on 10/17/2017.
@@ -47,6 +49,8 @@ public class Round1Activity extends AppCompatActivity {
     List<String> mArtsSupportList;
 
     Handler mHandler;
+    boolean mPauseTimer = false;
+    CountDownTimer mCountDownTimer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -87,9 +91,40 @@ public class Round1Activity extends AppCompatActivity {
 
     void pauseGame() {
         //TODO: SoundPool
-        PauseDialog pauseDialog = new PauseDialog(Round1Activity.this);
+        final PauseDialog pauseDialog = new PauseDialog(Round1Activity.this);
         pauseDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        pauseDialog.setCancelable(false);
         pauseDialog.show();
+        BootstrapButton resume_button = (BootstrapButton) pauseDialog.findViewById(R.id.paused_resume);
+        resume_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPauseTimer = false;
+                pauseDialog.dismiss();
+                mCountDownTimer.resume();
+            }
+        });
+        BootstrapButton rules_button = (BootstrapButton) pauseDialog.findViewById(R.id.paused_rules);
+        rules_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RulesDialog rulesDialog = new RulesDialog(Round1Activity.this);
+                rulesDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                rulesDialog.show();
+            }
+        });
+        BootstrapButton main_menu_button = (BootstrapButton) pauseDialog.findViewById(R.id.paused_quit);
+        main_menu_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent returnIntent = new Intent(getBaseContext(), MenuActivity.class);
+                startActivity(returnIntent);
+                finish();
+            }
+        });
+        mPauseTimer = true;
+        mCountDownTimer.pause();
+//        mHandler.removeCallbacks();
     }
 
     @Override
@@ -188,7 +223,7 @@ public class Round1Activity extends AppCompatActivity {
                 DBAssetHelper.COLUMN_PIC_URL + " " +
                 "FROM hist " +
                 "LIMIT 1 " +
-                "OFFSET " + (random.nextInt(15) + 1), null);
+                "OFFSET " + random.nextInt(17), null);
         cursor.moveToNext();
         String historicEvent = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_HISTORIC_EVENT));
         int year = cursor.getInt(cursor.getColumnIndex(DBAssetHelper.COLUMN_YEAR));
@@ -229,7 +264,7 @@ public class Round1Activity extends AppCompatActivity {
                         DBAssetHelper.COLUMN_SIMILAR_FLAG_2 + " " +
                         "FROM geog " +
                         "LIMIT 1 " +
-                        "OFFSET " + (random.nextInt(195) + 0)
+                        "OFFSET " + (random.nextInt(196) + 0)
 //                "ORDER BY " + (random.nextInt(195) + 1) + " " +
 //                "LIMIT 1"
                 , null);
@@ -278,7 +313,7 @@ public class Round1Activity extends AppCompatActivity {
                 "WHERE " + DBAssetHelper.COLUMN_COUNTRY +
                 " <> '" + country + "' " +
                 "LIMIT 1 " +
-                "OFFSET " + (random.nextInt(194) + 0), null);
+                "OFFSET " + (random.nextInt(195) + 0), null);
         cursor.moveToNext();
         tmpUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_FLAG_URL));
         do {
@@ -376,7 +411,7 @@ public class Round1Activity extends AppCompatActivity {
     public void countDown(final PuzzleFragmentInterface f1, final PuzzleFragmentInterface f2, final int millis) {
         mDonutTime.setMax(millis / 1000);
         mDonutTime2.setMax(millis / 1000);
-        new CountDownTimer(millis, 1000) {
+        mCountDownTimer = new CountDownTimer(millis, 1000) {
             @Override
             public void onTick(long l) {
                 String seconds = Integer.toString((int) l / 1000);
@@ -395,69 +430,64 @@ public class Round1Activity extends AppCompatActivity {
                 mDonutTime2.setDonut_progress("0");
                 mDonutTime2.setText("0");
 
-//                deductPoints(true, f1.revealAnswer()[0]);
-//                deductPoints(false, f2.revealAnswer()[1]);
                 //TODO: Remove placeholder.
-                deductPoints(true, 20);
-                deductPoints(false, 20);
+                callReveal(true);
+//                addOrDeductPoints(true, -20);
+//                addOrDeductPoints(false, -20);
                 //TODO: Remove placeholder.
 
 
                 /*
                 TODO: Wait for 5 seconds then replace the fragment.
                  */
-                if (mHandler != null) mHandler.removeCallbacksAndMessages(null);
-                mHandler = new Handler();
-                final int delay = 5000; //5 seconds
+                if (!mPauseTimer) { // TODO: La logique.
+                    if (mHandler != null) mHandler.removeCallbacksAndMessages(null);
+                    mHandler = new Handler();
+                    final int delay = 5000; //5 seconds
 
-                mHandler.postDelayed(new Runnable() {
-                    public void run() {
-                        randomPuzzle();
-                    }
-                }, delay);
+                    mHandler.postDelayed(new Runnable() {
+                        public void run() {
+                            randomPuzzle();
+                        }
+                    }, delay);
+                }
             }
         }.start();
     }
 
-    public void addPoints(boolean isFirst, int points) {
+    @SuppressLint({"DefaultLocale", "SetTextI18n"})
+    public void addOrDeductPoints(boolean isFirst, int points) {
         if (isFirst) {
             mScore += points;
-            mScoreBar.setProgress(mScore);
-            mScoreText.setText(getString(R.string.bar_points, mScore));
-            mScoreChangeText.setText("+" + points);
-            mScoreChangeText.setTextColor(getResources().getColor(R.color.ForestGreen, null));
-        } else {
-            mScore2 += points;
-            mScoreBar2.setProgress(mScore2);
-            mScoreText2.setText(getString(R.string.bar_points, mScore2));
-            mScoreChangeText2.setText("+" + points);
-            mScoreChangeText2.setTextColor(getResources().getColor(R.color.ForestGreen, null));
-        }
-    }
-
-    public void deductPoints(boolean isFirst, int points) {
-        if (isFirst) {
-            mScore -= points;
             if (mScore >= 0) {
                 mScoreBar.setProgress(mScore);
             } else {
                 mScoreBar.setProgress(0);
             }
             mScoreText.setText(getString(R.string.bar_points, mScore));
-            mScoreChangeText.setText("-" + points);
-            mScoreChangeText.setTextColor(getResources().getColor(R.color.FireBrick, null));
+            if (points > 0) {
+                mScoreChangeText.setText(String.format("+%d", points));
+                mScoreChangeText.setTextColor(getResources().getColor(R.color.AndroidGreen, null));
+            } else {
+                mScoreChangeText.setText(Integer.toString(points));
+                mScoreChangeText.setTextColor(getResources().getColor(R.color.FireBrick, null));
+            }
         } else {
-            mScore2 -= points;
-            if (mScore >= 0) {
+            mScore2 += points;
+            if (mScore2 >= 0) {
                 mScoreBar2.setProgress(mScore2);
             } else {
                 mScoreBar2.setProgress(0);
             }
             mScoreText2.setText(getString(R.string.bar_points, mScore2));
-            mScoreChangeText2.setText("-" + points);
-            mScoreChangeText2.setTextColor(getResources().getColor(R.color.FireBrick, null));
+            if (points > 0) {
+                mScoreChangeText2.setText(String.format("+%d", points));
+                mScoreChangeText2.setTextColor(getResources().getColor(R.color.AndroidGreen, null));
+            } else {
+                mScoreChangeText2.setText(Integer.toString(points));
+                mScoreChangeText2.setTextColor(getResources().getColor(R.color.FireBrick, null));
+            }
         }
-        callReveal(true);
     }
 
     public void callReveal(boolean isFirst) {
@@ -465,9 +495,9 @@ public class Round1Activity extends AppCompatActivity {
         PuzzleFragmentInterface player2 = ((PuzzleFragmentInterface) (getSupportFragmentManager().findFragmentByTag("player2")));
 
         if (!player1.isRevealed())
-            deductPoints(true, player1.revealAnswer(isFirst)[0]);
+            addOrDeductPoints(true, player1.revealAnswer(isFirst)[0]);
         if (!player2.isRevealed())
-            deductPoints(false, player2.revealAnswer(!isFirst)[1]);
+            addOrDeductPoints(false, player2.revealAnswer(!isFirst)[1]);
 //        if (isFirst) {
 //            player2.disableControls();
 //        } else {

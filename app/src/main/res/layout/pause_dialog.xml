@@ -2,11 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="480dp"
-    android:layout_marginEnd="60dp"
-    android:layout_marginStart="60dp"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="50dp"
+    android:layout_marginEnd="25dp"
+    android:layout_marginStart="25dp"
+    android:layout_marginTop="50dp"
     android:background="@drawable/dialog_shape_blue"
     android:orientation="vertical">
+    <!--android:layout_height="480dp"-->
 
     <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
     <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
@@ -32,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="vertical"
-            android:textSize="@dimen/bootstrap_h1_text_size"
+            android:textSize="@dimen/bootstrap_h2_text_size"
             app:bootstrapBrand="secondary"
             app:bootstrapText="@string/paused" />
 
@@ -41,25 +44,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
+            android:shadowColor="@color/bootstrap_brand_success"
+            android:shadowRadius="10"
             app:bootstrapBrand="success"
-            app:bootstrapText="@string/resume" />
+            app:bootstrapText="@string/resume"
+            app:roundedCorners="true" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/paused_rules"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
+            android:shadowColor="@color/bootstrap_brand_warning"
+            android:shadowRadius="10"
             app:bootstrapBrand="warning"
-            app:bootstrapText="@string/rules" />
+            app:bootstrapText="@string/rules"
+            app:roundedCorners="true" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/paused_quit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
+            android:shadowColor="@color/bootstrap_brand_danger"
+            android:shadowRadius="10"
             android:textStyle="bold"
             app:bootstrapBrand="danger"
-            app:bootstrapText="@string/quit" />
+            app:bootstrapText="@string/return_main_menu"
+            app:roundedCorners="true" />
 
     </LinearLayout>
 

@@ -35,7 +35,6 @@ public class RulesDialog extends Dialog implements View.OnClickListener {
     }
 
 
-
     @Override
     public void onClick(View view) {
         dismiss();

@@ -117,6 +117,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                             final ArrayAdapter<String> adapter = new ArrayAdapter<>(TopicSearcherActivity.this, android.R.layout.simple_dropdown_item_1line, new ArrayList<String>(mTopics.keySet()));
                             AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
                             autoCompleteTextView.setAdapter(adapter);
+                            autoCompleteTextView.performCompletion();
                             autoCompleteTextView.showDropDown();
                             mOnItemClickListener = new AdapterView.OnItemClickListener() {
                                 @Override

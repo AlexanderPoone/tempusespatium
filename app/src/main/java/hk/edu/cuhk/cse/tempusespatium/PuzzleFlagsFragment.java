@@ -21,7 +21,7 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
 
     private boolean mFirst;
     private int mCorrectCountryIndex;
-    private int mUserAnswerIndex=Integer.MAX_VALUE;
+    private int mUserAnswerIndex = Integer.MAX_VALUE;
 
 //    private String mCountry, mAnthem, mFlagUrl;
 

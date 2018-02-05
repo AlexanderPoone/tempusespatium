@@ -8,4 +8,6 @@ public interface PuzzleFragmentInterface {
     int[] revealAnswer(boolean isEarlier);
 
     void disableControls();
+
+    boolean isRevealed();
 }

@@ -16,6 +16,13 @@ public class PuzzleAnagramFragment extends Fragment implements PuzzleFragmentInt
 
     private boolean mFirst;
 
+    @Override
+    public boolean isRevealed() {
+        return isRevealed;
+    }
+
+    private boolean isRevealed = false;
+
     public PuzzleAnagramFragment() {
     }
 
@@ -37,6 +44,8 @@ public class PuzzleAnagramFragment extends Fragment implements PuzzleFragmentInt
 
     @Override
     public int[] revealAnswer(boolean isEarlier) {
+        isRevealed = true;
+
         if (mFirst) {
             return new int[]{10, 0};
         } else {

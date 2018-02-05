@@ -34,6 +34,7 @@
                 android:scrollbars="vertical"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/bootstrap_h1_text_size"
+                app:bootstrapBrand="warning"
                 app:bootstrapText="@string/rules" />
 
             <TextView
@@ -52,8 +53,8 @@
         android:id="@+id/close"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:background="@drawable/ic_close_white_24dp"
         android:layout_alignParentEnd="true"
+        android:background="@drawable/ic_close_white_24dp"
         android:translationZ="10dp" />
     <!--</RelativeLayout>-->
 </RelativeLayout>

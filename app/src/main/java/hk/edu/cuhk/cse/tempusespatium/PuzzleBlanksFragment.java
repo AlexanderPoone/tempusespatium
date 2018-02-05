@@ -56,6 +56,13 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
 
     private BlanksChromeClient mBlanksChromeClient;
 
+    @Override
+    public boolean isRevealed() {
+        return isRevealed;
+    }
+
+    private boolean isRevealed = false;
+
     void fetchWp(String url) throws IOException, NullPointerException {
         mClient = new OkHttpClient();
         Request request = new Request.Builder()
@@ -314,6 +321,8 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
 
     @Override
     public int[] revealAnswer(boolean isEarlier) {
+        isRevealed = true;
+
         int correctNum = 0;
         for (int i = 0; i < mNumOfFields; i++) {
             Log.i("Loop", Integer.toString(i));

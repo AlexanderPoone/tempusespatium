@@ -58,6 +58,13 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
     private LatLng mActualCoords = null;
     private Circle mAcceptanceRange = null;
 
+    @Override
+    public boolean isRevealed() {
+        return isRevealed;
+    }
+
+    private boolean isRevealed = false;
+
     private static MediaPlayer mMediaPlayer;
 
     public PuzzleMapFragment() {
@@ -159,6 +166,8 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
     //TODO:GooGLE Maps label
     @Override
     public int[] revealAnswer(boolean isEarlier) {
+        isRevealed = true;
+
 //        mMediaPlayer.stop();
 //        mMediaPlayer.release();
 

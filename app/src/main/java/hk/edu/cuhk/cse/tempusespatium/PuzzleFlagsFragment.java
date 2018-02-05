@@ -27,6 +27,13 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
 
     private String[] mCountries, mFlagURLs;
 
+    @Override
+    public boolean isRevealed() {
+        return isRevealed;
+    }
+
+    private boolean isRevealed = false;
+
     public PuzzleFlagsFragment() {
 
     }
@@ -129,6 +136,7 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
     public int[] revealAnswer(boolean isEarlier) {
         // TODO: Disable the other player.
 
+        isRevealed = true;
         disableControls();
 
         switch (mCorrectCountryIndex) {

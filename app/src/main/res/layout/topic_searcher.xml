@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Search for ANY topic"
+        android:text="@string/topic_searcher_heading"
         android:textColor="@color/Black"
         android:textSize="@dimen/bootstrap_h1_text_size"
         android:textStyle="bold|italic" />
@@ -32,14 +32,14 @@
         android:paddingTop="10dp">
 
         <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/topic_clear_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        app:bootstrapBrand="danger"
-        app:bootstrapSize="lg"
-        app:bootstrapText="@string/reset"
-        app:roundedCorners="true" />
+            android:id="@+id/topic_clear_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            app:bootstrapBrand="danger"
+            app:bootstrapSize="lg"
+            app:bootstrapText="@string/reset"
+            app:roundedCorners="true" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/topic_submit_button"
@@ -57,5 +57,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        android:text="TextView" />
+        android:text="@string/loading" />
 </LinearLayout>

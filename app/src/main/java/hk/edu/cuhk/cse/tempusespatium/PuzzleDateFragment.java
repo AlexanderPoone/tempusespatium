@@ -21,9 +21,15 @@ import com.squareup.picasso.Picasso;
 public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterface {
 
     private boolean mFirst;
-    NumberPicker mYearPicker, mMonthPicker;
-    String mHistoricEvent, mPicUrl;
-    int mYear, mMonth, mRandMinYear, mRandMaxYear;
+    private NumberPicker mYearPicker, mMonthPicker;
+    private String mHistoricEvent, mPicUrl;
+    private int mYear, mMonth, mRandMinYear, mRandMaxYear;
+
+    private boolean isRevealed = false;
+
+    public boolean isRevealed() {
+        return isRevealed;
+    }
 
     public PuzzleDateFragment() {
     }
@@ -82,6 +88,7 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
     public int[] revealAnswer(boolean isEarlier) {
         // TODO: Disable the other player.
 
+        isRevealed = true;
         int playerYear = mYearPicker.getValue();
         int playerMonth = mMonthPicker.getValue();
         mYearPicker.setBackgroundColor(getResources().getColor(R.color.FireBrick, null));

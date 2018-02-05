@@ -41,7 +41,7 @@ import okhttp3.Response;
  * Created by Alex Poon on 2/4/2018.
  */
 
-public class TopicSearcherActivity extends AppCompatActivity {
+public class TopicSearcherActivityDe extends AppCompatActivity {
 
     OkHttpClient mClient;
     String mSelectedTopic;
@@ -73,7 +73,11 @@ public class TopicSearcherActivity extends AppCompatActivity {
         BootstrapButton submitButton = (BootstrapButton) findViewById(R.id.topic_submit_button);
         submitButton.setEnabled(false);
 
-        String base_url = "https://en.wikipedia.org/wiki/Wikipedia:Lists_of_popular_pages_by_WikiProject";
+        String base_url = "https://de.wikipedia.org/wiki/Wikipedia:Exzellente_Artikel";
+        String base_url2 = "https://de.wikipedia.org/wiki/Wikipedia:Lesenswerte_Artikel";
+
+        // NOT href="/wiki/Datei:Loudspeaker.svg" !!!
+
         mClient = new OkHttpClient();
         final Request request = new Request.Builder()
                 .url(base_url)
@@ -95,7 +99,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                 Document doc = DocumentBuilderFactory.newInstance()
                                         .newDocumentBuilder().parse(new InputSource(new StringReader(body[0])));
                                 XPathExpression staticXPath = XPathFactory.newInstance()
-                                        .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table/tr/td[1]/a");
+                                        .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table/tr[2]/td/table[2]/tr[3]/td/table[2]/tr/td[1]/p[1]");
                                 NodeList test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
                                 for (int i = 0; i < test.getLength(); i++) {
                                     //URL
@@ -114,7 +118,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                             } catch (XPathExpressionException e) {
                                 e.printStackTrace();
                             }
-                            final ArrayAdapter<String> adapter = new ArrayAdapter<>(TopicSearcherActivity.this, android.R.layout.simple_dropdown_item_1line, new ArrayList<String>(mTopics.keySet()));
+                            final ArrayAdapter<String> adapter = new ArrayAdapter<>(TopicSearcherActivityDe.this, android.R.layout.simple_dropdown_item_1line, new ArrayList<String>(mTopics.keySet()));
                             AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
                             autoCompleteTextView.setAdapter(adapter);
                             autoCompleteTextView.showDropDown();

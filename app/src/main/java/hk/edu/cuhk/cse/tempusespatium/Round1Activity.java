@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -20,6 +21,8 @@ import com.beardedhen.androidbootstrap.BootstrapProgressBar;
 import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -39,12 +42,21 @@ public class Round1Activity extends AppCompatActivity {
     TextView mScoreChangeText;
     TextView mScoreChangeText2;
 
+    String mCurrentTopic;
+    HashMap<String, String> mArts;
+    List<String> mArtsSupportList;
+
     Handler mHandler;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_exterior);
+        Intent intent = getIntent();
+        mCurrentTopic = intent.getStringExtra("topic");
+        mArts = (HashMap<String, String>) intent.getSerializableExtra("arts");
+        mArtsSupportList = intent.getStringArrayListExtra("supportList");
+        Log.i("URL", mArts.get(mArtsSupportList.get(0)));
 
         BootstrapButton pauseButton = (BootstrapButton) findViewById(R.id.pauseGame);
         BootstrapButton pauseButton2 = (BootstrapButton) findViewById(R.id.pauseGame2);
@@ -337,15 +349,23 @@ public class Round1Activity extends AppCompatActivity {
 
     public void generateBlanksPuzzle() {
         // TODO: !!!!!!!!!!!!!! https://en.wikipedia.org/wiki/Category:WikiProjects_by_topic !!!!!!!!!!!!!!!!!!!!!!!!
-        String wikipediaArt = "https://en.wikipedia.org/wiki/Emu_War";
-        wikipediaArt = "https://de.wikipedia.org/wiki/Eisenach";
+//        String wikipediaArt = "https://en.wikipedia.org/wiki/Emu_War";
+//        wikipediaArt = "https://de.wikipedia.org/wiki/Eisenach";
 
-        PuzzleBlanksFragment blanksFragment0 = new PuzzleBlanksFragment(true, wikipediaArt);
+        if (mArtsSupportList.size() == 0) {
+            return;
+        }
+        Random random = new Random();
+        String selectedArt = mArtsSupportList.get(random.nextInt(mArtsSupportList.size() / 5)); //mArtsSupportList.length
+        String selectedUrl = mArts.remove(selectedArt);
+        mArtsSupportList.remove(selectedArt);
+
+        PuzzleBlanksFragment blanksFragment0 = new PuzzleBlanksFragment(true, selectedUrl);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         transaction0.replace(R.id.player1FragmentContainer, blanksFragment0, "player1");
         int commit = transaction0.commit();
 
-        PuzzleBlanksFragment blanksFragment1 = new PuzzleBlanksFragment(false, wikipediaArt);
+        PuzzleBlanksFragment blanksFragment1 = new PuzzleBlanksFragment(false, selectedUrl);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         transaction1.replace(R.id.player2FragmentContainer, blanksFragment1, "player2");
         int commit1 = transaction1.commit();
@@ -378,8 +398,8 @@ public class Round1Activity extends AppCompatActivity {
 //                deductPoints(true, f1.revealAnswer()[0]);
 //                deductPoints(false, f2.revealAnswer()[1]);
                 //TODO: Remove placeholder.
-                deductPoints(true, 0);
-                deductPoints(false, 0);
+                deductPoints(true, 20);
+                deductPoints(false, 20);
                 //TODO: Remove placeholder.
 
 
@@ -443,13 +463,16 @@ public class Round1Activity extends AppCompatActivity {
     public void callReveal(boolean isFirst) {
         PuzzleFragmentInterface player1 = ((PuzzleFragmentInterface) (getSupportFragmentManager().findFragmentByTag("player1")));
         PuzzleFragmentInterface player2 = ((PuzzleFragmentInterface) (getSupportFragmentManager().findFragmentByTag("player2")));
-        player1.revealAnswer(isFirst);
-        player2.revealAnswer(!isFirst);
-        if (isFirst) {
-            player2.disableControls();
-        } else {
-            player1.disableControls();
-        }
+
+        if (!player1.isRevealed())
+            deductPoints(true, player1.revealAnswer(isFirst)[0]);
+        if (!player2.isRevealed())
+            deductPoints(false, player2.revealAnswer(!isFirst)[1]);
+//        if (isFirst) {
+//            player2.disableControls();
+//        } else {
+//            player1.disableControls();
+//        }
     }
 
     public void endRound() {

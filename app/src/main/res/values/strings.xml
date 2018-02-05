@@ -6,7 +6,10 @@
     <string name="settings">{fa_cog} Settings</string>
     <string name="quit">{fa_sign-out} Quit game</string>
 
+
     <string name="resume">{fa_play-circle} Resume</string>
+    <string name="topic_searcher_heading">Search for ANY topic</string>
+    <string name="loading">Loading, please wait…</string>
 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>

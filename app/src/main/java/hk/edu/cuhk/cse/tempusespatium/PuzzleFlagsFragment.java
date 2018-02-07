@@ -133,7 +133,7 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
     }
 
     @Override
-    public int[] revealAnswer(boolean isEarlier) {
+    public int[] revealAnswer() {
         // TODO: Disable the other player.
 
         isRevealed = true;
@@ -173,7 +173,7 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
             if (mFirst) {
                 return new int[]{10, -5};
             } else {
-                return new int[]{-5, -10};
+                return new int[]{-5, 10};
             }
         } else {
             switch (mUserAnswerIndex) {

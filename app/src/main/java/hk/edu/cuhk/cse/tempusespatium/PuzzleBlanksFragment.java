@@ -100,7 +100,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                             result += test.item(i).getTextContent();
                             result += "</strong>";
                         } else {
-                            StringTokenizer stringTokenizer = new StringTokenizer(test.item(i).getTextContent(), " ");
+                            StringTokenizer stringTokenizer = new StringTokenizer(test.item(i).getTextContent(), " -");
                             while (stringTokenizer.hasMoreTokens()) {
                                 String token = stringTokenizer.nextToken();
                                 String blank = " ";
@@ -113,7 +113,10 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                                 blank += token.substring(token.length() - 1);
                                 blank += " ";
                                 result += blank;
-                                if (token.substring(1, token.length() - 1).isEmpty()) continue;
+                                if (token.length() < 3) { //token.substring(1, token.length() - 1).isEmpty()
+                                    mHiddenText.add(" "+token+" ");
+                                    continue;
+                                }
                                 mHiddenText.add(token.substring(1, token.length() - 1));
                                 mNumOfFields++;
                             }
@@ -341,7 +344,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
     }
 
     @Override
-    public int[] revealAnswer(boolean isEarlier) {
+    public int[] revealAnswer() {
         isRevealed = true;
         int pointsChange;
         int correctNum = 0;

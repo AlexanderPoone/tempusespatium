@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.google.android.gms.maps.CameraUpdate;
@@ -21,24 +22,21 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Circle;
-import com.google.android.gms.maps.model.CircleOptions;
-import com.google.android.gms.maps.model.Dash;
-import com.google.android.gms.maps.model.Gap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PatternItem;
+import com.google.android.gms.maps.model.PolygonOptions;
+import com.google.maps.android.data.geojson.GeoJsonFeature;
 import com.google.maps.android.data.geojson.GeoJsonLayer;
+import com.google.maps.android.data.geojson.GeoJsonMultiPolygon;
+import com.google.maps.android.data.geojson.GeoJsonPolygon;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
 import okhttp3.OkHttpClient;
-
-import static hk.edu.cuhk.cse.tempusespatium.Constants.ACCEPTANCE_RADIUS_METRES;
 
 /**
  * Created by Alex Poon on 10/17/2017.
@@ -165,7 +163,7 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
 
     //TODO:GooGLE Maps label
     @Override
-    public int[] revealAnswer(boolean isEarlier) {
+    public int[] revealAnswer() {
         isRevealed = true;
 
 //        mMediaPlayer.stop();
@@ -180,13 +178,18 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
         // Ask if the location user pointer belongs to the right country
         Geocoder geoCoder = new Geocoder(getContext(), new Locale("en", "gb"));
         List<Address> matches;
-        String country = null;
-        try {
-            matches = geoCoder.getFromLocation(mUserMarker.getPosition().latitude, mUserMarker.getPosition().longitude, 1);
-            Address bestMatch = (matches.isEmpty() ? null : matches.get(0));
-            country = bestMatch.getCountryName();
-        } catch (Exception e) {
-            e.printStackTrace();
+        String country = "";
+        if (mUserMarker != null) {
+            try {
+                matches = geoCoder.getFromLocation(mUserMarker.getPosition().latitude, mUserMarker.getPosition().longitude, 1);
+                Address bestMatch = (matches.isEmpty() ? null : matches.get(0));
+                country = bestMatch.getCountryName();
+                TextView debugUserSelects = (TextView) getView().findViewById(R.id.debug_user_selects);
+                debugUserSelects.setText(String.format("User chose:\n%s", country));
+                Log.i("Country", country);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
 
@@ -195,8 +198,49 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
         String json = null;
         try {
             GeoJsonLayer layer = new GeoJsonLayer(mMap, R.raw.world, getContext());
-            layer.addLayerToMap();
-            Log.e("Testing...", layer.getFeatures().iterator().next().getPolygonOptions().toString());
+            for (GeoJsonFeature feature : layer.getFeatures()) {
+                String featureName = feature.getProperty("name");
+//                http://googlemaps.github.io/android-maps-utils/javadoc/com/google/maps/android/geojson/GeoJsonFeature.html
+                if (featureName.equals(mCountry) && feature.hasGeometry()) {
+//                    List<LatLng> coords = null;
+                    if (feature.getGeometry().getGeometryType().equals("Polygon")) {
+//                        coords=((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0);
+                        mMap.addPolygon(new PolygonOptions()
+                                .addAll(((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0))
+                                .fillColor(getResources()
+                                        .getColor(R.color.MidnightBlue, null) + (0x77 << 24)));
+                        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0).get(0), 3.5f);
+                        mMap.moveCamera(cameraUpdate);
+//                        mMap.setLatLngBoundsForCameraTarget(
+//                                new LatLngBounds(((GeoJsonPolygon) feature.getGeometry()).getOuterBoundaryCoordinates().get(0),
+//                                        ((GeoJsonPolygon) feature.getGeometry()).getOuterBoundaryCoordinates().get(1))
+//                        );
+                    } else if (feature.getGeometry().getGeometryType().equals("MultiPolygon")) {
+//                        coords = ((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(0).getCoordinates().get(0);
+                        int len = ((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().size();
+                        for (int i = 0; i < len; i++) {
+                            mMap.addPolygon(new PolygonOptions()
+                                    .addAll(((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(i).getCoordinates().get(0))
+                                    .fillColor(getResources()
+                                            .getColor(R.color.MidnightBlue, null) + (0x77 << 24)));
+                            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(i).getCoordinates().get(0).get(0), 3.5f);
+                            mMap.moveCamera(cameraUpdate);
+//                            mMap.setLatLngBoundsForCameraTarget(
+//                                    new LatLngBounds(((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(0).getOuterBoundaryCoordinates().get(0),
+//                                            ((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(0).getOuterBoundaryCoordinates().get(1))
+//                            );
+                        }
+                    }
+
+//                    Log.i("Ha!", feature.getGeometry().getGeometryType());
+                }
+//                mMap.addPolygon(new PolygonOptions()
+//                        .add()
+//                        .fillColor(getResources()
+//                        .getColor(R.color.MidnightBlue, null)));
+            }
+//            layer.addLayerToMap();
+//            Log.e("Testing...", layer.getFeatures().iterator().next().getPolygonOptions().toString());
 
 
 //            InputStream is = getActivity().getAssets().open("world.countries.geo.json");
@@ -230,7 +274,7 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
 //                }
 //                mMap.addPolygon(polygonOptions);
 //            } else if (geometryType.equals("MultiPolygon")) {
-//                //TODO: United States name is npot right
+//                //TODO: United States name is not right
 //                for (int i = 0; i < areas.length(); i++) {
 //                    PolygonOptions polygonOptions = new PolygonOptions()
 //                            .fillColor(0x77A4C639)
@@ -250,26 +294,26 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
             return null;
         }
 
-        // Centroid ?
-        // TODO: Remove placeholder
-        mActualCoords = new LatLng(48.804404, 2.123162);
-        // TODO: Remove placeholder
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(mActualCoords, 5.5f);
-        mMap.moveCamera(cameraUpdate);
-
-        mActualMarker = mMap.addMarker(new MarkerOptions()
-                .position(mActualCoords)
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.correct_pointer)));
-
-
-        PatternItem DASH = new Dash(50);
-        PatternItem GAP = new Gap(10);
-        List<PatternItem> PATTERN_POLYLINE_DASH = Arrays.asList(GAP, DASH);
-        mAcceptanceRange = mMap.addCircle(new CircleOptions().center(mActualCoords)
-                .fillColor(0x77A4C639)
-                .strokeColor(getResources().getColor(R.color.ForestGreen, null))
-                .strokePattern(PATTERN_POLYLINE_DASH)
-                .radius(ACCEPTANCE_RADIUS_METRES));
+//        // Centroid ?
+//        // TODO: Remove placeholder
+//        mActualCoords = new LatLng(48.804404, 2.123162);
+//        // TODO: Remove placeholder
+//        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(mActualCoords, 5.5f);
+//        mMap.moveCamera(cameraUpdate);
+//
+//        mActualMarker = mMap.addMarker(new MarkerOptions()
+//                .position(mActualCoords)
+//                .icon(BitmapDescriptorFactory.fromResource(R.drawable.correct_pointer)));
+//
+//
+//        PatternItem DASH = new Dash(50);
+//        PatternItem GAP = new Gap(10);
+//        List<PatternItem> PATTERN_POLYLINE_DASH = Arrays.asList(GAP, DASH);
+//        mAcceptanceRange = mMap.addCircle(new CircleOptions().center(mActualCoords)
+//                .fillColor(0x77A4C639)
+//                .strokeColor(getResources().getColor(R.color.ForestGreen, null))
+//                .strokePattern(PATTERN_POLYLINE_DASH)
+//                .radius(ACCEPTANCE_RADIUS_METRES));
 
 
         // Return score change

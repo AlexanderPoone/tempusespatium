@@ -85,7 +85,7 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
     }
 
     @Override
-    public int[] revealAnswer(boolean isEarlier) {
+    public int[] revealAnswer() {
         // TODO: Disable the other player.
 
         isRevealed = true;

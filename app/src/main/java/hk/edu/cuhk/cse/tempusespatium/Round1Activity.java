@@ -433,7 +433,7 @@ public class Round1Activity extends AppCompatActivity {
                 mDonutTime2.setText("0");
 
                 //TODO: Remove placeholder.
-                callReveal(true);
+                callReveal(null);
 //                addOrDeductPoints(true, -20);
 //                addOrDeductPoints(false, -20);
                 //TODO: Remove placeholder.
@@ -492,25 +492,35 @@ public class Round1Activity extends AppCompatActivity {
         }
     }
 
-    public void callReveal(boolean callerIsFirst) {
+    public void callReveal(Boolean callerIsFirst) {
         PuzzleFragmentInterface player1 = ((PuzzleFragmentInterface) (getSupportFragmentManager().findFragmentByTag("player1")));
         PuzzleFragmentInterface player2 = ((PuzzleFragmentInterface) (getSupportFragmentManager().findFragmentByTag("player2")));
 
         int change[];
-        if (!player1.isRevealed()) {
-            change = player1.revealAnswer(callerIsFirst);
-            if (callerIsFirst) {
-                addOrDeductPoints(true, change[0]);
-                addOrDeductPoints(false, change[1]);
+
+//        if (callerIsFirst == null) {
+//            change = player1.revealAnswer();
+//            addOrDeductPoints(true, change[0]);
+//            change = player2.revealAnswer();
+//            addOrDeductPoints(false, change[1]);
+//        } else {
+            if (!player1.isRevealed()) {
+                change = player1.revealAnswer();
+                if (callerIsFirst==null) addOrDeductPoints(true, change[0]);
+                else if (callerIsFirst) {
+                    addOrDeductPoints(true, change[0]);
+                    addOrDeductPoints(false, change[1]);
+                }
             }
-        }
-        if (!player2.isRevealed()) {
-            change = player2.revealAnswer(callerIsFirst);
-            if (!callerIsFirst) {
-                addOrDeductPoints(true, change[0]);
-                addOrDeductPoints(false, change[1]);
+            if (!player2.isRevealed()) {
+                change = player2.revealAnswer();
+                if (callerIsFirst==null) addOrDeductPoints(false, change[1]);
+                else if (!callerIsFirst) {
+                    addOrDeductPoints(true, change[0]);
+                    addOrDeductPoints(false, change[1]);
+                }
             }
-        }
+//        }
     }
 
     public void endRound() {

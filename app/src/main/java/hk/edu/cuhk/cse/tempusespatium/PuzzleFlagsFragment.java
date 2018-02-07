@@ -139,43 +139,103 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         isRevealed = true;
         disableControls();
 
-        switch (mCorrectCountryIndex) {
-            case 0:
-                RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);
-                relA.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
-                ImageView indA = (ImageView) getView().findViewById(R.id.aIndicator);
-                indA.setImageResource(R.drawable.ic_check_white_24dp);
-                indA.setBackgroundColor(getResources().getColor(R.color.AndroidGreen, null));
-                break;
-            case 1:
-                RelativeLayout relB = (RelativeLayout) getView().findViewById(R.id.bRelLayout);
-                relB.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
-                ImageView indB = (ImageView) getView().findViewById(R.id.bIndicator);
-                indB.setImageResource(R.drawable.ic_check_white_24dp);
-                indB.setBackgroundColor(getResources().getColor(R.color.AndroidGreen, null));
-                break;
-            case 2:
-                RelativeLayout relC = (RelativeLayout) getView().findViewById(R.id.cRelLayout);
-                relC.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
-                ImageView indC = (ImageView) getView().findViewById(R.id.cIndicator);
-                indC.setImageResource(R.drawable.ic_check_white_24dp);
-                indC.setBackgroundColor(getResources().getColor(R.color.AndroidGreen, null));
-                break;
-            case 3:
-                RelativeLayout relD = (RelativeLayout) getView().findViewById(R.id.dRelLayout);
-                relD.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
-                ImageView indD = (ImageView) getView().findViewById(R.id.dIndicator);
-                indD.setImageResource(R.drawable.ic_check_white_24dp);
-                indD.setBackgroundColor(getResources().getColor(R.color.AndroidGreen, null));
-                break;
-        }
+//        switch (mCorrectCountryIndex) {
+//            case 0:
+//                RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);
+//                relA.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
+//                ImageView indA = (ImageView) getView().findViewById(R.id.aIndicator);
+//                indA.setImageResource(R.drawable.ic_check_white_24dp);
+//                indA.setBackgroundColor(getResources().getColor(R.color.AndroidGreen, null));
+//                break;
+//            case 1:
+//                RelativeLayout relB = (RelativeLayout) getView().findViewById(R.id.bRelLayout);
+//                relB.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
+//                ImageView indB = (ImageView) getView().findViewById(R.id.bIndicator);
+//                indB.setImageResource(R.drawable.ic_check_white_24dp);
+//                indB.setBackgroundColor(getResources().getColor(R.color.AndroidGreen, null));
+//                break;
+//            case 2:
+//                RelativeLayout relC = (RelativeLayout) getView().findViewById(R.id.cRelLayout);
+//                relC.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
+//                ImageView indC = (ImageView) getView().findViewById(R.id.cIndicator);
+//                indC.setImageResource(R.drawable.ic_check_white_24dp);
+//                indC.setBackgroundColor(getResources().getColor(R.color.AndroidGreen, null));
+//                break;
+//            case 3:
+//                RelativeLayout relD = (RelativeLayout) getView().findViewById(R.id.dRelLayout);
+//                relD.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
+//                ImageView indD = (ImageView) getView().findViewById(R.id.dIndicator);
+//                indD.setImageResource(R.drawable.ic_check_white_24dp);
+//                indD.setBackgroundColor(getResources().getColor(R.color.AndroidGreen, null));
+//                break;
+//        }
         if (mCorrectCountryIndex == mUserAnswerIndex) {
+            switch (mCorrectCountryIndex) {
+                case 0:
+                    RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);
+                    relA.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
+                    ImageView indA = (ImageView) getView().findViewById(R.id.aIndicator);
+                    indA.setImageResource(R.drawable.ic_check_white_24dp);
+                    indA.setBackgroundColor(getResources().getColor(R.color.AndroidGreen, null));
+                    break;
+                case 1:
+                    RelativeLayout relB = (RelativeLayout) getView().findViewById(R.id.bRelLayout);
+                    relB.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
+                    ImageView indB = (ImageView) getView().findViewById(R.id.bIndicator);
+                    indB.setImageResource(R.drawable.ic_check_white_24dp);
+                    indB.setBackgroundColor(getResources().getColor(R.color.AndroidGreen, null));
+                    break;
+                case 2:
+                    RelativeLayout relC = (RelativeLayout) getView().findViewById(R.id.cRelLayout);
+                    relC.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
+                    ImageView indC = (ImageView) getView().findViewById(R.id.cIndicator);
+                    indC.setImageResource(R.drawable.ic_check_white_24dp);
+                    indC.setBackgroundColor(getResources().getColor(R.color.AndroidGreen, null));
+                    break;
+                case 3:
+                    RelativeLayout relD = (RelativeLayout) getView().findViewById(R.id.dRelLayout);
+                    relD.setBackground(getResources().getDrawable(R.drawable.rounded_choice_correct, null));
+                    ImageView indD = (ImageView) getView().findViewById(R.id.dIndicator);
+                    indD.setImageResource(R.drawable.ic_check_white_24dp);
+                    indD.setBackgroundColor(getResources().getColor(R.color.AndroidGreen, null));
+                    break;
+            }
             if (mFirst) {
                 return new int[]{10, -5};
             } else {
                 return new int[]{-5, 10};
             }
         } else {
+            switch (mCorrectCountryIndex) {
+                case 0:
+                    RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);
+                    relA.setBackground(getResources().getDrawable(R.drawable.rounded_choice_should_be, null));
+                    ImageView indA = (ImageView) getView().findViewById(R.id.aIndicator);
+                    indA.setImageResource(R.drawable.ic_reveal_white_24dp);
+                    indA.setBackgroundColor(getResources().getColor(R.color.Amber, null));
+                    break;
+                case 1:
+                    RelativeLayout relB = (RelativeLayout) getView().findViewById(R.id.bRelLayout);
+                    relB.setBackground(getResources().getDrawable(R.drawable.rounded_choice_should_be, null));
+                    ImageView indB = (ImageView) getView().findViewById(R.id.bIndicator);
+                    indB.setImageResource(R.drawable.ic_reveal_white_24dp);
+                    indB.setBackgroundColor(getResources().getColor(R.color.Amber, null));
+                    break;
+                case 2:
+                    RelativeLayout relC = (RelativeLayout) getView().findViewById(R.id.cRelLayout);
+                    relC.setBackground(getResources().getDrawable(R.drawable.rounded_choice_should_be, null));
+                    ImageView indC = (ImageView) getView().findViewById(R.id.cIndicator);
+                    indC.setImageResource(R.drawable.ic_reveal_white_24dp);
+                    indC.setBackgroundColor(getResources().getColor(R.color.Amber, null));
+                    break;
+                case 3:
+                    RelativeLayout relD = (RelativeLayout) getView().findViewById(R.id.dRelLayout);
+                    relD.setBackground(getResources().getDrawable(R.drawable.rounded_choice_should_be, null));
+                    ImageView indD = (ImageView) getView().findViewById(R.id.dIndicator);
+                    indD.setImageResource(R.drawable.ic_reveal_white_24dp);
+                    indD.setBackgroundColor(getResources().getColor(R.color.Amber, null));
+                    break;
+            }
             switch (mUserAnswerIndex) {
                 case 0:
                     RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);

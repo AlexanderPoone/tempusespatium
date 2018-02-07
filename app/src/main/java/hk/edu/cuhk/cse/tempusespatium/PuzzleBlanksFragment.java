@@ -11,8 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
-import android.webkit.JsResult;
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
@@ -53,7 +51,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
     private int mNumOfFields;
     private List<String> mHiddenText;
 
-    private BlanksChromeClient mBlanksChromeClient;
+//    private BlanksChromeClient mBlanksChromeClient;
 
     @Override
     public boolean isRevealed() {
@@ -170,6 +168,21 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
         super.onViewCreated(view, savedInstanceState);
         Keyboard keyboard;
         KeyboardView keyboardView;
+
+        mWebView = (WebView) view.findViewById(R.id.webview);
+        mWebView.getSettings().setJavaScriptEnabled(true);
+
+//        Thread thread=new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                mBlanksChromeClient = new BlanksChromeClient();
+//                mWebView.setWebChromeClient(mBlanksChromeClient);
+        mWebView.addJavascriptInterface(this, "android");
+//            }
+//        });
+//        thread.run();
+
+
         if (false) {
             keyboard = new Keyboard(getContext(), R.xml.diminished_qwerty);
 
@@ -183,12 +196,81 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
             keyboardView = (KeyboardView) view.findViewById(R.id.qwerty);
             keyboardView.setKeyboard(keyboard);
             keyboardView.setBackgroundColor(getResources().getColor(R.color.SmokeyBlack, null));
-        }
 
-        mWebView = (WebView) view.findViewById(R.id.webview);
-        mWebView.getSettings().setJavaScriptEnabled(true);
-        mBlanksChromeClient = new BlanksChromeClient();
-        mWebView.setWebChromeClient(mBlanksChromeClient);
+            keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
+                @Override
+                public void onPress(int i) {
+
+                }
+
+                @Override
+                public void onRelease(int i) {
+
+                }
+
+                @Override
+                public void onKey(int i, int[] ints) {
+                    switch (i) {
+                        case 8:
+                            String JS = "javascript:(function() {" +
+                                    "if (window.myReadOnly == 1) return;" +
+                                    "var ele=document.activeElement;" +
+                                    "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                    "ele.value = ele.value.substr(0, position-1) + ele.value.substr(position);" +
+                                    "ele.focus();" +
+                                    "if (position != 0) ele.setSelectionRange(position-1, position-1);})()";
+                            mWebView.loadUrl(JS);
+                            break;
+                        case Keyboard.KEYCODE_DELETE:
+                            String JS_ = "javascript:(function() {" +
+                                    "if (window.myReadOnly == 1) return;" +
+                                    "var ele=document.activeElement;" +
+                                    "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                    "ele.value = ele.value.substr(0, position) + ele.value.substr(position+1);" +
+                                    "ele.focus();" +
+                                    "ele.setSelectionRange(position, position);})()";
+                            mWebView.loadUrl(JS_);
+                            break;
+                        default:
+                            String JS__ = String.format(new Locale("en"),
+                                    "javascript:(function() {" +
+                                            "if (window.myReadOnly == 1) return;" +
+                                            "var ele=document.activeElement;" +
+                                            "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                            "ele.value = ele.value.substr(0, position) + '%c' + ele.value.substr(position);" +
+                                            "ele.focus();" +
+                                            "ele.setSelectionRange(position+1, position+1);})()", (char) i);
+                            mWebView.loadUrl(JS__);
+                            break;
+                    }
+                }
+
+                @Override
+                public void onText(CharSequence charSequence) {
+
+                }
+
+                @Override
+                public void swipeLeft() {
+
+                }
+
+                @Override
+                public void swipeRight() {
+
+                }
+
+                @Override
+                public void swipeDown() {
+
+                }
+
+                @Override
+                public void swipeUp() {
+
+                }
+            });
+        }
 
         BootstrapButton submitButton = (BootstrapButton) view.findViewById(R.id.submit_blanks);
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -215,84 +297,11 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
 //                return false;
 //            }
 //        });
+
         mWebView.setFocusable(false);
 //        mWebView.setFocusableInTouchMode(true);
-
-        keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
-            @Override
-            public void onPress(int i) {
-
-            }
-
-            @Override
-            public void onRelease(int i) {
-
-            }
-
-            @Override
-            public void onKey(int i, int[] ints) {
-                switch (i) {
-                    case 8:
-                        String JS = "javascript:(function() {" +
-                                "if (window.myReadOnly == 1) return;" +
-                                "var ele=document.activeElement;" +
-                                "var position=ele.value.slice(0, ele.selectionStart).length;" +
-                                "ele.value = ele.value.substr(0, position-1) + ele.value.substr(position);" +
-                                "ele.focus();" +
-                                "if (position != 0) ele.setSelectionRange(position-1, position-1);})()";
-                        mWebView.loadUrl(JS);
-                        break;
-                    case Keyboard.KEYCODE_DELETE:
-                        String JS_ = "javascript:(function() {" +
-                                "if (window.myReadOnly == 1) return;" +
-                                "var ele=document.activeElement;" +
-                                "var position=ele.value.slice(0, ele.selectionStart).length;" +
-                                "ele.value = ele.value.substr(0, position) + ele.value.substr(position+1);" +
-                                "ele.focus();" +
-                                "ele.setSelectionRange(position, position);})()";
-                        mWebView.loadUrl(JS_);
-                        break;
-                    default:
-                        String JS__ = String.format(new Locale("en"),
-                                "javascript:(function() {" +
-                                        "if (window.myReadOnly == 1) return;" +
-                                        "var ele=document.activeElement;" +
-                                        "var position=ele.value.slice(0, ele.selectionStart).length;" +
-                                        "ele.value = ele.value.substr(0, position) + '%c' + ele.value.substr(position);" +
-                                        "ele.focus();" +
-                                        "ele.setSelectionRange(position+1, position+1);})()", (char) i);
-                        mWebView.loadUrl(JS__);
-                        break;
-                }
-            }
-
-            @Override
-            public void onText(CharSequence charSequence) {
-
-            }
-
-            @Override
-            public void swipeLeft() {
-
-            }
-
-            @Override
-            public void swipeRight() {
-
-            }
-
-            @Override
-            public void swipeDown() {
-
-            }
-
-            @Override
-            public void swipeUp() {
-
-            }
-        });
-
 //        clearButton.setFocusable(false);
+
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -305,7 +314,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
         });
 
 
-        Thread thread = new Thread(new Runnable() {
+        Thread thread_ = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -316,42 +325,59 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                 }
             }
         });
-        thread.start();
+        thread_.start();
+    }
+
+
+    private int mVal;
+
+    @JavascriptInterface
+    public void onData(int value) {
+        Log.i("Triggered", Integer.toString(value));
+        Log.i("TAG", Thread.currentThread().getName());
+        mVal = value;
+//        result.confirm();
+        mCountDownLatch.countDown();
     }
 
     @Override
     public int[] revealAnswer(boolean isEarlier) {
         isRevealed = true;
-
+        int pointsChange;
         int correctNum = 0;
         for (int i = 0; i < mNumOfFields; i++) {
             Log.i("Loop", Integer.toString(i));
-            String JS = String.format(new Locale("en"),
+            final String JS = String.format(new Locale("en"),
                     "javascript:(function() {" +
                             "window.myReadOnly = 1;" +
                             "var field = document.getElementsByName('b%d')[0];" +
                             "if (field.value.toLowerCase() == '%s') { " +
                             "field.setAttribute('style', 'background-color: yellowGreen;'); " +
-                            "alert('1'); } else { " +
+                            "android.onData(1); } else { " +
                             "field.setAttribute('style', 'background-color: coral;'); " +
-                            "alert('0'); } " +
+                            "android.onData(0); } " +
                             "field.value = '%s'; " +
                             "field.setAttribute('readonly', true);})()",
                     i, mHiddenText.get(i).toLowerCase(), mHiddenText.get(i));
             mWebView.loadUrl(JS);
-//            try {
-//                mCountDownLatch.await();
-//                correctNum += Integer.parseInt(mBlanksChromeClient.getmVal());
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
+            try {
+                mCountDownLatch.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            mCountDownLatch = new CountDownLatch(1);
+            correctNum += mVal;
         }
-        int pointsChange = correctNum * 20 - mNumOfFields * -15;
+        pointsChange = correctNum * 2 - (mNumOfFields - correctNum) * 1;
         if (mFirst) return new int[]{pointsChange, 0};
         else return new int[]{0, pointsChange};
 
+//        if (mFirst) return new int[]{pointsChange[0], 0};
+//        else return new int[]{0, pointsChange[0]};
+
 //        mWebView.loadUrl("javascript:document.getElementById('username').value = ;");
         // document.getElementsByTagName("p")[0].setAttribute("readonly", true);
+
     }
 
     @Override
@@ -359,35 +385,28 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
         // TODO: Remove the send button.
     }
 
-    class JSInterface {
-        @JavascriptInterface
-        public void processHTML(String html) {
-            //called by javascript
-        }
-    }
+    private CountDownLatch mCountDownLatch = new CountDownLatch(1);
 
-    private static CountDownLatch mCountDownLatch = new CountDownLatch(1);
-
-    /**
-     * Created by Alex Poon on 1/31/2018.
-     */
-
-    public static class BlanksChromeClient extends WebChromeClient {
-
-        private String mVal;
-
-        public String getmVal() {
-            return mVal;
-        }
-
-        @Override
-        public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
-            Log.i("Triggered", "abc");
-            mVal = message;
-            result.confirm();
-            mCountDownLatch.countDown();
-//            mCountDownLatch = new CountDownLatch(1);
-            return true;
-        }
-    }
+//    /**
+//     * Created by Alex Poon on 1/31/2018.
+//     */
+//
+//    public class BlanksChromeClient extends WebChromeClient {
+//
+//        private String mVal;
+//
+//        public String getmVal() {
+//            return mVal;
+//        }
+//
+//        @Override
+//        public boolean onJsAlert(WebView view, String url, final String message, final JsResult result) {
+//            Log.i("Triggered", message);
+//            Log.i("TAG", Thread.currentThread().getName());
+//            mVal = message;
+//            result.confirm();
+//            mCountDownLatch.countDown();
+//            return true;
+//        }
+//    }
 }

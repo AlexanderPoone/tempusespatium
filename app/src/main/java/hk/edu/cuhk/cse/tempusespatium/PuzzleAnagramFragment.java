@@ -14,6 +14,15 @@ import android.view.ViewGroup;
 
 public class PuzzleAnagramFragment extends Fragment implements PuzzleFragmentInterface {
 
+
+    /*
+    TODO: Drag and drop
+    May use BootstrapTags
+    https://www.vocabulary.com/lists/191545
+    use String length to: generateBlanks(int num)
+    https://developer.android.com/guide/topics/ui/drag-drop.html
+
+*/
     private boolean mFirst;
 
     @Override

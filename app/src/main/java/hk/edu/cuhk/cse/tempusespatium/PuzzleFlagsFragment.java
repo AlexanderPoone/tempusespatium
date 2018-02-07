@@ -170,7 +170,11 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
                 break;
         }
         if (mCorrectCountryIndex == mUserAnswerIndex) {
-            return new int[]{10, -10};
+            if (mFirst) {
+                return new int[]{10, -5};
+            } else {
+                return new int[]{-5, -10};
+            }
         } else {
             switch (mUserAnswerIndex) {
                 case 0:
@@ -202,7 +206,11 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
                     indD.setBackgroundColor(getResources().getColor(R.color.Fraternity, null));
                     break;
             }
-            return new int[]{10, -10};
+            if (mFirst) {
+                return new int[]{-20, 0};
+            } else {
+                return new int[]{0, -20};
+            }
         }
     }
 

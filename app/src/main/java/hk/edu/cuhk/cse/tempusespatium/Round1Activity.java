@@ -185,6 +185,8 @@ public class Round1Activity extends AppCompatActivity {
             case 4:
                 generateBlanksPuzzle();
         }
+        mScoreChangeText.setText("");
+        mScoreChangeText2.setText("");
     }
 
     public void generateAnagramPuzzle() {
@@ -223,7 +225,7 @@ public class Round1Activity extends AppCompatActivity {
                 DBAssetHelper.COLUMN_PIC_URL + " " +
                 "FROM hist " +
                 "LIMIT 1 " +
-                "OFFSET " + random.nextInt(17), null);
+                "OFFSET " + random.nextInt(16), null);
         cursor.moveToNext();
         String historicEvent = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_HISTORIC_EVENT));
         int year = cursor.getInt(cursor.getColumnIndex(DBAssetHelper.COLUMN_YEAR));
@@ -490,19 +492,25 @@ public class Round1Activity extends AppCompatActivity {
         }
     }
 
-    public void callReveal(boolean isFirst) {
+    public void callReveal(boolean callerIsFirst) {
         PuzzleFragmentInterface player1 = ((PuzzleFragmentInterface) (getSupportFragmentManager().findFragmentByTag("player1")));
         PuzzleFragmentInterface player2 = ((PuzzleFragmentInterface) (getSupportFragmentManager().findFragmentByTag("player2")));
 
-        if (!player1.isRevealed())
-            addOrDeductPoints(true, player1.revealAnswer(isFirst)[0]);
-        if (!player2.isRevealed())
-            addOrDeductPoints(false, player2.revealAnswer(!isFirst)[1]);
-//        if (isFirst) {
-//            player2.disableControls();
-//        } else {
-//            player1.disableControls();
-//        }
+        int change[];
+        if (!player1.isRevealed()) {
+            change = player1.revealAnswer(callerIsFirst);
+            if (callerIsFirst) {
+                addOrDeductPoints(true, change[0]);
+                addOrDeductPoints(false, change[1]);
+            }
+        }
+        if (!player2.isRevealed()) {
+            change = player2.revealAnswer(callerIsFirst);
+            if (!callerIsFirst) {
+                addOrDeductPoints(true, change[0]);
+                addOrDeductPoints(false, change[1]);
+            }
+        }
     }
 
     public void endRound() {

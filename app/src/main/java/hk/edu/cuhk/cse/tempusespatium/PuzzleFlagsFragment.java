@@ -139,6 +139,9 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         isRevealed = true;
         disableControls();
 
+        ImageView imageView=(ImageView) getView().findViewById(R.id.watermark);
+        Picasso.with(getContext()).load("https://upload.wikimedia.org/wikipedia/commons/a/a5/Buenos_Aires_City_Collage.png").into(imageView);
+
 //        switch (mCorrectCountryIndex) {
 //            case 0:
 //                RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);

@@ -6,14 +6,18 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.animation.DynamicAnimation;
+import android.support.animation.SpringAnimation;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
@@ -237,11 +241,13 @@ public class Round1Activity extends AppCompatActivity {
 
         PuzzleDateFragment dateFragment0 = new PuzzleDateFragment(true, historicEvent, year, month, picUrl, randMinYear, randMaxYear);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
+        transaction0.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction0.replace(R.id.player1FragmentContainer, dateFragment0, "player1");
         int commit = transaction0.commit();
 
         PuzzleDateFragment dateFragment1 = new PuzzleDateFragment(false, historicEvent, year, month, picUrl, randMinYear, randMaxYear);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+        transaction1.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction1.replace(R.id.player2FragmentContainer, dateFragment1, "player2");
         int commit1 = transaction1.commit();
 
@@ -313,7 +319,7 @@ public class Round1Activity extends AppCompatActivity {
                 DBAssetHelper.COLUMN_FLAG_URL + " " +
                 "FROM geog " +
                 "WHERE " + DBAssetHelper.COLUMN_COUNTRY +
-                " <> '" + country + "' " +
+                " <> '" + country.replace("'", "\\'") + "' " +
                 "LIMIT 1 " +
                 "OFFSET " + (random.nextInt(195) + 0), null);
         cursor.moveToNext();
@@ -328,15 +334,31 @@ public class Round1Activity extends AppCompatActivity {
 
         PuzzleFlagsFragment flagFragment0 = new PuzzleFlagsFragment(true, correctCountryIndex, countries, flagURLs);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
+        transaction0.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction0.replace(R.id.player1FragmentContainer, flagFragment0, "player1");
         int commit = transaction0.commit();
 
         PuzzleFlagsFragment flagFragment1 = new PuzzleFlagsFragment(false, correctCountryIndex, countries, flagURLs);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+        transaction1.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction1.replace(R.id.player2FragmentContainer, flagFragment1, "player2");
         int commit1 = transaction1.commit();
 
+        // TODO
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
+            switchAnim();
+        }
+
         countDown(flagFragment0, flagFragment1, 5000);
+    }
+
+    public void switchAnim() {
+        FrameLayout frameLayout1 = (FrameLayout) findViewById(R.id.player1FragmentContainer);
+        FrameLayout frameLayout2 = (FrameLayout) findViewById(R.id.player2FragmentContainer);
+        final SpringAnimation springAnimation1 = new SpringAnimation(frameLayout1, DynamicAnimation.TRANSLATION_Y);
+        final SpringAnimation springAnimation2 = new SpringAnimation(frameLayout2, DynamicAnimation.TRANSLATION_Y);
+        springAnimation1.start();
+        springAnimation2.start();
     }
 
     public void generateMapPuzzle() {
@@ -366,6 +388,7 @@ public class Round1Activity extends AppCompatActivity {
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
+        transaction0.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction0.replace(R.id.player1FragmentContainer, mapFragment0, "player1");
 //        transaction0.addToBackStack(null);
         // Commit the transaction
@@ -376,6 +399,7 @@ public class Round1Activity extends AppCompatActivity {
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
+        transaction1.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction1.replace(R.id.player2FragmentContainer, mapFragment1, "player2");
 //        transaction1.addToBackStack(null);
         // Commit the transaction
@@ -399,11 +423,13 @@ public class Round1Activity extends AppCompatActivity {
 
         PuzzleBlanksFragment blanksFragment0 = new PuzzleBlanksFragment(true, selectedUrl);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
+        transaction0.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction0.replace(R.id.player1FragmentContainer, blanksFragment0, "player1");
         int commit = transaction0.commit();
 
         PuzzleBlanksFragment blanksFragment1 = new PuzzleBlanksFragment(false, selectedUrl);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+        transaction1.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction1.replace(R.id.player2FragmentContainer, blanksFragment1, "player2");
         int commit1 = transaction1.commit();
 
@@ -437,22 +463,6 @@ public class Round1Activity extends AppCompatActivity {
 //                addOrDeductPoints(true, -20);
 //                addOrDeductPoints(false, -20);
                 //TODO: Remove placeholder.
-
-
-                /*
-                TODO: Wait for 5 seconds then replace the fragment.
-                 */
-                if (!mPauseTimer) { // TODO: La logique.
-                    if (mHandler != null) mHandler.removeCallbacksAndMessages(null);
-                    mHandler = new Handler();
-                    final int delay = 5000; //5 seconds
-
-                    mHandler.postDelayed(new Runnable() {
-                        public void run() {
-                            randomPuzzle();
-                        }
-                    }, delay);
-                }
             }
         }.start();
     }
@@ -493,6 +503,12 @@ public class Round1Activity extends AppCompatActivity {
     }
 
     public void callReveal(Boolean callerIsFirst) {
+        mCountDownTimer.cancel();
+        mDonutTime.setDonut_progress("0");
+        mDonutTime.setText("0");
+        mDonutTime2.setDonut_progress("0");
+        mDonutTime2.setText("0");
+
         PuzzleFragmentInterface player1 = ((PuzzleFragmentInterface) (getSupportFragmentManager().findFragmentByTag("player1")));
         PuzzleFragmentInterface player2 = ((PuzzleFragmentInterface) (getSupportFragmentManager().findFragmentByTag("player2")));
 
@@ -504,22 +520,36 @@ public class Round1Activity extends AppCompatActivity {
 //            change = player2.revealAnswer();
 //            addOrDeductPoints(false, change[1]);
 //        } else {
-            if (!player1.isRevealed()) {
-                change = player1.revealAnswer();
-                if (callerIsFirst==null) addOrDeductPoints(true, change[0]);
-                else if (callerIsFirst) {
-                    addOrDeductPoints(true, change[0]);
-                    addOrDeductPoints(false, change[1]);
-                }
+        if (!player1.isRevealed()) {
+            change = player1.revealAnswer();
+            if (callerIsFirst == null) addOrDeductPoints(true, change[0]);
+            else if (callerIsFirst) {
+                addOrDeductPoints(true, change[0]);
+                addOrDeductPoints(false, change[1]);
             }
-            if (!player2.isRevealed()) {
-                change = player2.revealAnswer();
-                if (callerIsFirst==null) addOrDeductPoints(false, change[1]);
-                else if (!callerIsFirst) {
-                    addOrDeductPoints(true, change[0]);
-                    addOrDeductPoints(false, change[1]);
-                }
+        }
+        if (!player2.isRevealed()) {
+            change = player2.revealAnswer();
+            if (callerIsFirst == null) addOrDeductPoints(false, change[1]);
+            else if (!callerIsFirst) {
+                addOrDeductPoints(true, change[0]);
+                addOrDeductPoints(false, change[1]);
             }
+        }
+        /*
+        TODO: Wait for 5 seconds then replace the fragment.
+        */
+        if (!mPauseTimer) { // TODO: La logique.
+            if (mHandler != null) mHandler.removeCallbacksAndMessages(null);
+            mHandler = new Handler();
+            final int delay = 5000; //5 seconds
+
+            mHandler.postDelayed(new Runnable() {
+                public void run() {
+                    randomPuzzle();
+                }
+            }, delay);
+        }
 //        }
     }
 

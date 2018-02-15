@@ -21,20 +21,27 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/a"
+            android:id="@+id/lang_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:labelFor="@id/autoCompleteTextView"
             android:text="Language:" />
 
+        <Spinner
+            android:id="@+id/langSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp" />
+
         <!--<com.beardedhen.androidbootstrap.BootstrapDropDown-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginEnd="10dp"-->
-            <!--android:layout_marginStart="10dp"-->
-            <!--app:bootstrapBrand="primary"-->
-            <!--app:bootstrapText="{fa_language} Select a language..."-->
-            <!--app:roundedCorners="true" />-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginEnd="10dp"-->
+        <!--android:layout_marginStart="10dp"-->
+        <!--app:bootstrapBrand="primary"-->
+        <!--app:bootstrapText="{fa_language} Select a language..."-->
+        <!--app:roundedCorners="true" />-->
     </LinearLayout>
 
     <LinearLayout
@@ -66,8 +73,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/qwerty"
         android:gravity="right"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp">
+        android:paddingEnd="10dp"
+        android:paddingTop="10dp">
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/topic_clear_button"

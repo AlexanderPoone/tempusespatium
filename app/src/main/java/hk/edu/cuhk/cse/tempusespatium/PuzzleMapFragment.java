@@ -23,6 +23,7 @@ import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -97,9 +98,10 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
                 e.printStackTrace();
             }
             mMediaPlayer.prepareAsync();
-        } else {
-            mMediaPlayer.start();
         }
+//        else {
+//            mMediaPlayer.start();
+//        }
     }
 
     @Nullable
@@ -156,6 +158,8 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
             Log.e(PuzzleMapFragment.class.getSimpleName(), "Style parsing failed.");
         }
         mUiSettings.setMapToolbarEnabled(false);
+        mUiSettings.setRotateGesturesEnabled(false);
+        mUiSettings.setTiltGesturesEnabled(false);
 
 //        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(0.0, 0.0), 0.0f);
 //        mMap.moveCamera(cameraUpdate);
@@ -174,6 +178,7 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
             mMediaPlayer.release();
             mMediaPlayer = null;
         }
+        mUiSettings.setAllGesturesEnabled(false);
 
         // Ask if the location user pointer belongs to the right country
         Geocoder geoCoder = new Geocoder(getContext(), new Locale("en", "gb"));
@@ -185,7 +190,7 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
                 Address bestMatch = (matches.isEmpty() ? null : matches.get(0));
                 country = bestMatch.getCountryName();
                 TextView debugUserSelects = (TextView) getView().findViewById(R.id.debug_user_selects);
-                debugUserSelects.setText(String.format("User chose:\n%s", country));
+                debugUserSelects.setText(String.format("You chose:\n%s", country));
                 Log.i("Country", country);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -201,7 +206,7 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
             for (GeoJsonFeature feature : layer.getFeatures()) {
                 String featureName = feature.getProperty("name");
 //                http://googlemaps.github.io/android-maps-utils/javadoc/com/google/maps/android/geojson/GeoJsonFeature.html
-                if (featureName.equals(mCountry) && feature.hasGeometry()) {
+                if (featureName.equalsIgnoreCase(mCountry) && feature.hasGeometry()) {
 //                    List<LatLng> coords = null;
                     if (feature.getGeometry().getGeometryType().equals("Polygon")) {
 //                        coords=((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0);
@@ -209,8 +214,29 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
                                 .addAll(((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0))
                                 .fillColor(getResources()
                                         .getColor(R.color.MidnightBlue, null) + (0x77 << 24)));
-                        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0).get(0), 3.5f);
-                        mMap.moveCamera(cameraUpdate);
+//                        double minLat = Double.MAX_VALUE, minLng = Double.MAX_VALUE;
+//                        double maxLat = Double.MIN_VALUE, maxLng = Double.MIN_VALUE;
+//                        for (int i = 0; i < ((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0).size(); i++) {
+//                            if (((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0).get(i).latitude < minLat) {
+//                                minLat = ((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0).get(i).latitude;
+//                            }
+//                            if (((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0).get(i).latitude > maxLat) {
+//                                maxLat = ((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0).get(i).latitude;
+//                            }
+//                            if (((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0).get(i).longitude < minLng) {
+//                                minLng = ((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0).get(i).longitude;
+//                            }
+//                            if (((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0).get(i).longitude > maxLng) {
+//                                maxLng = ((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0).get(i).longitude;
+//                            }
+//                        }
+//                        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng((minLat + maxLat) / 2, (minLng + maxLng) / 2), 3.5f);
+                        LatLngBounds.Builder builder=new LatLngBounds.Builder();
+                        for (int i = 0; i < ((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0).size(); i++) {
+                            builder.include(((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0).get(i));
+                        }
+                        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(builder.build(), 10);
+mMap.animateCamera(cameraUpdate);
 //                        mMap.setLatLngBoundsForCameraTarget(
 //                                new LatLngBounds(((GeoJsonPolygon) feature.getGeometry()).getOuterBoundaryCoordinates().get(0),
 //                                        ((GeoJsonPolygon) feature.getGeometry()).getOuterBoundaryCoordinates().get(1))
@@ -218,17 +244,33 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
                     } else if (feature.getGeometry().getGeometryType().equals("MultiPolygon")) {
 //                        coords = ((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(0).getCoordinates().get(0);
                         int len = ((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().size();
+                        double minLat = Double.MAX_VALUE, minLng = Double.MAX_VALUE;
+                        double maxLat = Double.MIN_VALUE, maxLng = Double.MIN_VALUE;
                         for (int i = 0; i < len; i++) {
                             mMap.addPolygon(new PolygonOptions()
                                     .addAll(((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(i).getCoordinates().get(0))
                                     .fillColor(getResources()
                                             .getColor(R.color.MidnightBlue, null) + (0x77 << 24)));
-                            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(i).getCoordinates().get(0).get(0), 3.5f);
-                            mMap.moveCamera(cameraUpdate);
+                            for (int j = 0; j < ((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(i).getCoordinates().get(0).size(); j++) {
+                                if (((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(i).getCoordinates().get(0).get(j).latitude < minLat) {
+                                    minLat = ((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(i).getCoordinates().get(0).get(j).latitude;
+                                }
+                                if (((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(i).getCoordinates().get(0).get(j).latitude > maxLat) {
+                                    maxLat = ((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(i).getCoordinates().get(0).get(j).latitude;
+                                }
+                                if (((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(i).getCoordinates().get(0).get(j).longitude < minLng) {
+                                    minLng = ((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(i).getCoordinates().get(0).get(j).longitude;
+                                }
+                                if (((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(i).getCoordinates().get(0).get(j).longitude > maxLng) {
+                                    maxLng = ((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(i).getCoordinates().get(0).get(j).longitude;
+                                }
+                            }
 //                            mMap.setLatLngBoundsForCameraTarget(
 //                                    new LatLngBounds(((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(0).getOuterBoundaryCoordinates().get(0),
 //                                            ((GeoJsonMultiPolygon) feature.getGeometry()).getPolygons().get(0).getOuterBoundaryCoordinates().get(1))
 //                            );
+                            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng((minLat + maxLat) / 2, (minLng + maxLng) / 2), 3.5f);
+                            mMap.moveCamera(cameraUpdate);
                         }
                     }
 
@@ -317,10 +359,26 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
 
 
         // Return score change
-        if (mFirst) {
-            return new int[]{10, 0};
+        if (mUserMarker != null) {
+            if (mCountry.equalsIgnoreCase(country)) {
+                if (mFirst) {
+                    return new int[]{20, 0};
+                } else {
+                    return new int[]{0, 20};
+                }
+            } else {
+                if (mFirst) {
+                    return new int[]{-10, 0};
+                } else {
+                    return new int[]{0, -10};
+                }
+            }
         } else {
-            return new int[]{0, 10};
+            if (mFirst) {
+                return new int[]{-20, 0};
+            } else {
+                return new int[]{0, -20};
+            }
         }
     }
 

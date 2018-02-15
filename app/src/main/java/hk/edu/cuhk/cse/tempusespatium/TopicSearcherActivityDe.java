@@ -99,11 +99,14 @@ public class TopicSearcherActivityDe extends AppCompatActivity {
                                 Document doc = DocumentBuilderFactory.newInstance()
                                         .newDocumentBuilder().parse(new InputSource(new StringReader(body[0])));
                                 XPathExpression staticXPath = XPathFactory.newInstance()
-                                        .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table/tr[2]/td/table[2]/tr[3]/td/table[2]/tr/td[1]/p[1]");
+                                        .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table/tr/td/table/tr/td/table/tr/td/p");
+                                //*[@id="mw-content-text"]/div/table/tr/td/table/tr/td/table/tr/td/p/b/text()
+                                //*[@id="mw-content-text"]/div/table/tr/td/table/tr/td/table/tr/td/p/a[not(.//img)]
                                 NodeList test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
                                 for (int i = 0; i < test.getLength(); i++) {
+                                    Log.i("Test", test.item(i).getAttributes().getNamedItem("b").getTextContent());
                                     //URL
-                                    Log.i("Test", test.item(i).getAttributes().item(0).getTextContent());
+                                    Log.i("Test", test.item(i).getAttributes().getNamedItem("a[not(.//img)").getChildNodes().item(0).toString());
                                     //Topics
                                     mTopics.put(test.item(i).getTextContent().replaceFirst("Wikipedia:(WikiProject )?", "").replaceFirst("/(Popular|Most-viewed|Favourite) pages", "").replaceFirst("/Popular", "").replaceFirst("( task force| work group)", "").replaceFirst("Taskforces/(BPH/)?", "").replaceFirst("/", " > "), "https://en.wikipedia.org" + test.item(i).getAttributes().item(0).getTextContent());
 //                                    Log.i("Test", test.item(i).getAttributes().item(1).getTextContent());
@@ -118,72 +121,72 @@ public class TopicSearcherActivityDe extends AppCompatActivity {
                             } catch (XPathExpressionException e) {
                                 e.printStackTrace();
                             }
-                            final ArrayAdapter<String> adapter = new ArrayAdapter<>(TopicSearcherActivityDe.this, android.R.layout.simple_dropdown_item_1line, new ArrayList<String>(mTopics.keySet()));
-                            AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
-                            autoCompleteTextView.setAdapter(adapter);
-                            autoCompleteTextView.showDropDown();
-                            mOnItemClickListener = new AdapterView.OnItemClickListener() {
-                                @Override
-                                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                    mArts = new LinkedHashMap<>();
-                                    mSelectedTopic = adapter.getItem(i);
-                                    final Request request1 = new Request.Builder()
-                                            .url(mTopics.get(mSelectedTopic))
-                                            .build();
-                                    final Response[] response1 = {null};
-                                    final String[] body1 = {""};
-                                    Thread thread1 = new Thread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            try {
-                                                response1[0] = mClient.newCall(request1).execute();
-                                                body1[0] = response1[0].body().string();
-
-                                                Document doc = DocumentBuilderFactory.newInstance()
-                                                        .newDocumentBuilder().parse(new InputSource(new StringReader(body1[0])));
-                                                XPathExpression staticXPath = XPathFactory.newInstance()
-                                                        .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table/tr/td[2]/a");
-                                                NodeList test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
-                                                for (int i = 0; i < test.getLength(); i++) {
-                                                    mArts.put(test.item(i).getTextContent(), "https://en.wikipedia.org" + test.item(i).getAttributes().item(0).getTextContent());
-                                                }
-                                            } catch (SAXException e) {
-                                                e.printStackTrace();
-                                            } catch (IOException e) {
-                                                e.printStackTrace();
-                                            } catch (ParserConfigurationException e) {
-                                                e.printStackTrace();
-                                            } catch (XPathExpressionException e) {
-                                                e.printStackTrace();
-                                            }
-                                            runOnUiThread(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    TextView textView = (TextView) findViewById(R.id.result);
-                                                    textView.setText(mArts.keySet().toString());
-                                                    textView.setMovementMethod(new ScrollingMovementMethod());
-
-                                                    BootstrapButton submitButton = (BootstrapButton) findViewById(R.id.topic_submit_button);
-                                                    submitButton.setEnabled(true);
-                                                    submitButton.setOnClickListener(new View.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(View view) {
-                                                            Intent jump = new Intent(getBaseContext(), Round1Activity.class);
-                                                            jump.putExtra("topic", mSelectedTopic);
-                                                            jump.putExtra("arts", mArts);
-                                                            jump.putExtra("supportList", new ArrayList<>(mArts.keySet()));
-                                                            startActivity(jump);
-                                                            finish();
-                                                        }
-                                                    });
-                                                }
-                                            });
-                                        }
-                                    });
-                                    thread1.start();
-                                }
-                            };
-                            autoCompleteTextView.setOnItemClickListener(mOnItemClickListener);
+//                            final ArrayAdapter<String> adapter = new ArrayAdapter<>(TopicSearcherActivityDe.this, android.R.layout.simple_dropdown_item_1line, new ArrayList<String>(mTopics.keySet()));
+//                            AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+//                            autoCompleteTextView.setAdapter(adapter);
+//                            autoCompleteTextView.showDropDown();
+//                            mOnItemClickListener = new AdapterView.OnItemClickListener() {
+//                                @Override
+//                                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                                    mArts = new LinkedHashMap<>();
+//                                    mSelectedTopic = adapter.getItem(i);
+//                                    final Request request1 = new Request.Builder()
+//                                            .url(mTopics.get(mSelectedTopic))
+//                                            .build();
+//                                    final Response[] response1 = {null};
+//                                    final String[] body1 = {""};
+//                                    Thread thread1 = new Thread(new Runnable() {
+//                                        @Override
+//                                        public void run() {
+//                                            try {
+//                                                response1[0] = mClient.newCall(request1).execute();
+//                                                body1[0] = response1[0].body().string();
+//
+//                                                Document doc = DocumentBuilderFactory.newInstance()
+//                                                        .newDocumentBuilder().parse(new InputSource(new StringReader(body1[0])));
+//                                                XPathExpression staticXPath = XPathFactory.newInstance()
+//                                                        .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table/tr/td[2]/a");
+//                                                NodeList test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
+//                                                for (int i = 0; i < test.getLength(); i++) {
+//                                                    mArts.put(test.item(i).getTextContent(), "https://en.wikipedia.org" + test.item(i).getAttributes().item(0).getTextContent());
+//                                                }
+//                                            } catch (SAXException e) {
+//                                                e.printStackTrace();
+//                                            } catch (IOException e) {
+//                                                e.printStackTrace();
+//                                            } catch (ParserConfigurationException e) {
+//                                                e.printStackTrace();
+//                                            } catch (XPathExpressionException e) {
+//                                                e.printStackTrace();
+//                                            }
+//                                            runOnUiThread(new Runnable() {
+//                                                @Override
+//                                                public void run() {
+//                                                    TextView textView = (TextView) findViewById(R.id.result);
+//                                                    textView.setText(mArts.keySet().toString());
+//                                                    textView.setMovementMethod(new ScrollingMovementMethod());
+//
+//                                                    BootstrapButton submitButton = (BootstrapButton) findViewById(R.id.topic_submit_button);
+//                                                    submitButton.setEnabled(true);
+//                                                    submitButton.setOnClickListener(new View.OnClickListener() {
+//                                                        @Override
+//                                                        public void onClick(View view) {
+//                                                            Intent jump = new Intent(getBaseContext(), Round1Activity.class);
+//                                                            jump.putExtra("topic", mSelectedTopic);
+//                                                            jump.putExtra("arts", mArts);
+//                                                            jump.putExtra("supportList", new ArrayList<>(mArts.keySet()));
+//                                                            startActivity(jump);
+//                                                            finish();
+//                                                        }
+//                                                    });
+//                                                }
+//                                            });
+//                                        }
+//                                    });
+//                                    thread1.start();
+//                                }
+//                            };
+//                            autoCompleteTextView.setOnItemClickListener(mOnItemClickListener);
                         }
                     });
                 } catch (IOException e) {

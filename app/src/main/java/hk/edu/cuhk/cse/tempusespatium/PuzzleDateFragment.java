@@ -91,12 +91,14 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
         isRevealed = true;
         int playerYear = mYearPicker.getValue();
         int playerMonth = mMonthPicker.getValue();
-        mYearPicker.setBackgroundColor(getResources().getColor(R.color.FireBrick, null));
-        mYearPicker.setValue(mYear);
-        mMonthPicker.setBackgroundColor(getResources().getColor(R.color.IndianRed, null));
-        mMonthPicker.setValue(mMonth);
         mYearPicker.setEnabled(false);
         mMonthPicker.setEnabled(false);
+        if (playerYear != mYear)
+        mYearPicker.setBackgroundColor(getResources().getColor(R.color.FireBrick, null));
+        mYearPicker.setValue(mYear);
+        if (playerYear != mMonth)
+            mMonthPicker.setBackgroundColor(getResources().getColor(R.color.IndianRed, null));
+        mMonthPicker.setValue(mMonth);
 
         if (playerYear == mYear) {
             if (playerMonth == mMonth) {

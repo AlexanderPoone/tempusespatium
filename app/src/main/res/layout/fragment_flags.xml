@@ -1,151 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="2dp">
-
-    <TextView
-        android:id="@+id/flag_country_name"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/watermark"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="5dp"
-        android:text="Bangladesh"
-        android:textAlignment="center"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:translationZ="1dp"
+        android:alpha="0.5" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
-        android:weightSum="2">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="2dp">
 
-        <RelativeLayout
-            android:id="@+id/aRelLayout"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_choice">
+        <TextView
+            android:id="@+id/flag_country_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:text="Bangladesh"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:text="@string/a"
-                android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:weightSum="2">
 
-            <ImageView
-                android:id="@+id/aImageView"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:layout_centerInParent="true" />
+            <RelativeLayout
+                android:id="@+id/aRelLayout"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_choice">
 
-            <ImageView
-                android:id="@+id/aIndicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true" />
-        </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/a"
+                    android:textStyle="bold" />
 
-        <RelativeLayout
-            android:id="@+id/bRelLayout"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_choice">
+                <ImageView
+                    android:id="@+id/aImageView"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:layout_centerInParent="true" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:text="@string/b"
-                android:textStyle="bold" />
+                <ImageView
+                    android:id="@+id/aIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true" />
+            </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/bImageView"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:layout_centerInParent="true" />
+            <RelativeLayout
+                android:id="@+id/bRelLayout"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_choice">
 
-            <ImageView
-                android:id="@+id/bIndicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true" />
-        </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/b"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/bImageView"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:layout_centerInParent="true" />
+
+                <ImageView
+                    android:id="@+id/bIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:id="@+id/cRelLayout"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_choice">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/c"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/cImageView"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:layout_centerInParent="true" />
+
+                <ImageView
+                    android:id="@+id/cIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dRelLayout"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_choice">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/d"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/dImageView"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:layout_centerInParent="true" />
+
+                <ImageView
+                    android:id="@+id/dIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true" />
+            </RelativeLayout>
+
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
-        android:weightSum="2">
-
-        <RelativeLayout
-            android:id="@+id/cRelLayout"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_choice">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:text="@string/c"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/cImageView"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:layout_centerInParent="true" />
-
-            <ImageView
-                android:id="@+id/cIndicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/dRelLayout"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_choice">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:text="@string/d"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/dImageView"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:layout_centerInParent="true" />
-
-            <ImageView
-                android:id="@+id/dIndicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true" />
-        </RelativeLayout>
-
-    </LinearLayout>
-
-</LinearLayout>
+</FrameLayout>

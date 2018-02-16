@@ -43,6 +43,8 @@ import okhttp3.OkHttpClient;
  * Created by Alex Poon on 10/17/2017.
  */
 
+
+//TODO: Handle music pause when game is paused.
 public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, PuzzleFragmentInterface {
 
     private boolean mFirst;

@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -51,8 +52,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
 
     // English ↓
     Map<String, String> mTopics;
-    TreeMap<String, String> mArts;
-//    LinkedHashMap<String, String> mArts;
+    LinkedHashMap<String, String> mArts;
     // English ↑
 
     // Deutsch ↓
@@ -90,7 +90,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
     }
 
     private void english() {
-        mTopics = new HashMap<>();
+        mTopics = new TreeMap<>();
 
         // TODO: !!!!!!!!!!!!!! https://en.wikipedia.org/wiki/Category:WikiProjects_by_topic !!!!!!!!!!!!!!!!!!!!!!!!
         // Talk, file talk...
@@ -158,7 +158,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                     submitButton.setEnabled(false);
 
-                                    mArts = new TreeMap<>();
+                                    mArts = new LinkedHashMap<>();
                                     mSelectedTopic = adapter.getItem(i);
                                     final Request request1 = new Request.Builder()
                                             .url(mTopics.get(mSelectedTopic))
@@ -305,7 +305,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                     submitButton.setEnabled(false);
-                                    mArts = new TreeMap<>();
+                                    mArts = new LinkedHashMap<>();
                                     mSelectedTopic = adapter.getItem(i);
                                     //URL
                                     try {

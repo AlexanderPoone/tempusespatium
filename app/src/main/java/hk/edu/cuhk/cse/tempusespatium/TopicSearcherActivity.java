@@ -24,7 +24,6 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,6 +55,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
     // English ↑
 
     // Deutsch ↓
+    List<String> mTopicsUntrimmedDe;
     List<String> mTopicsDe;
     // Deutsch ↑
 
@@ -227,8 +227,12 @@ public class TopicSearcherActivity extends AppCompatActivity {
         thread.start();
     }
 
+    private void francais() {
+    }
+
     private void deutsch() {
         mTopicsDe = new ArrayList<>();
+        mTopicsUntrimmedDe = new ArrayList<>();
 
         // TODO: !!!!!!!!!!!!!! https://en.wikipedia.org/wiki/Category:WikiProjects_by_topic !!!!!!!!!!!!!!!!!!!!!!!!
         // Talk, file talk...
@@ -254,14 +258,19 @@ public class TopicSearcherActivity extends AppCompatActivity {
         final Request request = new Request.Builder()
                 .url(base_url)
                 .build();
-        final Response[] response = {null};
-        final String[] body = {""};
+        final Request request2 = new Request.Builder()
+                .url(base_url)
+                .build();
+        final Response[] response = {null, null};
+        final String[] body = {"", ""};
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     response[0] = mClient.newCall(request).execute();
                     body[0] = response[0].body().string();
+                    response[1] = mClient.newCall(request2).execute();
+                    body[1] = response[1].body().string();
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -283,6 +292,10 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                 for (int i = 0; i < test.getLength(); i++) {
                                     XPathExpression fett = XPathFactory.newInstance().newXPath().compile("b");
                                     uberschrift = (Node) fett.evaluate(test.item(i), XPathConstants.NODE);
+
+                                    // 2
+                                    mTopicsUntrimmedDe.add(uberschrift.getTextContent());
+
                                     mTopicsDe.add(uberschrift.getTextContent().substring(0, uberschrift.getTextContent().length() - 1).replaceFirst("^ ", ""));
 //                                    Log.i("Uberschrift", uberschrift.getTextContent().substring(0, uberschrift.getTextContent().length() - 1));
                                 }
@@ -307,16 +320,36 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     submitButton.setEnabled(false);
                                     mArts = new LinkedHashMap<>();
                                     mSelectedTopic = adapter.getItem(i);
+
                                     //URL
                                     try {
                                         XPathExpression verweis = XPathFactory.newInstance().newXPath().compile("a[not(.//img)]");
                                         NodeList artikeln = (NodeList) verweis.evaluate(finalTest.item(mTopicsDe.lastIndexOf(mSelectedTopic)), XPathConstants.NODESET);
+
                                         for (int j = 0; j < artikeln.getLength(); j++) {
 //                                            Log.i("Artikel", artikeln.item(j).getTextContent());
 //                                            Log.i("URL", artikeln.item(j).getAttributes().getNamedItem("href").getTextContent());
                                             mArts.put(artikeln.item(j).getTextContent(), "https://de.wikipedia.org" + artikeln.item(j).getAttributes().getNamedItem("href").getTextContent());
                                         }
+
+                                        // 2
+                                        Document doc2 = DocumentBuilderFactory.newInstance()
+                                                .newDocumentBuilder().parse(new InputSource(new StringReader(body[1])));
+                                        XPathExpression staticXPath2 = XPathFactory.newInstance()
+                                                .newXPath().compile(String.format("//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/p[b/text()=\"%s\"]/a[not(.//img)]", mTopicsUntrimmedDe.get(mTopicsDe.lastIndexOf(mSelectedTopic))));
+                                        Node artikeln2 = (Node) staticXPath2.evaluate(doc2, XPathConstants.NODE);
+                                        if (artikeln2 != null) {
+                                            Log.i("Lucky you!", "2 Found!");
+                                            mArts.put(artikeln2.getTextContent(), "https://de.wikipedia.org" + artikeln2.getAttributes().getNamedItem("href").getTextContent());
+                                        }
+
                                     } catch (XPathExpressionException e) {
+                                        e.printStackTrace();
+                                    } catch (SAXException e) {
+                                        e.printStackTrace();
+                                    } catch (ParserConfigurationException e) {
+                                        e.printStackTrace();
+                                    } catch (IOException e) {
                                         e.printStackTrace();
                                     }
                                     TextView textView = (TextView) findViewById(R.id.result);

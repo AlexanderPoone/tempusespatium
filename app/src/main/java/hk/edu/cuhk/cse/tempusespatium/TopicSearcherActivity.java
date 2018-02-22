@@ -24,6 +24,7 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -259,7 +260,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                 .url(base_url)
                 .build();
         final Request request2 = new Request.Builder()
-                .url(base_url)
+                .url(base_url2)
                 .build();
         final Response[] response = {null, null};
         final String[] body = {"", ""};
@@ -309,7 +310,9 @@ public class TopicSearcherActivity extends AppCompatActivity {
                             } catch (XPathExpressionException e) {
                                 e.printStackTrace();
                             }
-                            final ArrayAdapter<String> adapter = new ArrayAdapter<>(TopicSearcherActivity.this, android.R.layout.simple_dropdown_item_1line, mTopicsDe);
+                            List<String> tmp=new ArrayList<>(mTopicsDe);
+                            Collections.sort(tmp);
+                            final ArrayAdapter<String> adapter = new ArrayAdapter<>(TopicSearcherActivity.this, android.R.layout.simple_dropdown_item_1line, tmp);
                             final AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
                             autoCompleteTextView.setAdapter(adapter);
                             autoCompleteTextView.showDropDown();
@@ -337,10 +340,12 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                                 .newDocumentBuilder().parse(new InputSource(new StringReader(body[1])));
                                         XPathExpression staticXPath2 = XPathFactory.newInstance()
                                                 .newXPath().compile(String.format("//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/p[b/text()=\"%s\"]/a[not(.//img)]", mTopicsUntrimmedDe.get(mTopicsDe.lastIndexOf(mSelectedTopic))));
-                                        Node artikeln2 = (Node) staticXPath2.evaluate(doc2, XPathConstants.NODE);
-                                        if (artikeln2 != null) {
-                                            Log.i("Lucky you!", "2 Found!");
-                                            mArts.put(artikeln2.getTextContent(), "https://de.wikipedia.org" + artikeln2.getAttributes().getNamedItem("href").getTextContent());
+                                        NodeList artikeln2 = (NodeList) staticXPath2.evaluate(doc2, XPathConstants.NODESET);
+                                        if (artikeln2.getLength() > 0) {
+                                            for (int k = 0; k < artikeln2.getLength(); k++) {
+                                                mArts.put(artikeln2.item(k).getTextContent(), "https://de.wikipedia.org" + artikeln2.item(k).getAttributes().getNamedItem("href").getTextContent());
+                                                Log.i("Lucky you!", "2 Found! " + artikeln2.item(k).getTextContent());
+                                            }
                                         }
 
                                     } catch (XPathExpressionException e) {

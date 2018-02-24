@@ -269,7 +269,9 @@ public class Round1Activity extends AppCompatActivity {
                         DBAssetHelper.COLUMN_ANTHEM + ", " +
                         DBAssetHelper.COLUMN_FLAG_URL + ", " +
                         DBAssetHelper.COLUMN_SIMILAR_FLAG_1 + ", " +
-                        DBAssetHelper.COLUMN_SIMILAR_FLAG_2 + " " +
+                        DBAssetHelper.COLUMN_SIMILAR_FLAG_2 + ", " +
+                        DBAssetHelper.COLUMN_CAPITAL + ", " +
+                        DBAssetHelper.COLUMN_CAPITAL_PIC + " " +
                         "FROM geog " +
                         "LIMIT 1 " +
                         "OFFSET " + (random.nextInt(196) + 0)
@@ -283,6 +285,8 @@ public class Round1Activity extends AppCompatActivity {
         String flagUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_FLAG_URL));
         similarFlag1 = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_SIMILAR_FLAG_1));
         similarFlag2 = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_SIMILAR_FLAG_2));
+        String capital = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_CAPITAL));
+        String capitalPic = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_CAPITAL_PIC));
 
         int correctCountryIndex = random.nextInt(4);                // 0=A, 1=B, 2=C, 3=D
         countries[correctCountryIndex] = country;
@@ -332,13 +336,16 @@ public class Round1Activity extends AppCompatActivity {
         sqLiteAssetHelper.close();
         sqLiteDatabase.close();
 
-        PuzzleFlagsFragment flagFragment0 = new PuzzleFlagsFragment(true, correctCountryIndex, countries, flagURLs);
+        int r = random.nextInt(2);
+        if (r==0) capital=null;
+
+        PuzzleFlagsFragment flagFragment0 = new PuzzleFlagsFragment(true, correctCountryIndex, countries, flagURLs, capital, capitalPic);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         transaction0.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction0.replace(R.id.player1FragmentContainer, flagFragment0, "player1");
         int commit = transaction0.commit();
 
-        PuzzleFlagsFragment flagFragment1 = new PuzzleFlagsFragment(false, correctCountryIndex, countries, flagURLs);
+        PuzzleFlagsFragment flagFragment1 = new PuzzleFlagsFragment(false, correctCountryIndex, countries, flagURLs, capital, capitalPic);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         transaction1.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction1.replace(R.id.player2FragmentContainer, flagFragment1, "player2");

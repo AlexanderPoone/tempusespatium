@@ -18,7 +18,9 @@ public class DBAssetHelper extends SQLiteAssetHelper {
             COLUMN_ANTHEM_URL = "anthemUrl",
             COLUMN_FLAG_URL = "flagUrl",
             COLUMN_SIMILAR_FLAG_1 = "similarFlag1",
-            COLUMN_SIMILAR_FLAG_2 = "similarFlag2";
+            COLUMN_SIMILAR_FLAG_2 = "similarFlag2",
+            COLUMN_CAPITAL = "capital",
+            COLUMN_CAPITAL_PIC = "capitalPic";
 
     static final String TABLE_HIST = "hist",
             COLUMN_HISTORIC_EVENT = "historicEvent",

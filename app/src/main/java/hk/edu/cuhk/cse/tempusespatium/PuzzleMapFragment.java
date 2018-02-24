@@ -191,6 +191,9 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
                 matches = geoCoder.getFromLocation(mUserMarker.getPosition().latitude, mUserMarker.getPosition().longitude, 1);
                 Address bestMatch = (matches.isEmpty() ? null : matches.get(0));
                 country = bestMatch.getCountryName();
+                //
+                if (country.equals("Macedonia (FYROM)")) country = "FYROM";
+                //
                 TextView debugUserSelects = (TextView) getView().findViewById(R.id.debug_user_selects);
                 debugUserSelects.setText(String.format("You chose:\n%s", country));
                 Log.i("Country", country);
@@ -233,12 +236,12 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
 //                            }
 //                        }
 //                        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng((minLat + maxLat) / 2, (minLng + maxLng) / 2), 3.5f);
-                        LatLngBounds.Builder builder=new LatLngBounds.Builder();
+                        LatLngBounds.Builder builder = new LatLngBounds.Builder();
                         for (int i = 0; i < ((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0).size(); i++) {
                             builder.include(((GeoJsonPolygon) feature.getGeometry()).getCoordinates().get(0).get(i));
                         }
                         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(builder.build(), 10);
-mMap.animateCamera(cameraUpdate);
+                        mMap.animateCamera(cameraUpdate);
 //                        mMap.setLatLngBoundsForCameraTarget(
 //                                new LatLngBounds(((GeoJsonPolygon) feature.getGeometry()).getOuterBoundaryCoordinates().get(0),
 //                                        ((GeoJsonPolygon) feature.getGeometry()).getOuterBoundaryCoordinates().get(1))

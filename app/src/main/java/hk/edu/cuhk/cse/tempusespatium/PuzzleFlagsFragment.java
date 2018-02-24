@@ -26,6 +26,7 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
 //    private String mCountry, mAnthem, mFlagUrl;
 
     private String[] mCountries, mFlagURLs;
+    private String mCapital, mCapitalPic;
 
     @Override
     public boolean isRevealed() {
@@ -38,11 +39,13 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
 
     }
 
-    public PuzzleFlagsFragment(boolean first, int correctCountryIndex, String[] countries, String[] flagURLs) {
+    public PuzzleFlagsFragment(boolean first, int correctCountryIndex, String[] countries, String[] flagURLs, String capital, String capitalPic) {
         mFirst = first;
         mCorrectCountryIndex = correctCountryIndex;
         mCountries = countries;
         mFlagURLs = flagURLs;
+        mCapital = capital;
+        mCapitalPic = capitalPic;
     }
 
     @Nullable
@@ -80,7 +83,8 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
         TextView cName = (TextView) view.findViewById(R.id.flag_country_name);
-        cName.setText(mCountries[mCorrectCountryIndex]);
+        if (mCapital != null) cName.setText(mCapital);
+        else cName.setText(mCountries[mCorrectCountryIndex]);
 
         ImageView flagA = (ImageView) view.findViewById(R.id.aImageView);
         ImageView flagB = (ImageView) view.findViewById(R.id.bImageView);
@@ -139,8 +143,8 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         isRevealed = true;
         disableControls();
 
-        ImageView imageView=(ImageView) getView().findViewById(R.id.watermark);
-        Picasso.with(getContext()).load("https://upload.wikimedia.org/wikipedia/commons/a/a5/Buenos_Aires_City_Collage.png").into(imageView);
+        ImageView imageView = (ImageView) getView().findViewById(R.id.watermark);
+        Picasso.with(getContext()).load(mCapitalPic).into(imageView);
 
 //        switch (mCorrectCountryIndex) {
 //            case 0:

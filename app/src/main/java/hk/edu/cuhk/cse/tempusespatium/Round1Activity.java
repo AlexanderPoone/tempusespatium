@@ -48,7 +48,7 @@ public class Round1Activity extends AppCompatActivity {
     TextView mScoreChangeText;
     TextView mScoreChangeText2;
 
-    String mCurrentTopic;
+    String mQuestionLanguage, mCurrentTopic;
     HashMap<String, String> mArts;
     List<String> mArtsSupportList;
 
@@ -61,6 +61,7 @@ public class Round1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_exterior);
         Intent intent = getIntent();
+        mQuestionLanguage = intent.getStringExtra("lang");
         mCurrentTopic = intent.getStringExtra("topic");
         mArts = (HashMap<String, String>) intent.getSerializableExtra("arts");
         mArtsSupportList = intent.getStringArrayListExtra("supportList");
@@ -216,6 +217,11 @@ public class Round1Activity extends AppCompatActivity {
 //        int commit1 = transaction1.commit();
 //
 //        countDown(anagramFragment0, anagramFragment1, 10000);
+    }
+
+    public void generateRelevancePuzzle() {
+        FrenchStemmer frenchStemmer=new FrenchStemmer();
+        frenchStemmer.setCurrent("Québecoise");                     // test
     }
 
     public void generateDatePuzzle() {

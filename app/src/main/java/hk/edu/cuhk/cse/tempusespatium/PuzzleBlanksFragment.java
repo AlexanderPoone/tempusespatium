@@ -103,6 +103,10 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                             StringTokenizer stringTokenizer = new StringTokenizer(test.item(i).getTextContent(), " -");
                             while (stringTokenizer.hasMoreTokens()) {
                                 String token = stringTokenizer.nextToken();
+                                if (token.length() < 3) { //token.substring(1, token.length() - 1).isEmpty()
+                                    result += " " + token + " ";
+                                    continue;
+                                }
                                 String blank = " ";
                                 blank += token.substring(0, 1);
                                 blank += "<input type=\"text\" name=\"b";
@@ -113,10 +117,6 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                                 blank += token.substring(token.length() - 1);
                                 blank += " ";
                                 result += blank;
-                                if (token.length() < 3) { //token.substring(1, token.length() - 1).isEmpty()
-                                    result += " " + token + " ";
-                                    continue;
-                                }
                                 mHiddenText.add(token.substring(1, token.length() - 1));
                                 mNumOfFields++;
                             }

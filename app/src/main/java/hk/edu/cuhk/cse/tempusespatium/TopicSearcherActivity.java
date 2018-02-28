@@ -48,7 +48,7 @@ import okhttp3.Response;
 public class TopicSearcherActivity extends AppCompatActivity {
 
     OkHttpClient mClient;
-    String mSelectedTopic;
+    String mSelectedTopic, mQuestionLang = null;
 
     // English ↓
     Map<String, String> mTopics;
@@ -78,8 +78,10 @@ public class TopicSearcherActivity extends AppCompatActivity {
                 autoCompleteTextView.setOnItemSelectedListener(null);
                 if (i == 4) {
                     deutsch();
+                    mQuestionLang = "de";
                 } else {
                     english();
+                    mQuestionLang = "en";
                 }
             }
 
@@ -310,7 +312,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                             } catch (XPathExpressionException e) {
                                 e.printStackTrace();
                             }
-                            List<String> tmp=new ArrayList<>(mTopicsDe);
+                            List<String> tmp = new ArrayList<>(mTopicsDe);
                             Collections.sort(tmp);
                             final ArrayAdapter<String> adapter = new ArrayAdapter<>(TopicSearcherActivity.this, android.R.layout.simple_dropdown_item_1line, tmp);
                             final AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
@@ -367,6 +369,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                         @Override
                                         public void onClick(View view) {
                                             Intent jump = new Intent(getBaseContext(), Round1Activity.class);
+                                            jump.putExtra("lang", mQuestionLang);
                                             jump.putExtra("topic", mSelectedTopic);
                                             jump.putExtra("arts", mArts);
                                             jump.putExtra("supportList", new ArrayList<>(mArts.keySet()));

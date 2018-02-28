@@ -48,7 +48,7 @@ public class Round1Activity extends AppCompatActivity {
     TextView mScoreChangeText;
     TextView mScoreChangeText2;
 
-    String mQuestionLanguage, mCurrentTopic;
+    String mQuestionLang, mCurrentTopic;
     HashMap<String, String> mArts;
     List<String> mArtsSupportList;
 
@@ -61,7 +61,7 @@ public class Round1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_exterior);
         Intent intent = getIntent();
-        mQuestionLanguage = intent.getStringExtra("lang");
+        mQuestionLang = intent.getStringExtra("lang");
         mCurrentTopic = intent.getStringExtra("topic");
         mArts = (HashMap<String, String>) intent.getSerializableExtra("arts");
         mArtsSupportList = intent.getStringArrayListExtra("supportList");
@@ -220,8 +220,18 @@ public class Round1Activity extends AppCompatActivity {
     }
 
     public void generateRelevancePuzzle() {
-        FrenchStemmer frenchStemmer=new FrenchStemmer();
-        frenchStemmer.setCurrent("Québecoise");                     // test
+        FrenchStemmer frenchStemmer = new FrenchStemmer();
+        frenchStemmer.setCurrent("Québécoise");                     // test
+        if (frenchStemmer.stem()) {
+            Log.i("Vive le Québéc !", frenchStemmer.getCurrent());
+        }
+        if (mQuestionLang.equals("en")) {
+
+        } else if (mQuestionLang.equals("fr")) {
+
+        } else if (mQuestionLang.equals("de")) {
+
+        }
     }
 
     public void generateDatePuzzle() {
@@ -343,7 +353,7 @@ public class Round1Activity extends AppCompatActivity {
         sqLiteDatabase.close();
 
         int r = random.nextInt(2);
-        if (r==0) capital=null;
+        if (r == 0) capital = null;
 
         PuzzleFlagsFragment flagFragment0 = new PuzzleFlagsFragment(true, correctCountryIndex, countries, flagURLs, capital, capitalPic);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();

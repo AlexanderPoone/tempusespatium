@@ -25,9 +25,26 @@ import com.beardedhen.androidbootstrap.BootstrapProgressBar;
 import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
 import java.util.Random;
+import java.util.StringTokenizer;
+import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
+import static hk.edu.cuhk.cse.tempusespatium.StopWords.STOP_WORDS;
 
 //import android.os.CountDownTimer;
 
@@ -48,9 +65,9 @@ public class Round1Activity extends AppCompatActivity {
     TextView mScoreChangeText;
     TextView mScoreChangeText2;
 
-    String mQuestionLang, mCurrentTopic;
+    String mQuestionLang;
     HashMap<String, String> mArts;
-    List<String> mArtsSupportList;
+    List<String> mCurrentTopic, mArtsSupportList;
 
     Handler mHandler;
     boolean mPauseTimer = false;
@@ -62,7 +79,8 @@ public class Round1Activity extends AppCompatActivity {
         setContentView(R.layout.game_exterior);
         Intent intent = getIntent();
         mQuestionLang = intent.getStringExtra("lang");
-        mCurrentTopic = intent.getStringExtra("topic");
+        mCurrentTopic = intent.getStringArrayListExtra("topic");
+
         mArts = (HashMap<String, String>) intent.getSerializableExtra("arts");
         mArtsSupportList = intent.getStringArrayListExtra("supportList");
         Log.i("URL", mArts.get(mArtsSupportList.get(0)));
@@ -176,7 +194,7 @@ public class Round1Activity extends AppCompatActivity {
 
         switch (type) {
             case 0:
-                generateAnagramPuzzle();
+                generateRelevancePuzzle();
                 break;
             case 1:
                 generateFlagsPuzzle();
@@ -220,18 +238,119 @@ public class Round1Activity extends AppCompatActivity {
     }
 
     public void generateRelevancePuzzle() {
-        FrenchStemmer frenchStemmer = new FrenchStemmer();
-        frenchStemmer.setCurrent("Québécoise");                     // test
-        if (frenchStemmer.stem()) {
-            Log.i("Vive le Québéc !", frenchStemmer.getCurrent());
+        if (mArtsSupportList.size() == 0) {
+            return;
         }
-        if (mQuestionLang.equals("en")) {
 
-        } else if (mQuestionLang.equals("fr")) {
+        // TOPIC????
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Random random = new Random();
+                String selectedArt = mArtsSupportList.get(random.nextInt(mArtsSupportList.size() / 5)); //mArtsSupportList.length
+                String selectedUrl = mArts.remove(selectedArt);
+                mArtsSupportList.remove(selectedArt);
 
-        } else if (mQuestionLang.equals("de")) {
+//                String selectedArtAlt1 = mArtsSupportListAlt1.get(random.nextInt(mArtsSupportListAlt1.size() / 5)); //mArtsSupportList.length
+//                String selectedUrlAlt1 = mArtsAlt1.remove(selectedArtAlt1);
+//                mArtsSupportListAlt1.remove(selectedArtAlt1);
+//
+//                String selectedArtAlt2 = mArtsSupportListAlt2.get(random.nextInt(mArtsSupportListAlt2.size() / 5)); //mArtsSupportList.length
+//                String selectedUrlAlt2 = mArtsAlt2.remove(selectedArtAlt2);
+//                mArtsSupportListAlt2.remove(selectedArtAlt2);
 
-        }
+                List<TreeMap<String, Integer>> bagOfWords = new ArrayList<>(3);
+
+                for (int i = 0; i < 3; i++) {
+                    TreeMap<String, Integer> tmp = new TreeMap<>(Collections.reverseOrder());
+
+                    OkHttpClient mClient = new OkHttpClient();
+                    Request request = new Request.Builder()
+                            .url(selectedUrl)
+                            .build();
+
+                    Response response;
+                    StringTokenizer stringTokenizer = null;
+
+                    try {
+                        response = mClient.newCall(request).execute();
+                        stringTokenizer = new StringTokenizer(response.body().string(), " \t\n\r\f,.:;?![]'");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    while (stringTokenizer.hasMoreElements()) {
+                        String token = stringTokenizer.nextToken();
+                        Pattern pattern = Pattern.compile("\\p{L}{4,}");
+                        Matcher matcher = pattern.matcher(token);
+                        if (!matcher.matches()) {
+                            continue;
+                        }
+
+                        String stem = null;
+                        switch (mQuestionLang) {
+                            case "en":
+                                EnglishStemmer englishStemmer = new EnglishStemmer();
+                                englishStemmer.setCurrent(stringTokenizer.nextToken());
+                                if (englishStemmer.stem()) {
+                                    stem = englishStemmer.getCurrent();
+                                }
+                                break;
+                            case "fr":
+                                FrenchStemmer frenchStemmer = new FrenchStemmer();
+                                frenchStemmer.setCurrent(stringTokenizer.nextToken());
+                                if (frenchStemmer.stem()) {
+                                    stem = frenchStemmer.getCurrent();
+                                }
+                                break;
+                            case "de":
+                                GermanStemmer germanStemmer = new GermanStemmer();
+                                germanStemmer.setCurrent(stringTokenizer.nextToken());
+                                if (germanStemmer.stem()) {
+                                    stem = germanStemmer.getCurrent();
+                                }
+                                break;
+                        }
+                        if (Arrays.asList(STOP_WORDS.get(mQuestionLang)).contains(stem)) {
+                            continue;
+                        }
+                        if (bagOfWords.get(i).containsKey(stem)) {
+                            tmp.put(stem, tmp.get(stem) + 1);
+                        } else {
+                            tmp.put(stem, 1);
+                        }
+                    }
+                    bagOfWords.add(tmp);
+                }
+
+                final Map<String, List<String>> relevance = new HashMap<>(mCurrentTopic.size()); // {'cat1': ['', '', '']}, 'cat2': ['', ''], 'cat3', ['', '']}
+                for (int i = 0; i < mCurrentTopic.size(); i++) {
+                    List<String> tmp = new ArrayList<>();
+                    Iterator<String> it = bagOfWords.get(i).keySet().iterator();
+                    tmp.add(it.next());
+                    tmp.add(it.next());
+                    if (i == 0) tmp.add(it.next());
+                    relevance.put(mCurrentTopic.get(i), tmp);
+                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        PuzzleRelevanceFragment relevanceFragment0 = new PuzzleRelevanceFragment(true, relevance);
+                        FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
+                        transaction0.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
+                        transaction0.replace(R.id.player1FragmentContainer, relevanceFragment0, "player1");
+                        int commit = transaction0.commit();
+
+                        PuzzleRelevanceFragment relevanceFragment1 = new PuzzleRelevanceFragment(false, relevance);
+                        FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+                        transaction1.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
+                        transaction1.replace(R.id.player2FragmentContainer, relevanceFragment1, "player2");
+                        int commit1 = transaction1.commit();
+                    }
+                });
+            }
+        });
     }
 
     public void generateDatePuzzle() {
@@ -352,8 +471,8 @@ public class Round1Activity extends AppCompatActivity {
         sqLiteAssetHelper.close();
         sqLiteDatabase.close();
 
-        int r = random.nextInt(2);
-        if (r == 0) capital = null;
+        int r = random.nextInt(9);
+        if (r < 4) capital = null;                  // 3/10 chance easier
 
         PuzzleFlagsFragment flagFragment0 = new PuzzleFlagsFragment(true, correctCountryIndex, countries, flagURLs, capital, capitalPic);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();

@@ -65,7 +65,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
         Request request = new Request.Builder()
                 .url(url)
                 .build();
-        Response response = mClient.newCall(request).execute();
+//        Response response = mClient.newCall(request).execute();
 
         Call call = mClient.newCall(request);
         call.enqueue(new Callback() {

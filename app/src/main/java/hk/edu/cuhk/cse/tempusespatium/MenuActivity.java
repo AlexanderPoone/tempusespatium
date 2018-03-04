@@ -167,7 +167,8 @@ public class MenuActivity extends AppCompatActivity {
                 mMediaPlayer.setAudioAttributes(new AudioAttributes.Builder()
                         .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
                         .setUsage(AudioAttributes.USAGE_MEDIA).build());
-                mMediaPlayer.setDataSource(Anthems.valueOf("Spain".toUpperCase()).url);
+                mMediaPlayer.setDataSource("https://ia801407.us.archive.org/5/items/Wikipedia_201411/Wikipedia.ogg");
+//                mMediaPlayer.setDataSource(Anthems.valueOf("Spain".toUpperCase()).url);
             } catch (IOException e) {
                 e.printStackTrace();
             }

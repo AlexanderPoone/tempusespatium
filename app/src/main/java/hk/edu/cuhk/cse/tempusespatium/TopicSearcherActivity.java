@@ -28,6 +28,7 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.TreeMap;
 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -48,7 +49,11 @@ import okhttp3.Response;
 public class TopicSearcherActivity extends AppCompatActivity {
 
     OkHttpClient mClient;
-    String mSelectedTopic, mQuestionLang = null;
+    String mQuestionLang = null;
+
+    /* */
+    ArrayList<String> mSelectedTopic = new ArrayList<>();
+    /* */
 
     // English ↓
     Map<String, String> mTopics;
@@ -138,7 +143,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     //URL
                                     Log.i("Test", test.item(i).getAttributes().item(0).getTextContent());
                                     //Topics
-                                    mTopics.put(test.item(i).getTextContent().replaceFirst("Wikipedia:(WikiProject )?", "").replaceFirst("/(Popular|Most-viewed|Favourite) pages", "").replaceFirst("/Popular", "").replaceFirst("( task force| work group)", "").replaceFirst("Taskforces/(BPH/)?", "").replaceFirst("/", " > "), "https://en.wikipedia.org" + test.item(i).getAttributes().item(0).getTextContent());
+                                    mTopics.put(test.item(i).getTextContent().replaceFirst("Wikipedia:(WikiProject )?", "").replaceFirst("/(Popular|Most-viewed|Favourite) pages", "").replaceFirst("/(Popular|Article hits)", "").replaceFirst("( task force| work group)", "").replaceFirst("Taskforces/(BPH/)?", "").replaceFirst("/", " > "), "https://en.wikipedia.org" + test.item(i).getAttributes().item(0).getTextContent());
 //                                    Log.i("Test", test.item(i).getAttributes().item(1).getTextContent());
                                 }
 
@@ -162,9 +167,30 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     submitButton.setEnabled(false);
 
                                     mArts = new LinkedHashMap<>();
-                                    mSelectedTopic = adapter.getItem(i);
+                                    String selectedTopic = adapter.getItem(i);
+
+
+                                    /* */
+                                    int randomInt, randomInt2;
+                                    Random random = new Random();
+                                    do {
+                                        randomInt = random.nextInt(adapter.getCount());
+                                    } while (randomInt == i);
+                                    String selectedTopicAlt1 = adapter.getItem(randomInt);
+
+                                    do {
+                                        randomInt2 = random.nextInt(adapter.getCount());
+                                    } while (randomInt2 == i || randomInt2 == randomInt);
+                                    String selectedTopicAlt2 = adapter.getItem(randomInt2);
+
+                                    mSelectedTopic.add(selectedTopic);
+                                    mSelectedTopic.add(selectedTopicAlt1);
+                                    mSelectedTopic.add(selectedTopicAlt2);
+                                    /* */
+
+
                                     final Request request1 = new Request.Builder()
-                                            .url(mTopics.get(mSelectedTopic))
+                                            .url(mTopics.get(mSelectedTopic.get(0)))
                                             .build();
                                     final Response[] response1 = {null};
                                     final String[] body1 = {""};
@@ -205,8 +231,12 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                                         @Override
                                                         public void onClick(View view) {
                                                             Intent jump = new Intent(getBaseContext(), Round1Activity.class);
+                                                            jump.putExtra("lang", mQuestionLang);
                                                             jump.putExtra("topic", mSelectedTopic);
                                                             jump.putExtra("arts", mArts);
+
+                                                            jump.putExtra("artsAlt1", mArts);
+                                                            jump.putExtra("artsAlt2", mArts);
                                                             jump.putExtra("supportList", new ArrayList<>(mArts.keySet()));
                                                             startActivity(jump);
                                                             finish();
@@ -324,7 +354,26 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                     submitButton.setEnabled(false);
                                     mArts = new LinkedHashMap<>();
-                                    mSelectedTopic = adapter.getItem(i);
+                                    String selectedTopic = adapter.getItem(i);
+
+                                    /* */
+                                    int randomInt, randomInt2;
+                                    Random random = new Random();
+                                    do {
+                                        randomInt = random.nextInt(adapter.getCount());
+                                    } while (randomInt == i);
+                                    String selectedTopicAlt1 = adapter.getItem(randomInt);
+
+                                    do {
+                                        randomInt2 = random.nextInt(adapter.getCount());
+                                    } while (randomInt2 == i || randomInt2 == randomInt);
+                                    String selectedTopicAlt2 = adapter.getItem(randomInt2);
+
+                                    mSelectedTopic.add(selectedTopic);
+                                    mSelectedTopic.add(selectedTopicAlt1);
+                                    mSelectedTopic.add(selectedTopicAlt2);
+                                    /* */
+
 
                                     //URL
                                     try {
@@ -372,6 +421,10 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                             jump.putExtra("lang", mQuestionLang);
                                             jump.putExtra("topic", mSelectedTopic);
                                             jump.putExtra("arts", mArts);
+
+                                            jump.putExtra("artsAlt1", mArts);
+                                            jump.putExtra("artsAlt2", mArts);
+
                                             jump.putExtra("supportList", new ArrayList<>(mArts.keySet()));
                                             startActivity(jump);
                                             finish();

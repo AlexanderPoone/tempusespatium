@@ -1,19 +1,29 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
 import android.content.ClipData;
+import android.content.ClipDescription;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by softfeta on 2/26/18.
@@ -25,61 +35,113 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
     // term frequency (TF)
     // drag and drop three circles, nine tags, first find out four positives, then generate five negatives
 
+    private boolean mFirst, isRevealed = false;
+    private Map<String, List<String>> mRelevance;
+
+    public PuzzleRelevanceFragment() {
+    }
+
+    public PuzzleRelevanceFragment(boolean first, Map<String, List<String>> relevance) {
+        mFirst = first;
+        mRelevance = relevance;
+    }
+
+    @Override
+    public boolean isRevealed() {
+        return isRevealed;
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_relevance, container, false);
+        return view;
     }
 
     // Create a string for the ImageView label
-    private static final String IMAGEVIEW_TAG = "icon bitmap";
+    private static CharSequence[] TAGS = {"TAG0",
+            "TAG1",
+            "TAG2",
+            "TAG3",
+            "TAG4",
+            "TAG5",
+            "TAG6"};
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        final TextView[] textViews = {
+                (TextView) view.findViewById(R.id.cat0),
+                (TextView) view.findViewById(R.id.cat1),
+                (TextView) view.findViewById(R.id.cat2)
+        };
+        String catArray[] = mRelevance.keySet().toArray(new String[mRelevance.size()]);
+        for (int i = 0; i < textViews.length; i++) {
+            textViews[i].setText(catArray[i]);
+        }
 
 // Creates a new ImageView
-        ImageView imageView = new ImageView(getContext());
+//        ImageView imageView = new ImageView(getContext());
+        final View[] imageViews = {
+                (View) view.findViewById(R.id.gum0),
+                (View) view.findViewById(R.id.gum1),
+                (View) view.findViewById(R.id.gum2),
+                (View) view.findViewById(R.id.gum3),
+                (View) view.findViewById(R.id.gum4),
+                (View) view.findViewById(R.id.gum5),
+                (View) view.findViewById(R.id.gum6)
+        };
 
+
+        for (int i = 0; i < imageViews.length; i++) {
 // Sets the bitmap for the ImageView from an icon bit map (defined elsewhere)
-        imageView.setImageBitmap(mIconBitmap);
+//        imageView.setImageBitmap(mIconBitmap);
 
 // Sets the tag
-        imageView.setTag(IMAGEVIEW_TAG);
+            imageViews[i].setTag(TAGS[i]);
 
 //    ...
 
 // Sets a long click listener for the ImageView using an anonymous listener object that
 // implements the OnLongClickListener interface
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Create a new ClipData.
-                // This is done in two steps to provide clarity. The convenience method
-                // ClipData.newPlainText() can create a plain text ClipData in one step.
+            final int finalI = i;
+            View.OnClickListener onClickListener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Create a new ClipData.
+                    // This is done in two steps to provide clarity. The convenience method
+                    // ClipData.newPlainText() can create a plain text ClipData in one step.
 
-                // Create a new ClipData.Item from the ImageView object's tag
-                ClipData.Item item = new ClipData.Item(v.getTag());
+                    // Create a new ClipData.Item from the ImageView object's tag
+                    ClipData.Item item = new ClipData.Item((CharSequence) v.getTag());
 
-                // Create a new ClipData using the tag as a label, the plain text MIME type, and
-                // the already-created item. This will create a new ClipDescription object within the
-                // ClipData, and set its MIME type entry to "text/plain"
-                ClipData dragData = new ClipData(v.getTag(), ClipData.MIMETYPE_TEXT_PLAIN, item);
+                    // Create a new ClipData using the tag as a label, the plain text MIME type, and
+                    // the already-created item. This will create a new ClipDescription object within the
+                    // ClipData, and set its MIME type entry to "text/plain"
+                    ClipData dragData = new ClipData((CharSequence) v.getTag(), new String[]{ClipDescription.MIMETYPE_TEXT_PLAIN}, item);
 
-                // Instantiates the drag shadow builder.
-                View.DragShadowBuilder myShadow = new MyDragShadowBuilder(imageView);
+                    // Instantiates the drag shadow builder.
+                    View.DragShadowBuilder myShadow = new MyDragShadowBuilder(imageViews[finalI]);
 
-                // Starts the drag
+                    // Starts the drag
 
-                v.startDrag(dragData,  // the data to be dragged
-                        myShadow,  // the drag shadow builder
-                        null,      // no need to use local data
-                        0          // flags (not currently used, set to 0)
-                );
-            }
-        });
+                    v.startDrag(dragData,  // the data to be dragged
+                            myShadow,  // the drag shadow builder
+                            null,      // no need to use local data
+                            0          // flags (not currently used, set to 0)
+                    );
+                }
+            };
+
+        }
+
+        View ellipse0 = (View) view.findViewById(R.id.ellipse0);
+        View ellipse1 = (View) view.findViewById(R.id.ellipse1);
+        View ellipse2 = (View) view.findViewById(R.id.ellipse2);
+        ellipse0.setOnDragListener(new myDragEventListener(0));
+        ellipse1.setOnDragListener(new myDragEventListener(1));
+        ellipse2.setOnDragListener(new myDragEventListener(2));
     }
 
     @Override
@@ -92,18 +154,14 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
 
     }
 
-    @Override
-    public boolean isRevealed() {
-        return false;
-    }
 
+    /* It creates a drag shadow for dragging a TextView as a small gray rectangle. */
     private static class MyDragShadowBuilder extends View.DragShadowBuilder {
         // The drag shadow image, defined as a drawable thing
         private static Drawable shadow;
 
         // Defines the constructor for myDragShadowBuilder
         public MyDragShadowBuilder(View v) {
-
             // Stores the View parameter passed to myDragShadowBuilder.
             super(v);
 
@@ -141,9 +199,87 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
         // from the dimensions passed in onProvideShadowMetrics().
         @Override
         public void onDrawShadow(Canvas canvas) {
-
             // Draws the ColorDrawable in the Canvas passed in from the system.
             shadow.draw(canvas);
+        }
+    }
+
+    /* */
+    protected class myDragEventListener implements View.OnDragListener {
+        private int mCat;
+
+        public myDragEventListener(int cat) {
+            mCat = cat;
+        }
+
+        @Override
+        public boolean onDrag(View v, DragEvent event) {
+            final int action = event.getAction();
+
+            switch (action) {
+                case DragEvent.ACTION_DRAG_STARTED:
+                    // Determines if this View can accept the dragged data
+                    if (event.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
+                        v.getBackground().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+                        v.invalidate();
+                        return true;
+                    }
+                    return false;
+
+                case DragEvent.ACTION_DRAG_ENTERED:
+                    v.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+                    v.invalidate();
+                    return true;
+
+                case DragEvent.ACTION_DRAG_LOCATION:
+                    return true;
+
+                case DragEvent.ACTION_DRAG_EXITED:
+                    v.getBackground().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+                    v.invalidate();
+                    return true;
+
+                case DragEvent.ACTION_DROP:
+                    ClipData.Item item = event.getClipData().getItemAt(0);
+                    String dragData = item.getText().toString();
+                    Toast.makeText(getContext(), "Dragged data is " + dragData, Toast.LENGTH_SHORT).show();
+                    v.getBackground().clearColorFilter();
+                    v.invalidate();
+
+                    View vw = (View) event.getLocalState();
+                    ViewGroup owner = (ViewGroup) vw.getParent();
+                    owner.removeView(vw);
+                    LinearLayout container = null;
+                    switch (mCat) {
+                        case 0:
+                            container = (LinearLayout) getView().findViewById(R.id.box0);
+                            break;
+                        case 1:
+                            container = (LinearLayout) getView().findViewById(R.id.box1);
+                            break;
+                        case 2:
+                            container = (LinearLayout) getView().findViewById(R.id.box2);
+                            break;
+                    }
+                    container.addView(vw);
+                    vw.setVisibility(View.VISIBLE);
+                    return true;
+
+                case DragEvent.ACTION_DRAG_ENDED:
+                    v.getBackground().clearColorFilter();
+                    v.invalidate();
+                    if (event.getResult()) {
+                        Toast.makeText(getContext(), "The drop was handled.", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getContext(), "The drop didn't work.", Toast.LENGTH_LONG).show();
+                    }
+                    return true;
+
+                default:
+                    Log.e("DragDrop Example", "Unknown action type received by OnDragListener.");
+                    break;
+            }
+            return false;
         }
     }
 }

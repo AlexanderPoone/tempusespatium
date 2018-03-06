@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:background="@drawable/ellipse"
-            android:backgroundTint="@color/FireBrick"
+            android:backgroundTint="@color/IndianRed"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:textSize="30sp"
@@ -28,8 +28,8 @@
                 android:id="@+id/cat0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lorum Ipsum"
-                android:textColor="@color/LightPink" />
+                android:textColor="@color/SaddleBrown"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/box0"
@@ -55,8 +55,8 @@
                 android:id="@+id/cat1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lorum Ipsum"
-                android:textColor="@color/Honeydew" />
+                android:textColor="@color/DarkGreen"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/box1"
@@ -84,8 +84,8 @@
                 android:id="@+id/cat2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lorum Ipsum"
-                android:textColor="@color/Magnolia" />
+                android:textColor="@color/Indigo"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/box2"
@@ -107,90 +107,101 @@
             android:id="@+id/gum0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/gum4"
             app:bootstrapBrand="info"
-            app:bootstrapHeading="h3"
-            app:bootstrapText="lol"
-            app:roundedCorners="true"
-            tools:layout_editor_absoluteX="271dp"
-            tools:layout_editor_absoluteY="0dp" />
+            app:bootstrapHeading="h6"
+            app:bootstrapText="Badgers"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:roundedCorners="true" />
 
         <com.beardedhen.androidbootstrap.BootstrapLabel
             android:id="@+id/gum1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
             android:layout_toEndOf="@+id/gum0"
             app:bootstrapBrand="primary"
-            app:bootstrapHeading="h3"
-            app:bootstrapText="lol"
-            app:roundedCorners="true"
-            tools:layout_editor_absoluteX="211dp"
-            tools:layout_editor_absoluteY="0dp" />
+            app:bootstrapHeading="h6"
+            app:bootstrapText="Aardvarks"
+            app:layout_constraintRight_toLeftOf="@id/gum0"
+            app:roundedCorners="true" />
 
         <com.beardedhen.androidbootstrap.BootstrapLabel
             android:id="@+id/gum2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
             android:layout_toStartOf="@+id/gum0"
             app:bootstrapBrand="regular"
-            app:bootstrapHeading="h3"
-            app:bootstrapText="lol"
-            app:roundedCorners="true"
-            tools:layout_editor_absoluteX="329dp"
-            tools:layout_editor_absoluteY="0dp" />
+            app:bootstrapHeading="h6"
+            app:bootstrapText="Catfish"
+            app:layout_constraintLeft_toRightOf="@id/gum0"
+            app:roundedCorners="true" />
+
+        <android.support.constraint.Placeholder
+            android:id="@+id/placeholder"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gum0" />
 
         <com.beardedhen.androidbootstrap.BootstrapLabel
             android:id="@+id/gum3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_marginEnd="5dp"
             android:layout_toEndOf="@+id/gum2"
             app:bootstrapBrand="warning"
-            app:bootstrapHeading="h3"
+            app:bootstrapHeading="h6"
             app:bootstrapText="lol"
-            app:roundedCorners="true"
-            tools:layout_editor_absoluteX="177dp"
-            tools:layout_editor_absoluteY="57dp" />
+            app:layout_constraintRight_toLeftOf="@+id/placeholder"
+            app:layout_constraintTop_toBottomOf="@id/gum0"
+            app:roundedCorners="true" />
 
         <com.beardedhen.androidbootstrap.BootstrapLabel
             android:id="@+id/gum4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginStart="5dp"
             app:bootstrapBrand="danger"
-            app:bootstrapHeading="h3"
-            app:bootstrapText="lol"
-            app:roundedCorners="true"
-            tools:layout_editor_absoluteX="236dp"
-            tools:layout_editor_absoluteY="57dp" />
+            app:bootstrapHeading="h6"
+            app:bootstrapText="SDFF"
+            app:layout_constraintLeft_toRightOf="@+id/placeholder"
+            app:layout_constraintTop_toBottomOf="@id/gum0"
+            app:roundedCorners="true" />
 
         <com.beardedhen.androidbootstrap.BootstrapLabel
             android:id="@+id/gum5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
             app:bootstrapBrand="secondary"
-            app:bootstrapHeading="h3"
-            app:bootstrapText="lol"
-            app:roundedCorners="true"
-            tools:layout_editor_absoluteX="295dp"
-            tools:layout_editor_absoluteY="57dp" />
+            app:bootstrapHeading="h6"
+            app:bootstrapText="SDFGSDFG"
+            app:layout_constraintBaseline_toBaselineOf="@id/gum3"
+            app:layout_constraintRight_toLeftOf="@id/gum3"
+            app:roundedCorners="true" />
 
         <com.beardedhen.androidbootstrap.BootstrapLabel
             android:id="@+id/gum6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
             app:bootstrapBrand="success"
-            app:bootstrapHeading="h3"
-            app:bootstrapText="lol"
-            app:roundedCorners="true"
-            tools:layout_editor_absoluteX="353dp"
-            tools:layout_editor_absoluteY="57dp" />
+            app:bootstrapHeading="h6"
+            app:bootstrapText="SDASDFASDF"
+            app:layout_constraintBaseline_toBaselineOf="@id/gum4"
+            app:layout_constraintLeft_toRightOf="@id/gum4"
+            app:roundedCorners="true" />
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>

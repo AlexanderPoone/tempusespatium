@@ -25,20 +25,39 @@ import com.beardedhen.androidbootstrap.BootstrapProgressBar;
 import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.Random;
+import java.util.SortedSet;
 import java.util.StringTokenizer;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -196,17 +215,20 @@ public class Round1Activity extends AppCompatActivity {
             case 0:
                 generateRelevancePuzzle();
                 break;
-            case 1:
-                generateFlagsPuzzle();
-                break;
-            case 2:
-                generateMapPuzzle();
-                break;
-            case 3:
-                generateDatePuzzle();
-                break;
-            case 4:
-                generateBlanksPuzzle();
+            default:
+                generateRelevancePuzzle();
+//            case 1:
+//                generateFlagsPuzzle();
+//                break;
+//            case 2:
+//                generateMapPuzzle();
+//                break;
+//            case 3:
+//                generateDatePuzzle();
+//                break;
+//            case 4:
+//                generateBlanksPuzzle();
+//                break;
         }
         mScoreChangeText.setText("");
         mScoreChangeText2.setText("");
@@ -242,7 +264,6 @@ public class Round1Activity extends AppCompatActivity {
             return;
         }
 
-        // TOPIC????
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -259,10 +280,10 @@ public class Round1Activity extends AppCompatActivity {
 //                String selectedUrlAlt2 = mArtsAlt2.remove(selectedArtAlt2);
 //                mArtsSupportListAlt2.remove(selectedArtAlt2);
 
-                List<TreeMap<String, Integer>> bagOfWords = new ArrayList<>(3);
+                List<Map<String, Integer>> bagOfWords = new ArrayList<>(3);
 
                 for (int i = 0; i < 3; i++) {
-                    TreeMap<String, Integer> tmp = new TreeMap<>(Collections.reverseOrder());
+                    TreeMap<String, Integer> tmp = new TreeMap<>();
 
                     OkHttpClient mClient = new OkHttpClient();
                     Request request = new Request.Builder()
@@ -270,57 +291,90 @@ public class Round1Activity extends AppCompatActivity {
                             .build();
 
                     Response response;
-                    StringTokenizer stringTokenizer = null;
+//                    StringTokenizer stringTokenizer = null;
+                    Document doc = null;
+                    XPathExpression staticXPath = null;
+
+
+                    Pattern pattern = Pattern.compile("\\b\\p{L}{4,}\\b"); //{L} //(?=\S)\p{L}{4,} //\b\S{7,}\b
+                    Matcher matcher = null;
+                    NodeList test = null;
 
                     try {
                         response = mClient.newCall(request).execute();
-                        stringTokenizer = new StringTokenizer(response.body().string(), " \t\n\r\f,.:;?![]'");
+
+                        doc = DocumentBuilderFactory.newInstance()
+                                .newDocumentBuilder().parse(new InputSource(new StringReader(response.body().string())));
+                        staticXPath = XPathFactory.newInstance()
+                                .newXPath().compile("//*[@id=\"mw-content-text\"]/div/p");
+                        test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
+
+//                        stringTokenizer = new StringTokenizer(response.body().string(), " \t\n\r\f,.:;?![]'");
+                    } catch (SAXException e) {
+                        e.printStackTrace();
                     } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (ParserConfigurationException e) {
+                        e.printStackTrace();
+                    } catch (XPathExpressionException e) {
                         e.printStackTrace();
                     }
 
-                    while (stringTokenizer.hasMoreElements()) {
-                        String token = stringTokenizer.nextToken();
-                        Pattern pattern = Pattern.compile("\\p{L}{4,}");
-                        Matcher matcher = pattern.matcher(token);
-                        if (!matcher.matches()) {
-                            continue;
-                        }
+//                    int iteration = 1;
 
-                        String stem = null;
-                        switch (mQuestionLang) {
-                            case "en":
-                                EnglishStemmer englishStemmer = new EnglishStemmer();
-                                englishStemmer.setCurrent(stringTokenizer.nextToken());
-                                if (englishStemmer.stem()) {
-                                    stem = englishStemmer.getCurrent();
-                                }
-                                break;
-                            case "fr":
-                                FrenchStemmer frenchStemmer = new FrenchStemmer();
-                                frenchStemmer.setCurrent(stringTokenizer.nextToken());
-                                if (frenchStemmer.stem()) {
-                                    stem = frenchStemmer.getCurrent();
-                                }
-                                break;
-                            case "de":
-                                GermanStemmer germanStemmer = new GermanStemmer();
-                                germanStemmer.setCurrent(stringTokenizer.nextToken());
-                                if (germanStemmer.stem()) {
-                                    stem = germanStemmer.getCurrent();
-                                }
-                                break;
+                    for (int j = 0; j < test.getLength(); j++) {
+                        matcher = pattern.matcher(test.item(j).getTextContent());
+                        Log.d("Debug", test.item(j).getTextContent());
+
+//                    while (stringTokenizer.hasMoreElements() && iteration < 200) {
+//                        iteration++;
+//                        String token = stringTokenizer.nextToken();
+//                        Pattern pattern = Pattern.compile("\\p{L}{4,}");
+//                        Matcher matcher = pattern.matcher(token);
+//                        if (!matcher.matches()) {
+//                            continue;
+//                        }
+                        while (matcher.find()) {
+                            String stem = null;
+                            switch (mQuestionLang) {
+                                case "en":
+                                    Log.d("word", matcher.group());
+                                    EnglishStemmer englishStemmer = new EnglishStemmer();
+                                    englishStemmer.setCurrent(matcher.group());
+                                    if (englishStemmer.stem()) {
+                                        stem = englishStemmer.getCurrent();
+                                    }
+                                    break;
+                                case "fr":
+                                    FrenchStemmer frenchStemmer = new FrenchStemmer();
+                                    frenchStemmer.setCurrent(matcher.group());
+                                    if (frenchStemmer.stem()) {
+                                        stem = frenchStemmer.getCurrent();
+                                    }
+                                    break;
+                                case "de":
+                                    GermanStemmer germanStemmer = new GermanStemmer();
+                                    germanStemmer.setCurrent(matcher.group());
+                                    if (germanStemmer.stem()) {
+                                        stem = germanStemmer.getCurrent();
+                                    }
+                                    break;
+                            }
+                            if (Arrays.asList(STOP_WORDS.get(mQuestionLang)).contains(stem)) {
+                                continue;
+                            }
+                            if (tmp.containsKey(stem)) {
+                                tmp.put(stem, tmp.get(stem) + 1);
+                            } else {
+                                tmp.put(stem, 1);
+                            }
                         }
-                        if (Arrays.asList(STOP_WORDS.get(mQuestionLang)).contains(stem)) {
-                            continue;
-                        }
-                        if (bagOfWords.get(i).containsKey(stem)) {
-                            tmp.put(stem, tmp.get(stem) + 1);
-                        } else {
-                            tmp.put(stem, 1);
-                        }
+//                        if (iteration == test.getLength()) break;
+//                        matcher = pattern.matcher(test.item(iteration).getTextContent());
                     }
-                    bagOfWords.add(tmp);
+                    sortByValue(tmp);
+                    bagOfWords.add(sortByValue(tmp));
+                    Log.d("debug", bagOfWords.get(0).toString());
                 }
 
                 final Map<String, List<String>> relevance = new HashMap<>(mCurrentTopic.size()); // {'cat1': ['', '', '']}, 'cat2': ['', ''], 'cat3', ['', '']}
@@ -351,6 +405,18 @@ public class Round1Activity extends AppCompatActivity {
                 });
             }
         });
+        thread.start();
+        try
+
+        {
+            thread.join();
+        } catch (
+                InterruptedException e)
+
+        {
+            e.printStackTrace();
+        }
+
     }
 
     public void generateDatePuzzle() {
@@ -699,5 +765,21 @@ public class Round1Activity extends AppCompatActivity {
         Intent intent = new Intent(this, Round1Activity.class);
         finish();
         startActivity(intent);
+    }
+
+    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
+        List<Map.Entry<K, V>> list = new LinkedList<>(map.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<K, V>>() {
+            @Override
+            public int compare(Map.Entry<K, V> o1, Map.Entry<K, V> o2) {
+                return (o2.getValue()).compareTo(o1.getValue());
+            }
+        });
+
+        Map<K, V> result = new LinkedHashMap<>();
+        for (Map.Entry<K, V> entry : list) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+        return result;
     }
 }

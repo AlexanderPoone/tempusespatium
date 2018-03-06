@@ -261,6 +261,15 @@ public class TopicSearcherActivity extends AppCompatActivity {
     }
 
     private void francais() {
+        // https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Article_d%27importance_maximum
+        // Preferee: https://fr.wikipedia.org/wiki/Sp%C3%A9cial:ArbreCat%C3%A9gorie/Article_d%27importance_maximum
+
+        // replaceFirst("Article (du projet |de |d' )?", "").replaceFirst(" d'importance maximum‎").
+        // replaceFirst("sur (l'|le |la |les )", "")
+
+        // char[] tmp = str.toCharArray();
+        // tmp[0] = Character.toUpperCase(tmp[0]);
+        // str = String.valueOf(tmp)
     }
 
     private void deutsch() {

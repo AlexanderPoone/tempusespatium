@@ -22,6 +22,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.beardedhen.androidbootstrap.BootstrapBadge;
+import com.beardedhen.androidbootstrap.BootstrapLabel;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+
 import java.util.List;
 import java.util.Map;
 
@@ -71,44 +76,49 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final TextView[] textViews = {
+        TextView[] textViews = {
                 (TextView) view.findViewById(R.id.cat0),
                 (TextView) view.findViewById(R.id.cat1),
                 (TextView) view.findViewById(R.id.cat2)
         };
         String catArray[] = mRelevance.keySet().toArray(new String[mRelevance.size()]);
         for (int i = 0; i < textViews.length; i++) {
-            textViews[i].setText(catArray[i]);
+            if (catArray[i].length() > 20) {
+                textViews[i].setText(catArray[i].substring(0, 15)+"\n"+catArray[i].substring(16));
+            } else {
+                textViews[i].setText(catArray[i]);
+            }
         }
 
 // Creates a new ImageView
 //        ImageView imageView = new ImageView(getContext());
-        final View[] imageViews = {
-                (View) view.findViewById(R.id.gum0),
-                (View) view.findViewById(R.id.gum1),
-                (View) view.findViewById(R.id.gum2),
-                (View) view.findViewById(R.id.gum3),
-                (View) view.findViewById(R.id.gum4),
-                (View) view.findViewById(R.id.gum5),
-                (View) view.findViewById(R.id.gum6)
+        final BootstrapLabel[] labelViews = {
+                (BootstrapLabel) view.findViewById(R.id.gum0),
+                (BootstrapLabel) view.findViewById(R.id.gum1),
+                (BootstrapLabel) view.findViewById(R.id.gum2),
+                (BootstrapLabel) view.findViewById(R.id.gum3),
+                (BootstrapLabel) view.findViewById(R.id.gum4),
+                (BootstrapLabel) view.findViewById(R.id.gum5),
+                (BootstrapLabel) view.findViewById(R.id.gum6)
         };
 
+        List<String> merged = Lists.newArrayList(Iterables.concat(mRelevance.values()));
 
-        for (int i = 0; i < imageViews.length; i++) {
+        for (int i = 0; i < labelViews.length; i++) {
 // Sets the bitmap for the ImageView from an icon bit map (defined elsewhere)
 //        imageView.setImageBitmap(mIconBitmap);
 
-// Sets the tag
-            imageViews[i].setTag(TAGS[i]);
-
-//    ...
+            labelViews[i].setText(merged.get(i));
+            labelViews[i].setTag(TAGS[i]);
 
 // Sets a long click listener for the ImageView using an anonymous listener object that
 // implements the OnLongClickListener interface
             final int finalI = i;
-            View.OnClickListener onClickListener = new View.OnClickListener() {
+
+            labelViews[i].setOnLongClickListener(new View.OnLongClickListener() {
+
                 @Override
-                public void onClick(View v) {
+                public boolean onLongClick(View v) {
                     // Create a new ClipData.
                     // This is done in two steps to provide clarity. The convenience method
                     // ClipData.newPlainText() can create a plain text ClipData in one step.
@@ -122,18 +132,17 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
                     ClipData dragData = new ClipData((CharSequence) v.getTag(), new String[]{ClipDescription.MIMETYPE_TEXT_PLAIN}, item);
 
                     // Instantiates the drag shadow builder.
-                    View.DragShadowBuilder myShadow = new MyDragShadowBuilder(imageViews[finalI]);
+                    View.DragShadowBuilder myShadow = new View.DragShadowBuilder(labelViews[finalI]);
 
                     // Starts the drag
-
-                    v.startDrag(dragData,  // the data to be dragged
-                            myShadow,  // the drag shadow builder
-                            null,      // no need to use local data
-                            0          // flags (not currently used, set to 0)
+                    v.startDrag(dragData,          // the data to be dragged
+                            myShadow,              // the drag shadow builder
+                            v,                     // local data about the drag and drop operation
+                            0                 // flags (not currently used, set to 0)
                     );
+                    return true;
                 }
-            };
-
+            });
         }
 
         View ellipse0 = (View) view.findViewById(R.id.ellipse0);
@@ -205,7 +214,7 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
     }
 
     /* */
-    protected class myDragEventListener implements View.OnDragListener {
+    private class myDragEventListener implements View.OnDragListener {
         private int mCat;
 
         public myDragEventListener(int cat) {
@@ -220,14 +229,14 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
                 case DragEvent.ACTION_DRAG_STARTED:
                     // Determines if this View can accept the dragged data
                     if (event.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
-                        v.getBackground().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+                        v.getBackground().setColorFilter(Color.DKGRAY, PorterDuff.Mode.SRC_IN);
                         v.invalidate();
                         return true;
                     }
                     return false;
 
                 case DragEvent.ACTION_DRAG_ENTERED:
-                    v.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+                    v.getBackground().setColorFilter(getResources().getColor(R.color.Gamboge, null), PorterDuff.Mode.SRC_IN);
                     v.invalidate();
                     return true;
 
@@ -235,7 +244,7 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
                     return true;
 
                 case DragEvent.ACTION_DRAG_EXITED:
-                    v.getBackground().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+                    v.getBackground().setColorFilter(Color.DKGRAY, PorterDuff.Mode.SRC_IN);
                     v.invalidate();
                     return true;
 
@@ -268,11 +277,11 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
                 case DragEvent.ACTION_DRAG_ENDED:
                     v.getBackground().clearColorFilter();
                     v.invalidate();
-                    if (event.getResult()) {
-                        Toast.makeText(getContext(), "The drop was handled.", Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(getContext(), "The drop didn't work.", Toast.LENGTH_LONG).show();
-                    }
+//                    if (event.getResult()) {
+//                        Toast.makeText(getContext(), "The drop was handled.", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        Toast.makeText(getContext(), "The drop didn't work.", Toast.LENGTH_SHORT).show();
+//                    }
                     return true;
 
                 default:

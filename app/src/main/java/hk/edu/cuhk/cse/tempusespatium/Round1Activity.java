@@ -259,6 +259,32 @@ public class Round1Activity extends AppCompatActivity {
 //        countDown(anagramFragment0, anagramFragment1, 10000);
     }
 
+    String getArticleRelevancePuzzle(int i) {
+        Random random = new Random();
+        String selectedArt = mArtsSupportList.get(random.nextInt(mArtsSupportList.size() / 5)); //mArtsSupportList.length
+        String selectedUrl = mArts.remove(selectedArt);
+        mArtsSupportList.remove(selectedArt);
+
+//        switch (i) {
+//            case 0:
+//                String selectedArt = mArtsSupportList.get(random.nextInt(mArtsSupportList.size() / 5)); //mArtsSupportList.length
+//                String selectedUrl = mArts.remove(selectedArt);
+//                mArtsSupportList.remove(selectedArt);
+//                break;
+//            case 1:
+//                String selectedArtAlt1 = mArtsSupportListAlt1.get(random.nextInt(mArtsSupportListAlt1.size() / 5)); //mArtsSupportList.length
+//                String selectedUrlAlt1 = mArtsAlt1.remove(selectedArtAlt1);
+//                mArtsSupportListAlt1.remove(selectedArtAlt1);
+//                break;
+//            case 2:
+//                String selectedArtAlt2 = mArtsSupportListAlt2.get(random.nextInt(mArtsSupportListAlt2.size() / 5)); //mArtsSupportList.length
+//                String selectedUrlAlt2 = mArtsAlt2.remove(selectedArtAlt2);
+//                mArtsSupportListAlt2.remove(selectedArtAlt2)
+//                break;
+//        }
+        return selectedUrl;
+    }
+
     public void generateRelevancePuzzle() {
         if (mArtsSupportList.size() == 0) {
             return;
@@ -267,19 +293,6 @@ public class Round1Activity extends AppCompatActivity {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                Random random = new Random();
-                String selectedArt = mArtsSupportList.get(random.nextInt(mArtsSupportList.size() / 5)); //mArtsSupportList.length
-                String selectedUrl = mArts.remove(selectedArt);
-                mArtsSupportList.remove(selectedArt);
-
-//                String selectedArtAlt1 = mArtsSupportListAlt1.get(random.nextInt(mArtsSupportListAlt1.size() / 5)); //mArtsSupportList.length
-//                String selectedUrlAlt1 = mArtsAlt1.remove(selectedArtAlt1);
-//                mArtsSupportListAlt1.remove(selectedArtAlt1);
-//
-//                String selectedArtAlt2 = mArtsSupportListAlt2.get(random.nextInt(mArtsSupportListAlt2.size() / 5)); //mArtsSupportList.length
-//                String selectedUrlAlt2 = mArtsAlt2.remove(selectedArtAlt2);
-//                mArtsSupportListAlt2.remove(selectedArtAlt2);
-
                 List<Map<String, Integer>> bagOfWords = new ArrayList<>(3);
 
                 for (int i = 0; i < 3; i++) {
@@ -287,7 +300,7 @@ public class Round1Activity extends AppCompatActivity {
 
                     OkHttpClient mClient = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url(selectedUrl)
+                            .url(getArticleRelevancePuzzle(i))
                             .build();
 
                     Response response;

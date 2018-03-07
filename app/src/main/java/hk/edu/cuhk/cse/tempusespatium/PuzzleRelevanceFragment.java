@@ -84,14 +84,12 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
         String catArray[] = mRelevance.keySet().toArray(new String[mRelevance.size()]);
         for (int i = 0; i < textViews.length; i++) {
             if (catArray[i].length() > 20) {
-                textViews[i].setText(catArray[i].substring(0, 15)+"\n"+catArray[i].substring(16));
+                textViews[i].setText(catArray[i].substring(0, 15) + "\n" + catArray[i].substring(16));
             } else {
                 textViews[i].setText(catArray[i]);
             }
         }
 
-// Creates a new ImageView
-//        ImageView imageView = new ImageView(getContext());
         final BootstrapLabel[] labelViews = {
                 (BootstrapLabel) view.findViewById(R.id.gum0),
                 (BootstrapLabel) view.findViewById(R.id.gum1),
@@ -105,9 +103,6 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
         List<String> merged = Lists.newArrayList(Iterables.concat(mRelevance.values()));
 
         for (int i = 0; i < labelViews.length; i++) {
-// Sets the bitmap for the ImageView from an icon bit map (defined elsewhere)
-//        imageView.setImageBitmap(mIconBitmap);
-
             labelViews[i].setText(merged.get(i));
             labelViews[i].setTag(TAGS[i]);
 
@@ -155,63 +150,93 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
 
     @Override
     public int[] revealAnswer() {
-        return new int[0];
+        /* Do it here because drag listener only receives the MIME*/
+        int correctNum = 7;
+        BootstrapLabel[] labelViews = {
+                (BootstrapLabel) getView().findViewById(R.id.gum0),
+                (BootstrapLabel) getView().findViewById(R.id.gum1),
+                (BootstrapLabel) getView().findViewById(R.id.gum2),
+                (BootstrapLabel) getView().findViewById(R.id.gum3),
+                (BootstrapLabel) getView().findViewById(R.id.gum4),
+                (BootstrapLabel) getView().findViewById(R.id.gum5),
+                (BootstrapLabel) getView().findViewById(R.id.gum6)
+        };
+        if (labelViews[0].getParent() != getView().findViewById(R.id.box0)) {   //TODO: Change placeholder to map value
+            correctNum--;
+            labelViews[0].setBackgroundColor(getResources().getColor(R.color.Fraternity, null));
+        }
+        if (mFirst) {
+            return new int[]{correctNum - 4, 0};
+        } else {
+            return new int[]{0, correctNum - 4};
+        }
     }
 
     @Override
     public void disableControls() {
-
-    }
-
-
-    /* It creates a drag shadow for dragging a TextView as a small gray rectangle. */
-    private static class MyDragShadowBuilder extends View.DragShadowBuilder {
-        // The drag shadow image, defined as a drawable thing
-        private static Drawable shadow;
-
-        // Defines the constructor for myDragShadowBuilder
-        public MyDragShadowBuilder(View v) {
-            // Stores the View parameter passed to myDragShadowBuilder.
-            super(v);
-
-            // Creates a draggable image that will fill the Canvas provided by the system.
-            shadow = new ColorDrawable(Color.LTGRAY);
-        }
-
-        // Defines a callback that sends the drag shadow dimensions and touch point back to the
-        // system.
-        @Override
-        public void onProvideShadowMetrics(Point size, Point touch) {
-            // Defines local variables
-            int width, height;
-
-            // Sets the width of the shadow to half the width of the original View
-            width = getView().getWidth() / 2;
-
-            // Sets the height of the shadow to half the height of the original View
-            height = getView().getHeight() / 2;
-
-            // The drag shadow is a ColorDrawable. This sets its dimensions to be the same as the
-            // Canvas that the system will provide. As a result, the drag shadow will fill the
-            // Canvas.
-            shadow.setBounds(0, 0, width, height);
-
-            // Sets the size parameter's width and height values. These get back to the system
-            // through the size parameter.
-            size.set(width, height);
-
-            // Sets the touch point's position to be in the middle of the drag shadow
-            touch.set(width / 2, height / 2);
-        }
-
-        // Defines a callback that draws the drag shadow in a Canvas that the system constructs
-        // from the dimensions passed in onProvideShadowMetrics().
-        @Override
-        public void onDrawShadow(Canvas canvas) {
-            // Draws the ColorDrawable in the Canvas passed in from the system.
-            shadow.draw(canvas);
+        BootstrapLabel[] labelViews = {
+                (BootstrapLabel) getView().findViewById(R.id.gum0),
+                (BootstrapLabel) getView().findViewById(R.id.gum1),
+                (BootstrapLabel) getView().findViewById(R.id.gum2),
+                (BootstrapLabel) getView().findViewById(R.id.gum3),
+                (BootstrapLabel) getView().findViewById(R.id.gum4),
+                (BootstrapLabel) getView().findViewById(R.id.gum5),
+                (BootstrapLabel) getView().findViewById(R.id.gum6)
+        };
+        for (BootstrapLabel label : labelViews) {
+            label.setOnLongClickListener(null);
         }
     }
+
+
+//    /* It creates a drag shadow for dragging a TextView as a small gray rectangle. */
+//    private static class MyDragShadowBuilder extends View.DragShadowBuilder {
+//        // The drag shadow image, defined as a drawable thing
+//        private static Drawable shadow;
+//
+//        // Defines the constructor for myDragShadowBuilder
+//        public MyDragShadowBuilder(View v) {
+//            // Stores the View parameter passed to myDragShadowBuilder.
+//            super(v);
+//
+//            // Creates a draggable image that will fill the Canvas provided by the system.
+//            shadow = new ColorDrawable(Color.LTGRAY);
+//        }
+//
+//        // Defines a callback that sends the drag shadow dimensions and touch point back to the
+//        // system.
+//        @Override
+//        public void onProvideShadowMetrics(Point size, Point touch) {
+//            // Defines local variables
+//            int width, height;
+//
+//            // Sets the width of the shadow to half the width of the original View
+//            width = getView().getWidth() / 2;
+//
+//            // Sets the height of the shadow to half the height of the original View
+//            height = getView().getHeight() / 2;
+//
+//            // The drag shadow is a ColorDrawable. This sets its dimensions to be the same as the
+//            // Canvas that the system will provide. As a result, the drag shadow will fill the
+//            // Canvas.
+//            shadow.setBounds(0, 0, width, height);
+//
+//            // Sets the size parameter's width and height values. These get back to the system
+//            // through the size parameter.
+//            size.set(width, height);
+//
+//            // Sets the touch point's position to be in the middle of the drag shadow
+//            touch.set(width / 2, height / 2);
+//        }
+//
+//        // Defines a callback that draws the drag shadow in a Canvas that the system constructs
+//        // from the dimensions passed in onProvideShadowMetrics().
+//        @Override
+//        public void onDrawShadow(Canvas canvas) {
+//            // Draws the ColorDrawable in the Canvas passed in from the system.
+//            shadow.draw(canvas);
+//        }
+//    }
 
     /* */
     private class myDragEventListener implements View.OnDragListener {

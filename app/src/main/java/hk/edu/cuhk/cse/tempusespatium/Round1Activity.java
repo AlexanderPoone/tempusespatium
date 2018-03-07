@@ -406,14 +406,9 @@ public class Round1Activity extends AppCompatActivity {
             }
         });
         thread.start();
-        try
-
-        {
+        try {
             thread.join();
-        } catch (
-                InterruptedException e)
-
-        {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
 

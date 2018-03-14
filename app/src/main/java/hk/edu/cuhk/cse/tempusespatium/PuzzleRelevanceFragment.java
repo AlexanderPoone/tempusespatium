@@ -88,8 +88,24 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
         };
         String catArray[] = mRelevance.keySet().toArray(new String[mRelevance.size()]);
         for (int i = 0; i < textViews.length; i++) {
-            if (catArray[i].length() > 20) {
-                textViews[i].setText(catArray[i].substring(0, 15) + "\n" + catArray[i].substring(16));
+            StringBuilder stringBuilder=new StringBuilder();
+            if (catArray[i].length() > 30) {
+                stringBuilder.append(catArray[i].substring(0, 15));
+                if (catArray[i].charAt(15) != ' ' && catArray[i].charAt(16) != ' ') stringBuilder.append('-');
+                stringBuilder.append('\n');
+                stringBuilder.append(catArray[i].substring(16, 30));
+                if (catArray[i].charAt(30) != ' ' && catArray[i].charAt(31) != ' ') stringBuilder.append('-');
+                stringBuilder.append('\n');
+                stringBuilder.append(catArray[i].substring(31));
+
+                textViews[i].setText(stringBuilder.toString());
+            } else if (catArray[i].length() > 15) {
+                stringBuilder.append(catArray[i].substring(0, 15));
+                if (catArray[i].charAt(15) != ' ' && catArray[i].charAt(16) != ' ') stringBuilder.append('-');
+                stringBuilder.append('\n');
+                stringBuilder.append(catArray[i].substring(16));
+
+                textViews[i].setText(stringBuilder.toString());
             } else {
                 textViews[i].setText(catArray[i]);
             }

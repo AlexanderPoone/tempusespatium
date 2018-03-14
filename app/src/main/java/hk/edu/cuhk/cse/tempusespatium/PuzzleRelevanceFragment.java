@@ -2,6 +2,7 @@ package hk.edu.cuhk.cse.tempusespatium;
 
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -24,6 +25,10 @@ import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapBadge;
 import com.beardedhen.androidbootstrap.BootstrapLabel;
+import com.beardedhen.androidbootstrap.BootstrapText;
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
+import com.beardedhen.androidbootstrap.font.FontAwesome;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -161,14 +166,27 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
                 (BootstrapLabel) getView().findViewById(R.id.gum5),
                 (BootstrapLabel) getView().findViewById(R.id.gum6)
         };
-        if (labelViews[0].getParent() != getView().findViewById(R.id.box0)) {   //TODO: Change placeholder to map value
-            correctNum--;
-            labelViews[0].setBackgroundColor(getResources().getColor(R.color.Fraternity, null));
+        int[] test = {
+                R.id.box0, R.id.box0, R.id.box0, R.id.box1, R.id.box1, R.id.box2, R.id.box2
+        };
+        for (int i = 0; i < labelViews.length; i++) {
+            BootstrapText.Builder builder=new BootstrapText.Builder(getContext());
+            if (labelViews[i].getParent() != getView().findViewById(test[i])) {   //TODO: Change placeholder to map value
+                correctNum--;
+                labelViews[i].setBootstrapBrand(DefaultBootstrapBrand.DANGER);
+                builder.addFontAwesomeIcon(FontAwesome.FA_CERTIFICATE);
+            }
+            else {
+                labelViews[i].setBootstrapBrand(DefaultBootstrapBrand.SUCCESS);
+                builder.addFontAwesomeIcon(FontAwesome.FA_CHECK);
+            }
+            builder.addText(" "+labelViews[i].getText());
+            labelViews[i].setBootstrapText(builder.build());
         }
         if (mFirst) {
-            return new int[]{correctNum - 4, 0};
+            return new int[]{(int) (correctNum - 3.5) * 2, 0};
         } else {
-            return new int[]{0, correctNum - 4};
+            return new int[]{0, (int) (correctNum - 3.5) * 2};
         }
     }
 

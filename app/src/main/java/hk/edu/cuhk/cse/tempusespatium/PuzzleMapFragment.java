@@ -195,11 +195,14 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
                 if (country.equals("Macedonia (FYROM)")) country = "FYROM";
                 //
                 TextView debugUserSelects = (TextView) getView().findViewById(R.id.debug_user_selects);
-                debugUserSelects.setText(String.format("You chose:\n%s", country));
+                debugUserSelects.setText(String.format("Answer: %s\nYou chose:\n%s", mCountry, country));
                 Log.i("Country", country);
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        } else {
+            TextView debugUserSelects = (TextView) getView().findViewById(R.id.debug_user_selects);
+            debugUserSelects.setText(String.format("Answer:\n%s", mCountry));
         }
 
 

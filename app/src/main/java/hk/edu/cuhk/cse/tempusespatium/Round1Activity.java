@@ -215,20 +215,18 @@ public class Round1Activity extends AppCompatActivity {
             case 0:
                 generateRelevancePuzzle();
                 break;
-            default:
-                generateRelevancePuzzle();
-//            case 1:
-//                generateFlagsPuzzle();
-//                break;
-//            case 2:
-//                generateMapPuzzle();
-//                break;
-//            case 3:
-//                generateDatePuzzle();
-//                break;
-//            case 4:
-//                generateBlanksPuzzle();
-//                break;
+            case 1:
+                generateFlagsPuzzle();
+                break;
+            case 2:
+                generateMapPuzzle();
+                break;
+            case 3:
+                generateDatePuzzle();
+                break;
+            case 4:
+                generateBlanksPuzzle();
+                break;
         }
         mScoreChangeText.setText("");
         mScoreChangeText2.setText("");
@@ -351,7 +349,6 @@ public class Round1Activity extends AppCompatActivity {
                             String stem = null;
                             switch (mQuestionLang) {
                                 case "en":
-                                    Log.d("word", matcher.group());
                                     EnglishStemmer englishStemmer = new EnglishStemmer();
                                     englishStemmer.setCurrent(matcher.group());
                                     if (englishStemmer.stem()) {
@@ -387,16 +384,35 @@ public class Round1Activity extends AppCompatActivity {
                     }
                     sortByValue(tmp);
                     bagOfWords.add(sortByValue(tmp));
-                    Log.d("debug", bagOfWords.get(0).toString());
+                    Log.d("debug", bagOfWords.get(i).toString());
                 }
 
                 final Map<String, List<String>> relevance = new HashMap<>(mCurrentTopic.size()); // {'cat1': ['', '', '']}, 'cat2': ['', ''], 'cat3', ['', '']}
+                List<String> check = new ArrayList<>(); //for checking collision
                 for (int i = 0; i < mCurrentTopic.size(); i++) {
+                    /* Checking collision code */
                     List<String> tmp = new ArrayList<>();
+                    String tmpStr;
                     Iterator<String> it = bagOfWords.get(i).keySet().iterator();
-                    tmp.add(it.next());
-                    tmp.add(it.next());
-                    if (i == 0) tmp.add(it.next());
+                    do {
+                        tmpStr = it.next();
+                    } while (check.contains(tmpStr));
+                    tmp.add(tmpStr);
+                    check.add(tmpStr);
+
+                    do {
+                        tmpStr = it.next();
+                    } while (check.contains(tmpStr));
+                    tmp.add(tmpStr);
+                    check.add(tmpStr);
+
+                    if (i == 0) {
+                        do {
+                            tmpStr = it.next();
+                        } while (check.contains(tmpStr));
+                        tmp.add(tmpStr);
+                        check.add(tmpStr);
+                    }
                     relevance.put(mCurrentTopic.get(i), tmp);
                 }
 
@@ -414,6 +430,8 @@ public class Round1Activity extends AppCompatActivity {
                         transaction1.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
                         transaction1.replace(R.id.player2FragmentContainer, relevanceFragment1, "player2");
                         int commit1 = transaction1.commit();
+
+                        countDown(relevanceFragment0, relevanceFragment1, 10000);
                     }
                 });
             }

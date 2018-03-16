@@ -172,6 +172,7 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
     @Override
     public int[] revealAnswer() {
         /* Do it here because drag listener only receives the MIME*/
+        disableControls();
         int correctNum = 7;
         BootstrapLabel[] labelViews = {
                 (BootstrapLabel) getView().findViewById(R.id.gum0),
@@ -187,7 +188,7 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
         };
         for (int i = 0; i < labelViews.length; i++) {
             BootstrapText.Builder builder=new BootstrapText.Builder(getContext());
-            if (labelViews[i].getParent() != getView().findViewById(test[i])) {   //TODO: Change placeholder to map value
+            if (labelViews[i].getParent() != getView().findViewById(test[i])) {   //Change placeholder to map value
                 correctNum--;
                 labelViews[i].setBootstrapBrand(DefaultBootstrapBrand.DANGER);
                 builder.addFontAwesomeIcon(FontAwesome.FA_CERTIFICATE);

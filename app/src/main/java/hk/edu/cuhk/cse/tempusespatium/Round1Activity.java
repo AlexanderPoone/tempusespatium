@@ -1,7 +1,9 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -63,6 +65,10 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+import static hk.edu.cuhk.cse.tempusespatium.Constants.DIFFICULTY_HARD;
+import static hk.edu.cuhk.cse.tempusespatium.Constants.ROUND_1_END_THRESHOLD;
+import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_DIFFICULTY;
+import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_NAME;
 import static hk.edu.cuhk.cse.tempusespatium.StopWords.STOP_WORDS;
 
 //import android.os.CountDownTimer;
@@ -73,7 +79,8 @@ import static hk.edu.cuhk.cse.tempusespatium.StopWords.STOP_WORDS;
 
 public class Round1Activity extends AppCompatActivity {
 
-    int mScore, mScore2, mLastQuestionType;
+    private SharedPreferences mSharedPref;
+    int mDifficulty, mScore, mScore2, mLastQuestionType;
 
     DonutProgress mDonutTime;
     DonutProgress mDonutTime2;
@@ -95,6 +102,8 @@ public class Round1Activity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mSharedPref = getSharedPreferences(SHAREDPREFS_NAME, Context.MODE_PRIVATE);
+        mDifficulty = mSharedPref.getInt(SHAREDPREFS_DIFFICULTY, DIFFICULTY_HARD);
         setContentView(R.layout.game_exterior);
         Intent intent = getIntent();
         mQuestionLang = intent.getStringExtra("lang");
@@ -127,6 +136,17 @@ public class Round1Activity extends AppCompatActivity {
 
         mScoreText.setText(getResources().getString(R.string.bar_points, 0));
         mScoreText2.setText(getResources().getString(R.string.bar_points, 0));
+
+        BootstrapButton testInstantWin = (BootstrapButton) findViewById(R.id.testInstantWin);
+        testInstantWin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                pauseGame();
+//                endGame(1);
+                mScore2 = 0;
+                addOrDeductPoints(false, ROUND_1_END_THRESHOLD + 20);
+            }
+        });
 
         randomPuzzle();
     }
@@ -200,6 +220,42 @@ public class Round1Activity extends AppCompatActivity {
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
                 View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
+    }
+
+    private boolean checkEndGameCondition() {
+        if (((mScore >= ROUND_1_END_THRESHOLD) || (mScore2 >= ROUND_1_END_THRESHOLD)) &&
+                (mScore != mScore2)) {
+            int winner;
+            if (mScore > mScore2) {
+                winner = 0;
+            } else {
+                winner = 1;
+            }
+            endGame(winner);
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void endGame(int winner) {
+        EndGameFragment endGameFragment0, endGameFragment1;
+        if (winner == 0) {
+            endGameFragment0 = new EndGameFragment(true);
+            endGameFragment1 = new EndGameFragment(false);
+        } else {
+            endGameFragment0 = new EndGameFragment(false);
+            endGameFragment1 = new EndGameFragment(true);
+        }
+        FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
+        transaction0.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
+        transaction0.replace(R.id.player1FragmentContainer, endGameFragment0, "player1");
+        int commit = transaction0.commit();
+        FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+        transaction1.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
+        transaction1.replace(R.id.player2FragmentContainer, endGameFragment1, "player2");
+        int commit1 = transaction1.commit();
     }
 
     public void randomPuzzle() {
@@ -294,7 +350,7 @@ public class Round1Activity extends AppCompatActivity {
                 List<Map<String, Integer>> bagOfWords = new ArrayList<>(3);
 
                 for (int i = 0; i < 3; i++) {
-                    TreeMap<String, Integer> tmp = new TreeMap<>();
+                    TreeMap<String, Integer> tmp = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
                     OkHttpClient mClient = new OkHttpClient();
                     Request request = new Request.Builder()
@@ -431,7 +487,9 @@ public class Round1Activity extends AppCompatActivity {
                         transaction1.replace(R.id.player2FragmentContainer, relevanceFragment1, "player2");
                         int commit1 = transaction1.commit();
 
-                        countDown(relevanceFragment0, relevanceFragment1, 10000);
+                        int timeout = 10000;
+                        if (mDifficulty == DIFFICULTY_HARD) timeout *= 1.5f;
+                        countDown(relevanceFragment0, relevanceFragment1, timeout);
                     }
                 });
             }
@@ -482,7 +540,9 @@ public class Round1Activity extends AppCompatActivity {
         sqLiteAssetHelper.close();
         sqLiteDatabase.close();
 
-        countDown(dateFragment0, dateFragment1, 10000);
+        int timeout = 10000;
+        if (mDifficulty == DIFFICULTY_HARD) timeout *= 1.5f;
+        countDown(dateFragment0, dateFragment1, timeout);
     }
 
     public void generateFlagsPuzzle() {
@@ -583,7 +643,9 @@ public class Round1Activity extends AppCompatActivity {
             switchAnim();
         }
 
-        countDown(flagFragment0, flagFragment1, 5000);
+        int timeout = 4000;
+        if (mDifficulty == DIFFICULTY_HARD) timeout *= 1.5f;
+        countDown(flagFragment0, flagFragment1, timeout);
     }
 
     public void switchAnim() {
@@ -639,7 +701,9 @@ public class Round1Activity extends AppCompatActivity {
         // Commit the transaction
         int commit1 = transaction1.commit();
 
-        countDown(mapFragment0, mapFragment1, 12000);
+        int timeout = 12000;
+        if (mDifficulty == DIFFICULTY_HARD) timeout *= 1.5f;
+        countDown(mapFragment0, mapFragment1, timeout);
     }
 
     public void generateBlanksPuzzle() {
@@ -667,7 +731,9 @@ public class Round1Activity extends AppCompatActivity {
         transaction1.replace(R.id.player2FragmentContainer, blanksFragment1, "player2");
         int commit1 = transaction1.commit();
 
-        countDown(blanksFragment0, blanksFragment1, 12000);
+        int timeout = 12000;
+        if (mDifficulty == DIFFICULTY_HARD) timeout *= 1.5f;
+        countDown(blanksFragment0, blanksFragment1, timeout);
     }
 
     public void countDown(final PuzzleFragmentInterface f1, final PuzzleFragmentInterface f2, final int millis) {
@@ -705,7 +771,9 @@ public class Round1Activity extends AppCompatActivity {
     public void addOrDeductPoints(boolean isFirst, int points) {
         if (isFirst) {
             mScore += points;
-            if (mScore >= 0) {
+            if (mScore >= ROUND_1_END_THRESHOLD) {
+                mScoreBar.setProgress(ROUND_1_END_THRESHOLD);
+            } else if (mScore >= 0) {
                 mScoreBar.setProgress(mScore);
             } else {
                 mScoreBar.setProgress(0);
@@ -720,7 +788,9 @@ public class Round1Activity extends AppCompatActivity {
             }
         } else {
             mScore2 += points;
-            if (mScore2 >= 0) {
+            if (mScore2 >= ROUND_1_END_THRESHOLD) {
+                mScoreBar2.setProgress(ROUND_1_END_THRESHOLD);
+            } else if (mScore2 >= 0) {
                 mScoreBar2.setProgress(mScore2);
             } else {
                 mScoreBar2.setProgress(0);
@@ -780,6 +850,7 @@ public class Round1Activity extends AppCompatActivity {
 
             mHandler.postDelayed(new Runnable() {
                 public void run() {
+                    if (checkEndGameCondition()) return;
                     randomPuzzle();
                 }
             }, delay);

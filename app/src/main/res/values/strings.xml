@@ -12,8 +12,8 @@
     <string name="topic_searcher_heading">Search for ANY topic</string>
     <string name="loading">Loading, please wait…</string>
 
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!--<string name="dummy_button">Dummy Button</string>-->
+    <!--<string name="dummy_content">DUMMY\nCONTENT</string>-->
 
     <string name="level">Level %d</string>
     <string name="rules_tirade">
@@ -24,7 +24,11 @@
     <string name="pref_general">General</string>
     <string name="pref_general_locale">Locale</string>
     <string name="pref_version">Version</string>
+
+    <string name="pref_gameplay">Gameplay</string>
     <string name="pref_difficulty">Difficulty</string>
+    <string name="pref_difficulty_hard">Hard</string>
+    <string name="pref_difficulty_insane">InSaNe</string>
 
     <string name="question_anagram">Reassemble the letters.</string>
     <string name="question_anthem">Which country does this anthem belong to?</string>
@@ -41,17 +45,17 @@
 
     <string name="paused">{fa_pause} Game paused</string>
 
-    <string name="reveal_anthem">The anthem is… %s\n%s</string>
-    <string name="anthem_cl">Hymne national du Chili</string>
-    <string name="anthem_de">Unité et droit et liberté</string>
-    <string name="anthem_fr">La Marseillaise</string>
-    <string name="anthem_es">Marche royale</string>
-    <string name="anthem_il">L\'Espoir</string>
-    <string name="anthem_in">Tu es le souverain de toutes les âmes</string>
-    <string name="anthem_jp">Votre règne</string>
-    <string name="anthem_kh">Majestueux Royaume</string>
-    <string name="anthem_pt">La Portugaise</string>
-    <string name="anthem_ua">Ni la gloire ni la liberté de l\'Ukraine ne sont mortes</string>
+    <!--<string name="reveal_anthem">The anthem is… %s\n%s</string>-->
+    <!--<string name="anthem_cl">Hymne national du Chili</string>-->
+    <!--<string name="anthem_de">Unité et droit et liberté</string>-->
+    <!--<string name="anthem_fr">La Marseillaise</string>-->
+    <!--<string name="anthem_es">Marche royale</string>-->
+    <!--<string name="anthem_il">L\'Espoir</string>-->
+    <!--<string name="anthem_in">Tu es le souverain de toutes les âmes</string>-->
+    <!--<string name="anthem_jp">Votre règne</string>-->
+    <!--<string name="anthem_kh">Majestueux Royaume</string>-->
+    <!--<string name="anthem_pt">La Portugaise</string>-->
+    <!--<string name="anthem_ua">Ni la gloire ni la liberté de l\'Ukraine ne sont mortes</string>-->
 
     <string name="simple_ime">Simple IME</string>
     <string name="subtype_en_US">English (US)</string>

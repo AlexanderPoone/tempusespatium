@@ -71,7 +71,7 @@
                     android:layout_margin="9dp"
                     app:animated="true"
                     app:bootstrapBrand="warning"
-                    app:bootstrapMaxProgress="500"
+                    app:bootstrapMaxProgress="360"
                     app:bootstrapProgress="0"
                     app:roundedCorners="true"
                     app:striped="true" />
@@ -163,12 +163,21 @@
                     android:layout_margin="9dp"
                     app:animated="true"
                     app:bootstrapBrand="primary"
-                    app:bootstrapMaxProgress="500"
+                    app:bootstrapMaxProgress="360"
                     app:bootstrapProgress="0"
                     app:roundedCorners="true"
                     app:striped="true" />
                 <!--android:layout_margin="20dp"-->
             </FrameLayout>
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/testInstantWin"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="warning"
+                app:bootstrapSize="sm"
+                app:bootstrapText="Win"
+                app:roundedCorners="true" />
 
             <TextView
                 android:id="@+id/addDeduct2"

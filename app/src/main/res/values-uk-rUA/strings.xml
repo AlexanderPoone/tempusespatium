@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Темпус Е Спатіум</string>
+
+    <string name="play">{fa_gamepad} ГРАТИ!</string>
+    <string name="rules">{fa_leanpub} Правила</string>
+    <string name="settings">{fa_cog} Налаштування</string>
+    <string name="quit">{fa_sign-out} Вийти з гри</string>
+
+
+    <string name="resume">{fa_play-circle} Повернутися до гри</string>
+    <string name="return_main_menu">{fa_sign-out} Повернутися до головного меню</string>
+    <string name="topic_searcher_heading">Search for ANY topic</string>
+    <string name="loading">Loading, please wait…</string>
+</resources>

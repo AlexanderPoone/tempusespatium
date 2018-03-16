@@ -39,6 +39,11 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".PrefsActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/settings"
+            android:theme="@style/FullscreenThemeDark" />
+        <activity
             android:name=".TopicSearcherActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"

@@ -27,12 +27,14 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import java.io.IOException;
 import java.util.Locale;
 
+import static hk.edu.cuhk.cse.tempusespatium.Constants.REQUEST_EXIT;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_LOCALE;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_NAME;
 
@@ -43,6 +45,7 @@ import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_NAME;
 public class MenuActivity extends AppCompatActivity {
 
     private SharedPreferences mSharedPref;
+    private String mIso639_1;
     private static MediaPlayer mMediaPlayer;
     private static SoundPool mSoundPool;
     private SparseIntArray mPoolDict;
@@ -132,29 +135,29 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
-    public enum Anthems {
-        CAMBODIA(R.string.anthem_kh, "https://upload.wikimedia.org/wikipedia/commons/a/af/United_States_Navy_Band_-_Nokoreach.ogg"),
-        CHILE(R.string.anthem_cl, "https://upload.wikimedia.org/wikipedia/commons/6/6e/United_States_Navy_Band_-_National_Anthem_of_Chile.ogg"),
-        FRANCE(R.string.anthem_fr, "https://upload.wikimedia.org/wikipedia/commons/3/30/La_Marseillaise.ogg"),
-        GERMANY(R.string.anthem_de, "https://upload.wikimedia.org/wikipedia/commons/a/a6/German_national_anthem_performed_by_the_US_Navy_Band.ogg"),
-        INDIA(R.string.anthem_in, "https://upload.wikimedia.org/wikipedia/commons/9/94/Jana_Gana_Mana_instrumental.ogg"),
-        ISRAEL(R.string.anthem_il, "https://upload.wikimedia.org/wikipedia/commons/2/26/Hatikvah_instrumental.ogg"),
-        JAPAN(R.string.anthem_jp, "https://upload.wikimedia.org/wikipedia/commons/a/a3/Kimi_ga_Yo_instrumental.ogg"),
-        SPAIN(R.string.anthem_es, "https://upload.wikimedia.org/wikipedia/commons/c/c8/Marcha_Real-Royal_March_by_US_Navy_Band.ogg"),
-        PORTUGAL(R.string.anthem_pt, "https://upload.wikimedia.org/wikipedia/commons/5/58/A_Portuguesa.ogg"),
-        UKRAINE(R.string.anthem_ua, "https://upload.wikimedia.org/wikipedia/commons/6/6d/National_anthem_of_Ukraine%2C_instrumental.oga");
-
-        private final int name;
-        final String url;
-
-        Anthems(int name, String url) {
-            this.name = name;
-            this.url = url;
-        }
-    }
+//    public enum Anthems {
+//        CAMBODIA(R.string.anthem_kh, "https://upload.wikimedia.org/wikipedia/commons/a/af/United_States_Navy_Band_-_Nokoreach.ogg"),
+//        CHILE(R.string.anthem_cl, "https://upload.wikimedia.org/wikipedia/commons/6/6e/United_States_Navy_Band_-_National_Anthem_of_Chile.ogg"),
+//        FRANCE(R.string.anthem_fr, "https://upload.wikimedia.org/wikipedia/commons/3/30/La_Marseillaise.ogg"),
+//        GERMANY(R.string.anthem_de, "https://upload.wikimedia.org/wikipedia/commons/a/a6/German_national_anthem_performed_by_the_US_Navy_Band.ogg"),
+//        INDIA(R.string.anthem_in, "https://upload.wikimedia.org/wikipedia/commons/9/94/Jana_Gana_Mana_instrumental.ogg"),
+//        ISRAEL(R.string.anthem_il, "https://upload.wikimedia.org/wikipedia/commons/2/26/Hatikvah_instrumental.ogg"),
+//        JAPAN(R.string.anthem_jp, "https://upload.wikimedia.org/wikipedia/commons/a/a3/Kimi_ga_Yo_instrumental.ogg"),
+//        SPAIN(R.string.anthem_es, "https://upload.wikimedia.org/wikipedia/commons/c/c8/Marcha_Real-Royal_March_by_US_Navy_Band.ogg"),
+//        PORTUGAL(R.string.anthem_pt, "https://upload.wikimedia.org/wikipedia/commons/5/58/A_Portuguesa.ogg"),
+//        UKRAINE(R.string.anthem_ua, "https://upload.wikimedia.org/wikipedia/commons/6/6d/National_anthem_of_Ukraine%2C_instrumental.oga");
+//
+//        private final int name;
+//        final String url;
+//
+//        Anthems(int name, String url) {
+//            this.name = name;
+//            this.url = url;
+//        }
+//    }
 
     private void playSong() {
-//        if (mMediaPlayer == null)
+        if (mMediaPlayer == null)
         {
             mMediaPlayer = new MediaPlayer();
             mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -183,13 +186,16 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
 
         Typeface baker_signet = ResourcesCompat.getFont(this, R.font.baker_signet_bt);
+        Typeface ermis_pro = ResourcesCompat.getFont(this, R.font.ermis_pro_bold);
+
 
         mSharedPref = getSharedPreferences(SHAREDPREFS_NAME, Context.MODE_PRIVATE);
-        Log.i("Test", mSharedPref.getString(SHAREDPREFS_LOCALE, "zh-HK"));
-        setLocale(mSharedPref.getString(SHAREDPREFS_LOCALE, "zh-HK"));
+        mIso639_1 = mSharedPref.getString(SHAREDPREFS_LOCALE, "zh-HK");
+        setLocale(mIso639_1);
+
+        setContentView(R.layout.activity_menu);
 
         playSong();
 
@@ -215,7 +221,6 @@ public class MenuActivity extends AppCompatActivity {
                 finish();
             }
         });
-        playButton.setTypeface(baker_signet, Typeface.BOLD_ITALIC);
 
         final BootstrapButton rulesButton = (BootstrapButton) findViewById(R.id.rulesButton);
         // TODO: May as well be a blue circle at the top right corner.
@@ -230,19 +235,17 @@ public class MenuActivity extends AppCompatActivity {
                 //https://stackoverflow.com/questions/41015691/custom-dialog-like-view
             }
         });
-        rulesButton.setTypeface(baker_signet, Typeface.BOLD);
 
         final BootstrapButton settingsButton = (BootstrapButton) findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
-                Intent refresh = new Intent(getBaseContext(), PrefsFragment.class);
-                startActivity(refresh);
-                finish();
+                Intent refresh = new Intent(getBaseContext(), PrefsActivity.class);
+                startActivityForResult(refresh, REQUEST_EXIT);
+//                finish();
             }
         });
-        settingsButton.setTypeface(baker_signet, Typeface.BOLD);
 
         final BootstrapButton quitButton = (BootstrapButton) findViewById(R.id.quitButton);
         final AlertDialog alertDialog = new AlertDialog.Builder(this)
@@ -267,7 +270,20 @@ public class MenuActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
-        quitButton.setTypeface(baker_signet, Typeface.BOLD);
+        if (mIso639_1.equals("uk")) {
+            TextView fullScreenContent=(TextView) findViewById(R.id.fullscreen_content);
+            fullScreenContent.setTypeface(ermis_pro, Typeface.BOLD);
+            fullScreenContent.setTextSize(39f);
+            playButton.setTypeface(ermis_pro, Typeface.BOLD_ITALIC);
+            rulesButton.setTypeface(ermis_pro, Typeface.BOLD);
+            settingsButton.setTypeface(ermis_pro, Typeface.BOLD);
+            quitButton.setTypeface(ermis_pro, Typeface.BOLD);
+        } else {
+            playButton.setTypeface(baker_signet, Typeface.BOLD_ITALIC);
+            rulesButton.setTypeface(baker_signet, Typeface.BOLD);
+            settingsButton.setTypeface(baker_signet, Typeface.BOLD);
+            quitButton.setTypeface(baker_signet, Typeface.BOLD);
+        }
 
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
@@ -306,6 +322,14 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
         animator.start();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if ((requestCode == REQUEST_EXIT) && (resultCode == RESULT_OK)) {
+            this.finish();
+        }
     }
 
     @Override

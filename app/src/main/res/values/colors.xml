@@ -164,6 +164,7 @@
     <color name="Liberty">#0055A4</color>
     <color name="Magnolia">#F8F4FF</color>
     <color name="Mauve">#E0B0FF</color>
+    <color name="MidAubergine">#2C001E</color>
     <color name="PlaceholderPlatinum">#ECEBE9</color>
     <color name="Platinum">#E5E4E2</color>
     <color name="PortlandOrange">#FF5A36</color>
@@ -280,6 +281,7 @@
         <item>@color/MediumSpringGreen</item>
         <item>@color/MediumTurquoise</item>
         <item>@color/MediumVioletRed</item>
+        <item>@color/MidAubergine</item>
         <item>@color/MidnightBlue</item>
         <item>@color/MintCream</item>
         <item>@color/MistyRose</item>

@@ -1,5 +1,6 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
+import static android.app.Activity.RESULT_OK;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_LOCALE;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_LOCALE_SET;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_NAME;
@@ -133,7 +135,7 @@ public class PDFC extends PreferenceDialogFragmentCompat {
                             locale = "ja";
                             break;
                         case 7:
-                            locale = "uK";
+                            locale = "uk";
                             break;
                         default:
                             locale = "zh-HK";
@@ -144,6 +146,7 @@ public class PDFC extends PreferenceDialogFragmentCompat {
                     editor.apply();
 
                     Intent intent = new Intent(getActivity(), MenuActivity.class);
+                    getActivity().setResult(Activity.RESULT_OK, null);
                     getActivity().finish();
                     startActivity(intent);
                 }

@@ -31,6 +31,10 @@ public class DBAssetHelper extends SQLiteAssetHelper {
             COLUMN_LNG = "lng",
             COLUMN_PIC_URL = "picUrl";
 
+    static final String TABLE_HIGHSCORES = "highscores",
+            COLUMN_PLAYER = "player",
+            COLUMN_SCORE = "score";
+
     public DBAssetHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

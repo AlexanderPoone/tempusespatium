@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.bumptech.glide.Glide;
 import com.shawnlin.numberpicker.NumberPicker;
-import com.squareup.picasso.Picasso;
 
 /**
  * Created by Alex Poon on 1/16/2018.
@@ -57,7 +57,8 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
         TextView textView = (TextView) view.findViewById(R.id.questionHistory);
         textView.setText(getString(R.string.question_history, mHistoricEvent));
         ImageView imageView = (ImageView) view.findViewById(R.id.questionHistoryPic);
-        Picasso.with(getContext()).load(mPicUrl).into(imageView);
+        Glide.with(this).load(mPicUrl).into(imageView);
+//        Picasso.with(getContext()).load(mPicUrl).into(imageView);
 
         mYearPicker = (NumberPicker) view.findViewById(R.id.year);
         mYearPicker.setMinValue(mRandMinYear);

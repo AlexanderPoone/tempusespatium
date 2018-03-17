@@ -17,10 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    configurations.all {
-//        Resolve conflict between Java FusionTables Driver and everything else.
-        resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
-    }
+//    configurations.all {
+////        Resolve conflict between Java FusionTables Driver and everything else.
+//        resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+//    }
 }
 
 dependencies {
@@ -35,16 +35,17 @@ dependencies {
     compile 'com.android.support:design:27.1.0'
     compile 'com.beardedhen:androidbootstrap:2.3.2'
     compile 'com.shawnlin:number-picker:2.4.4'
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.github.bumptech.glide:glide:4.6.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
     compile 'com.google.android.gms:play-services-maps:11.8.0'
     compile 'com.google.android.gms:play-services-ads:11.8.0'
     compile 'com.github.lzyzsd:circleprogress:1.2.1'
     compile 'com.android.volley:volley:1.0.0'
-    compile 'com.google.apis:google-api-services-fusiontables:v2-rev21-1.23.0'
+    compile 'com.google.guava:guava:24.1-android'
+//    compile 'com.google.apis:google-api-services-fusiontables:v2-rev21-1.23.0'
     compile 'com.google.maps.android:android-maps-utils:0.5'
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'
     compile 'com.squareup.okhttp3:okhttp:3.9.0'
     compile 'com.android.support.constraint:constraint-layout:1.1.0-beta5'
-    compile 'com.airbnb.android:lottie:2.5.1'
     testCompile 'junit:junit:4.12'
 }

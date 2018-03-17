@@ -18,7 +18,6 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
-import static android.app.Activity.RESULT_OK;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_LOCALE;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_LOCALE_SET;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_NAME;

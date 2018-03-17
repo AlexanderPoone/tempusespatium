@@ -4,6 +4,7 @@
     <string name="play">{fa_gamepad} PLAY!</string>
     <string name="rules">{fa_leanpub} Rules</string>
     <string name="settings">{fa_cog} Settings</string>
+    <string name="highscores">{fa_trophy} Highscores</string>
     <string name="quit">{fa_sign-out} Quit game</string>
 
 
@@ -11,6 +12,8 @@
     <string name="return_main_menu">{fa_sign-out} Return to main menu</string>
     <string name="topic_searcher_heading">Search for ANY topic</string>
     <string name="loading">Loading, please wait…</string>
+
+    <string name="highscores_enter_name">{md_sentiment_very_satisfied} Congrats, you won!\nEnter your name:</string>
 
     <!--<string name="dummy_button">Dummy Button</string>-->
     <!--<string name="dummy_content">DUMMY\nCONTENT</string>-->

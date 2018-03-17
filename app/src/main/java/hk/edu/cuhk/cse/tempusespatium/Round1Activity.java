@@ -43,16 +43,11 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 import java.util.Random;
-import java.util.SortedSet;
-import java.util.StringTokenizer;
 import java.util.TreeMap;
-import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -242,11 +237,11 @@ public class Round1Activity extends AppCompatActivity {
     private void endGame(int winner) {
         EndGameFragment endGameFragment0, endGameFragment1;
         if (winner == 0) {
-            endGameFragment0 = new EndGameFragment(true);
-            endGameFragment1 = new EndGameFragment(false);
+            endGameFragment0 = new EndGameFragment(true, true);
+            endGameFragment1 = new EndGameFragment(false, false);
         } else {
-            endGameFragment0 = new EndGameFragment(false);
-            endGameFragment1 = new EndGameFragment(true);
+            endGameFragment0 = new EndGameFragment(true, false);
+            endGameFragment1 = new EndGameFragment(false, true);
         }
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         transaction0.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);

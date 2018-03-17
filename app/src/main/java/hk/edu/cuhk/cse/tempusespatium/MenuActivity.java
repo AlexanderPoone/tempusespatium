@@ -20,7 +20,6 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.MotionEvent;
 import android.view.View;
@@ -30,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -236,6 +236,19 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        final BootstrapButton highscoresButton = (BootstrapButton) findViewById(R.id.highscoresButton);
+        highscoresButton.setBootstrapBrand(new Rattan());
+        highscoresButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
+                HighscoresDialog highscoresDialog = new HighscoresDialog(MenuActivity.this);
+                highscoresDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                highscoresDialog.show();
+
+            }
+        });
+
         final BootstrapButton settingsButton = (BootstrapButton) findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -277,11 +290,13 @@ public class MenuActivity extends AppCompatActivity {
             playButton.setTypeface(ermis_pro, Typeface.BOLD_ITALIC);
             rulesButton.setTypeface(ermis_pro, Typeface.BOLD);
             settingsButton.setTypeface(ermis_pro, Typeface.BOLD);
+            highscoresButton.setTypeface(ermis_pro, Typeface.BOLD);
             quitButton.setTypeface(ermis_pro, Typeface.BOLD);
         } else {
             playButton.setTypeface(baker_signet, Typeface.BOLD_ITALIC);
             rulesButton.setTypeface(baker_signet, Typeface.BOLD);
             settingsButton.setTypeface(baker_signet, Typeface.BOLD);
+            highscoresButton.setTypeface(baker_signet, Typeface.BOLD);
             quitButton.setTypeface(baker_signet, Typeface.BOLD);
         }
 
@@ -415,5 +430,58 @@ public class MenuActivity extends AppCompatActivity {
         super.onDestroy();
         mMediaPlayer.stop();
         mMediaPlayer.release();
+    }
+
+    private static class Rattan implements BootstrapBrand {
+
+        @Override
+        public int defaultFill(Context context) {
+            return context.getResources().getColor(R.color.Gamboge, null);
+        }
+
+        @Override
+        public int defaultEdge(Context context) {
+            return 0;
+        }
+
+        @Override
+        public int defaultTextColor(Context context) {
+            return context.getResources().getColor(android.R.color.white, null);
+        }
+
+        @Override
+        public int activeFill(Context context) {
+            return context.getResources().getColor(R.color.OrangeRed, null);
+        }
+
+        @Override
+        public int activeEdge(Context context) {
+            return 0;
+        }
+
+        @Override
+        public int activeTextColor(Context context) {
+            return context.getResources().getColor(android.R.color.white, null);
+        }
+
+        @Override
+        public int disabledFill(Context context) {
+            return 0;
+        }
+
+        @Override
+        public int disabledEdge(Context context) {
+            return 0;
+        }
+
+        @Override
+        public int disabledTextColor(Context context) {
+            return 0;
+        }
+
+        @Override
+        public int getColor() {
+            return 0;
+        }
     }
 }

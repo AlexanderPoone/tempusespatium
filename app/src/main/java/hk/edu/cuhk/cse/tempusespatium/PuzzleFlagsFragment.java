@@ -11,7 +11,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+//import com.squareup.picasso.Picasso;
 
 /**
  * Created by Alex Poon on 1/16/2018.
@@ -96,10 +97,10 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         mFlagURLs[2] = mFlagURLs[2].replaceAll("\u200B", "");
         mFlagURLs[3] = mFlagURLs[3].replaceAll("\u200B", "");
 
-        Picasso.with(getContext()).load(mFlagURLs[0]).into(flagA);
-        Picasso.with(getContext()).load(mFlagURLs[1]).into(flagB);
-        Picasso.with(getContext()).load(mFlagURLs[2]).into(flagC);
-        Picasso.with(getContext()).load(mFlagURLs[3]).into(flagD);
+        Glide.with(this).load(mFlagURLs[0]).into(flagA);
+        Glide.with(this).load(mFlagURLs[1]).into(flagB);
+        Glide.with(this).load(mFlagURLs[2]).into(flagC);
+        Glide.with(this).load(mFlagURLs[3]).into(flagD);
 
         RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);
         relA.setOnClickListener(new View.OnClickListener() {
@@ -144,7 +145,7 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         disableControls();
 
         ImageView imageView = (ImageView) getView().findViewById(R.id.watermark);
-        Picasso.with(getContext()).load(mCapitalPic).into(imageView);
+        Glide.with(getContext()).load(mCapitalPic).into(imageView);
 
 //        switch (mCorrectCountryIndex) {
 //            case 0:

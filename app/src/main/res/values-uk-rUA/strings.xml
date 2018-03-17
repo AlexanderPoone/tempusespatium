@@ -5,6 +5,7 @@
     <string name="play">{fa_gamepad} ГРАТИ!</string>
     <string name="rules">{fa_leanpub} Правила</string>
     <string name="settings">{fa_cog} Налаштування</string>
+    <string name="highscores">{fa_trophy} Хайскор</string>
     <string name="quit">{fa_sign-out} Вийти з гри</string>
 
 

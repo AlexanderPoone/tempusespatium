@@ -11,10 +11,9 @@ import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceScreen;
 
-import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_DIFFICULTY;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.DIFFICULTY_HARD;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.DIFFICULTY_INSANE;
-import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_LOCALE_SET;
+import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_DIFFICULTY;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_NAME;
 
 /**

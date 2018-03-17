@@ -17,8 +17,8 @@ import com.beardedhen.androidbootstrap.AwesomeTextView;
  * Created by Alex Poon on 1/26/2018.
  */
 
-public class RulesDialog extends Dialog implements View.OnClickListener {
-    public RulesDialog(@NonNull Context context) {
+public class HighscoresDialog extends Dialog implements View.OnClickListener {
+    public HighscoresDialog(@NonNull Context context) {
         super(context);
     }
 
@@ -27,8 +27,8 @@ public class RulesDialog extends Dialog implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.rules_dialog);
-        AwesomeTextView rulesCaption = (AwesomeTextView) findViewById(R.id.rules_caption);
+        setContentView(R.layout.highscores_dialog);
+        AwesomeTextView rulesCaption = (AwesomeTextView) findViewById(R.id.highscores_caption);
         Typeface skylark_irc = ResourcesCompat.getFont(getContext(), R.font.skylark_itc_tt);
         TextView rulesText = (TextView) findViewById(R.id.rules_text);
         rulesCaption.setTypeface(skylark_irc);

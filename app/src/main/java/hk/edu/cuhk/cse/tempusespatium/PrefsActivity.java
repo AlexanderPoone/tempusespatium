@@ -76,4 +76,9 @@ public class PrefsActivity extends AppCompatActivity implements RewardedVideoAdL
     public void onRewardedVideoAdFailedToLoad(int i) {
 
     }
+
+    @Override
+    public void onRewardedVideoCompleted() {
+
+    }
 }

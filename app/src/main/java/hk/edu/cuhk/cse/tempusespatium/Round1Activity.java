@@ -237,11 +237,11 @@ public class Round1Activity extends AppCompatActivity {
     private void endGame(int winner) {
         EndGameFragment endGameFragment0, endGameFragment1;
         if (winner == 0) {
-            endGameFragment0 = new EndGameFragment(true, true);
-            endGameFragment1 = new EndGameFragment(false, false);
+            endGameFragment0 = new EndGameFragment(true, true, mScore);
+            endGameFragment1 = new EndGameFragment(false, false, mScore2);
         } else {
-            endGameFragment0 = new EndGameFragment(true, false);
-            endGameFragment1 = new EndGameFragment(false, true);
+            endGameFragment0 = new EndGameFragment(true, false, mScore);
+            endGameFragment1 = new EndGameFragment(false, true, mScore2);
         }
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         transaction0.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
@@ -714,13 +714,13 @@ public class Round1Activity extends AppCompatActivity {
         String selectedUrl = mArts.remove(selectedArt);
         mArtsSupportList.remove(selectedArt);
 
-        PuzzleBlanksFragment blanksFragment0 = new PuzzleBlanksFragment(true, selectedUrl);
+        PuzzleBlanksFragment blanksFragment0 = new PuzzleBlanksFragment(true, selectedUrl, mQuestionLang);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         transaction0.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction0.replace(R.id.player1FragmentContainer, blanksFragment0, "player1");
         int commit = transaction0.commit();
 
-        PuzzleBlanksFragment blanksFragment1 = new PuzzleBlanksFragment(false, selectedUrl);
+        PuzzleBlanksFragment blanksFragment1 = new PuzzleBlanksFragment(false, selectedUrl, mQuestionLang);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         transaction1.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction1.replace(R.id.player2FragmentContainer, blanksFragment1, "player2");

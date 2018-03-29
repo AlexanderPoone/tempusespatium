@@ -50,6 +50,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
     private WebView mWebView;
     private int mNumOfFields;
     private List<String> mHiddenText;
+    private String mLang;
 
 //    private BlanksChromeClient mBlanksChromeClient;
 
@@ -152,11 +153,12 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
     public PuzzleBlanksFragment() {
     }
 
-    public PuzzleBlanksFragment(boolean first, String wikipediaArt) {
+    public PuzzleBlanksFragment(boolean first, String wikipediaArt, String lang) {
         mFirst = first;
         mWikipediaArt = wikipediaArt;
         mNumOfFields = 0;
         mHiddenText = new ArrayList<>();
+        mLang = lang;
     }
 
     @Nullable
@@ -186,20 +188,20 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
 //        thread.run();
 
 
-        if (false) {
+        if (mLang.equals("de")) {
+            keyboard = new Keyboard(getContext(), R.xml.diminished_qwertz);
+            keyboardView = (KeyboardView) view.findViewById(R.id.qwertz);
+        } else {
             keyboard = new Keyboard(getContext(), R.xml.diminished_qwerty);
 
             // Lookup the KeyboardView
             keyboardView = (KeyboardView) view.findViewById(R.id.qwerty);
-
-            // Attach the keyboard to the view
-            keyboardView.setKeyboard(keyboard);
-        } else {
-            keyboard = new Keyboard(getContext(), R.xml.diminished_qwertz);
-            keyboardView = (KeyboardView) view.findViewById(R.id.qwerty);
-            keyboardView.setKeyboard(keyboard);
-            keyboardView.setBackgroundColor(getResources().getColor(R.color.SmokeyBlack, null));
         }
+
+        keyboardView.setVisibility(View.VISIBLE);
+
+        // Attach the keyboard to the view
+        keyboardView.setKeyboard(keyboard);
 
         keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
             @Override

@@ -16,9 +16,10 @@
         android:id="@+id/blank_button_controls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/qwerty"
+        android:layout_above="@id/frame"
         android:gravity="right"
         android:paddingTop="10dp">
+
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/submit_blanks"
@@ -39,31 +40,38 @@
 
     </LinearLayout>
 
-    <android.inputmethodservice.KeyboardView
-        android:id="@+id/qwerty"
+    <FrameLayout
+        android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/DarkGreen"
-        android:keyBackground="@color/ForestGreen"
-        android:keyPreviewLayout="@layout/qwerty_key_preview"
-        android:keyTextColor="@color/CanaryYellow"
-        android:keyTextSize="16sp"
-        android:shadowColor="@color/DarkCyan"
-        android:shadowRadius="10.5"
-        android:visibility="visible" />
+        android:layout_alignParentBottom="true">
 
-    <!--<android.inputmethodservice.KeyboardView-->
-    <!--android:id="@+id/qwertz"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_alignParentBottom="true"-->
-    <!--android:background="@color/SmokeyBlack"-->
-    <!--android:keyBackground="@color/DarkSlateGray"-->
-    <!--android:keyPreviewLayout="@layout/qwerty_key_preview"-->
-    <!--android:keyTextColor="@color/CanaryYellow"-->
-    <!--android:keyTextSize="16sp"-->
-    <!--android:shadowColor="@color/DarkCyan"-->
-    <!--android:shadowRadius="10.5"-->
-    <!--android:visibility="visible" />-->
+        <android.inputmethodservice.KeyboardView
+            android:id="@+id/qwerty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/DarkGreen"
+            android:keyBackground="@color/ForestGreen"
+            android:keyPreviewLayout="@layout/qwerty_key_preview"
+            android:keyTextColor="@color/CanaryYellow"
+            android:keyTextSize="16sp"
+            android:shadowColor="@color/DarkCyan"
+            android:shadowRadius="10.5"
+            android:visibility="gone" />
+
+        <android.inputmethodservice.KeyboardView
+            android:id="@+id/qwertz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/SmokeyBlack"
+            android:keyBackground="@color/DarkSlateGray"
+            android:keyPreviewLayout="@layout/qwerty_key_preview"
+            android:keyTextColor="@color/CanaryYellow"
+            android:keyTextSize="16sp"
+            android:shadowColor="@color/DarkCyan"
+            android:shadowRadius="10.5"
+            android:visibility="gone" />
+    </FrameLayout>
 </RelativeLayout>

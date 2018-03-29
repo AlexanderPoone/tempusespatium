@@ -387,7 +387,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     //URL
                                     try {
                                         XPathExpression verweis = XPathFactory.newInstance().newXPath().compile("a[not(.//img)]");
-                                        NodeList artikeln = (NodeList) verweis.evaluate(finalTest.item(mTopicsDe.lastIndexOf(mSelectedTopic)), XPathConstants.NODESET);
+                                        NodeList artikeln = (NodeList) verweis.evaluate(finalTest.item(mTopicsDe.lastIndexOf(selectedTopic)), XPathConstants.NODESET);
 
                                         for (int j = 0; j < artikeln.getLength(); j++) {
 //                                            Log.i("Artikel", artikeln.item(j).getTextContent());
@@ -399,7 +399,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                         Document doc2 = DocumentBuilderFactory.newInstance()
                                                 .newDocumentBuilder().parse(new InputSource(new StringReader(body[1])));
                                         XPathExpression staticXPath2 = XPathFactory.newInstance()
-                                                .newXPath().compile(String.format("//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/p[b/text()=\"%s\"]/a[not(.//img)]", mTopicsUntrimmedDe.get(mTopicsDe.lastIndexOf(mSelectedTopic))));
+                                                .newXPath().compile(String.format("//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/p[b/text()=\"%s\"]/a[not(.//img)]", mTopicsUntrimmedDe.get(mTopicsDe.lastIndexOf(selectedTopic))));
                                         NodeList artikeln2 = (NodeList) staticXPath2.evaluate(doc2, XPathConstants.NODESET);
                                         if (artikeln2.getLength() > 0) {
                                             for (int k = 0; k < artikeln2.getLength(); k++) {

@@ -20,7 +20,7 @@
             app:bootstrapText="@string/highscores_enter_name" />
 
         <com.beardedhen.androidbootstrap.BootstrapEditText
-            android:id="@+id/editText2"
+            android:id="@+id/nameEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"

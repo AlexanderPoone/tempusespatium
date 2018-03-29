@@ -12,6 +12,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.MultiTransformation;
+
+import jp.wasabeef.glide.transformations.gpu.PixelationFilterTransformation;
+import jp.wasabeef.glide.transformations.gpu.SwirlFilterTransformation;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 //import com.squareup.picasso.Picasso;
 
 /**
@@ -97,10 +103,13 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         mFlagURLs[2] = mFlagURLs[2].replaceAll("\u200B", "");
         mFlagURLs[3] = mFlagURLs[3].replaceAll("\u200B", "");
 
-        Glide.with(this).load(mFlagURLs[0]).into(flagA);
-        Glide.with(this).load(mFlagURLs[1]).into(flagB);
-        Glide.with(this).load(mFlagURLs[2]).into(flagC);
-        Glide.with(this).load(mFlagURLs[3]).into(flagD);
+//        MultiTransformation multi = new MultiTransformation(
+//                new PixelationFilterTransformation(25),
+//                new SwirlFilterTransformation(25, 120, new PointF(50,40)));
+        Glide.with(this).load(mFlagURLs[0]).transition(withCrossFade(1500)).into(flagA);
+        Glide.with(this).load(mFlagURLs[1]).transition(withCrossFade(1500)).into(flagB);
+        Glide.with(this).load(mFlagURLs[2]).transition(withCrossFade(1500)).into(flagC);
+        Glide.with(this).load(mFlagURLs[3]).transition(withCrossFade(1500)).into(flagD);
 
         RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);
         relA.setOnClickListener(new View.OnClickListener() {

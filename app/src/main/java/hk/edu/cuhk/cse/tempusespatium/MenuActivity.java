@@ -428,8 +428,11 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mMediaPlayer.stop();
-        mMediaPlayer.release();
+        try {
+            mMediaPlayer.stop();
+            mMediaPlayer.release();
+        } catch (IllegalStateException e) {
+        }
     }
 
     private static class Rattan implements BootstrapBrand {

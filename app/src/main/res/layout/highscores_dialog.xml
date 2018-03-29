@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="500dp"
-    android:background="@drawable/dialog_shape"
+    android:background="@drawable/dialog_shape_highscores"
     android:orientation="vertical">
     <!--Use 500dp instead of margin for exit-->
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,19 +25,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="vertical"
-                android:textColor="@android:color/white"
                 android:textSize="@dimen/bootstrap_h1_text_size"
-                app:bootstrapBrand="warning"
                 app:bootstrapText="@string/highscores" />
 
-            <TextView
-                android:id="@+id/rules_text"
+            <TableLayout
+                android:id="@+id/tableLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="vertical"
-                android:text="@string/rules_tirade"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/bootstrap_h3_text_size" />
+                />
+
+            <LinearLayout
+                android:id="@+id/button_controls"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/qwerty"
+                android:gravity="right"
+                android:paddingEnd="5dp"
+                android:paddingTop="10dp">
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/clear_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    app:bootstrapBrand="danger"
+                    app:bootstrapSize="lg"
+                    app:bootstrapText="@string/reset"
+                    app:roundedCorners="true" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

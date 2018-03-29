@@ -37,8 +37,8 @@ dependencies {
     compile 'com.shawnlin:number-picker:2.4.4'
     compile 'com.github.bumptech.glide:glide:4.6.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
-    compile 'com.google.android.gms:play-services-maps:11.8.0'
-    compile 'com.google.android.gms:play-services-ads:11.8.0'
+    compile 'com.google.android.gms:play-services-maps:12.0.0'
+    compile 'com.google.android.gms:play-services-ads:12.0.0'
     compile 'com.github.lzyzsd:circleprogress:1.2.1'
     compile 'com.android.volley:volley:1.0.0'
     compile 'com.google.guava:guava:24.1-android'
@@ -47,5 +47,8 @@ dependencies {
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'
     compile 'com.squareup.okhttp3:okhttp:3.9.0'
     compile 'com.android.support.constraint:constraint-layout:1.1.0-beta5'
+    compile 'jp.wasabeef:glide-transformations:3.1.1'
+    // GPU Filters
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
     testCompile 'junit:junit:4.12'
 }

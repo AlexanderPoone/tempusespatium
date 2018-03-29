@@ -1,5 +1,7 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -12,22 +14,24 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 /**
  * Created by softfeta on 3/15/18.
  */
 
 public class EndGameFragment extends Fragment {
-    boolean mFirst;
-    boolean mWon;
+    private boolean mFirst, mWon;
+    private int mScore;
 
     public EndGameFragment() {
 
     }
 
-    public EndGameFragment(boolean first, boolean won) {
+    public EndGameFragment(boolean first, boolean won, int score) {
         mFirst = first;
         mWon = won;
+        mScore = score;
     }
 
     @Nullable
@@ -48,10 +52,28 @@ public class EndGameFragment extends Fragment {
         else
             Glide.with(this).asGif().load("https://i.imgur.com/0mKXcg1.gif").into(imageView);
         if (mWon) {
-            HighscoresEnterNameDialog highscoresEnterNameDialog = new HighscoresEnterNameDialog(getContext(), mFirst);
-            highscoresEnterNameDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            highscoresEnterNameDialog.setCancelable(false);
-            highscoresEnterNameDialog.show();
+            SQLiteAssetHelper sqLiteAssetHelper = new DBAssetHelper(getContext());
+            SQLiteDatabase sqLiteDatabase = sqLiteAssetHelper.getReadableDatabase();
+//            Cursor cursor = sqLiteDatabase.rawQuery("CREATE TABLE IF NOT EXISTS `highscores` (" +
+//                    "`key` INTEGER PRIMARY KEY AUTOINCREMENT," +
+//                    "`player` TEXT," +
+//                    "`score` INTEGER" +
+//                    ");", null);
+//            sqLiteDatabase.beginTransaction();
+            Cursor cursor = sqLiteDatabase.rawQuery("SELECT COUNT(*) FROM " +
+                    DBAssetHelper.TABLE_HIGHSCORES + " WHERE " + DBAssetHelper.COLUMN_SCORE +
+                    " > " + mScore, null);
+            cursor.moveToNext();
+            int num = cursor.getInt(0);
+            cursor.close();
+            sqLiteDatabase.close();
+            sqLiteAssetHelper.close();
+            if (num < 10) {
+                HighscoresEnterNameDialog highscoresEnterNameDialog = new HighscoresEnterNameDialog(getContext(), mFirst, mScore);
+                highscoresEnterNameDialog.setCancelable(false);
+                highscoresEnterNameDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                highscoresEnterNameDialog.show();
+            }
         }
 //        LottieAnimationView lottieAnimationView= (LottieAnimationView) view.findViewById(R.id.endgame_animation);
 //        lottieAnimationView.setAnimation(R.raw.);

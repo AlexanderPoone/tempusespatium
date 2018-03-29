@@ -82,20 +82,20 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
         for (int i = 0; i < textViews.length; i++) {
             StringBuilder stringBuilder=new StringBuilder();
             if (catArray[i].length() > 30) {
-                stringBuilder.append(catArray[i].substring(0, 15));
-                if (catArray[i].charAt(15) != ' ' && catArray[i].charAt(16) != ' ') stringBuilder.append('-');
+                stringBuilder.append(catArray[i].substring(0, 14));
+                if (catArray[i].charAt(14) != ' ' && catArray[i].charAt(15) != ' ') stringBuilder.append('-');
                 stringBuilder.append('\n');
-                stringBuilder.append(catArray[i].substring(16, 30));
-                if (catArray[i].charAt(30) != ' ' && catArray[i].charAt(31) != ' ') stringBuilder.append('-');
+                stringBuilder.append(catArray[i].substring(15, 29));
+                if (catArray[i].charAt(29) != ' ' && catArray[i].charAt(30) != ' ') stringBuilder.append('-');
                 stringBuilder.append('\n');
                 stringBuilder.append(catArray[i].substring(31));
 
                 textViews[i].setText(stringBuilder.toString());
             } else if (catArray[i].length() > 15) {
-                stringBuilder.append(catArray[i].substring(0, 15));
-                if (catArray[i].charAt(15) != ' ' && catArray[i].charAt(16) != ' ') stringBuilder.append('-');
+                stringBuilder.append(catArray[i].substring(0, 14));
+                if (catArray[i].charAt(14) != ' ' && catArray[i].charAt(15) != ' ') stringBuilder.append('-');
                 stringBuilder.append('\n');
-                stringBuilder.append(catArray[i].substring(16));
+                stringBuilder.append(catArray[i].substring(15));
 
                 textViews[i].setText(stringBuilder.toString());
             } else {

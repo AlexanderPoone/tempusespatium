@@ -16,7 +16,7 @@
 ** limitations under the License.
 */
 -->
-<!-- Where's the hyphen!!!-->
+<!-- 127◌́ 128◌̂ 129◌̀ 130◌̈ 231ç -->
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
     android:keyWidth="10%p"
     android:horizontalGap="0px"
@@ -24,12 +24,12 @@
     android:keyHeight="140px">
     <Row>
         <Key
-            android:codes="113"
-            android:keyLabel="q"
+            android:codes="97"
+            android:keyLabel="a"
             android:keyEdgeFlags="left" />
         <Key
-            android:codes="119"
-            android:keyLabel="w" />
+            android:codes="122"
+            android:keyLabel="z" />
         <Key
             android:codes="101"
             android:keyLabel="e" />
@@ -59,8 +59,8 @@
 
     <Row>
         <Key
-            android:codes="97"
-            android:keyLabel="a"
+            android:codes="113"
+            android:keyLabel="q"
             android:horizontalGap="5%p"
             android:keyEdgeFlags="left" />
         <Key
@@ -86,7 +86,10 @@
             android:keyLabel="k" />
         <Key
             android:codes="108"
-            android:keyLabel="l"
+            android:keyLabel="l" />
+        <Key
+            android:codes="109"
+            android:keyLabel="m"
             android:keyEdgeFlags="right" />
     </Row>
 
@@ -96,13 +99,13 @@
         <!--android:isSticky="true" android:keyEdgeFlags="left"/>-->
         <Key
             android:codes="-5"
-            android:keyLabel="Del"
+            android:keyLabel="Suppr"
             android:keyWidth="15%p"
             android:keyEdgeFlags="left"
             android:isRepeatable="true" />
         <Key
-            android:codes="122"
-            android:keyLabel="z" />
+            android:codes="119"
+            android:keyLabel="w" />
         <Key
             android:codes="120"
             android:keyLabel="x" />
@@ -118,9 +121,6 @@
         <Key
             android:codes="110"
             android:keyLabel="n" />
-        <Key
-            android:codes="109"
-            android:keyLabel="m" />
         <Key
             android:codes="8"
             android:keyIcon="@drawable/ic_backspace_yellow_24dp"

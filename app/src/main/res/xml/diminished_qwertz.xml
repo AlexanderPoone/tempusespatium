@@ -96,8 +96,8 @@
             android:codes="-5"
             android:isRepeatable="true"
             android:keyEdgeFlags="left"
-            android:keyLabel="Del"
-            android:keyWidth="15%p" />
+            android:keyLabel="Entf"
+            android:keyWidth="15%p" /> <!--entfernen-->
         <Key
             android:codes="121"
             android:keyLabel="y" />

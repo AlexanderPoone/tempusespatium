@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TempusESpatium.iml" filepath="$PROJECT_DIR$/TempusESpatium.iml" />
-      <module fileurl="file://C:\Users\Alexandre Poon\Desktop\tempusespatium\TempusESpatium.iml" filepath="C:\Users\Alexandre Poon\Desktop\tempusespatium\TempusESpatium.iml" />
+      <module fileurl="file://C:/Users/Alexandre Poon/Desktop/tempusespatium/TempusESpatium.iml" filepath="C:/Users/Alexandre Poon/Desktop/tempusespatium/TempusESpatium.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Alexandre Poon\Desktop\tempusespatium\app\app.iml" filepath="C:\Users\Alexandre Poon\Desktop\tempusespatium\app\app.iml" />
+      <module fileurl="file://C:/Users/Alexandre Poon/Desktop/tempusespatium/app/app.iml" filepath="C:/Users/Alexandre Poon/Desktop/tempusespatium/app/app.iml" />
     </modules>
   </component>
 </project>

@@ -52,6 +52,8 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
     private List<String> mHiddenText;
     private String mLang;
 
+    private Character azertyBuffer;
+
 //    private BlanksChromeClient mBlanksChromeClient;
 
     @Override
@@ -188,7 +190,10 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
 //        thread.run();
 
 
-        if (mLang.equals("de")) {
+        if (mLang.equals("fr")) {
+            keyboard = new Keyboard(getContext(), R.xml.diminished_azerty_avec_touches_mortes);
+            keyboardView = (KeyboardView) view.findViewById(R.id.azerty);
+        } else if (mLang.equals("de")) {
             keyboard = new Keyboard(getContext(), R.xml.diminished_qwertz);
             keyboardView = (KeyboardView) view.findViewById(R.id.qwertz);
         } else {
@@ -203,79 +208,181 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
         // Attach the keyboard to the view
         keyboardView.setKeyboard(keyboard);
 
-        keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
-            @Override
-            public void onPress(int i) {
+        if (mLang.equals("fr")) {
+            keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
+                @Override
+                public void onPress(int i) {
 
-            }
-
-            @Override
-            public void onRelease(int i) {
-
-            }
-
-            @Override
-            public void onKey(int i, int[] ints) {
-                switch (i) {
-                    case 8:
-                        String JS = "javascript:(function() {" +
-                                "if (window.myReadOnly == 1) return;" +
-                                "var ele=document.activeElement;" +
-                                "var position=ele.value.slice(0, ele.selectionStart).length;" +
-                                "ele.value = ele.value.substr(0, position-1) + ele.value.substr(position);" +
-                                "ele.focus();" +
-                                "if (position != 0) ele.setSelectionRange(position-1, position-1);})()";
-                        mWebView.loadUrl(JS);
-                        break;
-                    case Keyboard.KEYCODE_DELETE:
-                        String JS_ = "javascript:(function() {" +
-                                "if (window.myReadOnly == 1) return;" +
-                                "var ele=document.activeElement;" +
-                                "var position=ele.value.slice(0, ele.selectionStart).length;" +
-                                "ele.value = ele.value.substr(0, position) + ele.value.substr(position+1);" +
-                                "ele.focus();" +
-                                "ele.setSelectionRange(position, position);})()";
-                        mWebView.loadUrl(JS_);
-                        break;
-                    default:
-                        String JS__ = String.format(new Locale("en"),
-                                "javascript:(function() {" +
-                                        "if (window.myReadOnly == 1) return;" +
-                                        "var ele=document.activeElement;" +
-                                        "var position=ele.value.slice(0, ele.selectionStart).length;" +
-                                        "ele.value = ele.value.substr(0, position) + '%c' + ele.value.substr(position);" +
-                                        "ele.focus();" +
-                                        "ele.setSelectionRange(position+1, position+1);})()", (char) i);
-                        mWebView.loadUrl(JS__);
-                        break;
                 }
-            }
 
-            @Override
-            public void onText(CharSequence charSequence) {
+                @Override
+                public void onRelease(int i) {
 
-            }
+                }
 
-            @Override
-            public void swipeLeft() {
+                @Override
+                public void onKey(int i, int[] keyCodes) {
+                    switch (i) {
+                        case 8:
+                            String JS = "javascript:(function() {" +
+                                    "if (window.myReadOnly == 1) return;" +
+                                    "var ele=document.activeElement;" +
+                                    "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                    "ele.value = ele.value.substr(0, position-1) + ele.value.substr(position);" +
+                                    "ele.focus();" +
+                                    "if (position != 0) ele.setSelectionRange(position-1, position-1);})()";
+                            mWebView.loadUrl(JS);
+                            break;
+                        case Keyboard.KEYCODE_DELETE:
+                            String JS_ = "javascript:(function() {" +
+                                    "if (window.myReadOnly == 1) return;" +
+                                    "var ele=document.activeElement;" +
+                                    "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                    "ele.value = ele.value.substr(0, position) + ele.value.substr(position+1);" +
+                                    "ele.focus();" +
+                                    "ele.setSelectionRange(position, position);})()";
+                            mWebView.loadUrl(JS_);
+                            break;
+                        case 127:
+                            azertyBuffer = 0;
+                            break;
+                        case 128:
+                            azertyBuffer = 1;
+                            break;
+                        case 129:
+                            azertyBuffer = 2;
+                            break;
+                        case 130:
+                            azertyBuffer = 3;
+                            break;
+                        default:
+                            if (azertyBuffer != null) {
+                                switch (azertyBuffer) {
+                                    case 0:
+                                        break;
+                                    case 1:
+                                        break;
+                                    case 2:
+                                        break;
+                                    case 3:
+                                        break;
+                                }
+                                azertyBuffer = null;
+                            } else {
+                                String JS__ = String.format(new Locale("fr"),
+                                        "javascript:(function() {" +
+                                                "if (window.myReadOnly == 1) return;" +
+                                                "var ele=document.activeElement;" +
+                                                "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                                "ele.value = ele.value.substr(0, position) + '%c' + ele.value.substr(position);" +
+                                                "ele.focus();" +
+                                                "ele.setSelectionRange(position+1, position+1);})()", (char) i);
+                                mWebView.loadUrl(JS__);
+                            }
+                            break;
+                    }
+                }
 
-            }
+                @Override
+                public void onText(CharSequence text) {
 
-            @Override
-            public void swipeRight() {
+                }
 
-            }
+                @Override
+                public void swipeLeft() {
 
-            @Override
-            public void swipeDown() {
+                }
 
-            }
+                @Override
+                public void swipeRight() {
 
-            @Override
-            public void swipeUp() {
+                }
 
-            }
-        });
+                @Override
+                public void swipeDown() {
+
+                }
+
+                @Override
+                public void swipeUp() {
+
+                }
+            });
+        } else {
+            keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
+                @Override
+                public void onPress(int i) {
+
+                }
+
+                @Override
+                public void onRelease(int i) {
+
+                }
+
+                @Override
+                public void onKey(int i, int[] ints) {
+                    switch (i) {
+                        case 8:
+                            String JS = "javascript:(function() {" +
+                                    "if (window.myReadOnly == 1) return;" +
+                                    "var ele=document.activeElement;" +
+                                    "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                    "ele.value = ele.value.substr(0, position-1) + ele.value.substr(position);" +
+                                    "ele.focus();" +
+                                    "if (position != 0) ele.setSelectionRange(position-1, position-1);})()";
+                            mWebView.loadUrl(JS);
+                            break;
+                        case Keyboard.KEYCODE_DELETE:
+                            String JS_ = "javascript:(function() {" +
+                                    "if (window.myReadOnly == 1) return;" +
+                                    "var ele=document.activeElement;" +
+                                    "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                    "ele.value = ele.value.substr(0, position) + ele.value.substr(position+1);" +
+                                    "ele.focus();" +
+                                    "ele.setSelectionRange(position, position);})()";
+                            mWebView.loadUrl(JS_);
+                            break;
+                        default:
+                            String JS__ = String.format(new Locale("en"),
+                                    "javascript:(function() {" +
+                                            "if (window.myReadOnly == 1) return;" +
+                                            "var ele=document.activeElement;" +
+                                            "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                            "ele.value = ele.value.substr(0, position) + '%c' + ele.value.substr(position);" +
+                                            "ele.focus();" +
+                                            "ele.setSelectionRange(position+1, position+1);})()", (char) i);
+                            mWebView.loadUrl(JS__);
+                            break;
+                    }
+                }
+
+                @Override
+                public void onText(CharSequence charSequence) {
+
+                }
+
+                @Override
+                public void swipeLeft() {
+
+                }
+
+                @Override
+                public void swipeRight() {
+
+                }
+
+                @Override
+                public void swipeDown() {
+
+                }
+
+                @Override
+                public void swipeUp() {
+
+                }
+            });
+        }
 
         BootstrapButton submitButton = (BootstrapButton) view.findViewById(R.id.submit_blanks);
         submitButton.setOnClickListener(new View.OnClickListener() {

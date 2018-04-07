@@ -16,7 +16,7 @@
 ** limitations under the License.
 */
 -->
-<!-- 127◌́ 128◌̂ 129◌̀ 130◌̈ 231ç -->
+<!-- 127◌́ 128◌̂ 129◌̈ 231ç130◌̀  127-130-->
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
     android:keyWidth="10%p"
     android:horizontalGap="0px"
@@ -104,6 +104,9 @@
             android:keyEdgeFlags="left"
             android:isRepeatable="true" />
         <Key
+            android:codes="127"
+            android:keyLabel="◌́ " />
+        <Key
             android:codes="119"
             android:keyLabel="w" />
         <Key
@@ -121,6 +124,18 @@
         <Key
             android:codes="110"
             android:keyLabel="n" />
+        <Key
+            android:codes="128"
+            android:keyLabel="◌̂ " />
+        <Key
+            android:codes="129"
+            android:keyLabel="◌̈ " />
+        <Key
+            android:codes="231"
+            android:keyLabel="ç" />
+        <Key
+            android:codes="130"
+            android:keyLabel="◌̀ " />
         <Key
             android:codes="8"
             android:keyIcon="@drawable/ic_backspace_yellow_24dp"

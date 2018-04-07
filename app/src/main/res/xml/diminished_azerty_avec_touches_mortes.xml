@@ -54,6 +54,7 @@
         <Key
             android:codes="112"
             android:keyLabel="p"
+            android:horizontalGap="7%p"
             android:keyEdgeFlags="right" />
     </Row>
 
@@ -61,7 +62,7 @@
         <Key
             android:codes="113"
             android:keyLabel="q"
-            android:horizontalGap="5%p"
+            android:horizontalGap="2%p"
             android:keyEdgeFlags="left" />
         <Key
             android:codes="115"
@@ -125,14 +126,14 @@
             android:codes="110"
             android:keyLabel="n" />
         <Key
+            android:codes="231"
+            android:keyLabel="ç" />
+        <Key
             android:codes="128"
             android:keyLabel="◌̂ " />
         <Key
             android:codes="129"
             android:keyLabel="◌̈ " />
-        <Key
-            android:codes="231"
-            android:keyLabel="ç" />
         <Key
             android:codes="130"
             android:keyLabel="◌̀ " />

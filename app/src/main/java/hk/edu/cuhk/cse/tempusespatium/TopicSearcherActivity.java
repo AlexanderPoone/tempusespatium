@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
@@ -52,7 +53,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
     String mQuestionLang = null;
 
     /* */
-    ArrayList<String> mSelectedTopic = new ArrayList<>();
+    ArrayList<String> mSelectedTopic;
     /* */
 
     // English ↓
@@ -101,6 +102,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
     }
 
     private void english() {
+        mSelectedTopic = new ArrayList<>();
         mTopics = new TreeMap<>();
 
         // TODO: !!!!!!!!!!!!!! https://en.wikipedia.org/wiki/Category:WikiProjects_by_topic !!!!!!!!!!!!!!!!!!!!!!!!
@@ -144,9 +146,9 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                 NodeList test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
                                 for (int i = 0; i < test.getLength(); i++) {
                                     //URL
-                                    Log.i("Test", test.item(i).getAttributes().item(0).getTextContent());
+                                    Log.i("Test", test.item(i).getAttributes().getNamedItem("href").getTextContent());
                                     //Topics
-                                    mTopics.put(test.item(i).getTextContent().replaceFirst("Wikipedia:(WikiProject )?", "").replaceFirst("/(Popular|Most-viewed|Favourite) pages", "").replaceFirst("/(Popular|Article hits)", "").replaceFirst("( task force| work group)", "").replaceFirst("Taskforces/(BPH/)?", "").replaceFirst("/", " > "), "https://en.wikipedia.org" + test.item(i).getAttributes().item(0).getTextContent());
+                                    mTopics.put(test.item(i).getTextContent().replaceFirst("Wikipedia:(WikiProject )?", "").replaceFirst("/(Popular|Most-viewed|Favourite) pages", "").replaceFirst("/(Popular|Article hits)", "").replaceFirst("( task force| work group)", "").replaceFirst("Taskforces/(BPH/)?", "").replaceFirst("/", " > "), "https://en.wikipedia.org" + test.item(i).getAttributes().getNamedItem("href").getTextContent());
 //                                    Log.i("Test", test.item(i).getAttributes().item(1).getTextContent());
                                 }
 
@@ -210,7 +212,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                                         .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table/tr/td[2]/a");
                                                 NodeList test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
                                                 for (int i = 0; i < test.getLength(); i++) {
-                                                    mArts.put(test.item(i).getTextContent(), "https://en.wikipedia.org" + test.item(i).getAttributes().item(0).getTextContent());
+                                                    mArts.put(test.item(i).getTextContent(), "https://en.wikipedia.org" + test.item(i).getAttributes().getNamedItem("href").getTextContent());
                                                 }
                                             } catch (SAXException e) {
                                                 e.printStackTrace();
@@ -266,6 +268,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
     private void francais() {
         // https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Article_d%27importance_maximum
         // Preferee: https://fr.wikipedia.org/wiki/Sp%C3%A9cial:ArbreCat%C3%A9gorie/Article_d%27importance_maximum
+        mSelectedTopic = new ArrayList<>();
         mTopics = new TreeMap<>();
 
         BootstrapButton clearButton = (BootstrapButton) findViewById(R.id.topic_clear_button);
@@ -307,9 +310,9 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                 NodeList test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
                                 for (int i = 0; i < test.getLength(); i++) {
                                     //URL
-                                    Log.i("Test", test.item(i).getAttributes().item(0).getTextContent());
                                     //Topics
-                                    mTopics.put(test.item(i).getTextContent().replaceFirst("Article (du projet |de |d' )?", "").replaceFirst(" d'importance maximum‎", "").replaceFirst("sur (l'|le |la |les )", ""), "https://fr.wikipedia.org" + test.item(i).getAttributes().item(0).getTextContent());
+                                    String tmp=test.item(i).getTextContent().replaceFirst("Article (du projet |de |d')?", "").replaceFirst(" d'importance maximum", "").replaceFirst("( )?sur (l'|l’|le |la |les )?", "");
+                                    mTopics.put(tmp.substring(0,1).toUpperCase() + tmp.substring(1), "https://fr.wikipedia.org" + test.item(i).getAttributes().getNamedItem("href").getTextContent());
 //                                    Log.i("Test", test.item(i).getAttributes().item(1).getTextContent());
                                 }
 
@@ -373,7 +376,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                                         .newXPath().compile("//*[@id='mw-pages']/div[2]/div/div/ul/li/a");
                                                 NodeList test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
                                                 for (int i = 0; i < test.getLength(); i++) {
-                                                    mArts.put(test.item(i).getTextContent(), "https://fr.wikipedia.org" + test.item(i).getAttributes().item(0).getTextContent().replaceFirst("Discussion:", ""));
+                                                    mArts.put(test.item(i).getTextContent().replaceFirst("Discussion:", ""), "https://fr.wikipedia.org" + test.item(i).getAttributes().getNamedItem("href").getTextContent().replaceFirst("Discussion:", ""));
                                                 }
                                             } catch (SAXException e) {
                                                 e.printStackTrace();
@@ -435,9 +438,11 @@ public class TopicSearcherActivity extends AppCompatActivity {
             //Just remove Discussion: from all URLs!
             // replaceFirst("Discussion:", "")
         });
+        thread.start();
     }
 
     private void deutsch() {
+        mSelectedTopic = new ArrayList<>();
         mTopicsDe = new ArrayList<>();
         mTopicsUntrimmedDe = new ArrayList<>();
 

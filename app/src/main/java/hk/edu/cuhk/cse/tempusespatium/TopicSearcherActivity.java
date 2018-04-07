@@ -84,6 +84,9 @@ public class TopicSearcherActivity extends AppCompatActivity {
                 if (i == 4) {
                     deutsch();
                     mQuestionLang = "de";
+                } else if (i == 5) {
+                    francais();
+                    mQuestionLang = "fr";
                 } else {
                     english();
                     mQuestionLang = "en";

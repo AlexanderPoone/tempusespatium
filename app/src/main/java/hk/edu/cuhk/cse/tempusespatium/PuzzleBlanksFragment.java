@@ -192,14 +192,14 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
 
         if (mLang.equals("fr")) {
             keyboard = new Keyboard(getContext(), R.xml.diminished_azerty_avec_touches_mortes);
+
+            // Lookup the KeyboardView
             keyboardView = (KeyboardView) view.findViewById(R.id.azerty);
         } else if (mLang.equals("de")) {
             keyboard = new Keyboard(getContext(), R.xml.diminished_qwertz);
             keyboardView = (KeyboardView) view.findViewById(R.id.qwertz);
         } else {
             keyboard = new Keyboard(getContext(), R.xml.diminished_qwerty);
-
-            // Lookup the KeyboardView
             keyboardView = (KeyboardView) view.findViewById(R.id.qwerty);
         }
 
@@ -258,27 +258,106 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                         default:
                             if (azertyBuffer != null) {
                                 switch (azertyBuffer) {
-                                    case 0:
+                                    case 0:   // Aigu
+                                        switch (i) {
+                                            case 65:
+                                                i = 193;
+                                                break;
+                                            case 69:
+                                                i = 201;
+                                                break;
+                                            case 97:
+                                                i = 224;
+                                                break;
+                                            case 101:
+                                                i = 232;
+                                                break;
+                                        }
                                         break;
-                                    case 1:
+                                    case 1:   // Circonflexe
+                                        switch (i) {
+                                            case 65:
+                                                i = 194;
+                                                break;
+                                            case 69:
+                                                i = 202;
+                                                break;
+                                            case 73:
+                                                i = 206;
+                                                break;
+                                            case 79:
+                                                i = 212;
+                                                break;
+                                            case 97:
+                                                i = 226;
+                                                break;
+                                            case 101:
+                                                i = 234;
+                                                break;
+                                            case 105:
+                                                i = 238;
+                                                break;
+                                            case 111:
+                                                i = 244;
+                                                break;
+                                        }
                                         break;
-                                    case 2:
+                                    case 2:   // Tréma
+                                        switch (i) {
+                                            case 69:
+                                                i = 203;
+                                                break;
+                                            case 73:
+                                                i = 207;
+                                                break;
+                                            case 85:
+                                                i = 220;
+                                                break;
+                                            case 101:
+                                                i = 235;
+                                                break;
+                                            case 105:
+                                                i = 239;
+                                                break;
+                                            case 117:
+                                                i = 252;
+                                                break;
+                                        }
                                         break;
-                                    case 3:
+                                    case 3:   // Grave
+                                        switch (i) {
+                                            case 65:
+                                                i = 192;
+                                                break;
+                                            case 69:
+                                                i = 200;
+                                                break;
+                                            case 85:
+                                                i = 217;
+                                                break;
+                                            case 97:
+                                                i = 224;
+                                                break;
+                                            case 101:
+                                                i = 232;
+                                                break;
+                                            case 117:
+                                                i = 249;
+                                                break;
+                                        }
                                         break;
                                 }
                                 azertyBuffer = null;
-                            } else {
-                                String JS__ = String.format(new Locale("fr"),
-                                        "javascript:(function() {" +
-                                                "if (window.myReadOnly == 1) return;" +
-                                                "var ele=document.activeElement;" +
-                                                "var position=ele.value.slice(0, ele.selectionStart).length;" +
-                                                "ele.value = ele.value.substr(0, position) + '%c' + ele.value.substr(position);" +
-                                                "ele.focus();" +
-                                                "ele.setSelectionRange(position+1, position+1);})()", (char) i);
-                                mWebView.loadUrl(JS__);
                             }
+                            String JS__ = String.format(new Locale("fr"),
+                                    "javascript:(function() {" +
+                                            "if (window.myReadOnly == 1) return;" +
+                                            "var ele=document.activeElement;" +
+                                            "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                            "ele.value = ele.value.substr(0, position) + '%c' + ele.value.substr(position);" +
+                                            "ele.focus();" +
+                                            "ele.setSelectionRange(position+1, position+1);})()", (char) i);
+                            mWebView.loadUrl(JS__);
                             break;
                     }
                 }

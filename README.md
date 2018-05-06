@@ -22,20 +22,23 @@ ORDER BY DESC(?dateLabel)
 ```
 
 ```sparql
-SELECT DISTINCT ?country ?countryLabel ?capital ?capitalLabel ?img
+#defaultView:Graph
+SELECT DISTINCT ?country ?countryLabel ?capital ?capitalLabel ?flagLabel ?armsLabel ?imgLabel
 WHERE
 {
   ?country wdt:P31 wd:Q3624078 .
   #not a former country
   FILTER NOT EXISTS {?country wdt:P31 wd:Q3024240}
-  #and no an ancient civilisation
+  #and no an ancient civilisation (needed to exclude ancient Egypt)
   FILTER NOT EXISTS {?country wdt:P31 wd:Q28171280}
    ?country wdt:P36 ?capital.
+     ?country wdt:P41 ?flag.
+   ?country wdt:P94 ?arms.
    ?capital wdt:P18 ?img.
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 }
-ORDER BY ?countryLabel
+ORDER BY ?countryLabel 
 ```
 
 <!--

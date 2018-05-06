@@ -1,3 +1,4 @@
+<!--
 # Rampant Sphinges
 Papyrus font
 Spectres/Sand dunes of the Sphinges
@@ -18,3 +19,4 @@ To introduce more RNG, quicksand (25%) and breaking bridges (50%) has a chance o
 I wonder if I can add more question types to the game. Perhaps something fun like 'draw the border between England and Scotland' (the problem is these are not general questions but geography questions) and 'rearrange symbols to form IPAs of a difficult English word' (given a usage frequency database).
 
 I am planning to implement it using Python and SDL. Is there anything that I should be aware of, like shortcuts / pitfalls? Thank you!
+-->

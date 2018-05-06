@@ -1,3 +1,43 @@
+SPARQL
+
+```sparql
+SELECT DISTINCT ?eventLabel ?date ?dateLabel ?coord ?imgLabel
+WHERE
+{
+  ?event wdt:P31+ wd:Q178561 .
+
+  OPTIONAL { ?event wdt:P585+ ?date }
+  OPTIONAL { ?event wdt:P18+ ?img }
+    ?event wdt:P625 ?coord .
+
+FILTER(YEAR(?date) > 1900).
+
+SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+   FILTER(EXISTS {
+   ?event rdfs:label ?lang_label.
+   FILTER(LANG(?lang_label) = "en")
+ })
+}
+ORDER BY DESC(?dateLabel)
+```
+
+```sparql
+SELECT DISTINCT ?country ?countryLabel ?capital ?capitalLabel ?img
+WHERE
+{
+  ?country wdt:P31 wd:Q3624078 .
+  #not a former country
+  FILTER NOT EXISTS {?country wdt:P31 wd:Q3024240}
+  #and no an ancient civilisation
+  FILTER NOT EXISTS {?country wdt:P31 wd:Q28171280}
+   ?country wdt:P36 ?capital.
+   ?capital wdt:P18 ?img.
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+}
+ORDER BY ?countryLabel
+```
+
 <!--
 # Rampant Sphinges
 Papyrus font

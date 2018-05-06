@@ -1,13 +1,14 @@
 SPARQL
 
 ```sparql
-SELECT DISTINCT ?eventLabel ?date ?dateLabel ?coord ?imgLabel
+#defaultView:Timeline
+SELECT DISTINCT ?eventLabel ?date ?dateLabel ?coord ?img
 WHERE
 {
   ?event wdt:P31+ wd:Q178561 .
 
   OPTIONAL { ?event wdt:P585+ ?date }
-  OPTIONAL { ?event wdt:P18+ ?img }
+  ?event wdt:P18+ ?img.
     ?event wdt:P625 ?coord .
 
 FILTER(YEAR(?date) > 1900).

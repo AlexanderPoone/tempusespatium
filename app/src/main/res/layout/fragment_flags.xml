@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
     <ImageView
         android:id="@+id/watermark"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:translationZ="1dp"
-        android:alpha="0.5" />
+        android:alpha="0.5"
+        android:translationZ="1dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
-            android:text="Bangladesh"
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textStyle="bold" />
@@ -60,6 +59,16 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true" />
+
+                <TextView
+                    android:id="@+id/aActual"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:shadowColor="@color/MidnightBlue"
+                    android:shadowRadius="21"
+                    android:textColor="@color/Amber"
+                    android:textSize="20sp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -89,6 +98,16 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true" />
+
+                <TextView
+                    android:id="@+id/bActual"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:shadowColor="@color/MidnightBlue"
+                    android:shadowRadius="21"
+                    android:textColor="@color/Amber"
+                    android:textSize="20sp" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -126,6 +145,16 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true" />
+
+                <TextView
+                    android:id="@+id/cActual"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:shadowColor="@color/MidnightBlue"
+                    android:shadowRadius="21"
+                    android:textColor="@color/Amber"
+                    android:textSize="20sp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -155,6 +184,16 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true" />
+
+                <TextView
+                    android:id="@+id/dActual"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:shadowColor="@color/MidnightBlue"
+                    android:shadowRadius="21"
+                    android:textColor="@color/Amber"
+                    android:textSize="20sp" />
             </RelativeLayout>
 
         </LinearLayout>

@@ -26,8 +26,8 @@ public class TopicSearcherDropdownAdapter extends ArrayAdapter<String> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        String[] supTxt = mContext.getResources().getStringArray(R.array.locale_native);
-        String[] subTxt = mContext.getResources().getStringArray(R.array.locale);
+        String[] supTxt = mContext.getResources().getStringArray(R.array.gameplay_locale_native);
+        String[] subTxt = mContext.getResources().getStringArray(R.array.gameplay_locale);
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View row = inflater.inflate(R.layout.topic_lang_inflated, parent, false);
         ImageView icon = (ImageView) row.findViewById(R.id.flagHolder);
@@ -35,27 +35,18 @@ public class TopicSearcherDropdownAdapter extends ArrayAdapter<String> {
         TextView label = (TextView) row.findViewById(R.id.langTxt0);
         switch (position) {
             case 0:
-                icon.setImageResource(R.drawable.flag_hk);
-                break;
-            case 1:
                 icon.setImageResource(R.drawable.flag_gb);
                 break;
-            case 2:
-                icon.setImageResource(R.drawable.flag_cat);
-                break;
-            case 3:
+            case 1:
                 icon.setImageResource(R.drawable.flag_es);
                 break;
-            case 4:
+            case 2:
                 icon.setImageResource(R.drawable.flag_de);
                 break;
-            case 5:
+            case 3:
                 icon.setImageResource(R.drawable.flag_fr);
                 break;
-            case 6:
-                icon.setImageResource(R.drawable.flag_jp);
-                break;
-            case 7:
+            case 4:
                 icon.setImageResource(R.drawable.flag_ua);
                 break;
         }

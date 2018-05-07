@@ -20,4 +20,19 @@
         <item name="ja">Japanese</item>
         <item name="ua">Ukrainian</item>
     </string-array>
+
+    <string-array name="gameplay_locale_native">
+        <item name="en_GB">English (United Kingdom)</item>
+        <item name="es_ES">Español (España)</item>
+        <item name="de_DE">Deutsch (Deutschland)</item>
+        <item name="fr_FR">Français (France)</item>
+        <item name="ua">Українська</item>
+    </string-array>
+    <string-array name="gameplay_locale">
+        <item name="en_GB">English (United Kingdom)</item>
+        <item name="es_ES">Spanish (Spain)</item>
+        <item name="de_DE">German (Germany)</item>
+        <item name="fr_FR">French (France)</item>
+        <item name="ua">Ukrainian</item>
+    </string-array>
 </resources>

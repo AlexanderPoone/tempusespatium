@@ -2,14 +2,19 @@
 <resources>
     <string name="play">{fa_gamepad} SPIELEN!</string>
     <string name="rules">{fa_leanpub} Regeln</string>
+    <string name="learn">{fa_book} Lernen</string>
     <string name="settings">{fa_cog} Einstellungen</string>
     <string name="quit">{fa_sign-out} Spiel beenden</string>
 
 
     <string name="resume">{fa_play-circle} Zurück zum Spiel</string>
     <string name="return_main_menu">{fa_sign-out} Zurück zum Hauptmenü</string>
-    <string name="topic_searcher_heading">Recherche dans TOUS les thèmes</string>
+    <string name="topic_searcher_heading">Suchen ALLEN Themen</string>
     <string name="loading">Laden, bitte warten…</string>
+
+    <string name="bar_points">Punkte: %d</string>
+    <string name="submit">{fa_paper-plane} Absenden!</string>
+    <string name="reset">{fa_undo} Zurücksetzen</string>
 
     <!--<string name="dummy_button">Dummy Button</string>-->
     <!--<string name="dummy_content">DUMMY\nCONTENT</string>-->

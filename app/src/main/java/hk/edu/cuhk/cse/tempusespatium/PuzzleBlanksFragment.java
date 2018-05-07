@@ -198,6 +198,9 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
         } else if (mLang.equals("de")) {
             keyboard = new Keyboard(getContext(), R.xml.diminished_qwertz);
             keyboardView = (KeyboardView) view.findViewById(R.id.qwertz);
+        } else if (mLang.equals("uk")) {
+            keyboard = new Keyboard(getContext(), R.xml.diminished_ukrainian);
+            keyboardView = (KeyboardView) view.findViewById(R.id.ukrainian);
         } else {
             keyboard = new Keyboard(getContext(), R.xml.diminished_qwerty);
             keyboardView = (KeyboardView) view.findViewById(R.id.qwerty);

@@ -2,6 +2,7 @@
 <resources>
     <string name="play">{fa_gamepad} JOUER !</string>
     <string name="rules">{fa_leanpub} Règles</string>
+    <string name="learn">{fa_book} Apprendre</string>
     <string name="settings">{fa_cog} Paramètres</string>
     <string name="quit">{fa_sign-out} Quitter</string>
 
@@ -10,6 +11,10 @@
     <string name="return_main_menu">{fa_sign-out} Retourner au menu principal</string>
     <string name="topic_searcher_heading">Recherche dans TOUS les thèmes</string>
     <string name="loading">Chargement en cours, veuillez patienter…</string>
+
+    <string name="bar_points">Points: %d</string>
+    <string name="submit">{fa_paper-plane} Soumettre !</string>
+    <string name="reset">{fa_undo} Réinitialiser</string>
 
     <!--<string name="dummy_button">Dummy Button</string>-->
     <!--<string name="dummy_content">DUMMY\nCONTENT</string>-->

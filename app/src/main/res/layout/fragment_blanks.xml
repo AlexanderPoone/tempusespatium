@@ -87,5 +87,19 @@
             android:shadowColor="@color/DarkCyan"
             android:shadowRadius="10.5"
             android:visibility="gone" />
+
+        <android.inputmethodservice.KeyboardView
+            android:id="@+id/ukrainian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/RoyalBlue"
+            android:keyBackground="@color/CornflowerBlue"
+            android:keyPreviewLayout="@layout/qwerty_key_preview"
+            android:keyTextColor="@color/Yellow"
+            android:keyTextSize="16sp"
+            android:shadowColor="@color/DarkCyan"
+            android:shadowRadius="10.5"
+            android:visibility="gone" />
     </FrameLayout>
 </RelativeLayout>

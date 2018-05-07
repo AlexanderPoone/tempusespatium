@@ -65,6 +65,29 @@
             android:completionThreshold="0"
             android:lines="1"
             android:maxLines="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/date_game_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/autoCompleteTextView"
+            android:text="DateGame:" />
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/date_game_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bootstrapBrand="warning"
+            app:bootstrapSize="md"
+            app:bootstrapText="{fa_check_square} Customise"
+            app:roundedCorners="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -97,10 +120,41 @@
 
     </LinearLayout>
 
+    <!--<TextView-->
+    <!--android:id="@+id/result"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:scrollbars="vertical"-->
+    <!--android:text="@string/loading" />-->
     <TextView
-        android:id="@+id/result"
+        android:id="@+id/topic_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:labelFor="@id/autoCompleteTextView"
+        android:paddingTop="20dp"
+        android:text="@string/articles_covered"
+        android:textSize="@dimen/bootstrap_h4_text_size"
+        android:textStyle="bold" />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:text="@string/loading" />
+        android:layout_height="match_parent">
+
+        <co.lujun.androidtagview.TagContainerLayout
+            app:tag_text_color="@color/Platinum"
+            app:tag_background_color="@color/MidnightBlue"
+            app:tag_text_size="12sp"
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:padding="4dp"
+            android:scrollbars="vertical"
+            app:container_enable_drag="false"
+            app:horizontal_interval="4dp"
+            app:tag_clickable="true"
+            app:tag_theme="none"
+            app:vertical_interval="4dp" />
+    </ScrollView>
 </LinearLayout>

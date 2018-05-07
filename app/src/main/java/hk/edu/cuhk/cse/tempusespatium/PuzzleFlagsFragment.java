@@ -1,5 +1,6 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
+import android.graphics.drawable.PictureDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,7 +13,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.MultiTransformation;
+import com.bumptech.glide.load.engine.GlideException;
 
 import jp.wasabeef.glide.transformations.gpu.PixelationFilterTransformation;
 import jp.wasabeef.glide.transformations.gpu.SwirlFilterTransformation;
@@ -34,6 +37,8 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
 
     private String[] mCountries, mFlagURLs;
     private String mCapital, mCapitalPic;
+
+    private RequestBuilder<PictureDrawable> requestBuilder;
 
     @Override
     public boolean isRevealed() {
@@ -79,6 +84,10 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
 //                largerAL.add(smallerAL);
 //            }
 //        }
+        requestBuilder = Glide.with(this)
+                .as(PictureDrawable.class)
+                .transition(withCrossFade(1500))
+                .listener(new SvgSoftwareLayerSetter());
         View view = inflater.inflate(R.layout.fragment_flags, container, false);
         return view;
     }
@@ -98,18 +107,19 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         ImageView flagC = (ImageView) view.findViewById(R.id.cImageView);
         ImageView flagD = (ImageView) view.findViewById(R.id.dImageView);
 
-        mFlagURLs[0] = mFlagURLs[0].replaceAll("\u200B", "");
+        /*mFlagURLs[0] = mFlagURLs[0].replaceAll("\u200B", "");
         mFlagURLs[1] = mFlagURLs[1].replaceAll("\u200B", "");
         mFlagURLs[2] = mFlagURLs[2].replaceAll("\u200B", "");
-        mFlagURLs[3] = mFlagURLs[3].replaceAll("\u200B", "");
+        mFlagURLs[3] = mFlagURLs[3].replaceAll("\u200B", "");*/
 
 //        MultiTransformation multi = new MultiTransformation(
 //                new PixelationFilterTransformation(25),
 //                new SwirlFilterTransformation(25, 120, new PointF(50,40)));
-        Glide.with(this).load(mFlagURLs[0]).transition(withCrossFade(1500)).into(flagA);
-        Glide.with(this).load(mFlagURLs[1]).transition(withCrossFade(1500)).into(flagB);
-        Glide.with(this).load(mFlagURLs[2]).transition(withCrossFade(1500)).into(flagC);
-        Glide.with(this).load(mFlagURLs[3]).transition(withCrossFade(1500)).into(flagD);
+
+        requestBuilder.load(mFlagURLs[0]).transition(withCrossFade(1500)).into(flagA);
+        requestBuilder.load(mFlagURLs[1]).transition(withCrossFade(1500)).into(flagB);
+        requestBuilder.load(mFlagURLs[2]).transition(withCrossFade(1500)).into(flagC);
+        requestBuilder.load(mFlagURLs[3]).transition(withCrossFade(1500)).into(flagD);
 
         RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);
         relA.setOnClickListener(new View.OnClickListener() {
@@ -153,8 +163,15 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         isRevealed = true;
         disableControls();
 
+        int[] actual={R.id.aActual, R.id.bActual, R.id.cActual, R.id.dActual};
+        for (int i=0; i<actual.length; i++) {
+            TextView textView = (TextView) getView().findViewById(actual[i]);
+            textView.setText(mCountries[i]);
+        }
+
         ImageView imageView = (ImageView) getView().findViewById(R.id.watermark);
         Glide.with(getContext()).load(mCapitalPic).into(imageView);
+
 
 //        switch (mCorrectCountryIndex) {
 //            case 0:

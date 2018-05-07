@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +56,11 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         TextView textView = (TextView) view.findViewById(R.id.questionHistory);
-        textView.setText(getString(R.string.question_history, mHistoricEvent));
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            textView.setText(Html.fromHtml(getString(R.string.question_history, "<strong><em>"+mHistoricEvent+"</em></strong>"), Html.FROM_HTML_MODE_COMPACT));
+        } else {
+            textView.setText(Html.fromHtml(getString(R.string.question_history, "<strong><em>"+mHistoricEvent+"</em></strong>")));
+        }
         ImageView imageView = (ImageView) view.findViewById(R.id.questionHistoryPic);
         Glide.with(this).load(mPicUrl).into(imageView);
 //        Picasso.with(getContext()).load(mPicUrl).into(imageView);

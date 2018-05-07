@@ -1,15 +1,23 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -24,12 +32,15 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.TreeMap;
 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -39,6 +50,8 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import co.lujun.androidtagview.TagContainerLayout;
+import co.lujun.androidtagview.TagView;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -68,13 +81,74 @@ public class TopicSearcherActivity extends AppCompatActivity {
 
     AdapterView.OnItemClickListener mOnItemClickListener;
 
+    private static HashMap<String, String> items;
+
+    static {
+        items = new HashMap<>();
+        items.put("Attacks", "Q81672");
+        items.put("Battles", "Q178561");
+        items.put("Coup d'état", "Q45382");
+    }
+
+    private final ArrayList<String> selectedItems = new ArrayList<>(items.values());
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.topic_searcher);
 
+        BootstrapButton dateGameButton = (BootstrapButton) findViewById(R.id.date_game_button);
+        final String[] selectableItems = items.keySet().toArray(new String[items.keySet().size()]);
+        Arrays.sort(selectableItems);
+        boolean[] fill = new boolean[selectableItems.length];
+        Arrays.fill(fill, true);
+
+        final AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("Select the covered events")
+                .setMultiChoiceItems(selectableItems, fill, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog2, int indexSelected, boolean isChecked) {
+                        if (isChecked) {
+                            selectedItems.add(items.get(selectableItems[indexSelected]));
+                        } else if (selectedItems.contains(items.get(selectableItems[indexSelected]))) {
+                            selectedItems.remove(items.get(selectableItems[indexSelected]));
+                        }
+                    }
+                })
+                .setCancelable(false)
+                .setPositiveButton("OK", null)
+                .create();
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog2) {
+                Button b = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                b.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (selectedItems.size() != 0) {
+                            dialog.dismiss();
+                        } else {
+                            Snackbar snack=Snackbar.make(dialog.getListView(), "Select at least 1 item!", Snackbar.LENGTH_LONG);
+                            View view = snack.getView();
+                            FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)view.getLayoutParams();
+                            params.gravity = Gravity.TOP;
+                            view.setLayoutParams(params);
+                            snack.show();
+                        }
+                    }
+                });
+            }
+        });
+        dateGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.show();
+            }
+        });
+
+
         Spinner spinner = (Spinner) findViewById(R.id.langSpinner);
-        TopicSearcherDropdownAdapter adapter = new TopicSearcherDropdownAdapter(this, android.R.layout.simple_spinner_item, android.R.id.text1, getResources().getStringArray(R.array.locale_native));
+        TopicSearcherDropdownAdapter adapter = new TopicSearcherDropdownAdapter(this, android.R.layout.simple_spinner_item, android.R.id.text1, getResources().getStringArray(R.array.gameplay_locale_native));
 //        TopicSearcherDropdownAdapter adapter=new TopicSearcherDropdownAdapter(this, 0, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.locale));
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -82,12 +156,15 @@ public class TopicSearcherActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
                 autoCompleteTextView.setOnItemSelectedListener(null);
-                if (i == 4) {
+                if (i == 2) {
                     deutsch();
                     mQuestionLang = "de";
-                } else if (i == 5) {
+                } else if (i == 3) {
                     francais();
                     mQuestionLang = "fr";
+                } else if (i == 4) {
+                    ukrajinska();
+                    mQuestionLang = "uk";
                 } else {
                     english();
                     mQuestionLang = "en";
@@ -136,8 +213,9 @@ public class TopicSearcherActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TextView textView = (TextView) findViewById(R.id.result);
-                            textView.setText(body[0]);
+                            // TODO:
+//                            TextView textView = (TextView) findViewById(R.id.result);
+//                            textView.setText(body[0]);
                             try {
                                 Document doc = DocumentBuilderFactory.newInstance()
                                         .newDocumentBuilder().parse(new InputSource(new StringReader(body[0])));
@@ -226,9 +304,31 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                             runOnUiThread(new Runnable() {
                                                 @Override
                                                 public void run() {
-                                                    TextView textView = (TextView) findViewById(R.id.result);
-                                                    textView.setText(mArts.keySet().toString());
-                                                    textView.setMovementMethod(new ScrollingMovementMethod());
+                                                    TagContainerLayout tagView = (TagContainerLayout) findViewById(R.id.result);
+                                                    Set<String> keySet = mArts.keySet();
+                                                    tagView.setTags(keySet.toArray(new String[keySet.size()]));
+                                                    tagView.setOnTagClickListener(new TagView.OnTagClickListener() {
+                                                        @Override
+                                                        public void onTagClick(int position, String text) {
+                                                            WebViewDialog webViewDialog = new WebViewDialog(TopicSearcherActivity.this, "https://" + mQuestionLang + ".wikipedia.org/wiki/" + text);
+                                                            webViewDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                                            webViewDialog.show();
+                                                        }
+
+                                                        @Override
+                                                        public void onTagLongClick(int position, String text) {
+
+                                                        }
+
+                                                        @Override
+                                                        public void onTagCrossClick(int position) {
+
+                                                        }
+                                                    });
+                                                    // TODO:
+//                                                    TextView textView = (TextView) findViewById(R.id.result);
+//                                                    textView.setText(mArts.keySet().toString());
+//                                                    textView.setMovementMethod(new ScrollingMovementMethod());
 
 //                                                    BootstrapButton submitButton = (BootstrapButton) findViewById(R.id.topic_submit_button);
                                                     submitButton.setEnabled(true);
@@ -243,6 +343,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                                             jump.putExtra("artsAlt1", mArts);
                                                             jump.putExtra("artsAlt2", mArts);
                                                             jump.putExtra("supportList", new ArrayList<>(mArts.keySet()));
+
+                                                            jump.putExtra("dateGameList", selectedItems);
                                                             startActivity(jump);
                                                             finish();
                                                         }
@@ -300,8 +402,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TextView textView = (TextView) findViewById(R.id.result);
-                            textView.setText(body[0]);
+//                            TextView textView = (TextView) findViewById(R.id.result);
+//                            textView.setText(body[0]);
                             try {
                                 Document doc = DocumentBuilderFactory.newInstance()
                                         .newDocumentBuilder().parse(new InputSource(new StringReader(body[0])));
@@ -311,8 +413,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                 for (int i = 0; i < test.getLength(); i++) {
                                     //URL
                                     //Topics
-                                    String tmp=test.item(i).getTextContent().replaceFirst("Article (du projet |de |d')?", "").replaceFirst(" d'importance maximum", "").replaceFirst("( )?sur (l'|l’|le |la |les )?", "");
-                                    mTopics.put(tmp.substring(0,1).toUpperCase() + tmp.substring(1), "https://fr.wikipedia.org" + test.item(i).getAttributes().getNamedItem("href").getTextContent());
+                                    String tmp = test.item(i).getTextContent().replaceFirst("Article (du projet |de |d')?", "").replaceFirst(" d'importance maximum", "").replaceFirst("( )?sur (l'|l’|le |la |les )?", "");
+                                    mTopics.put(tmp.substring(0, 1).toUpperCase() + tmp.substring(1), "https://fr.wikipedia.org" + test.item(i).getAttributes().getNamedItem("href").getTextContent());
 //                                    Log.i("Test", test.item(i).getAttributes().item(1).getTextContent());
                                 }
 
@@ -390,9 +492,30 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                             runOnUiThread(new Runnable() {
                                                 @Override
                                                 public void run() {
-                                                    TextView textView = (TextView) findViewById(R.id.result);
-                                                    textView.setText(mArts.keySet().toString());
-                                                    textView.setMovementMethod(new ScrollingMovementMethod());
+                                                    TagContainerLayout tagView = (TagContainerLayout) findViewById(R.id.result);
+                                                    Set<String> keySet = mArts.keySet();
+                                                    tagView.setTags(keySet.toArray(new String[keySet.size()]));
+                                                    tagView.setOnTagClickListener(new TagView.OnTagClickListener() {
+                                                        @Override
+                                                        public void onTagClick(int position, String text) {
+                                                            WebViewDialog webViewDialog = new WebViewDialog(TopicSearcherActivity.this, "https://" + mQuestionLang + ".wikipedia.org/wiki/" + text);
+                                                            webViewDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                                            webViewDialog.show();
+                                                        }
+
+                                                        @Override
+                                                        public void onTagLongClick(int position, String text) {
+
+                                                        }
+
+                                                        @Override
+                                                        public void onTagCrossClick(int position) {
+
+                                                        }
+                                                    });
+//                                                    TextView textView = (TextView) findViewById(R.id.result);
+//                                                    textView.setText(mArts.keySet().toString());
+//                                                    textView.setMovementMethod(new ScrollingMovementMethod());
 
 //                                                    BootstrapButton submitButton = (BootstrapButton) findViewById(R.id.topic_submit_button);
                                                     submitButton.setEnabled(true);
@@ -407,6 +530,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                                             jump.putExtra("artsAlt1", mArts);
                                                             jump.putExtra("artsAlt2", mArts);
                                                             jump.putExtra("supportList", new ArrayList<>(mArts.keySet()));
+
+                                                            jump.putExtra("dateGameList", selectedItems);
                                                             startActivity(jump);
                                                             finish();
                                                         }
@@ -486,8 +611,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TextView textView = (TextView) findViewById(R.id.result);
-                            textView.setText(body[0]);
+//                            TextView textView = (TextView) findViewById(R.id.result);
+//                            textView.setText(body[0]);
                             NodeList test = null;
                             Node uberschrift = null;
                             try {
@@ -587,9 +712,30 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
-                                    TextView textView = (TextView) findViewById(R.id.result);
-                                    textView.setText(mArts.keySet().toString());
-                                    textView.setMovementMethod(new ScrollingMovementMethod());
+                                    TagContainerLayout tagView = (TagContainerLayout) findViewById(R.id.result);
+                                    Set<String> keySet = mArts.keySet();
+                                    tagView.setTags(keySet.toArray(new String[keySet.size()]));
+                                    tagView.setOnTagClickListener(new TagView.OnTagClickListener() {
+                                        @Override
+                                        public void onTagClick(int position, String text) {
+                                            WebViewDialog webViewDialog = new WebViewDialog(TopicSearcherActivity.this, "https://" + mQuestionLang + ".wikipedia.org/wiki/" + text);
+                                            webViewDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                            webViewDialog.show();
+                                        }
+
+                                        @Override
+                                        public void onTagLongClick(int position, String text) {
+
+                                        }
+
+                                        @Override
+                                        public void onTagCrossClick(int position) {
+
+                                        }
+                                    });
+//                                    TextView textView = (TextView) findViewById(R.id.result);
+//                                    textView.setText(mArts.keySet().toString());
+//                                    textView.setMovementMethod(new ScrollingMovementMethod());
 
 //                                    BootstrapButton submitButton = (BootstrapButton) findViewById(R.id.topic_submit_button);
                                     submitButton.setEnabled(true);
@@ -605,6 +751,214 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                             jump.putExtra("artsAlt2", mArts);
 
                                             jump.putExtra("supportList", new ArrayList<>(mArts.keySet()));
+                                            jump.putExtra("dateGameList", selectedItems);
+                                            startActivity(jump);
+                                            finish();
+                                        }
+                                    });
+                                }
+                            };
+                            autoCompleteTextView.setOnItemClickListener(mOnItemClickListener);
+                        }
+                    });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+    }
+
+    private void espanol() {
+
+    }
+
+    private void ukrajinska() {
+        mSelectedTopic = new ArrayList<>();
+        mTopicsDe = new ArrayList<>();
+        mTopicsUntrimmedDe = new ArrayList<>();
+
+        // TODO: !!!!!!!!!!!!!! https://en.wikipedia.org/wiki/Category:WikiProjects_by_topic !!!!!!!!!!!!!!!!!!!!!!!!
+        // Talk, file talk...
+        BootstrapButton clearButton = (BootstrapButton) findViewById(R.id.topic_clear_button);
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+                autoCompleteTextView.setText("");
+                autoCompleteTextView.showDropDown();
+            }
+        });
+
+        final BootstrapButton submitButton = (BootstrapButton) findViewById(R.id.topic_submit_button);
+        submitButton.setEnabled(false);
+
+        String base_url = "https://uk.wikipedia.org/wiki/%D0%92%D1%96%D0%BA%D1%96%D0%BF%D0%B5%D0%B4%D1%96%D1%8F:%D0%94%D0%BE%D0%B1%D1%80%D1%96_%D1%81%D1%82%D0%B0%D1%82%D1%82%D1%96";
+        String base_url2 = "https://uk.wikipedia.org/wiki/%D0%92%D1%96%D0%BA%D1%96%D0%BF%D0%B5%D0%B4%D1%96%D1%8F:%D0%92%D0%B8%D0%B1%D1%80%D0%B0%D0%BD%D1%96_%D1%81%D1%82%D0%B0%D1%82%D1%82%D1%96";
+
+        // NOT href="/wiki/Datei:Loudspeaker.svg" !!!
+
+        mClient = new OkHttpClient();
+        final Request request = new Request.Builder()
+                .url(base_url)
+                .build();
+        final Request request2 = new Request.Builder()
+                .url(base_url2)
+                .build();
+        final Response[] response = {null, null};
+        final String[] body = {"", ""};
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    response[0] = mClient.newCall(request).execute();
+                    body[0] = response[0].body().string();
+                    response[1] = mClient.newCall(request2).execute();
+                    body[1] = response[1].body().string();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+//                            TextView textView = (TextView) findViewById(R.id.result);
+//                            textView.setText(body[0]);
+                            NodeList test = null;
+                            Node uberschrift = null;
+                            try {
+                                Document doc = DocumentBuilderFactory.newInstance()
+                                        .newDocumentBuilder().parse(new InputSource(new StringReader(body[0])));
+                                XPathExpression staticXPath = XPathFactory.newInstance()
+                                        .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table[2]/tr[2]/td/ul//li");
+
+                                test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
+
+                                for (int i = 0; i < test.getLength(); i++) {
+                                    XPathExpression fett = XPathFactory.newInstance().newXPath().compile("b");
+                                    uberschrift = (Node) fett.evaluate(test.item(i), XPathConstants.NODE);
+
+                                    // 2
+                                    if (uberschrift != null) {
+                                        if (uberschrift.getTextContent().startsWith("Інш")) continue; // Skip 'others'
+                                        mTopicsUntrimmedDe.add(uberschrift.getTextContent());
+
+                                        mTopicsDe.add(uberschrift.getTextContent().substring(0, uberschrift.getTextContent().length() - 1).replaceFirst("^ ", ""));
+                                        Log.i("Uberschrift", uberschrift.getTextContent().substring(0, uberschrift.getTextContent().length() - 1));
+                                    }
+                                }
+
+                            } catch (SAXException e) {
+                                e.printStackTrace();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (ParserConfigurationException e) {
+                                e.printStackTrace();
+                            } catch (XPathExpressionException e) {
+                                e.printStackTrace();
+                            }
+                            List<String> tmp = new ArrayList<>(mTopicsDe);
+                            Collections.sort(tmp);
+                            final ArrayAdapter<String> adapter = new ArrayAdapter<>(TopicSearcherActivity.this, android.R.layout.simple_dropdown_item_1line, tmp);
+                            final AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+                            autoCompleteTextView.setAdapter(adapter);
+                            autoCompleteTextView.showDropDown();
+                            final NodeList finalTest = test;
+                            mOnItemClickListener = new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                    submitButton.setEnabled(false);
+                                    mArts = new LinkedHashMap<>();
+                                    String selectedTopic = adapter.getItem(i);
+
+                                    /* */
+                                    int randomInt, randomInt2;
+                                    Random random = new Random();
+                                    do {
+                                        randomInt = random.nextInt(adapter.getCount());
+                                    } while (randomInt == i);
+                                    String selectedTopicAlt1 = adapter.getItem(randomInt);
+
+                                    do {
+                                        randomInt2 = random.nextInt(adapter.getCount());
+                                    } while (randomInt2 == i || randomInt2 == randomInt);
+                                    String selectedTopicAlt2 = adapter.getItem(randomInt2);
+
+                                    mSelectedTopic.add(selectedTopic);
+                                    mSelectedTopic.add(selectedTopicAlt1);
+                                    mSelectedTopic.add(selectedTopicAlt2);
+                                    /* */
+
+
+                                    //URL
+                                    try {
+                                        XPathExpression verweis = XPathFactory.newInstance().newXPath().compile("a");
+                                        NodeList artikeln = (NodeList) verweis.evaluate(finalTest.item(mTopicsDe.lastIndexOf(selectedTopic)), XPathConstants.NODESET);
+
+                                        for (int j = 0; j < artikeln.getLength(); j++) {
+                                            Log.i("Artikel", artikeln.item(j).getTextContent());
+                                            Log.i("URL", artikeln.item(j).getAttributes().getNamedItem("href").getTextContent());
+                                            mArts.put(artikeln.item(j).getTextContent(), "https://uk.wikipedia.org" + artikeln.item(j).getAttributes().getNamedItem("href").getTextContent());
+                                        }
+
+                                        // 2
+                                        Document doc2 = DocumentBuilderFactory.newInstance()
+                                                .newDocumentBuilder().parse(new InputSource(new StringReader(body[1])));
+                                        XPathExpression staticXPath2 = XPathFactory.newInstance()
+                                                .newXPath().compile(String.format("//*[@id=\"mw-content-text\"]/div/table[2]/tr[2]/td/ul//li[b/text()=\"%s\"]/a", mTopicsUntrimmedDe.get(mTopicsDe.lastIndexOf(selectedTopic))));
+                                        NodeList artikeln2 = (NodeList) staticXPath2.evaluate(doc2, XPathConstants.NODESET);
+                                        if (artikeln2.getLength() > 0) {
+                                            for (int k = 0; k < artikeln2.getLength(); k++) {
+                                                mArts.put(artikeln2.item(k).getTextContent(), "https://uk.wikipedia.org" + artikeln2.item(k).getAttributes().getNamedItem("href").getTextContent());
+                                                Log.i("Lucky you!", "2 Found! " + artikeln2.item(k).getTextContent());
+                                            }
+                                        }
+
+                                    } catch (XPathExpressionException e) {
+                                        e.printStackTrace();
+                                    } catch (SAXException e) {
+                                        e.printStackTrace();
+                                    } catch (ParserConfigurationException e) {
+                                        e.printStackTrace();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                    TagContainerLayout tagView = (TagContainerLayout) findViewById(R.id.result);
+                                    Set<String> keySet = mArts.keySet();
+                                    tagView.setTags(keySet.toArray(new String[keySet.size()]));
+                                    tagView.setOnTagClickListener(new TagView.OnTagClickListener() {
+                                        @Override
+                                        public void onTagClick(int position, String text) {
+                                            WebViewDialog webViewDialog = new WebViewDialog(TopicSearcherActivity.this, "https://" + mQuestionLang + ".wikipedia.org/wiki/" + text);
+                                            webViewDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                            webViewDialog.show();
+                                        }
+
+                                        @Override
+                                        public void onTagLongClick(int position, String text) {
+
+                                        }
+
+                                        @Override
+                                        public void onTagCrossClick(int position) {
+
+                                        }
+                                    });
+//                                    TextView textView = (TextView) findViewById(R.id.result);
+//                                    textView.setText(mArts.keySet().toString());
+//                                    textView.setMovementMethod(new ScrollingMovementMethod());
+
+//                                    BootstrapButton submitButton = (BootstrapButton) findViewById(R.id.topic_submit_button);
+                                    submitButton.setEnabled(true);
+                                    submitButton.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            Intent jump = new Intent(getBaseContext(), Round1Activity.class);
+                                            jump.putExtra("lang", mQuestionLang);
+                                            jump.putExtra("topic", mSelectedTopic);
+                                            jump.putExtra("arts", mArts);
+
+                                            jump.putExtra("artsAlt1", mArts);
+                                            jump.putExtra("artsAlt2", mArts);
+
+                                            jump.putExtra("supportList", new ArrayList<>(mArts.keySet()));
+                                            jump.putExtra("dateGameList", selectedItems);
                                             startActivity(jump);
                                             finish();
                                         }

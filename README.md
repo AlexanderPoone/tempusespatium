@@ -86,7 +86,7 @@ public class Main {
 
 ```sparql
 #defaultView:Graph
-SELECT DISTINCT ?country ?countryLabel ?capital ?capitalLabel ?flagLabel ?armsLabel ?imgLabel
+SELECT DISTINCT ?country ?countryLabel ?country_EN ?country_DE ?country_FR ?capital ?capitalLabel ?flagLabel ?armsLabel ?imgLabel
 WHERE
 {
   ?country wdt:P31 wd:Q3624078 .
@@ -99,8 +99,17 @@ WHERE
    ?country wdt:P94 ?arms.
    ?capital wdt:P18 ?img.
 
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
-}
+     SERVICE wikibase:label { bd:serviceParam wikibase:language "en".
+     }
+     SERVICE wikibase:label { bd:serviceParam wikibase:language "en".
+            ?country rdfs:label ?country_EN.
+     } hint:Prior hint:runLast false.
+     SERVICE wikibase:label { bd:serviceParam wikibase:language "de".
+            ?country rdfs:label ?country_DE.
+     } hint:Prior hint:runLast false.
+     SERVICE wikibase:label { bd:serviceParam wikibase:language "fr".
+            ?country rdfs:label ?country_FR.
+     } hint:Prior hint:runLast false.}
 ORDER BY ?countryLabel 
 ```
 

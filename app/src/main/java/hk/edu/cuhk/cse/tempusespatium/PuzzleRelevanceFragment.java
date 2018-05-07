@@ -7,6 +7,7 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.DragEvent;
@@ -117,7 +118,7 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
 
         for (int i = 0; i < labelViews.length; i++) {
             labelViews[i].setText(merged.get(i));
-            labelViews[i].setTag(TAGS[i]);
+            labelViews[i].setTag(merged.get(i));  //labelViews[i].setTag(TAGS[i]);
 
 // Sets a long click listener for the ImageView using an anonymous listener object that
 // implements the OnLongClickListener interface
@@ -303,7 +304,7 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
                 case DragEvent.ACTION_DROP:
                     ClipData.Item item = event.getClipData().getItemAt(0);
                     String dragData = item.getText().toString();
-                    Toast.makeText(getContext(), "Dragged data is " + dragData, Toast.LENGTH_SHORT).show();
+                    Snackbar.make(getView().getRootView(), "Status: You have dragged " + dragData, Snackbar.LENGTH_SHORT).show();
                     v.getBackground().clearColorFilter();
                     v.invalidate();
 

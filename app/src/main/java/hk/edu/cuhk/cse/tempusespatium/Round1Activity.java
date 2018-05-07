@@ -267,7 +267,8 @@ public class Round1Activity extends AppCompatActivity {
 
         switch (type) {
             case 0:
-                if (mQuestionLang.equals("uk")) generateBlanksPuzzle(); // Stemming game does not support Ukrainian yet.
+                if (mQuestionLang.equals("uk"))
+                    generateBlanksPuzzle(); // Stemming game does not support Ukrainian yet.
                 else generateRelevancePuzzle();
                 break;
             case 1:
@@ -722,7 +723,7 @@ public class Round1Activity extends AppCompatActivity {
 
         int realIndex = random1.nextInt(entries.size());
         HashMap chosen = entries.get(realIndex);
-        String country=(String) chosen.get("countryLabel");
+        String country = (String) chosen.get("countryLabel");
 
         String[] ns = {"flagLabel", "armsLabel"};
         int randNs = random1.nextInt(2);
@@ -732,8 +733,8 @@ public class Round1Activity extends AppCompatActivity {
 //        similarFlag1 = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_SIMILAR_FLAG_1));
 //        similarFlag2 = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_SIMILAR_FLAG_2));
         String capital;
-        if (mQuestionLang.equals("en")) capital=(String) chosen.get("capitalLabel");
-        else capital=(String) chosen.get("capital_"+mQuestionLang);
+        if (mQuestionLang.equals("en")) capital = (String) chosen.get("capitalLabel");
+        else capital = (String) chosen.get("capital_" + mQuestionLang);
         String capitalPic = ((String) chosen.get("imgLabel")).replace("http:", "https:");
 
 
@@ -745,7 +746,8 @@ public class Round1Activity extends AppCompatActivity {
                 " COLLATE NOCASE", null);
 
         cursor.moveToNext();
-        if (!mQuestionLang.equals("en")) country=(String) chosen.get("country_"+mQuestionLang); // Overwrite here
+        if (!mQuestionLang.equals("en"))
+            country = (String) chosen.get("country_" + mQuestionLang); // Overwrite here
         int correctCountryIndex = random1.nextInt(4);                // 0=A, 1=B, 2=C, 3=D
         countries[correctCountryIndex] = country;
         flagURLs[correctCountryIndex] = nsUrl;
@@ -773,23 +775,36 @@ public class Round1Activity extends AppCompatActivity {
             }
         }
         if (similarFlagIndex1 == Integer.MAX_VALUE) {
-            //TODO
+            //TODO: Done.
+            do {
+                similarFlagIndex1 = random1.nextInt(entries.size());
+            }
+            while (similarFlagIndex1 == realIndex);
         }
-
+        if (similarFlagIndex2 == Integer.MAX_VALUE) {
+            do {
+                similarFlagIndex2 = random1.nextInt(entries.size());
+            }
+            while ((similarFlagIndex2 == similarFlagIndex1) || (similarFlagIndex2 == realIndex));
+        }
 
         int tmpIndex;
         do {
             tmpIndex = random1.nextInt(4);
         } while (flagURLs[tmpIndex] != null);
-        if (mQuestionLang.equals("en")) countries[tmpIndex] = (String) entries.get(similarFlagIndex1).get("countryLabel");
-        else countries[tmpIndex] = (String) entries.get(similarFlagIndex1).get("country_"+mQuestionLang);
+        if (mQuestionLang.equals("en"))
+            countries[tmpIndex] = (String) entries.get(similarFlagIndex1).get("countryLabel");
+        else
+            countries[tmpIndex] = (String) entries.get(similarFlagIndex1).get("country_" + mQuestionLang);
         flagURLs[tmpIndex] = ((String) entries.get(similarFlagIndex1).get(ns[randNs])).replace("http:", "https:").replace("%20", "_");
 
         do {
             tmpIndex = random1.nextInt(4);
         } while (flagURLs[tmpIndex] != null);
-        if (mQuestionLang.equals("en")) countries[tmpIndex] = (String) entries.get(similarFlagIndex2).get("countryLabel");
-        else countries[tmpIndex] = (String) entries.get(similarFlagIndex2).get("country_"+mQuestionLang);
+        if (mQuestionLang.equals("en"))
+            countries[tmpIndex] = (String) entries.get(similarFlagIndex2).get("countryLabel");
+        else
+            countries[tmpIndex] = (String) entries.get(similarFlagIndex2).get("country_" + mQuestionLang);
         flagURLs[tmpIndex] = ((String) entries.get(similarFlagIndex2).get(ns[randNs])).replace("http:", "https:").replace("%20", "_");
 
         do {
@@ -798,8 +813,10 @@ public class Round1Activity extends AppCompatActivity {
         while ((tmpIndex == similarFlagIndex1) || (tmpIndex == similarFlagIndex2) || (tmpIndex == realIndex));
         for (int i = 0; i < 4; i++) {
             if (flagURLs[i] == null) {
-                if (mQuestionLang.equals("en")) countries[i] = (String) entries.get(tmpIndex).get("countryLabel");
-                else countries[i] = (String) entries.get(tmpIndex).get("country_"+mQuestionLang);
+                if (mQuestionLang.equals("en"))
+                    countries[i] = (String) entries.get(tmpIndex).get("countryLabel");
+                else
+                    countries[i] = (String) entries.get(tmpIndex).get("country_" + mQuestionLang);
                 flagURLs[i] = ((String) entries.get(tmpIndex).get(ns[randNs])).replace("http:", "https:").replace("%20", "_");
                 break;
             }
@@ -1020,7 +1037,8 @@ public class Round1Activity extends AppCompatActivity {
         countDown(blanksFragment0, blanksFragment1, timeout);
     }
 
-    public void countDown(final PuzzleFragmentInterface f1, final PuzzleFragmentInterface f2, final int millis) {
+    public void countDown(final PuzzleFragmentInterface f1, final PuzzleFragmentInterface f2,
+                          final int millis) {
         mDonutTime.setMax(millis / 1000);
         mDonutTime2.setMax(millis / 1000);
         mCountDownTimer = new CountDownTimer(millis, 1000) {

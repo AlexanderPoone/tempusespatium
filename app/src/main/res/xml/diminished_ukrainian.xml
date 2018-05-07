@@ -23,81 +23,80 @@
     android:keyHeight="140px">
     <Row>
         <Key
-            android:codes="1"
+            android:codes="101"
             android:keyLabel="й"
             android:keyEdgeFlags="left" />
         <Key
-            android:codes="2"
+            android:codes="102"
             android:keyLabel="ц" />
         <Key
-            android:codes="3"
+            android:codes="103"
             android:keyLabel="ч" />
         <Key
-            android:codes="4"
+            android:codes="104"
             android:keyLabel="к" />
         <Key
-            android:codes="5"
+            android:codes="105"
             android:keyLabel="е" />
         <Key
-            android:codes="6"
+            android:codes="106"
             android:keyLabel="н" />
         <Key
-            android:codes="7"
+            android:codes="107"
             android:keyLabel="г" />
         <Key
-            android:codes="8"
+            android:codes="108"
             android:keyLabel="ш" />
         <Key
-            android:codes="9"
+            android:codes="109"
             android:keyLabel="щ" />
         <Key
-            android:codes="10"
+            android:codes="110"
             android:keyLabel="з" />
         <Key
-            android:codes="11"
+            android:codes="111"
             android:keyLabel="х" />
         <Key
-            android:codes="12"
+            android:codes="112"
             android:keyLabel="ї"
-            android:horizontalGap="7%p"
             android:keyEdgeFlags="right" />
     </Row>
 
     <Row>
         <Key
-            android:codes="13"
+            android:codes="113"
             android:keyLabel="ф"
-            android:horizontalGap="2%p"
+            android:keyWidth="8%p"
             android:keyEdgeFlags="left" />
         <Key
-            android:codes="14"
+            android:codes="114"
             android:keyLabel="і" />
         <Key
-            android:codes="15"
+            android:codes="115"
             android:keyLabel="в" />
         <Key
-            android:codes="16"
+            android:codes="116"
             android:keyLabel="а" />
         <Key
-            android:codes="17"
+            android:codes="117"
             android:keyLabel="п" />
         <Key
-            android:codes="18"
+            android:codes="118"
             android:keyLabel="р" />
         <Key
-            android:codes="19"
+            android:codes="119"
             android:keyLabel="о" />
         <Key
-            android:codes="20"
+            android:codes="120"
             android:keyLabel="л" />
         <Key
-            android:codes="21"
+            android:codes="121"
             android:keyLabel="д" />
         <Key
-            android:codes="22"
+            android:codes="122"
             android:keyLabel="ж" />
         <Key
-            android:codes="23"
+            android:codes="123"
             android:keyLabel="є"
             android:keyEdgeFlags="right" />
     </Row>
@@ -113,34 +112,34 @@
             android:keyEdgeFlags="left"
             android:isRepeatable="true" />
         <Key
-            android:codes="24"
+            android:codes="124"
             android:keyLabel="ґ" />
         <Key
-            android:codes="25"
+            android:codes="125"
             android:keyLabel="я" />
         <Key
-            android:codes="26"
+            android:codes="126"
             android:keyLabel="ч" />
         <Key
-            android:codes="27"
+            android:codes="127"
             android:keyLabel="с" />
         <Key
-            android:codes="28"
+            android:codes="128"
             android:keyLabel="м" />
         <Key
-            android:codes="29"
+            android:codes="129"
             android:keyLabel="и" />
         <Key
-            android:codes="30"
+            android:codes="130"
             android:keyLabel="т" />
         <Key
-            android:codes="31"
+            android:codes="131"
             android:keyLabel="ь" />
         <Key
-            android:codes="32"
+            android:codes="132"
             android:keyLabel="б" />
         <Key
-            android:codes="33"
+            android:codes="133"
             android:keyLabel="ю" />
         <Key
             android:codes="8"

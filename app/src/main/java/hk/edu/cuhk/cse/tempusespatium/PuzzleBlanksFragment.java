@@ -3,6 +3,7 @@ package hk.edu.cuhk.cse.tempusespatium;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -390,6 +391,79 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
 
                 }
             });
+        } else if (mLang.equals("uk")) {
+            keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
+                @Override
+                public void onPress(int i) {
+
+                }
+
+                @Override
+                public void onRelease(int i) {
+
+                }
+
+                @Override
+                public void onKey(int i, int[] keyCodes) {
+                    char[] ch = {'й','ц','ч','к','е','н','г','ш','щ','з','х','ї','ф','і','в','а','п','р','о','л','д','ж','є','ґ','я','ч','с','м','и','т','ь','б','ю'};
+                    switch (i) {
+                        case 8:
+                            String JS = "javascript:(function() {" +
+                                    "if (window.myReadOnly == 1) return;" +
+                                    "var ele=document.activeElement;" +
+                                    "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                    "ele.value = ele.value.substr(0, position-1) + ele.value.substr(position);" +
+                                    "ele.focus();" +
+                                    "if (position != 0) ele.setSelectionRange(position-1, position-1);})()";
+                            mWebView.loadUrl(JS);
+                            return;
+                        case Keyboard.KEYCODE_DELETE:
+                            String JS_ = "javascript:(function() {" +
+                                    "if (window.myReadOnly == 1) return;" +
+                                    "var ele=document.activeElement;" +
+                                    "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                    "ele.value = ele.value.substr(0, position) + ele.value.substr(position+1);" +
+                                    "ele.focus();" +
+                                    "ele.setSelectionRange(position, position);})()";
+                            mWebView.loadUrl(JS_);
+                            return;
+                    }
+                    String JS__ = String.format(new Locale("uk"),
+                            "javascript:(function() {" +
+                                    "if (window.myReadOnly == 1) return;" +
+                                    "var ele=document.activeElement;" +
+                                    "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                    "ele.value = ele.value.substr(0, position) + '%c' + ele.value.substr(position);" +
+                                    "ele.focus();" +
+                                    "ele.setSelectionRange(position+1, position+1);})()", ch[i-101]);
+                    mWebView.loadUrl(JS__);
+                }
+
+                @Override
+                public void onText(CharSequence text) {
+
+                }
+
+                @Override
+                public void swipeLeft() {
+
+                }
+
+                @Override
+                public void swipeRight() {
+
+                }
+
+                @Override
+                public void swipeDown() {
+
+                }
+
+                @Override
+                public void swipeUp() {
+
+                }
+            });
         } else {
             keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
                 @Override
@@ -530,6 +604,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
         Log.i("Triggered", Integer.toString(value));
         Log.i("TAG", Thread.currentThread().getName());
         mVal = value;
+        SystemClock.sleep(100);
 //        result.confirm();
         mCountDownLatch.countDown();
     }

@@ -12945,7 +12945,7 @@
       "type": "Feature",
       "id": "CZE",
       "properties": {
-        "name": "Czech Republic"
+        "name": "Czechia"
       },
       "geometry": {
         "type": "Polygon",
@@ -24921,7 +24921,7 @@
       "type": "Feature",
       "id": "MKD",
       "properties": {
-        "name": "Macedonia"
+        "name": "Macedonia (FYROM)"
       },
       "geometry": {
         "type": "Polygon",

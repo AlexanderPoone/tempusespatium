@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="play">{fa_gamepad} JUGAR !</string>
+    <string name="rules">{fa_leanpub} Regles</string>
+    <string name="learn">{fa_book} Aprendre</string>
+    <string name="settings">{fa_cog} Ajustos</string>
+    <string name="quit">{fa_sign-out} Deixar</string>
+
+
+    <string name="resume">{fa_play-circle} Reprendre</string>
+    <string name="return_main_menu">{fa_sign-out} Tornar al menú principal</string>
+    <string name="topic_searcher_heading">Cerca TOTS els temes</string>
+    <string name="loading">Carregant, espereu…</string>
+
+    <string name="bar_points">Punts: %d</string>
+    <string name="submit">{fa_paper-plane} Enviar !</string>
+    <string name="reset">{fa_undo} Reajustar</string>
+
+    <string name="pref_general">General</string>
+    <string name="pref_general_locale">Locale</string>
+    <string name="pref_version">Version</string>
+
+    <string name="pref_gameplay">Joc</string>
+    <string name="pref_difficulty">Dificultat</string>
+    <string name="pref_difficulty_hard">Difícil</string>
+    <string name="pref_difficulty_insane">BoIg</string>
+</resources>

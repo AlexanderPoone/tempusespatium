@@ -16,17 +16,12 @@
     <string name="submit">{fa_paper-plane} Soumettre !</string>
     <string name="reset">{fa_undo} Réinitialiser</string>
 
-    <!--<string name="dummy_button">Dummy Button</string>-->
-    <!--<string name="dummy_content">DUMMY\nCONTENT</string>-->
+    <string name="pref_general">Général</string>
+    <string name="pref_general_locale">Locale</string>
+    <string name="pref_version">Version</string>
 
-    <!--<string name="reveal_anthem">L\'hymne est… %s\n%s</string>-->
-    <!--<string name="anthem_cl">Hymne national du Chili</string>-->
-    <!--<string name="anthem_de">Unité et droit et liberté</string>-->
-    <!--<string name="anthem_fr">La Marseillaise</string>-->
-    <!--<string name="anthem_es">Marche royale</string>-->
-    <!--<string name="anthem_il">L\'Espoir</string>-->
-    <!--<string name="anthem_in">Tu es le souverain de toutes les âmes</string>-->
-    <!--<string name="anthem_jp">Votre règne</string>-->
-    <!--<string name="anthem_kh">Majestueux Royaume</string>-->
-    <!--<string name="anthem_ua">Ni la gloire ni la liberté de l\'Ukraine ne sont mortes</string>-->
+    <string name="pref_gameplay">Jeux</string>
+    <string name="pref_difficulty">Difficulté</string>
+    <string name="pref_difficulty_hard">Difficile</string>
+    <string name="pref_difficulty_insane">InSeNsÉ</string>
 </resources>

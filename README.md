@@ -5,7 +5,8 @@ SPARQL
 SELECT DISTINCT ?eventLabel ?date ?dateLabel ?coord ?img
 WHERE
 {
-  ?event wdt:P31+ wd:Q178561 .
+  { ?event wdt:P31* wd:Q178561. } UNION
+  { ?event wdt:P31* wd:Q81672. }
 
   OPTIONAL { ?event wdt:P585+ ?date }
   ?event wdt:P18+ ?img.

@@ -36,6 +36,7 @@ import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -45,6 +46,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
@@ -90,7 +92,7 @@ public class Round1Activity extends AppCompatActivity {
 
     String mQuestionLang;
     HashMap<String, String> mArts;
-    List<String> mCurrentTopic, mArtsSupportList, mDateGameList;
+    List<String> mCurrentTopic, mArtsSupportList, mDateGameList, mChoiceGameList;
 
     Handler mHandler;
     boolean mPauseTimer = false;
@@ -109,6 +111,7 @@ public class Round1Activity extends AppCompatActivity {
         mArts = (HashMap<String, String>) intent.getSerializableExtra("arts");
         mArtsSupportList = intent.getStringArrayListExtra("supportList");
         mDateGameList = intent.getStringArrayListExtra("dateGameList");
+        mChoiceGameList = intent.getStringArrayListExtra("choiceGameList");
         Log.i("URL", mArts.get(mArtsSupportList.get(0)));
 
         BootstrapButton pauseButton = (BootstrapButton) findViewById(R.id.pauseGame);
@@ -665,7 +668,7 @@ public class Round1Activity extends AppCompatActivity {
 //            Endpoint sp = new Endpoint("https://query.wikidata.org/sparql", false);
 
                     StringBuilder stringBuilder = new StringBuilder("#defaultView:Graph\n" +
-                            "SELECT DISTINCT ?countryLabel ?capitalLabel ?flagLabel ?armsLabel ?imgLabel");
+                            "SELECT DISTINCT ?countryLabel ?capitalLabel ?flagLabel ?armsLabel ?imgLabel ?population");
 
                     if (!mQuestionLang.equals("en"))
                         stringBuilder.append(" ?country_" + mQuestionLang + " ?capital_" + mQuestionLang);
@@ -678,9 +681,10 @@ public class Round1Activity extends AppCompatActivity {
                                     "  #and not an ancient civilisation\n" +
                                     "  FILTER NOT EXISTS {?country wdt:P31 wd:Q28171280}\n" +
                                     "   ?country wdt:P36 ?capital.\n" +
-                                    "     ?country wdt:P41 ?flag.\n" +
+                                    "   ?country wdt:P41 ?flag.\n" +
                                     "   ?country wdt:P94 ?arms.\n" +
                                     "   ?capital wdt:P18 ?img.\n" +
+                                    "   ?country wdt:P1082 ?population.\n" +
                                     "\n" +
                                     "  SERVICE wikibase:label { bd:serviceParam wikibase:language \"en\" }\n");
 
@@ -730,19 +734,17 @@ public class Round1Activity extends AppCompatActivity {
 
 
         String nsUrl = ((String) chosen.get(ns[randNs])).replace("http:", "https:").replace("%20", "_");
-//        similarFlag1 = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_SIMILAR_FLAG_1));
-//        similarFlag2 = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_SIMILAR_FLAG_2));
-        String capital;
-        if (mQuestionLang.equals("en")) capital = (String) chosen.get("capitalLabel");
-        else capital = (String) chosen.get("capital_" + mQuestionLang);
+        String capital = null;
+//        if (mQuestionLang.equals("en")) capital = (String) chosen.get("capitalLabel");
+//        else capital = (String) chosen.get("capital_" + mQuestionLang);
         String capitalPic = ((String) chosen.get("imgLabel")).replace("http:", "https:");
 
 
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT " +
                 DBAssetHelper.COLUMN_SIMILAR_FLAG_1 + ", " +
                 DBAssetHelper.COLUMN_SIMILAR_FLAG_2 +
-                " FROM geog " +
-                " WHERE " + DBAssetHelper.COLUMN_COUNTRY + " = '" + country + "'" +
+                " FROM " + DBAssetHelper.TABLE_GEOG +
+                " WHERE " + DBAssetHelper.COLUMN_COUNTRY + " = \"" + country + "\"" +
                 " COLLATE NOCASE", null);
 
         cursor.moveToNext();
@@ -822,8 +824,15 @@ public class Round1Activity extends AppCompatActivity {
             }
         }
 
-        int r = random1.nextInt(10);
-        if (r < 4) capital = null;                  // 3/10 chance easier
+        int r = random1.nextInt(mChoiceGameList.size());
+        if (mChoiceGameList.get(r).startsWith("C")) {
+            if (mQuestionLang.equals("en")) capital = (String) chosen.get("capitalLabel");
+            else capital = (String) chosen.get("capital_" + mQuestionLang);
+        } else if (mChoiceGameList.get(r).startsWith("P")) {
+            capital = "\uD83D\uDC65 <small>(2016)</small>:\t" + NumberFormat.getInstance(new Locale(mQuestionLang)).format((float) chosen.get("population"));
+        }
+//            if (r < 4) capital = null;                  // 3/10 chance easier
+
 
         PuzzleFlagsFragment flagFragment0 = new PuzzleFlagsFragment(true, correctCountryIndex, countries, flagURLs, capital, capitalPic);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
@@ -959,26 +968,82 @@ public class Round1Activity extends AppCompatActivity {
     }
 
     public void generateMapPuzzle() {
-        Random random = new Random();
-        SQLiteAssetHelper sqLiteAssetHelper = new DBAssetHelper(this);
-        SQLiteDatabase sqLiteDatabase = sqLiteAssetHelper.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT " +
-                        DBAssetHelper.COLUMN_COUNTRY + ", " +
-                        DBAssetHelper.COLUMN_ANTHEM + ", " +
-                        DBAssetHelper.COLUMN_ANTHEM_URL + " " +
-                        "FROM geog " +
-                        "LIMIT 1 " +
-                        "OFFSET " + random.nextInt(195)
-                , null);
-        cursor.moveToNext();
-        String country = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_COUNTRY));
-        String anthem = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_ANTHEM));
-        String anthemUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_ANTHEM_URL));
+        final HashMap<String, HashMap>[] rs = new HashMap[1];
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    SparqlClient sp = new SparqlClient();
+                    sp.setEndpointRead("https://query.wikidata.org/sparql");
+                    sp.setEndpointWrite("https://query.wikidata.org/sparql");
+                    sp.setMethodHTTPRead("GET");
+                    sp.setMethodHTTPWrite("GET");
 
-        cursor.close();
-        sqLiteAssetHelper.close();
-        sqLiteDatabase.close();
+//            Endpoint sp = new Endpoint("https://query.wikidata.org/sparql", false);
 
+
+                    StringBuilder stringBuilder = new StringBuilder("#defaultView:Table\n" +
+                            "SELECT DISTINCT ?countryLabel ?anthemLabel ?audioLabel");
+
+                    if (!mQuestionLang.equals("en"))
+                        stringBuilder.append(" ?country_" + mQuestionLang + " ?anthem_" + mQuestionLang);
+                    stringBuilder.append("\n WHERE\n" +
+                            "{\n" +
+                            "  ?country wdt:P31 wd:Q3624078 .\n" +
+                            "  #not a former country\n" +
+                            "  FILTER NOT EXISTS {?country wdt:P31 wd:Q3024240}\n" +
+                            "  #and not an ancient civilisation\n" +
+                            "  FILTER NOT EXISTS {?country wdt:P31 wd:Q28171280}\n" +
+                            "   ?country wdt:P85 ?anthem.\n" +
+                            "   ?anthem wdt:P51 ?audio.\n" +
+                            "\n" +
+                            "     SERVICE wikibase:label { bd:serviceParam wikibase:language \"en\".\n" +
+                            "     }\n");
+
+                    if (!mQuestionLang.equals("en")) stringBuilder.append("" +
+                            "     SERVICE wikibase:label { bd:serviceParam wikibase:language \"" + mQuestionLang + "\".\n" +
+                            "            ?country rdfs:label ?country_" + mQuestionLang + ".\n" +
+                            "     } hint:Prior hint:runLast false.\n" +
+                            "     SERVICE wikibase:label { bd:serviceParam wikibase:language \"" + mQuestionLang + "\".\n" +
+                            "            ?anthem rdfs:label ?anthem_" + mQuestionLang + ".\n" +
+                            "     } hint:Prior hint:runLast false.\n");
+
+                    stringBuilder.append("}\n" +
+                            "ORDER BY ?countryLabel"
+                    );
+                    String querySelect = stringBuilder.toString();
+
+                    rs[0] = sp.query(querySelect, Round1Activity.this, "abd");
+
+                } catch (SparqlClientException eex) {
+                    Log.i("Err", eex.getMessage());
+                    eex.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String country, anthem;
+        ArrayList<HashMap> entries = (ArrayList<HashMap>) rs[0].get("result").get("rows");
+
+        Random random1 = new Random();
+
+        int realIndex = random1.nextInt(entries.size());
+        HashMap chosen = entries.get(realIndex);
+        if (mQuestionLang.equals("en")) {
+            country = (String) chosen.get("countryLabel");
+            anthem = (String) chosen.get("anthemLabel");
+        } else {
+            country = (String) chosen.get("country_" + mQuestionLang);
+            anthem = (String) chosen.get("anthem_" + mQuestionLang);
+        }
+
+        String anthemUrl = ((String) chosen.get("audioLabel")).replace("http:", "https:").replace("%20", "_");
+        ;
 
         // Create new fragment and transaction
         PuzzleMapFragment mapFragment0 = new PuzzleMapFragment(true, country, anthem, anthemUrl);
@@ -1005,6 +1070,54 @@ public class Round1Activity extends AppCompatActivity {
         int timeout = 12000;
         if (mDifficulty == DIFFICULTY_HARD) timeout *= 1.5f;
         countDown(mapFragment0, mapFragment1, timeout);
+
+
+//        Random random = new Random();
+//        SQLiteAssetHelper sqLiteAssetHelper = new DBAssetHelper(this);
+//        SQLiteDatabase sqLiteDatabase = sqLiteAssetHelper.getReadableDatabase();
+//        Cursor cursor = sqLiteDatabase.rawQuery("SELECT " +
+//                        DBAssetHelper.COLUMN_COUNTRY + ", " +
+//                        DBAssetHelper.COLUMN_ANTHEM + ", " +
+//                        DBAssetHelper.COLUMN_ANTHEM_URL + " " +
+//                        "FROM geog " +
+//                        "LIMIT 1 " +
+//                        "OFFSET " + random.nextInt(195)
+//                , null);
+//        cursor.moveToNext();
+//        String country = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_COUNTRY));
+//        String anthem = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_ANTHEM));
+//        String anthemUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_ANTHEM_URL));
+//
+//        cursor.close();
+//        sqLiteAssetHelper.close();
+//        sqLiteDatabase.close();
+//
+//
+//        // Create new fragment and transaction
+//        PuzzleMapFragment mapFragment0 = new PuzzleMapFragment(true, country, anthem, anthemUrl);
+//        FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
+//        // Replace whatever is in the fragment_container view with this fragment,
+//        // and add the transaction to the back stack
+//        transaction0.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
+//        transaction0.replace(R.id.player1FragmentContainer, mapFragment0, "player1");
+////        transaction0.addToBackStack(null);
+//        // Commit the transaction
+//        int commit = transaction0.commit();
+//
+//        // Create new fragment and transaction
+//        PuzzleMapFragment mapFragment1 = new PuzzleMapFragment(false, country, anthem, anthemUrl);
+//        FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+//        // Replace whatever is in the fragment_container view with this fragment,
+//        // and add the transaction to the back stack
+//        transaction1.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
+//        transaction1.replace(R.id.player2FragmentContainer, mapFragment1, "player2");
+////        transaction1.addToBackStack(null);
+//        // Commit the transaction
+//        int commit1 = transaction1.commit();
+//
+//        int timeout = 12000;
+//        if (mDifficulty == DIFFICULTY_HARD) timeout *= 1.5f;
+//        countDown(mapFragment0, mapFragment1, timeout);
     }
 
     public void generateBlanksPuzzle() {

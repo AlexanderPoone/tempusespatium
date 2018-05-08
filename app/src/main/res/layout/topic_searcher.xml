@@ -84,7 +84,30 @@
             android:layout_height="wrap_content"
             app:bootstrapBrand="warning"
             app:bootstrapSize="md"
-            app:bootstrapText="{fa_check_square} Customise"
+            app:bootstrapText="{fa_check_square} Customise (optional)"
+            app:roundedCorners="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:id="@+id/choice_game_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/autoCompleteTextView"
+            android:text="MultiChoiceGame:" />
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/choice_game_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bootstrapBrand="success"
+            app:bootstrapSize="md"
+            app:bootstrapText="{fa_check_square} Customise (optional)"
             app:roundedCorners="true"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp" />

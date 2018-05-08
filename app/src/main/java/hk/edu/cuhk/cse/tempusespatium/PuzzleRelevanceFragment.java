@@ -11,9 +11,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.DragEvent;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -304,7 +306,15 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
                 case DragEvent.ACTION_DROP:
                     ClipData.Item item = event.getClipData().getItemAt(0);
                     String dragData = item.getText().toString();
-                    Snackbar.make(getView().getRootView(), "Status: You have dragged " + dragData, Snackbar.LENGTH_SHORT).show();
+                    Snackbar snack = Snackbar.make(getView().findViewById(R.id.fragment_outer), "Status: You have dragged " + dragData, Snackbar.LENGTH_SHORT);
+                    if (mFirst) {
+                        View view = snack.getView();
+                        view.setRotation(180);
+                        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) view.getLayoutParams();
+                        params.gravity = Gravity.TOP;
+                        view.setLayoutParams(params);
+                    }
+                    snack.show();
                     v.getBackground().clearColorFilter();
                     v.invalidate();
 

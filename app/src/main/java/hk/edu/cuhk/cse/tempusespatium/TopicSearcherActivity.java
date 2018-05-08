@@ -92,6 +92,11 @@ public class TopicSearcherActivity extends AppCompatActivity {
 
     private final ArrayList<String> selectedItems = new ArrayList<>(items.values());
 
+
+    private static String[] choiceOptions = {"Name (in the language you picked)", "Capital", "Population"};
+    private final ArrayList<String> selectedOptions = new ArrayList<>(Arrays.asList(choiceOptions));
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,9 +133,9 @@ public class TopicSearcherActivity extends AppCompatActivity {
                         if (selectedItems.size() != 0) {
                             dialog.dismiss();
                         } else {
-                            Snackbar snack=Snackbar.make(dialog.getListView(), "Select at least 1 item!", Snackbar.LENGTH_LONG);
+                            Snackbar snack = Snackbar.make(dialog.getListView(), "Select at least 1 item!", Snackbar.LENGTH_LONG);
                             View view = snack.getView();
-                            FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)view.getLayoutParams();
+                            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) view.getLayoutParams();
                             params.gravity = Gravity.TOP;
                             view.setLayoutParams(params);
                             snack.show();
@@ -143,6 +148,54 @@ public class TopicSearcherActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.show();
+            }
+        });
+
+
+        BootstrapButton choiceGameButton = (BootstrapButton) findViewById(R.id.choice_game_button);
+        boolean[] fillOptions = new boolean[choiceOptions.length];
+        Arrays.fill(fillOptions, true);
+
+        final AlertDialog dialogOptions = new AlertDialog.Builder(this)
+                .setTitle("Select the covered attributes")
+                .setMultiChoiceItems(choiceOptions, fillOptions, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog2, int indexSelected, boolean isChecked) {
+                        if (isChecked) {
+                            selectedOptions.add(choiceOptions[indexSelected]);
+                        } else if (selectedOptions.contains(choiceOptions[indexSelected])) {
+                            selectedOptions.remove(choiceOptions[indexSelected]);
+                        }
+                    }
+                })
+                .setCancelable(false)
+                .setPositiveButton("OK", null)
+                .create();
+        dialogOptions.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog2) {
+                Button b = dialogOptions.getButton(AlertDialog.BUTTON_POSITIVE);
+                b.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (selectedOptions.size() != 0) {
+                            dialogOptions.dismiss();
+                        } else {
+                            Snackbar snack = Snackbar.make(dialogOptions.getListView(), "Select at least 1 item!", Snackbar.LENGTH_LONG);
+                            View view = snack.getView();
+                            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) view.getLayoutParams();
+                            params.gravity = Gravity.TOP;
+                            view.setLayoutParams(params);
+                            snack.show();
+                        }
+                    }
+                });
+            }
+        });
+        choiceGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogOptions.show();
             }
         });
 
@@ -345,6 +398,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                                             jump.putExtra("supportList", new ArrayList<>(mArts.keySet()));
 
                                                             jump.putExtra("dateGameList", selectedItems);
+                                                            jump.putExtra("choiceGameList", selectedOptions);
                                                             startActivity(jump);
                                                             finish();
                                                         }
@@ -532,6 +586,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                                             jump.putExtra("supportList", new ArrayList<>(mArts.keySet()));
 
                                                             jump.putExtra("dateGameList", selectedItems);
+                                                            jump.putExtra("choiceGameList", selectedOptions);
                                                             startActivity(jump);
                                                             finish();
                                                         }
@@ -752,6 +807,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
 
                                             jump.putExtra("supportList", new ArrayList<>(mArts.keySet()));
                                             jump.putExtra("dateGameList", selectedItems);
+                                            jump.putExtra("choiceGameList", selectedOptions);
                                             startActivity(jump);
                                             finish();
                                         }
@@ -836,7 +892,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
 
                                     // 2
                                     if (uberschrift != null) {
-                                        if (uberschrift.getTextContent().startsWith("Інш")) continue; // Skip 'others'
+                                        if (uberschrift.getTextContent().startsWith("Інш"))
+                                            continue; // Skip 'others'
                                         mTopicsUntrimmedDe.add(uberschrift.getTextContent());
 
                                         mTopicsDe.add(uberschrift.getTextContent().substring(0, uberschrift.getTextContent().length() - 1).replaceFirst("^ ", ""));

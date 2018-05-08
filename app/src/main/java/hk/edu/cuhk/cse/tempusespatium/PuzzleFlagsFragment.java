@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -99,7 +100,7 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
         TextView cName = (TextView) view.findViewById(R.id.flag_country_name);
-        if (mCapital != null) cName.setText(mCapital);
+        if (mCapital != null) cName.setText(Html.fromHtml(mCapital));
         else cName.setText(mCountries[mCorrectCountryIndex]);
 
         ImageView flagA = (ImageView) view.findViewById(R.id.aImageView);

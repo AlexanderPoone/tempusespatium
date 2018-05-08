@@ -172,6 +172,34 @@ public class Main {
 }
 ```
 
+```sparql
+#defaultView:Table
+SELECT DISTINCT ?country ?countryLabel ?country_EN ?country_FR ?anthemLabel ?anthem_FR ?audioLabel
+WHERE
+{
+  ?country wdt:P31 wd:Q3624078 .
+  #not a former country
+  FILTER NOT EXISTS {?country wdt:P31 wd:Q3024240}
+  #and no an ancient civilisation (needed to exclude ancient Egypt)
+  FILTER NOT EXISTS {?country wdt:P31 wd:Q28171280}
+   ?country wdt:P85 ?anthem.
+   ?anthem wdt:P51 ?audio.
+
+     SERVICE wikibase:label { bd:serviceParam wikibase:language "en".
+     }
+     SERVICE wikibase:label { bd:serviceParam wikibase:language "en".
+            ?country rdfs:label ?country_EN.
+     } hint:Prior hint:runLast false.
+     SERVICE wikibase:label { bd:serviceParam wikibase:language "fr".
+            ?country rdfs:label ?country_FR.
+     } hint:Prior hint:runLast false.
+     SERVICE wikibase:label { bd:serviceParam wikibase:language "fr".
+            ?anthem rdfs:label ?anthem_FR.
+     } hint:Prior hint:runLast false.
+}
+ORDER BY ?countryLabel
+```
+
 <!--
 # Rampant Sphinges
 Papyrus font

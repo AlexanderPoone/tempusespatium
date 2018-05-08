@@ -101,5 +101,19 @@
             android:shadowColor="@color/DarkCyan"
             android:shadowRadius="10.5"
             android:visibility="gone" />
+
+        <android.inputmethodservice.KeyboardView
+            android:id="@+id/espanol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/DarkRed"
+            android:keyBackground="@color/Red"
+            android:keyPreviewLayout="@layout/qwerty_key_preview"
+            android:keyTextColor="@color/Goldenrod"
+            android:keyTextSize="16sp"
+            android:shadowColor="@color/DarkOliveGreen"
+            android:shadowRadius="10.5"
+            android:visibility="gone" />
     </FrameLayout>
 </RelativeLayout>

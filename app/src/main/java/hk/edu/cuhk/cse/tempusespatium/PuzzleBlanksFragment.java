@@ -196,6 +196,9 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
 
             // Lookup the KeyboardView
             keyboardView = (KeyboardView) view.findViewById(R.id.azerty);
+        } else if (mLang.equals("es")) {
+            keyboard = new Keyboard(getContext(), R.xml.diminished_espanol_con_taclas_muertas);
+            keyboardView = (KeyboardView) view.findViewById(R.id.espanol);
         } else if (mLang.equals("de")) {
             keyboard = new Keyboard(getContext(), R.xml.diminished_qwertz);
             keyboardView = (KeyboardView) view.findViewById(R.id.qwertz);
@@ -264,34 +267,34 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                                 switch (azertyBuffer) {
                                     case 0:   // Aigu
                                         switch (i) {
-                                            case 65:
-                                                i = 193;
-                                                break;
-                                            case 69:
-                                                i = 201;
-                                                break;
+//                                            case 65:
+//                                                i = 193;
+//                                                break;
+//                                            case 69:
+//                                                i = 201;
+//                                                break;
                                             case 97:
-                                                i = 224;
+                                                i = 225;
                                                 break;
                                             case 101:
-                                                i = 232;
+                                                i = 233;
                                                 break;
                                         }
                                         break;
                                     case 1:   // Circonflexe
                                         switch (i) {
-                                            case 65:
-                                                i = 194;
-                                                break;
-                                            case 69:
-                                                i = 202;
-                                                break;
-                                            case 73:
-                                                i = 206;
-                                                break;
-                                            case 79:
-                                                i = 212;
-                                                break;
+//                                            case 65:
+//                                                i = 194;
+//                                                break;
+//                                            case 69:
+//                                                i = 202;
+//                                                break;
+//                                            case 73:
+//                                                i = 206;
+//                                                break;
+//                                            case 79:
+//                                                i = 212;
+//                                                break;
                                             case 97:
                                                 i = 226;
                                                 break;
@@ -308,15 +311,15 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                                         break;
                                     case 2:   // Tréma
                                         switch (i) {
-                                            case 69:
-                                                i = 203;
-                                                break;
-                                            case 73:
-                                                i = 207;
-                                                break;
-                                            case 85:
-                                                i = 220;
-                                                break;
+//                                            case 69:
+//                                                i = 203;
+//                                                break;
+//                                            case 73:
+//                                                i = 207;
+//                                                break;
+//                                            case 85:
+//                                                i = 220;
+//                                                break;
                                             case 101:
                                                 i = 235;
                                                 break;
@@ -330,15 +333,15 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                                         break;
                                     case 3:   // Grave
                                         switch (i) {
-                                            case 65:
-                                                i = 192;
-                                                break;
-                                            case 69:
-                                                i = 200;
-                                                break;
-                                            case 85:
-                                                i = 217;
-                                                break;
+//                                            case 65:
+//                                                i = 192;
+//                                                break;
+//                                            case 69:
+//                                                i = 200;
+//                                                break;
+//                                            case 85:
+//                                                i = 217;
+//                                                break;
                                             case 97:
                                                 i = 224;
                                                 break;
@@ -391,6 +394,117 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
 
                 }
             });
+        } else if (mLang.equals("es")) {
+            keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
+                @Override
+                public void onPress(int i) {
+
+                }
+
+                @Override
+                public void onRelease(int i) {
+
+                }
+
+                @Override
+                public void onKey(int i, int[] keyCodes) {
+                    switch (i) {
+                        case 8:
+                            String JS = "javascript:(function() {" +
+                                    "if (window.myReadOnly == 1) return;" +
+                                    "var ele=document.activeElement;" +
+                                    "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                    "ele.value = ele.value.substr(0, position-1) + ele.value.substr(position);" +
+                                    "ele.focus();" +
+                                    "if (position != 0) ele.setSelectionRange(position-1, position-1);})()";
+                            mWebView.loadUrl(JS);
+                            break;
+                        case Keyboard.KEYCODE_DELETE:
+                            String JS_ = "javascript:(function() {" +
+                                    "if (window.myReadOnly == 1) return;" +
+                                    "var ele=document.activeElement;" +
+                                    "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                    "ele.value = ele.value.substr(0, position) + ele.value.substr(position+1);" +
+                                    "ele.focus();" +
+                                    "ele.setSelectionRange(position, position);})()";
+                            mWebView.loadUrl(JS_);
+                            break;
+                        case 127:
+                            azertyBuffer = 0;
+                            break;
+                        case 129:
+                            azertyBuffer = 1;
+                            break;
+                        default:
+                            if (azertyBuffer != null) {
+                                switch (azertyBuffer) {
+                                    case 0:   // Agudo
+                                        switch (i) {
+                                            case 97:
+                                                i = 225;
+                                                break;
+                                            case 101:
+                                                i = 233;
+                                                break;
+                                            case 105:
+                                                i = 237;
+                                                break;
+                                            case 111:
+                                                i = 243;
+                                                break;
+                                            case 117:
+                                                i = 250;
+                                                break;
+                                        }
+                                        break;
+                                    case 1:   // Diéresis
+                                        switch (i) {
+                                            case 117:
+                                                i = 252;
+                                                break;
+                                        }
+                                        break;
+                                }
+                                azertyBuffer = null;
+                            }
+                            String JS__ = String.format(new Locale("es"),
+                                    "javascript:(function() {" +
+                                            "if (window.myReadOnly == 1) return;" +
+                                            "var ele=document.activeElement;" +
+                                            "var position=ele.value.slice(0, ele.selectionStart).length;" +
+                                            "ele.value = ele.value.substr(0, position) + '%c' + ele.value.substr(position);" +
+                                            "ele.focus();" +
+                                            "ele.setSelectionRange(position+1, position+1);})()", (char) i);
+                            mWebView.loadUrl(JS__);
+                            break;
+                    }
+                }
+
+                @Override
+                public void onText(CharSequence text) {
+
+                }
+
+                @Override
+                public void swipeLeft() {
+
+                }
+
+                @Override
+                public void swipeRight() {
+
+                }
+
+                @Override
+                public void swipeDown() {
+
+                }
+
+                @Override
+                public void swipeUp() {
+
+                }
+            });
         } else if (mLang.equals("uk")) {
             keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
                 @Override
@@ -405,7 +519,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
 
                 @Override
                 public void onKey(int i, int[] keyCodes) {
-                    char[] ch = {'й','ц','ч','к','е','н','г','ш','щ','з','х','ї','ф','і','в','а','п','р','о','л','д','ж','є','ґ','я','ч','с','м','и','т','ь','б','ю'};
+                    char[] ch = {'й', 'ц', 'ч', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ї', 'ф', 'і', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'є', 'ґ', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю'};
                     switch (i) {
                         case 8:
                             String JS = "javascript:(function() {" +
@@ -435,7 +549,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                                     "var position=ele.value.slice(0, ele.selectionStart).length;" +
                                     "ele.value = ele.value.substr(0, position) + '%c' + ele.value.substr(position);" +
                                     "ele.focus();" +
-                                    "ele.setSelectionRange(position+1, position+1);})()", ch[i-101]);
+                                    "ele.setSelectionRange(position+1, position+1);})()", ch[i - 101]);
                     mWebView.loadUrl(JS__);
                 }
 

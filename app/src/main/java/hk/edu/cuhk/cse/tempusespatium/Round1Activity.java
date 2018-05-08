@@ -270,8 +270,8 @@ public class Round1Activity extends AppCompatActivity {
 
         switch (type) {
             case 0:
-                if (mQuestionLang.equals("uk"))
-                    generateBlanksPuzzle(); // Stemming game does not support Ukrainian yet.
+                if (mQuestionLang.equals("uk") || mQuestionLang.equals("es"))
+                    generateBlanksPuzzle(); // Stemming game does not support Ukrainian/Spanish yet.
                 else generateRelevancePuzzle();
                 break;
             case 1:

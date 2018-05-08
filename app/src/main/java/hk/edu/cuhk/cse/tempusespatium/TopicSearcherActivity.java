@@ -971,8 +971,9 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                                         .newXPath().compile("//*[@id=\"mw-pages\"]/div/div/div/ul/li/a");
                                                 NodeList test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
                                                 for (int i = 0; i < test.getLength(); i++) {
-                                                    mArts.put(test.item(i).getTextContent().replaceFirst("Discusión:", ""), "https://es.wikipedia.org" + test.item(i).getAttributes().getNamedItem("href").getTextContent().replaceFirst("Discusión:", ""));
+                                                    mArts.put(test.item(i).getTextContent().replaceFirst("Discusión:", ""), "https://es.wikipedia.org" + test.item(i).getAttributes().getNamedItem("href").getTextContent().replaceFirst("Discusi%C3%B3n:", ""));
                                                 }
+//                                                Log.d("amn",mArts.toString());
                                             } catch (SAXException e) {
                                                 e.printStackTrace();
                                             } catch (IOException e) {

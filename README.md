@@ -1,22 +1,22 @@
-[README](shitty_ppt.pptx)
+[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
 
-[README](shitty_ppt.pptx)
+[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
 
-[README](shitty_ppt.pptx)
+[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
 
-[README](shitty_ppt.pptx)
+[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
 
-[README](shitty_ppt.pptx)
+[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
 
-[README](shitty_ppt.pptx)
+[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
 
-[README](shitty_ppt.pptx)
+[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
 
-[README](shitty_ppt.pptx)
+[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
 
-[README](shitty_ppt.pptx)
+[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
 
-[README](shitty_ppt.pptx)
+[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
 
 
 

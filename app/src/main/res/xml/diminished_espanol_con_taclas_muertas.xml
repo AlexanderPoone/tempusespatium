@@ -99,7 +99,7 @@
         <!--android:isSticky="true" android:keyEdgeFlags="left"/>-->
         <Key
             android:codes="-5"
-            android:keyLabel="Del"
+            android:keyLabel="Supr"
             android:keyWidth="15%p"
             android:keyEdgeFlags="left"
             android:isRepeatable="true" />

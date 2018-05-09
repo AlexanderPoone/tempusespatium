@@ -1251,6 +1251,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
 
                                             jump.putExtra("supportList", new ArrayList<>(mArts.keySet()));
                                             jump.putExtra("dateGameList", selectedItems);
+                                            jump.putExtra("choiceGameList", selectedOptions);
+
                                             startActivity(jump);
                                             finish();
                                         }

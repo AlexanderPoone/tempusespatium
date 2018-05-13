@@ -1,3 +1,5 @@
+Tempus E Spatium is _Latin for space and time_. It is an edutainment app for adult learners by exploiting the Semantic Web.
+
 [README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
 
 [README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)

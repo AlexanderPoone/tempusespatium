@@ -337,4 +337,168 @@
         <item>@color/Yellow</item>
         <item>@color/YellowGreen</item>
     </array>
+    <string-array name="colorNames">
+        <item>Alice blue</item>
+        <item>Amber</item>
+        <item>Android green</item>
+        <item>Antique white</item>
+        <item>Aquamarine</item>
+        <item>Azure</item>
+        <item>Beige</item>
+        <item>Bisque</item>
+        <item>Black</item>
+        <item>Blanched almond</item>
+        <item>Blue</item>
+        <item>Blue violet</item>
+        <item>Bondi blue</item>
+        <item>Brown</item>
+        <item>Buff</item>
+        <item>Burgundy</item>
+        <item>Burly wood</item>
+        <item>Cadet blue</item>
+        <item>Canary yellow</item>
+        <item>Canonical aubergine</item>
+        <item>Celadon</item>
+        <item>Chartreuse</item>
+        <item>Chocolate</item>
+        <item>Coral</item>
+        <item>Cornflower blue</item>
+        <item>Cornsilk</item>
+        <item>Cosmic latte</item>
+        <item>Crimson</item>
+        <item>Cyan</item>
+        <item>Dark blue</item>
+        <item>Dark cyan</item>
+        <item>Dark goldenrod</item>
+        <item>Dark gray</item>
+        <item>Dark green</item>
+        <item>Dark khaki</item>
+        <item>Dark magenta</item>
+        <item>Dark olive green</item>
+        <item>Dark orange</item>
+        <item>Dark orchid</item>
+        <item>Dark red</item>
+        <item>Dark salmon</item>
+        <item>Dark sea green</item>
+        <item>Dark slate blue</item>
+        <item>Dark slate gray</item>
+        <item>Dark turquoise</item>
+        <item>Dark violet</item>
+        <item>Deep pink</item>
+        <item>Deep sky blue</item>
+        <item>Dim gray</item>
+        <item>Dodger blue</item>
+        <item>Equality</item>
+        <item>Fawn</item>
+        <item>Fedora blue</item>
+        <item>Fedora dark blue</item>
+        <item>Fire brick</item>
+        <item>Floral white</item>
+        <item>Forest green</item>
+        <item>Fraternity</item>
+        <item>Gainsboro</item>
+        <item>Gamboge</item>
+        <item>Ghost white</item>
+        <item>Gold</item>
+        <item>Goldenrod</item>
+        <item>Gray</item>
+        <item>Green</item>
+        <item>Green yellow</item>
+        <item>Honeydew</item>
+        <item>Hot pink</item>
+        <item>Indian red</item>
+        <item>Indigo</item>
+        <item>Ivory</item>
+        <item>Khaki</item>
+        <item>Lavender</item>
+        <item>Lavender blush</item>
+        <item>Lawn green</item>
+        <item>Lazy bear brown</item>
+        <item>Lemon chiffon</item>
+        <item>Liberty</item>
+        <item>Light blue</item>
+        <item>Light coral</item>
+        <item>Light cyan</item>
+        <item>Light goldenrod yellow</item>
+        <item>Light gray</item>
+        <item>Light green</item>
+        <item>Light pink</item>
+        <item>Light salmon</item>
+        <item>Light sea green</item>
+        <item>Light sky blue</item>
+        <item>Light slate gray</item>
+        <item>Light steel blue</item>
+        <item>Light yellow</item>
+        <item>Lime</item>
+        <item>Lime green</item>
+        <item>Linen</item>
+        <item>Magenta</item>
+        <item>Magnolia</item>
+        <item>Maroon</item>
+        <item>Mauve</item>
+        <item>Medium aquamarine</item>
+        <item>Medium blue</item>
+        <item>Medium orchid</item>
+        <item>Medium purple</item>
+        <item>Medium sea green</item>
+        <item>Medium slate blue</item>
+        <item>Medium spring green</item>
+        <item>Medium turquoise</item>
+        <item>Medium violet red</item>
+        <item>Mid aubergine</item>
+        <item>Midnight blue</item>
+        <item>Mint cream</item>
+        <item>Misty rose</item>
+        <item>Moccasin</item>
+        <item>Navajo white</item>
+        <item>Navy</item>
+        <item>Old lace</item>
+        <item>Olive</item>
+        <item>Olive drab</item>
+        <item>Orange</item>
+        <item>Orange red</item>
+        <item>Orchid</item>
+        <item>Pale goldenrod</item>
+        <item>Pale green</item>
+        <item>Pale turquoise</item>
+        <item>Pale violet red</item>
+        <item>Papaya whip</item>
+        <item>Peach puff</item>
+        <item>Peru</item>
+        <item>Pink</item>
+        <item>Placeholder platinum</item>
+        <item>Plum</item>
+        <item>Portland orange</item>
+        <item>Powder blue</item>
+        <item>Purple</item>
+        <item>Red</item>
+        <item>Rosy brown</item>
+        <item>Royal blue</item>
+        <item>Saddle brown</item>
+        <item>Salmon</item>
+        <item>Sandy brown</item>
+        <item>Sea green</item>
+        <item>Seashell</item>
+        <item>Sienna</item>
+        <item>Silver</item>
+        <item>Sky blue</item>
+        <item>Slate blue</item>
+        <item>Slate gray</item>
+        <item>Smokey black</item>
+        <item>Snow</item>
+        <item>Spring green</item>
+        <item>Steel blue</item>
+        <item>Tan</item>
+        <item>Teal</item>
+        <item>Thistle</item>
+        <item>Tomato</item>
+        <item>Turquoise</item>
+        <item>Ubuntu orange</item>
+        <item>Violet</item>
+        <item>Wheat</item>
+        <item>White</item>
+        <item>White smoke</item>
+        <item>Yellow</item>
+        <item>Yellow green</item>
+    </string-array>
 </resources>

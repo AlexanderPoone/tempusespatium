@@ -26,7 +26,7 @@
             android:layout_height="180dp" />
 
         <TextView
-            android:id="@+id/debug_user_selects"
+            android:id="@+id/player_selects"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -35,6 +35,18 @@
             android:textColor="@color/White"
             android:textSize="@dimen/bootstrap_h1_text_size"
             android:translationZ="5dp" />
+
+        <TextView
+            android:id="@+id/anthemTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="bottom"
+            android:shadowColor="@color/PortlandOrange"
+            android:shadowRadius="10"
+            android:textColor="@color/LightSalmon"
+            android:textSize="@dimen/bootstrap_h4_text_size"
+            android:translationZ="6dp" />
     </FrameLayout>
 
     <LinearLayout

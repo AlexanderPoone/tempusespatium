@@ -157,8 +157,7 @@ public class MenuActivity extends AppCompatActivity {
 //    }
 
     private void playSong() {
-        if (mMediaPlayer == null)
-        {
+        if (mMediaPlayer == null) {
             mMediaPlayer = new MediaPlayer();
             mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
@@ -284,7 +283,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
         if (mIso639_1.equals("uk")) {
-            TextView fullScreenContent=(TextView) findViewById(R.id.fullscreen_content);
+            TextView fullScreenContent = (TextView) findViewById(R.id.fullscreen_content);
             fullScreenContent.setTypeface(ermis_pro, Typeface.BOLD);
             fullScreenContent.setTextSize(39f);
             playButton.setTypeface(ermis_pro, Typeface.BOLD_ITALIC);

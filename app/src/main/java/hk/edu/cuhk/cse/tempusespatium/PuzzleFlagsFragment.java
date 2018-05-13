@@ -15,13 +15,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
-import com.bumptech.glide.load.MultiTransformation;
-import com.bumptech.glide.load.engine.GlideException;
-
-import jp.wasabeef.glide.transformations.gpu.PixelationFilterTransformation;
-import jp.wasabeef.glide.transformations.gpu.SwirlFilterTransformation;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
+import static hk.edu.cuhk.cse.tempusespatium.Constants.getTextColorBasedOnBgColor;
 //import com.squareup.picasso.Picasso;
 
 /**
@@ -31,7 +27,7 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInterface {
 
     private boolean mFirst;
-    private int mCorrectCountryIndex;
+    private int mCorrectCountryIndex, mColor;
     private int mUserAnswerIndex = Integer.MAX_VALUE;
 
 //    private String mCountry, mAnthem, mFlagUrl;
@@ -52,13 +48,14 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
 
     }
 
-    public PuzzleFlagsFragment(boolean first, int correctCountryIndex, String[] countries, String[] flagURLs, String capital, String capitalPic) {
+    public PuzzleFlagsFragment(boolean first, int correctCountryIndex, String[] countries, String[] flagURLs, String capital, String capitalPic, int color) {
         mFirst = first;
         mCorrectCountryIndex = correctCountryIndex;
         mCountries = countries;
         mFlagURLs = flagURLs;
         mCapital = capital;
         mCapitalPic = capitalPic;
+        mColor = color;
     }
 
     @Nullable
@@ -102,6 +99,8 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         TextView cName = (TextView) view.findViewById(R.id.flag_country_name);
         if (mCapital != null) cName.setText(Html.fromHtml(mCapital));
         else cName.setText(mCountries[mCorrectCountryIndex]);
+        cName.setTextColor(getTextColorBasedOnBgColor(getContext(), mColor));
+
 
         ImageView flagA = (ImageView) view.findViewById(R.id.aImageView);
         ImageView flagB = (ImageView) view.findViewById(R.id.bImageView);
@@ -164,8 +163,8 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         isRevealed = true;
         disableControls();
 
-        int[] actual={R.id.aActual, R.id.bActual, R.id.cActual, R.id.dActual};
-        for (int i=0; i<actual.length; i++) {
+        int[] actual = {R.id.aActual, R.id.bActual, R.id.cActual, R.id.dActual};
+        for (int i = 0; i < actual.length; i++) {
             TextView textView = (TextView) getView().findViewById(actual[i]);
             textView.setText(mCountries[i]);
         }

@@ -20,12 +20,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapProgressBar;
-import com.bordercloud.sparql.Endpoint;
-import com.bordercloud.sparql.EndpointException;
 import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
@@ -68,6 +67,8 @@ import static hk.edu.cuhk.cse.tempusespatium.Constants.DIFFICULTY_HARD;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.ROUND_1_END_THRESHOLD;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_DIFFICULTY;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_NAME;
+import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_THEME_PLAYER_1;
+import static hk.edu.cuhk.cse.tempusespatium.Constants.SHAREDPREFS_THEME_PLAYER_2;
 import static hk.edu.cuhk.cse.tempusespatium.StopWords.STOP_WORDS;
 
 //import android.os.CountDownTimer;
@@ -79,7 +80,7 @@ import static hk.edu.cuhk.cse.tempusespatium.StopWords.STOP_WORDS;
 public class Round1Activity extends AppCompatActivity {
 
     private SharedPreferences mSharedPref;
-    int mDifficulty, mScore, mScore2, mLastQuestionType;
+    int mDifficulty, mThemePlayer1, mThemePlayer2, mScore, mScore2, mLastQuestionType;
 
     DonutProgress mDonutTime;
     DonutProgress mDonutTime2;
@@ -103,7 +104,18 @@ public class Round1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mSharedPref = getSharedPreferences(SHAREDPREFS_NAME, Context.MODE_PRIVATE);
         mDifficulty = mSharedPref.getInt(SHAREDPREFS_DIFFICULTY, DIFFICULTY_HARD);
+        mThemePlayer1 = mSharedPref.getInt(SHAREDPREFS_THEME_PLAYER_1, getColor(R.color.CosmicLatte));
+        mThemePlayer2 = mSharedPref.getInt(SHAREDPREFS_THEME_PLAYER_2, getColor(R.color.Lavender));
         setContentView(R.layout.game_exterior);
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
+        FrameLayout frameLayout = (FrameLayout) findViewById(R.id.player1FragmentContainer);
+        LinearLayout linearLayout2 = (LinearLayout) findViewById(R.id.linearLayout2);
+        FrameLayout frameLayout2 = (FrameLayout) findViewById(R.id.player2FragmentContainer);
+        linearLayout.setBackgroundColor(mThemePlayer1);
+        frameLayout.setBackgroundColor(mThemePlayer1);
+        linearLayout2.setBackgroundColor(mThemePlayer2);
+        frameLayout2.setBackgroundColor(mThemePlayer2);
+
         Intent intent = getIntent();
         mQuestionLang = intent.getStringExtra("lang");
         mCurrentTopic = intent.getStringArrayListExtra("topic");
@@ -478,13 +490,13 @@ public class Round1Activity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        PuzzleRelevanceFragment relevanceFragment0 = new PuzzleRelevanceFragment(true, relevance);
+                        PuzzleRelevanceFragment relevanceFragment0 = new PuzzleRelevanceFragment(true, relevance, mThemePlayer1);
                         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
                         transaction0.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
                         transaction0.replace(R.id.player1FragmentContainer, relevanceFragment0, "player1");
                         int commit = transaction0.commit();
 
-                        PuzzleRelevanceFragment relevanceFragment1 = new PuzzleRelevanceFragment(false, relevance);
+                        PuzzleRelevanceFragment relevanceFragment1 = new PuzzleRelevanceFragment(false, relevance, mThemePlayer2);
                         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
                         transaction1.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
                         transaction1.replace(R.id.player2FragmentContainer, relevanceFragment1, "player2");
@@ -596,13 +608,13 @@ public class Round1Activity extends AppCompatActivity {
         int randMinYear = year - (random1.nextInt(50) + 50);
         int randMaxYear = year + (random1.nextInt(50) + 50);
 
-        PuzzleDateFragment dateFragment0 = new PuzzleDateFragment(true, historicEvent, year, month, picUrl, randMinYear, randMaxYear);
+        PuzzleDateFragment dateFragment0 = new PuzzleDateFragment(true, historicEvent, year, month, picUrl, randMinYear, randMaxYear, mThemePlayer1);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         transaction0.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction0.replace(R.id.player1FragmentContainer, dateFragment0, "player1");
         int commit = transaction0.commit();
 
-        PuzzleDateFragment dateFragment1 = new PuzzleDateFragment(false, historicEvent, year, month, picUrl, randMinYear, randMaxYear);
+        PuzzleDateFragment dateFragment1 = new PuzzleDateFragment(false, historicEvent, year, month, picUrl, randMinYear, randMaxYear, mThemePlayer2);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         transaction1.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction1.replace(R.id.player2FragmentContainer, dateFragment1, "player2");
@@ -834,13 +846,13 @@ public class Round1Activity extends AppCompatActivity {
 //            if (r < 4) capital = null;                  // 3/10 chance easier
 
 
-        PuzzleFlagsFragment flagFragment0 = new PuzzleFlagsFragment(true, correctCountryIndex, countries, flagURLs, capital, capitalPic);
+        PuzzleFlagsFragment flagFragment0 = new PuzzleFlagsFragment(true, correctCountryIndex, countries, flagURLs, capital, capitalPic, mThemePlayer1);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         transaction0.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction0.replace(R.id.player1FragmentContainer, flagFragment0, "player1");
         int commit = transaction0.commit();
 
-        PuzzleFlagsFragment flagFragment1 = new PuzzleFlagsFragment(false, correctCountryIndex, countries, flagURLs, capital, capitalPic);
+        PuzzleFlagsFragment flagFragment1 = new PuzzleFlagsFragment(false, correctCountryIndex, countries, flagURLs, capital, capitalPic, mThemePlayer2);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         transaction1.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction1.replace(R.id.player2FragmentContainer, flagFragment1, "player2");
@@ -994,8 +1006,8 @@ public class Round1Activity extends AppCompatActivity {
                             "  FILTER NOT EXISTS {?country wdt:P31 wd:Q3024240}\n" +
                             "  #and not an ancient civilisation\n" +
                             "  FILTER NOT EXISTS {?country wdt:P31 wd:Q28171280}\n" +
-                            "   ?country wdt:P85 ?anthem.\n" +
-                            "   ?anthem wdt:P51 ?audio.\n" +
+                            "   ?country wdt:P85 ?anthemLocalised.\n" +
+                            "   ?anthemLocalised wdt:P51 ?audio.\n" +
                             "\n" +
                             "     SERVICE wikibase:label { bd:serviceParam wikibase:language \"en\".\n" +
                             "     }\n");
@@ -1005,7 +1017,7 @@ public class Round1Activity extends AppCompatActivity {
                             "            ?country rdfs:label ?country_" + mQuestionLang + ".\n" +
                             "     } hint:Prior hint:runLast false.\n" +
                             "     SERVICE wikibase:label { bd:serviceParam wikibase:language \"" + mQuestionLang + "\".\n" +
-                            "            ?anthem rdfs:label ?anthem_" + mQuestionLang + ".\n" +
+                            "            ?anthemLocalised rdfs:label ?anthem_" + mQuestionLang + ".\n" +
                             "     } hint:Prior hint:runLast false.\n");
 
                     stringBuilder.append("}\n" +
@@ -1027,26 +1039,26 @@ public class Round1Activity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        String country, anthem;
+        String country, countryLocalised = null, anthemLocalised;
         ArrayList<HashMap> entries = (ArrayList<HashMap>) rs[0].get("result").get("rows");
 
         Random random1 = new Random();
 
         int realIndex = random1.nextInt(entries.size());
         HashMap chosen = entries.get(realIndex);
+        country = (String) chosen.get("countryLabel");
         if (mQuestionLang.equals("en")) {
-            country = (String) chosen.get("countryLabel");
-            anthem = (String) chosen.get("anthemLabel");
+            anthemLocalised = (String) chosen.get("anthemLabel");
         } else {
-            country = (String) chosen.get("country_" + mQuestionLang);
-            anthem = (String) chosen.get("anthem_" + mQuestionLang);
+            countryLocalised = (String) chosen.get("country_" + mQuestionLang);
+            anthemLocalised = (String) chosen.get("anthem_" + mQuestionLang);
         }
 
         String anthemUrl = ((String) chosen.get("audioLabel")).replace("http:", "https:").replace("%20", "_");
         ;
 
         // Create new fragment and transaction
-        PuzzleMapFragment mapFragment0 = new PuzzleMapFragment(true, country, anthem, anthemUrl);
+        PuzzleMapFragment mapFragment0 = new PuzzleMapFragment(true, country, countryLocalised, anthemLocalised, anthemUrl, mThemePlayer1);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
@@ -1057,7 +1069,7 @@ public class Round1Activity extends AppCompatActivity {
         int commit = transaction0.commit();
 
         // Create new fragment and transaction
-        PuzzleMapFragment mapFragment1 = new PuzzleMapFragment(false, country, anthem, anthemUrl);
+        PuzzleMapFragment mapFragment1 = new PuzzleMapFragment(false, country, countryLocalised, anthemLocalised, anthemUrl, mThemePlayer2);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
@@ -1085,7 +1097,7 @@ public class Round1Activity extends AppCompatActivity {
 //                , null);
 //        cursor.moveToNext();
 //        String country = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_COUNTRY));
-//        String anthem = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_ANTHEM));
+//        String anthemLocalised = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_ANTHEM));
 //        String anthemUrl = cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_ANTHEM_URL));
 //
 //        cursor.close();
@@ -1094,7 +1106,7 @@ public class Round1Activity extends AppCompatActivity {
 //
 //
 //        // Create new fragment and transaction
-//        PuzzleMapFragment mapFragment0 = new PuzzleMapFragment(true, country, anthem, anthemUrl);
+//        PuzzleMapFragment mapFragment0 = new PuzzleMapFragment(true, country, anthemLocalised, anthemUrl);
 //        FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
 //        // Replace whatever is in the fragment_container view with this fragment,
 //        // and add the transaction to the back stack
@@ -1105,7 +1117,7 @@ public class Round1Activity extends AppCompatActivity {
 //        int commit = transaction0.commit();
 //
 //        // Create new fragment and transaction
-//        PuzzleMapFragment mapFragment1 = new PuzzleMapFragment(false, country, anthem, anthemUrl);
+//        PuzzleMapFragment mapFragment1 = new PuzzleMapFragment(false, country, anthemLocalised, anthemUrl);
 //        FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
 //        // Replace whatever is in the fragment_container view with this fragment,
 //        // and add the transaction to the back stack
@@ -1133,13 +1145,13 @@ public class Round1Activity extends AppCompatActivity {
         String selectedUrl = mArts.remove(selectedArt);
         mArtsSupportList.remove(selectedArt);
 
-        PuzzleBlanksFragment blanksFragment0 = new PuzzleBlanksFragment(true, selectedUrl, mQuestionLang);
+        PuzzleBlanksFragment blanksFragment0 = new PuzzleBlanksFragment(true, selectedUrl, mQuestionLang, mThemePlayer1);
         FragmentTransaction transaction0 = getSupportFragmentManager().beginTransaction();
         transaction0.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction0.replace(R.id.player1FragmentContainer, blanksFragment0, "player1");
         int commit = transaction0.commit();
 
-        PuzzleBlanksFragment blanksFragment1 = new PuzzleBlanksFragment(false, selectedUrl, mQuestionLang);
+        PuzzleBlanksFragment blanksFragment1 = new PuzzleBlanksFragment(false, selectedUrl, mQuestionLang, mThemePlayer2);
         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
         transaction1.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
         transaction1.replace(R.id.player2FragmentContainer, blanksFragment1, "player2");

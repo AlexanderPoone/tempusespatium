@@ -30,6 +30,8 @@
     <string name="pref_general">General</string>
     <string name="pref_general_locale">Locale</string>
     <string name="pref_version">Version</string>
+    <string name="pref_player_1_theme">Player 1 Theme</string>
+    <string name="pref_player_2_theme">Player 2 Theme</string>
 
     <string name="pref_gameplay">Gameplay</string>
     <string name="pref_difficulty">Difficulty</string>
@@ -65,4 +67,8 @@
 
     <string name="simple_ime">Simple IME</string>
     <string name="subtype_en_US">English (US)</string>
+
+    <string name="answer">Answer:</string>
+    <string name="you_chose">You chose:</string>
+    <string name="anthem_name">Anthem name:</string>
 </resources>

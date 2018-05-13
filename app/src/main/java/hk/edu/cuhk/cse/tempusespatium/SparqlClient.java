@@ -26,6 +26,9 @@ package hk.edu.cuhk.cse.tempusespatium;
 import android.content.Context;
 import android.util.Log;
 
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -35,11 +38,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
 
 /**
  * @author Karima Rafes.
@@ -329,7 +331,7 @@ public class SparqlClient {
                     queryLowerCase.indexOf("clear") > -1) {
                 param = _nameParameterQueryWrite;
                 endpoint = _endpointWrite;
-            }else{
+            } else {
                 param = _nameParameterQueryRead;
                 endpoint = _endpointRead;
             }
@@ -343,7 +345,7 @@ public class SparqlClient {
 //                    //return sendQueryPOST(_endpoint, param, query);
 //                }
 //            } else {
-                result =  sendQueryGET(endpoint, param, query, context, filenameCache);
+            result = sendQueryGET(endpoint, param, query, context, filenameCache);
 //            }
         }
         return result;
@@ -395,16 +397,16 @@ public class SparqlClient {
             file.close();
 
         } catch (SAXException e) {
-            log(_tag, e.getMessage(),e);
+            log(_tag, e.getMessage(), e);
             //e.printStackTrace();
         } catch (IOException e) {
-            log(_tag, e.getMessage(),e);
+            log(_tag, e.getMessage(), e);
             //e.printStackTrace();
-            Log.e("asdfasdf",e.toString());
+            Log.e("asdfasdf", e.toString());
 
         } catch (Exception e) {
-            log(_tag, e.getMessage(),e);
-            Log.e("asdfasdf",e.toString());
+            log(_tag, e.getMessage(), e);
+            Log.e("asdfasdf", e.toString());
         }
         if (_handler != null) {
             return ((ParserSPARQLResultHandler) _handler).getResult();//new HashMap<String, HashMap>();
@@ -413,7 +415,7 @@ public class SparqlClient {
         }
     }
 
-    private void log(String tag, String message,Exception e) {
+    private void log(String tag, String message, Exception e) {
         if (message != null) {
             Log.e(_tag, message);
         }

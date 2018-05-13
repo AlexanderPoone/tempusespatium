@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.Space;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -40,7 +39,7 @@ public class HighscoresDialog extends Dialog implements View.OnClickListener {
         Typeface skylark_irc = ResourcesCompat.getFont(getContext(), R.font.skylark_itc_tt);
         rulesCaption.setTypeface(skylark_irc);
 
-        final TableLayout tableLayout=(TableLayout) findViewById(R.id.tableLayout);
+        final TableLayout tableLayout = (TableLayout) findViewById(R.id.tableLayout);
         SQLiteAssetHelper sqLiteAssetHelper = new DBAssetHelper(getContext());
         SQLiteDatabase sqLiteDatabase = sqLiteAssetHelper.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT " +
@@ -48,7 +47,7 @@ public class HighscoresDialog extends Dialog implements View.OnClickListener {
                 DBAssetHelper.COLUMN_SCORE +
                 " FROM " +
                 DBAssetHelper.TABLE_HIGHSCORES +
-                " ORDER BY "+
+                " ORDER BY " +
                 DBAssetHelper.COLUMN_SCORE +
                 " DESC", null);
         Log.i("asdf", Integer.toString(cursor.getCount()));
@@ -61,7 +60,7 @@ public class HighscoresDialog extends Dialog implements View.OnClickListener {
 
             TextView rank = new TextView(getContext());
             rank.setText(Integer.toString(i));
-            rank.setPadding(0,0,10,0);
+            rank.setPadding(0, 0, 10, 0);
             rank.setTypeface(skylark_itc);
             rank.setTextSize(24f);
             row.addView(rank);
@@ -69,7 +68,7 @@ public class HighscoresDialog extends Dialog implements View.OnClickListener {
 
             TextView player = new TextView(getContext());
             player.setText(cursor.getString(cursor.getColumnIndex(DBAssetHelper.COLUMN_PLAYER)));
-            player.setPadding(0,0,10,0);
+            player.setPadding(0, 0, 10, 0);
             player.setTypeface(skylark_itc);
             player.setTextSize(24f);
             row.addView(player);
@@ -86,14 +85,14 @@ public class HighscoresDialog extends Dialog implements View.OnClickListener {
         cursor.close();
         sqLiteDatabase.close();
         sqLiteAssetHelper.close();
-        Button close=(Button) findViewById(R.id.close);
+        Button close = (Button) findViewById(R.id.close);
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
             }
         });
-        BootstrapButton clearAll=(BootstrapButton) findViewById(R.id.clear_button);
+        BootstrapButton clearAll = (BootstrapButton) findViewById(R.id.clear_button);
         clearAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

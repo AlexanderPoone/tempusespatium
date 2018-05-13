@@ -18,7 +18,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapLabel;
 import com.beardedhen.androidbootstrap.BootstrapText;
@@ -42,13 +41,15 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
 
     private boolean mFirst, isRevealed = false;
     private Map<String, List<String>> mRelevance;
+    private int mColor;
 
     public PuzzleRelevanceFragment() {
     }
 
-    public PuzzleRelevanceFragment(boolean first, Map<String, List<String>> relevance) {
+    public PuzzleRelevanceFragment(boolean first, Map<String, List<String>> relevance, int color) {
         mFirst = first;
         mRelevance = relevance;
+        mColor = color;
     }
 
     @Override
@@ -83,20 +84,23 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
         };
         String catArray[] = mRelevance.keySet().toArray(new String[mRelevance.size()]);
         for (int i = 0; i < textViews.length; i++) {
-            StringBuilder stringBuilder=new StringBuilder();
+            StringBuilder stringBuilder = new StringBuilder();
             if (catArray[i].length() > 30) {
                 stringBuilder.append(catArray[i].substring(0, 14));
-                if (catArray[i].charAt(14) != ' ' && catArray[i].charAt(15) != ' ') stringBuilder.append('-');
+                if (catArray[i].charAt(14) != ' ' && catArray[i].charAt(15) != ' ')
+                    stringBuilder.append('-');
                 stringBuilder.append('\n');
                 stringBuilder.append(catArray[i].substring(15, 29));
-                if (catArray[i].charAt(29) != ' ' && catArray[i].charAt(30) != ' ') stringBuilder.append('-');
+                if (catArray[i].charAt(29) != ' ' && catArray[i].charAt(30) != ' ')
+                    stringBuilder.append('-');
                 stringBuilder.append('\n');
                 stringBuilder.append(catArray[i].substring(31));
 
                 textViews[i].setText(stringBuilder.toString());
             } else if (catArray[i].length() > 15) {
                 stringBuilder.append(catArray[i].substring(0, 14));
-                if (catArray[i].charAt(14) != ' ' && catArray[i].charAt(15) != ' ') stringBuilder.append('-');
+                if (catArray[i].charAt(14) != ' ' && catArray[i].charAt(15) != ' ')
+                    stringBuilder.append('-');
                 stringBuilder.append('\n');
                 stringBuilder.append(catArray[i].substring(15));
 
@@ -182,17 +186,16 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
                 R.id.box0, R.id.box0, R.id.box0, R.id.box1, R.id.box1, R.id.box2, R.id.box2
         };
         for (int i = 0; i < labelViews.length; i++) {
-            BootstrapText.Builder builder=new BootstrapText.Builder(getContext());
+            BootstrapText.Builder builder = new BootstrapText.Builder(getContext());
             if (labelViews[i].getParent() != getView().findViewById(test[i])) {   //Change placeholder to map value
                 correctNum--;
                 labelViews[i].setBootstrapBrand(DefaultBootstrapBrand.DANGER);
                 builder.addFontAwesomeIcon(FontAwesome.FA_CERTIFICATE);
-            }
-            else {
+            } else {
                 labelViews[i].setBootstrapBrand(DefaultBootstrapBrand.SUCCESS);
                 builder.addFontAwesomeIcon(FontAwesome.FA_CHECK);
             }
-            builder.addText(" "+labelViews[i].getText());
+            builder.addText(" " + labelViews[i].getText());
             labelViews[i].setBootstrapText(builder.build());
         }
         if (mFirst) {

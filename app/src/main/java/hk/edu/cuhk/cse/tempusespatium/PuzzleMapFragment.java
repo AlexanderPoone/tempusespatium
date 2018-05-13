@@ -39,6 +39,8 @@ import java.util.Locale;
 
 import okhttp3.OkHttpClient;
 
+import static hk.edu.cuhk.cse.tempusespatium.Constants.getTextColorBasedOnBgColor;
+
 /**
  * Created by Alex Poon on 10/17/2017.
  */
@@ -52,12 +54,13 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
     private UiSettings mUiSettings;
     private OkHttpClient mClient;
 
-    private String mCountry, mAnthem, mAnthemUrl;
+    private String mCountry, mCountryLocalised, mAnthemLocalised, mAnthemUrl;
 
     private Marker mUserMarker = null;
     private Marker mActualMarker = null;
     private LatLng mActualCoords = null;
     private Circle mAcceptanceRange = null;
+    private int mColor;
 
     @Override
     public boolean isRevealed() {
@@ -72,11 +75,13 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
 
     }
 
-    public PuzzleMapFragment(boolean first, String country, String anthem, String anthemUrl) {
+    public PuzzleMapFragment(boolean first, String country, String countryLocalised, String anthemLocalised, String anthemUrl, int color) {
         mFirst = first;
         mCountry = country;
-        mAnthem = anthem;
+        mCountryLocalised = countryLocalised;
+        mAnthemLocalised = anthemLocalised;
         mAnthemUrl = anthemUrl;
+        mColor = color;
     }
 
 
@@ -116,6 +121,8 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        TextView question = (TextView) getView().findViewById(R.id.question);
+        question.setTextColor(getTextColorBasedOnBgColor(getContext(), mColor));
         playSong();
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
@@ -186,24 +193,31 @@ public class PuzzleMapFragment extends Fragment implements OnMapReadyCallback, P
         Geocoder geoCoder = new Geocoder(getContext(), new Locale("en", "gb"));
         List<Address> matches;
         String country = "";
+        TextView playerSelects = (TextView) getView().findViewById(R.id.player_selects);
         if (mUserMarker != null) {
             try {
                 matches = geoCoder.getFromLocation(mUserMarker.getPosition().latitude, mUserMarker.getPosition().longitude, 1);
                 Address bestMatch = (matches.isEmpty() ? null : matches.get(0));
                 country = bestMatch.getCountryName();
                 //
-                if (country.equals("Macedonia (FYROM)")) country = "FYROM";
+//                if (country.equals("Macedonia (FYROM)")) country = "FYROM";
                 //
-                TextView debugUserSelects = (TextView) getView().findViewById(R.id.debug_user_selects);
-                debugUserSelects.setText(String.format("Answer: %s\nYou chose:\n%s", mCountry, country));
+                if (mCountryLocalised == null)
+                    playerSelects.setText(String.format("%s %s\n%s\n%s", getString(R.string.answer), mCountry, getString(R.string.you_chose), country));
+                else
+                    playerSelects.setText(String.format("%s %s\n%s\n%s", getString(R.string.answer), mCountryLocalised, getString(R.string.you_chose), country));
                 Log.i("Country", country);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
-            TextView debugUserSelects = (TextView) getView().findViewById(R.id.debug_user_selects);
-            debugUserSelects.setText(String.format("Answer:\n%s", mCountry));
+            if (mCountryLocalised == null)
+                playerSelects.setText(String.format("%s\n%s", getString(R.string.answer), mCountry));
+            else
+                playerSelects.setText(String.format("%s\n%s", getString(R.string.answer), mCountryLocalised));
         }
+        TextView anthemTxt = (TextView) getView().findViewById(R.id.anthemTxt);
+        anthemTxt.setText(mAnthemLocalised);
 
 
         // Display the country boundaries

@@ -39,6 +39,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+import static hk.edu.cuhk.cse.tempusespatium.Constants.getTextColorBasedOnBgColor;
+
 /**
  * Created by Alex Poon on 1/22/2018.
  */
@@ -49,7 +51,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
     private boolean mFirst;
     private String mWikipediaArt;
     private WebView mWebView;
-    private int mNumOfFields;
+    private int mNumOfFields, mColor;
     private List<String> mHiddenText;
     private String mLang;
 
@@ -138,8 +140,10 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
 
                 final StringBuilder content = new StringBuilder();
                 content.append("<html><head></head><body ");
-                if (mFirst) content.append("bgcolor=\"#FFF8E7\"");
-                else content.append("bgcolor=\"lavender\"");
+//                if (mFirst)
+                content.append("bgcolor=\"#" + String.format("%06X", 0xFFFFFF & mColor) + "\"");
+//                else content.append("bgcolor=\"lavender\"");
+                content.append(" text=\"#" + String.format("%06X", 0xFFFFFF & getTextColorBasedOnBgColor(getContext(), mColor)) + "\"");
                 content.append(">");
                 content.append(result);
                 content.append("</body></html>");
@@ -156,12 +160,13 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
     public PuzzleBlanksFragment() {
     }
 
-    public PuzzleBlanksFragment(boolean first, String wikipediaArt, String lang) {
+    public PuzzleBlanksFragment(boolean first, String wikipediaArt, String lang, int color) {
         mFirst = first;
         mWikipediaArt = wikipediaArt;
         mNumOfFields = 0;
         mHiddenText = new ArrayList<>();
         mLang = lang;
+        mColor = color;
     }
 
     @Nullable

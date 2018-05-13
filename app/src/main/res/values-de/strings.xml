@@ -24,4 +24,8 @@
     <string name="pref_difficulty">Schwierigkeit</string>
     <string name="pref_difficulty_hard">Schwer</string>
     <string name="pref_difficulty_insane">VeRrÜcKt</string>
+
+    <string name="answer">Lösung:</string>
+    <string name="you_chose">Sie wählten:</string>
+    <string name="anthem_name">Name der Hymne:</string>
 </resources>

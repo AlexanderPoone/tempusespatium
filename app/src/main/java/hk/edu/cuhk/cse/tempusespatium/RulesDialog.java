@@ -33,7 +33,7 @@ public class RulesDialog extends Dialog implements View.OnClickListener {
         TextView rulesText = (TextView) findViewById(R.id.rules_text);
         rulesCaption.setTypeface(skylark_irc);
         rulesText.setTypeface(skylark_irc);
-        Button close= (Button) findViewById(R.id.close);
+        Button close = (Button) findViewById(R.id.close);
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

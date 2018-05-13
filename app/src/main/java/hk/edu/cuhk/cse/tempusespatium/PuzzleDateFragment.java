@@ -15,6 +15,8 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.bumptech.glide.Glide;
 import com.shawnlin.numberpicker.NumberPicker;
 
+import static hk.edu.cuhk.cse.tempusespatium.Constants.getTextColorBasedOnBgColor;
+
 /**
  * Created by Alex Poon on 1/16/2018.
  */
@@ -24,7 +26,7 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
     private boolean mFirst;
     private NumberPicker mYearPicker, mMonthPicker;
     private String mHistoricEvent, mPicUrl;
-    private int mYear, mMonth, mRandMinYear, mRandMaxYear;
+    private int mYear, mMonth, mRandMinYear, mRandMaxYear, mColor;
 
     private boolean isRevealed = false;
 
@@ -35,7 +37,7 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
     public PuzzleDateFragment() {
     }
 
-    public PuzzleDateFragment(boolean first, String historicEvent, int year, int month, String picUrl, int randMinYear, int randMaxYear) {
+    public PuzzleDateFragment(boolean first, String historicEvent, int year, int month, String picUrl, int randMinYear, int randMaxYear, int color) {
         mFirst = first;
         mHistoricEvent = historicEvent;
         mYear = year;
@@ -43,6 +45,7 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
         mPicUrl = picUrl;
         mRandMinYear = randMinYear;
         mRandMaxYear = randMaxYear;
+        mColor = color;
     }
 
     @Nullable
@@ -57,10 +60,11 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
         super.onViewCreated(view, savedInstanceState);
         TextView textView = (TextView) view.findViewById(R.id.questionHistory);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            textView.setText(Html.fromHtml(getString(R.string.question_history, "<strong><em>"+mHistoricEvent+"</em></strong>"), Html.FROM_HTML_MODE_COMPACT));
+            textView.setText(Html.fromHtml(getString(R.string.question_history, "<strong><em>" + mHistoricEvent + "</em></strong>"), Html.FROM_HTML_MODE_COMPACT));
         } else {
-            textView.setText(Html.fromHtml(getString(R.string.question_history, "<strong><em>"+mHistoricEvent+"</em></strong>")));
+            textView.setText(Html.fromHtml(getString(R.string.question_history, "<strong><em>" + mHistoricEvent + "</em></strong>")));
         }
+        textView.setTextColor(getTextColorBasedOnBgColor(getContext(), mColor));
         ImageView imageView = (ImageView) view.findViewById(R.id.questionHistoryPic);
         Glide.with(this).load(mPicUrl).into(imageView);
 //        Picasso.with(getContext()).load(mPicUrl).into(imageView);
@@ -100,7 +104,7 @@ public class PuzzleDateFragment extends Fragment implements PuzzleFragmentInterf
         mYearPicker.setEnabled(false);
         mMonthPicker.setEnabled(false);
         if (playerYear != mYear)
-        mYearPicker.setBackgroundColor(getResources().getColor(R.color.FireBrick, null));
+            mYearPicker.setBackgroundColor(getResources().getColor(R.color.FireBrick, null));
         mYearPicker.setValue(mYear);
         if (playerYear != mMonth)
             mMonthPicker.setBackgroundColor(getResources().getColor(R.color.IndianRed, null));

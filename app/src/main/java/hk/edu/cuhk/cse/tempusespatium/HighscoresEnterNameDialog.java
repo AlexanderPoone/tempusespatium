@@ -2,7 +2,6 @@ package hk.edu.cuhk.cse.tempusespatium;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -31,8 +30,8 @@ public class HighscoresEnterNameDialog extends Dialog {
 
     public HighscoresEnterNameDialog(@NonNull Context context, boolean first, int score) {
         super(context);
-        mFirst=first;
-        mScore=score;
+        mFirst = first;
+        mScore = score;
     }
 
     @Override
@@ -41,18 +40,18 @@ public class HighscoresEnterNameDialog extends Dialog {
         setCancelable(false);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.highscores_enter_name_dialog);
-        RelativeLayout relativeLayout=(RelativeLayout) findViewById(R.id.add_name_layout);
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.add_name_layout);
         if (mFirst) {
             relativeLayout.setRotation(180);
         }
         AwesomeTextView rulesCaption = (AwesomeTextView) findViewById(R.id.highscores_caption);
         Typeface skylark_irc = ResourcesCompat.getFont(getContext(), R.font.skylark_itc_tt);
-        BootstrapButton done=(BootstrapButton) findViewById(R.id.done_entering_text);
+        BootstrapButton done = (BootstrapButton) findViewById(R.id.done_entering_text);
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BootstrapEditText bootstrapEditText=(BootstrapEditText) findViewById(R.id.nameEdit);
-                String name=bootstrapEditText.getText().toString();
+                BootstrapEditText bootstrapEditText = (BootstrapEditText) findViewById(R.id.nameEdit);
+                String name = bootstrapEditText.getText().toString();
                 if (name.trim().length() > 0) {
                     SQLiteAssetHelper sqLiteAssetHelper = new DBAssetHelper(getContext());
                     SQLiteDatabase sqLiteDatabase = sqLiteAssetHelper.getReadableDatabase();
@@ -69,7 +68,7 @@ public class HighscoresEnterNameDialog extends Dialog {
                     sqLiteAssetHelper.close();
                     dismiss();
 //                    cancel();
-                    HighscoresDialog highscoresDialog=new HighscoresDialog(getContext());
+                    HighscoresDialog highscoresDialog = new HighscoresDialog(getContext());
                     highscoresDialog.show();
                 }
             }

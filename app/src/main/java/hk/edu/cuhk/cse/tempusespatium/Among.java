@@ -3,23 +3,23 @@ package hk.edu.cuhk.cse.tempusespatium;
 import java.lang.reflect.Method;
 
 public class Among {
-    public Among (String s, int substring_i, int result) {
+    public Among(String s, int substring_i, int result) {
         this.s = s.toCharArray();
         this.substring_i = substring_i;
-	this.result = result;
-	this.method = null;
+        this.result = result;
+        this.method = null;
     }
 
-    public Among (String s, int substring_i, int result, String methodname,
-		  Class<? extends SnowballProgram> programclass) {
+    public Among(String s, int substring_i, int result, String methodname,
+                 Class<? extends SnowballProgram> programclass) {
         this.s = s.toCharArray();
         this.substring_i = substring_i;
-	this.result = result;
-	try {
-	    this.method = programclass.getDeclaredMethod(methodname);
-	} catch (NoSuchMethodException e) {
-	    throw new RuntimeException(e);
-	}
+        this.result = result;
+        try {
+            this.method = programclass.getDeclaredMethod(methodname);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public final char[] s; /* search string */

@@ -3,21 +3,28 @@ package hk.edu.cuhk.cse.tempusespatium;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.method.ScrollingMovementMethod;
+import android.text.Html;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -37,7 +44,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
@@ -123,6 +129,24 @@ public class TopicSearcherActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("OK", null)
                 .create();
+        Typeface baker_signet = ResourcesCompat.getFont(this, R.font.baker_signet_bt);
+        LinearLayout customLinearLayout = new LinearLayout(this);
+        final CheckBox customTag = new CheckBox(this);
+        customTag.setTypeface(baker_signet);
+        customTag.setText(Html.fromHtml("Custom: <small>(e.g. Q7944 Earthquakes)</small> "));
+        TextView q = new TextView(this);
+        q.setText("Q");
+        q.setTextColor(getColor(android.R.color.black));
+        q.setTypeface(baker_signet);
+        final EditText editText = new EditText(this);
+        editText.setTypeface(baker_signet);
+        editText.setHint("Wikidata item identifier");
+        editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+        customLinearLayout.addView(customTag);
+        customLinearLayout.addView(q);
+        customLinearLayout.addView(editText);
+
+        dialog.getListView().addFooterView(customLinearLayout);
         dialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialog2) {
@@ -130,7 +154,22 @@ public class TopicSearcherActivity extends AppCompatActivity {
                 b.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (selectedItems.size() != 0) {
+                        int size = selectedItems.size();
+                        if (customTag.isChecked()) {
+                            if (editText.getText().toString().trim().length() == 0) {
+                                Snackbar snack = Snackbar.make(dialog.getListView(), "Please enter an identifier!", Snackbar.LENGTH_LONG);
+                                View view = snack.getView();
+                                FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) view.getLayoutParams();
+                                params.gravity = Gravity.TOP;
+                                view.setLayoutParams(params);
+                                snack.show();
+                                return;
+                            } else {
+                                selectedItems.add("Q" + editText.getText().toString());
+                                size++;
+                            }
+                        }
+                        if (size != 0) {
                             dialog.dismiss();
                         } else {
                             Snackbar snack = Snackbar.make(dialog.getListView(), "Select at least 1 item!", Snackbar.LENGTH_LONG);
@@ -148,6 +187,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.show();
+                dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM); // must be placed after show()
             }
         });
 

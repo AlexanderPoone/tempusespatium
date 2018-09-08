@@ -316,7 +316,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                 Document doc = DocumentBuilderFactory.newInstance()
                                         .newDocumentBuilder().parse(new InputSource(new StringReader(body[0])));
                                 XPathExpression staticXPath = XPathFactory.newInstance()
-                                        .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table/tr/td[1]/a");
+                                        .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[1]/a");
                                 NodeList test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
                                 for (int i = 0; i < test.getLength(); i++) {
                                     //URL
@@ -1157,7 +1157,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                 Document doc = DocumentBuilderFactory.newInstance()
                                         .newDocumentBuilder().parse(new InputSource(new StringReader(body[0])));
                                 XPathExpression staticXPath = XPathFactory.newInstance()
-                                        .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table[2]/tr[2]/td/ul//li");
+                                        .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table[2]/tbody/tr[2]/td/ul//li");
 
                                 test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
 

@@ -9,12 +9,12 @@
         android:id="@+id/endgame_animation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:translationZ="1dp"/>
+        android:translationZ="1dp" />
 
     <!--<com.airbnb.lottie.LottieAnimationView-->
-        <!--android:id="@+id/endgame_animation"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:lottie_autoPlay="true"-->
-        <!--app:lottie_loop="true" />-->
+    <!--android:id="@+id/endgame_animation"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:lottie_autoPlay="true"-->
+    <!--app:lottie_loop="true" />-->
 </LinearLayout>

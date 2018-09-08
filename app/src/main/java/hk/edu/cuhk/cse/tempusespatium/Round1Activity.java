@@ -8,7 +8,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.animation.DynamicAnimation;
@@ -858,10 +857,10 @@ public class Round1Activity extends AppCompatActivity {
         transaction1.replace(R.id.player2FragmentContainer, flagFragment1, "player2");
         int commit1 = transaction1.commit();
 
-        // TODO
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
-            switchAnim();
-        }
+//        // TODO: Either final position or a spring force needs to be set.
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
+//            switchAnim();
+//        }
 
         int timeout = 4000;
         if (mDifficulty == DIFFICULTY_HARD) timeout *= 1.5f;

@@ -15,8 +15,7 @@
 ** See the License for the specific language governing permissions and
 ** limitations under the License.
 */
--->
-<!-- No hyphens, because they are delimiters.-->
+--><!-- No hyphens, because they are delimiters.-->
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
     android:keyWidth="10%p"
     android:horizontalGap="0px"

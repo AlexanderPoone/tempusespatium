@@ -15,8 +15,7 @@
 ** See the License for the specific language governing permissions and
 ** limitations under the License.
 */
--->
-<!-- 127◌́ 128◌̂ 129◌̈ 231ç130◌̀  127-130-->
+--><!-- 127◌́ 128◌̂ 129◌̈ 231ç130◌̀  127-130-->
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
     android:keyWidth="10%p"
     android:horizontalGap="0px"

@@ -117,7 +117,7 @@ public class PuzzleBlanksFragment extends Fragment implements PuzzleFragmentInte
                                 blank += token.substring(0, 1);
                                 blank += "<input type=\"text\" name=\"b";
                                 blank += Integer.toString(mNumOfFields);
-                                blank += "\" size=\"";
+                                blank += "\" style=\"border-radius: 3px;\" size=\"";
                                 blank += Integer.toString(token.length() - 2);
                                 blank += "\">";
                                 blank += token.substring(token.length() - 1);

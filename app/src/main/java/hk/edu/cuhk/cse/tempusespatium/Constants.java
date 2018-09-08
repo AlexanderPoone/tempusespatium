@@ -24,7 +24,8 @@ class Constants {
         int r = (bgColor - (a << 24)) >> 16;
         int g = (bgColor - (a << 24) - (r << 16)) >> 8;
         int b = bgColor - (a << 24) - (r << 16) - (g << 8);
-        if ((r*0.299+g*0.587+b*0.114) < 128) return context.getResources().getColor(R.color.White, null);
+        if ((r * 0.299 + g * 0.587 + b * 0.114) < 128)
+            return context.getResources().getColor(R.color.White, null);
         else return context.getResources().getColor(R.color.DarkSlateGray, null);
     }
 }

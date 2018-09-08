@@ -9,49 +9,49 @@
     android:orientation="vertical">
 
 
-        <com.beardedhen.androidbootstrap.AwesomeTextView
-            android:id="@+id/highscores_caption"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="vertical"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/bootstrap_h1_text_size"
-            app:bootstrapBrand="warning"
-            app:bootstrapText="@string/highscores_enter_name" />
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        android:id="@+id/highscores_caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/bootstrap_h1_text_size"
+        app:bootstrapBrand="warning"
+        app:bootstrapText="@string/highscores_enter_name" />
 
-        <com.beardedhen.androidbootstrap.BootstrapEditText
-            android:id="@+id/nameEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:inputType="textPersonName"
-            android:layout_centerInParent="true"
-            app:bootstrapBrand="success"
-            app:bootstrapSize="xl"
-            app:roundedCorners="true" />
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:id="@+id/nameEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:inputType="textPersonName"
+        android:layout_centerInParent="true"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="xl"
+        app:roundedCorners="true" />
 
-        <!--<EditText-->
-        <!--android:id="@+id/editText2"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_margin="5dp"-->
-        <!--android:ems="10"-->
-        <!--android:inputType="textPersonName"-->
-        <!--android:padding="10dp"-->
-        <!--android:background="@drawable/text_edit_rect"-->
-        <!--android:text="Name" />-->
+    <!--<EditText-->
+    <!--android:id="@+id/editText2"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="5dp"-->
+    <!--android:ems="10"-->
+    <!--android:inputType="textPersonName"-->
+    <!--android:padding="10dp"-->
+    <!--android:background="@drawable/text_edit_rect"-->
+    <!--android:text="Name" />-->
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/done_entering_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_margin="20dp"
-            app:bootstrapBrand="success"
-            android:layout_alignParentBottom="true"
-            app:bootstrapSize="xl"
-            app:bootstrapText="{fa_check} Done"
-            app:roundedCorners="true" />
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/done_entering_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="20dp"
+        app:bootstrapBrand="success"
+        android:layout_alignParentBottom="true"
+        app:bootstrapSize="xl"
+        app:bootstrapText="{fa_check} Done"
+        app:roundedCorners="true" />
 
 
     <!--</RelativeLayout>-->

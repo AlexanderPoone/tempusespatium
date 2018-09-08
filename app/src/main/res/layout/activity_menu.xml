@@ -36,7 +36,7 @@
         android:textSize="50sp"
         android:textStyle="bold"
         android:shadowColor="@color/Orchid"
-        android:shadowRadius="20.5"/>
+        android:shadowRadius="20.5" />
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->

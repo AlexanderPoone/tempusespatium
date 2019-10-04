@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4BFE5188234730A000A5574C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE5187234730A000A5574C /* AppDelegate.swift */; };
+		4BFE518A234730A000A5574C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE5189234730A000A5574C /* SceneDelegate.swift */; };
+		4BFE518C234730A000A5574C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE518B234730A000A5574C /* ViewController.swift */; };
+		4BFE518F234730A000A5574C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BFE518D234730A000A5574C /* Main.storyboard */; };
+		4BFE5191234730B500A5574C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BFE5190234730B500A5574C /* Assets.xcassets */; };
+		4BFE5194234730B500A5574C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BFE5192234730B500A5574C /* LaunchScreen.storyboard */; };
+		4BFE519F234730B700A5574C /* Tempus_E_SpatiumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE519E234730B700A5574C /* Tempus_E_SpatiumTests.swift */; };
+		4BFE51AA234730B700A5574C /* Tempus_E_SpatiumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE51A9234730B700A5574C /* Tempus_E_SpatiumUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4BFE519B234730B700A5574C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BFE517C2347309F00A5574C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4BFE51832347309F00A5574C;
+			remoteInfo = "Tempus E Spatium";
+		};
+		4BFE51A6234730B700A5574C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BFE517C2347309F00A5574C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4BFE51832347309F00A5574C;
+			remoteInfo = "Tempus E Spatium";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4BFE51842347309F00A5574C /* Tempus E Spatium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tempus E Spatium.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BFE5187234730A000A5574C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4BFE5189234730A000A5574C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		4BFE518B234730A000A5574C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4BFE518E234730A000A5574C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4BFE5190234730B500A5574C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4BFE5193234730B500A5574C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4BFE5195234730B500A5574C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BFE519A234730B700A5574C /* Tempus E SpatiumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tempus E SpatiumTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BFE519E234730B700A5574C /* Tempus_E_SpatiumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tempus_E_SpatiumTests.swift; sourceTree = "<group>"; };
+		4BFE51A0234730B700A5574C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BFE51A5234730B700A5574C /* Tempus E SpatiumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tempus E SpatiumUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BFE51A9234730B700A5574C /* Tempus_E_SpatiumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tempus_E_SpatiumUITests.swift; sourceTree = "<group>"; };
+		4BFE51AB234730B700A5574C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4BFE51812347309F00A5574C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4BFE5197234730B700A5574C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4BFE51A2234730B700A5574C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4BFE517B2347309F00A5574C = {
+			isa = PBXGroup;
+			children = (
+				4BFE5186234730A000A5574C /* Tempus E Spatium */,
+				4BFE519D234730B700A5574C /* Tempus E SpatiumTests */,
+				4BFE51A8234730B700A5574C /* Tempus E SpatiumUITests */,
+				4BFE51852347309F00A5574C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4BFE51852347309F00A5574C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4BFE51842347309F00A5574C /* Tempus E Spatium.app */,
+				4BFE519A234730B700A5574C /* Tempus E SpatiumTests.xctest */,
+				4BFE51A5234730B700A5574C /* Tempus E SpatiumUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4BFE5186234730A000A5574C /* Tempus E Spatium */ = {
+			isa = PBXGroup;
+			children = (
+				4BFE5187234730A000A5574C /* AppDelegate.swift */,
+				4BFE5189234730A000A5574C /* SceneDelegate.swift */,
+				4BFE518B234730A000A5574C /* ViewController.swift */,
+				4BFE518D234730A000A5574C /* Main.storyboard */,
+				4BFE5190234730B500A5574C /* Assets.xcassets */,
+				4BFE5192234730B500A5574C /* LaunchScreen.storyboard */,
+				4BFE5195234730B500A5574C /* Info.plist */,
+			);
+			path = "Tempus E Spatium";
+			sourceTree = "<group>";
+		};
+		4BFE519D234730B700A5574C /* Tempus E SpatiumTests */ = {
+			isa = PBXGroup;
+			children = (
+				4BFE519E234730B700A5574C /* Tempus_E_SpatiumTests.swift */,
+				4BFE51A0234730B700A5574C /* Info.plist */,
+			);
+			path = "Tempus E SpatiumTests";
+			sourceTree = "<group>";
+		};
+		4BFE51A8234730B700A5574C /* Tempus E SpatiumUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4BFE51A9234730B700A5574C /* Tempus_E_SpatiumUITests.swift */,
+				4BFE51AB234730B700A5574C /* Info.plist */,
+			);
+			path = "Tempus E SpatiumUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4BFE51832347309F00A5574C /* Tempus E Spatium */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4BFE51AE234730B700A5574C /* Build configuration list for PBXNativeTarget "Tempus E Spatium" */;
+			buildPhases = (
+				4BFE51802347309F00A5574C /* Sources */,
+				4BFE51812347309F00A5574C /* Frameworks */,
+				4BFE51822347309F00A5574C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Tempus E Spatium";
+			productName = "Tempus E Spatium";
+			productReference = 4BFE51842347309F00A5574C /* Tempus E Spatium.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4BFE5199234730B700A5574C /* Tempus E SpatiumTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4BFE51B1234730B700A5574C /* Build configuration list for PBXNativeTarget "Tempus E SpatiumTests" */;
+			buildPhases = (
+				4BFE5196234730B700A5574C /* Sources */,
+				4BFE5197234730B700A5574C /* Frameworks */,
+				4BFE5198234730B700A5574C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4BFE519C234730B700A5574C /* PBXTargetDependency */,
+			);
+			name = "Tempus E SpatiumTests";
+			productName = "Tempus E SpatiumTests";
+			productReference = 4BFE519A234730B700A5574C /* Tempus E SpatiumTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4BFE51A4234730B700A5574C /* Tempus E SpatiumUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4BFE51B4234730B700A5574C /* Build configuration list for PBXNativeTarget "Tempus E SpatiumUITests" */;
+			buildPhases = (
+				4BFE51A1234730B700A5574C /* Sources */,
+				4BFE51A2234730B700A5574C /* Frameworks */,
+				4BFE51A3234730B700A5574C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4BFE51A7234730B700A5574C /* PBXTargetDependency */,
+			);
+			name = "Tempus E SpatiumUITests";
+			productName = "Tempus E SpatiumUITests";
+			productReference = 4BFE51A5234730B700A5574C /* Tempus E SpatiumUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4BFE517C2347309F00A5574C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = SoftFeta;
+				TargetAttributes = {
+					4BFE51832347309F00A5574C = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					4BFE5199234730B700A5574C = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 4BFE51832347309F00A5574C;
+					};
+					4BFE51A4234730B700A5574C = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 4BFE51832347309F00A5574C;
+					};
+				};
+			};
+			buildConfigurationList = 4BFE517F2347309F00A5574C /* Build configuration list for PBXProject "Tempus E Spatium" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4BFE517B2347309F00A5574C;
+			productRefGroup = 4BFE51852347309F00A5574C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4BFE51832347309F00A5574C /* Tempus E Spatium */,
+				4BFE5199234730B700A5574C /* Tempus E SpatiumTests */,
+				4BFE51A4234730B700A5574C /* Tempus E SpatiumUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4BFE51822347309F00A5574C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BFE5194234730B500A5574C /* LaunchScreen.storyboard in Resources */,
+				4BFE5191234730B500A5574C /* Assets.xcassets in Resources */,
+				4BFE518F234730A000A5574C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4BFE5198234730B700A5574C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4BFE51A3234730B700A5574C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4BFE51802347309F00A5574C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BFE518C234730A000A5574C /* ViewController.swift in Sources */,
+				4BFE5188234730A000A5574C /* AppDelegate.swift in Sources */,
+				4BFE518A234730A000A5574C /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4BFE5196234730B700A5574C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BFE519F234730B700A5574C /* Tempus_E_SpatiumTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4BFE51A1234730B700A5574C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BFE51AA234730B700A5574C /* Tempus_E_SpatiumUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4BFE519C234730B700A5574C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4BFE51832347309F00A5574C /* Tempus E Spatium */;
+			targetProxy = 4BFE519B234730B700A5574C /* PBXContainerItemProxy */;
+		};
+		4BFE51A7234730B700A5574C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4BFE51832347309F00A5574C /* Tempus E Spatium */;
+			targetProxy = 4BFE51A6234730B700A5574C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4BFE518D234730A000A5574C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4BFE518E234730A000A5574C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4BFE5192234730B500A5574C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4BFE5193234730B500A5574C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4BFE51AC234730B700A5574C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4BFE51AD234730B700A5574C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4BFE51AF234730B700A5574C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94RT5FA8WL;
+				INFOPLIST_FILE = "Tempus E Spatium/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tempusespatium.Tempus-E-Spatium";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4BFE51B0234730B700A5574C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94RT5FA8WL;
+				INFOPLIST_FILE = "Tempus E Spatium/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tempusespatium.Tempus-E-Spatium";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4BFE51B2234730B700A5574C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94RT5FA8WL;
+				INFOPLIST_FILE = "Tempus E SpatiumTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tempusespatium.Tempus-E-SpatiumTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tempus E Spatium.app/Tempus E Spatium";
+			};
+			name = Debug;
+		};
+		4BFE51B3234730B700A5574C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94RT5FA8WL;
+				INFOPLIST_FILE = "Tempus E SpatiumTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tempusespatium.Tempus-E-SpatiumTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tempus E Spatium.app/Tempus E Spatium";
+			};
+			name = Release;
+		};
+		4BFE51B5234730B700A5574C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94RT5FA8WL;
+				INFOPLIST_FILE = "Tempus E SpatiumUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tempusespatium.Tempus-E-SpatiumUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Tempus E Spatium";
+			};
+			name = Debug;
+		};
+		4BFE51B6234730B700A5574C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94RT5FA8WL;
+				INFOPLIST_FILE = "Tempus E SpatiumUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tempusespatium.Tempus-E-SpatiumUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Tempus E Spatium";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4BFE517F2347309F00A5574C /* Build configuration list for PBXProject "Tempus E Spatium" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4BFE51AC234730B700A5574C /* Debug */,
+				4BFE51AD234730B700A5574C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4BFE51AE234730B700A5574C /* Build configuration list for PBXNativeTarget "Tempus E Spatium" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4BFE51AF234730B700A5574C /* Debug */,
+				4BFE51B0234730B700A5574C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4BFE51B1234730B700A5574C /* Build configuration list for PBXNativeTarget "Tempus E SpatiumTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4BFE51B2234730B700A5574C /* Debug */,
+				4BFE51B3234730B700A5574C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4BFE51B4234730B700A5574C /* Build configuration list for PBXNativeTarget "Tempus E SpatiumUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4BFE51B5234730B700A5574C /* Debug */,
+				4BFE51B6234730B700A5574C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4BFE517C2347309F00A5574C /* Project object */;
+}

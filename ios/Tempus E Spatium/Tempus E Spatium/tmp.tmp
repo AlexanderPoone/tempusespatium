@@ -1,3 +1,5 @@
+All keys map to the same function, identified by sender
+
 override func viewDidLoad() {
     super.viewDidLoad()
     var aLabel: UILabel = ...

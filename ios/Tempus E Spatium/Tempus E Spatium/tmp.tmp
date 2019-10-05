@@ -3,6 +3,7 @@
   pod 'DropDown'
   pod 'Ono'
   pod 'SwiftIcons', '~> 2.3.2'
+  pod 'SVGKit', :git => 'https://github.com/SVGKit/SVGKit.git', :branch => '3.x'
   pod 'Google-Mobile-Ads-SDK'
 
 app_name = "Tempus E Spatium";

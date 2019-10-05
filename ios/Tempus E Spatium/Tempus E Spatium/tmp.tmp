@@ -1,3 +1,9 @@
+override func viewDidLoad() {
+    super.viewDidLoad()
+    var aLabel: UILabel = ...
+    aLabel.transform = CGAffineTransformMakeRotation(M_PI)
+}
+
   pod 'Alamofire', :git => "https://github.com/Alamofire/Alamofire", :branch => "master"
   pod 'ReachabilitySwift'
   pod 'DropDown'

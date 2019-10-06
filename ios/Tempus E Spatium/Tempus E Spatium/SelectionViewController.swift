@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMobileAds
+import SwiftIcons
 
 class SelectionViewController: UIViewController, GADBannerViewDelegate {
 

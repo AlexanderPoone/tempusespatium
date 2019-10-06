@@ -10,23 +10,35 @@ import UIKit
 import DropDown
 
 class TopicSearcherViewController: UIViewController {
+    
+    @IBOutlet weak var mSubmitAndPlayBtn: UIButton!
+    
+    @IBAction func mSubmitAndPlayClicked() {
+        if mSubmitAndPlayBtn.state != .disabled {
+            performSegue(withIdentifier: "launchRound1", sender: nil)
+        }
+    }
+    
+    
     @IBOutlet weak var mLocaleDropDown: DropDown!
     
     @IBOutlet weak var mTopicDropDown: DropDown!
     
+    @IBOutlet weak var mSelectAnyHeader: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        performSegue(withIdentifier: "launchRound1", sender: nil)
+        
+        mSelectAnyHeader.text = NSLocalizedString("topic_searcher_heading", comment: "")
     }
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        switch segue.identifier {
+        case "launchRound1":
+            let destinationVC = segue.destination as! Round1ViewController
+        default:
+            break
+        }
     }
-
+    
 }

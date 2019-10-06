@@ -10,10 +10,12 @@ import UIKit
 
 class Round1ViewController: UIViewController {
 
+    @IBOutlet weak var mPlayer1Container: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        mPlayer1Container.transform =  CGAffineTransform(rotationAngle: .pi)
     }
     
 

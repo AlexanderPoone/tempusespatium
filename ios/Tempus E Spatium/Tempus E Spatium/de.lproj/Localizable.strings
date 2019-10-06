@@ -1,0 +1,66 @@
+/* 
+  Localizable.strings
+  Tempus E Spatium
+
+  Created by Victor Poon on 6/10/2019.
+  Copyright © 2019 SoftFeta. All rights reserved.
+*/
+
+app_name = "Tempus E Spatium";
+
+play = "{fa_gamepad} PLAY!";
+rules = "{fa_leanpub} Rules";
+learn = "{fa_book} Learn";
+settings = "{fa_cog} Settings";
+highscores = "{fa_trophy} Highscores";
+quit = "{fa_sign-out} Quit game";
+
+articles_covered = "Articles covered: ";
+learn_sub = "Click on the badge to revise now!";
+
+resume = "{fa_play-circle} Resume";
+return_main_menu = "{fa_sign-out} Return to main menu";
+topic_searcher_heading = "Search for ANY topic";
+loading = "Loading, please wait…";
+
+highscores_enter_name = "{md_sentiment_very_satisfied} Congrats, you won!\nEnter your name:";
+
+level = "Level %d";
+rules_tirade = "<p>The project is named Tempus E Spatium (Latin for Time and Space, which is often prefixed by “lost in”) as the questions focus on history and geography. Quiz types include: Drag and drop the national flags to the right continent, listen to the national anthem and choose the correct flag, and complete the word. Despite the name of the app, the last type can be of any question type.</p><br /><p>The questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he will lose 5 points.</p>";
+
+pref_general = "General";
+pref_general_locale = "Locale";
+pref_version = "Version";
+pref_player_1_theme = "Player 1 Theme";
+pref_player_2_theme = "Player 2 Theme";
+
+pref_gameplay = "Gameplay";
+pref_difficulty = "Difficulty";
+pref_difficulty_hard = "Hard";
+pref_difficulty_hard_sub = "30 seconds for fill in the blanks, 10 for other types";
+pref_difficulty_insane = "InSaNe";
+pref_difficulty_insane_sub = "20 seconds for fill in the blanks, 6 for other types";
+pref_difficulty_hysterical = "hYsTeRiCaL";
+pref_difficulty_hysterical_sub = "18 seconds for fill in the blanks, 5 for other type";
+
+question_anagram = "Reassemble the letters.";
+question_anthem = "Which country does this anthem belong to?";
+question_flags = "Choose the matching flag.";
+question_history = "When did the historical event %s take place?";
+
+bar_points = "Points: %d";
+submit = "{fa_paper-plane} Submit!";
+reset = "{fa_undo} Reset";
+a = "A. ";
+b = "B. ";
+c = "C. ";
+d = "D. ";
+
+paused = "{fa_pause} Game paused";
+
+simple_ime = "Simple IME";
+subtype_en_US = "English (US)";
+
+answer = "Answer:";
+you_chose = "You chose:";
+anthem_name = "Anthem name:";

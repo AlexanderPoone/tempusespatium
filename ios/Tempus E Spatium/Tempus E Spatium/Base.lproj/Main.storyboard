@@ -11,9 +11,9 @@
         <!--Navigation Controller-->
         <scene sceneID="LWX-HO-R1R">
             <objects>
-                <navigationController id="Bmh-AF-lHu" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="Bmh-AF-lHu" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VDu-OG-fCz">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -222,6 +222,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="mSubmitAndPlayClicked" destination="hT1-jj-w0B" eventType="touchUpInside" id="Oza-zm-sYb"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoH-Sw-cOZ">
                                 <rect key="frame" x="67" y="122" width="280" height="42"/>
@@ -275,6 +278,8 @@
                     <navigationItem key="navigationItem" id="epo-WP-84f"/>
                     <connections>
                         <outlet property="mLocaleDropDown" destination="xrc-yY-p4v" id="FDa-DF-izD"/>
+                        <outlet property="mSelectAnyHeader" destination="yoH-Sw-cOZ" id="Xdh-Pr-E8C"/>
+                        <outlet property="mSubmitAndPlayBtn" destination="IU5-bs-tqv" id="1PN-B5-Cdv"/>
                         <outlet property="mTopicDropDown" destination="qMS-2b-NSz" id="ExH-14-QNf"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="launchRound1" id="rzk-E9-BXo"/>
                     </connections>
@@ -292,13 +297,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jp5-C7-R72">
-                                <rect key="frame" x="0.0" y="88" width="414" height="387"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="409"/>
                                 <connections>
                                     <segue destination="Eyr-Yk-zUw" kind="embed" id="Xh4-bk-Nv3"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUa-t1-Ufo">
-                                <rect key="frame" x="0.0" y="475" width="414" height="387"/>
+                                <rect key="frame" x="0.0" y="453" width="414" height="409"/>
                                 <connections>
                                     <segue destination="irv-bc-jdo" kind="embed" id="fQP-TU-G3W"/>
                                 </connections>
@@ -319,6 +324,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Lor-zp-Jbw"/>
+                    <connections>
+                        <outlet property="mPlayer1Container" destination="Jp5-C7-R72" id="JUI-D7-hUT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -329,8 +337,17 @@
             <objects>
                 <viewController id="Eyr-Yk-zUw" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DJm-YM-Fqc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="387"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="409"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81o-6F-f3z">
+                                <rect key="frame" x="186" y="194" width="50" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" name="CosmicLatte"/>
                         <viewLayoutGuide key="safeArea" id="goD-7u-Ghk"/>
                     </view>
@@ -344,15 +361,60 @@
             <objects>
                 <viewController id="irv-bc-jdo" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TMr-t2-DLU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="387"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="409"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fPj-Bf-DeI">
+                                <rect key="frame" x="0.0" y="252" width="414" height="157"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="9OJ-lJ-Z1Q" kind="embed" id="9Dd-op-E7l"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNd-bS-YgY">
+                                <rect key="frame" x="319" y="6" width="42" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Pause"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" name="Lavender"/>
                         <viewLayoutGuide key="safeArea" id="dtE-m9-vEx"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjG-Ji-sl3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064" y="354"/>
+            <point key="canvasLocation" x="1063.768115942029" y="353.90625"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="nfe-pe-q0C">
+            <objects>
+                <viewController id="9OJ-lJ-Z1Q" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ci6-Kx-fxV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="157"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S57-fh-taX">
+                                <rect key="frame" x="0.0" y="44" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CvO-fH-7lr">
+                                <rect key="frame" x="247" y="86" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ojX-cc-30T">
+                                <rect key="frame" x="141" y="40" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oUc-jz-Ty2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1064" y="685"/>
         </scene>
     </scenes>
     <resources>

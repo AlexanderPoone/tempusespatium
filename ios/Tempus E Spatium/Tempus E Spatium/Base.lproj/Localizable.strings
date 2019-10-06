@@ -1,18 +1,10 @@
-All keys map to the same function, identified by sender
+/* 
+  Localizable.strings
+  Tempus E Spatium
 
-override func viewDidLoad() {
-    super.viewDidLoad()
-    var aLabel: UILabel = ...
-    aLabel.transform = CGAffineTransformMakeRotation(M_PI)
-}
-
-  pod 'Alamofire', :git => "https://github.com/Alamofire/Alamofire", :branch => "master"
-  pod 'ReachabilitySwift'
-  pod 'DropDown'
-  pod 'Ono'
-  pod 'SwiftIcons', '~> 2.3.2'
-  pod 'SVGKit', :git => 'https://github.com/SVGKit/SVGKit.git', :branch => '3.x'
-  pod 'Google-Mobile-Ads-SDK'
+  Created by Victor Poon on 6/10/2019.
+  Copyright © 2019 SoftFeta. All rights reserved.
+*/
 
 app_name = "Tempus E Spatium";
 

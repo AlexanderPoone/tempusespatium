@@ -16,9 +16,33 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Push a new beta build to TestFlight"
+  desc "Generate new localized screenshots"
+  lane :screenshots do
+    capture_screenshots(workspace: "Leave Manager.xcworkspace", scheme: "Leave Manager")
+  end
   lane :beta do
-    build_app(workspace: "Tempus E Spatium.xcworkspace", scheme: "Tempus E Spatium")
-    upload_to_testflight
+    # Increment build number in XCode
+    increment_build_number
+    # Build your app
+    gym
+    # Upload to TestFlight
+    testflight
+  end
+  lane :release do
+    increment_build_number
+    # Run cocoapods install, commented: as this will wipe my NMessenger changes
+    # cocoapods
+    # Run tests
+    scan
+    # Take screenshots
+    snapshot
+    # Provisioning
+    sigh
+    # Upload app, screenshots and meta-data
+    deliver
+    # Run your own custom script
+    # sh "./customScript.sh"
+    # Notify your contacts on Slack
+    # slack
   end
 end

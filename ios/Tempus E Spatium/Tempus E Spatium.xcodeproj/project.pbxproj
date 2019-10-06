@@ -3,11 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		425D4D37123F2DA94562D37C /* Pods_Tempus_E_Spatium_Tempus_E_SpatiumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC481EB22D19F28E075D659 /* Pods_Tempus_E_Spatium_Tempus_E_SpatiumUITests.framework */; };
+		4B756D772349D3FB005CD85A /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B756D762349D3FB005CD85A /* SelectionViewController.swift */; };
+		4B756D792349D43E005CD85A /* Round1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B756D782349D43E005CD85A /* Round1ViewController.swift */; };
+		4B756D7B2349D468005CD85A /* TopicSearcherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B756D7A2349D468005CD85A /* TopicSearcherViewController.swift */; };
+		4B756D7D2349D741005CD85A /* PrefsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B756D7C2349D741005CD85A /* PrefsTableViewController.swift */; };
 		4BFE5188234730A000A5574C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE5187234730A000A5574C /* AppDelegate.swift */; };
 		4BFE518A234730A000A5574C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE5189234730A000A5574C /* SceneDelegate.swift */; };
 		4BFE518C234730A000A5574C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE518B234730A000A5574C /* ViewController.swift */; };
@@ -43,6 +47,10 @@
 		3022C463C48E3ACE96FFA4D0 /* Pods-Tempus E Spatium-Tempus E SpatiumUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tempus E Spatium-Tempus E SpatiumUITests.release.xcconfig"; path = "Target Support Files/Pods-Tempus E Spatium-Tempus E SpatiumUITests/Pods-Tempus E Spatium-Tempus E SpatiumUITests.release.xcconfig"; sourceTree = "<group>"; };
 		352C6DF257D7B9CCAB2F23BE /* Pods-Tempus E Spatium.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tempus E Spatium.release.xcconfig"; path = "Target Support Files/Pods-Tempus E Spatium/Pods-Tempus E Spatium.release.xcconfig"; sourceTree = "<group>"; };
 		48E365537441B4C116B76BC6 /* Pods_Tempus_E_Spatium.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tempus_E_Spatium.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B756D762349D3FB005CD85A /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
+		4B756D782349D43E005CD85A /* Round1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round1ViewController.swift; sourceTree = "<group>"; };
+		4B756D7A2349D468005CD85A /* TopicSearcherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSearcherViewController.swift; sourceTree = "<group>"; };
+		4B756D7C2349D741005CD85A /* PrefsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsTableViewController.swift; sourceTree = "<group>"; };
 		4BFE51842347309F00A5574C /* Tempus E Spatium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tempus E Spatium.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BFE5187234730A000A5574C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BFE5189234730A000A5574C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,7 +119,6 @@
 				002E775F0AFC8EAEA8DFE499 /* Pods-Tempus E SpatiumTests.debug.xcconfig */,
 				DAE45B689A5B6965E28C6BB1 /* Pods-Tempus E SpatiumTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -147,6 +154,10 @@
 				4BFE5190234730B500A5574C /* Assets.xcassets */,
 				4BFE5192234730B500A5574C /* LaunchScreen.storyboard */,
 				4BFE5195234730B500A5574C /* Info.plist */,
+				4B756D762349D3FB005CD85A /* SelectionViewController.swift */,
+				4B756D7A2349D468005CD85A /* TopicSearcherViewController.swift */,
+				4B756D782349D43E005CD85A /* Round1ViewController.swift */,
+				4B756D7C2349D741005CD85A /* PrefsTableViewController.swift */,
 			);
 			path = "Tempus E Spatium";
 			sourceTree = "<group>";
@@ -409,7 +420,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BFE518C234730A000A5574C /* ViewController.swift in Sources */,
+				4B756D772349D3FB005CD85A /* SelectionViewController.swift in Sources */,
 				4BFE5188234730A000A5574C /* AppDelegate.swift in Sources */,
+				4B756D7B2349D468005CD85A /* TopicSearcherViewController.swift in Sources */,
+				4B756D792349D43E005CD85A /* Round1ViewController.swift in Sources */,
+				4B756D7D2349D741005CD85A /* PrefsTableViewController.swift in Sources */,
 				4BFE518A234730A000A5574C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

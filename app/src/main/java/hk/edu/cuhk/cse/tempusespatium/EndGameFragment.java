@@ -1,5 +1,6 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.bumptech.glide.Glide;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
@@ -75,6 +77,16 @@ public class EndGameFragment extends Fragment {
                 highscoresEnterNameDialog.show();
             }
         }
+        BootstrapButton btnBackToMenu = view.findViewById(R.id.endgame_return);
+        btnBackToMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MenuActivity.class);
+                getActivity().finish();
+                startActivity(intent);
+            }
+        });
+
 //        LottieAnimationView lottieAnimationView= (LottieAnimationView) view.findViewById(R.id.endgame_animation);
 //        lottieAnimationView.setAnimation(R.raw.);
     }

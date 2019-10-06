@@ -2,6 +2,7 @@ package hk.edu.cuhk.cse.tempusespatium;
 
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -31,6 +32,9 @@ import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -288,6 +292,17 @@ public class MenuActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
+
+        MobileAds.initialize(this, "ca-app-pub-9627209153774793~3950569449");
+
+        AdView adView = (AdView) findViewById(R.id.ad);
+
+        AdRequest request = new AdRequest.Builder().addTestDevice("210A8F39D562F35F67912205BF9A0FBD")
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+//        Log.i("Hihi", Boolean.toString(request.isTestDevice(this)));
+        adView.loadAd(request);
+
         if (mIso639_1.equals("uk")) {
             TextView fullScreenContent = (TextView) findViewById(R.id.fullscreen_content);
             fullScreenContent.setTypeface(ermis_pro, Typeface.BOLD);

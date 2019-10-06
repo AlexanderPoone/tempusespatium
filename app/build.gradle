@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "hk.edu.cuhk.cse.tempusespatium"
         minSdkVersion 23
@@ -57,7 +56,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.9.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'jp.wasabeef:glide-transformations:3.1.1'
-    implementation 'co.lujun:androidtagview:1.1.4'
+    implementation 'co.lujun:androidtagview:1.1.5'
     implementation group: 'org.apache.httpcomponents', name: 'httpclient-android', version: '4.3.5.1'
     implementation group: 'joda-time', name: 'joda-time', version: '2.9.9'
     implementation group: 'com.caverock', name: 'androidsvg', version: '1.2.2-beta-1'

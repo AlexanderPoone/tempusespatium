@@ -164,7 +164,11 @@
         android:textSize="@dimen/bootstrap_h4_text_size"
         android:textStyle="bold" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <ScrollView
+        android:layout_above="@id/learn_instructions"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -172,6 +176,7 @@
             app:tag_text_color="@color/Platinum"
             app:tag_background_color="@color/MidnightBlue"
             app:tag_text_size="12sp"
+            app:tag_max_length="99"
             android:id="@+id/result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -184,4 +189,14 @@
             app:tag_theme="none"
             app:vertical_interval="4dp" />
     </ScrollView>
+        <TextView
+            android:id="@+id/learn_instructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/learn_sub"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="@dimen/bootstrap_h3_text_size"/>
+    </RelativeLayout>
 </LinearLayout>

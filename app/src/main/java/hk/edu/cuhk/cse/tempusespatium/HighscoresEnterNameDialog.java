@@ -3,7 +3,9 @@ package hk.edu.cuhk.cse.tempusespatium;
 import android.app.Dialog;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.res.ResourcesCompat;
@@ -69,6 +71,7 @@ public class HighscoresEnterNameDialog extends Dialog {
                     dismiss();
 //                    cancel();
                     HighscoresDialog highscoresDialog = new HighscoresDialog(getContext());
+                    highscoresDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     highscoresDialog.show();
                 }
             }

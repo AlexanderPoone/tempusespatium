@@ -1,5 +1,6 @@
 package hk.edu.cuhk.cse.tempusespatium;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -89,6 +90,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
 
     private static HashMap<String, String> items;
 
+    private ProgressDialog mProgressDialog;
+
     static {
         items = new HashMap<>();
         items.put("Attacks", "Q81672");
@@ -107,6 +110,10 @@ public class TopicSearcherActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.topic_searcher);
+
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setMessage(getString(R.string.loading));
+        mProgressDialog.setCancelable(false);
 
         BootstrapButton dateGameButton = (BootstrapButton) findViewById(R.id.date_game_button);
         final String[] selectableItems = items.keySet().toArray(new String[items.keySet().size()]);
@@ -248,7 +255,11 @@ public class TopicSearcherActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+                autoCompleteTextView.setEnabled(false);
+                autoCompleteTextView.setText("");
+                autoCompleteTextView.clearFocus();
                 autoCompleteTextView.setOnItemSelectedListener(null);
+                mProgressDialog.show();
                 if (i == 1) {
                     espanol();
                     mQuestionLang = "es";
@@ -343,11 +354,13 @@ public class TopicSearcherActivity extends AppCompatActivity {
                             mOnItemClickListener = new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                    mSelectedTopic.clear();
+
                                     submitButton.setEnabled(false);
 
                                     mArts = new LinkedHashMap<>();
                                     String selectedTopic = adapter.getItem(i);
-
+                                    Log.i("hohoho", selectedTopic);
 
                                     /* */
                                     int randomInt, randomInt2;
@@ -383,7 +396,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                                 Document doc = DocumentBuilderFactory.newInstance()
                                                         .newDocumentBuilder().parse(new InputSource(new StringReader(body1[0])));
                                                 XPathExpression staticXPath = XPathFactory.newInstance()
-                                                        .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table/tr/td[2]/a");
+                                                        .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[2]/a");
                                                 NodeList test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
                                                 for (int i = 0; i < test.getLength(); i++) {
                                                     mArts.put(test.item(i).getTextContent(), "https://en.wikipedia.org" + test.item(i).getAttributes().getNamedItem("href").getTextContent());
@@ -409,6 +422,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                                             WebViewDialog webViewDialog = new WebViewDialog(TopicSearcherActivity.this, "https://" + mQuestionLang + ".wikipedia.org/wiki/" + text);
                                                             webViewDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                                             webViewDialog.show();
+
                                                         }
 
                                                         @Override
@@ -453,6 +467,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     thread1.start();
                                 }
                             };
+                            mProgressDialog.dismiss();
+                            autoCompleteTextView.setEnabled(true);
                             autoCompleteTextView.setOnItemClickListener(mOnItemClickListener);
                         }
                     });
@@ -532,6 +548,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                             mOnItemClickListener = new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                    mSelectedTopic.clear();
+
                                     submitButton.setEnabled(false);
 
                                     mArts = new LinkedHashMap<>();
@@ -641,6 +659,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     thread1.start();
                                 }
                             };
+                            mProgressDialog.dismiss();
+                            autoCompleteTextView.setEnabled(true);
                             autoCompleteTextView.setOnItemClickListener(mOnItemClickListener);
                         }
                     });
@@ -857,6 +877,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     });
                                 }
                             };
+                            mProgressDialog.dismiss();
+                            autoCompleteTextView.setEnabled(true);
                             autoCompleteTextView.setOnItemClickListener(mOnItemClickListener);
                         }
                     });
@@ -968,6 +990,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i,
                                                         long l) {
+                                    mSelectedTopic.clear();
+
                                     submitButton.setEnabled(false);
 
                                     mArts = new LinkedHashMap<>();
@@ -1011,7 +1035,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                                         .newXPath().compile("//*[@id=\"mw-pages\"]/div/div/div/ul/li/a");
                                                 NodeList test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
                                                 for (int i = 0; i < test.getLength(); i++) {
-                                                    mArts.put(test.item(i).getTextContent().replaceFirst("Discusión:", ""), "https://es.wikipedia.org" + test.item(i).getAttributes().getNamedItem("href").getTextContent().replaceFirst("Discusi%C3%B3n:", ""));
+                                                    mArts.put(test.item(i).getTextContent().replaceFirst("(Categoría )?[Dd]iscusión:", ""), "https://es.wikipedia.org" + test.item(i).getAttributes().getNamedItem("href").getTextContent().replaceFirst("(Categor%C3%ADa_)?[Dd]iscusi%C3%B3n:", ""));
                                                 }
 //                                                Log.d("amn",mArts.toString());
                                             } catch (SAXException e) {
@@ -1078,6 +1102,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     thread1.start();
                                 }
                             };
+                            mProgressDialog.dismiss();
+                            autoCompleteTextView.setEnabled(true);
                             autoCompleteTextView.setOnItemClickListener(mOnItemClickListener);
                         }
                     });
@@ -1299,6 +1325,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     });
                                 }
                             };
+                            mProgressDialog.dismiss();
+                            autoCompleteTextView.setEnabled(true);
                             autoCompleteTextView.setOnItemClickListener(mOnItemClickListener);
                         }
                     });

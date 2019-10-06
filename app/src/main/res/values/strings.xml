@@ -9,7 +9,7 @@
     <string name="quit">{fa_sign-out} Quit game</string>
 
     <string name="articles_covered">Articles covered: </string>
-    <string name="learn_sub">Click on the badge to revise now!</string>
+    <string name="learn_sub">Click on a badge above to revise now!</string>
 
     <string name="resume">{fa_play-circle} Resume</string>
     <string name="return_main_menu">{fa_sign-out} Return to main menu</string>

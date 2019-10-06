@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/webview_rel_layout"
     android:layout_width="match_parent"
     android:layout_height="500dp"
     android:background="@drawable/dialog_shape"
-    android:orientation="vertical"
-    android:backgroundTint="@color/PapayaWhip">
+    android:backgroundTint="@color/PapayaWhip"
+    android:orientation="vertical">
     <!--Use 500dp instead of margin for exit-->
 
     <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
@@ -35,11 +36,59 @@
             app:bootstrapBrand="warning"
             app:bootstrapText="@string/learn" />
 
-        <WebView
-            android:id="@+id/webview"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="2dp">
+
+            <TextView
+                android:id="@+id/lbl_theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="8dp"
+                android:text="Theme: "
+                android:textColor="@color/Black"
+                android:textSize="@dimen/bootstrap_h4_text_size" />
+
+            <Button
+                android:id="@+id/btn_solarized"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/learn_solarized" />
+
+            <Button
+                android:id="@+id/btn_white"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/learn_white" />
+
+            <Button
+                android:id="@+id/btn_dark"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/learn_dark" />
+        </LinearLayout>
+
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="14dp" />
+            android:layout_marginBottom="18dp">
+
+            <TextView
+                android:id="@+id/webview_loading"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="@dimen/bootstrap_h4_text_size" />
+
+            <WebView
+                android:id="@+id/webview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+
 
     </LinearLayout>
 
@@ -48,7 +97,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/ic_close_white_24dp"
+        android:background="@drawable/ic_close_bluff_24dp"
         android:translationZ="10dp" />
     <!--</RelativeLayout>-->
 </RelativeLayout>

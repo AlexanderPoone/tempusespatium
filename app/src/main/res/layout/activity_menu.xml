@@ -9,6 +9,15 @@
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ad"
+        android:layout_width="320dp"
+        android:layout_height="100dp"
+        android:layout_gravity="top|center_horizontal"
+        android:translationZ="1dp"
+        ads:adSize="LARGE_BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"/>
+
     <ImageView
         android:id="@+id/bg0"
         android:layout_width="790dp"

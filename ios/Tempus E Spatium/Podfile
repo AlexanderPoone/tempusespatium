@@ -1,0 +1,26 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '13.0'
+
+target 'Tempus E Spatium' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  pod 'Alamofire', :git => "https://github.com/Alamofire/Alamofire", :branch => "master"
+  pod 'ReachabilitySwift'
+  pod 'DropDown'
+  pod 'Ono'
+  pod 'SwiftIcons', '~> 2.3.2'
+  pod 'SVGKit', :git => 'https://github.com/SVGKit/SVGKit.git', :branch => '3.x'
+  pod 'Google-Mobile-Ads-SDK'
+  # Pods for Tempus E Spatium
+
+  target 'Tempus E SpatiumTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'Tempus E SpatiumUITests' do
+    # Pods for testing
+  end
+
+end

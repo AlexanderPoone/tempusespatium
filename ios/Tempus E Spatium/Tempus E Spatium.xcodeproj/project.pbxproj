@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		425D4D37123F2DA94562D37C /* Pods_Tempus_E_Spatium_Tempus_E_SpatiumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC481EB22D19F28E075D659 /* Pods_Tempus_E_Spatium_Tempus_E_SpatiumUITests.framework */; };
 		4BFE5188234730A000A5574C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE5187234730A000A5574C /* AppDelegate.swift */; };
 		4BFE518A234730A000A5574C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE5189234730A000A5574C /* SceneDelegate.swift */; };
 		4BFE518C234730A000A5574C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE518B234730A000A5574C /* ViewController.swift */; };
@@ -15,6 +16,8 @@
 		4BFE5194234730B500A5574C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BFE5192234730B500A5574C /* LaunchScreen.storyboard */; };
 		4BFE519F234730B700A5574C /* Tempus_E_SpatiumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE519E234730B700A5574C /* Tempus_E_SpatiumTests.swift */; };
 		4BFE51AA234730B700A5574C /* Tempus_E_SpatiumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE51A9234730B700A5574C /* Tempus_E_SpatiumUITests.swift */; };
+		51C1D95A6F26D20B0AEEEF9C /* Pods_Tempus_E_SpatiumTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784734A2352667DA723CCA69 /* Pods_Tempus_E_SpatiumTests.framework */; };
+		A8E5D7EA553906F65F9EC3FC /* Pods_Tempus_E_Spatium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E365537441B4C116B76BC6 /* Pods_Tempus_E_Spatium.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		002E775F0AFC8EAEA8DFE499 /* Pods-Tempus E SpatiumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tempus E SpatiumTests.debug.xcconfig"; path = "Target Support Files/Pods-Tempus E SpatiumTests/Pods-Tempus E SpatiumTests.debug.xcconfig"; sourceTree = "<group>"; };
+		0DC481EB22D19F28E075D659 /* Pods_Tempus_E_Spatium_Tempus_E_SpatiumUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tempus_E_Spatium_Tempus_E_SpatiumUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3022C463C48E3ACE96FFA4D0 /* Pods-Tempus E Spatium-Tempus E SpatiumUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tempus E Spatium-Tempus E SpatiumUITests.release.xcconfig"; path = "Target Support Files/Pods-Tempus E Spatium-Tempus E SpatiumUITests/Pods-Tempus E Spatium-Tempus E SpatiumUITests.release.xcconfig"; sourceTree = "<group>"; };
+		352C6DF257D7B9CCAB2F23BE /* Pods-Tempus E Spatium.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tempus E Spatium.release.xcconfig"; path = "Target Support Files/Pods-Tempus E Spatium/Pods-Tempus E Spatium.release.xcconfig"; sourceTree = "<group>"; };
+		48E365537441B4C116B76BC6 /* Pods_Tempus_E_Spatium.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tempus_E_Spatium.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BFE51842347309F00A5574C /* Tempus E Spatium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tempus E Spatium.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BFE5187234730A000A5574C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BFE5189234730A000A5574C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +57,10 @@
 		4BFE51A5234730B700A5574C /* Tempus E SpatiumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tempus E SpatiumUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BFE51A9234730B700A5574C /* Tempus_E_SpatiumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tempus_E_SpatiumUITests.swift; sourceTree = "<group>"; };
 		4BFE51AB234730B700A5574C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		784734A2352667DA723CCA69 /* Pods_Tempus_E_SpatiumTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tempus_E_SpatiumTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D16E331D08EA1062AED86A07 /* Pods-Tempus E Spatium.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tempus E Spatium.debug.xcconfig"; path = "Target Support Files/Pods-Tempus E Spatium/Pods-Tempus E Spatium.debug.xcconfig"; sourceTree = "<group>"; };
+		DAE45B689A5B6965E28C6BB1 /* Pods-Tempus E SpatiumTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tempus E SpatiumTests.release.xcconfig"; path = "Target Support Files/Pods-Tempus E SpatiumTests/Pods-Tempus E SpatiumTests.release.xcconfig"; sourceTree = "<group>"; };
+		FFD44CB4CE0B4067E86C4348 /* Pods-Tempus E Spatium-Tempus E SpatiumUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tempus E Spatium-Tempus E SpatiumUITests.debug.xcconfig"; path = "Target Support Files/Pods-Tempus E Spatium-Tempus E SpatiumUITests/Pods-Tempus E Spatium-Tempus E SpatiumUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8E5D7EA553906F65F9EC3FC /* Pods_Tempus_E_Spatium.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51C1D95A6F26D20B0AEEEF9C /* Pods_Tempus_E_SpatiumTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +84,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				425D4D37123F2DA94562D37C /* Pods_Tempus_E_Spatium_Tempus_E_SpatiumUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21BC775328B8BCAC7EE30B82 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				48E365537441B4C116B76BC6 /* Pods_Tempus_E_Spatium.framework */,
+				0DC481EB22D19F28E075D659 /* Pods_Tempus_E_Spatium_Tempus_E_SpatiumUITests.framework */,
+				784734A2352667DA723CCA69 /* Pods_Tempus_E_SpatiumTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3E76ABFD7F4396B646A59471 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D16E331D08EA1062AED86A07 /* Pods-Tempus E Spatium.debug.xcconfig */,
+				352C6DF257D7B9CCAB2F23BE /* Pods-Tempus E Spatium.release.xcconfig */,
+				FFD44CB4CE0B4067E86C4348 /* Pods-Tempus E Spatium-Tempus E SpatiumUITests.debug.xcconfig */,
+				3022C463C48E3ACE96FFA4D0 /* Pods-Tempus E Spatium-Tempus E SpatiumUITests.release.xcconfig */,
+				002E775F0AFC8EAEA8DFE499 /* Pods-Tempus E SpatiumTests.debug.xcconfig */,
+				DAE45B689A5B6965E28C6BB1 /* Pods-Tempus E SpatiumTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		4BFE517B2347309F00A5574C = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +122,8 @@
 				4BFE519D234730B700A5574C /* Tempus E SpatiumTests */,
 				4BFE51A8234730B700A5574C /* Tempus E SpatiumUITests */,
 				4BFE51852347309F00A5574C /* Products */,
+				3E76ABFD7F4396B646A59471 /* Pods */,
+				21BC775328B8BCAC7EE30B82 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,9 +176,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4BFE51AE234730B700A5574C /* Build configuration list for PBXNativeTarget "Tempus E Spatium" */;
 			buildPhases = (
+				E8FFB7EE35AA531EC59BA5A8 /* [CP] Check Pods Manifest.lock */,
 				4BFE51802347309F00A5574C /* Sources */,
 				4BFE51812347309F00A5574C /* Frameworks */,
 				4BFE51822347309F00A5574C /* Resources */,
+				11453049EFCE91CBCBFF731C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +195,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4BFE51B1234730B700A5574C /* Build configuration list for PBXNativeTarget "Tempus E SpatiumTests" */;
 			buildPhases = (
+				6E9008570ACD7B23FF2DAD61 /* [CP] Check Pods Manifest.lock */,
 				4BFE5196234730B700A5574C /* Sources */,
 				4BFE5197234730B700A5574C /* Frameworks */,
 				4BFE5198234730B700A5574C /* Resources */,
@@ -170,9 +214,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4BFE51B4234730B700A5574C /* Build configuration list for PBXNativeTarget "Tempus E SpatiumUITests" */;
 			buildPhases = (
+				6B733E1FFA1D1C8E0CEFC0AD /* [CP] Check Pods Manifest.lock */,
 				4BFE51A1234730B700A5574C /* Sources */,
 				4BFE51A2234730B700A5574C /* Frameworks */,
 				4BFE51A3234730B700A5574C /* Resources */,
+				1B1A4B801C623BD63E7B8AC3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -253,6 +299,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		11453049EFCE91CBCBFF731C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tempus E Spatium/Pods-Tempus E Spatium-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tempus E Spatium/Pods-Tempus E Spatium-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tempus E Spatium/Pods-Tempus E Spatium-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1B1A4B801C623BD63E7B8AC3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tempus E Spatium-Tempus E SpatiumUITests/Pods-Tempus E Spatium-Tempus E SpatiumUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tempus E Spatium-Tempus E SpatiumUITests/Pods-Tempus E Spatium-Tempus E SpatiumUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tempus E Spatium-Tempus E SpatiumUITests/Pods-Tempus E Spatium-Tempus E SpatiumUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B733E1FFA1D1C8E0CEFC0AD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tempus E Spatium-Tempus E SpatiumUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E9008570ACD7B23FF2DAD61 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tempus E SpatiumTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8FFB7EE35AA531EC59BA5A8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tempus E Spatium-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4BFE51802347309F00A5574C /* Sources */ = {
@@ -432,6 +581,7 @@
 		};
 		4BFE51AF234730B700A5574C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D16E331D08EA1062AED86A07 /* Pods-Tempus E Spatium.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -450,6 +600,7 @@
 		};
 		4BFE51B0234730B700A5574C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 352C6DF257D7B9CCAB2F23BE /* Pods-Tempus E Spatium.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -468,6 +619,7 @@
 		};
 		4BFE51B2234730B700A5574C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 002E775F0AFC8EAEA8DFE499 /* Pods-Tempus E SpatiumTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -490,6 +642,7 @@
 		};
 		4BFE51B3234730B700A5574C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAE45B689A5B6965E28C6BB1 /* Pods-Tempus E SpatiumTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -512,6 +665,7 @@
 		};
 		4BFE51B5234730B700A5574C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFD44CB4CE0B4067E86C4348 /* Pods-Tempus E Spatium-Tempus E SpatiumUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -532,6 +686,7 @@
 		};
 		4BFE51B6234730B700A5574C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3022C463C48E3ACE96FFA4D0 /* Pods-Tempus E Spatium-Tempus E SpatiumUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -1,0 +1,6 @@
+framework module Pods_Tempus_E_Spatium_Tempus_E_SpatiumUITests {
+  umbrella header "Pods-Tempus E Spatium-Tempus E SpatiumUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

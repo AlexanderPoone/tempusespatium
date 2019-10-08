@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="play">{fa_gamepad} JUGAR !</string>
+    <string name="rules">{fa_leanpub} Reglas</string>
+    <string name="learn">{fa_book} Aprender</string>
+    <string name="settings">{fa_cog} Ajustes</string>
+    <string name="quit">{fa_sign-out} Salir</string>
+
+
+    <string name="resume">{fa_play-circle} Reanudar</string>
+    <string name="return_main_menu">{fa_sign-out} Volver al menú principal</string>
+    <string name="topic_searcher_heading">¡Buscar TODOS los temas!</string>
+    <string name="loading">Cargando, espera…</string>
+
+    <string name="bar_points">Puntos: %d</string>
+    <string name="submit">{fa_paper-plane} Enviar !</string>
+    <string name="reset">{fa_undo} Reajustar</string>
+
+    <string name="pref_general">General</string>
+    <string name="pref_general_locale">Locale</string>
+    <string name="pref_version">Version</string>
+    <string name="pref_player_1_theme">Tema de Jugador 1</string>
+    <string name="pref_player_2_theme">Tema de Jugador 2</string>
+
+    <string name="pref_gameplay">Juego</string>
+    <string name="pref_difficulty">Dificultad</string>
+    <string name="pref_difficulty_hard">Difícil</string>
+    <string name="pref_difficulty_insane">LoCo</string>
+
+    <string name="paused">{fa_pause} Juego pausado</string>
+
+    <string name="answer">Solución:</string>
+    <string name="you_chose">Has elegido:</string>
+    <string name="anthem_name">Nombre del himno:</string>
+
+    <string name="learning_theme">Tema: </string>
+</resources>

@@ -108,7 +108,7 @@ public class WebViewDialog extends Dialog implements View.OnClickListener {
 
             @Override
             public void onFinish() {
-                JS = "javascript:(function() { $(document).ready(function(){ $('.ambox').hide();$('.reference').hide();$('.hatnote').hide();$('#mw-mf-page-center > header > form').hide();$('span.mw-editsection > a').hide();$('#content > div.pre-content.heading-holder > nav').hide();$('#mw-mf-page-center > footer').hide(); }); })()";
+                JS = "javascript:(function() { $(document).ready(function(){ $('.ambox').hide();$('.reference').hide();$('.hatnote').hide();$('#mw-mf-page-center > header > form').hide();$('span.mw-editsection > a').hide();$('#content > div.pre-content.heading-holder > nav').hide();$('#mw-mf-page-center > footer').hide();$('.mw-ui-icon').hide();$('a:not(.image)').replaceWith(function(){return $('<span style=\"color:olive\">').append($(this).html());}); }); })()";
                 webView.loadUrl(JS);
                 switch (savedTheme) {
                     case 0:

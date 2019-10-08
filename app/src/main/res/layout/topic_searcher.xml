@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/portland_gradient"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="4dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -25,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:labelFor="@id/autoCompleteTextView"
-            android:text="Language:" />
+            android:text="@string/gameplay_language" />
 
         <Spinner
             android:id="@+id/langSpinner"
@@ -54,13 +55,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:labelFor="@id/autoCompleteTextView"
-            android:text="Any topic:" />
+            android:text="@string/any_topic" />
 
         <AutoCompleteTextView
             android:id="@+id/autoCompleteTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
+            android:hint="@string/enter_keyword"
             android:layout_marginStart="10dp"
             android:completionThreshold="0"
             android:lines="1"
@@ -78,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:labelFor="@id/autoCompleteTextView"
-            android:text="DateGame:" />
+            android:text="@string/date_game_options" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/date_game_button"
@@ -86,7 +88,7 @@
             android:layout_height="wrap_content"
             app:bootstrapBrand="warning"
             app:bootstrapSize="md"
-            app:bootstrapText="{fa_check_square} Customise (optional)"
+            app:bootstrapText="@string/customise_here"
             app:roundedCorners="true"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp" />
@@ -103,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:labelFor="@id/autoCompleteTextView"
-            android:text="MultiChoiceGame:" />
+            android:text="@string/multiple_choice_game_options" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/choice_game_button"
@@ -111,7 +113,7 @@
             android:layout_height="wrap_content"
             app:bootstrapBrand="success"
             app:bootstrapSize="md"
-            app:bootstrapText="{fa_check_square} Customise (optional)"
+            app:bootstrapText="@string/customise_here"
             app:roundedCorners="true"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp" />
@@ -142,7 +144,7 @@
             android:layout_height="wrap_content"
             app:bootstrapBrand="info"
             app:bootstrapSize="lg"
-            app:bootstrapText="{fa_gamepad} Submit and play!"
+            app:bootstrapText="@string/submit_and_play"
             app:roundedCorners="true" />
 
     </LinearLayout>

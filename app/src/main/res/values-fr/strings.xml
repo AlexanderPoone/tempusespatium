@@ -9,7 +9,7 @@
 
     <string name="resume">{fa_play-circle} Reprendre</string>
     <string name="return_main_menu">{fa_sign-out} Retourner au menu principal</string>
-    <string name="topic_searcher_heading">Recherche dans TOUS les thèmes</string>
+    <string name="topic_searcher_heading">Recherche dans TOUS les thèmes !</string>
     <string name="loading">Chargement en cours, veuillez patienter…</string>
 
     <string name="bar_points">Points: %d</string>
@@ -19,13 +19,19 @@
     <string name="pref_general">Général</string>
     <string name="pref_general_locale">Locale</string>
     <string name="pref_version">Version</string>
+    <string name="pref_player_1_theme">Thème de Joueur 1</string>
+    <string name="pref_player_2_theme">Thème de Joueur 2</string>
 
     <string name="pref_gameplay">Jeux</string>
     <string name="pref_difficulty">Difficulté</string>
     <string name="pref_difficulty_hard">Difficile</string>
     <string name="pref_difficulty_insane">InSeNsÉ</string>
 
+    <string name="paused">{fa_pause} Jeux sur pause</string>
+
     <string name="answer">Solution:</string>
-    <string name="you_chose">Vous choisissez:</string>
+    <string name="you_chose">Vous avez choisi:</string>
     <string name="anthem_name">Nom de l\'hymne:</string>
+
+    <string name="learning_theme">Thème: </string>
 </resources>

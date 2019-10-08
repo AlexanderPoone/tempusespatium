@@ -78,7 +78,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
 
     // English ↓
     Map<String, String> mTopics;
-    LinkedHashMap<String, String> mArts;
+    LinkedHashMap<String, String> mArts, mArts1, mArts2;
     // English ↑
 
     // Deutsch ↓
@@ -359,6 +359,10 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     submitButton.setEnabled(false);
 
                                     mArts = new LinkedHashMap<>();
+
+                                    mArts1 = new LinkedHashMap<>();
+                                    mArts2 = new LinkedHashMap<>();
+
                                     String selectedTopic = adapter.getItem(i);
                                     Log.i("hohoho", selectedTopic);
 
@@ -441,30 +445,106 @@ public class TopicSearcherActivity extends AppCompatActivity {
 //                                                    textView.setMovementMethod(new ScrollingMovementMethod());
 
 //                                                    BootstrapButton submitButton = (BootstrapButton) findViewById(R.id.topic_submit_button);
-                                                    submitButton.setEnabled(true);
-                                                    submitButton.setOnClickListener(new View.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(View view) {
-                                                            Intent jump = new Intent(getBaseContext(), Round1Activity.class);
-                                                            jump.putExtra("lang", mQuestionLang);
-                                                            jump.putExtra("topic", mSelectedTopic);
-                                                            jump.putExtra("arts", mArts);
-
-                                                            jump.putExtra("artsAlt1", mArts);
-                                                            jump.putExtra("artsAlt2", mArts);
-                                                            jump.putExtra("supportList", new ArrayList<>(mArts.keySet()));
-
-                                                            jump.putExtra("dateGameList", selectedItems);
-                                                            jump.putExtra("choiceGameList", selectedOptions);
-                                                            startActivity(jump);
-                                                            finish();
-                                                        }
-                                                    });
                                                 }
                                             });
                                         }
                                     });
+
+                                    final Request request2 = new Request.Builder()
+                                            .url(mTopics.get(mSelectedTopic.get(1)))
+                                            .build();
+                                    final Response[] response2 = {null};
+                                    final String[] body2 = {""};
+                                    Thread thread2 = new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                response2[0] = mClient.newCall(request2).execute();
+                                                body2[0] = response2[0].body().string();
+
+                                                Document doc = DocumentBuilderFactory.newInstance()
+                                                        .newDocumentBuilder().parse(new InputSource(new StringReader(body2[0])));
+                                                XPathExpression staticXPath = XPathFactory.newInstance()
+                                                        .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[2]/a");
+                                                NodeList test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
+                                                for (int i = 0; i < test.getLength(); i++) {
+                                                    mArts1.put(test.item(i).getTextContent(), "https://en.wikipedia.org" + test.item(i).getAttributes().getNamedItem("href").getTextContent());
+                                                }
+                                            } catch (SAXException e) {
+                                                e.printStackTrace();
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            } catch (ParserConfigurationException e) {
+                                                e.printStackTrace();
+                                            } catch (XPathExpressionException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
+
+
+                                    final Request request3 = new Request.Builder()
+                                            .url(mTopics.get(mSelectedTopic.get(2)))
+                                            .build();
+                                    final Response[] response3 = {null};
+                                    final String[] body3 = {""};
+                                    Thread thread3 = new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                response3[0] = mClient.newCall(request3).execute();
+                                                body3[0] = response3[0].body().string();
+
+                                                Document doc = DocumentBuilderFactory.newInstance()
+                                                        .newDocumentBuilder().parse(new InputSource(new StringReader(body3[0])));
+                                                XPathExpression staticXPath = XPathFactory.newInstance()
+                                                        .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[2]/a");
+                                                NodeList test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
+                                                for (int i = 0; i < test.getLength(); i++) {
+                                                    mArts2.put(test.item(i).getTextContent(), "https://en.wikipedia.org" + test.item(i).getAttributes().getNamedItem("href").getTextContent());
+                                                }
+                                            } catch (SAXException e) {
+                                                e.printStackTrace();
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            } catch (ParserConfigurationException e) {
+                                                e.printStackTrace();
+                                            } catch (XPathExpressionException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
                                     thread1.start();
+                                    thread2.start();
+                                    thread3.start();
+                                    try {
+                                        thread1.join();
+                                        thread2.join();
+                                        thread3.join();
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                    submitButton.setEnabled(true);
+                                    submitButton.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            Intent jump = new Intent(getBaseContext(), Round1Activity.class);
+                                            jump.putExtra("lang", mQuestionLang);
+                                            jump.putExtra("topic", mSelectedTopic);
+                                            jump.putExtra("arts", mArts);
+
+                                            jump.putExtra("artsAlt1", mArts1);
+                                            jump.putExtra("artsAlt2", mArts2);
+                                            jump.putExtra("supportList", new ArrayList<>(mArts.keySet()));
+                                            jump.putExtra("supportList1", new ArrayList<>(mArts1.keySet()));
+                                            jump.putExtra("supportList2", new ArrayList<>(mArts2.keySet()));
+
+                                            jump.putExtra("dateGameList", selectedItems);
+                                            jump.putExtra("choiceGameList", selectedOptions);
+                                            startActivity(jump);
+                                            finish();
+                                        }
+                                    });
                                 }
                             };
                             mProgressDialog.dismiss();

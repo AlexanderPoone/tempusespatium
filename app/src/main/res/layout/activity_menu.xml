@@ -16,7 +16,7 @@
         android:layout_gravity="top|center_horizontal"
         android:translationZ="1dp"
         ads:adSize="LARGE_BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"/>
+        ads:adUnitId="ca-app-pub-9627209153774793/4570787320"/>
 
     <ImageView
         android:id="@+id/bg0"

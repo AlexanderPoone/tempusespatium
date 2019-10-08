@@ -9,7 +9,7 @@
 
     <string name="resume">{fa_play-circle} Zurück zum Spiel</string>
     <string name="return_main_menu">{fa_sign-out} Zurück zum Hauptmenü</string>
-    <string name="topic_searcher_heading">Suchen ALLEN Themen</string>
+    <string name="topic_searcher_heading">Suchen ALLEN Themen!</string>
     <string name="loading">Laden, bitte warten…</string>
 
     <string name="bar_points">Punkte: %d</string>
@@ -19,6 +19,8 @@
     <string name="pref_general">Allgemeines</string>
     <string name="pref_general_locale">Locale</string>
     <string name="pref_version">Version</string>
+    <string name="pref_player_1_theme">Thema des Spielers 1</string>
+    <string name="pref_player_2_theme">Thema des Spielers 2</string>
 
     <string name="pref_gameplay">Spiel</string>
     <string name="pref_difficulty">Schwierigkeit</string>
@@ -28,4 +30,6 @@
     <string name="answer">Lösung:</string>
     <string name="you_chose">Sie wählten:</string>
     <string name="anthem_name">Name der Hymne:</string>
+
+    <string name="learning_theme">Tema: </string>
 </resources>

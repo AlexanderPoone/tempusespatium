@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="8dp"
-                android:text="Theme: "
+                android:text="@string/learning_theme"
                 android:textColor="@color/Black"
                 android:textSize="@dimen/bootstrap_h4_text_size" />
 

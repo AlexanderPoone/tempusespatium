@@ -9,7 +9,7 @@
 
     <string name="resume">{fa_play-circle} Reprendre</string>
     <string name="return_main_menu">{fa_sign-out} Tornar al menú principal</string>
-    <string name="topic_searcher_heading">Cerca TOTS els temes</string>
+    <string name="topic_searcher_heading">Cerca TOTS els temes!</string>
     <string name="loading">Carregant, espereu…</string>
 
     <string name="bar_points">Punts: %d</string>
@@ -18,7 +18,9 @@
 
     <string name="pref_general">General</string>
     <string name="pref_general_locale">Locale</string>
-    <string name="pref_version">Version</string>
+    <string name="pref_version">Versió</string>
+    <string name="pref_player_1_theme">Tema de Jugador 1</string>
+    <string name="pref_player_2_theme">Tema de Jugador 2</string>
 
     <string name="pref_gameplay">Joc</string>
     <string name="pref_difficulty">Dificultat</string>
@@ -28,4 +30,6 @@
     <string name="answer">Solució:</string>
     <string name="you_chose">Has triat:</string>
     <string name="anthem_name">Nom de l\'himne:</string>
+
+    <string name="learning_theme">Tema: </string>
 </resources>

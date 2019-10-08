@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="play">{fa_gamepad} 開始遊戲！</string>
+    <string name="rules">{fa_leanpub} 規則</string>
+    <string name="learn">{fa_book} 學習</string>
+    <string name="settings">{fa_cog} 設定</string>
+    <string name="highscores">{fa_trophy} 排名榜</string>
+    <string name="quit">{fa_sign-out} 結束</string>
+
+    <string name="articles_covered">涵蓋條目：</string>
+    <string name="learn_sub">點擊以上一標籤，立刻溫習！</string>
+
+    <string name="resume">{fa_play-circle} 繼續</string>
+    <string name="return_main_menu">{fa_sign-out} 返回主目錄</string>
+    <string name="topic_searcher_heading">你可搜索＊任何＊題目！</string>
+    <string name="loading">載入中，請稍候……</string>
+
+    <string name="bar_points">積分：%d</string>
+    <string name="submit">{fa_paper-plane} 提交！</string>
+    <string name="reset">{fa_undo} 重設</string>
+
+    <string name="pref_general">一般設定</string>
+    <string name="pref_general_locale">語言</string>
+    <string name="pref_version">版本</string>
+    <string name="pref_player_1_theme">一號玩家樣式</string>
+    <string name="pref_player_2_theme">二號玩家樣式</string>
+
+    <string name="pref_gameplay">遊戲</string>
+    <string name="pref_difficulty">難度</string>
+    <string name="pref_difficulty_hard"><![CDATA[困難<br /><small>填充題30秒，其他題型10秒
+</small>]]></string>
+    <string name="pref_difficulty_insane"><![CDATA[瘋狂<br /><small>填充題20秒，其他題型6秒
+</small>]]></string>
+    <string name="pref_difficulty_hysterical"><![CDATA[歇斯底里<br /><small>填充題18秒，其他題型5秒
+</small>]]></string>
+
+    <string name="paused">{fa_pause} 遊戲暫停</string>
+
+    <string name="answer">答案：</string>
+    <string name="you_chose">你選了：</string>
+    <string name="anthem_name">曲名：</string>
+
+    <string name="learning_theme">樣式：</string>
+
+    <string name="gameplay_language">題目語言：</string>
+    <string name="any_topic">任何題目：</string>
+    <string name="enter_keyword">用關鍵字搜尋題目！</string>
+    <string name="date_game_options">「日期遊戲」選項：</string>
+    <string name="multiple_choice_game_options">「多項選擇題」選項：</string>
+    <string name="customise_here">{fa_check_square} 按此自訂（可略過）</string>
+    <string name="submit_and_play">{fa_gamepad} 提交並開始！</string>
+</resources>

@@ -12,6 +12,10 @@
 		4B756D792349D43E005CD85A /* Round1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B756D782349D43E005CD85A /* Round1ViewController.swift */; };
 		4B756D7B2349D468005CD85A /* TopicSearcherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B756D7A2349D468005CD85A /* TopicSearcherViewController.swift */; };
 		4B756D7D2349D741005CD85A /* PrefsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B756D7C2349D741005CD85A /* PrefsTableViewController.swift */; };
+		4B756D802349DC8E005CD85A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B756D7E2349DC8D005CD85A /* Localizable.strings */; };
+		4BA5803E234DA78D00BA6314 /* en_KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5803D234DA78D00BA6314 /* en_KeyboardViewController.swift */; };
+		4BA58040234DA7A900BA6314 /* fr_KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5803F234DA7A900BA6314 /* fr_KeyboardViewController.swift */; };
+		4BA58042234DA7CA00BA6314 /* es_KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA58041234DA7CA00BA6314 /* es_KeyboardViewController.swift */; };
 		4BFE5188234730A000A5574C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE5187234730A000A5574C /* AppDelegate.swift */; };
 		4BFE518A234730A000A5574C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE5189234730A000A5574C /* SceneDelegate.swift */; };
 		4BFE518C234730A000A5574C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE518B234730A000A5574C /* ViewController.swift */; };
@@ -51,6 +55,16 @@
 		4B756D782349D43E005CD85A /* Round1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round1ViewController.swift; sourceTree = "<group>"; };
 		4B756D7A2349D468005CD85A /* TopicSearcherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSearcherViewController.swift; sourceTree = "<group>"; };
 		4B756D7C2349D741005CD85A /* PrefsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsTableViewController.swift; sourceTree = "<group>"; };
+		4B756D7F2349DC8E005CD85A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4B756D812349DCB4005CD85A /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		4B756D822349DCBE005CD85A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4B756D832349DCC8005CD85A /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4B756D842349DCD4005CD85A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4B756D852349DCE1005CD85A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4B756D862349DCEA005CD85A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4BA5803D234DA78D00BA6314 /* en_KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = en_KeyboardViewController.swift; sourceTree = "<group>"; };
+		4BA5803F234DA7A900BA6314 /* fr_KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fr_KeyboardViewController.swift; sourceTree = "<group>"; };
+		4BA58041234DA7CA00BA6314 /* es_KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = es_KeyboardViewController.swift; sourceTree = "<group>"; };
 		4BFE51842347309F00A5574C /* Tempus E Spatium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tempus E Spatium.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BFE5187234730A000A5574C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BFE5189234730A000A5574C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +162,10 @@
 			isa = PBXGroup;
 			children = (
 				4BFE5187234730A000A5574C /* AppDelegate.swift */,
+				4B756D7E2349DC8D005CD85A /* Localizable.strings */,
+				4BA5803D234DA78D00BA6314 /* en_KeyboardViewController.swift */,
+				4BA5803F234DA7A900BA6314 /* fr_KeyboardViewController.swift */,
+				4BA58041234DA7CA00BA6314 /* es_KeyboardViewController.swift */,
 				4BFE5189234730A000A5574C /* SceneDelegate.swift */,
 				4BFE518B234730A000A5574C /* ViewController.swift */,
 				4BFE518D234730A000A5574C /* Main.storyboard */,
@@ -271,6 +289,12 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant-HK",
+				fr,
+				ca,
+				uk,
+				de,
+				es,
 			);
 			mainGroup = 4BFE517B2347309F00A5574C;
 			productRefGroup = 4BFE51852347309F00A5574C /* Products */;
@@ -290,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BFE5194234730B500A5574C /* LaunchScreen.storyboard in Resources */,
+				4B756D802349DC8E005CD85A /* Localizable.strings in Resources */,
 				4BFE5191234730B500A5574C /* Assets.xcassets in Resources */,
 				4BFE518F234730A000A5574C /* Main.storyboard in Resources */,
 			);
@@ -420,12 +445,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BFE518C234730A000A5574C /* ViewController.swift in Sources */,
+				4BA58042234DA7CA00BA6314 /* es_KeyboardViewController.swift in Sources */,
 				4B756D772349D3FB005CD85A /* SelectionViewController.swift in Sources */,
 				4BFE5188234730A000A5574C /* AppDelegate.swift in Sources */,
 				4B756D7B2349D468005CD85A /* TopicSearcherViewController.swift in Sources */,
+				4BA5803E234DA78D00BA6314 /* en_KeyboardViewController.swift in Sources */,
 				4B756D792349D43E005CD85A /* Round1ViewController.swift in Sources */,
 				4B756D7D2349D741005CD85A /* PrefsTableViewController.swift in Sources */,
 				4BFE518A234730A000A5574C /* SceneDelegate.swift in Sources */,
+				4BA58040234DA7A900BA6314 /* fr_KeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +489,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		4B756D7E2349DC8D005CD85A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B756D7F2349DC8E005CD85A /* Base */,
+				4B756D812349DCB4005CD85A /* zh-Hant-HK */,
+				4B756D822349DCBE005CD85A /* fr */,
+				4B756D832349DCC8005CD85A /* ca */,
+				4B756D842349DCD4005CD85A /* uk */,
+				4B756D852349DCE1005CD85A /* de */,
+				4B756D862349DCEA005CD85A /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		4BFE518D234730A000A5574C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -484,6 +526,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -530,7 +573,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -544,6 +587,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -584,7 +628,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

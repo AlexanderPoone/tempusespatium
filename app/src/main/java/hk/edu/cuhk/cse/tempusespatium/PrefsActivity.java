@@ -30,13 +30,13 @@ public class PrefsActivity extends AppCompatActivity implements RewardedVideoAdL
         AdView adView = (AdView) findViewById(R.id.ad);
         AdView adView2 = (AdView) findViewById(R.id.ad2);
 
-        AdRequest request = new AdRequest.Builder().addTestDevice("210A8F39D562F35F67912205BF9A0FBD")
+        AdRequest request = new AdRequest.Builder().addTestDevice("210A8F39D562F35F67912205BF9A0FBD").addTestDevice("B11DA3D5063EE51EDF96A3ABDC8AC28E")
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
 //        Log.i("Hihi", Boolean.toString(request.isTestDevice(this)));
         adView.loadAd(request);
 
-        AdRequest request2 = new AdRequest.Builder().addTestDevice("210A8F39D562F35F67912205BF9A0FBD")
+        AdRequest request2 = new AdRequest.Builder().addTestDevice("210A8F39D562F35F67912205BF9A0FBD").addTestDevice("B11DA3D5063EE51EDF96A3ABDC8AC28E")
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         adView2.loadAd(request2);

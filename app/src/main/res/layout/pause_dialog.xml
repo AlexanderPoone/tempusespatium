@@ -75,12 +75,12 @@
 
     </LinearLayout>
 
-    <Button
+<!--    <Button
         android:id="@+id/close"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_alignParentEnd="true"
         android:background="@drawable/ic_close_white_24dp"
-        android:translationZ="10dp" />
+        android:translationZ="10dp" />-->
     <!--</RelativeLayout>-->
 </RelativeLayout>

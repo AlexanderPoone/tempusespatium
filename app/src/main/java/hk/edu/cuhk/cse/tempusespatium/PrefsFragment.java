@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
@@ -12,6 +13,8 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceScreen;
+import android.text.Html;
+import android.text.Spanned;
 
 import static hk.edu.cuhk.cse.tempusespatium.Constants.DIFFICULTY_HARD;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.DIFFICULTY_INSANE;
@@ -140,15 +143,26 @@ public class PrefsFragment extends PreferenceFragmentCompat {
         difficulty.setTitle(getString(R.string.pref_difficulty));
         int difficultyInt = getActivity().getSharedPreferences(SHAREDPREFS_NAME, Context.MODE_PRIVATE).getInt(SHAREDPREFS_DIFFICULTY, DIFFICULTY_HARD);
         if (difficultyInt == DIFFICULTY_INSANE) {
-            difficulty.setSummary(getString(R.string.pref_difficulty_insane));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                difficulty.setSummary(Html.fromHtml(getString(R.string.pref_difficulty_insane), Html.FROM_HTML_MODE_COMPACT));
+            } else {
+                difficulty.setSummary(Html.fromHtml(getString(R.string.pref_difficulty_insane)));
+            }
         } else {
-            difficulty.setSummary(getString(R.string.pref_difficulty_hard));
-        }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                difficulty.setSummary(Html.fromHtml(getString(R.string.pref_difficulty_hard), Html.FROM_HTML_MODE_COMPACT));
+            } else {
+                difficulty.setSummary(Html.fromHtml(getString(R.string.pref_difficulty_hard)));
+            }        }
         difficulty.setKey("135");
 //        difficulty.setDialogIcon(R.drawable.ic_view_squares_white_24dp);
 //        difficulty.setDialogTitle(getString(R.string.pref_tab_c_portrait));
         difficulty.setValueIndex(2);
-        difficulty.setEntries(new String[]{getString(R.string.pref_difficulty_hard), getString(R.string.pref_difficulty_insane)});
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            difficulty.setEntries(new Spanned[]{Html.fromHtml(getString(R.string.pref_difficulty_hard), Html.FROM_HTML_MODE_COMPACT), Html.fromHtml(getString(R.string.pref_difficulty_insane), Html.FROM_HTML_MODE_COMPACT)});
+        } else {
+            difficulty.setEntries(new Spanned[]{Html.fromHtml(getString(R.string.pref_difficulty_hard)), Html.fromHtml(getString(R.string.pref_difficulty_insane))});
+        }
         difficulty.setEntryValues(new String[]{"0", "1"});
         difficulty.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override

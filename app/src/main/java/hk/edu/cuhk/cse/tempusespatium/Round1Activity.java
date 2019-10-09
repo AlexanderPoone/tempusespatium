@@ -91,8 +91,8 @@ public class Round1Activity extends AppCompatActivity {
     TextView mScoreChangeText2;
 
     String mQuestionLang;
-    HashMap<String, String> mArts;
-    List<String> mCurrentTopic, mArtsSupportList, mDateGameList, mChoiceGameList;
+    HashMap<String, String> mArts, mArtsAlt1, mArtsAlt2;
+    List<String> mCurrentTopic, mArtsSupportList, mArtsSupportListAlt1, mArtsSupportListAlt2, mDateGameList, mChoiceGameList;
 
     Handler mHandler;
     boolean mPauseTimer = false;
@@ -120,7 +120,11 @@ public class Round1Activity extends AppCompatActivity {
         mCurrentTopic = intent.getStringArrayListExtra("topic");
 
         mArts = (HashMap<String, String>) intent.getSerializableExtra("arts");
+        mArtsAlt1 = (HashMap<String, String>) intent.getSerializableExtra("artsAlt1");
+        mArtsAlt2 = (HashMap<String, String>) intent.getSerializableExtra("artsAlt2");
         mArtsSupportList = intent.getStringArrayListExtra("supportList");
+        mArtsSupportListAlt1 = intent.getStringArrayListExtra("supportList1");
+        mArtsSupportListAlt2 = intent.getStringArrayListExtra("supportList2");
         mDateGameList = intent.getStringArrayListExtra("dateGameList");
         mChoiceGameList = intent.getStringArrayListExtra("choiceGameList");
         Log.i("URL", mArts.get(mArtsSupportList.get(0)));
@@ -329,27 +333,28 @@ public class Round1Activity extends AppCompatActivity {
 
     String getArticleRelevancePuzzle(int i) {
         Random random = new Random();
-        String selectedArt = mArtsSupportList.get(random.nextInt(mArtsSupportList.size() / 5)); //mArtsSupportList.length
-        String selectedUrl = mArts.remove(selectedArt);
-        mArtsSupportList.remove(selectedArt);
+        String selectedUrl = null;
+//        String selectedArt = mArtsSupportList.get(random.nextInt(mArtsSupportList.size() / 5)); //mArtsSupportList.length
+//        String selectedUrl = mArts.remove(selectedArt);
+//        mArtsSupportList.remove(selectedArt);
 
-//        switch (i) {
-//            case 0:
-//                String selectedArt = mArtsSupportList.get(random.nextInt(mArtsSupportList.size() / 5)); //mArtsSupportList.length
-//                String selectedUrl = mArts.remove(selectedArt);
-//                mArtsSupportList.remove(selectedArt);
-//                break;
-//            case 1:
-//                String selectedArtAlt1 = mArtsSupportListAlt1.get(random.nextInt(mArtsSupportListAlt1.size() / 5)); //mArtsSupportList.length
-//                String selectedUrlAlt1 = mArtsAlt1.remove(selectedArtAlt1);
-//                mArtsSupportListAlt1.remove(selectedArtAlt1);
-//                break;
-//            case 2:
-//                String selectedArtAlt2 = mArtsSupportListAlt2.get(random.nextInt(mArtsSupportListAlt2.size() / 5)); //mArtsSupportList.length
-//                String selectedUrlAlt2 = mArtsAlt2.remove(selectedArtAlt2);
-//                mArtsSupportListAlt2.remove(selectedArtAlt2)
-//                break;
-//        }
+        switch (i) {
+            case 0:
+                String selectedArt = mArtsSupportList.get(random.nextInt(mArtsSupportList.size() / 5)); //mArtsSupportList.length
+                selectedUrl = mArts.remove(selectedArt);
+                mArtsSupportList.remove(selectedArt);
+                break;
+            case 1:
+                String selectedArtAlt1 = mArtsSupportListAlt1.get(random.nextInt(mArtsSupportListAlt1.size() / 5)); //mArtsSupportList.length
+                selectedUrl = mArtsAlt1.remove(selectedArtAlt1);
+                mArtsSupportListAlt1.remove(selectedArtAlt1);
+                break;
+            case 2:
+                String selectedArtAlt2 = mArtsSupportListAlt2.get(random.nextInt(mArtsSupportListAlt2.size() / 5)); //mArtsSupportList.length
+                selectedUrl = mArtsAlt2.remove(selectedArtAlt2);
+                mArtsSupportListAlt2.remove(selectedArtAlt2);
+                break;
+        }
         return selectedUrl;
     }
 

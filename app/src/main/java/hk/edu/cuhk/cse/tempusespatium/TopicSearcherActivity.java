@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.media.AudioAttributes;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -15,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.InputType;
 import android.util.Log;
+import android.util.SparseIntArray;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -78,7 +81,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
 
     // English ↓
     Map<String, String> mTopics;
-    LinkedHashMap<String, String> mArts;
+    LinkedHashMap<String, String> mArts, mArts1, mArts2;
     // English ↑
 
     // Deutsch ↓
@@ -91,6 +94,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
     private static HashMap<String, String> items;
 
     private ProgressDialog mProgressDialog;
+    private SoundPool mSoundPool;
+    private SparseIntArray mPoolDict;
 
     static {
         items = new HashMap<>();
@@ -110,6 +115,19 @@ public class TopicSearcherActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.topic_searcher);
+
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_MEDIA)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build();
+        mSoundPool = new SoundPool.Builder()
+                .setAudioAttributes(audioAttributes)
+                .setMaxStreams(2)
+                .build();
+        mPoolDict = new SparseIntArray();
+        mPoolDict.put(0, mSoundPool.load(this, R.raw.space_swoosh, 1));
+        mPoolDict.put(1, mSoundPool.load(this, R.raw.beep_space_button, 1));
+        mPoolDict.put(2, mSoundPool.load(this, R.raw.plunger_pop, 1));
 
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setMessage(getString(R.string.loading));
@@ -193,6 +211,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
         dateGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
                 dialog.show();
                 dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM); // must be placed after show()
             }
@@ -242,6 +261,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
         choiceGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
                 dialogOptions.show();
             }
         });
@@ -295,6 +315,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
                 AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
                 autoCompleteTextView.setText("");
                 autoCompleteTextView.showDropDown();
@@ -359,6 +380,10 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     submitButton.setEnabled(false);
 
                                     mArts = new LinkedHashMap<>();
+
+                                    mArts1 = new LinkedHashMap<>();
+                                    mArts2 = new LinkedHashMap<>();
+
                                     String selectedTopic = adapter.getItem(i);
                                     Log.i("hohoho", selectedTopic);
 
@@ -441,30 +466,108 @@ public class TopicSearcherActivity extends AppCompatActivity {
 //                                                    textView.setMovementMethod(new ScrollingMovementMethod());
 
 //                                                    BootstrapButton submitButton = (BootstrapButton) findViewById(R.id.topic_submit_button);
-                                                    submitButton.setEnabled(true);
-                                                    submitButton.setOnClickListener(new View.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(View view) {
-                                                            Intent jump = new Intent(getBaseContext(), Round1Activity.class);
-                                                            jump.putExtra("lang", mQuestionLang);
-                                                            jump.putExtra("topic", mSelectedTopic);
-                                                            jump.putExtra("arts", mArts);
-
-                                                            jump.putExtra("artsAlt1", mArts);
-                                                            jump.putExtra("artsAlt2", mArts);
-                                                            jump.putExtra("supportList", new ArrayList<>(mArts.keySet()));
-
-                                                            jump.putExtra("dateGameList", selectedItems);
-                                                            jump.putExtra("choiceGameList", selectedOptions);
-                                                            startActivity(jump);
-                                                            finish();
-                                                        }
-                                                    });
                                                 }
                                             });
                                         }
                                     });
+
+                                    final Request request2 = new Request.Builder()
+                                            .url(mTopics.get(mSelectedTopic.get(1)))
+                                            .build();
+                                    final Response[] response2 = {null};
+                                    final String[] body2 = {""};
+                                    Thread thread2 = new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                response2[0] = mClient.newCall(request2).execute();
+                                                body2[0] = response2[0].body().string();
+
+                                                Document doc = DocumentBuilderFactory.newInstance()
+                                                        .newDocumentBuilder().parse(new InputSource(new StringReader(body2[0])));
+                                                XPathExpression staticXPath = XPathFactory.newInstance()
+                                                        .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[2]/a");
+                                                NodeList test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
+                                                for (int i = 0; i < test.getLength(); i++) {
+                                                    mArts1.put(test.item(i).getTextContent(), "https://en.wikipedia.org" + test.item(i).getAttributes().getNamedItem("href").getTextContent());
+                                                }
+                                            } catch (SAXException e) {
+                                                e.printStackTrace();
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            } catch (ParserConfigurationException e) {
+                                                e.printStackTrace();
+                                            } catch (XPathExpressionException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
+
+
+                                    final Request request3 = new Request.Builder()
+                                            .url(mTopics.get(mSelectedTopic.get(2)))
+                                            .build();
+                                    final Response[] response3 = {null};
+                                    final String[] body3 = {""};
+                                    Thread thread3 = new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                response3[0] = mClient.newCall(request3).execute();
+                                                body3[0] = response3[0].body().string();
+
+                                                Document doc = DocumentBuilderFactory.newInstance()
+                                                        .newDocumentBuilder().parse(new InputSource(new StringReader(body3[0])));
+                                                XPathExpression staticXPath = XPathFactory.newInstance()
+                                                        .newXPath().compile("//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[2]/a");
+                                                NodeList test = (NodeList) staticXPath.evaluate(doc, XPathConstants.NODESET);
+                                                for (int i = 0; i < test.getLength(); i++) {
+                                                    mArts2.put(test.item(i).getTextContent(), "https://en.wikipedia.org" + test.item(i).getAttributes().getNamedItem("href").getTextContent());
+                                                }
+                                            } catch (SAXException e) {
+                                                e.printStackTrace();
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            } catch (ParserConfigurationException e) {
+                                                e.printStackTrace();
+                                            } catch (XPathExpressionException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
                                     thread1.start();
+                                    thread2.start();
+                                    thread3.start();
+                                    try {
+                                        thread1.join();
+                                        thread2.join();
+                                        thread3.join();
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                    submitButton.setEnabled(true);
+                                    submitButton.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            mSoundPool.play(mPoolDict.get(0), .5f, .5f, 1, 0, 1.f);
+
+                                            Intent jump = new Intent(getBaseContext(), Round1Activity.class);
+                                            jump.putExtra("lang", mQuestionLang);
+                                            jump.putExtra("topic", mSelectedTopic);
+                                            jump.putExtra("arts", mArts);
+
+                                            jump.putExtra("artsAlt1", mArts1);
+                                            jump.putExtra("artsAlt2", mArts2);
+                                            jump.putExtra("supportList", new ArrayList<>(mArts.keySet()));
+                                            jump.putExtra("supportList1", new ArrayList<>(mArts1.keySet()));
+                                            jump.putExtra("supportList2", new ArrayList<>(mArts2.keySet()));
+
+                                            jump.putExtra("dateGameList", selectedItems);
+                                            jump.putExtra("choiceGameList", selectedOptions);
+                                            startActivity(jump);
+                                            finish();
+                                        }
+                                    });
                                 }
                             };
                             mProgressDialog.dismiss();
@@ -490,6 +593,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
+
                 AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
                 autoCompleteTextView.setText("");
                 autoCompleteTextView.showDropDown();
@@ -637,6 +742,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                                     submitButton.setOnClickListener(new View.OnClickListener() {
                                                         @Override
                                                         public void onClick(View view) {
+                                                            mSoundPool.play(mPoolDict.get(0), .5f, .5f, 1, 0, 1.f);
+
                                                             Intent jump = new Intent(getBaseContext(), Round1Activity.class);
                                                             jump.putExtra("lang", mQuestionLang);
                                                             jump.putExtra("topic", mSelectedTopic);
@@ -695,6 +802,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
+
                 AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
                 autoCompleteTextView.setText("");
                 autoCompleteTextView.showDropDown();
@@ -860,6 +969,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     submitButton.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
+                                            mSoundPool.play(mPoolDict.get(0), .5f, .5f, 1, 0, 1.f);
+
                                             Intent jump = new Intent(getBaseContext(), Round1Activity.class);
                                             jump.putExtra("lang", mQuestionLang);
                                             jump.putExtra("topic", mSelectedTopic);
@@ -905,6 +1016,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
+
                 AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
                 autoCompleteTextView.setText("");
                 autoCompleteTextView.showDropDown();
@@ -1080,6 +1193,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                                     submitButton.setOnClickListener(new View.OnClickListener() {
                                                         @Override
                                                         public void onClick(View view) {
+                                                            mSoundPool.play(mPoolDict.get(0), .5f, .5f, 1, 0, 1.f);
+
                                                             Intent jump = new Intent(getBaseContext(), Round1Activity.class);
                                                             jump.putExtra("lang", mQuestionLang);
                                                             jump.putExtra("topic", mSelectedTopic);
@@ -1141,6 +1256,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
+
                 AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
                 autoCompleteTextView.setText("");
                 autoCompleteTextView.showDropDown();
@@ -1307,6 +1424,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     submitButton.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
+                                            mSoundPool.play(mPoolDict.get(0), .5f, .5f, 1, 0, 1.f);
+
                                             Intent jump = new Intent(getBaseContext(), Round1Activity.class);
                                             jump.putExtra("lang", mQuestionLang);
                                             jump.putExtra("topic", mSelectedTopic);

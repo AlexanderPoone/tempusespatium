@@ -15,6 +15,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.res.ResourcesCompat;
@@ -225,9 +227,21 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mSoundPool.play(mPoolDict.get(0), .5f, .5f, 1, 0, 1.f);
-                Intent jump = new Intent(getBaseContext(), TopicSearcherActivity.class);
-                startActivity(jump);
-                finish();
+                ConnectivityManager connectivityManager
+                        = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+                if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
+                    Intent jump = new Intent(getBaseContext(), TopicSearcherActivity.class);
+                    startActivity(jump);
+                    finish();
+                } else {
+                    new AlertDialog.Builder(MenuActivity.this).setMessage("You need a network connection to play the game!").setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    }).show();
+                }
             }
         });
 
@@ -297,7 +311,7 @@ public class MenuActivity extends AppCompatActivity {
 
         AdView adView = (AdView) findViewById(R.id.ad);
 
-        AdRequest request = new AdRequest.Builder().addTestDevice("210A8F39D562F35F67912205BF9A0FBD")
+        AdRequest request = new AdRequest.Builder().addTestDevice("210A8F39D562F35F67912205BF9A0FBD").addTestDevice("B11DA3D5063EE51EDF96A3ABDC8AC28E")
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
 //        Log.i("Hihi", Boolean.toString(request.isTestDevice(this)));

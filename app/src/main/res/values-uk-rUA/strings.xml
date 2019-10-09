@@ -11,10 +11,12 @@
 
     <string name="resume">{fa_play-circle} Повернутися до гри</string>
     <string name="return_main_menu">{fa_sign-out} Повернутися до головного меню</string>
-    <string name="topic_searcher_heading">Search for ANY topic</string>
+    <string name="topic_searcher_heading">Search for ANY topic!</string>
     <string name="loading">Loading, please wait…</string>
 
     <string name="answer">Die Lösung:</string>
     <string name="you_chose">You chose:</string>
     <string name="anthem_name">Anthem name:</string>
+
+    <string name="learning_theme">Тема: </string>
 </resources>

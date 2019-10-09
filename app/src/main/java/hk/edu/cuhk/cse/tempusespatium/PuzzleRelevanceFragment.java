@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.Gravity;
@@ -317,11 +318,13 @@ public class PuzzleRelevanceFragment extends Fragment implements PuzzleFragmentI
                         params.gravity = Gravity.TOP;
                         view.setLayoutParams(params);
                     }
+                    snack.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.black_overlay));
                     snack.show();
                     v.getBackground().clearColorFilter();
                     v.invalidate();
 
                     View vw = (View) event.getLocalState();
+                    vw.setForegroundGravity(Gravity.CENTER_HORIZONTAL);
                     ViewGroup owner = (ViewGroup) vw.getParent();
                     owner.removeView(vw);
                     LinearLayout container = null;

@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.media.AudioAttributes;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -15,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.InputType;
 import android.util.Log;
+import android.util.SparseIntArray;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -91,6 +94,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
     private static HashMap<String, String> items;
 
     private ProgressDialog mProgressDialog;
+    private SoundPool mSoundPool;
+    private SparseIntArray mPoolDict;
 
     static {
         items = new HashMap<>();
@@ -110,6 +115,19 @@ public class TopicSearcherActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.topic_searcher);
+
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_MEDIA)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build();
+        mSoundPool = new SoundPool.Builder()
+                .setAudioAttributes(audioAttributes)
+                .setMaxStreams(2)
+                .build();
+        mPoolDict = new SparseIntArray();
+        mPoolDict.put(0, mSoundPool.load(this, R.raw.space_swoosh, 1));
+        mPoolDict.put(1, mSoundPool.load(this, R.raw.beep_space_button, 1));
+        mPoolDict.put(2, mSoundPool.load(this, R.raw.plunger_pop, 1));
 
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setMessage(getString(R.string.loading));
@@ -193,6 +211,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
         dateGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
                 dialog.show();
                 dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM); // must be placed after show()
             }
@@ -242,6 +261,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
         choiceGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
                 dialogOptions.show();
             }
         });
@@ -295,6 +315,7 @@ public class TopicSearcherActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
                 AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
                 autoCompleteTextView.setText("");
                 autoCompleteTextView.showDropDown();
@@ -528,6 +549,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     submitButton.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
+                                            mSoundPool.play(mPoolDict.get(0), .5f, .5f, 1, 0, 1.f);
+
                                             Intent jump = new Intent(getBaseContext(), Round1Activity.class);
                                             jump.putExtra("lang", mQuestionLang);
                                             jump.putExtra("topic", mSelectedTopic);
@@ -570,6 +593,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
+
                 AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
                 autoCompleteTextView.setText("");
                 autoCompleteTextView.showDropDown();
@@ -717,6 +742,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                                     submitButton.setOnClickListener(new View.OnClickListener() {
                                                         @Override
                                                         public void onClick(View view) {
+                                                            mSoundPool.play(mPoolDict.get(0), .5f, .5f, 1, 0, 1.f);
+
                                                             Intent jump = new Intent(getBaseContext(), Round1Activity.class);
                                                             jump.putExtra("lang", mQuestionLang);
                                                             jump.putExtra("topic", mSelectedTopic);
@@ -775,6 +802,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
+
                 AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
                 autoCompleteTextView.setText("");
                 autoCompleteTextView.showDropDown();
@@ -940,6 +969,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     submitButton.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
+                                            mSoundPool.play(mPoolDict.get(0), .5f, .5f, 1, 0, 1.f);
+
                                             Intent jump = new Intent(getBaseContext(), Round1Activity.class);
                                             jump.putExtra("lang", mQuestionLang);
                                             jump.putExtra("topic", mSelectedTopic);
@@ -985,6 +1016,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
+
                 AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
                 autoCompleteTextView.setText("");
                 autoCompleteTextView.showDropDown();
@@ -1160,6 +1193,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                                     submitButton.setOnClickListener(new View.OnClickListener() {
                                                         @Override
                                                         public void onClick(View view) {
+                                                            mSoundPool.play(mPoolDict.get(0), .5f, .5f, 1, 0, 1.f);
+
                                                             Intent jump = new Intent(getBaseContext(), Round1Activity.class);
                                                             jump.putExtra("lang", mQuestionLang);
                                                             jump.putExtra("topic", mSelectedTopic);
@@ -1221,6 +1256,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mSoundPool.play(mPoolDict.get(1), .5f, .5f, 1, 0, 1.f);
+
                 AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
                 autoCompleteTextView.setText("");
                 autoCompleteTextView.showDropDown();
@@ -1387,6 +1424,8 @@ public class TopicSearcherActivity extends AppCompatActivity {
                                     submitButton.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
+                                            mSoundPool.play(mPoolDict.get(0), .5f, .5f, 1, 0, 1.f);
+
                                             Intent jump = new Intent(getBaseContext(), Round1Activity.class);
                                             jump.putExtra("lang", mQuestionLang);
                                             jump.putExtra("topic", mSelectedTopic);

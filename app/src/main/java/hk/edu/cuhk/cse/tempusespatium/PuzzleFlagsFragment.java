@@ -9,12 +9,17 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 import static hk.edu.cuhk.cse.tempusespatium.Constants.getTextColorBasedOnBgColor;
@@ -44,8 +49,23 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
 
     private boolean isRevealed = false;
 
+    private ImageView flagA, flagB, flagC, flagD;
+
+    private int mGridsReady = 0;
+//private FrameLayout mFrame;
     public PuzzleFlagsFragment() {
 
+    }
+
+    private void loadIncrement() {
+        mGridsReady++;
+        if (mGridsReady == 4) {
+//    mFrame.setVisibility(View.VISIBLE);
+            flagA.setVisibility(View.VISIBLE);
+            flagB.setVisibility(View.VISIBLE);
+            flagC.setVisibility(View.VISIBLE);
+            flagD.setVisibility(View.VISIBLE);
+        }
     }
 
     public PuzzleFlagsFragment(boolean first, int correctCountryIndex, String[] countries, String[] flagURLs, String capital, String capitalPic, int color) {
@@ -102,10 +122,17 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
         cName.setTextColor(getTextColorBasedOnBgColor(getContext(), mColor));
 
 
-        ImageView flagA = (ImageView) view.findViewById(R.id.aImageView);
-        ImageView flagB = (ImageView) view.findViewById(R.id.bImageView);
-        ImageView flagC = (ImageView) view.findViewById(R.id.cImageView);
-        ImageView flagD = (ImageView) view.findViewById(R.id.dImageView);
+         flagA = (ImageView) view.findViewById(R.id.aImageView);
+        flagA.setVisibility(View.INVISIBLE);
+        flagB = (ImageView) view.findViewById(R.id.bImageView);
+        flagB.setVisibility(View.INVISIBLE);
+        flagC = (ImageView) view.findViewById(R.id.cImageView);
+        flagC.setVisibility(View.INVISIBLE);
+        flagD = (ImageView) view.findViewById(R.id.dImageView);
+        flagD.setVisibility(View.INVISIBLE);
+
+//        mFrame = (FrameLayout) view.findViewById(R.id.flags_frame);
+//        mFrame.setVisibility(View.INVISIBLE);
 
         /*mFlagURLs[0] = mFlagURLs[0].replaceAll("\u200B", "");
         mFlagURLs[1] = mFlagURLs[1].replaceAll("\u200B", "");
@@ -116,10 +143,54 @@ public class PuzzleFlagsFragment extends Fragment implements PuzzleFragmentInter
 //                new PixelationFilterTransformation(25),
 //                new SwirlFilterTransformation(25, 120, new PointF(50,40)));
 
-        requestBuilder.load(mFlagURLs[0]).transition(withCrossFade(1500)).into(flagA);
-        requestBuilder.load(mFlagURLs[1]).transition(withCrossFade(1500)).into(flagB);
-        requestBuilder.load(mFlagURLs[2]).transition(withCrossFade(1500)).into(flagC);
-        requestBuilder.load(mFlagURLs[3]).transition(withCrossFade(1500)).into(flagD);
+        requestBuilder.load(mFlagURLs[0]).transition(withCrossFade(1500)).listener(new RequestListener<PictureDrawable>() {
+            @Override
+            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<PictureDrawable> target, boolean isFirstResource) {
+                return false;
+            }
+
+            @Override
+            public boolean onResourceReady(PictureDrawable resource, Object model, Target<PictureDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                loadIncrement();
+                return false;
+            }
+        }).into(flagA);
+        requestBuilder.load(mFlagURLs[1]).transition(withCrossFade(1500)).listener(new RequestListener<PictureDrawable>() {
+            @Override
+            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<PictureDrawable> target, boolean isFirstResource) {
+                return false;
+            }
+
+            @Override
+            public boolean onResourceReady(PictureDrawable resource, Object model, Target<PictureDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                loadIncrement();
+                return false;
+            }
+        }).into(flagB);
+        requestBuilder.load(mFlagURLs[2]).transition(withCrossFade(1500)).listener(new RequestListener<PictureDrawable>() {
+            @Override
+            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<PictureDrawable> target, boolean isFirstResource) {
+                return false;
+            }
+
+            @Override
+            public boolean onResourceReady(PictureDrawable resource, Object model, Target<PictureDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                loadIncrement();
+                return false;
+            }
+        }).into(flagC);
+        requestBuilder.load(mFlagURLs[3]).transition(withCrossFade(1500)).listener(new RequestListener<PictureDrawable>() {
+            @Override
+            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<PictureDrawable> target, boolean isFirstResource) {
+                return false;
+            }
+
+            @Override
+            public boolean onResourceReady(PictureDrawable resource, Object model, Target<PictureDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                loadIncrement();
+                return false;
+            }
+        }).into(flagD);
 
         RelativeLayout relA = (RelativeLayout) getView().findViewById(R.id.aRelLayout);
         relA.setOnClickListener(new View.OnClickListener() {

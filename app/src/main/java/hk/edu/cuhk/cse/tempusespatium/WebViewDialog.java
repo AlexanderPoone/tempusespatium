@@ -90,7 +90,7 @@ public class WebViewDialog extends Dialog implements View.OnClickListener {
                 " })()";
         webView.loadUrl(JS);
 
-        CountDownTimer cdt = new CountDownTimer(3000, 3000) {
+        CountDownTimer cdt = new CountDownTimer(3000, 1000) {
             @Override
             public long pause() {
                 return super.pause();
@@ -121,7 +121,18 @@ public class WebViewDialog extends Dialog implements View.OnClickListener {
                         dark();
                         break;
                 }
-                webView.setVisibility(View.VISIBLE);
+                CountDownTimer cdt2 = new CountDownTimer(1000, 1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        webView.setVisibility(View.VISIBLE);
+                    }
+                };
+                cdt2.start();
             }
         };
         cdt.start();

@@ -15,6 +15,7 @@ target 'Tempus E Spatium' do
   pod 'SearchTextField'
   pod 'DACircularProgress'
   pod 'YLProgressBar'
+  pod 'GoogleMaps'
   # Pods for Tempus E Spatium
 
   target 'Tempus E SpatiumTests' do

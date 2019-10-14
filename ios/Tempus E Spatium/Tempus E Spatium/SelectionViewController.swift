@@ -49,7 +49,7 @@ class SelectionViewController: UIViewController, GADBannerViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "navajo")!)
         let request = GADRequest()
         
         mAdView.adUnitID = "ca-app-pub-9627209153774793/9924537425" //ca-app-pub-9627209153774793/2302339919"

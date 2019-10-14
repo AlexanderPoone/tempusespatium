@@ -448,7 +448,7 @@
                                 </subviews>
                             </stackView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H0x-JM-TWf">
-                                <rect key="frame" x="0.0" y="248" width="414" height="157"/>
+                                <rect key="frame" x="0.0" y="84" width="414" height="325"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             </containerView>
                         </subviews>
@@ -458,7 +458,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xnU-Gu-kNJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064" y="-44"/>
+            <point key="canvasLocation" x="1063.768115942029" y="-44.53125"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="aJK-Bd-W5A">
@@ -469,7 +469,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fPj-Bf-DeI">
-                                <rect key="frame" x="0.0" y="252" width="414" height="157"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="321"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="sXu-ir-me7">
@@ -537,6 +537,160 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjG-Ji-sl3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1063.768115942029" y="353.90625"/>
+        </scene>
+        <!--Blanks Game View Controller-->
+        <scene sceneID="3sQ-kh-Gd8">
+            <objects>
+                <viewController id="m2p-0p-NAM" customClass="BlanksGameViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cnd-2Y-3OJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhf-Xp-jdT">
+                                <rect key="frame" x="0.0" y="221" width="414" height="641"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qhf-Xp-jdT" secondAttribute="height" multiplier="414:295" id="dmb-iI-7ZL"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Dp9-ms-kcD" kind="embed" id="zSm-bi-OTn"/>
+                                </connections>
+                            </containerView>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DM1-Qp-LhK">
+                                <rect key="frame" x="0.0" y="44" width="414" height="177"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="177" id="iAt-wO-iXe"/>
+                                </constraints>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="qhf-Xp-jdT" firstAttribute="top" secondItem="DM1-Qp-LhK" secondAttribute="bottom" id="DAK-0i-tQh"/>
+                            <constraint firstItem="qhf-Xp-jdT" firstAttribute="bottom" secondItem="H6Y-g3-ceF" secondAttribute="bottom" id="G1h-Jl-1rV"/>
+                            <constraint firstItem="qhf-Xp-jdT" firstAttribute="leading" secondItem="H6Y-g3-ceF" secondAttribute="leading" id="IlX-Jw-0cN"/>
+                            <constraint firstItem="DM1-Qp-LhK" firstAttribute="top" secondItem="H6Y-g3-ceF" secondAttribute="top" id="LnX-Ja-Sx1"/>
+                            <constraint firstItem="DM1-Qp-LhK" firstAttribute="leading" secondItem="H6Y-g3-ceF" secondAttribute="leading" id="SJ7-vX-brB"/>
+                            <constraint firstItem="qhf-Xp-jdT" firstAttribute="top" secondItem="DM1-Qp-LhK" secondAttribute="bottom" id="kaK-Df-Dm4"/>
+                            <constraint firstItem="DM1-Qp-LhK" firstAttribute="trailing" secondItem="H6Y-g3-ceF" secondAttribute="trailing" id="nuj-dX-ieD"/>
+                            <constraint firstItem="qhf-Xp-jdT" firstAttribute="trailing" secondItem="H6Y-g3-ceF" secondAttribute="trailing" id="s06-1M-HOK"/>
+                            <constraint firstItem="qhf-Xp-jdT" firstAttribute="bottom" secondItem="H6Y-g3-ceF" secondAttribute="bottom" id="weO-bZ-pjF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="H6Y-g3-ceF"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jOb-jL-X2a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1831.8840579710147" y="189.17410714285714"/>
+        </scene>
+        <!--Endgame View Controller-->
+        <scene sceneID="HEa-fY-ZmB">
+            <objects>
+                <viewController id="jm8-uP-jxe" customClass="EndgameViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KYw-ZH-daW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qhv-Hy-pCc">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Qhv-Hy-pCc" firstAttribute="top" secondItem="3ui-bL-1Hb" secondAttribute="top" id="BCG-QI-vXn"/>
+                            <constraint firstItem="Qhv-Hy-pCc" firstAttribute="bottom" secondItem="3ui-bL-1Hb" secondAttribute="bottom" id="OYA-Ec-qnK"/>
+                            <constraint firstItem="Qhv-Hy-pCc" firstAttribute="leading" secondItem="3ui-bL-1Hb" secondAttribute="leading" id="Ue9-rh-f64"/>
+                            <constraint firstItem="Qhv-Hy-pCc" firstAttribute="centerX" secondItem="KYw-ZH-daW" secondAttribute="centerX" id="sVb-7Z-qkb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3ui-bL-1Hb"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="amA-x1-0b7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2547.826086956522" y="191.51785714285714"/>
+        </scene>
+        <!--Flag Game View Controller-->
+        <scene sceneID="Vhi-eH-rIV">
+            <objects>
+                <viewController id="Yfk-Gz-uQn" customClass="FlagGameViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DMb-Eu-O6T">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Noukachott" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kd3-Lg-7jb">
+                                <rect key="frame" x="186" y="230" width="90" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="bVO-ah-Bag">
+                                <rect key="frame" x="-47" y="410" width="480" height="274"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ATx-bo-DCd">
+                                        <rect key="frame" x="0.0" y="0.0" width="480" height="128"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZEP-d3-jj1">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oWi-kV-oOt">
+                                                <rect key="frame" x="240" y="0.0" width="240" height="128"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aac-UZ-kfc">
+                                        <rect key="frame" x="0.0" y="146" width="480" height="128"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jl1-bg-U16">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zox-aj-K9v">
+                                                <rect key="frame" x="240" y="0.0" width="240" height="128"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="NRi-Vr-aym"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cj9-Ft-sP9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3265.217391304348" y="185.49107142857142"/>
+        </scene>
+        <!--Map Game View Controller-->
+        <scene sceneID="YPl-gl-zrj">
+            <objects>
+                <viewController id="r75-pu-FpH" customClass="MapGameViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z7C-s5-0pe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rou-R3-x5Q" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="252" width="414" height="610"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Which country does this anthem belong to?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Gg-cZ-tVE">
+                                <rect key="frame" x="41" y="131" width="333" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="e6v-td-uW4"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ei-Mu-Uvx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3934.7826086956525" y="183.48214285714286"/>
         </scene>
         <!--Fr Keyboard View Controller-->
         <scene sceneID="nfe-pe-q0C">
@@ -899,24 +1053,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oUc-jz-Ty2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1133" y="972"/>
+            <point key="canvasLocation" x="1803" y="972"/>
         </scene>
         <!--En Keyboard View Controller-->
         <scene sceneID="hxP-No-MPh">
             <objects>
                 <viewController id="Dp9-ms-kcD" customClass="en_KeyboardViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sjt-xT-iWi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Emb-Ro-pQ4">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="641"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQi-Gf-8cJ">
-                                        <rect key="frame" x="57" y="0.0" width="300" height="287.5"/>
+                                        <rect key="frame" x="57" y="0.0" width="300" height="213.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOb-Ph-MnM">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="q">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -926,7 +1080,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AxS-Xm-WST">
-                                                <rect key="frame" x="30" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="30" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="w">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -936,7 +1090,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tue-Qm-GJi">
-                                                <rect key="frame" x="60" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="60" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="e">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -946,7 +1100,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="km2-NH-u9M">
-                                                <rect key="frame" x="90" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="90" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="r">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -956,7 +1110,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2QP-Zz-kCD">
-                                                <rect key="frame" x="120" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="120" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="t">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -966,7 +1120,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLY-7c-ueE">
-                                                <rect key="frame" x="150" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="150" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="y">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -976,7 +1130,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOb-FP-me5">
-                                                <rect key="frame" x="180" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="180" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="u">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -986,7 +1140,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dzw-c1-h4d">
-                                                <rect key="frame" x="210" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="210" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="i">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -996,7 +1150,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxu-uu-Lqk">
-                                                <rect key="frame" x="240" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="240" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="o">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1006,7 +1160,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7M-7Z-ISd">
-                                                <rect key="frame" x="270" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="270" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="p">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1018,10 +1172,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84E-oy-P6l">
-                                        <rect key="frame" x="72" y="287.5" width="270" height="287"/>
+                                        <rect key="frame" x="72" y="213.5" width="270" height="214"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFw-TB-oVO">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="287"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="214"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="a">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1031,7 +1185,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4V-ng-x8S">
-                                                <rect key="frame" x="30" y="0.0" width="30" height="287"/>
+                                                <rect key="frame" x="30" y="0.0" width="30" height="214"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="s">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1041,7 +1195,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXP-O5-yqI">
-                                                <rect key="frame" x="60" y="0.0" width="30" height="287"/>
+                                                <rect key="frame" x="60" y="0.0" width="30" height="214"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="d">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1051,7 +1205,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Be0-cR-sEb">
-                                                <rect key="frame" x="90" y="0.0" width="30" height="287"/>
+                                                <rect key="frame" x="90" y="0.0" width="30" height="214"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="f">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1061,7 +1215,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcp-AG-8bI">
-                                                <rect key="frame" x="120" y="0.0" width="30" height="287"/>
+                                                <rect key="frame" x="120" y="0.0" width="30" height="214"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="g">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1071,7 +1225,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7g-gK-9qm">
-                                                <rect key="frame" x="150" y="0.0" width="30" height="287"/>
+                                                <rect key="frame" x="150" y="0.0" width="30" height="214"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="h">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1081,7 +1235,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXx-sG-cD9">
-                                                <rect key="frame" x="180" y="0.0" width="30" height="287"/>
+                                                <rect key="frame" x="180" y="0.0" width="30" height="214"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="j">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1091,7 +1245,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcg-eV-asM">
-                                                <rect key="frame" x="210" y="0.0" width="30" height="287"/>
+                                                <rect key="frame" x="210" y="0.0" width="30" height="214"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="k">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1101,7 +1255,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXq-ub-MUJ">
-                                                <rect key="frame" x="240" y="0.0" width="30" height="287"/>
+                                                <rect key="frame" x="240" y="0.0" width="30" height="214"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="l">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1113,10 +1267,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X81-LH-Hno">
-                                        <rect key="frame" x="72" y="574.5" width="270" height="287.5"/>
+                                        <rect key="frame" x="72" y="427.5" width="270" height="213.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOO-kb-1db">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="Del">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1126,7 +1280,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Wa-6G-Yoj">
-                                                <rect key="frame" x="30" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="30" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="z">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1136,7 +1290,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6g-Wz-bAe">
-                                                <rect key="frame" x="60" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="60" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="x">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1146,7 +1300,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uM0-x1-3k9">
-                                                <rect key="frame" x="90" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="90" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="c">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1156,7 +1310,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmD-Cf-In1">
-                                                <rect key="frame" x="120" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="120" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="v">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1166,7 +1320,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYn-rB-1nm">
-                                                <rect key="frame" x="150" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="150" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="b">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1176,7 +1330,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYB-nL-irN">
-                                                <rect key="frame" x="180" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="180" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="n">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1186,7 +1340,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNe-Zc-mwR">
-                                                <rect key="frame" x="210" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="210" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="m">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1196,7 +1350,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSF-BM-biI">
-                                                <rect key="frame" x="240" y="0.0" width="30" height="287.5"/>
+                                                <rect key="frame" x="240" y="0.0" width="30" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="⌫">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1222,7 +1376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oPV-hA-QBT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="438" y="972"/>
+            <point key="canvasLocation" x="1065" y="767"/>
         </scene>
         <!--Es Keyboard View Controller-->
         <scene sceneID="6GQ-UU-VlL">
@@ -1242,7 +1396,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="q">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="HrF-U3-Bgg"/>
@@ -1252,7 +1406,7 @@
                                                 <rect key="frame" x="30" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="w">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="ArW-fT-86O"/>
@@ -1262,7 +1416,7 @@
                                                 <rect key="frame" x="60" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="e">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="Hwf-M2-RLS"/>
@@ -1272,7 +1426,7 @@
                                                 <rect key="frame" x="90" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="r">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="kdz-bn-M7y"/>
@@ -1282,7 +1436,7 @@
                                                 <rect key="frame" x="120" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="t">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="Z1a-t7-2tY"/>
@@ -1292,7 +1446,7 @@
                                                 <rect key="frame" x="150" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="y">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="Yfg-qq-gd0"/>
@@ -1302,7 +1456,7 @@
                                                 <rect key="frame" x="180" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="u">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="fw9-wu-8bE"/>
@@ -1312,7 +1466,7 @@
                                                 <rect key="frame" x="210" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="i">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="oF7-Jw-bFR"/>
@@ -1322,7 +1476,7 @@
                                                 <rect key="frame" x="240" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="o">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="Ohl-ZV-7ep"/>
@@ -1332,7 +1486,7 @@
                                                 <rect key="frame" x="270" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="p">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="yLY-jo-yT1"/>
@@ -1342,7 +1496,7 @@
                                                 <rect key="frame" x="300" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="ñ">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="XDW-I1-Ajc"/>
@@ -1357,7 +1511,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="a">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="LA4-VJ-WcK"/>
@@ -1367,7 +1521,7 @@
                                                 <rect key="frame" x="30" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="s">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="CbT-2w-TZ1"/>
@@ -1377,7 +1531,7 @@
                                                 <rect key="frame" x="60" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="d">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="njx-nc-oWf"/>
@@ -1387,7 +1541,7 @@
                                                 <rect key="frame" x="90" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="f">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="Dpa-Bd-AkX"/>
@@ -1397,7 +1551,7 @@
                                                 <rect key="frame" x="120" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="g">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="tVa-IO-lDA"/>
@@ -1407,7 +1561,7 @@
                                                 <rect key="frame" x="150" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="h">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="1du-Cs-ewV"/>
@@ -1417,7 +1571,7 @@
                                                 <rect key="frame" x="180" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="j">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="r51-uH-FHB"/>
@@ -1427,7 +1581,7 @@
                                                 <rect key="frame" x="210" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="k">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="o7r-7H-n7z"/>
@@ -1437,7 +1591,7 @@
                                                 <rect key="frame" x="240" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="l">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="Cy8-Yi-ahI"/>
@@ -1452,7 +1606,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="35" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="Supr">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mDelete" destination="wyg-wR-wmH" eventType="touchUpInside" id="n9m-dF-7zF"/>
@@ -1462,7 +1616,7 @@
                                                 <rect key="frame" x="35" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="z">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="RTF-EJ-Eb5"/>
@@ -1472,7 +1626,7 @@
                                                 <rect key="frame" x="65" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="x">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="D6l-x2-92o"/>
@@ -1482,7 +1636,7 @@
                                                 <rect key="frame" x="95" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="c">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="mNe-37-VXn"/>
@@ -1492,7 +1646,7 @@
                                                 <rect key="frame" x="125" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="v">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="mJ6-4R-Cia"/>
@@ -1502,7 +1656,7 @@
                                                 <rect key="frame" x="155" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="b">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="jaX-TB-xy3"/>
@@ -1512,7 +1666,7 @@
                                                 <rect key="frame" x="185" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="n">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="oBv-Rv-uO5"/>
@@ -1522,7 +1676,7 @@
                                                 <rect key="frame" x="215" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="m">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="hyg-aj-rum"/>
@@ -1532,7 +1686,7 @@
                                                 <rect key="frame" x="245" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="◌́">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mAgudo" destination="wyg-wR-wmH" eventType="touchUpInside" id="hEf-hj-08R"/>
@@ -1542,7 +1696,7 @@
                                                 <rect key="frame" x="275" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="◌̈">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mDiaresis" destination="wyg-wR-wmH" eventType="touchUpInside" id="jAY-ty-cEa"/>
@@ -1552,7 +1706,7 @@
                                                 <rect key="frame" x="305" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="⌫">
-                                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="mBackSpace" destination="wyg-wR-wmH" eventType="touchUpInside" id="pb0-qb-EAJ"/>
@@ -1575,7 +1729,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7Z-Hy-v3d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1859" y="972"/>
+            <point key="canvasLocation" x="2551" y="972"/>
         </scene>
         <!--De Keyboard View Controller-->
         <scene sceneID="wTG-VH-T7O">
@@ -1938,7 +2092,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vm2-90-p9k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2574" y="972"/>
+            <point key="canvasLocation" x="3309" y="972"/>
         </scene>
     </scenes>
     <resources>

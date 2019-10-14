@@ -13,6 +13,7 @@
 		4B6D96DA2354D52E00D0DA0F /* EndgameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6D96D92354D52E00D0DA0F /* EndgameViewController.swift */; };
 		4B6D96DC2354D58500D0DA0F /* FlagGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6D96DB2354D58500D0DA0F /* FlagGameViewController.swift */; };
 		4B6D96DE2354D99400D0DA0F /* MapGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6D96DD2354D99400D0DA0F /* MapGameViewController.swift */; };
+		4B6D96E02354DD2D00D0DA0F /* LearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6D96DF2354DD2D00D0DA0F /* LearnViewController.swift */; };
 		4B756D772349D3FB005CD85A /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B756D762349D3FB005CD85A /* SelectionViewController.swift */; };
 		4B756D792349D43E005CD85A /* Round1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B756D782349D43E005CD85A /* Round1ViewController.swift */; };
 		4B756D7B2349D468005CD85A /* TopicSearcherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B756D7A2349D468005CD85A /* TopicSearcherViewController.swift */; };
@@ -63,6 +64,7 @@
 		4B6D96D92354D52E00D0DA0F /* EndgameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndgameViewController.swift; sourceTree = "<group>"; };
 		4B6D96DB2354D58500D0DA0F /* FlagGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagGameViewController.swift; sourceTree = "<group>"; };
 		4B6D96DD2354D99400D0DA0F /* MapGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGameViewController.swift; sourceTree = "<group>"; };
+		4B6D96DF2354DD2D00D0DA0F /* LearnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnViewController.swift; sourceTree = "<group>"; };
 		4B756D762349D3FB005CD85A /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		4B756D782349D43E005CD85A /* Round1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round1ViewController.swift; sourceTree = "<group>"; };
 		4B756D7A2349D468005CD85A /* TopicSearcherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSearcherViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				4BFE5189234730A000A5574C /* SceneDelegate.swift */,
 				4BFE518B234730A000A5574C /* ViewController.swift */,
 				4BFE518D234730A000A5574C /* Main.storyboard */,
+				4B6D96DF2354DD2D00D0DA0F /* LearnViewController.swift */,
 				4BFE5190234730B500A5574C /* Assets.xcassets */,
 				4BFE5192234730B500A5574C /* LaunchScreen.storyboard */,
 				4BFE5195234730B500A5574C /* Info.plist */,
@@ -508,6 +511,7 @@
 				4B7F5AB523545EBF003C88A4 /* de_KeyboardViewController.swift in Sources */,
 				4BA58042234DA7CA00BA6314 /* es_KeyboardViewController.swift in Sources */,
 				4B756D772349D3FB005CD85A /* SelectionViewController.swift in Sources */,
+				4B6D96E02354DD2D00D0DA0F /* LearnViewController.swift in Sources */,
 				4BFE5188234730A000A5574C /* AppDelegate.swift in Sources */,
 				4B756D7B2349D468005CD85A /* TopicSearcherViewController.swift in Sources */,
 				4BA5803E234DA78D00BA6314 /* en_KeyboardViewController.swift in Sources */,

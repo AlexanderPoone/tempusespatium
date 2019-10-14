@@ -1,16 +1,19 @@
 //
-//  BlanksGameViewController.swift
+//  LearnViewController.swift
 //  Tempus E Spatium
 //
-//  Created by Victor Poon on 14/10/2019.
+//  Created by Victor Poon on 15/10/2019.
 //  Copyright © 2019 SoftFeta. All rights reserved.
 //
 
 import UIKit
 import WebKit
 
-class BlanksGameViewController: UIViewController {
+class LearnViewController: UIViewController {
 
+    @IBOutlet weak var mHeader: UILabel!
+    
+    
     @IBOutlet weak var mWebView: WKWebView!
     
     override func viewDidLoad() {

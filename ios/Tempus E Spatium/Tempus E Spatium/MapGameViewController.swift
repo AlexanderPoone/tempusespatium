@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class MapGameViewController: UIViewController {
 
+    @IBOutlet weak var mInstructions: UILabel!
+    
+    @IBOutlet weak var mMap: GMSMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

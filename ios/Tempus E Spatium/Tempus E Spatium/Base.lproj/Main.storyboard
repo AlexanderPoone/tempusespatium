@@ -581,6 +581,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="H6Y-g3-ceF"/>
                     </view>
+                    <connections>
+                        <outlet property="mWebView" destination="DM1-Qp-LhK" id="oEG-we-elM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jOb-jL-X2a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -607,6 +610,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3ui-bL-1Hb"/>
                     </view>
+                    <connections>
+                        <outlet property="mAnimation" destination="Qhv-Hy-pCc" id="LjY-G5-5rP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="amA-x1-0b7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -658,6 +664,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="NRi-Vr-aym"/>
                     </view>
+                    <connections>
+                        <outlet property="mA" destination="ZEP-d3-jj1" id="2Ki-Wv-jVc"/>
+                        <outlet property="mB" destination="oWi-kV-oOt" id="4gA-Ya-m2y"/>
+                        <outlet property="mC" destination="jl1-bg-U16" id="dGI-yR-FP5"/>
+                        <outlet property="mD" destination="zox-aj-K9v" id="xTh-31-loY"/>
+                        <outlet property="mQuestion" destination="Kd3-Lg-7jb" id="Bne-ae-ZOk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cj9-Ft-sP9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -687,6 +700,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="e6v-td-uW4"/>
                     </view>
+                    <connections>
+                        <outlet property="mInstructions" destination="8Gg-cZ-tVE" id="qCS-ci-aHT"/>
+                        <outlet property="mMap" destination="rou-R3-x5Q" id="CBO-ZF-xb4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ei-Mu-Uvx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1731,6 +1748,43 @@
             </objects>
             <point key="canvasLocation" x="2551" y="972"/>
         </scene>
+        <!--Learn View Controller-->
+        <scene sceneID="AqH-fv-z63">
+            <objects>
+                <viewController id="ALp-rk-35P" customClass="LearnViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2RV-Bw-1f2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Learn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Fp-M8-sSo">
+                                <rect key="frame" x="186" y="69" width="43" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KWE-g8-YSY">
+                                <rect key="frame" x="0.0" y="113" width="414" height="749"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" name="PapayaWhip"/>
+                        <viewLayoutGuide key="safeArea" id="JtE-0v-W7c"/>
+                    </view>
+                    <connections>
+                        <outlet property="mHeader" destination="9Fp-M8-sSo" id="lzY-Zs-z3M"/>
+                        <outlet property="mWebView" destination="KWE-g8-YSY" id="GJr-Nw-jmD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HlQ-hi-eW6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4043" y="972"/>
+        </scene>
         <!--De Keyboard View Controller-->
         <scene sceneID="wTG-VH-T7O">
             <objects>
@@ -2119,6 +2173,9 @@
         </namedColor>
         <namedColor name="MidAubergine">
             <color red="0.17254901960784313" green="0.0" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PapayaWhip">
+            <color red="1" green="0.93725490196078431" blue="0.83529411764705885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="UbuntuOrange">
             <color red="0.8666666666666667" green="0.28235294117647058" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

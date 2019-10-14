@@ -10,6 +10,8 @@ import UIKit
 
 class EndgameViewController: UIViewController {
 
+    @IBOutlet weak var mAnimation: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

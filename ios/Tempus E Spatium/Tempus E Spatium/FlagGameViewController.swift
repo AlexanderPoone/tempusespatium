@@ -10,6 +10,15 @@ import UIKit
 
 class FlagGameViewController: UIViewController {
 
+    @IBOutlet weak var mQuestion: UILabel!
+    
+    @IBOutlet weak var mA: UIImageView!
+    @IBOutlet weak var mB: UIImageView!
+    
+    @IBOutlet weak var mC: UIImageView!
+    @IBOutlet weak var mD: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

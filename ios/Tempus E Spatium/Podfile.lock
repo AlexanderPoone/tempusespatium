@@ -3,15 +3,16 @@ PODS:
   - CocoaLumberjack (3.6.0):
     - CocoaLumberjack/Core (= 3.6.0)
   - CocoaLumberjack/Core (3.6.0)
+  - DACircularProgress (2.3.1)
   - DropDown (2.3.13)
   - Google-Mobile-Ads-SDK (7.50.0):
     - GoogleAppMeasurement (~> 6.0)
-  - GoogleAppMeasurement (6.1.2):
+  - GoogleAppMeasurement (6.1.3):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
-    - nanopb (~> 0.3)
+    - nanopb (~> 0.3.901)
   - GoogleUtilities/AppDelegateSwizzler (6.3.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -35,22 +36,28 @@ PODS:
   - nanopb/encode (0.3.901)
   - Ono (2.1.2)
   - ReachabilitySwift (4.3.1)
+  - SearchTextField (1.2.4)
   - SVGKit (2.1.0):
     - CocoaLumberjack (~> 3.0)
   - SwiftIcons (2.3.2)
+  - YLProgressBar (3.11.0)
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire`, branch `master`)
+  - DACircularProgress
   - DropDown
   - Google-Mobile-Ads-SDK
   - Ono
   - ReachabilitySwift
+  - SearchTextField
   - SVGKit (from `https://github.com/SVGKit/SVGKit.git`, branch `3.x`)
   - SwiftIcons (~> 2.3.2)
+  - YLProgressBar
 
 SPEC REPOS:
   trunk:
     - CocoaLumberjack
+    - DACircularProgress
     - DropDown
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
@@ -58,7 +65,9 @@ SPEC REPOS:
     - nanopb
     - Ono
     - ReachabilitySwift
+    - SearchTextField
     - SwiftIcons
+    - YLProgressBar
 
 EXTERNAL SOURCES:
   Alamofire:
@@ -79,16 +88,19 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
   CocoaLumberjack: 78b0c238666f4f58db069738ec176f4519557516
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   Google-Mobile-Ads-SDK: d48dbaf5bae1ab7a94a9786f493c26c454bc6f16
-  GoogleAppMeasurement: 0ae90be1cc4dad40f4a27fc767ef59fa032ec87b
+  GoogleAppMeasurement: 434cc7be25e71dc04b8d0e3079125127b330e84a
   GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Ono: 26a7c1fc4df13ece7747560a1d80655807a8a000
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
+  SearchTextField: 40dc3cc57def5a211f263cac263622c163bbc25a
   SVGKit: 8a2fc74258bdb2abb54d3b65f3dd68b0277a9c4d
   SwiftIcons: e652cfd2676441c462ad57b6e92977faf577e590
+  YLProgressBar: 0c0796a6e9b5e5d5040d15c8911e802b67ccb939
 
-PODFILE CHECKSUM: 8c37af47eb2f8510f02f9457ea52e985bb9b648b
+PODFILE CHECKSUM: cf538b74b7e739d2084e043cf01b2e4b4ca1e8be
 
 COCOAPODS: 1.8.0

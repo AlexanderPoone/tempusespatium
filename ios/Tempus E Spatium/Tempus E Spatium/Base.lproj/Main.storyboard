@@ -418,11 +418,51 @@
                                 <rect key="frame" x="0.0" y="252" width="414" height="157"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNd-bS-YgY">
-                                <rect key="frame" x="319" y="6" width="42" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Pause"/>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="sXu-ir-me7">
+                                <rect key="frame" x="10" y="7" width="394.5" height="73"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNd-bS-YgY">
+                                        <rect key="frame" x="0.0" y="21.5" width="42" height="30"/>
+                                        <color key="backgroundColor" name="info"/>
+                                        <state key="normal" title="Pause">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E0v-cc-gYm" customClass="DACircularProgressView">
+                                        <rect key="frame" x="48" y="0.0" width="62" height="73"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WqO-Lr-n9a" customClass="YLProgressBar">
+                                        <rect key="frame" x="116" y="11.5" width="217" height="50"/>
+                                        <color key="backgroundColor" name="Lavender"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GG9-jI-7HA">
+                                        <rect key="frame" x="339" y="21.5" width="30" height="30"/>
+                                        <color key="backgroundColor" name="warning"/>
+                                        <state key="normal" title=" ">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="-4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyj-Iy-coH">
+                                        <rect key="frame" x="375" y="26.5" width="19.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" name="danger"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" name="Lavender"/>
                         <viewLayoutGuide key="safeArea" id="dtE-m9-vEx"/>
@@ -452,6 +492,9 @@
                                                 <state key="normal" title="a">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="UaX-4b-1r1"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3x-4X-p30">
                                                 <rect key="frame" x="30" y="0.0" width="30" height="287.5"/>
@@ -459,6 +502,9 @@
                                                 <state key="normal" title="z">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="uoJ-LC-9e8"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAC-pT-f2D">
                                                 <rect key="frame" x="60" y="0.0" width="30" height="287.5"/>
@@ -466,6 +512,9 @@
                                                 <state key="normal" title="e">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="Npj-44-mnc"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMx-YQ-XyC">
                                                 <rect key="frame" x="90" y="0.0" width="30" height="287.5"/>
@@ -473,6 +522,9 @@
                                                 <state key="normal" title="r">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="x5U-pN-aVM"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fv9-vG-SAd">
                                                 <rect key="frame" x="120" y="0.0" width="30" height="287.5"/>
@@ -480,6 +532,9 @@
                                                 <state key="normal" title="t">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="gNR-Hh-lcb"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGo-62-9pF">
                                                 <rect key="frame" x="150" y="0.0" width="30" height="287.5"/>
@@ -487,6 +542,9 @@
                                                 <state key="normal" title="y">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="bzc-4F-QMc"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPV-Lo-qwQ">
                                                 <rect key="frame" x="180" y="0.0" width="30" height="287.5"/>
@@ -494,6 +552,9 @@
                                                 <state key="normal" title="u">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="z1a-Kb-SjU"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NjY-kz-OGt">
                                                 <rect key="frame" x="210" y="0.0" width="30" height="287.5"/>
@@ -501,6 +562,9 @@
                                                 <state key="normal" title="i">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="oKn-iX-2S4"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNU-1a-7lY">
                                                 <rect key="frame" x="240" y="0.0" width="30" height="287.5"/>
@@ -508,6 +572,9 @@
                                                 <state key="normal" title="o">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="Vbu-5h-11a"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sk5-zW-l53">
                                                 <rect key="frame" x="270" y="0.0" width="30" height="287.5"/>
@@ -515,6 +582,9 @@
                                                 <state key="normal" title="p">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="tNG-Ue-QzP"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -527,6 +597,9 @@
                                                 <state key="normal" title="q">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="3Df-en-dsc"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXc-c4-JfE">
                                                 <rect key="frame" x="30" y="0.0" width="30" height="287"/>
@@ -534,6 +607,9 @@
                                                 <state key="normal" title="s">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="oIc-ZM-8zr"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFR-ep-woy">
                                                 <rect key="frame" x="60" y="0.0" width="30" height="287"/>
@@ -541,6 +617,9 @@
                                                 <state key="normal" title="d">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="Cji-Qh-H03"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpN-Jp-q3c">
                                                 <rect key="frame" x="90" y="0.0" width="30" height="287"/>
@@ -548,6 +627,9 @@
                                                 <state key="normal" title="f">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="heD-7x-Hah"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHF-FP-guT">
                                                 <rect key="frame" x="120" y="0.0" width="30" height="287"/>
@@ -555,6 +637,9 @@
                                                 <state key="normal" title="g">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="QoR-0r-p5h"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEv-C8-uCm">
                                                 <rect key="frame" x="150" y="0.0" width="30" height="287"/>
@@ -562,6 +647,9 @@
                                                 <state key="normal" title="h">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="Ba0-0I-Zwh"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxM-T4-1uY">
                                                 <rect key="frame" x="180" y="0.0" width="30" height="287"/>
@@ -569,6 +657,9 @@
                                                 <state key="normal" title="j">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="Mpl-z2-sAP"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrk-4N-zsl">
                                                 <rect key="frame" x="210" y="0.0" width="30" height="287"/>
@@ -576,6 +667,9 @@
                                                 <state key="normal" title="k">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="BYw-Oe-jQ3"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sH8-WO-mI7">
                                                 <rect key="frame" x="240" y="0.0" width="30" height="287"/>
@@ -583,6 +677,9 @@
                                                 <state key="normal" title="l">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="5So-R0-Evz"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -595,6 +692,9 @@
                                                 <state key="normal" title="Suppr">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mDelete" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="aRn-op-p5L"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXc-o6-SlM">
                                                 <rect key="frame" x="45" y="0.0" width="30" height="287.5"/>
@@ -602,6 +702,9 @@
                                                 <state key="normal" title="◌́">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mAigu" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="wOh-De-Nha"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eV-Wo-8dH">
                                                 <rect key="frame" x="75" y="0.0" width="30" height="287.5"/>
@@ -609,6 +712,9 @@
                                                 <state key="normal" title="w">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="Efp-NA-HXw"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FPY-Yu-wmQ">
                                                 <rect key="frame" x="105" y="0.0" width="30" height="287.5"/>
@@ -616,6 +722,9 @@
                                                 <state key="normal" title="x">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="hhK-nu-kaP"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dR1-Pt-cJc">
                                                 <rect key="frame" x="135" y="0.0" width="30" height="287.5"/>
@@ -623,6 +732,9 @@
                                                 <state key="normal" title="c">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="zF7-Ya-SQz"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijc-qR-sfB">
                                                 <rect key="frame" x="165" y="0.0" width="30" height="287.5"/>
@@ -630,6 +742,9 @@
                                                 <state key="normal" title="v">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="yCx-hW-DY6"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pt-cU-TQS">
                                                 <rect key="frame" x="195" y="0.0" width="30" height="287.5"/>
@@ -637,6 +752,9 @@
                                                 <state key="normal" title="b">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="Zbl-VB-bYB"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Qf-6w-6ob">
                                                 <rect key="frame" x="225" y="0.0" width="30" height="287.5"/>
@@ -644,6 +762,9 @@
                                                 <state key="normal" title="n">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="Ve9-iR-iPR"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDh-ag-awr">
                                                 <rect key="frame" x="255" y="0.0" width="30" height="287.5"/>
@@ -651,6 +772,9 @@
                                                 <state key="normal" title="m">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="Mpc-Lh-Ixa"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQR-IF-Q9p">
                                                 <rect key="frame" x="285" y="0.0" width="30" height="287.5"/>
@@ -658,6 +782,9 @@
                                                 <state key="normal" title="◌̂">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mCirconflexe" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="R81-8D-cL9"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u1w-hb-ioI">
                                                 <rect key="frame" x="315" y="0.0" width="30" height="287.5"/>
@@ -665,6 +792,9 @@
                                                 <state key="normal" title="◌̈">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mTrema" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="K2G-oE-aTV"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KeD-V8-p8G">
                                                 <rect key="frame" x="345" y="0.0" width="30" height="287.5"/>
@@ -672,6 +802,9 @@
                                                 <state key="normal" title="◌̀">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mGrave" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="e1Y-nV-vxJ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udp-wF-rml">
                                                 <rect key="frame" x="375" y="0.0" width="30" height="287.5"/>
@@ -679,6 +812,9 @@
                                                 <state key="normal" title="⌫">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mBackspace" destination="9OJ-lJ-Z1Q" eventType="touchUpInside" id="vlG-qC-eQc"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -717,71 +853,101 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="q">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="PkV-MQ-Cna"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AxS-Xm-WST">
                                                 <rect key="frame" x="30" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="w">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="Wxt-wr-b8f"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tue-Qm-GJi">
                                                 <rect key="frame" x="60" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="e">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="MGH-MD-ZdA"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="km2-NH-u9M">
                                                 <rect key="frame" x="90" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="r">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="7dV-aI-zs6"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2QP-Zz-kCD">
                                                 <rect key="frame" x="120" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="t">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="AdB-wH-OWU"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLY-7c-ueE">
                                                 <rect key="frame" x="150" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="y">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="36n-q1-YAg"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOb-FP-me5">
                                                 <rect key="frame" x="180" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="u">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="0IE-oA-BVJ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dzw-c1-h4d">
                                                 <rect key="frame" x="210" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="i">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="dha-XV-FYe"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxu-uu-Lqk">
                                                 <rect key="frame" x="240" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="o">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="Cmg-k6-3dK"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7M-7Z-ISd">
                                                 <rect key="frame" x="270" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="p">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="h6y-LD-oWB"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -792,64 +958,91 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="a">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="bNI-Ao-5z0"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4V-ng-x8S">
                                                 <rect key="frame" x="30" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="s">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="iB6-JZ-e6R"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXP-O5-yqI">
                                                 <rect key="frame" x="60" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="d">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="hmi-3F-WQv"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Be0-cR-sEb">
                                                 <rect key="frame" x="90" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="f">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="KZv-Sm-IGu"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcp-AG-8bI">
                                                 <rect key="frame" x="120" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="g">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="uP8-1w-Mnz"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7g-gK-9qm">
                                                 <rect key="frame" x="150" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="h">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="dyc-Pq-cuw"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXx-sG-cD9">
                                                 <rect key="frame" x="180" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="j">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="V9u-J0-ZXi"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcg-eV-asM">
                                                 <rect key="frame" x="210" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="k">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="11d-gd-Kvy"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXq-ub-MUJ">
                                                 <rect key="frame" x="240" y="0.0" width="30" height="287"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="l">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="pT1-bh-tlI"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -860,64 +1053,91 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="Del">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mDelete" destination="Dp9-ms-kcD" eventType="touchUpInside" id="WG7-hh-b2J"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Wa-6G-Yoj">
                                                 <rect key="frame" x="30" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="z">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="6b6-3G-3zj"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6g-Wz-bAe">
                                                 <rect key="frame" x="60" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="x">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="yQg-Xd-gMq"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uM0-x1-3k9">
                                                 <rect key="frame" x="90" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="c">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="ify-jb-gJp"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmD-Cf-In1">
                                                 <rect key="frame" x="120" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="v">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="Fnn-nR-qBY"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYn-rB-1nm">
                                                 <rect key="frame" x="150" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="b">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="E0M-VT-jJe"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYB-nL-irN">
                                                 <rect key="frame" x="180" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="n">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="H7l-29-NuW"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNe-Zc-mwR">
                                                 <rect key="frame" x="210" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="m">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Dp9-ms-kcD" eventType="touchUpInside" id="ZL6-Ju-dly"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSF-BM-biI">
                                                 <rect key="frame" x="240" y="0.0" width="30" height="287.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="⌫">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mBackspace" destination="Dp9-ms-kcD" eventType="touchUpInside" id="EAC-mK-EVs"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -958,6 +1178,9 @@
                                                 <state key="normal" title="q">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="HrF-U3-Bgg"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrF-QW-tHn">
                                                 <rect key="frame" x="30" y="0.0" width="30" height="287.5"/>
@@ -965,6 +1188,9 @@
                                                 <state key="normal" title="w">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="ArW-fT-86O"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQm-CB-Ctf">
                                                 <rect key="frame" x="60" y="0.0" width="30" height="287.5"/>
@@ -972,6 +1198,9 @@
                                                 <state key="normal" title="e">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="Hwf-M2-RLS"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMh-vO-LgG">
                                                 <rect key="frame" x="90" y="0.0" width="30" height="287.5"/>
@@ -979,6 +1208,9 @@
                                                 <state key="normal" title="r">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="kdz-bn-M7y"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuH-0s-RJL">
                                                 <rect key="frame" x="120" y="0.0" width="30" height="287.5"/>
@@ -986,6 +1218,9 @@
                                                 <state key="normal" title="t">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="Z1a-t7-2tY"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Asw-RV-6LO">
                                                 <rect key="frame" x="150" y="0.0" width="30" height="287.5"/>
@@ -993,6 +1228,9 @@
                                                 <state key="normal" title="y">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="Yfg-qq-gd0"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvY-VJ-JA5">
                                                 <rect key="frame" x="180" y="0.0" width="30" height="287.5"/>
@@ -1000,6 +1238,9 @@
                                                 <state key="normal" title="u">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="fw9-wu-8bE"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qp-Dg-0W8">
                                                 <rect key="frame" x="210" y="0.0" width="30" height="287.5"/>
@@ -1007,6 +1248,9 @@
                                                 <state key="normal" title="i">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="oF7-Jw-bFR"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVD-zd-i52">
                                                 <rect key="frame" x="240" y="0.0" width="30" height="287.5"/>
@@ -1014,6 +1258,9 @@
                                                 <state key="normal" title="o">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="Ohl-ZV-7ep"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atH-ez-Ci9">
                                                 <rect key="frame" x="270" y="0.0" width="30" height="287.5"/>
@@ -1021,6 +1268,9 @@
                                                 <state key="normal" title="p">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="yLY-jo-yT1"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xBb-xE-WK5">
                                                 <rect key="frame" x="300" y="0.0" width="30" height="287.5"/>
@@ -1028,6 +1278,9 @@
                                                 <state key="normal" title="ñ">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="XDW-I1-Ajc"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1040,6 +1293,9 @@
                                                 <state key="normal" title="a">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="LA4-VJ-WcK"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHG-oN-9nf">
                                                 <rect key="frame" x="30" y="0.0" width="30" height="287"/>
@@ -1047,6 +1303,9 @@
                                                 <state key="normal" title="s">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="CbT-2w-TZ1"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3l-29-w0k">
                                                 <rect key="frame" x="60" y="0.0" width="30" height="287"/>
@@ -1054,6 +1313,9 @@
                                                 <state key="normal" title="d">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="njx-nc-oWf"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnD-SR-0a5">
                                                 <rect key="frame" x="90" y="0.0" width="30" height="287"/>
@@ -1061,6 +1323,9 @@
                                                 <state key="normal" title="f">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="Dpa-Bd-AkX"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2t-99-cpA">
                                                 <rect key="frame" x="120" y="0.0" width="30" height="287"/>
@@ -1068,6 +1333,9 @@
                                                 <state key="normal" title="g">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="tVa-IO-lDA"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFL-Bt-mzU">
                                                 <rect key="frame" x="150" y="0.0" width="30" height="287"/>
@@ -1075,6 +1343,9 @@
                                                 <state key="normal" title="h">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="1du-Cs-ewV"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p6d-fz-vbV">
                                                 <rect key="frame" x="180" y="0.0" width="30" height="287"/>
@@ -1082,6 +1353,9 @@
                                                 <state key="normal" title="j">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="r51-uH-FHB"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DL0-ya-1Em">
                                                 <rect key="frame" x="210" y="0.0" width="30" height="287"/>
@@ -1089,6 +1363,9 @@
                                                 <state key="normal" title="k">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="o7r-7H-n7z"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MsR-h8-utQ">
                                                 <rect key="frame" x="240" y="0.0" width="30" height="287"/>
@@ -1096,6 +1373,9 @@
                                                 <state key="normal" title="l">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="Cy8-Yi-ahI"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1108,6 +1388,9 @@
                                                 <state key="normal" title="Supr">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mDelete" destination="wyg-wR-wmH" eventType="touchUpInside" id="n9m-dF-7zF"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4e3-4X-k0l">
                                                 <rect key="frame" x="35" y="0.0" width="30" height="287.5"/>
@@ -1115,6 +1398,9 @@
                                                 <state key="normal" title="z">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="RTF-EJ-Eb5"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZx-K9-V4O">
                                                 <rect key="frame" x="65" y="0.0" width="30" height="287.5"/>
@@ -1122,6 +1408,9 @@
                                                 <state key="normal" title="x">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="D6l-x2-92o"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EK0-NV-4aV">
                                                 <rect key="frame" x="95" y="0.0" width="30" height="287.5"/>
@@ -1129,6 +1418,9 @@
                                                 <state key="normal" title="c">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="mNe-37-VXn"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uq7-YB-dax">
                                                 <rect key="frame" x="125" y="0.0" width="30" height="287.5"/>
@@ -1136,6 +1428,9 @@
                                                 <state key="normal" title="v">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="mJ6-4R-Cia"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sA9-jQ-8kU">
                                                 <rect key="frame" x="155" y="0.0" width="30" height="287.5"/>
@@ -1143,6 +1438,9 @@
                                                 <state key="normal" title="b">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="jaX-TB-xy3"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxg-KS-w1V">
                                                 <rect key="frame" x="185" y="0.0" width="30" height="287.5"/>
@@ -1150,6 +1448,9 @@
                                                 <state key="normal" title="n">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="oBv-Rv-uO5"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fP7-vN-sYR">
                                                 <rect key="frame" x="215" y="0.0" width="30" height="287.5"/>
@@ -1157,6 +1458,9 @@
                                                 <state key="normal" title="m">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="wyg-wR-wmH" eventType="touchUpInside" id="hyg-aj-rum"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ME7-bb-EIR">
                                                 <rect key="frame" x="245" y="0.0" width="30" height="287.5"/>
@@ -1164,6 +1468,9 @@
                                                 <state key="normal" title="◌́">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mAgudo" destination="wyg-wR-wmH" eventType="touchUpInside" id="hEf-hj-08R"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mY7-Hh-Jf6">
                                                 <rect key="frame" x="275" y="0.0" width="30" height="287.5"/>
@@ -1171,6 +1478,9 @@
                                                 <state key="normal" title="◌̈">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mDiaresis" destination="wyg-wR-wmH" eventType="touchUpInside" id="jAY-ty-cEa"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Pi-cj-rTC">
                                                 <rect key="frame" x="305" y="0.0" width="30" height="287.5"/>
@@ -1178,6 +1488,9 @@
                                                 <state key="normal" title="⌫">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mBackSpace" destination="wyg-wR-wmH" eventType="touchUpInside" id="pb0-qb-EAJ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1218,6 +1531,9 @@
                                                 <state key="normal" title="q">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="h0D-Lr-NUk"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egg-xd-wsG">
                                                 <rect key="frame" x="30" y="0.0" width="30" height="287.5"/>
@@ -1225,6 +1541,9 @@
                                                 <state key="normal" title="w">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="v4h-wo-hwQ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrW-CF-AMu">
                                                 <rect key="frame" x="60" y="0.0" width="30" height="287.5"/>
@@ -1232,6 +1551,9 @@
                                                 <state key="normal" title="e">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="KKK-Xg-or0"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7g-ea-omn">
                                                 <rect key="frame" x="90" y="0.0" width="30" height="287.5"/>
@@ -1239,6 +1561,9 @@
                                                 <state key="normal" title="r">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="Qnh-BJ-6VR"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngg-WL-y24">
                                                 <rect key="frame" x="120" y="0.0" width="30" height="287.5"/>
@@ -1246,6 +1571,9 @@
                                                 <state key="normal" title="t">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="uql-fA-d8P"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VvT-w4-liG">
                                                 <rect key="frame" x="150" y="0.0" width="30" height="287.5"/>
@@ -1253,6 +1581,9 @@
                                                 <state key="normal" title="z">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="jPt-p0-78h"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nK3-MK-6KI">
                                                 <rect key="frame" x="180" y="0.0" width="30" height="287.5"/>
@@ -1260,6 +1591,9 @@
                                                 <state key="normal" title="u">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="eY6-QQ-gwj"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WlQ-bv-S8J">
                                                 <rect key="frame" x="210" y="0.0" width="30" height="287.5"/>
@@ -1267,6 +1601,9 @@
                                                 <state key="normal" title="i">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="Cwb-ve-7iP"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UkX-za-Ewb">
                                                 <rect key="frame" x="240" y="0.0" width="30" height="287.5"/>
@@ -1274,6 +1611,9 @@
                                                 <state key="normal" title="o">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="dNX-SA-FUe"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gl9-TW-49h">
                                                 <rect key="frame" x="270" y="0.0" width="30" height="287.5"/>
@@ -1281,6 +1621,9 @@
                                                 <state key="normal" title="p">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="Fgz-w5-lVN"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9SL-d0-i6q">
                                                 <rect key="frame" x="300" y="0.0" width="30" height="287.5"/>
@@ -1288,6 +1631,9 @@
                                                 <state key="normal" title="ü">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="4xo-Sx-lBP"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmp-pY-u0f">
                                                 <rect key="frame" x="330" y="0.0" width="30" height="287.5"/>
@@ -1295,6 +1641,9 @@
                                                 <state key="normal" title="ß">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="B3o-UR-SXX"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1307,6 +1656,9 @@
                                                 <state key="normal" title="a">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="Yau-Jc-5kT"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u5M-bf-0aV">
                                                 <rect key="frame" x="30" y="0.0" width="30" height="287"/>
@@ -1314,6 +1666,9 @@
                                                 <state key="normal" title="s">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="1eq-hN-egb"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a17-nC-0B4">
                                                 <rect key="frame" x="60" y="0.0" width="30" height="287"/>
@@ -1321,6 +1676,9 @@
                                                 <state key="normal" title="d">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="G40-dj-BNV"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFe-ge-I0J">
                                                 <rect key="frame" x="90" y="0.0" width="30" height="287"/>
@@ -1328,6 +1686,9 @@
                                                 <state key="normal" title="f">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="fmd-4f-iKt"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aON-jf-Kx1">
                                                 <rect key="frame" x="120" y="0.0" width="30" height="287"/>
@@ -1335,6 +1696,9 @@
                                                 <state key="normal" title="g">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="iD5-NB-TeS"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvI-y8-4cw">
                                                 <rect key="frame" x="150" y="0.0" width="30" height="287"/>
@@ -1342,6 +1706,9 @@
                                                 <state key="normal" title="h">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="TmG-nP-yKi"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTB-o9-UZd">
                                                 <rect key="frame" x="180" y="0.0" width="30" height="287"/>
@@ -1349,6 +1716,9 @@
                                                 <state key="normal" title="j">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="LjX-EA-0k2"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfE-2z-buD">
                                                 <rect key="frame" x="210" y="0.0" width="30" height="287"/>
@@ -1356,6 +1726,9 @@
                                                 <state key="normal" title="k">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="Icu-h9-Cru"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHB-vf-aA1">
                                                 <rect key="frame" x="240" y="0.0" width="30" height="287"/>
@@ -1363,6 +1736,9 @@
                                                 <state key="normal" title="l">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="PqO-sO-Pli"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLX-cJ-Zht">
                                                 <rect key="frame" x="270" y="0.0" width="30" height="287"/>
@@ -1370,6 +1746,9 @@
                                                 <state key="normal" title="ö">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="fMf-GA-tZL"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJ4-dk-4UO">
                                                 <rect key="frame" x="300" y="0.0" width="30" height="287"/>
@@ -1377,6 +1756,9 @@
                                                 <state key="normal" title="ä">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="ITh-OA-1Ll"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1389,6 +1771,9 @@
                                                 <state key="normal" title="Entf">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mDelete" destination="Lgm-MN-2wd" eventType="touchUpInside" id="aws-vg-eYm"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3F-6L-SAA">
                                                 <rect key="frame" x="31" y="0.0" width="30" height="287.5"/>
@@ -1396,6 +1781,9 @@
                                                 <state key="normal" title="y">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="IZx-XN-MI8"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8LT-wN-G6v">
                                                 <rect key="frame" x="61" y="0.0" width="30" height="287.5"/>
@@ -1403,6 +1791,9 @@
                                                 <state key="normal" title="x">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="sXX-Ef-Rhy"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sUB-Tj-jz9">
                                                 <rect key="frame" x="91" y="0.0" width="30" height="287.5"/>
@@ -1410,6 +1801,9 @@
                                                 <state key="normal" title="c">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="5xc-go-rpS"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CBx-Cf-GZf">
                                                 <rect key="frame" x="121" y="0.0" width="30" height="287.5"/>
@@ -1417,6 +1811,9 @@
                                                 <state key="normal" title="v">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="vZx-nD-rZm"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aT0-P4-DlK">
                                                 <rect key="frame" x="151" y="0.0" width="30" height="287.5"/>
@@ -1424,6 +1821,9 @@
                                                 <state key="normal" title="b">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="V1d-eV-uTt"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgK-26-x8Y">
                                                 <rect key="frame" x="181" y="0.0" width="30" height="287.5"/>
@@ -1431,6 +1831,9 @@
                                                 <state key="normal" title="n">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="afk-A9-1ej"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tUc-Wp-1S9">
                                                 <rect key="frame" x="211" y="0.0" width="30" height="287.5"/>
@@ -1438,6 +1841,9 @@
                                                 <state key="normal" title="m">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mKeyPressed:" destination="Lgm-MN-2wd" eventType="touchUpInside" id="1nN-AF-OO4"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXc-qO-Dwy">
                                                 <rect key="frame" x="241" y="0.0" width="30" height="287.5"/>
@@ -1445,6 +1851,9 @@
                                                 <state key="normal" title="⌫">
                                                     <color key="titleColor" name="CanaryYellow"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mBackspace" destination="Lgm-MN-2wd" eventType="touchUpInside" id="VhR-KK-reB"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

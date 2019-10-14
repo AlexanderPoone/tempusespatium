@@ -10,6 +10,28 @@ import UIKit
 
 class fr_KeyboardViewController: UIViewController {
 
+    
+    @IBAction func mKeyPressed(_ sender: UIButton) {
+    }
+    
+    @IBAction func mAigu() {
+    }
+    
+    @IBAction func mCirconflexe() {
+    }
+    
+    @IBAction func mTrema() {
+    }
+    
+    @IBAction func mGrave() {
+    }
+    
+    @IBAction func mDelete() {
+    }
+    
+    @IBAction func mBackspace() {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

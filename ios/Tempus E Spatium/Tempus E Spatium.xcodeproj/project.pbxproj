@@ -13,6 +13,7 @@
 		4B756D7B2349D468005CD85A /* TopicSearcherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B756D7A2349D468005CD85A /* TopicSearcherViewController.swift */; };
 		4B756D7D2349D741005CD85A /* PrefsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B756D7C2349D741005CD85A /* PrefsTableViewController.swift */; };
 		4B756D802349DC8E005CD85A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B756D7E2349DC8D005CD85A /* Localizable.strings */; };
+		4B7F5AB523545EBF003C88A4 /* de_KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F5AB423545EBF003C88A4 /* de_KeyboardViewController.swift */; };
 		4BA5803E234DA78D00BA6314 /* en_KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5803D234DA78D00BA6314 /* en_KeyboardViewController.swift */; };
 		4BA58040234DA7A900BA6314 /* fr_KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5803F234DA7A900BA6314 /* fr_KeyboardViewController.swift */; };
 		4BA58042234DA7CA00BA6314 /* es_KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA58041234DA7CA00BA6314 /* es_KeyboardViewController.swift */; };
@@ -62,6 +63,7 @@
 		4B756D842349DCD4005CD85A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4B756D852349DCE1005CD85A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4B756D862349DCEA005CD85A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4B7F5AB423545EBF003C88A4 /* de_KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = de_KeyboardViewController.swift; sourceTree = "<group>"; };
 		4BA5803D234DA78D00BA6314 /* en_KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = en_KeyboardViewController.swift; sourceTree = "<group>"; };
 		4BA5803F234DA7A900BA6314 /* fr_KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fr_KeyboardViewController.swift; sourceTree = "<group>"; };
 		4BA58041234DA7CA00BA6314 /* es_KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = es_KeyboardViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				4BA5803D234DA78D00BA6314 /* en_KeyboardViewController.swift */,
 				4BA5803F234DA7A900BA6314 /* fr_KeyboardViewController.swift */,
 				4BA58041234DA7CA00BA6314 /* es_KeyboardViewController.swift */,
+				4B7F5AB423545EBF003C88A4 /* de_KeyboardViewController.swift */,
 				4BFE5189234730A000A5574C /* SceneDelegate.swift */,
 				4BFE518B234730A000A5574C /* ViewController.swift */,
 				4BFE518D234730A000A5574C /* Main.storyboard */,
@@ -445,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BFE518C234730A000A5574C /* ViewController.swift in Sources */,
+				4B7F5AB523545EBF003C88A4 /* de_KeyboardViewController.swift in Sources */,
 				4BA58042234DA7CA00BA6314 /* es_KeyboardViewController.swift in Sources */,
 				4B756D772349D3FB005CD85A /* SelectionViewController.swift in Sources */,
 				4BFE5188234730A000A5574C /* AppDelegate.swift in Sources */,

@@ -51,6 +51,12 @@ extension DataRequest {
 
 class TopicSearcherViewController: UIViewController {
     
+    @IBOutlet weak var mResetBtn: UIButton!
+    
+    @IBAction func mResetClicked() {
+        
+    }
+    
     @IBOutlet weak var mSubmitAndPlayBtn: UIButton!
     
     @IBAction func mSubmitAndPlayClicked() {
@@ -59,12 +65,20 @@ class TopicSearcherViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var mLocaleLbl: UILabel!
+    
+    @IBOutlet weak var mAnyTopicLbl: UILabel!
+    
     
     @IBOutlet weak var mLocaleDropDown: DropDown!
     
     @IBOutlet weak var mTopicDropDown: DropDown!
     
     @IBOutlet weak var mSelectAnyHeader: UILabel!
+    
+    @IBOutlet weak var mArticlesCoveredLbl: UILabel!
+    
+    @IBOutlet weak var mClickOnBadgeLbl: UILabel!
     
     func english() {
         AF.request("\(mBaseUrl)BluetoothSyncAttendance", method: .get, parameters: [:], encoding: JSONEncoding.default)

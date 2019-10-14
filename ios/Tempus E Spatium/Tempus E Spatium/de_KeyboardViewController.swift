@@ -1,23 +1,19 @@
 //
-//  en_KeyboardViewController.swift
+//  de_KeyboardViewController.swift
 //  Tempus E Spatium
 //
-//  Created by Victor Poon on 9/10/2019.
+//  Created by Victor Poon on 14/10/2019.
 //  Copyright © 2019 SoftFeta. All rights reserved.
 //
 
 import UIKit
 
-class en_KeyboardViewController: UIViewController {
+class de_KeyboardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        if let foundView = view.viewWithTag(0xDEADBEEF) {
-            foundView.removeFromSuperview()
-        }
     }
     
 

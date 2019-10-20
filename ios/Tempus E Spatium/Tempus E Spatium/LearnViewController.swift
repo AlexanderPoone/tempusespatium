@@ -8,17 +8,21 @@
 
 import UIKit
 import WebKit
+import SwiftIcons
 
 class LearnViewController: UIViewController {
 
     @IBOutlet weak var mHeader: UILabel!
     
-    
     @IBOutlet weak var mWebView: WKWebView!
+    
+    var mUrl:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        mHeader.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.book), iconColor: UIColor(named: "warning")!, postfixText: NSLocalizedString("learn", comment: ""), postfixTextColor: UIColor(named: "warning")!, size: nil, iconSize: nil)
+        mWebView.load(URLRequest(url: URL(string: mUrl!)!))
         // Do any additional setup after loading the view.
     }
     

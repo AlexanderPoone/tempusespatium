@@ -7,26 +7,26 @@
 //
 
 import UIKit
+import SwiftIcons
 
 class Round1ViewController: UIViewController {
 
     @IBOutlet weak var mPlayer1Container: UIView!
     
+    var mPlayer1:ExteriorViewController?
+        var mPlayer2:ExteriorViewController?
+        
+    @IBAction func unwindToRound1ViewController(segue: UIStoryboardSegue) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mPlayer1Container.transform =  CGAffineTransform(rotationAngle: .pi)
+        
+        mPlayer1 = (children.first! as! ExteriorViewController)
+        mPlayer2 = (children.last! as! ExteriorViewController)
+        mPlayer1!.view!.backgroundColor = UIColor(named: "CosmicLatte")!
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

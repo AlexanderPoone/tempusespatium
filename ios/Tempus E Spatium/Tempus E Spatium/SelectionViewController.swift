@@ -9,10 +9,65 @@
 import UIKit
 import GoogleMobileAds
 import SwiftIcons
+import AVFoundation
+import AudioToolbox
+import Reachability
 
 class SelectionViewController: UIViewController, GADBannerViewDelegate {
 
+    var beep, swoosh: AVAudioPlayer?
+
     @IBOutlet weak var mAdView: GADBannerView!
+    
+    @IBOutlet weak var mPlayBtn: UIButton!
+    @IBOutlet weak var mRulesBtn: UIButton!
+    @IBOutlet weak var mSettingsBtn: UIButton!
+    @IBOutlet weak var mHighscoresBtn: UIButton!
+    @IBOutlet weak var mQuitBtn: UIButton!
+    
+    @IBAction func unwindToSelectionViewController(segue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func mPlayBtnClicked() {
+        //Reachability MUST be used!
+        swoosh!.play()
+        if (Reachability()!.connection == .none) {
+            let alert = UIAlertController(title: nil, message: NSLocalizedString("err_no_network", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: { (alert: UIAlertAction!) in }))
+            self.present(alert, animated: false, completion: nil)
+        } else {
+            performSegue(withIdentifier: "goToSelector", sender: nil)
+        }
+    }
+    
+    func setupAudioPlayer(withFile file: String, type: String) -> AVAudioPlayer? {
+      let path = Bundle.main.path(forResource: file, ofType: type)
+      let url = NSURL.fileURL(withPath: path!)
+      return try? AVAudioPlayer(contentsOf: url)
+    }
+    
+    @IBAction func mRulesBtnClicked() {
+        beep!.play()
+    }
+    
+    @IBAction func mSettingsBtnClicked() {
+        beep!.play()
+    }
+    
+    @IBAction func mHighscoresBtnClicked() {
+        beep!.play()
+    }
+    
+    @IBAction func mQuitBtnClicked() {
+        beep!.play()
+        let alert = UIAlertController(title: nil, message: NSLocalizedString("really_quit", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("yes", comment: ""), style: .default, handler: { (alert: UIAlertAction!) in
+            exit(0)
+        }))
+                alert.addAction(UIAlertAction(title: NSLocalizedString("no", comment: ""), style: .default, handler: { (alert: UIAlertAction!) in }))
+        self.present(alert, animated: false, completion: nil)
+    }
+    
     
     /// Tells the delegate an ad request loaded an ad.
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
@@ -49,7 +104,25 @@ class SelectionViewController: UIViewController, GADBannerViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        beep = setupAudioPlayer(withFile: "beep_space_button", type: "wav")
+        swoosh = setupAudioPlayer(withFile: "space_swoosh", type: "wav")
+        
         view.backgroundColor = UIColor(patternImage: UIImage(named: "navajo")!)
+        
+        mPlayBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.gamepad), iconColor: .white, postfixText: NSLocalizedString("play", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "info")!, forState: .normal, textSize: nil, iconSize: nil)
+
+        mRulesBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeBrands(.leanpub), iconColor: .white, postfixText: NSLocalizedString("rules", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "success")!, forState: .normal, textSize: nil, iconSize: nil)
+        
+        
+                mSettingsBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.cog), iconColor: .white, postfixText: NSLocalizedString("settings", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "secondary")!, forState: .normal, textSize: nil, iconSize: nil)
+        
+                      mHighscoresBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.trophy), iconColor: .white, postfixText: NSLocalizedString("highscores", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "warning")!, forState: .normal, textSize: nil, iconSize: nil)
+        
+                             mQuitBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.signOutAlt), iconColor: .white, postfixText: NSLocalizedString("quit", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "danger")!, forState: .normal, textSize: nil, iconSize: nil)
+        
+        
+        
         let request = GADRequest()
         
         mAdView.adUnitID = "ca-app-pub-9627209153774793/9924537425" //ca-app-pub-9627209153774793/2302339919"

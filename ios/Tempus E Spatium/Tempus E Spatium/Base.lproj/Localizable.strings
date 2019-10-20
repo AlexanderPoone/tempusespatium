@@ -8,20 +8,21 @@
 
 app_name = "Tempus E Spatium";
 
-play = "{fa_gamepad} PLAY!";
-rules = "{fa_leanpub} Rules";
-learn = "{fa_book} Learn";
-settings = "{fa_cog} Settings";
-highscores = "{fa_trophy} Highscores";
-quit = "{fa_sign-out} Quit game";
+play = " PLAY!";
+rules = " Rules";
+learn = " Learn";
+settings = " Settings";
+highscores = " Highscores";
+quit = " Quit game";
 
 articles_covered = "Articles covered: ";
 learn_sub = "Click on the badge to revise now!";
 
-resume = "{fa_play-circle} Resume";
-return_main_menu = "{fa_sign-out} Return to main menu";
+resume = " Resume";
+return_main_menu = " Return to main menu";
 topic_searcher_heading = "Search for ANY topic";
 loading = "Loading, please wait…";
+enter_keyword = "Enter keyword to search for a theme!";
 
 highscores_enter_name = "{md_sentiment_very_satisfied} Congrats, you won!\nEnter your name:";
 
@@ -50,13 +51,13 @@ question_history = "When did the historical event %s take place?";
 
 bar_points = "Points: %d";
 submit = "{fa_paper-plane} Submit!";
-reset = "{fa_undo} Reset";
+reset = " Reset";
 a = "A. ";
 b = "B. ";
 c = "C. ";
 d = "D. ";
 
-paused = "{fa_pause} Game paused";
+paused = " Game paused";
 
 simple_ime = "Simple IME";
 subtype_en_US = "English (US)";
@@ -64,3 +65,12 @@ subtype_en_US = "English (US)";
 answer = "Answer:";
 you_chose = "You chose:";
 anthem_name = "Anthem name:";
+
+err_no_network = "You need a network connection to play the game !";
+lbl_music = "Music:\nSquirrel Monkey";
+really_quit = "Do you really want to quit the game?";
+yes = "Yes";
+no = "No";
+
+customise_here = " Customise here (optional)";
+submit_and_play = " Submit and play!";

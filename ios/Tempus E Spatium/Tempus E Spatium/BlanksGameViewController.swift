@@ -16,6 +16,9 @@ class BlanksGameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        mWebView.loadHTMLString("<html><head></head><body><small>Test!</small></body></html>", baseURL: nil)
+        mWebView.scrollView.panGestureRecognizer.isEnabled = false
+        mWebView.scrollView.bounces = false
         // Do any additional setup after loading the view.
     }
     

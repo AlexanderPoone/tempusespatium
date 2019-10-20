@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		425D4D37123F2DA94562D37C /* Pods_Tempus_E_Spatium_Tempus_E_SpatiumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC481EB22D19F28E075D659 /* Pods_Tempus_E_Spatium_Tempus_E_SpatiumUITests.framework */; };
+		4B2BE09C235C3604009E6765 /* PauseDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2BE09B235C3604009E6765 /* PauseDialogViewController.swift */; };
 		4B6D96D72354C89B00D0DA0F /* player_2_wins.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4B6D96D52354C89A00D0DA0F /* player_2_wins.gif */; };
 		4B6D96D82354C89B00D0DA0F /* player_1_wins.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4B6D96D62354C89B00D0DA0F /* player_1_wins.gif */; };
 		4B6D96DA2354D52E00D0DA0F /* EndgameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6D96D92354D52E00D0DA0F /* EndgameViewController.swift */; };
@@ -21,6 +22,14 @@
 		4B756D802349DC8E005CD85A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B756D7E2349DC8D005CD85A /* Localizable.strings */; };
 		4B7F5AB523545EBF003C88A4 /* de_KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F5AB423545EBF003C88A4 /* de_KeyboardViewController.swift */; };
 		4B7F5AB7235471AB003C88A4 /* BlanksGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F5AB6235471AB003C88A4 /* BlanksGameViewController.swift */; };
+		4B8A85052359BD6600846A2E /* LocaleDropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A85032359BD6500846A2E /* LocaleDropDownTableViewCell.swift */; };
+		4B8A85062359BD6600846A2E /* LocaleDropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8A85042359BD6600846A2E /* LocaleDropDownTableViewCell.xib */; };
+		4B8A85082359CC8600846A2E /* ExteriorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A85072359CC8600846A2E /* ExteriorViewController.swift */; };
+		4B8A850A2359E4C200846A2E /* LocaleCurrentSelectionWithArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A85092359E4C200846A2E /* LocaleCurrentSelectionWithArrowView.swift */; };
+		4B8A8510235A0EC200846A2E /* plunger_pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4B8A850D235A0EC100846A2E /* plunger_pop.wav */; };
+		4B8A8511235A0EC300846A2E /* space_swoosh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4B8A850E235A0EC100846A2E /* space_swoosh.wav */; };
+		4B8A8512235A0EC300846A2E /* beep_space_button.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4B8A850F235A0EC200846A2E /* beep_space_button.wav */; };
+		4B8A8516235A1FFC00846A2E /* LocaleCurrentSelectionWithArrowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8A8515235A1FFC00846A2E /* LocaleCurrentSelectionWithArrowView.xib */; };
 		4BA5803E234DA78D00BA6314 /* en_KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5803D234DA78D00BA6314 /* en_KeyboardViewController.swift */; };
 		4BA58040234DA7A900BA6314 /* fr_KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5803F234DA7A900BA6314 /* fr_KeyboardViewController.swift */; };
 		4BA58042234DA7CA00BA6314 /* es_KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA58041234DA7CA00BA6314 /* es_KeyboardViewController.swift */; };
@@ -59,6 +68,7 @@
 		3022C463C48E3ACE96FFA4D0 /* Pods-Tempus E Spatium-Tempus E SpatiumUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tempus E Spatium-Tempus E SpatiumUITests.release.xcconfig"; path = "Target Support Files/Pods-Tempus E Spatium-Tempus E SpatiumUITests/Pods-Tempus E Spatium-Tempus E SpatiumUITests.release.xcconfig"; sourceTree = "<group>"; };
 		352C6DF257D7B9CCAB2F23BE /* Pods-Tempus E Spatium.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tempus E Spatium.release.xcconfig"; path = "Target Support Files/Pods-Tempus E Spatium/Pods-Tempus E Spatium.release.xcconfig"; sourceTree = "<group>"; };
 		48E365537441B4C116B76BC6 /* Pods_Tempus_E_Spatium.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tempus_E_Spatium.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B2BE09B235C3604009E6765 /* PauseDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseDialogViewController.swift; sourceTree = "<group>"; };
 		4B6D96D52354C89A00D0DA0F /* player_2_wins.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = player_2_wins.gif; sourceTree = "<group>"; };
 		4B6D96D62354C89B00D0DA0F /* player_1_wins.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = player_1_wins.gif; sourceTree = "<group>"; };
 		4B6D96D92354D52E00D0DA0F /* EndgameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndgameViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +88,14 @@
 		4B756D862349DCEA005CD85A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4B7F5AB423545EBF003C88A4 /* de_KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = de_KeyboardViewController.swift; sourceTree = "<group>"; };
 		4B7F5AB6235471AB003C88A4 /* BlanksGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlanksGameViewController.swift; sourceTree = "<group>"; };
+		4B8A85032359BD6500846A2E /* LocaleDropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleDropDownTableViewCell.swift; sourceTree = "<group>"; };
+		4B8A85042359BD6600846A2E /* LocaleDropDownTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocaleDropDownTableViewCell.xib; sourceTree = "<group>"; };
+		4B8A85072359CC8600846A2E /* ExteriorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExteriorViewController.swift; sourceTree = "<group>"; };
+		4B8A85092359E4C200846A2E /* LocaleCurrentSelectionWithArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleCurrentSelectionWithArrowView.swift; sourceTree = "<group>"; };
+		4B8A850D235A0EC100846A2E /* plunger_pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = plunger_pop.wav; sourceTree = "<group>"; };
+		4B8A850E235A0EC100846A2E /* space_swoosh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = space_swoosh.wav; sourceTree = "<group>"; };
+		4B8A850F235A0EC200846A2E /* beep_space_button.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep_space_button.wav; sourceTree = "<group>"; };
+		4B8A8515235A1FFC00846A2E /* LocaleCurrentSelectionWithArrowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocaleCurrentSelectionWithArrowView.xib; sourceTree = "<group>"; };
 		4BA5803D234DA78D00BA6314 /* en_KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = en_KeyboardViewController.swift; sourceTree = "<group>"; };
 		4BA5803F234DA7A900BA6314 /* fr_KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fr_KeyboardViewController.swift; sourceTree = "<group>"; };
 		4BA58041234DA7CA00BA6314 /* es_KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = es_KeyboardViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +195,9 @@
 		4BFE5186234730A000A5574C /* Tempus E Spatium */ = {
 			isa = PBXGroup;
 			children = (
+				4B8A850F235A0EC200846A2E /* beep_space_button.wav */,
+				4B8A850D235A0EC100846A2E /* plunger_pop.wav */,
+				4B8A850E235A0EC100846A2E /* space_swoosh.wav */,
 				4B6D96D62354C89B00D0DA0F /* player_1_wins.gif */,
 				4B6D96D52354C89A00D0DA0F /* player_2_wins.gif */,
 				4BFE5187234730A000A5574C /* AppDelegate.swift */,
@@ -188,11 +209,17 @@
 				4BFE5189234730A000A5574C /* SceneDelegate.swift */,
 				4BFE518B234730A000A5574C /* ViewController.swift */,
 				4BFE518D234730A000A5574C /* Main.storyboard */,
+				4B8A85092359E4C200846A2E /* LocaleCurrentSelectionWithArrowView.swift */,
+				4B2BE09B235C3604009E6765 /* PauseDialogViewController.swift */,
+				4B8A8515235A1FFC00846A2E /* LocaleCurrentSelectionWithArrowView.xib */,
+				4B8A85032359BD6500846A2E /* LocaleDropDownTableViewCell.swift */,
+				4B8A85042359BD6600846A2E /* LocaleDropDownTableViewCell.xib */,
 				4B6D96DF2354DD2D00D0DA0F /* LearnViewController.swift */,
 				4BFE5190234730B500A5574C /* Assets.xcassets */,
 				4BFE5192234730B500A5574C /* LaunchScreen.storyboard */,
 				4BFE5195234730B500A5574C /* Info.plist */,
 				4B756D762349D3FB005CD85A /* SelectionViewController.swift */,
+				4B8A85072359CC8600846A2E /* ExteriorViewController.swift */,
 				4B756D7A2349D468005CD85A /* TopicSearcherViewController.swift */,
 				4B756D782349D43E005CD85A /* Round1ViewController.swift */,
 				4B756D7C2349D741005CD85A /* PrefsTableViewController.swift */,
@@ -345,6 +372,11 @@
 				4B6D96D72354C89B00D0DA0F /* player_2_wins.gif in Resources */,
 				4BFE5191234730B500A5574C /* Assets.xcassets in Resources */,
 				4BFE518F234730A000A5574C /* Main.storyboard in Resources */,
+				4B8A8510235A0EC200846A2E /* plunger_pop.wav in Resources */,
+				4B8A8512235A0EC300846A2E /* beep_space_button.wav in Resources */,
+				4B8A8516235A1FFC00846A2E /* LocaleCurrentSelectionWithArrowView.xib in Resources */,
+				4B8A85062359BD6600846A2E /* LocaleDropDownTableViewCell.xib in Resources */,
+				4B8A8511235A0EC300846A2E /* space_swoosh.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +540,7 @@
 			files = (
 				4B6D96DC2354D58500D0DA0F /* FlagGameViewController.swift in Sources */,
 				4BFE518C234730A000A5574C /* ViewController.swift in Sources */,
+				4B8A85082359CC8600846A2E /* ExteriorViewController.swift in Sources */,
 				4B7F5AB523545EBF003C88A4 /* de_KeyboardViewController.swift in Sources */,
 				4BA58042234DA7CA00BA6314 /* es_KeyboardViewController.swift in Sources */,
 				4B756D772349D3FB005CD85A /* SelectionViewController.swift in Sources */,
@@ -519,9 +552,12 @@
 				4B6D96DA2354D52E00D0DA0F /* EndgameViewController.swift in Sources */,
 				4B756D7D2349D741005CD85A /* PrefsTableViewController.swift in Sources */,
 				4B7F5AB7235471AB003C88A4 /* BlanksGameViewController.swift in Sources */,
+				4B8A850A2359E4C200846A2E /* LocaleCurrentSelectionWithArrowView.swift in Sources */,
+				4B2BE09C235C3604009E6765 /* PauseDialogViewController.swift in Sources */,
 				4BFE518A234730A000A5574C /* SceneDelegate.swift in Sources */,
 				4BA58040234DA7A900BA6314 /* fr_KeyboardViewController.swift in Sources */,
 				4B6D96DE2354D99400D0DA0F /* MapGameViewController.swift in Sources */,
+				4B8A85052359BD6600846A2E /* LocaleDropDownTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,7 +677,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -696,7 +732,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

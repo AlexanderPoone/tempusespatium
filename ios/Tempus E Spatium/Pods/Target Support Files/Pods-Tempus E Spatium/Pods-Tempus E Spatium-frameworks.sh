@@ -172,8 +172,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftIcons/SwiftIcons.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Tags/Tags.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TTGTagCollectionView/TTGTagCollectionView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YLProgressBar/YLProgressBar.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
 fi
@@ -189,8 +188,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftIcons/SwiftIcons.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Tags/Tags.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TTGTagCollectionView/TTGTagCollectionView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YLProgressBar/YLProgressBar.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
 fi

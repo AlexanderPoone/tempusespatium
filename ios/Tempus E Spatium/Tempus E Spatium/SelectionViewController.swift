@@ -12,11 +12,13 @@ import SwiftIcons
 import AVFoundation
 import AudioToolbox
 import Reachability
+//import NotificationCenter
 
 class SelectionViewController: UIViewController, GADBannerViewDelegate {
-
+    
     var beep, swoosh: AVAudioPlayer?
-
+    var player : AVPlayer?
+    
     @IBOutlet weak var mAdView: GADBannerView!
     
     @IBOutlet weak var mPlayBtn: UIButton!
@@ -31,6 +33,14 @@ class SelectionViewController: UIViewController, GADBannerViewDelegate {
     @IBAction func mPlayBtnClicked() {
         //Reachability MUST be used!
         swoosh!.play()
+        if self.player != nil {
+            print("stopped")
+            self.player!.pause()
+            self.player = nil
+            print("player deallocated")
+        } else {
+            print("player was already deallocated")
+        }
         if (Reachability()!.connection == .none) {
             let alert = UIAlertController(title: nil, message: NSLocalizedString("err_no_network", comment: ""), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: { (alert: UIAlertAction!) in }))
@@ -41,9 +51,9 @@ class SelectionViewController: UIViewController, GADBannerViewDelegate {
     }
     
     func setupAudioPlayer(withFile file: String, type: String) -> AVAudioPlayer? {
-      let path = Bundle.main.path(forResource: file, ofType: type)
-      let url = NSURL.fileURL(withPath: path!)
-      return try? AVAudioPlayer(contentsOf: url)
+        let path = Bundle.main.path(forResource: file, ofType: type)
+        let url = NSURL.fileURL(withPath: path!)
+        return try? AVAudioPlayer(contentsOf: url)
     }
     
     @IBAction func mRulesBtnClicked() {
@@ -64,7 +74,7 @@ class SelectionViewController: UIViewController, GADBannerViewDelegate {
         alert.addAction(UIAlertAction(title: NSLocalizedString("yes", comment: ""), style: .default, handler: { (alert: UIAlertAction!) in
             exit(0)
         }))
-                alert.addAction(UIAlertAction(title: NSLocalizedString("no", comment: ""), style: .default, handler: { (alert: UIAlertAction!) in }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("no", comment: ""), style: .default, handler: { (alert: UIAlertAction!) in }))
         self.present(alert, animated: false, completion: nil)
     }
     
@@ -102,6 +112,36 @@ class SelectionViewController: UIViewController, GADBannerViewDelegate {
         print("adViewWillLeaveApplication")
     }
     
+    func playWikiWiki() {
+        if player == nil {
+            do {
+                guard let url = URL.init(string: "https://ia800905.us.archive.org/10/items/Wikipedia_201411/Wikipedia.MP3") else { return }
+                
+                let playerItem = AVPlayerItem(url: url)
+                
+                player = try AVPlayer(playerItem:playerItem)
+                player!.volume = 1.0
+                NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { notification in
+                    if self.player != nil {
+                        self.player!.seek(to: CMTime.zero)
+                        self.player!.play()
+                    }
+                }
+                player!.play()
+            } catch let error as NSError {
+                self.player = nil
+                print(error.localizedDescription)
+            } catch {
+                print("AVAudioPlayer init failed")
+            }
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        playWikiWiki()
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -111,15 +151,15 @@ class SelectionViewController: UIViewController, GADBannerViewDelegate {
         view.backgroundColor = UIColor(patternImage: UIImage(named: "navajo")!)
         
         mPlayBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.gamepad), iconColor: .white, postfixText: NSLocalizedString("play", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "info")!, forState: .normal, textSize: nil, iconSize: nil)
-
+        
         mRulesBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeBrands(.leanpub), iconColor: .white, postfixText: NSLocalizedString("rules", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "success")!, forState: .normal, textSize: nil, iconSize: nil)
         
         
-                mSettingsBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.cog), iconColor: .white, postfixText: NSLocalizedString("settings", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "secondary")!, forState: .normal, textSize: nil, iconSize: nil)
+        mSettingsBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.cog), iconColor: .white, postfixText: NSLocalizedString("settings", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "secondary")!, forState: .normal, textSize: nil, iconSize: nil)
         
-                      mHighscoresBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.trophy), iconColor: .white, postfixText: NSLocalizedString("highscores", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "warning")!, forState: .normal, textSize: nil, iconSize: nil)
+        mHighscoresBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.trophy), iconColor: .white, postfixText: NSLocalizedString("highscores", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "warning")!, forState: .normal, textSize: nil, iconSize: nil)
         
-                             mQuitBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.signOutAlt), iconColor: .white, postfixText: NSLocalizedString("quit", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "danger")!, forState: .normal, textSize: nil, iconSize: nil)
+        mQuitBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.signOutAlt), iconColor: .white, postfixText: NSLocalizedString("quit", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "danger")!, forState: .normal, textSize: nil, iconSize: nil)
         
         
         
@@ -134,15 +174,15 @@ class SelectionViewController: UIViewController, GADBannerViewDelegate {
         mAdView.load(request)
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

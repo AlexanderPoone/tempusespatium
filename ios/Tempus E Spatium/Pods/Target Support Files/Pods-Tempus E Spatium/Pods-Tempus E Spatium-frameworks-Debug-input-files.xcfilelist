@@ -10,7 +10,6 @@ ${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework
 ${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework
 ${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework
 ${BUILT_PRODUCTS_DIR}/SwiftIcons/SwiftIcons.framework
-${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework
-${BUILT_PRODUCTS_DIR}/Tags/Tags.framework
+${BUILT_PRODUCTS_DIR}/TTGTagCollectionView/TTGTagCollectionView.framework
 ${BUILT_PRODUCTS_DIR}/YLProgressBar/YLProgressBar.framework
 ${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework

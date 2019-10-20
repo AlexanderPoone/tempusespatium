@@ -46,8 +46,7 @@ PODS:
   - SVGKit (2.1.0):
     - CocoaLumberjack (~> 3.0)
   - SwiftIcons (2.3.2)
-  - TagListView (1.4.0)
-  - Tags (0.3.0)
+  - TTGTagCollectionView (1.11.1)
   - YLProgressBar (3.11.0)
 
 DEPENDENCIES:
@@ -62,8 +61,7 @@ DEPENDENCIES:
   - SearchTextField
   - SVGKit (from `https://github.com/SVGKit/SVGKit.git`, branch `3.x`)
   - SwiftIcons (~> 2.3.2)
-  - TagListView (from `https://github.com/ElaWorkshop/TagListView`, branch `master`)
-  - Tags
+  - TTGTagCollectionView
   - YLProgressBar
 
 SPEC REPOS:
@@ -81,7 +79,7 @@ SPEC REPOS:
     - ReachabilitySwift
     - SearchTextField
     - SwiftIcons
-    - Tags
+    - TTGTagCollectionView
     - YLProgressBar
 
 EXTERNAL SOURCES:
@@ -91,9 +89,6 @@ EXTERNAL SOURCES:
   SVGKit:
     :branch: 3.x
     :git: https://github.com/SVGKit/SVGKit.git
-  TagListView:
-    :branch: master
-    :git: https://github.com/ElaWorkshop/TagListView
 
 CHECKOUT OPTIONS:
   Alamofire:
@@ -102,9 +97,6 @@ CHECKOUT OPTIONS:
   SVGKit:
     :commit: 39dd210fd47e3195f57f914354ffd2d0b4b8ff1c
     :git: https://github.com/SVGKit/SVGKit.git
-  TagListView:
-    :commit: cc349b6f2a4bf3c54e2188210ce4f91a3188bf0e
-    :git: https://github.com/ElaWorkshop/TagListView
 
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
@@ -122,10 +114,9 @@ SPEC CHECKSUMS:
   SearchTextField: 40dc3cc57def5a211f263cac263622c163bbc25a
   SVGKit: 8a2fc74258bdb2abb54d3b65f3dd68b0277a9c4d
   SwiftIcons: e652cfd2676441c462ad57b6e92977faf577e590
-  TagListView: eb59223866cc5da14a5f4618ecbcd69640d64eff
-  Tags: a01fe615710345309c141b0101492402907c067b
+  TTGTagCollectionView: 86fcbfa6a7493c9e860b01c2e693cffc8acf6de1
   YLProgressBar: 0c0796a6e9b5e5d5040d15c8911e802b67ccb939
 
-PODFILE CHECKSUM: e8aac6364672d56542cf78509b0c4567a1ae6d8b
+PODFILE CHECKSUM: c9361d136d7bca298eaeb05754a507a64ba80761
 
 COCOAPODS: 1.8.0

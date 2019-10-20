@@ -16,8 +16,7 @@ target 'Tempus E Spatium' do
   pod 'DACircularProgress'
   pod 'YLProgressBar'
   pod 'GoogleMaps'
-  pod 'TagListView', :git => "https://github.com/ElaWorkshop/TagListView", :branch => "master"
-  pod 'Tags'
+  pod 'TTGTagCollectionView'
   pod 'FlagKit'
   
   # Pods for Tempus E Spatium

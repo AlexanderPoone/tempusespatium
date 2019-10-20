@@ -11,7 +11,7 @@ import DropDown
 import Alamofire
 import Ono
 import SearchTextField
-import TagListView
+import TTGTagCollectionView
 import AVFoundation
 import FlagKit
 
@@ -75,7 +75,7 @@ extension String {
     }
 }
 
-class TopicSearcherViewController: UIViewController, TagListViewDelegate {
+class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDelegate {
     
     var beep, swoosh: AVAudioPlayer?
     
@@ -110,13 +110,15 @@ class TopicSearcherViewController: UIViewController, TagListViewDelegate {
     
     @IBOutlet weak var mArticlesCoveredLbl: UILabel!
     
-    @IBOutlet weak var mTagsView: TagListView!
+    @IBOutlet weak var mTagsView: TTGTextTagCollectionView!
+    
     @IBOutlet weak var mClickOnBadgeLbl: UILabel!
     
     @IBOutlet weak var mLocaleCurrentSelection: LocaleCurrentSelectionWithArrowView!
     
     @IBOutlet weak var mReturnBtn: UIButton!
     
+    private let mPreferences = UserDefaults.standard
     
     private var mLocaleDropDown:DropDown?
     
@@ -124,8 +126,23 @@ class TopicSearcherViewController: UIViewController, TagListViewDelegate {
     
     private var mQuestionLang:String?
     
+    //    func textTagCollectionView(_ textTagCollectionView: TTGTextTagCollectionView!, updateContentSize contentSize: CGSize) {
+    //
+    //    }
+    
+    func textTagCollectionView(_ textTagCollectionView: TTGTextTagCollectionView!, didTapTag tagText: String!, at index: UInt, selected: Bool, tagConfig config: TTGTextTagConfig!) {
+        let url = "https://en.wikipedia.org/wiki/\(tagText!.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)"
+        performSegue(withIdentifier: "popUpLearn", sender: url)
+    }
+    
+    //    func textTagCollectionView(_ textTagCollectionView: TTGTextTagCollectionView!, canTapTag tagText: String!, at index: UInt, currentSelected: Bool, tagConfig config: TTGTextTagConfig!) -> Bool {
+    //
+    //    }
+    
     func english() {
         mTopicAutocomplete.filterStrings([])
+        self.mTopics.removeAll(keepingCapacity: true)
+        
         AF.request("https://en.wikipedia.org/wiki/Wikipedia:Lists_of_popular_pages_by_WikiProject")
             .validate(statusCode: 200..<300)
             //            .validate(contentType: ["application/json"])
@@ -133,18 +150,11 @@ class TopicSearcherViewController: UIViewController, TagListViewDelegate {
                 switch response.result {
                 case .success(let value):
                     print("asdfsuccess")
-                    //                    guard let url = Bundle.main.url(forResource: "nutrition", withExtension: "html"),
-                    //                        let data = try? Data(contentsOf: url) else
-                    //                    {
-                    //                        fatalError("Missing resource: nutrition.xml")
-                    //                    }
-                    //
                     do {
                         let document = try ONOXMLDocument(data: response.data)
                         document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[1]/a") { (element, _, _) in
                             
                             var ele:String = element.stringValue!
-                            print(ele)
                             ele.removingRegexMatches("Wikipedia:(WikiProject )?")
                             ele.removingRegexMatches("/(Popular|Most-viewed|Favourite) pages")
                             ele.removingRegexMatches("/(Popular|Article hits)")
@@ -153,13 +163,15 @@ class TopicSearcherViewController: UIViewController, TagListViewDelegate {
                             self.mTopics[ele.replacingOccurrences(of: "/", with: " > ")] = (element.value(forAttribute: "href") as! String)
                             
                         }
-                        self.mTopicAutocomplete.startSuggestingImmediately = true
-                        self.mTopicAutocomplete.startVisible = true
-                        self.mTopicAutocomplete.startVisibleWithoutInteraction = true
+                        
+                        let keys = Array(self.mTopics.keys)
+                        print(keys)
+                        self.mTopicAutocomplete.filterStrings(keys)
+                        
                         self.mTopicAutocomplete.itemSelectionHandler = { filteredResults, itemPosition in
                             let item = filteredResults[itemPosition]
                             self.mTopicAutocomplete.text = item.title
-                            
+                            print("https://en.wikipedia.org\(self.mTopics[item.title]!)")
                             AF.request("https://en.wikipedia.org\(self.mTopics[item.title]!)")
                                 .validate(statusCode: 200..<300)
                                 //            .validate(contentType: ["application/json"])
@@ -169,16 +181,16 @@ class TopicSearcherViewController: UIViewController, TagListViewDelegate {
                                         print("fdsasucc")
                                         var articlesIncluded:[String] = []
                                         do {
-                                        let document = try ONOXMLDocument(data: response.data)
-                                        document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[2]/a") { (element, _, _) in
-                                            print(element.stringValue!)
-                                            articlesIncluded.append(element.stringValue!)
+                                            let document = try ONOXMLDocument(data: response.data)
+                                            document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[2]/a") { (element, _, _) in
+                                                articlesIncluded.append(element.stringValue!)
                                             }
                                         } catch {
                                             print("Oh no!")
                                         }
-//                                        self.mTagsView.removeAllTags()
-//                                        self.mTagsView.addTags(articlesIncluded)
+                                        print(articlesIncluded)
+                                        self.mTagsView.removeAllTags()
+                                        self.mTagsView.addTags(articlesIncluded)
                                     case .failure(let error):
                                         print("rewqerror")
                                         print(error)
@@ -188,24 +200,6 @@ class TopicSearcherViewController: UIViewController, TagListViewDelegate {
                     } catch {
                         print("Oh no!")
                     }
-                    
-                    self.mTopicAutocomplete.filterStrings(Array(self.mTopics.keys))
-                    
-                    //                    let document = try ONOXMLDocument(data: response.data) {
-                    //
-                    //                    //document.rootElement.tag
-                    //
-                    //                    for element in document.rootElement.children.first?.children ?? [] {
-                    //                        let nutrient = element.tag
-                    //                        let amount = element.numberValue!
-                    //                        let unit = element.attributes["units"]!
-                    //
-                    //                        print("- \(amount)\(unit) \(nutrient)")
-                    //                    }
-                    
-                    //                    document.enumerateElements(withXPath: "//food/name") { (element, _, _) in
-                    //                        print(element)
-                //                    }
                 case .failure(let error):
                     print("asdferror")
                     print(error)
@@ -237,11 +231,22 @@ class TopicSearcherViewController: UIViewController, TagListViewDelegate {
         mLocaleDropDown!.show()
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         beep = setupAudioPlayer(withFile: "beep_space_button", type: "wav")
         swoosh = setupAudioPlayer(withFile: "space_swoosh", type: "wav")
+        
+        let textTagConfig = TTGTextTagConfig()
+        textTagConfig.cornerRadius = 15
+        textTagConfig.backgroundColor = UIColor(named: "MidnightBlue")!
+        textTagConfig.selectedCornerRadius = 15
+        textTagConfig.selectedBackgroundColor = UIColor(named: "MidnightBlue")!
+        
+        mTagsView!.defaultConfig = textTagConfig
+        mTagsView!.delegate = self
         
         mResetBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.undo), iconColor: .white, postfixText: NSLocalizedString("reset", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "danger")!, forState: .normal, textSize: nil, iconSize: nil)
         mSubmitAndPlayBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.gamepad), iconColor: .white, postfixText: NSLocalizedString("submit_and_play", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "info")!, forState: .normal, textSize: nil, iconSize: nil)
@@ -250,14 +255,18 @@ class TopicSearcherViewController: UIViewController, TagListViewDelegate {
         
         mSelectAnyHeader.text = NSLocalizedString("topic_searcher_heading", comment: "")
         
+        mTopicAutocomplete.startSuggestingImmediately = true
+        mTopicAutocomplete.startVisible = true
+        mTopicAutocomplete.startVisibleWithoutInteraction = true
         mTopicAutocomplete.placeholder = NSLocalizedString("enter_keyword", comment: "")
+        //        mTopicAutocomplete.maxNumberOfResults = 5
         
-        mTopicAutocomplete.filterStrings(["Cymru", "Alba", "Eire", "England"])
+        //        mTopicAutocomplete.filterStrings(["Cymru", "Alba", "Eire", "England"])
         
-        mTagsView.addTags(["Cardiff", "Glasgow", "Cork", "Canterbury"])
-        mTagsView.textFont = UIFont.systemFont(ofSize: 24)
-        mTagsView.cornerRadius = 15
-        mTagsView.delegate = self
+        //        mTagsView.addTags(["Cardiff", "Glasgow", "Cork", "Canterbury"])
+        //        mTagsView.textFont = UIFont.systemFont(ofSize: 24)
+        //        mTagsView.cornerRadius = 15
+        //        mTagsView.delegate = self
         
         mLocaleDropDown = DropDown()
         
@@ -312,10 +321,72 @@ class TopicSearcherViewController: UIViewController, TagListViewDelegate {
         singleTap.cancelsTouchesInView = false
         mLocaleCurrentSelection.addGestureRecognizer(singleTap)
         
-//        mLocaleDropDown!.show()
+        //        mLocaleDropDown!.show()
         
-        english()
-        mQuestionLang = "GB"
+        
+        let savedLocale = self.mPreferences.string(forKey: "PREF_LOCALE")
+        if savedLocale != nil {
+            switch savedLocale! {
+            case "en":
+                let item = "English"
+                self.mLocaleCurrentSelection.mSelection.text = item
+                self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
+                let iso = langs[item]![1]
+                let flag = Flag(countryCode: iso)!
+                self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
+                english()
+            case "ca":
+                let item = "català"
+                self.mLocaleCurrentSelection.mSelection.text = item
+                self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
+                let iso = langs[item]![1]
+                let flag = Flag(countryCode: iso)!
+                self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
+                catala()
+            case "fr":
+                let item = "français"
+                self.mLocaleCurrentSelection.mSelection.text = item
+                self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
+                let iso = langs[item]![1]
+                let flag = Flag(countryCode: iso)!
+                self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
+                francais()
+            case "es":
+                let item = "español"
+                self.mLocaleCurrentSelection.mSelection.text = item
+                self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
+                let iso = langs[item]![1]
+                let flag = Flag(countryCode: iso)!
+                self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
+                espanol()
+            case "de":
+                let item = "Deutsch"
+                self.mLocaleCurrentSelection.mSelection.text = item
+                self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
+                let iso = langs[item]![1]
+                let flag = Flag(countryCode: iso)!
+                self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
+                deutsch()
+            case "uk":
+                let item = "Українська"
+                self.mLocaleCurrentSelection.mSelection.text = item
+                self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
+                let iso = langs[item]![1]
+                let flag = Flag(countryCode: iso)!
+                self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
+                ukraiynska()
+            default:
+                break
+            }
+        } else {
+            let item = "English"
+            self.mLocaleCurrentSelection.mSelection.text = item
+            self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
+            let iso = langs[item]![1]
+            let flag = Flag(countryCode: iso)!
+            self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
+            english()
+        }
     }
     
     
@@ -337,9 +408,9 @@ class TopicSearcherViewController: UIViewController, TagListViewDelegate {
         }
     }
     
-    func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
-        let url = "https://en.wikipedia.org/wiki/\(title.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)"
-        performSegue(withIdentifier: "popUpLearn", sender: url)
-    }
+    //    func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
+    //        let url = "https://en.wikipedia.org/wiki/\(title.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)"
+    //        performSegue(withIdentifier: "popUpLearn", sender: url)
+    //    }
     
 }

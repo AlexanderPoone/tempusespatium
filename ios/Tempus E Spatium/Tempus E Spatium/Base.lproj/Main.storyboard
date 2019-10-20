@@ -82,6 +82,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="mRulesBtnClicked" destination="vZD-LU-36U" eventType="touchUpInside" id="hzZ-Ed-9gc"/>
+                                                    <segue destination="dbP-aI-9J0" kind="presentation" id="u7i-Pf-mtY"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eST-H6-VZP">
@@ -117,6 +118,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="mHighscoresBtnClicked" destination="vZD-LU-36U" eventType="touchUpInside" id="aML-IJ-K2k"/>
+                                                    <segue destination="ILn-7d-NsC" kind="presentation" id="yhJ-Ni-QFe"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9L-lE-Le6">
@@ -214,6 +216,7 @@ Squirrel Monkey</string>
         <!--Navigation Controller-->
         <scene sceneID="USz-hy-raF">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a6E-h7-8dS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="qHa-Xe-Rt1" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qtp-92-fMc">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -223,7 +226,6 @@ Squirrel Monkey</string>
                         <segue destination="gG3-Tq-9Ja" kind="relationship" relationship="rootViewController" id="KfI-WA-6K4"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a6E-h7-8dS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2894" y="795"/>
         </scene>
@@ -420,6 +422,53 @@ Squirrel Monkey</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfP-Mc-vtU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1986.9565217391305" y="794.86607142857144"/>
+        </scene>
+        <!--Highscores Dialog View Controller-->
+        <scene sceneID="3WK-Gi-Fqy">
+            <objects>
+                <viewController id="ILn-7d-NsC" customClass="HighscoresDialogViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="VTf-HQ-sQ5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="WCZ-zb-4GP"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rtw-wS-8Ph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1335" y="841"/>
+        </scene>
+        <!--Rules Dialog View Controller-->
+        <scene sceneID="faH-XE-rmK">
+            <objects>
+                <viewController id="dbP-aI-9J0" customClass="RulesDialogViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cZb-aK-r9X">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rules" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpE-mA-1Eb">
+                                <rect key="frame" x="0.0" y="-17" width="414" height="41"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" name="PapayaWhip"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="Sienna"/>
+                        <constraints>
+                            <constraint firstItem="xpE-mA-1Eb" firstAttribute="leading" secondItem="cZb-aK-r9X" secondAttribute="leading" id="ION-Ih-Qiv"/>
+                            <constraint firstAttribute="trailing" secondItem="xpE-mA-1Eb" secondAttribute="trailing" id="Ljv-c3-nBb"/>
+                            <constraint firstItem="xpE-mA-1Eb" firstAttribute="centerX" secondItem="cZb-aK-r9X" secondAttribute="centerX" id="iuy-Le-wAK"/>
+                            <constraint firstItem="xpE-mA-1Eb" firstAttribute="top" secondItem="cZb-aK-r9X" secondAttribute="top" constant="24" id="ylg-Ga-Mm6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Uly-IX-5R9"/>
+                    </view>
+                    <connections>
+                        <outlet property="mRulesLbl" destination="xpE-mA-1Eb" id="nV4-1r-tcy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tm3-ly-gex" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-552.17391304347825" y="1383.4821428571429"/>
         </scene>
         <!--Topic Searcher View Controller-->
         <scene sceneID="Kq6-bY-cfv">
@@ -1409,6 +1458,7 @@ Squirrel Monkey</string>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="mRulesBtnClicked" destination="vZD-LU-36U" eventType="touchUpInside" id="xsf-YZ-B5m"/>
+                                            <segue destination="dbP-aI-9J0" kind="presentation" id="hTS-oN-Biy"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLi-Jx-6sf">
@@ -2176,7 +2226,7 @@ Squirrel Monkey</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HlQ-hi-eW6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-626.08695652173913" y="860.49107142857144"/>
+            <point key="canvasLocation" x="-442" y="840"/>
         </scene>
         <!--De Keyboard View Controller-->
         <scene sceneID="wTG-VH-T7O">
@@ -2576,6 +2626,9 @@ Squirrel Monkey</string>
         <namedColor name="PapayaWhip">
             <color red="1" green="0.93725490196078431" blue="0.83529411764705885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="Sienna">
+            <color red="0.62745098039215685" green="0.32156862745098042" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="UbuntuOrange">
             <color red="0.8666666666666667" green="0.28235294117647058" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -2597,6 +2650,7 @@ Squirrel Monkey</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7qv-2q-bdO"/>
+        <segue reference="u7i-Pf-mtY"/>
         <segue reference="K62-qO-rxu"/>
     </inferredMetricsTieBreakers>
 </document>

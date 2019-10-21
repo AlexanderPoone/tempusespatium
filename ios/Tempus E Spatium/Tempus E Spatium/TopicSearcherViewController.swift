@@ -698,7 +698,13 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                 self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
                 ukraiynska()
             default:
-                break
+                let item = "English"
+                self.mLocaleCurrentSelection.mSelection.text = item
+                self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
+                let iso = langs[item]![1]
+                let flag = Flag(countryCode: iso)!
+                self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
+                english()
             }
         } else {
             let item = "English"

@@ -18,6 +18,7 @@ target 'Tempus E Spatium' do
   pod 'GoogleMaps'
   pod 'TTGTagCollectionView'
   pod 'FlagKit'
+  pod 'FMDB'
   
   # Pods for Tempus E Spatium
 

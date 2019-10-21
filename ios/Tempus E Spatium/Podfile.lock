@@ -6,6 +6,9 @@ PODS:
   - DACircularProgress (2.3.1)
   - DropDown (2.3.13)
   - FlagKit (2.2)
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
   - Google-Mobile-Ads-SDK (7.51.0):
     - GoogleAppMeasurement (~> 6.0)
   - GoogleAppMeasurement (6.1.3):
@@ -54,6 +57,7 @@ DEPENDENCIES:
   - DACircularProgress
   - DropDown
   - FlagKit
+  - FMDB
   - Google-Mobile-Ads-SDK
   - GoogleMaps
   - Ono
@@ -70,6 +74,7 @@ SPEC REPOS:
     - DACircularProgress
     - DropDown
     - FlagKit
+    - FMDB
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleMaps
@@ -104,6 +109,7 @@ SPEC CHECKSUMS:
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   FlagKit: eca7dc89064b0c986302ba9acefad1bf80a435b1
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   Google-Mobile-Ads-SDK: 5c625884f0788d22b48e3bb641e1d65c673dc7a5
   GoogleAppMeasurement: 434cc7be25e71dc04b8d0e3079125127b330e84a
   GoogleMaps: 32ca02de09de357a10ac773f2c70f1986751392d
@@ -117,6 +123,6 @@ SPEC CHECKSUMS:
   TTGTagCollectionView: 86fcbfa6a7493c9e860b01c2e693cffc8acf6de1
   YLProgressBar: 0c0796a6e9b5e5d5040d15c8911e802b67ccb939
 
-PODFILE CHECKSUM: c9361d136d7bca298eaeb05754a507a64ba80761
+PODFILE CHECKSUM: 617890e426d0d81361d676e11157ac37af10dec8
 
 COCOAPODS: 1.8.0

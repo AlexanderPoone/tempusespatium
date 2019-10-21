@@ -11,6 +11,7 @@
 		4B2BE09C235C3604009E6765 /* PauseDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2BE09B235C3604009E6765 /* PauseDialogViewController.swift */; };
 		4B2BE09E235CA483009E6765 /* RulesDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2BE09D235CA482009E6765 /* RulesDialogViewController.swift */; };
 		4B2BE0A0235CA49B009E6765 /* HighscoresDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2BE09F235CA49B009E6765 /* HighscoresDialogViewController.swift */; };
+		4B2BE0A2235DB7A6009E6765 /* HighscoresDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2BE0A1235DB7A6009E6765 /* HighscoresDBManager.swift */; };
 		4B6D96D72354C89B00D0DA0F /* player_2_wins.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4B6D96D52354C89A00D0DA0F /* player_2_wins.gif */; };
 		4B6D96D82354C89B00D0DA0F /* player_1_wins.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4B6D96D62354C89B00D0DA0F /* player_1_wins.gif */; };
 		4B6D96DA2354D52E00D0DA0F /* EndgameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6D96D92354D52E00D0DA0F /* EndgameViewController.swift */; };
@@ -73,6 +74,7 @@
 		4B2BE09B235C3604009E6765 /* PauseDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseDialogViewController.swift; sourceTree = "<group>"; };
 		4B2BE09D235CA482009E6765 /* RulesDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesDialogViewController.swift; sourceTree = "<group>"; };
 		4B2BE09F235CA49B009E6765 /* HighscoresDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoresDialogViewController.swift; sourceTree = "<group>"; };
+		4B2BE0A1235DB7A6009E6765 /* HighscoresDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoresDBManager.swift; sourceTree = "<group>"; };
 		4B6D96D52354C89A00D0DA0F /* player_2_wins.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = player_2_wins.gif; sourceTree = "<group>"; };
 		4B6D96D62354C89B00D0DA0F /* player_1_wins.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = player_1_wins.gif; sourceTree = "<group>"; };
 		4B6D96D92354D52E00D0DA0F /* EndgameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndgameViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				4BA5803F234DA7A900BA6314 /* fr_KeyboardViewController.swift */,
 				4BA58041234DA7CA00BA6314 /* es_KeyboardViewController.swift */,
 				4B7F5AB423545EBF003C88A4 /* de_KeyboardViewController.swift */,
+				4B2BE0A1235DB7A6009E6765 /* HighscoresDBManager.swift */,
 				4BFE5189234730A000A5574C /* SceneDelegate.swift */,
 				4BFE518B234730A000A5574C /* ViewController.swift */,
 				4BFE518D234730A000A5574C /* Main.storyboard */,
@@ -554,6 +557,7 @@
 				4BFE5188234730A000A5574C /* AppDelegate.swift in Sources */,
 				4B756D7B2349D468005CD85A /* TopicSearcherViewController.swift in Sources */,
 				4BA5803E234DA78D00BA6314 /* en_KeyboardViewController.swift in Sources */,
+				4B2BE0A2235DB7A6009E6765 /* HighscoresDBManager.swift in Sources */,
 				4B756D792349D43E005CD85A /* Round1ViewController.swift in Sources */,
 				4B6D96DA2354D52E00D0DA0F /* EndgameViewController.swift in Sources */,
 				4B756D7D2349D741005CD85A /* PrefsTableViewController.swift in Sources */,

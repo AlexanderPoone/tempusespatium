@@ -15,6 +15,9 @@ class HighscoresDialogViewController: UIViewController {
     
     @IBOutlet weak var mClearBtn: UIButton!
     
+    @IBAction func mClearHighscores() {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

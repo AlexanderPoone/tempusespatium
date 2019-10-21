@@ -34,6 +34,8 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
     @IBOutlet weak var mAdView: GADBannerView!
     @IBOutlet weak var mAdView2: GADBannerView!
     
+    private let mPreferences = UserDefaults.standard
+    
     /// Tells the delegate an ad request loaded an ad.
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
         print("adViewDidReceiveAd")
@@ -90,7 +92,7 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
         mAdView2.adSize = GADAdSize(size: CGSize(width: 300, height: 250), flags: 0)
         mAdView2.load(request)
         
-        let langs:[String:[String]] = ["正體中文": ["Chinese (Authentic)", "TW"], "English (UK)": ["English", "GB"], "català": ["Catalan", "AD"], "français": ["French","FR"], "Deutsch": ["German", "DE"], "español": ["Spanish","ES"], "日本語": ["Japanese", "JP"], "Українська": ["Ukrainian","UA"]]
+        let langs:[String:[String]] = ["正體中文": ["Chinese (Authentic)", "TW", "zh"], "English (UK)": ["English", "GB", "en"], "català": ["Catalan", "AD", "ca"], "français": ["French","FR", "fr"], "Deutsch": ["German", "DE", "de"], "español": ["Spanish","ES", "es"], "日本語": ["Japanese", "JP", "ja"], "Українська": ["Ukrainian","UA", "uk"]]
         
         mLocaleDropDown = DropDown()
         mLocaleDropDown!.dataSource = Array(langs.keys)
@@ -104,6 +106,8 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
             cell.mSubtitle.text = langs[item]![0]
             let flag = Flag(countryCode: langs[item]![1])!
             cell.mFlag.image = flag.originalImage
+            
+            self.mPreferences.set(langs[item]![2], forKey: "PREF_LOCALE")
         }
         
         mLocaleDropDown!.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -157,6 +161,7 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
             
             self.mDifficultySubtitle1.text = item
             self.mDifficultySubtitle2.text = difficulties[item]
+            self.mPreferences.set(index, forKey: "PREF_DIFFICULTY")
             
         }
         
@@ -178,6 +183,7 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
             cell.mSubtitle.text = item
             
             cell.mFlag.backgroundColor = UIColor(named: item)!
+            self.mPreferences.set(item, forKey: "PREF_PLAYER_1_THEME")
         }
         
         mPlayer1ThemeDropDown!.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -200,6 +206,7 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
             cell.mSubtitle.text = item
             
             cell.mFlag.backgroundColor = UIColor(named: item)!
+            self.mPreferences.set(item, forKey: "PREF_PLAYER_2_THEME")
         }
         
         mPlayer2ThemeDropDown!.selectionAction = { [unowned self] (index: Int, item: String) in

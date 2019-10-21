@@ -635,6 +635,8 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
         
         
         mLocaleDropDown!.textColor = .white
+        mLocaleDropDown!.selectedTextColor = UIColor(named: "Amber")!
+
         
         let singleTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(mShowDropDown))
         singleTap.numberOfTapsRequired = 1

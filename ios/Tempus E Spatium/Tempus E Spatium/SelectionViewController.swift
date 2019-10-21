@@ -165,7 +165,7 @@ class SelectionViewController: UIViewController, GADBannerViewDelegate {
         
         let request = GADRequest()
         
-        mAdView.adUnitID = "ca-app-pub-9627209153774793/9924537425" //ca-app-pub-9627209153774793/2302339919"
+        mAdView.adUnitID = "ca-app-pub-9627209153774793/5575136404" //ca-app-pub-9627209153774793/2302339919"
         mAdView.rootViewController = self
         mAdView.delegate = self
         //        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["f040a2fc154731455d1ae667f42eb08c"]

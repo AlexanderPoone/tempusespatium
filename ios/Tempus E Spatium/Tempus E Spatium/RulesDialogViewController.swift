@@ -12,11 +12,14 @@ import SwiftIcons
 class RulesDialogViewController: UIViewController {
 
     @IBOutlet weak var mRulesLbl: UILabel!
+    
+    @IBOutlet weak var mRulesTxt: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mRulesLbl!.setIcon(prefixText: "", prefixTextFont: mRulesLbl.font!, prefixTextColor: .white, icon: .fontAwesomeBrands(.leanpub), iconColor: .white, postfixText: NSLocalizedString("rules", comment: ""), postfixTextFont: mRulesLbl.font!, postfixTextColor: .white, iconSize: nil)
-        
+        mRulesTxt.text = NSLocalizedString("rules_tirade", comment: "")
     }
     
 

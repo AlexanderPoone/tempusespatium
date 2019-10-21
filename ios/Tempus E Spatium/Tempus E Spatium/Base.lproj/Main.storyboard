@@ -170,6 +170,9 @@
                                     <constraint firstAttribute="width" constant="320" id="2Vm-rq-May"/>
                                     <constraint firstAttribute="height" constant="50" id="Dc5-JG-XD3"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="adUnitID" value="ca-app-pub-9627209153774793/5575136404"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKP-L3-gec">
                                 <rect key="frame" x="297" y="828" width="117" height="34"/>
@@ -254,6 +257,9 @@ Squirrel Monkey</string>
                                                         <constraint firstAttribute="width" constant="320" id="OkE-RB-IRc"/>
                                                         <constraint firstAttribute="height" constant="50" id="llW-9w-lcm"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="adUnitID" value="ca-app-pub-9627209153774793/8995151446"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" name="MidAubergine"/>
@@ -284,7 +290,7 @@ Squirrel Monkey</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English (UK)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLO-uy-HcV">
-                                                    <rect key="frame" x="16" y="26" width="85" height="18"/>
+                                                    <rect key="frame" x="16" y="26" width="398" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -292,6 +298,7 @@ Squirrel Monkey</string>
                                             </subviews>
                                             <color key="backgroundColor" name="MidAubergine"/>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="JLO-uy-HcV" secondAttribute="trailing" id="Cpr-O5-pI5"/>
                                                 <constraint firstItem="scr-Pk-jYb" firstAttribute="leading" secondItem="UUE-25-7Tf" secondAttribute="leading" constant="16" id="Ooh-GJ-LNF"/>
                                                 <constraint firstItem="scr-Pk-jYb" firstAttribute="top" secondItem="UUE-25-7Tf" secondAttribute="top" id="Osu-Nf-r6c"/>
                                                 <constraint firstAttribute="bottom" secondItem="JLO-uy-HcV" secondAttribute="bottom" id="Z9c-Mo-QZV"/>
@@ -312,8 +319,8 @@ Squirrel Monkey</string>
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="60 seconds for, 20 seconds for" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAs-kB-eaV">
-                                                    <rect key="frame" x="16" y="46" width="214" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="60 seconds for, 20 seconds for" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAs-kB-eaV">
+                                                    <rect key="frame" x="16" y="46" width="398" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -336,6 +343,7 @@ Squirrel Monkey</string>
                                                 <constraint firstItem="Wve-IK-KEI" firstAttribute="leading" secondItem="5iV-Dw-pFj" secondAttribute="leading" constant="16" id="1Of-Zk-duc"/>
                                                 <constraint firstItem="lgf-1f-4S3" firstAttribute="top" secondItem="Wve-IK-KEI" secondAttribute="bottom" constant="2" id="1vV-KW-ae2"/>
                                                 <constraint firstAttribute="bottom" secondItem="sAs-kB-eaV" secondAttribute="bottom" id="45r-4E-H1N"/>
+                                                <constraint firstAttribute="trailing" secondItem="sAs-kB-eaV" secondAttribute="trailing" id="R84-L4-cgl"/>
                                                 <constraint firstItem="lgf-1f-4S3" firstAttribute="leading" secondItem="5iV-Dw-pFj" secondAttribute="leading" constant="16" id="SOm-Ny-fJS"/>
                                                 <constraint firstItem="sAs-kB-eaV" firstAttribute="top" secondItem="lgf-1f-4S3" secondAttribute="bottom" constant="2" id="UDh-di-2I0"/>
                                                 <constraint firstItem="lgf-1f-4S3" firstAttribute="top" secondItem="Wve-IK-KEI" secondAttribute="bottom" constant="2" id="clW-5G-HeR"/>
@@ -353,7 +361,7 @@ Squirrel Monkey</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ubuntu Orange" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2HN-BC-XcQ">
-                                                    <rect key="frame" x="16" y="26" width="106" height="18"/>
+                                                    <rect key="frame" x="16" y="26" width="398" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -370,6 +378,7 @@ Squirrel Monkey</string>
                                                 <constraint firstAttribute="bottom" secondItem="2HN-BC-XcQ" secondAttribute="bottom" id="2do-ow-zeN"/>
                                                 <constraint firstItem="2HN-BC-XcQ" firstAttribute="leading" secondItem="22u-LB-cJH" secondAttribute="leading" constant="16" id="6LK-hU-e1G"/>
                                                 <constraint firstItem="2HN-BC-XcQ" firstAttribute="top" secondItem="PdB-Yz-JVB" secondAttribute="bottom" constant="2" id="M1N-4e-ec0"/>
+                                                <constraint firstAttribute="trailing" secondItem="2HN-BC-XcQ" secondAttribute="trailing" id="PvN-qf-jnT"/>
                                                 <constraint firstItem="2HN-BC-XcQ" firstAttribute="top" secondItem="PdB-Yz-JVB" secondAttribute="bottom" constant="2" id="UjE-OF-b3N"/>
                                                 <constraint firstItem="PdB-Yz-JVB" firstAttribute="leading" secondItem="22u-LB-cJH" secondAttribute="leading" constant="16" id="UzU-Nd-trG"/>
                                                 <constraint firstItem="PdB-Yz-JVB" firstAttribute="top" secondItem="22u-LB-cJH" secondAttribute="top" id="VHS-Vg-RFU"/>
@@ -385,7 +394,7 @@ Squirrel Monkey</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canary Yellow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hef-Qm-ilx">
-                                                    <rect key="frame" x="16" y="26" width="96" height="18"/>
+                                                    <rect key="frame" x="16" y="26" width="398" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -400,11 +409,38 @@ Squirrel Monkey</string>
                                             <color key="backgroundColor" name="MidAubergine"/>
                                             <constraints>
                                                 <constraint firstItem="CWb-Af-JlZ" firstAttribute="top" secondItem="GkF-Hw-V8N" secondAttribute="top" id="9Bk-6J-X8C"/>
+                                                <constraint firstAttribute="trailing" secondItem="hef-Qm-ilx" secondAttribute="trailing" id="Azy-pw-66h"/>
                                                 <constraint firstItem="CWb-Af-JlZ" firstAttribute="leading" secondItem="GkF-Hw-V8N" secondAttribute="leading" constant="16" id="Xvw-jh-Dnz"/>
                                                 <constraint firstItem="hef-Qm-ilx" firstAttribute="top" secondItem="CWb-Af-JlZ" secondAttribute="bottom" constant="2" id="ev6-B5-dsd"/>
                                                 <constraint firstItem="hef-Qm-ilx" firstAttribute="top" secondItem="CWb-Af-JlZ" secondAttribute="bottom" constant="2" id="jCI-0M-tEC"/>
                                                 <constraint firstItem="hef-Qm-ilx" firstAttribute="leading" secondItem="GkF-Hw-V8N" secondAttribute="leading" constant="16" id="lpI-FL-af3"/>
                                                 <constraint firstAttribute="bottom" secondItem="hef-Qm-ilx" secondAttribute="bottom" id="omR-Kt-D0n"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="MidAubergine"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="g19-34-Dk8">
+                                        <rect key="frame" x="0.0" y="438.5" width="414" height="250"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g19-34-Dk8" id="m9c-sQ-Uq6">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ig1-3h-P4J" customClass="GADBannerView">
+                                                    <rect key="frame" x="57" y="0.0" width="300" height="250"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="300" id="5hA-Ky-M5a"/>
+                                                        <constraint firstAttribute="height" constant="250" id="rep-fc-yYv"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" name="MidAubergine"/>
+                                            <constraints>
+                                                <constraint firstItem="ig1-3h-P4J" firstAttribute="centerY" secondItem="m9c-sQ-Uq6" secondAttribute="centerY" id="CrY-vt-5Fh"/>
+                                                <constraint firstItem="ig1-3h-P4J" firstAttribute="centerX" secondItem="m9c-sQ-Uq6" secondAttribute="centerX" id="Dge-xa-8jN"/>
+                                                <constraint firstItem="ig1-3h-P4J" firstAttribute="top" secondItem="m9c-sQ-Uq6" secondAttribute="top" id="OzQ-eT-ZQw"/>
+                                                <constraint firstAttribute="bottom" secondItem="ig1-3h-P4J" secondAttribute="bottom" id="P3D-Pv-oKZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="MidAubergine"/>
@@ -419,11 +455,17 @@ Squirrel Monkey</string>
                     </tableView>
                     <navigationItem key="navigationItem" id="1kZ-LJ-nHR"/>
                     <connections>
+                        <outlet property="mAdView" destination="jSZ-C9-RJN" id="dxp-GN-JCC"/>
+                        <outlet property="mAdView2" destination="ig1-3h-P4J" id="Nnn-l8-TZD"/>
                         <outlet property="mDifficultySubtitle1" destination="lgf-1f-4S3" id="HX0-R9-9m3"/>
                         <outlet property="mDifficultySubtitle2" destination="sAs-kB-eaV" id="jKf-76-rqe"/>
                         <outlet property="mDifficultyTitle" destination="Wve-IK-KEI" id="Z5C-yB-zlr"/>
                         <outlet property="mLocaleSubtitle" destination="JLO-uy-HcV" id="NrJ-Lx-LOL"/>
                         <outlet property="mLocaleTitle" destination="scr-Pk-jYb" id="LSa-Vq-fjT"/>
+                        <outlet property="mPlayer1ThemeSubtitle" destination="2HN-BC-XcQ" id="mQH-51-9Ru"/>
+                        <outlet property="mPlayer1ThemeTitle" destination="PdB-Yz-JVB" id="4uT-FE-jYc"/>
+                        <outlet property="mPlayer2ThemeSubtitle" destination="hef-Qm-ilx" id="TV7-Ll-tkp"/>
+                        <outlet property="mPlayer2ThemeTitle" destination="CWb-Af-JlZ" id="wIh-Go-NKS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfP-Mc-vtU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -444,6 +486,17 @@ Squirrel Monkey</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oyq-F2-sKb">
+                                <rect key="frame" x="274" y="283" width="36" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Clear"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -454,6 +507,7 @@ Squirrel Monkey</string>
                         <viewLayoutGuide key="safeArea" id="WCZ-zb-4GP"/>
                     </view>
                     <connections>
+                        <outlet property="mClearBtn" destination="Oyq-F2-sKb" id="CAu-cc-iu1"/>
                         <outlet property="mHighscoresLbl" destination="h5v-u7-vWq" id="P19-cE-ZqM"/>
                     </connections>
                 </viewController>
@@ -466,27 +520,41 @@ Squirrel Monkey</string>
             <objects>
                 <viewController id="dbP-aI-9J0" customClass="RulesDialogViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cZb-aK-r9X">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="409"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rules" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpE-mA-1Eb">
-                                <rect key="frame" x="0.0" y="-17" width="414" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rules" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpE-mA-1Eb">
+                                <rect key="frame" x="0.0" y="24" width="414" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="ujD-gS-dq4"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" name="PapayaWhip"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorum ipsum dolor sit" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28K-gl-nR0">
+                                <rect key="frame" x="4" y="69" width="406" height="739"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" name="PapayaWhip"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" name="Sienna"/>
                         <constraints>
+                            <constraint firstItem="28K-gl-nR0" firstAttribute="top" secondItem="xpE-mA-1Eb" secondAttribute="bottom" constant="4" id="5YX-0w-QAC"/>
                             <constraint firstItem="xpE-mA-1Eb" firstAttribute="leading" secondItem="cZb-aK-r9X" secondAttribute="leading" id="ION-Ih-Qiv"/>
                             <constraint firstAttribute="trailing" secondItem="xpE-mA-1Eb" secondAttribute="trailing" id="Ljv-c3-nBb"/>
                             <constraint firstItem="xpE-mA-1Eb" firstAttribute="centerX" secondItem="cZb-aK-r9X" secondAttribute="centerX" id="iuy-Le-wAK"/>
+                            <constraint firstItem="Uly-IX-5R9" firstAttribute="trailing" secondItem="28K-gl-nR0" secondAttribute="trailing" constant="4" id="lQV-xE-71U"/>
+                            <constraint firstItem="28K-gl-nR0" firstAttribute="bottom" secondItem="Uly-IX-5R9" secondAttribute="bottom" id="vr4-44-UY4"/>
                             <constraint firstItem="xpE-mA-1Eb" firstAttribute="top" secondItem="cZb-aK-r9X" secondAttribute="top" constant="24" id="ylg-Ga-Mm6"/>
+                            <constraint firstItem="28K-gl-nR0" firstAttribute="leading" secondItem="Uly-IX-5R9" secondAttribute="leading" constant="4" id="z9c-Ys-iA7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Uly-IX-5R9"/>
                     </view>
                     <connections>
-                        <outlet property="mRulesLbl" destination="xpE-mA-1Eb" id="nV4-1r-tcy"/>
+                        <outlet property="mRulesLbl" destination="28K-gl-nR0" id="ugc-0X-kT9"/>
+                        <outlet property="mRulesTxt" destination="28K-gl-nR0" id="Xcw-W1-Ld1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tm3-ly-gex" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2385,7 +2453,7 @@ Squirrel Monkey</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HlQ-hi-eW6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-442" y="840"/>
+            <point key="canvasLocation" x="-478" y="743"/>
         </scene>
         <!--De Keyboard View Controller-->
         <scene sceneID="wTG-VH-T7O">
@@ -2816,7 +2884,7 @@ Squirrel Monkey</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7qv-2q-bdO"/>
-        <segue reference="hTS-oN-Biy"/>
+        <segue reference="u7i-Pf-mtY"/>
         <segue reference="K62-qO-rxu"/>
     </inferredMetricsTieBreakers>
 </document>

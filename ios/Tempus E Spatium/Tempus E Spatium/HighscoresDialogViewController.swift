@@ -13,10 +13,14 @@ class HighscoresDialogViewController: UIViewController {
     
     @IBOutlet weak var mHighscoresLbl: UILabel!
     
+    @IBOutlet weak var mClearBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mHighscoresLbl!.setIcon(prefixText: "", prefixTextFont: mHighscoresLbl.font!, prefixTextColor: UIColor(named: "Sienna")!, icon: .fontAwesomeSolid(.trophy), iconColor: UIColor(named: "Sienna")!, postfixText: NSLocalizedString("highscores", comment: ""), postfixTextFont: mHighscoresLbl.font!, postfixTextColor: UIColor(named: "Sienna")!, iconSize: nil)
+        
+        mClearBtn.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.undo), iconColor: .white, postfixText: NSLocalizedString("reset", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "danger")!, forState: .normal, textSize: nil, iconSize: nil)
         
         let width = UIScreen.main.bounds.size.width
         let height = UIScreen.main.bounds.size.height

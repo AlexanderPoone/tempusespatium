@@ -1312,7 +1312,7 @@ Squirrel Monkey</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rou-R3-x5Q" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="67" width="414" height="795"/>
+                                <rect key="frame" x="0.0" y="67" width="414" height="761"/>
                                 <color key="backgroundColor" name="warning"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which country does this anthem belong to?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Gg-cZ-tVE">
@@ -1321,21 +1321,50 @@ Squirrel Monkey</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMz-HU-W8w">
+                                <rect key="frame" x="348" y="832" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m59-np-uVB">
+                                <rect key="frame" x="298" y="832" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="mResetBtnClicked:" destination="r75-pu-FpH" eventType="touchUpInside" id="SuE-pO-6pz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="rou-R3-x5Q" firstAttribute="leading" secondItem="e6v-td-uW4" secondAttribute="leading" id="0p2-lA-5w4"/>
+                            <constraint firstItem="cMz-HU-W8w" firstAttribute="leading" secondItem="m59-np-uVB" secondAttribute="trailing" constant="4" id="AdH-9H-FhZ"/>
+                            <constraint firstItem="m59-np-uVB" firstAttribute="baseline" secondItem="cMz-HU-W8w" secondAttribute="baseline" id="AlD-Ht-dwg"/>
+                            <constraint firstItem="cMz-HU-W8w" firstAttribute="trailing" secondItem="z7C-s5-0pe" secondAttribute="trailingMargin" id="Bhs-Ur-euv"/>
                             <constraint firstItem="8Gg-cZ-tVE" firstAttribute="centerX" secondItem="z7C-s5-0pe" secondAttribute="centerX" id="ByC-fh-Zib"/>
                             <constraint firstItem="rou-R3-x5Q" firstAttribute="top" secondItem="8Gg-cZ-tVE" secondAttribute="bottom" constant="2" id="Fsl-t2-HBj"/>
                             <constraint firstItem="rou-R3-x5Q" firstAttribute="trailing" secondItem="e6v-td-uW4" secondAttribute="trailing" id="UtD-Fe-1J5"/>
                             <constraint firstItem="8Gg-cZ-tVE" firstAttribute="top" secondItem="e6v-td-uW4" secondAttribute="top" id="YTN-2n-jto"/>
-                            <constraint firstItem="rou-R3-x5Q" firstAttribute="bottom" secondItem="e6v-td-uW4" secondAttribute="bottom" id="asU-AG-m6M"/>
+                            <constraint firstItem="m59-np-uVB" firstAttribute="top" secondItem="rou-R3-x5Q" secondAttribute="bottom" constant="4" id="YqU-yn-pOZ"/>
+                            <constraint firstItem="m59-np-uVB" firstAttribute="bottom" secondItem="e6v-td-uW4" secondAttribute="bottom" id="b8v-i2-CL1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e6v-td-uW4"/>
                     </view>
                     <connections>
                         <outlet property="mInstructions" destination="8Gg-cZ-tVE" id="qCS-ci-aHT"/>
                         <outlet property="mMap" destination="rou-R3-x5Q" id="CBO-ZF-xb4"/>
+                        <outlet property="mResetBtn" destination="m59-np-uVB" id="XzY-7X-JdF"/>
+                        <outlet property="mSubmitBtn" destination="cMz-HU-W8w" id="9gJ-fd-Guc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ei-Mu-Uvx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

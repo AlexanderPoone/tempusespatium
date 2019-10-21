@@ -279,7 +279,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
         mTopicAutocomplete.filterStrings([])
         self.mTopics.removeAll(keepingCapacity: true)
         
-        AF.request("https://en.wikipedia.org/wiki/Wikipedia:Lists_of_popular_pages_by_WikiProject")
+        AF.request("https://fr.wikipedia.org/wiki/Sp%C3%A9cial:ArbreCat%C3%A9gorie/Article_d%27importance_maximum")
             .validate(statusCode: 200..<300)
             //            .validate(contentType: ["application/json"])
             .responseData { response in
@@ -288,15 +288,13 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                     print("asdfsuccess")
                     do {
                         let document = try ONOXMLDocument(data: response.data)
-                        document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[1]/a") { (element, _, _) in
+                        document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div[3]/div/div[2]/div/div/a") { (element, _, _) in
                             
                             var ele:String = element.stringValue!
-                            ele.removingRegexMatches("Wikipedia:(WikiProject )?")
-                            ele.removingRegexMatches("/(Popular|Most-viewed|Favourite) pages")
-                            ele.removingRegexMatches("/(Popular|Article hits)")
-                            ele.removingRegexMatches("( task force| work group)")
-                            ele.removingRegexMatches("Taskforces/(BPH/)?")
-                            self.mTopics[ele.replacingOccurrences(of: "/", with: " > ")] = (element.value(forAttribute: "href") as! String)
+                            ele.removingRegexMatches("Article (du projet |de |d')?")
+                            ele.removingRegexMatches(" d'importance maximum")
+                            ele.removingRegexMatches("( )?sur (l'|l’|le |la |les )?")
+                            self.mTopics[ele] = (element.value(forAttribute: "href") as! String)
                             
                         }
                         
@@ -318,7 +316,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                                         var articlesIncluded:[String] = []
                                         do {
                                             let document = try ONOXMLDocument(data: response.data)
-                                            document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[2]/a") { (element, _, _) in
+                                            document.enumerateElements(withXPath: "//*[@id='mw-pages']/div[2]/div/div/ul/li/a") { (element, _, _) in
                                                 articlesIncluded.append(element.stringValue!)
                                             }
                                         } catch {
@@ -347,7 +345,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
         mTopicAutocomplete.filterStrings([])
         self.mTopics.removeAll(keepingCapacity: true)
         
-        AF.request("https://en.wikipedia.org/wiki/Wikipedia:Lists_of_popular_pages_by_WikiProject")
+        AF.request("https://es.wikipedia.org/wiki/Especial:ÁrbolDeCategorías/Wikiproyectos/Artículos?target=&mode=categories&namespaces=&title=Especial%3AÁrbolDeCategorías")
             .validate(statusCode: 200..<300)
             //            .validate(contentType: ["application/json"])
             .responseData { response in
@@ -356,15 +354,12 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                     print("asdfsuccess")
                     do {
                         let document = try ONOXMLDocument(data: response.data)
-                        document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[1]/a") { (element, _, _) in
+                        document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div[3]/div/div[2]/div/div[1]") { (element, _, _) in
                             
                             var ele:String = element.stringValue!
-                            ele.removingRegexMatches("Wikipedia:(WikiProject )?")
-                            ele.removingRegexMatches("/(Popular|Most-viewed|Favourite) pages")
-                            ele.removingRegexMatches("/(Popular|Article hits)")
-                            ele.removingRegexMatches("( task force| work group)")
-                            ele.removingRegexMatches("Taskforces/(BPH/)?")
-                            self.mTopics[ele.replacingOccurrences(of: "/", with: " > ")] = (element.value(forAttribute: "href") as! String)
+                            ele.removingRegexMatches("^Wikiproyecto:")
+                            ele.removingRegexMatches("/Artículos")
+                            self.mTopics[ele] = (element.value(forAttribute: "href") as! String)
                             
                         }
                         

@@ -50,7 +50,7 @@ question_flags = "Choose the matching flag.";
 question_history = "When did the historical event %s take place?";
 
 bar_points = "Points: %d";
-submit = "{fa_paper-plane} Submit!";
+submit = " Submit!";
 reset = " Reset";
 a = "A. ";
 b = "B. ";

@@ -91,8 +91,17 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
         //        request.testDevices = ["f040a2fc154731455d1ae667f42eb08c"]
         mAdView2.adSize = GADAdSize(size: CGSize(width: 300, height: 250), flags: 0)
         mAdView2.load(request)
+                
         
         let langs:[String:[String]] = ["正體中文": ["Chinese (Authentic)", "TW", "zh"], "English (UK)": ["English", "GB", "en"], "català": ["Catalan", "AD", "ca"], "français": ["French","FR", "fr"], "Deutsch": ["German", "DE", "de"], "español": ["Spanish","ES", "es"], "日本語": ["Japanese", "JP", "ja"], "Українська": ["Ukrainian","UA", "uk"]]
+        
+        if let savedLocale = self.mPreferences.string(forKey: "PREF_LOCALE") {
+            for x in langs.keys {
+                if langs[x]![2] == savedLocale {
+                    self.mLocaleSubtitle.text = x
+                }
+            }
+        }
         
         mLocaleDropDown = DropDown()
         mLocaleDropDown!.dataSource = Array(langs.keys)
@@ -143,8 +152,16 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
         mLocaleDropDown!.textColor = .white
         
         let difficulties = ["Hard": "30 seconds for fill in the blanks, 10 for other types", "InSaNe": "20 seconds for fill in the blanks, 6 for other types", "|-|y5t3r1c4l !": "18 seconds for fill in the blanks, 5 for other types"]
+        let difficultiesKeys = ["Hard", "InSaNe", "|-|y5t3r1c4l !"]
+        
+        if let savedDifficulty = self.mPreferences.object(forKey: "PREF_DIFFICULTY") {
+            let keyText = difficultiesKeys[savedDifficulty as! Int]
+            self.mDifficultySubtitle1.text = keyText
+            self.mDifficultySubtitle2.text = difficulties[keyText]
+        }
+        
         mDifficultyDropDown = DropDown()
-        mDifficultyDropDown!.dataSource = ["Hard", "InSaNe", "|-|y5t3r1c4l !"]
+        mDifficultyDropDown!.dataSource = difficultiesKeys
         mDifficultyDropDown!.anchorView = mDifficultySubtitle2
         
         mDifficultyDropDown!.cellNib = UINib(nibName: "LocaleDropDownTableViewCell", bundle: nil)
@@ -172,6 +189,11 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
         
         
         let colours = ["AliceBlue", "Amber", "CosmicLatte", "Lavender", "MidnightBlue", "Sienna", "UbuntuOrange"]
+        
+        if let savedPlayer1Theme = self.mPreferences.string(forKey: "PREF_PLAYER_1_THEME") {
+            self.mPlayer1ThemeSubtitle.text = savedPlayer1Theme
+        }
+        
         mPlayer1ThemeDropDown = DropDown()
         mPlayer1ThemeDropDown!.dataSource = colours
         mPlayer1ThemeDropDown!.anchorView = mPlayer1ThemeSubtitle
@@ -194,6 +216,12 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
         
         mPlayer1ThemeDropDown!.selectedTextColor = UIColor(named: "Amber")!
         mPlayer1ThemeDropDown!.textColor = .white
+        
+        
+        
+        if let savedPlayer2Theme = self.mPreferences.string(forKey: "PREF_PLAYER_2_THEME") {
+            self.mPlayer2ThemeSubtitle.text = savedPlayer2Theme
+        }
         
         mPlayer2ThemeDropDown = DropDown()
         mPlayer2ThemeDropDown!.dataSource = colours

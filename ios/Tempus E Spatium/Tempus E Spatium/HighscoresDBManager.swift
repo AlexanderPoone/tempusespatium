@@ -107,7 +107,7 @@ class HighscoresDBManager: NSObject {
         var highscores: [[Any]] = []
         
         if openDatabase() {
-            let query = "SELECT * FROM \(TABLE_HIGHSCORES)"
+            let query = "SELECT * FROM \(TABLE_HIGHSCORES) ORDER BY score DESC"
             
             do {
                 let results = try database.executeQuery(query, values: nil)

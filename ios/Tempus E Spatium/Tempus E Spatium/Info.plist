@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>baker_signet_bt.ttf</string>
+		<string>baker_signet_lt.ttf</string>
+		<string>skylark_itc_tt.ttf</string>
+	</array>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-9627209153774793~5891306535</string>
 	<key>NSAppTransportSecurity</key>

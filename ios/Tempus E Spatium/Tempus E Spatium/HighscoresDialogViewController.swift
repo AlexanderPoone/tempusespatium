@@ -9,17 +9,40 @@
 import UIKit
 import SwiftIcons
 
-class HighscoresDialogViewController: UIViewController {
+class HighscoresDialogViewController: UIViewController, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return mHighscores.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "lasciaChioPianga", for: indexPath) as! HighscoresDialogTableViewCell
+        cell.mRankLbl.text = String(indexPath.row + 1)
+        cell.mPlayerLbl.text = (mHighscores[indexPath.row][0] as! String)
+        cell.mScoreLbl.text = String(mHighscores[indexPath.row][1] as! Int)
+        return cell
+    }
+    
+    private var mHighscores:[[Any]] = []
     
     @IBOutlet weak var mHighscoresLbl: UILabel!
     
     @IBOutlet weak var mClearBtn: UIButton!
     
     @IBAction func mClearHighscores() {
+        HighscoresDBManager.shared.clearHighscores()
+        mHighscores = []
+        mHighscoresTableView.reloadData()
     }
+    
+    @IBOutlet weak var mHighscoresTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mHighscores = HighscoresDBManager.shared.getHighscores()
+
+        mHighscoresTableView.dataSource = self
         
         mHighscoresLbl!.setIcon(prefixText: "", prefixTextFont: mHighscoresLbl.font!, prefixTextColor: UIColor(named: "Sienna")!, icon: .fontAwesomeSolid(.trophy), iconColor: UIColor(named: "Sienna")!, postfixText: NSLocalizedString("highscores", comment: ""), postfixTextFont: mHighscoresLbl.font!, postfixTextColor: UIColor(named: "Sienna")!, iconSize: nil)
         
@@ -35,6 +58,11 @@ class HighscoresDialogViewController: UIViewController {
 
         view.addSubview(imageViewBackground)
         view.sendSubviewToBack(imageViewBackground)
+  
+//        for var x in 0..<mHighscores.count {
+//
+//        }
+        
         
         
 //        let backgroundImageView = UIImageView(frame: UIScreen.main.bounds)

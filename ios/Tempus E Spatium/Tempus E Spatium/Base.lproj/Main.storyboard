@@ -33,19 +33,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uor-9k-EWU">
-                                <rect key="frame" x="56" y="427" width="302.5" height="42"/>
+                                <rect key="frame" x="84" y="426.5" width="246.5" height="43.5"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Tempus E Spatium">
                                         <attributes>
-                                            <color key="NSColor" red="0.94117647058823528" green="0.97254901960784312" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" name="AliceBlue"/>
                                             <font key="NSFont" size="36" name="BakerSignetBT-Roman"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wYY-oT-K47">
-                                <rect key="frame" x="4" y="473" width="406" height="335"/>
+                                <rect key="frame" x="4" y="474" width="406" height="334"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3ke-jl-tgt">
                                         <rect key="frame" x="0.0" y="0.0" width="406" height="260"/>
@@ -174,18 +175,24 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="adUnitID" value="ca-app-pub-9627209153774793/5575136404"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKP-L3-gec">
-                                <rect key="frame" x="297" y="828" width="117" height="34"/>
-                                <string key="text">Music:
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKP-L3-gec">
+                                <rect key="frame" x="297" y="818" width="117" height="44"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Music:
 Squirrel Monkey</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" name="AliceBlue"/>
+                                        <attributes>
+                                            <color key="NSColor" name="AliceBlue"/>
+                                            <font key="NSFont" size="17" name="BakerSignetBT-Roman"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" name="info"/>
                         <constraints>
-                            <constraint firstItem="nKP-L3-gec" firstAttribute="top" secondItem="wYY-oT-K47" secondAttribute="bottom" constant="20" id="0cb-1D-t35"/>
+                            <constraint firstItem="nKP-L3-gec" firstAttribute="top" secondItem="wYY-oT-K47" secondAttribute="bottom" constant="10" id="0cb-1D-t35"/>
                             <constraint firstItem="jxA-xs-NYx" firstAttribute="bottom" secondItem="wYY-oT-K47" secondAttribute="bottom" constant="54" id="1DS-Ba-KGf"/>
                             <constraint firstItem="Gi0-kJ-4Ls" firstAttribute="top" secondItem="jxA-xs-NYx" secondAttribute="top" id="6Um-Al-f3y"/>
                             <constraint firstItem="Gi0-kJ-4Ls" firstAttribute="centerX" secondItem="Uor-9k-EWU" secondAttribute="centerX" id="Es4-Cy-UVm"/>
@@ -219,7 +226,6 @@ Squirrel Monkey</string>
         <!--Navigation Controller-->
         <scene sceneID="USz-hy-raF">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a6E-h7-8dS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="qHa-Xe-Rt1" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qtp-92-fMc">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -229,6 +235,7 @@ Squirrel Monkey</string>
                         <segue destination="gG3-Tq-9Ja" kind="relationship" relationship="rootViewController" id="KfI-WA-6K4"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a6E-h7-8dS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2894" y="795"/>
         </scene>
@@ -481,14 +488,69 @@ Squirrel Monkey</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highscores" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5v-u7-vWq">
-                                <rect key="frame" x="0.0" y="24" width="414" height="29"/>
+                                <rect key="frame" x="0.0" y="36" width="414" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oyq-F2-sKb">
-                                <rect key="frame" x="274" y="283" width="36" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wfp-mw-VPa">
+                                <rect key="frame" x="20" y="137" width="308" height="549"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="lasciaChioPianga" id="Bdq-nk-dPM" customClass="HighscoresDialogTableViewCell" customModule="Tempus_E_Spatium" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="308" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bdq-nk-dPM" id="bq9-fI-va2">
+                                            <rect key="frame" x="0.0" y="0.0" width="308" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ArT-Pm-n1y">
+                                                    <rect key="frame" x="16" y="11" width="30" height="21.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="BTs-SH-6SC"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" name="Sienna"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joe Bloggs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzs-el-JPx">
+                                                    <rect key="frame" x="49" y="11" width="85" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" name="Sienna"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1800" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiW-hP-YSc">
+                                                    <rect key="frame" x="187" y="11" width="39" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" name="Sienna"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Mzs-el-JPx" firstAttribute="leading" secondItem="ArT-Pm-n1y" secondAttribute="trailing" constant="3" id="AFN-u3-iH1"/>
+                                                <constraint firstItem="ArT-Pm-n1y" firstAttribute="firstBaseline" secondItem="Mzs-el-JPx" secondAttribute="firstBaseline" id="FvX-cy-jJx"/>
+                                                <constraint firstItem="Mzs-el-JPx" firstAttribute="baseline" secondItem="QiW-hP-YSc" secondAttribute="baseline" id="OY3-lp-SUA"/>
+                                                <constraint firstItem="ArT-Pm-n1y" firstAttribute="baseline" secondItem="Mzs-el-JPx" secondAttribute="baseline" id="S2j-zc-Ide"/>
+                                                <constraint firstItem="ArT-Pm-n1y" firstAttribute="leading" secondItem="bq9-fI-va2" secondAttribute="leadingMargin" id="U2Q-TH-hCj"/>
+                                                <constraint firstItem="ArT-Pm-n1y" firstAttribute="centerY" secondItem="bq9-fI-va2" secondAttribute="centerY" id="Xfv-uP-pQd"/>
+                                                <constraint firstItem="QiW-hP-YSc" firstAttribute="leading" secondItem="Mzs-el-JPx" secondAttribute="trailing" constant="53" id="czx-jw-tao"/>
+                                                <constraint firstItem="ArT-Pm-n1y" firstAttribute="top" secondItem="bq9-fI-va2" secondAttribute="topMargin" id="nJJ-9e-mLo"/>
+                                                <constraint firstItem="Mzs-el-JPx" firstAttribute="firstBaseline" secondItem="QiW-hP-YSc" secondAttribute="firstBaseline" id="yoa-or-eeu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="mPlayerLbl" destination="Mzs-el-JPx" id="OYp-CL-miU"/>
+                                            <outlet property="mRankLbl" destination="ArT-Pm-n1y" id="ayP-ea-IKh"/>
+                                            <outlet property="mScoreLbl" destination="QiW-hP-YSc" id="BcJ-fr-q1n"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oyq-F2-sKb">
+                                <rect key="frame" x="334" y="605" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Oyq-F2-sKb" secondAttribute="height" multiplier="10:5" id="AnG-Gd-oFZ"/>
+                                </constraints>
                                 <state key="normal" title="Clear"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -501,22 +563,28 @@ Squirrel Monkey</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="h5v-u7-vWq" firstAttribute="leading" secondItem="WCZ-zb-4GP" secondAttribute="leading" id="2CO-EB-1l0"/>
-                            <constraint firstItem="h5v-u7-vWq" firstAttribute="top" secondItem="WCZ-zb-4GP" secondAttribute="top" constant="24" id="Zh1-yH-yyW"/>
+                            <constraint firstItem="wfp-mw-VPa" firstAttribute="top" secondItem="h5v-u7-vWq" secondAttribute="bottom" constant="72" id="5S8-5s-bkU"/>
+                            <constraint firstItem="Oyq-F2-sKb" firstAttribute="leading" secondItem="wfp-mw-VPa" secondAttribute="trailing" constant="6" id="K5z-ei-7yx"/>
+                            <constraint firstItem="wfp-mw-VPa" firstAttribute="leading" secondItem="VTf-HQ-sQ5" secondAttribute="leadingMargin" id="RMA-pR-XMj"/>
+                            <constraint firstItem="h5v-u7-vWq" firstAttribute="top" secondItem="WCZ-zb-4GP" secondAttribute="top" constant="36" id="Zh1-yH-yyW"/>
+                            <constraint firstItem="WCZ-zb-4GP" firstAttribute="bottom" secondItem="wfp-mw-VPa" secondAttribute="bottom" constant="122" id="cYu-hp-ibb"/>
+                            <constraint firstItem="Oyq-F2-sKb" firstAttribute="trailing" secondItem="VTf-HQ-sQ5" secondAttribute="trailingMargin" id="qnh-v4-DZx"/>
                             <constraint firstItem="h5v-u7-vWq" firstAttribute="trailing" secondItem="WCZ-zb-4GP" secondAttribute="trailing" id="uXY-P6-ToC"/>
+                            <constraint firstItem="WCZ-zb-4GP" firstAttribute="bottom" secondItem="Oyq-F2-sKb" secondAttribute="bottom" constant="173" id="yDB-Ed-Ju6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WCZ-zb-4GP"/>
                     </view>
                     <connections>
                         <outlet property="mClearBtn" destination="Oyq-F2-sKb" id="CAu-cc-iu1"/>
                         <outlet property="mHighscoresLbl" destination="h5v-u7-vWq" id="P19-cE-ZqM"/>
+                        <outlet property="mHighscoresTableView" destination="wfp-mw-VPa" id="1FZ-76-pyR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rtw-wS-8Ph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1335" y="841"/>
+            <point key="canvasLocation" x="-1336.2318840579712" y="840.40178571428567"/>
         </scene>
         <!--Rules Dialog View Controller-->
         <scene sceneID="faH-XE-rmK">
@@ -535,9 +603,9 @@ Squirrel Monkey</string>
                                 <color key="textColor" name="PapayaWhip"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorum ipsum dolor sit" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28K-gl-nR0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorum ipsum dolor sit" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28K-gl-nR0">
                                 <rect key="frame" x="4" y="69" width="406" height="739"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" name="PapayaWhip"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -573,7 +641,7 @@ Squirrel Monkey</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IU5-bs-tqv">
-                                <rect key="frame" x="214" y="243" width="180" height="30"/>
+                                <rect key="frame" x="214" y="244.5" width="180" height="30"/>
                                 <color key="backgroundColor" name="info"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="IU5-bs-tqv" secondAttribute="height" multiplier="60:10" id="MJq-cC-sOE"/>
@@ -591,38 +659,32 @@ Squirrel Monkey</string>
                                     <action selector="mSubmitAndPlayClicked" destination="hT1-jj-w0B" eventType="touchUpInside" id="Oza-zm-sYb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoH-Sw-cOZ">
-                                <rect key="frame" x="67" y="74" width="280" height="42"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Select ANY Topic">
-                                        <attributes>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="36" name="BakerSignetBT-Roman"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select ANY Topic" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoH-Sw-cOZ">
+                                <rect key="frame" x="90" y="74" width="234" height="43.5"/>
+                                <fontDescription key="fontDescription" name="BakerSignetBT-Roman" family="BakerSignet BT" pointSize="36"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locale:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rR7-Gg-Efk">
-                                <rect key="frame" x="20" y="129" width="55" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="20" y="130.5" width="45" height="40"/>
+                                <fontDescription key="fontDescription" name="BakerSignetBT-Roman" family="BakerSignet BT" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xrc-yY-p4v" customClass="LocaleCurrentSelectionWithArrowView" customModule="Tempus_E_Spatium" customModuleProvider="target">
-                                <rect key="frame" x="101" y="124" width="293" height="50"/>
+                                <rect key="frame" x="89" y="125.5" width="305" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="N9H-XV-hMZ"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Articles covered:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9N-ZI-qIv">
-                                <rect key="frame" x="20" y="308" width="374" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="20" y="309.5" width="374" height="21"/>
+                                <fontDescription key="fontDescription" name="BakerSignetBT-Roman" family="BakerSignet BT" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCU-7E-8W5">
-                                <rect key="frame" x="120" y="243" width="90" height="30"/>
+                                <rect key="frame" x="120" y="244.5" width="90" height="30"/>
                                 <color key="backgroundColor" name="danger"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KCU-7E-8W5" secondAttribute="height" multiplier="30:10" id="A9O-YM-sNZ"/>
@@ -641,13 +703,13 @@ Squirrel Monkey</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Any topic:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hxx-z7-GEg">
-                                <rect key="frame" x="20" y="198.5" width="77" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="20" y="200" width="65" height="21"/>
+                                <fontDescription key="fontDescription" name="BakerSignetBT-Roman" family="BakerSignet BT" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kS0-dc-jhZ" customClass="SearchTextField" customModule="SearchTextField">
-                                <rect key="frame" x="101" y="192" width="293" height="34"/>
+                                <rect key="frame" x="89" y="193.5" width="305" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="ZyW-aC-2P3"/>
                                 </constraints>
@@ -674,13 +736,13 @@ Squirrel Monkey</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click on a badge above to revise now!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htx-RY-lln">
-                                <rect key="frame" x="63" y="775" width="288" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="87.5" y="775" width="239.5" height="21"/>
+                                <fontDescription key="fontDescription" name="BakerSignetBT-Roman" family="BakerSignet BT" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJU-2T-LYv" customClass="TTGTextTagCollectionView">
-                                <rect key="frame" x="0.0" y="337" width="414" height="430"/>
+                                <rect key="frame" x="0.0" y="338.5" width="414" height="428.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -1244,25 +1306,31 @@ Squirrel Monkey</string>
         <!--Map Game View Controller-->
         <scene sceneID="YPl-gl-zrj">
             <objects>
-                <viewController id="r75-pu-FpH" customClass="MapGameViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapGameViewController" id="r75-pu-FpH" customClass="MapGameViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z7C-s5-0pe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rou-R3-x5Q" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="252" width="414" height="610"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rou-R3-x5Q" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="67" width="414" height="795"/>
+                                <color key="backgroundColor" name="warning"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Which country does this anthem belong to?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Gg-cZ-tVE">
-                                <rect key="frame" x="41" y="131" width="333" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which country does this anthem belong to?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Gg-cZ-tVE">
+                                <rect key="frame" x="40.5" y="44" width="333" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="rou-R3-x5Q" firstAttribute="leading" secondItem="e6v-td-uW4" secondAttribute="leading" id="0p2-lA-5w4"/>
+                            <constraint firstItem="8Gg-cZ-tVE" firstAttribute="centerX" secondItem="z7C-s5-0pe" secondAttribute="centerX" id="ByC-fh-Zib"/>
+                            <constraint firstItem="rou-R3-x5Q" firstAttribute="top" secondItem="8Gg-cZ-tVE" secondAttribute="bottom" constant="2" id="Fsl-t2-HBj"/>
+                            <constraint firstItem="rou-R3-x5Q" firstAttribute="trailing" secondItem="e6v-td-uW4" secondAttribute="trailing" id="UtD-Fe-1J5"/>
+                            <constraint firstItem="8Gg-cZ-tVE" firstAttribute="top" secondItem="e6v-td-uW4" secondAttribute="top" id="YTN-2n-jto"/>
+                            <constraint firstItem="rou-R3-x5Q" firstAttribute="bottom" secondItem="e6v-td-uW4" secondAttribute="bottom" id="asU-AG-m6M"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="e6v-td-uW4"/>
                     </view>
                     <connections>
@@ -2831,7 +2899,7 @@ Squirrel Monkey</string>
             <color red="0.94117647058823528" green="0.97254901960784312" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="BlueDialogBackground">
-            <color red="0.39215686274509803" green="0.58431372549019611" blue="0.92941176470588238" alpha="0.62" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.39215686274509803" green="0.58431372549019611" blue="0.92941176470588238" alpha="0.62000000476837158" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="CanaryYellow">
             <color red="1" green="0.99607843137254903" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2859,6 +2927,9 @@ Squirrel Monkey</string>
         </namedColor>
         <namedColor name="MidAubergine">
             <color red="0.17254901960784313" green="0.0" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PapayaWhip">
+            <color red="1" green="0.93725490196078431" blue="0.83529411764705885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PapayaWhip">
             <color red="1" green="0.93725490196078431" blue="0.83529411764705885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

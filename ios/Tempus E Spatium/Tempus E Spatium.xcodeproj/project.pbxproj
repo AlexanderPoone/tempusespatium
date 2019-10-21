@@ -12,6 +12,7 @@
 		4B2BE09E235CA483009E6765 /* RulesDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2BE09D235CA482009E6765 /* RulesDialogViewController.swift */; };
 		4B2BE0A0235CA49B009E6765 /* HighscoresDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2BE09F235CA49B009E6765 /* HighscoresDialogViewController.swift */; };
 		4B2BE0A2235DB7A6009E6765 /* HighscoresDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2BE0A1235DB7A6009E6765 /* HighscoresDBManager.swift */; };
+		4B2BE0A4235DD216009E6765 /* HighscoresDialogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2BE0A3235DD215009E6765 /* HighscoresDialogTableViewCell.swift */; };
 		4B6D96D72354C89B00D0DA0F /* player_2_wins.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4B6D96D52354C89A00D0DA0F /* player_2_wins.gif */; };
 		4B6D96D82354C89B00D0DA0F /* player_1_wins.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4B6D96D62354C89B00D0DA0F /* player_1_wins.gif */; };
 		4B6D96DA2354D52E00D0DA0F /* EndgameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6D96D92354D52E00D0DA0F /* EndgameViewController.swift */; };
@@ -75,6 +76,17 @@
 		4B2BE09D235CA482009E6765 /* RulesDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesDialogViewController.swift; sourceTree = "<group>"; };
 		4B2BE09F235CA49B009E6765 /* HighscoresDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoresDialogViewController.swift; sourceTree = "<group>"; };
 		4B2BE0A1235DB7A6009E6765 /* HighscoresDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoresDBManager.swift; sourceTree = "<group>"; };
+		4B2BE0A3235DD215009E6765 /* HighscoresDialogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoresDialogTableViewCell.swift; sourceTree = "<group>"; };
+		4B2BE0A5235DF2EA009E6765 /* baker_signet_bt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = baker_signet_bt.ttf; sourceTree = "<group>"; };
+		4B2BE0A6235DF2EB009E6765 /* ermis_pro_regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ermis_pro_regular.otf; sourceTree = "<group>"; };
+		4B2BE0A7235DF2ED009E6765 /* skylark_itc_tt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = skylark_itc_tt.ttf; sourceTree = "<group>"; };
+		4B2BE0A8235DF2ED009E6765 /* kozminpro_heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kozminpro_heavy.otf; sourceTree = "<group>"; };
+		4B2BE0A9235DF2ED009E6765 /* ermis_pro_bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ermis_pro_bold.otf; sourceTree = "<group>"; };
+		4B2BE0AA235DF2EE009E6765 /* ermis_pro_bold_italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ermis_pro_bold_italic.otf; sourceTree = "<group>"; };
+		4B2BE0AB235DF2EE009E6765 /* ermis_pro_light_italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ermis_pro_light_italic.otf; sourceTree = "<group>"; };
+		4B2BE0AC235DF2EF009E6765 /* ermis_pro_regular_italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ermis_pro_regular_italic.otf; sourceTree = "<group>"; };
+		4B2BE0AD235DF2EF009E6765 /* baker_signet_lt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = baker_signet_lt.ttf; sourceTree = "<group>"; };
+		4B2BE0AE235DF2EF009E6765 /* ermis_pro_light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ermis_pro_light.otf; sourceTree = "<group>"; };
 		4B6D96D52354C89A00D0DA0F /* player_2_wins.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = player_2_wins.gif; sourceTree = "<group>"; };
 		4B6D96D62354C89B00D0DA0F /* player_1_wins.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = player_1_wins.gif; sourceTree = "<group>"; };
 		4B6D96D92354D52E00D0DA0F /* EndgameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndgameViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +231,16 @@
 				4B8A85092359E4C200846A2E /* LocaleCurrentSelectionWithArrowView.swift */,
 				4B2BE09B235C3604009E6765 /* PauseDialogViewController.swift */,
 				4B8A8515235A1FFC00846A2E /* LocaleCurrentSelectionWithArrowView.xib */,
+				4B2BE0A5235DF2EA009E6765 /* baker_signet_bt.ttf */,
+				4B2BE0AD235DF2EF009E6765 /* baker_signet_lt.ttf */,
+				4B2BE0AA235DF2EE009E6765 /* ermis_pro_bold_italic.otf */,
+				4B2BE0A9235DF2ED009E6765 /* ermis_pro_bold.otf */,
+				4B2BE0AB235DF2EE009E6765 /* ermis_pro_light_italic.otf */,
+				4B2BE0AE235DF2EF009E6765 /* ermis_pro_light.otf */,
+				4B2BE0AC235DF2EF009E6765 /* ermis_pro_regular_italic.otf */,
+				4B2BE0A6235DF2EB009E6765 /* ermis_pro_regular.otf */,
+				4B2BE0A8235DF2ED009E6765 /* kozminpro_heavy.otf */,
+				4B2BE0A7235DF2ED009E6765 /* skylark_itc_tt.ttf */,
 				4B8A85032359BD6500846A2E /* LocaleDropDownTableViewCell.swift */,
 				4B8A85042359BD6600846A2E /* LocaleDropDownTableViewCell.xib */,
 				4B6D96DF2354DD2D00D0DA0F /* LearnViewController.swift */,
@@ -228,6 +250,7 @@
 				4B756D762349D3FB005CD85A /* SelectionViewController.swift */,
 				4B2BE09D235CA482009E6765 /* RulesDialogViewController.swift */,
 				4B2BE09F235CA49B009E6765 /* HighscoresDialogViewController.swift */,
+				4B2BE0A3235DD215009E6765 /* HighscoresDialogTableViewCell.swift */,
 				4B8A85072359CC8600846A2E /* ExteriorViewController.swift */,
 				4B756D7A2349D468005CD85A /* TopicSearcherViewController.swift */,
 				4B756D782349D43E005CD85A /* Round1ViewController.swift */,
@@ -563,6 +586,7 @@
 				4B756D7D2349D741005CD85A /* PrefsTableViewController.swift in Sources */,
 				4B7F5AB7235471AB003C88A4 /* BlanksGameViewController.swift in Sources */,
 				4B8A850A2359E4C200846A2E /* LocaleCurrentSelectionWithArrowView.swift in Sources */,
+				4B2BE0A4235DD216009E6765 /* HighscoresDialogTableViewCell.swift in Sources */,
 				4B2BE09C235C3604009E6765 /* PauseDialogViewController.swift in Sources */,
 				4BFE518A234730A000A5574C /* SceneDelegate.swift in Sources */,
 				4B2BE0A0235CA49B009E6765 /* HighscoresDialogViewController.swift in Sources */,

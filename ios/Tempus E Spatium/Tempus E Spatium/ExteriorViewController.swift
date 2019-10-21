@@ -30,6 +30,16 @@ class ExteriorViewController: UIViewController {
     
     @objc func aClicked() {
         print("A Clicked")
+        if let view1 = mFragmentContainer.subviews.first {
+        view1.removeFromSuperview()
+            let controller = storyboard!.instantiateViewController(withIdentifier: "MapGameViewController") as! MapGameViewController
+            controller.view.frame = mFragmentContainer.bounds
+            controller.willMove(toParent: self)
+            mFragmentContainer.addSubview(controller.view)
+            addChild(controller)
+            controller.didMove(toParent: self)
+            controller.view.backgroundColor = view.backgroundColor
+        }
     }
 
     @objc func bClicked() {

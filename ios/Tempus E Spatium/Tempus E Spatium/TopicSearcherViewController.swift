@@ -208,23 +208,343 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
     }
     
     func catala() {
+        mTopicAutocomplete.filterStrings([])
+        self.mTopics.removeAll(keepingCapacity: true)
         
+        AF.request("https://en.wikipedia.org/wiki/Wikipedia:Lists_of_popular_pages_by_WikiProject")
+            .validate(statusCode: 200..<300)
+            //            .validate(contentType: ["application/json"])
+            .responseData { response in
+                switch response.result {
+                case .success(let value):
+                    print("asdfsuccess")
+                    do {
+                        let document = try ONOXMLDocument(data: response.data)
+                        document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[1]/a") { (element, _, _) in
+                            
+                            var ele:String = element.stringValue!
+                            ele.removingRegexMatches("Wikipedia:(WikiProject )?")
+                            ele.removingRegexMatches("/(Popular|Most-viewed|Favourite) pages")
+                            ele.removingRegexMatches("/(Popular|Article hits)")
+                            ele.removingRegexMatches("( task force| work group)")
+                            ele.removingRegexMatches("Taskforces/(BPH/)?")
+                            self.mTopics[ele.replacingOccurrences(of: "/", with: " > ")] = (element.value(forAttribute: "href") as! String)
+                            
+                        }
+                        
+                        let keys = Array(self.mTopics.keys)
+                        print(keys)
+                        self.mTopicAutocomplete.filterStrings(keys)
+                        
+                        self.mTopicAutocomplete.itemSelectionHandler = { filteredResults, itemPosition in
+                            let item = filteredResults[itemPosition]
+                            self.mTopicAutocomplete.text = item.title
+                            print("https://en.wikipedia.org\(self.mTopics[item.title]!)")
+                            AF.request("https://en.wikipedia.org\(self.mTopics[item.title]!)")
+                                .validate(statusCode: 200..<300)
+                                //            .validate(contentType: ["application/json"])
+                                .responseData { response in
+                                    switch response.result {
+                                    case .success(let value):
+                                        print("fdsasucc")
+                                        var articlesIncluded:[String] = []
+                                        do {
+                                            let document = try ONOXMLDocument(data: response.data)
+                                            document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[2]/a") { (element, _, _) in
+                                                articlesIncluded.append(element.stringValue!)
+                                            }
+                                        } catch {
+                                            print("Oh no!")
+                                        }
+                                        print(articlesIncluded)
+                                        self.mTagsView.removeAllTags()
+                                        self.mTagsView.addTags(articlesIncluded)
+                                    case .failure(let error):
+                                        print("rewqerror")
+                                        print(error)
+                                    }
+                            }
+                        }
+                    } catch {
+                        print("Oh no!")
+                    }
+                case .failure(let error):
+                    print("asdferror")
+                    print(error)
+                }
+        }
     }
     
     func francais() {
+        mTopicAutocomplete.filterStrings([])
+        self.mTopics.removeAll(keepingCapacity: true)
         
+        AF.request("https://en.wikipedia.org/wiki/Wikipedia:Lists_of_popular_pages_by_WikiProject")
+            .validate(statusCode: 200..<300)
+            //            .validate(contentType: ["application/json"])
+            .responseData { response in
+                switch response.result {
+                case .success(let value):
+                    print("asdfsuccess")
+                    do {
+                        let document = try ONOXMLDocument(data: response.data)
+                        document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[1]/a") { (element, _, _) in
+                            
+                            var ele:String = element.stringValue!
+                            ele.removingRegexMatches("Wikipedia:(WikiProject )?")
+                            ele.removingRegexMatches("/(Popular|Most-viewed|Favourite) pages")
+                            ele.removingRegexMatches("/(Popular|Article hits)")
+                            ele.removingRegexMatches("( task force| work group)")
+                            ele.removingRegexMatches("Taskforces/(BPH/)?")
+                            self.mTopics[ele.replacingOccurrences(of: "/", with: " > ")] = (element.value(forAttribute: "href") as! String)
+                            
+                        }
+                        
+                        let keys = Array(self.mTopics.keys)
+                        print(keys)
+                        self.mTopicAutocomplete.filterStrings(keys)
+                        
+                        self.mTopicAutocomplete.itemSelectionHandler = { filteredResults, itemPosition in
+                            let item = filteredResults[itemPosition]
+                            self.mTopicAutocomplete.text = item.title
+                            print("https://en.wikipedia.org\(self.mTopics[item.title]!)")
+                            AF.request("https://en.wikipedia.org\(self.mTopics[item.title]!)")
+                                .validate(statusCode: 200..<300)
+                                //            .validate(contentType: ["application/json"])
+                                .responseData { response in
+                                    switch response.result {
+                                    case .success(let value):
+                                        print("fdsasucc")
+                                        var articlesIncluded:[String] = []
+                                        do {
+                                            let document = try ONOXMLDocument(data: response.data)
+                                            document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[2]/a") { (element, _, _) in
+                                                articlesIncluded.append(element.stringValue!)
+                                            }
+                                        } catch {
+                                            print("Oh no!")
+                                        }
+                                        print(articlesIncluded)
+                                        self.mTagsView.removeAllTags()
+                                        self.mTagsView.addTags(articlesIncluded)
+                                    case .failure(let error):
+                                        print("rewqerror")
+                                        print(error)
+                                    }
+                            }
+                        }
+                    } catch {
+                        print("Oh no!")
+                    }
+                case .failure(let error):
+                    print("asdferror")
+                    print(error)
+                }
+        }
     }
     
     func espanol() {
+        mTopicAutocomplete.filterStrings([])
+        self.mTopics.removeAll(keepingCapacity: true)
         
+        AF.request("https://en.wikipedia.org/wiki/Wikipedia:Lists_of_popular_pages_by_WikiProject")
+            .validate(statusCode: 200..<300)
+            //            .validate(contentType: ["application/json"])
+            .responseData { response in
+                switch response.result {
+                case .success(let value):
+                    print("asdfsuccess")
+                    do {
+                        let document = try ONOXMLDocument(data: response.data)
+                        document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[1]/a") { (element, _, _) in
+                            
+                            var ele:String = element.stringValue!
+                            ele.removingRegexMatches("Wikipedia:(WikiProject )?")
+                            ele.removingRegexMatches("/(Popular|Most-viewed|Favourite) pages")
+                            ele.removingRegexMatches("/(Popular|Article hits)")
+                            ele.removingRegexMatches("( task force| work group)")
+                            ele.removingRegexMatches("Taskforces/(BPH/)?")
+                            self.mTopics[ele.replacingOccurrences(of: "/", with: " > ")] = (element.value(forAttribute: "href") as! String)
+                            
+                        }
+                        
+                        let keys = Array(self.mTopics.keys)
+                        print(keys)
+                        self.mTopicAutocomplete.filterStrings(keys)
+                        
+                        self.mTopicAutocomplete.itemSelectionHandler = { filteredResults, itemPosition in
+                            let item = filteredResults[itemPosition]
+                            self.mTopicAutocomplete.text = item.title
+                            print("https://en.wikipedia.org\(self.mTopics[item.title]!)")
+                            AF.request("https://en.wikipedia.org\(self.mTopics[item.title]!)")
+                                .validate(statusCode: 200..<300)
+                                //            .validate(contentType: ["application/json"])
+                                .responseData { response in
+                                    switch response.result {
+                                    case .success(let value):
+                                        print("fdsasucc")
+                                        var articlesIncluded:[String] = []
+                                        do {
+                                            let document = try ONOXMLDocument(data: response.data)
+                                            document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[2]/a") { (element, _, _) in
+                                                articlesIncluded.append(element.stringValue!)
+                                            }
+                                        } catch {
+                                            print("Oh no!")
+                                        }
+                                        print(articlesIncluded)
+                                        self.mTagsView.removeAllTags()
+                                        self.mTagsView.addTags(articlesIncluded)
+                                    case .failure(let error):
+                                        print("rewqerror")
+                                        print(error)
+                                    }
+                            }
+                        }
+                    } catch {
+                        print("Oh no!")
+                    }
+                case .failure(let error):
+                    print("asdferror")
+                    print(error)
+                }
+        }
     }
     
     func deutsch() {
+        mTopicAutocomplete.filterStrings([])
+        self.mTopics.removeAll(keepingCapacity: true)
         
+        AF.request("https://en.wikipedia.org/wiki/Wikipedia:Lists_of_popular_pages_by_WikiProject")
+            .validate(statusCode: 200..<300)
+            //            .validate(contentType: ["application/json"])
+            .responseData { response in
+                switch response.result {
+                case .success(let value):
+                    print("asdfsuccess")
+                    do {
+                        let document = try ONOXMLDocument(data: response.data)
+                        document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[1]/a") { (element, _, _) in
+                            
+                            var ele:String = element.stringValue!
+                            ele.removingRegexMatches("Wikipedia:(WikiProject )?")
+                            ele.removingRegexMatches("/(Popular|Most-viewed|Favourite) pages")
+                            ele.removingRegexMatches("/(Popular|Article hits)")
+                            ele.removingRegexMatches("( task force| work group)")
+                            ele.removingRegexMatches("Taskforces/(BPH/)?")
+                            self.mTopics[ele.replacingOccurrences(of: "/", with: " > ")] = (element.value(forAttribute: "href") as! String)
+                            
+                        }
+                        
+                        let keys = Array(self.mTopics.keys)
+                        print(keys)
+                        self.mTopicAutocomplete.filterStrings(keys)
+                        
+                        self.mTopicAutocomplete.itemSelectionHandler = { filteredResults, itemPosition in
+                            let item = filteredResults[itemPosition]
+                            self.mTopicAutocomplete.text = item.title
+                            print("https://en.wikipedia.org\(self.mTopics[item.title]!)")
+                            AF.request("https://en.wikipedia.org\(self.mTopics[item.title]!)")
+                                .validate(statusCode: 200..<300)
+                                //            .validate(contentType: ["application/json"])
+                                .responseData { response in
+                                    switch response.result {
+                                    case .success(let value):
+                                        print("fdsasucc")
+                                        var articlesIncluded:[String] = []
+                                        do {
+                                            let document = try ONOXMLDocument(data: response.data)
+                                            document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[2]/a") { (element, _, _) in
+                                                articlesIncluded.append(element.stringValue!)
+                                            }
+                                        } catch {
+                                            print("Oh no!")
+                                        }
+                                        print(articlesIncluded)
+                                        self.mTagsView.removeAllTags()
+                                        self.mTagsView.addTags(articlesIncluded)
+                                    case .failure(let error):
+                                        print("rewqerror")
+                                        print(error)
+                                    }
+                            }
+                        }
+                    } catch {
+                        print("Oh no!")
+                    }
+                case .failure(let error):
+                    print("asdferror")
+                    print(error)
+                }
+        }
     }
     
     func ukraiynska() {
+        mTopicAutocomplete.filterStrings([])
+        self.mTopics.removeAll(keepingCapacity: true)
         
+        AF.request("https://en.wikipedia.org/wiki/Wikipedia:Lists_of_popular_pages_by_WikiProject")
+            .validate(statusCode: 200..<300)
+            //            .validate(contentType: ["application/json"])
+            .responseData { response in
+                switch response.result {
+                case .success(let value):
+                    print("asdfsuccess")
+                    do {
+                        let document = try ONOXMLDocument(data: response.data)
+                        document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[1]/a") { (element, _, _) in
+                            
+                            var ele:String = element.stringValue!
+                            ele.removingRegexMatches("Wikipedia:(WikiProject )?")
+                            ele.removingRegexMatches("/(Popular|Most-viewed|Favourite) pages")
+                            ele.removingRegexMatches("/(Popular|Article hits)")
+                            ele.removingRegexMatches("( task force| work group)")
+                            ele.removingRegexMatches("Taskforces/(BPH/)?")
+                            self.mTopics[ele.replacingOccurrences(of: "/", with: " > ")] = (element.value(forAttribute: "href") as! String)
+                            
+                        }
+                        
+                        let keys = Array(self.mTopics.keys)
+                        print(keys)
+                        self.mTopicAutocomplete.filterStrings(keys)
+                        
+                        self.mTopicAutocomplete.itemSelectionHandler = { filteredResults, itemPosition in
+                            let item = filteredResults[itemPosition]
+                            self.mTopicAutocomplete.text = item.title
+                            print("https://en.wikipedia.org\(self.mTopics[item.title]!)")
+                            AF.request("https://en.wikipedia.org\(self.mTopics[item.title]!)")
+                                .validate(statusCode: 200..<300)
+                                //            .validate(contentType: ["application/json"])
+                                .responseData { response in
+                                    switch response.result {
+                                    case .success(let value):
+                                        print("fdsasucc")
+                                        var articlesIncluded:[String] = []
+                                        do {
+                                            let document = try ONOXMLDocument(data: response.data)
+                                            document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[2]/a") { (element, _, _) in
+                                                articlesIncluded.append(element.stringValue!)
+                                            }
+                                        } catch {
+                                            print("Oh no!")
+                                        }
+                                        print(articlesIncluded)
+                                        self.mTagsView.removeAllTags()
+                                        self.mTagsView.addTags(articlesIncluded)
+                                    case .failure(let error):
+                                        print("rewqerror")
+                                        print(error)
+                                    }
+                            }
+                        }
+                    } catch {
+                        print("Oh no!")
+                    }
+                case .failure(let error):
+                    print("asdferror")
+                    print(error)
+                }
+        }
     }
     
     @objc func mShowDropDown(tapGestureRecognizer:UITapGestureRecognizer) {

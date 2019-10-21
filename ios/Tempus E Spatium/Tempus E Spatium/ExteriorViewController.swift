@@ -8,15 +8,41 @@
 
 import UIKit
 import SwiftIcons
+import YLProgressBar
 import DACircularProgress
+import SVGKit
 
 class ExteriorViewController: UIViewController {
 
     @IBOutlet weak var mPauseBtn: UIButton!
     
-    
     @IBOutlet weak var mDonutTime: DACircularProgressView!
     
+    @IBOutlet weak var mFragmentContainer: UIView!
+    
+    @IBOutlet weak var mScoreBar: YLProgressBar!
+    
+    @IBOutlet weak var mScoreText: UILabel!
+    
+    @IBOutlet weak var mYellowBtn: UIButton!
+    
+    @IBAction func mYellowTest(_ sender: Any) {
+        if let view1 = mFragmentContainer.subviews.first {
+        view1.removeFromSuperview()
+
+            let controller = storyboard!.instantiateViewController(withIdentifier: "FlagGameViewController") as! FlagGameViewController
+            controller.view.frame = mFragmentContainer.bounds
+            controller.willMove(toParent: self)
+            mFragmentContainer.addSubview(controller.view)
+            addChild(controller)
+            controller.didMove(toParent: self)
+            controller.view.backgroundColor = view.backgroundColor
+            controller.mIndicatorA.setIcon(icon: .googleMaterialDesign(.newReleases), iconSize: 24, color: .white, bgColor: UIColor(named: "Amber")!)
+                        controller.mIndicatorB.setIcon(icon: .googleMaterialDesign(.check), iconSize: 24, color: .white, bgColor: UIColor(named: "success")!)
+                        controller.mIndicatorC.setIcon(icon: .googleMaterialDesign(.close), iconSize: 24, color: .white, bgColor: UIColor(named: "danger")!)
+            
+    }
+    }
     
     @IBAction func mPauseBtnClicked(_ sender: Any) {
         performSegue(withIdentifier: "showPauseDialog", sender: nil)

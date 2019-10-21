@@ -12,12 +12,22 @@ class FlagGameViewController: UIViewController {
 
     @IBOutlet weak var mQuestion: UILabel!
     
-    @IBOutlet weak var mA: UIImageView!
-    @IBOutlet weak var mB: UIImageView!
+
+    @IBOutlet weak var mClickAreaA: UIView!
+    @IBOutlet weak var mFlagA: UIImageView!
+    @IBOutlet weak var mIndicatorA: UILabel!
     
-    @IBOutlet weak var mC: UIImageView!
-    @IBOutlet weak var mD: UIImageView!
+    @IBOutlet weak var mClickAreaB: UIView!
+    @IBOutlet weak var mFlagB: UIImageView!
+    @IBOutlet weak var mIndicatorB: UILabel!
     
+    @IBOutlet weak var mClickAreaC: UIView!
+    @IBOutlet weak var mFlagC: UIImageView!
+    @IBOutlet weak var mIndicatorC: UILabel!
+    
+    @IBOutlet weak var mClickAreaD: UIView!
+    @IBOutlet weak var mFlagD: UIImageView!
+    @IBOutlet weak var mIndicatorD: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -601,13 +601,13 @@ Squirrel Monkey</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="ujD-gS-dq4"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="SkylarkITCTT" family="Skylark ITC TT" pointSize="28"/>
                                 <color key="textColor" name="PapayaWhip"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorum ipsum dolor sit" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28K-gl-nR0">
                                 <rect key="frame" x="4" y="69" width="406" height="739"/>
-                                <fontDescription key="fontDescription" name="SkylarkITCTT" family="Skylark ITC TT" pointSize="48"/>
+                                <fontDescription key="fontDescription" name="SkylarkITCTT" family="Skylark ITC TT" pointSize="24"/>
                                 <color key="textColor" name="PapayaWhip"/>
                                 <nil key="highlightedColor"/>
                             </label>

@@ -256,9 +256,9 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 1:
-            return NSLocalizedString("general", comment: "")
+            return NSLocalizedString("pref_general_locale", comment: "")
         case 2:
-            return NSLocalizedString("gameplay", comment: "")
+            return NSLocalizedString("pref_general", comment: "")
         default:
             return nil
             

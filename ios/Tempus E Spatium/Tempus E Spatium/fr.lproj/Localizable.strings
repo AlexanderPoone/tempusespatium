@@ -22,6 +22,7 @@ resume = " Reprendre";
 return_main_menu = "  Retourner au menu principal";
 topic_searcher_heading = "Recherche dans TOUS les thèmes !";
 loading = "Chargement en cours, veuillez patienter…";
+enter_keyword = "Rechercher par mot-clé";
 
 highscores_enter_name = " Félicitations, vous avez gagné !\nEntrez votre nom:";
 

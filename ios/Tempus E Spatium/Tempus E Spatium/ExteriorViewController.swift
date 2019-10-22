@@ -177,8 +177,10 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.mScoreBar.progress = 0
-        self.mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), 0)
+        mScoreBar.progress = 0
+        mScoreBar.stripesColor = UIColor(named: "warning")!
+        mScoreBar.tintColor = UIColor(named: "warning")!
+        mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), 0)
         
         mPauseBtn.setIcon(icon: .fontAwesomeSolid(.pause), iconSize: nil, color: .white, backgroundColor: UIColor(named: "info")!, forState: .normal)
         mDonutTime.setProgress(0.5, animated: true)

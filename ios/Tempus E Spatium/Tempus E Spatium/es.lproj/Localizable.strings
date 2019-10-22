@@ -50,7 +50,7 @@ question_flags = "Choose the matching flag.";
 question_history = "When did the historical event %s take place?";
 
 bar_points = "Puntos: %d";
-submit = " Enviar!";
+submit = " ¡Enviar!";
 reset = " Restablecer";
 a = "A. ";
 b = "B. ";
@@ -66,11 +66,11 @@ answer = "Solución:";
 you_chose = "Ha elegido:";
 anthem_name = "Nombre del himno:";
 
-err_no_network = "No té accés a Internet!";
+err_no_network = "¡Necesita una conexión de Internet!";
 lbl_music = "Música:\nSquirrel Monkey";
 really_quit = "Do you really want to quit the game?";
 yes = "Sí";
 no = "No";
 
 customise_here = " Customise here (optional)";
-submit_and_play = " Submit and play!";
+submit_and_play = " ¡Enviar y jugar!";

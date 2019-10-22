@@ -49,7 +49,7 @@ question_anthem = "Which country does this anthem belong to?";
 question_flags = "Choose the matching flag.";
 question_history = "When did the historical event %s take place?";
 
-bar_points = "Punts: %d";
+bar_points = "Балів: %d";
 submit = " Надіслати!";
 reset = " Скинути";
 a = "A. ";

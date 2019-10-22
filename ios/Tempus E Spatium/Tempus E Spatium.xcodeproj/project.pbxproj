@@ -37,6 +37,7 @@
 		4B8077FB235EF053000F8941 /* ermis_pro_regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B2BE0A6235DF2EB009E6765 /* ermis_pro_regular.otf */; };
 		4B8077FC235EF053000F8941 /* kozminpro_heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B2BE0A8235DF2ED009E6765 /* kozminpro_heavy.otf */; };
 		4B8077FD235EF053000F8941 /* skylark_itc_tt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B2BE0A7235DF2ED009E6765 /* skylark_itc_tt.ttf */; };
+		4B8077FF235F8243000F8941 /* InputHighscoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8077FE235F8243000F8941 /* InputHighscoreViewController.swift */; };
 		4B8A85052359BD6600846A2E /* LocaleDropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A85032359BD6500846A2E /* LocaleDropDownTableViewCell.swift */; };
 		4B8A85062359BD6600846A2E /* LocaleDropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8A85042359BD6600846A2E /* LocaleDropDownTableViewCell.xib */; };
 		4B8A85082359CC8600846A2E /* ExteriorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A85072359CC8600846A2E /* ExteriorViewController.swift */; };
@@ -118,6 +119,7 @@
 		4B7F5AB423545EBF003C88A4 /* de_KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = de_KeyboardViewController.swift; sourceTree = "<group>"; };
 		4B7F5AB6235471AB003C88A4 /* BlanksGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlanksGameViewController.swift; sourceTree = "<group>"; };
 		4B8077F2235EBBE5000F8941 /* DateGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateGameViewController.swift; sourceTree = "<group>"; };
+		4B8077FE235F8243000F8941 /* InputHighscoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHighscoreViewController.swift; sourceTree = "<group>"; };
 		4B8A85032359BD6500846A2E /* LocaleDropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleDropDownTableViewCell.swift; sourceTree = "<group>"; };
 		4B8A85042359BD6600846A2E /* LocaleDropDownTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocaleDropDownTableViewCell.xib; sourceTree = "<group>"; };
 		4B8A85072359CC8600846A2E /* ExteriorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExteriorViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				4B2BE09D235CA482009E6765 /* RulesDialogViewController.swift */,
 				4B2BE09F235CA49B009E6765 /* HighscoresDialogViewController.swift */,
 				4B2BE0A3235DD215009E6765 /* HighscoresDialogTableViewCell.swift */,
+				4B8077FE235F8243000F8941 /* InputHighscoreViewController.swift */,
 				4B8A85072359CC8600846A2E /* ExteriorViewController.swift */,
 				4B756D7A2349D468005CD85A /* TopicSearcherViewController.swift */,
 				4B756D782349D43E005CD85A /* Round1ViewController.swift */,
@@ -613,6 +616,7 @@
 				4B2BE0A4235DD216009E6765 /* HighscoresDialogTableViewCell.swift in Sources */,
 				4B2BE09C235C3604009E6765 /* PauseDialogViewController.swift in Sources */,
 				4BFE518A234730A000A5574C /* SceneDelegate.swift in Sources */,
+				4B8077FF235F8243000F8941 /* InputHighscoreViewController.swift in Sources */,
 				4B2BE0A0235CA49B009E6765 /* HighscoresDialogViewController.swift in Sources */,
 				4BA58040234DA7A900BA6314 /* fr_KeyboardViewController.swift in Sources */,
 				4B2BE09E235CA483009E6765 /* RulesDialogViewController.swift in Sources */,

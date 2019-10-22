@@ -1,44 +1,45 @@
-/* 
+/*
   Localizable.strings
   Tempus E Spatium
 
   Created by Victor Poon on 6/10/2019.
   Copyright © 2019 SoftFeta. All rights reserved.
 */
+ 
+app_name = "Темпус Е Спатіум";
 
-app_name = "Tempus E Spatium";
-
-play = "{fa_gamepad} PLAY!";
-rules = "{fa_leanpub} Rules";
-learn = "{fa_book} Learn";
-settings = "{fa_cog} Settings";
-highscores = "{fa_trophy} Highscores";
-quit = "{fa_sign-out} Quit game";
+play = " ГРАТИ!";
+rules = " Правила";
+learn = " Налаштування";
+settings = " Параметри";
+highscores = " Хайскор";
+quit = " Вийти з гри";
 
 articles_covered = "Articles covered: ";
 learn_sub = "Click on the badge to revise now!";
 
-resume = "{fa_play-circle} Resume";
-return_main_menu = "{fa_sign-out} Return to main menu";
+resume = " Повернутися";
+return_main_menu = " Вийти до головного меню";
 topic_searcher_heading = "Search for ANY topic";
-loading = "Loading, please wait…";
+loading = "Carregant, espereu…";
+enter_keyword = "Enter keyword to search for a theme!";
 
 highscores_enter_name = "{md_sentiment_very_satisfied} Congrats, you won!\nEnter your name:";
 
 level = "Level %d";
-rules_tirade = "<p>The project is named Tempus E Spatium (Latin for Time and Space, which is often prefixed by “lost in”) as the questions focus on history and geography. Quiz types include: Drag and drop the national flags to the right continent, listen to the national anthem and choose the correct flag, and complete the word. Despite the name of the app, the last type can be of any question type.</p><br /><p>The questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he will lose 5 points.</p>";
+rules_tirade = "The project is named Tempus E Spatium (Latin for Time and Space, which is often prefixed by “lost in”) as the questions focus on history and geography. Quiz types include: Drag and drop the national flags to the right continent, listen to the national anthem and choose the correct flag, and complete the word. Despite the name of the app, the last type can be of any question type.\n\nThe questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he will lose 5 points.";
 
 pref_general = "General";
-pref_general_locale = "Locale";
-pref_version = "Version";
-pref_player_1_theme = "Player 1 Theme";
-pref_player_2_theme = "Player 2 Theme";
+pref_general_locale = "Мова UI";
+pref_version = "Версія";
+pref_player_1_theme = "Тема гравця 1";
+pref_player_2_theme = "Тема гравця 2";
 
-pref_gameplay = "Gameplay";
-pref_difficulty = "Difficulty";
-pref_difficulty_hard = "Hard";
+pref_gameplay = "Гра";
+pref_difficulty = "Складність";
+pref_difficulty_hard = "Складна";
 pref_difficulty_hard_sub = "30 seconds for fill in the blanks, 10 for other types";
-pref_difficulty_insane = "InSaNe";
+pref_difficulty_insane = "BoIg";
 pref_difficulty_insane_sub = "20 seconds for fill in the blanks, 6 for other types";
 pref_difficulty_hysterical = "hYsTeRiCaL";
 pref_difficulty_hysterical_sub = "18 seconds for fill in the blanks, 5 for other type";
@@ -48,19 +49,28 @@ question_anthem = "Which country does this anthem belong to?";
 question_flags = "Choose the matching flag.";
 question_history = "When did the historical event %s take place?";
 
-bar_points = "Points: %d";
-submit = "{fa_paper-plane} Submit!";
-reset = "{fa_undo} Reset";
+bar_points = "Punts: %d";
+submit = " Надіслати!";
+reset = " Скинути";
 a = "A. ";
 b = "B. ";
 c = "C. ";
 d = "D. ";
 
-paused = "{fa_pause} Game paused";
+paused = " Game paused";
 
 simple_ime = "Simple IME";
 subtype_en_US = "English (US)";
 
-answer = "Answer:";
+answer = "Рішення:";
 you_chose = "You chose:";
 anthem_name = "Anthem name:";
+
+err_no_network = "No té accés a Internet!";
+lbl_music = "Музика:\nSquirrel Monkey";
+really_quit = "Do you really want to quit the game?";
+yes = "Так";
+no = "Ні";
+
+customise_here = " Customise here (optional)";
+submit_and_play = " Надіслати й грати!";

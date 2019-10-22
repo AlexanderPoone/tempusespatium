@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   Tempus E Spatium
 
@@ -8,28 +8,29 @@
 
 app_name = "Tempus E Spatium";
 
-play = "{fa_gamepad} PLAY!";
-rules = "{fa_leanpub} Rules";
-learn = "{fa_book} Learn";
-settings = "{fa_cog} Settings";
-highscores = "{fa_trophy} Highscores";
-quit = "{fa_sign-out} Quit game";
+play = " PLAY!";
+rules = " Rules";
+learn = " Learn";
+settings = " Settings";
+highscores = " Highscores";
+quit = " Quit game";
 
 articles_covered = "Articles covered: ";
 learn_sub = "Click on the badge to revise now!";
 
-resume = "{fa_play-circle} Resume";
-return_main_menu = "{fa_sign-out} Return to main menu";
+resume = " Resume";
+return_main_menu = " Return to main menu";
 topic_searcher_heading = "Search for ANY topic";
 loading = "Loading, please wait…";
+enter_keyword = "Enter keyword to search for a theme!";
 
 highscores_enter_name = "{md_sentiment_very_satisfied} Congrats, you won!\nEnter your name:";
 
 level = "Level %d";
-rules_tirade = "<p>The project is named Tempus E Spatium (Latin for Time and Space, which is often prefixed by “lost in”) as the questions focus on history and geography. Quiz types include: Drag and drop the national flags to the right continent, listen to the national anthem and choose the correct flag, and complete the word. Despite the name of the app, the last type can be of any question type.</p><br /><p>The questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he will lose 5 points.</p>";
+rules_tirade = "The project is named Tempus E Spatium (Latin for Time and Space, which is often prefixed by “lost in”) as the questions focus on history and geography. Quiz types include: Drag and drop the national flags to the right continent, listen to the national anthem and choose the correct flag, and complete the word. Despite the name of the app, the last type can be of any question type.\n\nThe questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he will lose 5 points.";
 
-pref_general = "General";
-pref_general_locale = "Locale";
+pref_general = "Gameplay";
+pref_general_locale = "介面語言";
 pref_version = "Version";
 pref_player_1_theme = "Player 1 Theme";
 pref_player_2_theme = "Player 2 Theme";
@@ -49,14 +50,14 @@ question_flags = "Choose the matching flag.";
 question_history = "When did the historical event %s take place?";
 
 bar_points = "Points: %d";
-submit = "{fa_paper-plane} Submit!";
-reset = "{fa_undo} Reset";
+submit = " Submit!";
+reset = " Reset";
 a = "A. ";
 b = "B. ";
 c = "C. ";
 d = "D. ";
 
-paused = "{fa_pause} Game paused";
+paused = " Game paused";
 
 simple_ime = "Simple IME";
 subtype_en_US = "English (US)";
@@ -64,3 +65,12 @@ subtype_en_US = "English (US)";
 answer = "Answer:";
 you_chose = "You chose:";
 anthem_name = "Anthem name:";
+
+err_no_network = "You need a network connection to play the game !";
+lbl_music = "Music:\nSquirrel Monkey";
+really_quit = "Do you really want to quit the game?";
+yes = "Yes";
+no = "No";
+
+customise_here = " Customise here (optional)";
+submit_and_play = " Submit and play!";

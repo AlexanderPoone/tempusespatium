@@ -2537,10 +2537,10 @@ Squirrel Monkey</string>
             </objects>
             <point key="canvasLocation" x="2551" y="972"/>
         </scene>
-        <!--View Controller-->
+        <!--Input Highscore View Controller-->
         <scene sceneID="3a3-Jf-mID">
             <objects>
-                <viewController id="QnE-gd-dgI" sceneMemberID="viewController">
+                <viewController id="QnE-gd-dgI" customClass="InputHighscoreViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vRn-XK-U8O">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2573,6 +2573,9 @@ Squirrel Monkey</string>
                         <viewLayoutGuide key="safeArea" id="fgR-ZH-nvF"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="200"/>
+                    <connections>
+                        <outlet property="mWonLbl" destination="WEw-sC-nNr" id="RrQ-8E-Teq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qDb-ML-zhV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

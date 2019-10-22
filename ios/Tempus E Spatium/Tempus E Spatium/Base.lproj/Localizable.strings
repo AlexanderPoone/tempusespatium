@@ -24,13 +24,13 @@ topic_searcher_heading = "Search for ANY topic";
 loading = "Loading, please wait…";
 enter_keyword = "Enter keyword to search for a theme!";
 
-highscores_enter_name = "{md_sentiment_very_satisfied} Congrats, you won!\nEnter your name:";
+highscores_enter_name = " Congrats, you won!\nEnter your name:";
 
 level = "Level %d";
 rules_tirade = "The project is named Tempus E Spatium (Latin for Time and Space, which is often prefixed by “lost in”) as the questions focus on history and geography. Quiz types include: Drag and drop the national flags to the right continent, listen to the national anthem and choose the correct flag, and complete the word. Despite the name of the app, the last type can be of any question type.\n\nThe questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he will lose 5 points.";
 
-pref_general = "Gameplay";
-pref_general_locale = "General";
+pref_general = "General";
+pref_general_locale = "Locale";
 pref_version = "Version";
 pref_player_1_theme = "Player 1 Theme";
 pref_player_2_theme = "Player 2 Theme";
@@ -38,11 +38,11 @@ pref_player_2_theme = "Player 2 Theme";
 pref_gameplay = "Gameplay";
 pref_difficulty = "Difficulty";
 pref_difficulty_hard = "Hard";
-pref_difficulty_hard_sub = "30 seconds for fill in the blanks, 10 for other types";
+pref_difficulty_hard_sub = "60 seconds for fill in the blanks, 10 for other types";
 pref_difficulty_insane = "InSaNe";
-pref_difficulty_insane_sub = "20 seconds for fill in the blanks, 6 for other types";
-pref_difficulty_hysterical = "hYsTeRiCaL";
-pref_difficulty_hysterical_sub = "18 seconds for fill in the blanks, 5 for other type";
+pref_difficulty_insane_sub = "40 seconds for fill in the blanks, 6 for other types";
+pref_difficulty_hysterical = "|-|y5t3r1c4l !";
+pref_difficulty_hysterical_sub = "36 seconds for fill in the blanks, 5 for other types";
 
 question_anagram = "Reassemble the letters.";
 question_anthem = "Which country does this anthem belong to?";

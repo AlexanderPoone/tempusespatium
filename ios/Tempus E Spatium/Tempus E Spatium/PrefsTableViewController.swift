@@ -72,6 +72,11 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mLocaleTitle.text = NSLocalizedString("pref_general_locale", comment: "")
+        mDifficultyTitle.text = NSLocalizedString("pref_difficulty", comment: "")
+        mPlayer1ThemeTitle.text = NSLocalizedString("pref_player_1_theme", comment: "")
+        mPlayer2ThemeTitle.text = NSLocalizedString("pref_player_2_theme", comment: "")
+        
         let request = GADRequest()
         
         mAdView.adUnitID = "ca-app-pub-9627209153774793/8995151446" //ca-app-pub-9627209153774793/2302339919"
@@ -93,7 +98,7 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
         mAdView2.load(request)
                 
         
-        let langs:[String:[String]] = ["正體中文": ["Chinese (Authentic)", "TW", "zh"], "English (UK)": ["English", "GB", "en"], "català": ["Catalan", "AD", "ca"], "français": ["French","FR", "fr"], "Deutsch": ["German", "DE", "de"], "español": ["Spanish","ES", "es"], "日本語": ["Japanese", "JP", "ja"], "Українська": ["Ukrainian","UA", "uk"]]
+        let langs:[String:[String]] = ["正體中文": ["Chinese (Authentic)", "TW", "zh", "請重新開啟應用程式。", "確定"], "English (UK)": ["English", "GB", "en", "Please relaunch the app.", "OK"], "català": ["Catalan", "AD", "ca", "Reinicieu l'aplicació per favor.", "D'acord"], "français": ["French","FR", "fr", "Priez de redémarrer l'appli.", "OK"], "Deutsch": ["German", "DE", "de", "Wieder öffnet die Applikation bitte.", "OK"], "español": ["Spanish","ES", "es", "Reinicie la aplicación por favor.", "Aceptar"], "日本語": ["Japanese", "JP", "ja", "アプリを再起動して下さい。", "OK"], "Українська": ["Ukrainian","UA", "uk", "Please relaunch the app.", "OK"]]
         
         if let savedLocale = self.mPreferences.string(forKey: "PREF_LOCALE") {
             for x in langs.keys {
@@ -115,44 +120,30 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
             cell.mSubtitle.text = langs[item]![0]
             let flag = Flag(countryCode: langs[item]![1])!
             cell.mFlag.image = flag.originalImage
-            
-            self.mPreferences.set(langs[item]![2], forKey: "PREF_LOCALE")
         }
         
         mLocaleDropDown!.selectionAction = { [unowned self] (index: Int, item: String) in
             
             self.mLocaleSubtitle.text = item
             
-            //            self.mLocaleCurrentSelection.mSelection.text = item
-            //            self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
-            //            let iso = langs[item]![1]
-            //            let flag = Flag(countryCode: iso)!
-            //            self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
-            //
-            //            switch iso {
-            //            case "GB":
-            //                self.english()
-            //            case "AD":
-            //                self.catala()
-            //            case "DE":
-            //                self.deutsch()
-            //            case "ES":
-            //                self.espanol()
-            //            case "FR":
-            //                self.francais()
-            //            case "UA":
-            //                self.ukraiynska()
-            //            default:
-            //                break
-            //            }
-            //            self.mQuestionLang = iso
+            self.mPreferences.set(langs[item]![2], forKey: "PREF_LOCALE")
+
+            UserDefaults.standard.set([langs[item]![2]], forKey: "AppleLanguages")     //zh-Hant-HK
+            UserDefaults.standard.synchronize()
+            
+            let alert = UIAlertController(title: nil, message: NSLocalizedString(langs[item]![3], comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: langs[item]![4], style: .default, handler: {
+                (action : UIAlertAction!) -> Void in
+                exit(0)
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
         
         mLocaleDropDown!.selectedTextColor = UIColor(named: "Amber")!
         mLocaleDropDown!.textColor = .white
         
-        let difficulties = ["Hard": "30 seconds for fill in the blanks, 10 for other types", "InSaNe": "20 seconds for fill in the blanks, 6 for other types", "|-|y5t3r1c4l !": "18 seconds for fill in the blanks, 5 for other types"]
-        let difficultiesKeys = ["Hard", "InSaNe", "|-|y5t3r1c4l !"]
+        let difficulties = [NSLocalizedString("pref_difficulty_hard", comment: ""): NSLocalizedString("pref_difficulty_hard_sub", comment: ""), NSLocalizedString("pref_difficulty_insane", comment: ""): NSLocalizedString("pref_difficulty_insane_sub", comment: ""), NSLocalizedString("pref_difficulty_hysterical", comment: ""): NSLocalizedString("pref_difficulty_hysterical_sub", comment: "")]
+        let difficultiesKeys = [NSLocalizedString("pref_difficulty_hard", comment: ""), NSLocalizedString("pref_difficulty_insane", comment: ""), NSLocalizedString("pref_difficulty_hysterical", comment: "")]
         
         if let savedDifficulty = self.mPreferences.object(forKey: "PREF_DIFFICULTY") {
             let keyText = difficultiesKeys[savedDifficulty as! Int]
@@ -256,9 +247,9 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 1:
-            return NSLocalizedString("pref_general_locale", comment: "")
-        case 2:
             return NSLocalizedString("pref_general", comment: "")
+        case 2:
+            return NSLocalizedString("pref_gameplay", comment: "")
         default:
             return nil
             

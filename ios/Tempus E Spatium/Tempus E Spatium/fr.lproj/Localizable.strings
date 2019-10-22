@@ -8,40 +8,40 @@
 
 app_name = "Tempus E Spatium";
 
-play = "{fa_gamepad} PLAY!";
-rules = "{fa_leanpub} Rules";
-learn = "{fa_book} Learn";
-settings = "{fa_cog} Settings";
-highscores = "{fa_trophy} Highscores";
-quit = "{fa_sign-out} Quit game";
+play = " JOUER !";
+rules = " Règles";
+learn = " Apprendre";
+settings = " Paramètres";
+highscores = " Highscores";
+quit = " Quitter";
 
-articles_covered = "Articles covered: ";
-learn_sub = "Click on the badge to revise now!";
+articles_covered = "Articles couverts: ";
+learn_sub = "Cliquer sur une étiquette au-dessour pour réviser !";
 
-resume = "{fa_play-circle} Resume";
-return_main_menu = "{fa_sign-out} Return to main menu";
-topic_searcher_heading = "Search for ANY topic";
-loading = "Loading, please wait…";
+resume = " Reprendre";
+return_main_menu = "  Retourner au menu principal";
+topic_searcher_heading = "Recherche dans TOUS les thèmes !";
+loading = "Chargement en cours, veuillez patienter…";
 
-highscores_enter_name = "{md_sentiment_very_satisfied} Congrats, you won!\nEnter your name:";
+highscores_enter_name = " Félicitations, vous avez gagné !\nEntrez votre nom:";
 
-level = "Level %d";
+level = "Niveau %d";
 rules_tirade = "<p>The project is named Tempus E Spatium (Latin for Time and Space, which is often prefixed by “lost in”) as the questions focus on history and geography. Quiz types include: Drag and drop the national flags to the right continent, listen to the national anthem and choose the correct flag, and complete the word. Despite the name of the app, the last type can be of any question type.</p><br /><p>The questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he will lose 5 points.</p>";
 
-pref_general = "General";
-pref_general_locale = "Locale";
+pref_general = "Général";
+pref_general_locale = "Langue d'interface";
 pref_version = "Version";
-pref_player_1_theme = "Player 1 Theme";
-pref_player_2_theme = "Player 2 Theme";
+pref_player_1_theme = "Thème de Joueur 1";
+pref_player_2_theme = "Thème de Joueur 2";
 
-pref_gameplay = "Gameplay";
-pref_difficulty = "Difficulty";
-pref_difficulty_hard = "Hard";
-pref_difficulty_hard_sub = "30 seconds for fill in the blanks, 10 for other types";
-pref_difficulty_insane = "InSaNe";
-pref_difficulty_insane_sub = "20 seconds for fill in the blanks, 6 for other types";
-pref_difficulty_hysterical = "hYsTeRiCaL";
-pref_difficulty_hysterical_sub = "18 seconds for fill in the blanks, 5 for other type";
+pref_gameplay = "Jeu";
+pref_difficulty = "Difficulté";
+pref_difficulty_hard = "Dur";
+pref_difficulty_hard_sub = "30 seconds pour le jeu de choix multiples, 10 pour les autres";
+pref_difficulty_insane = "InSeNsÉ";
+pref_difficulty_insane_sub = "20 seconds pour le jeu de choix multiples, 6 pour les autres";
+pref_difficulty_hysterical = "|-|y5tÉr1q|_|e";
+pref_difficulty_hysterical_sub = "18 seconds pour le jeu de choix multiples, 5 pour les autres";
 
 question_anagram = "Reassemble the letters.";
 question_anthem = "Which country does this anthem belong to?";
@@ -49,18 +49,27 @@ question_flags = "Choose the matching flag.";
 question_history = "When did the historical event %s take place?";
 
 bar_points = "Points: %d";
-submit = "{fa_paper-plane} Submit!";
-reset = "{fa_undo} Reset";
+submit = " Envoyer !";
+reset = " Réinitialiser";
 a = "A. ";
 b = "B. ";
 c = "C. ";
 d = "D. ";
 
-paused = "{fa_pause} Game paused";
+paused = " Jeu en pause";
 
 simple_ime = "Simple IME";
 subtype_en_US = "English (US)";
 
-answer = "Answer:";
-you_chose = "You chose:";
-anthem_name = "Anthem name:";
+answer = "Solution:";
+you_chose = "Vous avez selectionné:";
+anthem_name = "Nom de l'hymne:";
+
+err_no_network = "Il faut une connexion de l'Internet !";
+lbl_music = "Musique:\nSquirrel Monkey";
+really_quit = "Do you really want to quit the game?";
+yes = "Oui";
+no = "Non";
+
+customise_here = " Customise here (optional)";
+submit_and_play = " Submit and play!";

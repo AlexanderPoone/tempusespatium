@@ -162,6 +162,9 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
             controller.mFlagA.contentMode = .scaleAspectFill
             controller.mFlagA.addSubview(fast)
             
+            self.mScoreBar.progress = 0.7
+            self.mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), 70)
+            
         }
     }
     
@@ -171,6 +174,10 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.mScoreBar.progress = 0
+        self.mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), 0)
+        
         mPauseBtn.setIcon(icon: .fontAwesomeSolid(.pause), iconSize: nil, color: .white, backgroundColor: UIColor(named: "info")!, forState: .normal)
         mDonutTime.setProgress(0.5, animated: true)
         mDonutTime.roundedCorners = 5

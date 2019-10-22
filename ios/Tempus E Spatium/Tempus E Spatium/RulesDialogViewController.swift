@@ -18,7 +18,7 @@ class RulesDialogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        mRulesLbl!.setIcon(prefixText: "", prefixTextFont: mRulesLbl.font!, prefixTextColor: .white, icon: .fontAwesomeBrands(.leanpub), iconColor: .white, postfixText: NSLocalizedString("rules", comment: ""), postfixTextFont: mRulesLbl.font!, postfixTextColor: .white, iconSize: nil)
+        mRulesLbl!.setIcon(prefixText: "", prefixTextFont: mRulesLbl.font!, prefixTextColor: .white, icon: .fontAwesomeBrands(.leanpub), iconColor: UIColor(named: "PapayaWhip")!, postfixText: NSLocalizedString("rules", comment: ""), postfixTextFont: mRulesLbl.font!, postfixTextColor: .white, iconSize: nil)
         mRulesTxt.text = NSLocalizedString("rules_tirade", comment: "")
     }
     

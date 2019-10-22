@@ -26,6 +26,17 @@
 		4B756D802349DC8E005CD85A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B756D7E2349DC8D005CD85A /* Localizable.strings */; };
 		4B7F5AB523545EBF003C88A4 /* de_KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F5AB423545EBF003C88A4 /* de_KeyboardViewController.swift */; };
 		4B7F5AB7235471AB003C88A4 /* BlanksGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F5AB6235471AB003C88A4 /* BlanksGameViewController.swift */; };
+		4B8077F3235EBBE6000F8941 /* DateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8077F2235EBBE5000F8941 /* DateGameViewController.swift */; };
+		4B8077F4235EF053000F8941 /* baker_signet_bt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B2BE0A5235DF2EA009E6765 /* baker_signet_bt.ttf */; };
+		4B8077F5235EF053000F8941 /* baker_signet_lt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B2BE0AD235DF2EF009E6765 /* baker_signet_lt.ttf */; };
+		4B8077F6235EF053000F8941 /* ermis_pro_bold_italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B2BE0AA235DF2EE009E6765 /* ermis_pro_bold_italic.otf */; };
+		4B8077F7235EF053000F8941 /* ermis_pro_bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B2BE0A9235DF2ED009E6765 /* ermis_pro_bold.otf */; };
+		4B8077F8235EF053000F8941 /* ermis_pro_light_italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B2BE0AB235DF2EE009E6765 /* ermis_pro_light_italic.otf */; };
+		4B8077F9235EF053000F8941 /* ermis_pro_light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B2BE0AE235DF2EF009E6765 /* ermis_pro_light.otf */; };
+		4B8077FA235EF053000F8941 /* ermis_pro_regular_italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B2BE0AC235DF2EF009E6765 /* ermis_pro_regular_italic.otf */; };
+		4B8077FB235EF053000F8941 /* ermis_pro_regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B2BE0A6235DF2EB009E6765 /* ermis_pro_regular.otf */; };
+		4B8077FC235EF053000F8941 /* kozminpro_heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B2BE0A8235DF2ED009E6765 /* kozminpro_heavy.otf */; };
+		4B8077FD235EF053000F8941 /* skylark_itc_tt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B2BE0A7235DF2ED009E6765 /* skylark_itc_tt.ttf */; };
 		4B8A85052359BD6600846A2E /* LocaleDropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A85032359BD6500846A2E /* LocaleDropDownTableViewCell.swift */; };
 		4B8A85062359BD6600846A2E /* LocaleDropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8A85042359BD6600846A2E /* LocaleDropDownTableViewCell.xib */; };
 		4B8A85082359CC8600846A2E /* ExteriorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A85072359CC8600846A2E /* ExteriorViewController.swift */; };
@@ -106,6 +117,7 @@
 		4B756D862349DCEA005CD85A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4B7F5AB423545EBF003C88A4 /* de_KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = de_KeyboardViewController.swift; sourceTree = "<group>"; };
 		4B7F5AB6235471AB003C88A4 /* BlanksGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlanksGameViewController.swift; sourceTree = "<group>"; };
+		4B8077F2235EBBE5000F8941 /* DateGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateGameViewController.swift; sourceTree = "<group>"; };
 		4B8A85032359BD6500846A2E /* LocaleDropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleDropDownTableViewCell.swift; sourceTree = "<group>"; };
 		4B8A85042359BD6600846A2E /* LocaleDropDownTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocaleDropDownTableViewCell.xib; sourceTree = "<group>"; };
 		4B8A85072359CC8600846A2E /* ExteriorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExteriorViewController.swift; sourceTree = "<group>"; };
@@ -256,6 +268,7 @@
 				4B756D782349D43E005CD85A /* Round1ViewController.swift */,
 				4B756D7C2349D741005CD85A /* PrefsTableViewController.swift */,
 				4B7F5AB6235471AB003C88A4 /* BlanksGameViewController.swift */,
+				4B8077F2235EBBE5000F8941 /* DateGameViewController.swift */,
 				4B6D96D92354D52E00D0DA0F /* EndgameViewController.swift */,
 				4B6D96DB2354D58500D0DA0F /* FlagGameViewController.swift */,
 				4B6D96DD2354D99400D0DA0F /* MapGameViewController.swift */,
@@ -398,6 +411,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B8077F4235EF053000F8941 /* baker_signet_bt.ttf in Resources */,
+				4B8077F5235EF053000F8941 /* baker_signet_lt.ttf in Resources */,
+				4B8077F6235EF053000F8941 /* ermis_pro_bold_italic.otf in Resources */,
+				4B8077F7235EF053000F8941 /* ermis_pro_bold.otf in Resources */,
+				4B8077F8235EF053000F8941 /* ermis_pro_light_italic.otf in Resources */,
+				4B8077F9235EF053000F8941 /* ermis_pro_light.otf in Resources */,
+				4B8077FA235EF053000F8941 /* ermis_pro_regular_italic.otf in Resources */,
+				4B8077FB235EF053000F8941 /* ermis_pro_regular.otf in Resources */,
+				4B8077FC235EF053000F8941 /* kozminpro_heavy.otf in Resources */,
+				4B8077FD235EF053000F8941 /* skylark_itc_tt.ttf in Resources */,
 				4BFE5194234730B500A5574C /* LaunchScreen.storyboard in Resources */,
 				4B756D802349DC8E005CD85A /* Localizable.strings in Resources */,
 				4B6D96D82354C89B00D0DA0F /* player_1_wins.gif in Resources */,
@@ -577,6 +600,7 @@
 				4BA58042234DA7CA00BA6314 /* es_KeyboardViewController.swift in Sources */,
 				4B756D772349D3FB005CD85A /* SelectionViewController.swift in Sources */,
 				4B6D96E02354DD2D00D0DA0F /* LearnViewController.swift in Sources */,
+				4B8077F3235EBBE6000F8941 /* DateGameViewController.swift in Sources */,
 				4BFE5188234730A000A5574C /* AppDelegate.swift in Sources */,
 				4B756D7B2349D468005CD85A /* TopicSearcherViewController.swift in Sources */,
 				4BA5803E234DA78D00BA6314 /* en_KeyboardViewController.swift in Sources */,

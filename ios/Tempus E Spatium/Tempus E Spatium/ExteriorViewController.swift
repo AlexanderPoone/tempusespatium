@@ -13,8 +13,38 @@ import DACircularProgress
 import SVGKit
 import Alamofire
 
-class ExteriorViewController: UIViewController {
+class MonthPickerDelegate: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return (1...12).count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
 
+        let string = String(Array(1...12)[row])
+        return NSAttributedString(string: string, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+    }
+}
+
+
+class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return (1912...1949).count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+
+        let string = String(Array(1912...1949)[row])
+        return NSAttributedString(string: string, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+    }
     
     @IBOutlet weak var mPauseBtn: UIButton!
     
@@ -31,7 +61,7 @@ class ExteriorViewController: UIViewController {
     @objc func aClicked() {
         print("A Clicked")
         if let view1 = mFragmentContainer.subviews.first {
-        view1.removeFromSuperview()
+            view1.removeFromSuperview()
             let controller = storyboard!.instantiateViewController(withIdentifier: "MapGameViewController") as! MapGameViewController
             controller.view.frame = mFragmentContainer.bounds
             controller.willMove(toParent: self)
@@ -41,9 +71,33 @@ class ExteriorViewController: UIViewController {
             controller.view.backgroundColor = view.backgroundColor
         }
     }
-
+    
+    let mMonthDelegate = MonthPickerDelegate() //Must be a member, since dataSource and delegate are weak
+    
     @objc func bClicked() {
         print("B Clicked")
+        if let view1 = mFragmentContainer.subviews.first {
+            view1.removeFromSuperview()
+            let controller = storyboard!.instantiateViewController(withIdentifier: "DateGameViewController") as! DateGameViewController
+            controller.view.frame = mFragmentContainer.bounds
+            controller.willMove(toParent: self)
+            mFragmentContainer.addSubview(controller.view)
+            addChild(controller)
+            
+            controller.didMove(toParent: self)
+            controller.view.backgroundColor = view.backgroundColor
+            
+            //            controller.mYear = 1937
+            //            controller.mMonth = 7
+            //
+            controller.mYearScroller.dataSource = self
+            controller.mYearScroller.delegate = self
+            controller.mYearScroller.selectRow((0..<controller.mYearScroller.numberOfRows(inComponent: 0)).randomElement()!, inComponent: 0, animated: false)
+            
+            controller.mMonthScroller.dataSource = mMonthDelegate
+            controller.mMonthScroller.delegate = mMonthDelegate
+            controller.mMonthScroller.selectRow((0..<controller.mMonthScroller.numberOfRows(inComponent: 0)).randomElement()!, inComponent: 0, animated: false)
+        }
     }
     
     @objc func cClicked() {
@@ -60,8 +114,8 @@ class ExteriorViewController: UIViewController {
     
     @IBAction func mYellowTest(_ sender: Any) {
         if let view1 = mFragmentContainer.subviews.first {
-        view1.removeFromSuperview()
-
+            view1.removeFromSuperview()
+            
             let controller = storyboard!.instantiateViewController(withIdentifier: "FlagGameViewController") as! FlagGameViewController
             controller.view.frame = mFragmentContainer.bounds
             controller.willMove(toParent: self)
@@ -72,15 +126,15 @@ class ExteriorViewController: UIViewController {
             
             //AlamoFire here!
             AF.request("https://en.wikipedia.org/wiki/Wikipedia:Lists_of_popular_pages_by_WikiProject")
-            .validate(statusCode: 200..<300)
-            //            .validate(contentType: ["application/json"])
-            .responseData { response in
-                switch response.result {
-                case .success(let value):
-                    print("asdfsuccess")
-                case .failure(let error):
-                    print(error)
-                }
+                .validate(statusCode: 200..<300)
+                //            .validate(contentType: ["application/json"])
+                .responseData { response in
+                    switch response.result {
+                    case .success(let value):
+                        print("asdfsuccess")
+                    case .failure(let error):
+                        print(error)
+                    }
             }
             
             let aClickedList = UITapGestureRecognizer(target: self, action: #selector(aClicked))
@@ -96,16 +150,19 @@ class ExteriorViewController: UIViewController {
             controller.mClickAreaD.addGestureRecognizer(dClickedList)
             
             controller.mIndicatorA.setIcon(icon: .googleMaterialDesign(.newReleases), iconSize: 24, color: .white, bgColor: UIColor(named: "Amber")!)
-                        controller.mIndicatorB.setIcon(icon: .googleMaterialDesign(.check), iconSize: 24, color: .white, bgColor: UIColor(named: "success")!)
-                        controller.mIndicatorC.setIcon(icon: .googleMaterialDesign(.close), iconSize: 24, color: .white, bgColor: UIColor(named: "danger")!)
+            controller.mIndicatorB.setIcon(icon: .googleMaterialDesign(.check), iconSize: 24, color: .white, bgColor: UIColor(named: "success")!)
+            controller.mIndicatorC.setIcon(icon: .googleMaterialDesign(.close), iconSize: 24, color: .white, bgColor: UIColor(named: "danger")!)
             
             var svg1:SVGKImage = SVGKImage(contentsOf: URL(string: "https://upload.wikimedia.org/wikipedia/commons/d/de/Coat_of_arms_of_Botswana.svg"))
             let fast = SVGKFastImageView(svgkImage: svg1)!
-            fast.frame = controller.mFlagA.bounds
-            fast.sizeToFit()
+            let aspect = fast.frame.width / fast.frame.height
+            fast.contentMode = .scaleAspectFill
+            fast.frame = CGRect(x: 0, y: 0, width: 90 * aspect, height: 90)
+//            print(controller.mFlagA.frame)
+            controller.mFlagA.contentMode = .scaleAspectFill
             controller.mFlagA.addSubview(fast)
             
-    }
+        }
     }
     
     @IBAction func mPauseBtnClicked(_ sender: Any) {
@@ -121,5 +178,5 @@ class ExteriorViewController: UIViewController {
         mDonutTime.progressTintColor = UIColor(named: "warning")!
         mDonutTime.largeContentTitle = "0"
     }
-
+    
 }

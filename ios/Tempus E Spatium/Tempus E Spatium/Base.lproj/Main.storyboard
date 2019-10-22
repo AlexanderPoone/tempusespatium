@@ -1036,7 +1036,8 @@ Squirrel Monkey</string>
                         <outlet property="mFragmentContainer" destination="fPj-Bf-DeI" id="rS6-ml-Vrq"/>
                         <outlet property="mPauseBtn" destination="QNd-bS-YgY" id="2LB-mR-9Tv"/>
                         <outlet property="mScoreBar" destination="WqO-Lr-n9a" id="u6x-rq-rUH"/>
-                        <outlet property="mScoreText" destination="pyj-Iy-coH" id="tF6-DV-oWx"/>
+                        <outlet property="mScoreChangeLbl" destination="pyj-Iy-coH" id="I3j-dn-YDr"/>
+                        <outlet property="mScoreText" destination="Ukw-iE-ung" id="RQO-HC-VSf"/>
                         <outlet property="mYellowBtn" destination="GG9-jI-7HA" id="yt5-Y7-say"/>
                         <segue destination="sNO-tf-6qG" kind="presentation" identifier="showPauseDialog" id="aCa-nS-m6G"/>
                     </connections>

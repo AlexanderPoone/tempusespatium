@@ -53,9 +53,11 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var mFragmentContainer: UIView!
     
     @IBOutlet weak var mScoreBar: YLProgressBar!
-    
+        
     @IBOutlet weak var mScoreText: UILabel!
-    
+
+    @IBOutlet weak var mScoreChangeLbl: UILabel!
+        
     @IBOutlet weak var mYellowBtn: UIButton!
     
     @objc func aClicked() {

@@ -37,6 +37,15 @@ class DateGameViewController: UIViewController {
         mResetBtn.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.undo), iconColor: .white, postfixText: NSLocalizedString("reset", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "danger")!, forState: .normal, textSize: nil, iconSize: nil)
         
         mSubmitBtn.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.paperPlane), iconColor: .white, postfixText: NSLocalizedString("submit", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "success")!, forState: .normal, textSize: nil, iconSize: nil)
+        
+        let question = NSMutableAttributedString()
+        let light = UIFont(name: "BakerSignetLT", size: 17)!
+        let bold = UIFont(name: "BakerSignetBT-Roman", size: 20)!
+        
+        question.append(NSAttributedString(string: NSLocalizedString("question_history_1", comment: ""), attributes: [NSAttributedString.Key.font: light]))
+        question.append(NSAttributedString(string: "D-Day", attributes: [NSAttributedString.Key.font: bold]))
+        question.append(NSAttributedString(string: NSLocalizedString("question_history_2", comment: ""), attributes: [NSAttributedString.Key.font: light]))
+        mQuestion.attributedText = question
     }
     
     

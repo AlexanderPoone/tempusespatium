@@ -21,13 +21,17 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
     
     @IBOutlet weak var mSubmitBtn: UIButton!
     
+    @IBOutlet weak var mAnswerLbl: UILabel!
     
     @IBAction func mResetBtnClicked(_ sender: Any) {
         if let marker = mMarker {
             marker.map = nil
         }
         mMap.animate(toZoom: 0)
+        revealAnswer(["Philippines", "Maldives", "Comoros", "France", "Bangladesh"].randomElement()!)
     }
+    
+    
     
     var mMarker:GMSMarker?
     
@@ -49,11 +53,8 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
     }
     
     func revealAnswer(_ state:String) {
-        let polygon = GMSPolygon()
-        polygon.fillColor = UIColor(named: "BlueDialogBackground")!
-        polygon.strokeColor = .black
-        polygon.strokeWidth = 2
-        let polygonPath = GMSMutablePath()
+        
+        mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(state)\n\(NSLocalizedString("you_chose", comment: ""))"
         
         let states = Bundle.main.url(forResource: "states_of_the_world", withExtension: "geojson")!
         let jsonData = try! Data(contentsOf: states)
@@ -72,24 +73,43 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
         var avgLat:Double = 0, avgLng:Double = 0
         
         if features.count > 0 {
-            let arr = features[0].1["geometry"]["coordinates"][0].arrayValue
-            for x in arr {
-                polygonPath.add(CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: x[1].doubleValue)!, longitude: CLLocationDegrees(exactly: x[0].doubleValue)!))
-                avgLat += x[1].doubleValue
-                avgLng += x[0].doubleValue
+            let node = features[0].1["geometry"]
+            let arrO = node["coordinates"].arrayValue
+            for y in arrO {
+                let polygon = GMSPolygon()
+                polygon.fillColor = UIColor(named: "BlueDialogBackground")!
+                polygon.strokeColor = .black
+                polygon.strokeWidth = 2
+                let polygonPath = GMSMutablePath()
+                
+                var arr:[JSON]
+                if node["type"].stringValue.starts(with: "M") {
+                    arr = y[0].arrayValue
+                } else {
+                    arr = y.arrayValue
+                }
+                for x in arr {
+                    polygonPath.add(CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: x[1].doubleValue)!, longitude: CLLocationDegrees(exactly: x[0].doubleValue)!))
+                    avgLat += x[1].doubleValue
+                    avgLng += x[0].doubleValue
+                }
+                avgLat /= Double(arr.count)
+                avgLng /= Double(arr.count)
+                
+                print("Test \(polygonPath)")
+                polygon.path = polygonPath
+                polygon.map = mMap
+                
             }
-            avgLat /= Double(arr.count)
-            avgLng /= Double(arr.count)
-            
-            polygon.path = polygonPath
-            polygon.map = mMap
-            
             mMap.animate(toLocation: CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly:avgLat)!, longitude: CLLocationDegrees(exactly:avgLng)!))
         }
         
     }
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        if let marker = mMarker {
+            marker.map = nil
+        }
         mMarker = GMSMarker()
         mMarker!.isDraggable = false
         mMarker!.position = coordinate

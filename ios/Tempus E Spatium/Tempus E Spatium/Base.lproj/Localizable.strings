@@ -52,7 +52,8 @@ pref_difficulty_hysterical_sub = "36 seconds for fill in the blanks, 5 for other
 question_anagram = "Reassemble the letters.";
 question_anthem = "Which country does this anthem belong to?";
 question_flags = "Choose the matching flag.";
-question_history = "When did the historical event %s take place?";
+question_history_1 = "When did the historical event ";
+question_history_2 = " take place?";
 
 bar_points = "Points: %d";
 submit = " Submit!";

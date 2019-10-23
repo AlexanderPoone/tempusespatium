@@ -98,7 +98,7 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
         mAdView2.load(request)
                 
         
-        let langs:[String:[String]] = ["正體中文": ["Chinese (Authentic)", "TW", "zh", "請重新開啟應用程式。", "確定"], "English (UK)": ["English", "GB", "en", "Please relaunch the app.", "OK"], "català": ["Catalan", "AD", "ca", "Reinicieu l'aplicació per favor.", "D'acord"], "français": ["French","FR", "fr", "Priez de redémarrer l'appli.", "OK"], "Deutsch": ["German", "DE", "de", "Wieder öffnet die Applikation bitte.", "OK"], "español": ["Spanish","ES", "es", "Reinicie la aplicación por favor.", "Aceptar"], "日本語": ["Japanese", "JP", "ja", "アプリを再起動して下さい。", "OK"], "Українська": ["Ukrainian","UA", "uk", "Please relaunch the app.", "OK"]]
+        let langs:[String:[String]] = ["正體中文": ["Chinese (Authentic)", "TW", "zh", "請重新開啟應用程式。", "確定"], "English (UK)": ["English", "GB", "en", "Please relaunch the app.", "OK"], "català": ["Catalan", "AD", "ca", "Reinicieu l'aplicació per favor.", "D'acord"], "français": ["French","FR", "fr", "Priez de redémarrer l'appli.", "OK"], "Deutsch": ["German", "DE", "de", "Wieder öffnet die Applikation bitte.", "OK"], "español": ["Spanish","ES", "es", "Reinicie la aplicación por favor.", "Aceptar"], "日本語": ["Japanese", "JP", "ja", "アプリを再起動して下さい。", "OK"], "Українська": ["Ukrainian","UA", "uk", "Відкрий додаток знову, будь ласка.", "OK"]]
         
         if let savedLocale = self.mPreferences.string(forKey: "PREF_LOCALE") {
             for x in langs.keys {

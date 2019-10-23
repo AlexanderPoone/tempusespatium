@@ -24,6 +24,9 @@ topic_searcher_heading = "Search for ANY topic";
 loading = "Carregant, espereu…";
 enter_keyword = "Enter keyword to search for a theme!";
 
+gameplay_language = "Мова гри: ";
+any_topic = "Тема: ";
+
 highscores_enter_name = "{md_sentiment_very_satisfied} Congrats, you won!\nEnter your name:";
 
 level = "Level %d";
@@ -39,7 +42,7 @@ pref_gameplay = "Гра";
 pref_difficulty = "Складність";
 pref_difficulty_hard = "Складна";
 pref_difficulty_hard_sub = "30 seconds for fill in the blanks, 10 for other types";
-pref_difficulty_insane = "BoIg";
+pref_difficulty_insane = "БоЖеВіЛьНиЙ";
 pref_difficulty_insane_sub = "20 seconds for fill in the blanks, 6 for other types";
 pref_difficulty_hysterical = "hYsTeRiCaL";
 pref_difficulty_hysterical_sub = "18 seconds for fill in the blanks, 5 for other type";
@@ -64,7 +67,7 @@ subtype_en_US = "English (US)";
 
 answer = "Рішення:";
 you_chose = "You chose:";
-anthem_name = "Anthem name:";
+anthem_name = "Гімн назви:";
 
 err_no_network = "No té accés a Internet!";
 lbl_music = "Музика:\nSquirrel Monkey";

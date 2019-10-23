@@ -8,21 +8,24 @@
 
 app_name = "Tempus E Spatium";
 
-play = " PLAY!";
-rules = " Rules";
-learn = " Learn";
-settings = " Settings";
-highscores = " Highscores";
-quit = " Quit game";
+play = " 開始遊戲！";
+rules = " 規則";
+learn = " 學習";
+settings = " 設定";
+highscores = " 高分榜";
+quit = " 結束遊戲";
 
 articles_covered = "Articles covered: ";
 learn_sub = "Click on the badge to revise now!";
 
-resume = " Resume";
+resume = " 繼續遊戲";
 return_main_menu = " Return to main menu";
 topic_searcher_heading = "Search for ANY topic";
 loading = "Loading, please wait…";
 enter_keyword = "Enter keyword to search for a theme!";
+
+gameplay_language = "Langue des questions: ";
+any_topic = "任何題目";
 
 highscores_enter_name = "{md_sentiment_very_satisfied} Congrats, you won!\nEnter your name:";
 

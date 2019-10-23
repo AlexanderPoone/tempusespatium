@@ -15,14 +15,17 @@ settings = " Ajustes";
 highscores = " Highscores";
 quit = " Salir";
 
-articles_covered = "Articles covered: ";
-learn_sub = "Click on the badge to revise now!";
+articles_covered = "Artículos cubiertos: ";
+learn_sub = "¡Haz clic en una etiqueta arriba para repasar!";
 
 resume = " Reanudar";
-return_main_menu = " Return to main menu";
+return_main_menu = " Volver al menú principal";
 topic_searcher_heading = "Search for ANY topic";
-loading = "Carregant, espereu…";
-enter_keyword = "Enter keyword to search for a theme!";
+loading = "Cargando, esperar…";
+enter_keyword = "Buscar";
+
+gameplay_language = "Idioma de las preguntas: ";
+any_topic = "Tema: ";
 
 highscores_enter_name = " Enhorabuena, ¡ha ganado!\nIntroduzca su nombre:";
 
@@ -39,9 +42,9 @@ pref_gameplay = "Juego";
 pref_difficulty = "Dificuldad";
 pref_difficulty_hard = "Difícil";
 pref_difficulty_hard_sub = "30 seconds for fill in the blanks, 10 for other types";
-pref_difficulty_insane = "BoIg";
+pref_difficulty_insane = "LoC0";
 pref_difficulty_insane_sub = "20 seconds for fill in the blanks, 6 for other types";
-pref_difficulty_hysterical = "hYsTeRiCaL";
+pref_difficulty_hysterical = "¡|-|y5t3r1c4l!";
 pref_difficulty_hysterical_sub = "18 seconds for fill in the blanks, 5 for other type";
 
 question_anagram = "Reassemble the letters.";
@@ -72,5 +75,5 @@ really_quit = "Do you really want to quit the game?";
 yes = "Sí";
 no = "No";
 
-customise_here = " Customise here (optional)";
+customise_here = "  Pesonalizar aquí (facultativo)";
 submit_and_play = " ¡Enviar y jugar!";

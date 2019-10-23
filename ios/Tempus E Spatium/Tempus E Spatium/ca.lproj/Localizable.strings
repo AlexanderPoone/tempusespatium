@@ -24,6 +24,9 @@ topic_searcher_heading = "Search for ANY topic";
 loading = "Carregant, espereu…";
 enter_keyword = "Enter keyword to search for a theme!";
 
+gameplay_language = "Idioma de preguntas: ";
+any_topic = "Tema: ";
+
 highscores_enter_name = "{md_sentiment_very_satisfied} Congrats, you won!\nEnter your name:";
 
 level = "Nivel %d";

@@ -563,6 +563,11 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
         mTagsView!.defaultConfig = textTagConfig
         mTagsView!.delegate = self
         
+        mLocaleLbl.text = NSLocalizedString("gameplay_language",comment:"")
+        mAnyTopicLbl.text = NSLocalizedString("any_topic",comment:"")
+        mArticlesCoveredLbl.text = NSLocalizedString("articles_covered",comment:"")
+        mClickOnBadgeLbl.text = NSLocalizedString("learn_sub",comment:"")
+        
         mResetBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.undo), iconColor: .white, postfixText: NSLocalizedString("reset", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "danger")!, forState: .normal, textSize: nil, iconSize: nil)
         mSubmitAndPlayBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.gamepad), iconColor: .white, postfixText: NSLocalizedString("submit_and_play", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "info")!, forState: .normal, textSize: nil, iconSize: nil)
         

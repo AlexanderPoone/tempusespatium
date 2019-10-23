@@ -22,6 +22,11 @@ resume = " Resume";
 return_main_menu = " Return to main menu";
 topic_searcher_heading = "Search for ANY topic";
 loading = "Loading, please wait…";
+
+gameplay_language = "Gamplay language: ";
+any_topic = "Any topic: ";
+topic_searcher_heading = "Search for ANY topic!";
+
 enter_keyword = "Enter keyword to search for a theme!";
 
 highscores_enter_name = " Congrats, you won!\nEnter your name:";

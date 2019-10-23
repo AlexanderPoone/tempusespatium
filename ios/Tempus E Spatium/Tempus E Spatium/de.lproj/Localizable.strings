@@ -24,6 +24,9 @@ topic_searcher_heading = "Suchen ALLEN Themen!";
 loading = "Laden, bitte warten…";
 enter_keyword = "Wahrheitssuche!";
 
+gameplay_language = "Spielsprache: ";
+any_topic = "Thema: ";
+
 highscores_enter_name = "{md_sentiment_very_satisfied} Congrats, you won!\nEnter your name:";
 
 level = "Level %d";

@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import SwiftIcons
+import SwiftyJSON
 
 class MapGameViewController: UIViewController, GMSMapViewDelegate {
     
@@ -22,8 +23,12 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
     
     
     @IBAction func mResetBtnClicked(_ sender: Any) {
-        mMap.clear()
+        if let marker = mMarker {
+            marker.map = nil
+        }
     }
+    
+    var mMarker:GMSMarker?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,17 +43,59 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
         mMap.camera = GMSCameraPosition(latitude: CLLocationDegrees(exactly: 0)!, longitude: CLLocationDegrees(exactly: 0)!, zoom: 0)
         
         mMap.mapStyle = try! GMSMapStyle(jsonString: "[{\"elementType\":\"geometry.stroke\",\"stylers\":[{\"visibility\":\"off\"}]},{\"elementType\":\"labels\",\"stylers\":[{\"visibility\":\"off\"}]}]")
+        //GeoJSON
+        revealAnswer("Eswatini")
+    }
+    
+    func revealAnswer(_ state:String) {
+        let polygon = GMSPolygon()
+        polygon.fillColor = UIColor(named: "BlueDialogBackground")!
+        polygon.strokeColor = .black
+        polygon.strokeWidth = 2
+        let polygonPath = GMSMutablePath()
+        
+        let states = Bundle.main.url(forResource: "states_of_the_world", withExtension: "geojson")!
+        let jsonData = try! Data(contentsOf: states)
+        let json = try! JSON(data: jsonData)
+        
+        let features = json["features"].filter { (arg0) -> Bool in
+            
+            //            let (String, JSON) = arg0
+            if let countryName = arg0.1["properties"]["ADMIN"].string {
+                return countryName == state
+            } else {
+                return false
+            }
+        }
+        
+        var avgLat:Double = 0, avgLng:Double = 0
+        
+        if features.count > 0 {
+            let arr = features[0].1["geometry"]["coordinates"][0].arrayValue
+            for x in arr {
+                polygonPath.add(CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: x[1].doubleValue)!, longitude: CLLocationDegrees(exactly: x[0].doubleValue)!))
+                avgLat += x[1].doubleValue
+                avgLng += x[0].doubleValue
+            }
+            avgLat /= Double(arr.count)
+            avgLng /= Double(arr.count)
+            
+            polygon.path = polygonPath
+            polygon.map = mMap
+            
+            mMap.animate(toLocation: CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly:avgLat)!, longitude: CLLocationDegrees(exactly:avgLng)!))
+        }
+        
     }
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        let marker = GMSMarker()
-        mapView.clear()
-        marker.isDraggable = false
-        marker.position = coordinate
-        marker.icon = UIImage(named: "rocket_pointer")!
-        marker.appearAnimation = .pop
+        mMarker = GMSMarker()
+        mMarker!.isDraggable = false
+        mMarker!.position = coordinate
+        mMarker!.icon = UIImage(named: "rocket_pointer")!
+        mMarker!.appearAnimation = .pop
         
-        marker.map = mapView
+        mMarker!.map = mapView
     }
     
     /*

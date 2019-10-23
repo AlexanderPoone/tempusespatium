@@ -38,6 +38,7 @@
 		4B8077FC235EF053000F8941 /* kozminpro_heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B2BE0A8235DF2ED009E6765 /* kozminpro_heavy.otf */; };
 		4B8077FD235EF053000F8941 /* skylark_itc_tt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B2BE0A7235DF2ED009E6765 /* skylark_itc_tt.ttf */; };
 		4B8077FF235F8243000F8941 /* InputHighscoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8077FE235F8243000F8941 /* InputHighscoreViewController.swift */; };
+		4B8078012360753F000F8941 /* states_of_the_world.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 4B8078002360753E000F8941 /* states_of_the_world.geojson */; };
 		4B8A85052359BD6600846A2E /* LocaleDropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A85032359BD6500846A2E /* LocaleDropDownTableViewCell.swift */; };
 		4B8A85062359BD6600846A2E /* LocaleDropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8A85042359BD6600846A2E /* LocaleDropDownTableViewCell.xib */; };
 		4B8A85082359CC8600846A2E /* ExteriorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A85072359CC8600846A2E /* ExteriorViewController.swift */; };
@@ -120,6 +121,7 @@
 		4B7F5AB6235471AB003C88A4 /* BlanksGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlanksGameViewController.swift; sourceTree = "<group>"; };
 		4B8077F2235EBBE5000F8941 /* DateGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateGameViewController.swift; sourceTree = "<group>"; };
 		4B8077FE235F8243000F8941 /* InputHighscoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHighscoreViewController.swift; sourceTree = "<group>"; };
+		4B8078002360753E000F8941 /* states_of_the_world.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states_of_the_world.geojson; sourceTree = "<group>"; };
 		4B8A85032359BD6500846A2E /* LocaleDropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleDropDownTableViewCell.swift; sourceTree = "<group>"; };
 		4B8A85042359BD6600846A2E /* LocaleDropDownTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocaleDropDownTableViewCell.xib; sourceTree = "<group>"; };
 		4B8A85072359CC8600846A2E /* ExteriorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExteriorViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 		4BFE5186234730A000A5574C /* Tempus E Spatium */ = {
 			isa = PBXGroup;
 			children = (
+				4B8078002360753E000F8941 /* states_of_the_world.geojson */,
 				4B8A850F235A0EC200846A2E /* beep_space_button.wav */,
 				4B8A850D235A0EC100846A2E /* plunger_pop.wav */,
 				4B8A850E235A0EC100846A2E /* space_swoosh.wav */,
@@ -423,6 +426,7 @@
 				4B8077FA235EF053000F8941 /* ermis_pro_regular_italic.otf in Resources */,
 				4B8077FB235EF053000F8941 /* ermis_pro_regular.otf in Resources */,
 				4B8077FC235EF053000F8941 /* kozminpro_heavy.otf in Resources */,
+				4B8078012360753F000F8941 /* states_of_the_world.geojson in Resources */,
 				4B8077FD235EF053000F8941 /* skylark_itc_tt.ttf in Resources */,
 				4BFE5194234730B500A5574C /* LaunchScreen.storyboard in Resources */,
 				4B756D802349DC8E005CD85A /* Localizable.strings in Resources */,

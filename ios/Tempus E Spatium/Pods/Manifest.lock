@@ -49,6 +49,7 @@ PODS:
   - SVGKit (2.1.0):
     - CocoaLumberjack (~> 3.0)
   - SwiftIcons (2.3.2)
+  - SwiftyJSON (5.0.0)
   - TTGTagCollectionView (1.11.1)
   - YLProgressBar (3.11.0)
 
@@ -65,6 +66,7 @@ DEPENDENCIES:
   - SearchTextField
   - SVGKit (from `https://github.com/SVGKit/SVGKit.git`, branch `3.x`)
   - SwiftIcons (~> 2.3.2)
+  - SwiftyJSON
   - TTGTagCollectionView
   - YLProgressBar
 
@@ -84,6 +86,7 @@ SPEC REPOS:
     - ReachabilitySwift
     - SearchTextField
     - SwiftIcons
+    - SwiftyJSON
     - TTGTagCollectionView
     - YLProgressBar
 
@@ -97,14 +100,14 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Alamofire:
-    :commit: 262fc46a273c4e01483aee933a8230b4b253ef49
+    :commit: 77a6e52dc0fcf1b0c005599e71253bf544791394
     :git: https://github.com/Alamofire/Alamofire
   SVGKit:
     :commit: 39dd210fd47e3195f57f914354ffd2d0b4b8ff1c
     :git: https://github.com/SVGKit/SVGKit.git
 
 SPEC CHECKSUMS:
-  Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  Alamofire: 616173279c55fca0c71278ec5f42fa61ee7fa806
   CocoaLumberjack: 78b0c238666f4f58db069738ec176f4519557516
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
@@ -120,9 +123,10 @@ SPEC CHECKSUMS:
   SearchTextField: 40dc3cc57def5a211f263cac263622c163bbc25a
   SVGKit: 8a2fc74258bdb2abb54d3b65f3dd68b0277a9c4d
   SwiftIcons: e652cfd2676441c462ad57b6e92977faf577e590
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   TTGTagCollectionView: 86fcbfa6a7493c9e860b01c2e693cffc8acf6de1
   YLProgressBar: 0c0796a6e9b5e5d5040d15c8911e802b67ccb939
 
-PODFILE CHECKSUM: 617890e426d0d81361d676e11157ac37af10dec8
+PODFILE CHECKSUM: 51aaa2ee20dc53919d12d218c2163f7e68a56a77
 
 COCOAPODS: 1.8.0

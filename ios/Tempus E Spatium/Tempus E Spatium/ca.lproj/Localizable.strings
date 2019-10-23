@@ -15,14 +15,14 @@ settings = " Ajustos";
 highscores = " Highscores";
 quit = " Deixar";
 
-articles_covered = "Articles covered: ";
+articles_covered = "Articles coberts: ";
 learn_sub = "Click on the badge to revise now!";
 
 resume = " Reanudar";
-return_main_menu = " Return to main menu";
-topic_searcher_heading = "Search for ANY topic";
+return_main_menu = " Tornar al menú principal";
+topic_searcher_heading = "Cerca TOTS els temes!";
 loading = "Carregant, espereu…";
-enter_keyword = "Enter keyword to search for a theme!";
+enter_keyword = "Cerca";
 
 gameplay_language = "Idioma de preguntas: ";
 any_topic = "Tema: ";
@@ -68,6 +68,7 @@ subtype_en_US = "English (US)";
 answer = "Solució:";
 you_chose = "Ha elegit:";
 anthem_name = "Anthem name:";
+learning_theme = "Tema: ";
 
 err_no_network = "No té accés a Internet!";
 lbl_music = "Music:\nSquirrel Monkey";

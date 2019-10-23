@@ -68,6 +68,7 @@ subtype_en_US = "English (US)";
 answer = "Answer:";
 you_chose = "You chose:";
 anthem_name = "Anthem name:";
+learning_theme = "Theme: ";
 
 err_no_network = "You need a network connection to play the game !";
 lbl_music = "Music:\nSquirrel Monkey";

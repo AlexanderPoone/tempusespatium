@@ -13,11 +13,16 @@ class InputHighscoreViewController: UIViewController {
 
     @IBOutlet weak var mWonLbl: UILabel!
     
+    @IBOutlet weak var mTextField: UITextField!
+    
+    @IBOutlet weak var mDoneBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mWonLbl!.setIcon(prefixText: "", prefixTextFont: mWonLbl.font!, prefixTextColor: .white, icon: .googleMaterialDesign(.sentimentVerySatisfied), iconColor: UIColor(named: "PapayaWhip")!, postfixText: NSLocalizedString("highscores_enter_name", comment: ""), postfixTextFont: mWonLbl.font!, postfixTextColor: UIColor(named: "PapayaWhip")!, iconSize: nil)
         
+        mDoneBtn.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.paperPlane), iconColor: .white, postfixText: NSLocalizedString("submit", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "success")!, forState: .normal, textSize: nil, iconSize: nil)
     }
     
 

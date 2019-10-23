@@ -68,6 +68,7 @@ subtype_en_US = "English (US)";
 answer = "Рішення:";
 you_chose = "You chose:";
 anthem_name = "Гімн назви:";
+learning_theme = "Тема: ";
 
 err_no_network = "No té accés a Internet!";
 lbl_music = "Музика:\nSquirrel Monkey";

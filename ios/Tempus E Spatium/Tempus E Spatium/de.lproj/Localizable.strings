@@ -68,6 +68,7 @@ subtype_en_US = "English (US)";
 answer = "Einwort:";
 you_chose = "Sie wählten:";
 anthem_name = "Hymne des Namens:";
+learning_theme = "Thema: ";
 
 err_no_network = "No té accés a Internet!";
 lbl_music = "Music:\nSquirrel Monkey";

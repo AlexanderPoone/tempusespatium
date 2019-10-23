@@ -668,7 +668,7 @@ Squirrel Monkey</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locale:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rR7-Gg-Efk">
-                                <rect key="frame" x="20" y="130.5" width="45" height="40"/>
+                                <rect key="frame" x="20" y="130.5" width="65" height="40"/>
                                 <fontDescription key="fontDescription" name="BakerSignetBT-Roman" family="BakerSignet BT" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -759,13 +759,14 @@ Squirrel Monkey</string>
                             <constraint firstItem="0QO-IA-i1O" firstAttribute="top" secondItem="htx-RY-lln" secondAttribute="bottom" constant="36" id="8By-BC-cNB"/>
                             <constraint firstItem="rR7-Gg-Efk" firstAttribute="leading" secondItem="fYw-wO-dAY" secondAttribute="leadingMargin" id="A4W-2D-rU6"/>
                             <constraint firstItem="KCU-7E-8W5" firstAttribute="baseline" secondItem="IU5-bs-tqv" secondAttribute="baseline" id="Bwh-kR-qBc"/>
-                            <constraint firstItem="xrc-yY-p4v" firstAttribute="leading" secondItem="kS0-dc-jhZ" secondAttribute="leading" id="ECx-Xd-NJU"/>
+                            <constraint firstItem="kS0-dc-jhZ" firstAttribute="leading" secondItem="xrc-yY-p4v" secondAttribute="leading" id="ECx-Xd-NJU"/>
                             <constraint firstItem="rR7-Gg-Efk" firstAttribute="top" secondItem="yoH-Sw-cOZ" secondAttribute="bottom" constant="13" id="IEl-mn-Pgf"/>
                             <constraint firstItem="IU5-bs-tqv" firstAttribute="trailing" secondItem="t9N-ZI-qIv" secondAttribute="trailing" id="Jph-SG-hbf"/>
                             <constraint firstItem="kS0-dc-jhZ" firstAttribute="top" secondItem="xrc-yY-p4v" secondAttribute="bottom" constant="18" id="MB7-bd-76o"/>
                             <constraint firstItem="kS0-dc-jhZ" firstAttribute="leading" secondItem="hxx-z7-GEg" secondAttribute="trailing" constant="4" id="PwI-8m-c3W"/>
                             <constraint firstItem="yoH-Sw-cOZ" firstAttribute="leading" secondItem="EzX-aV-IpK" secondAttribute="leading" constant="4" id="WX4-ur-f9M"/>
                             <constraint firstItem="dJU-2T-LYv" firstAttribute="centerX" secondItem="t9N-ZI-qIv" secondAttribute="centerX" id="YHD-4V-f6z"/>
+                            <constraint firstItem="hxx-z7-GEg" firstAttribute="trailing" secondItem="rR7-Gg-Efk" secondAttribute="trailing" id="iJN-Ih-CvV"/>
                             <constraint firstItem="t9N-ZI-qIv" firstAttribute="top" secondItem="KCU-7E-8W5" secondAttribute="bottom" constant="35" id="iUQ-1Z-wnK"/>
                             <constraint firstItem="xrc-yY-p4v" firstAttribute="top" secondItem="yoH-Sw-cOZ" secondAttribute="bottom" constant="8" id="jIw-vq-zPc"/>
                             <constraint firstItem="htx-RY-lln" firstAttribute="centerX" secondItem="0QO-IA-i1O" secondAttribute="centerX" id="jWy-EK-im7"/>
@@ -843,7 +844,7 @@ Squirrel Monkey</string>
                     <navigationItem key="navigationItem" id="Lor-zp-Jbw"/>
                     <connections>
                         <outlet property="mPlayer1Container" destination="Jp5-C7-R72" id="JUI-D7-hUT"/>
-                        <segue destination="QnE-gd-dgI" kind="presentation" identifier="toHighscoreINputDialog" id="HcE-lH-550"/>
+                        <segue destination="QnE-gd-dgI" kind="presentation" identifier="toHighscoreInputDialog" id="HcE-lH-550"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1057,16 +1058,16 @@ Squirrel Monkey</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhf-Xp-jdT">
-                                <rect key="frame" x="0.0" y="171" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="201" width="414" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="07B-bI-m2t"/>
+                                    <constraint firstAttribute="height" constant="120" id="07B-bI-m2t"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="Dp9-ms-kcD" kind="embed" id="zSm-bi-OTn"/>
                                 </connections>
                             </containerView>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DM1-Qp-LhK">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="171"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="201"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -1869,17 +1870,17 @@ Squirrel Monkey</string>
             <objects>
                 <viewController id="Dp9-ms-kcD" customClass="en_KeyboardViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sjt-xT-iWi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Emb-Ro-pQ4">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQi-Gf-8cJ">
-                                        <rect key="frame" x="57" y="0.0" width="300" height="50"/>
+                                        <rect key="frame" x="57" y="0.0" width="300" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOb-Ph-MnM">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="q">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1889,7 +1890,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AxS-Xm-WST">
-                                                <rect key="frame" x="30" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="30" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="w">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1899,7 +1900,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tue-Qm-GJi">
-                                                <rect key="frame" x="60" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="60" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="e">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1909,7 +1910,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="km2-NH-u9M">
-                                                <rect key="frame" x="90" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="90" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="r">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1919,7 +1920,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2QP-Zz-kCD">
-                                                <rect key="frame" x="120" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="120" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="t">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1929,7 +1930,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLY-7c-ueE">
-                                                <rect key="frame" x="150" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="150" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="y">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1939,7 +1940,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOb-FP-me5">
-                                                <rect key="frame" x="180" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="180" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="u">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1949,7 +1950,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dzw-c1-h4d">
-                                                <rect key="frame" x="210" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="210" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="i">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1959,7 +1960,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxu-uu-Lqk">
-                                                <rect key="frame" x="240" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="240" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="o">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1969,7 +1970,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7M-7Z-ISd">
-                                                <rect key="frame" x="270" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="270" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="p">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1981,10 +1982,10 @@ Squirrel Monkey</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84E-oy-P6l">
-                                        <rect key="frame" x="72" y="50" width="270" height="50"/>
+                                        <rect key="frame" x="72" y="40" width="270" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFw-TB-oVO">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="a">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1994,7 +1995,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4V-ng-x8S">
-                                                <rect key="frame" x="30" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="30" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="s">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2004,7 +2005,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXP-O5-yqI">
-                                                <rect key="frame" x="60" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="60" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="d">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2014,7 +2015,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Be0-cR-sEb">
-                                                <rect key="frame" x="90" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="90" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="f">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2024,7 +2025,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcp-AG-8bI">
-                                                <rect key="frame" x="120" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="120" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="g">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2034,7 +2035,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7g-gK-9qm">
-                                                <rect key="frame" x="150" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="150" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="h">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2044,7 +2045,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXx-sG-cD9">
-                                                <rect key="frame" x="180" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="180" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="j">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2054,7 +2055,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcg-eV-asM">
-                                                <rect key="frame" x="210" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="210" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="k">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2064,7 +2065,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXq-ub-MUJ">
-                                                <rect key="frame" x="240" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="240" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="l">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2076,10 +2077,10 @@ Squirrel Monkey</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X81-LH-Hno">
-                                        <rect key="frame" x="72" y="100" width="270" height="50"/>
+                                        <rect key="frame" x="72" y="80" width="270" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOO-kb-1db">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="Del">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2089,7 +2090,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Wa-6G-Yoj">
-                                                <rect key="frame" x="30" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="30" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="z">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2099,7 +2100,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6g-Wz-bAe">
-                                                <rect key="frame" x="60" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="60" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="x">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2109,7 +2110,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uM0-x1-3k9">
-                                                <rect key="frame" x="90" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="90" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="c">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2119,7 +2120,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmD-Cf-In1">
-                                                <rect key="frame" x="120" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="120" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="v">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2129,7 +2130,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYn-rB-1nm">
-                                                <rect key="frame" x="150" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="150" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="b">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2139,7 +2140,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYB-nL-irN">
-                                                <rect key="frame" x="180" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="180" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="n">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2149,7 +2150,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNe-Zc-mwR">
-                                                <rect key="frame" x="210" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="210" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="m">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2159,7 +2160,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSF-BM-biI">
-                                                <rect key="frame" x="240" y="0.0" width="30" height="50"/>
+                                                <rect key="frame" x="240" y="0.0" width="30" height="40"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="⌫">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2549,40 +2550,51 @@ Squirrel Monkey</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEw-sC-nNr">
-                                <rect key="frame" x="4" y="4" width="406" height="762"/>
+                                <rect key="frame" x="4" y="4" width="406" height="680"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8eG-Ux-c2n">
-                                <rect key="frame" x="4" y="770" width="406" height="34"/>
+                                <rect key="frame" x="4" y="704" width="406" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="bTx-UC-ZFx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbb-XX-QUa">
+                                <rect key="frame" x="184" y="758" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7AZ-Zt-fw6"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="Sienna"/>
                         <constraints>
+                            <constraint firstItem="fgR-ZH-nvF" firstAttribute="bottom" secondItem="pbb-XX-QUa" secondAttribute="bottom" constant="20" id="2M4-JQ-dWQ"/>
                             <constraint firstItem="WEw-sC-nNr" firstAttribute="leading" secondItem="fgR-ZH-nvF" secondAttribute="leading" constant="4" id="9ht-fr-O35"/>
+                            <constraint firstItem="pbb-XX-QUa" firstAttribute="top" secondItem="8eG-Ux-c2n" secondAttribute="bottom" constant="20" id="CN8-UZ-1ti"/>
                             <constraint firstItem="8eG-Ux-c2n" firstAttribute="leading" secondItem="fgR-ZH-nvF" secondAttribute="leading" constant="4" id="MRg-Nc-sVl"/>
                             <constraint firstItem="WEw-sC-nNr" firstAttribute="top" secondItem="fgR-ZH-nvF" secondAttribute="top" constant="4" id="PtC-ye-Vmu"/>
                             <constraint firstItem="fgR-ZH-nvF" firstAttribute="trailing" secondItem="8eG-Ux-c2n" secondAttribute="trailing" constant="4" id="XJS-Ng-mot"/>
                             <constraint firstItem="fgR-ZH-nvF" firstAttribute="trailing" secondItem="WEw-sC-nNr" secondAttribute="trailing" constant="4" id="Ych-aU-QLz"/>
-                            <constraint firstItem="8eG-Ux-c2n" firstAttribute="top" secondItem="WEw-sC-nNr" secondAttribute="bottom" constant="4" id="ZCt-Nq-Vha"/>
-                            <constraint firstItem="fgR-ZH-nvF" firstAttribute="bottom" secondItem="8eG-Ux-c2n" secondAttribute="bottom" constant="4" id="mZq-Rz-LW5"/>
+                            <constraint firstItem="8eG-Ux-c2n" firstAttribute="top" secondItem="WEw-sC-nNr" secondAttribute="bottom" constant="20" id="lSi-PG-wUg"/>
+                            <constraint firstItem="pbb-XX-QUa" firstAttribute="centerX" secondItem="vRn-XK-U8O" secondAttribute="centerX" id="rwX-kE-Bpg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fgR-ZH-nvF"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="200"/>
                     <connections>
+                        <outlet property="mDoneBtn" destination="pbb-XX-QUa" id="dcf-OT-CfI"/>
+                        <outlet property="mTextField" destination="8eG-Ux-c2n" id="Uif-px-2xC"/>
                         <outlet property="mWonLbl" destination="WEw-sC-nNr" id="RrQ-8E-Teq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qDb-ML-zhV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="257" y="-502"/>
+            <point key="canvasLocation" x="256.52173913043481" y="-502.23214285714283"/>
         </scene>
         <!--Learn View Controller-->
         <scene sceneID="AqH-fv-z63">
@@ -2599,34 +2611,76 @@ Squirrel Monkey</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KWE-g8-YSY">
-                                <rect key="frame" x="0.0" y="77" width="414" height="785"/>
+                                <rect key="frame" x="0.0" y="114" width="414" height="748"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZ4-xc-SGg">
+                                <rect key="frame" x="20" y="73" width="63" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="82d-7E-Tl1">
+                                <rect key="frame" x="91" y="63.5" width="40" height="40"/>
+                                <color key="backgroundColor" name="CosmicLatte"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="5ZA-Qu-aeB"/>
+                                    <constraint firstAttribute="height" constant="40" id="fFJ-OL-167"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9qT-Ne-TsH">
+                                <rect key="frame" x="135" y="63.5" width="40" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="euZ-Rm-PiF"/>
+                                    <constraint firstAttribute="width" constant="40" id="evi-8j-aXo"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXF-XL-79J">
+                                <rect key="frame" x="179" y="63.5" width="40" height="40"/>
+                                <color key="backgroundColor" name="MidAubergine"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="34n-fr-JH5"/>
+                                    <constraint firstAttribute="height" constant="40" id="NqZ-hw-46D"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="PapayaWhip"/>
                         <constraints>
+                            <constraint firstItem="KWE-g8-YSY" firstAttribute="top" secondItem="hZ4-xc-SGg" secondAttribute="bottom" constant="20" id="2fS-V0-2SM"/>
+                            <constraint firstItem="82d-7E-Tl1" firstAttribute="centerY" secondItem="hZ4-xc-SGg" secondAttribute="centerY" id="5Tu-xB-cFh"/>
                             <constraint firstItem="JtE-0v-W7c" firstAttribute="trailing" secondItem="9Fp-M8-sSo" secondAttribute="trailing" id="60F-of-baI"/>
+                            <constraint firstItem="82d-7E-Tl1" firstAttribute="leading" secondItem="hZ4-xc-SGg" secondAttribute="trailing" constant="8" id="G0Y-Be-YRA"/>
+                            <constraint firstItem="PXF-XL-79J" firstAttribute="leading" secondItem="9qT-Ne-TsH" secondAttribute="trailing" constant="4" id="I32-2a-jRo"/>
                             <constraint firstItem="KWE-g8-YSY" firstAttribute="leading" secondItem="9Fp-M8-sSo" secondAttribute="leading" id="Ih6-jQ-d0H"/>
+                            <constraint firstItem="hZ4-xc-SGg" firstAttribute="top" secondItem="9Fp-M8-sSo" secondAttribute="bottom" constant="20" id="JvL-Id-OhZ"/>
+                            <constraint firstItem="9qT-Ne-TsH" firstAttribute="leading" secondItem="82d-7E-Tl1" secondAttribute="trailing" constant="4" id="PTr-Id-df2"/>
+                            <constraint firstItem="PXF-XL-79J" firstAttribute="centerY" secondItem="hZ4-xc-SGg" secondAttribute="centerY" id="Unj-oM-Wcn"/>
                             <constraint firstItem="9Fp-M8-sSo" firstAttribute="leading" secondItem="JtE-0v-W7c" secondAttribute="leading" id="WFw-M3-dSF"/>
                             <constraint firstAttribute="bottomMargin" secondItem="KWE-g8-YSY" secondAttribute="bottom" constant="-54" id="c0F-H7-Whm"/>
-                            <constraint firstItem="KWE-g8-YSY" firstAttribute="top" secondItem="9Fp-M8-sSo" secondAttribute="bottom" constant="24" id="gWC-Y7-S6D"/>
+                            <constraint firstItem="9qT-Ne-TsH" firstAttribute="centerY" secondItem="hZ4-xc-SGg" secondAttribute="centerY" id="h5n-KH-jAS"/>
                             <constraint firstItem="9Fp-M8-sSo" firstAttribute="top" secondItem="JtE-0v-W7c" secondAttribute="top" constant="24" id="hTw-id-WPN"/>
+                            <constraint firstItem="hZ4-xc-SGg" firstAttribute="leading" secondItem="JtE-0v-W7c" secondAttribute="leading" constant="20" id="xZt-cW-HTi"/>
                             <constraint firstItem="KWE-g8-YSY" firstAttribute="trailing" secondItem="9Fp-M8-sSo" secondAttribute="trailing" id="zgb-W7-DgU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JtE-0v-W7c"/>
                     </view>
                     <connections>
+                        <outlet property="mDark" destination="PXF-XL-79J" id="OK2-mQ-pTm"/>
                         <outlet property="mHeader" destination="9Fp-M8-sSo" id="lzY-Zs-z3M"/>
+                        <outlet property="mSolarized" destination="82d-7E-Tl1" id="jxc-Cq-oOh"/>
+                        <outlet property="mThemeLbl" destination="hZ4-xc-SGg" id="DvO-uv-iHh"/>
                         <outlet property="mWebView" destination="KWE-g8-YSY" id="GJr-Nw-jmD"/>
+                        <outlet property="mWhite" destination="9qT-Ne-TsH" id="CSS-nf-nL7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HlQ-hi-eW6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-478" y="743"/>
+            <point key="canvasLocation" x="-478.26086956521743" y="742.63392857142856"/>
         </scene>
         <!--De Keyboard View Controller-->
         <scene sceneID="wTG-VH-T7O">

@@ -146,6 +146,12 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
                     }
             }
             
+            let population = 31908551587
+            let populationNumberFormatter = NumberFormatter()
+            populationNumberFormatter.numberStyle = .decimal
+            
+            controller.mQuestion.text = "\u{1F465}: \(populationNumberFormatter.string(from: NSNumber(value: population))!) (2019)"
+            
             let aClickedList = UITapGestureRecognizer(target: self, action: #selector(aClicked))
             controller.mClickAreaA.addGestureRecognizer(aClickedList)
             
@@ -185,7 +191,6 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
         super.viewDidLoad()
         
         mScoreBar.progress = 0
-        mScoreBar.trackTintColor = view.backgroundColor!
         mScoreBar.stripesColor = UIColor(named: self.mPreferences.string(forKey: "PREF_PLAYER_1_THEME")!)!
         mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), 0)
         
@@ -195,6 +200,7 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
         mDonutTime.trackTintColor = UIColor(named: "BlueDialogBackground")!
         mDonutTime.progressTintColor = UIColor(named: "Liberty")!
         mDonutTime.progressLabel.text = String(12)
+        mDonutTime.progressLabel.textColor = UIColor(named: "MidnightBlue")!
     }
     
 }

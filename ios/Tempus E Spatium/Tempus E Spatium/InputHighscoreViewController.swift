@@ -17,6 +17,15 @@ class InputHighscoreViewController: UIViewController {
     
     @IBOutlet weak var mDoneBtn: UIButton!
     
+    @IBAction func mDoneBtnClicked() {
+        if mTextField.hasText {
+            HighscoresDBManager.shared.insertHighscore(player: mTextField.text!, score: 123)
+            dismiss(animated: true) {
+                self.performSegue(withIdentifier: "inputToHighscores", sender: nil)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

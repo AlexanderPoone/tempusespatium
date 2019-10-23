@@ -508,14 +508,14 @@ Squirrel Monkey</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="lasciaChioPianga" id="Bdq-nk-dPM" customClass="HighscoresDialogTableViewCell" customModule="Tempus_E_Spatium" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="308" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="308" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bdq-nk-dPM" id="bq9-fI-va2">
-                                            <rect key="frame" x="0.0" y="0.0" width="308" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="308" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ArT-Pm-n1y">
-                                                    <rect key="frame" x="16" y="11" width="30" height="21.5"/>
+                                                    <rect key="frame" x="16" y="11" width="30" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="BTs-SH-6SC"/>
                                                     </constraints>
@@ -524,13 +524,13 @@ Squirrel Monkey</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joe Bloggs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzs-el-JPx">
-                                                    <rect key="frame" x="49" y="11" width="85" height="21.5"/>
+                                                    <rect key="frame" x="49" y="11" width="85" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="Sienna"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1800" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiW-hP-YSc">
-                                                    <rect key="frame" x="187" y="11" width="39" height="21.5"/>
+                                                    <rect key="frame" x="187" y="11" width="39" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="Sienna"/>
                                                     <nil key="highlightedColor"/>
@@ -594,14 +594,14 @@ Squirrel Monkey</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rtw-wS-8Ph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1336.2318840579712" y="840.40178571428567"/>
+            <point key="canvasLocation" x="1062" y="1364"/>
         </scene>
         <!--Rules Dialog View Controller-->
         <scene sceneID="faH-XE-rmK">
             <objects>
                 <viewController id="dbP-aI-9J0" customClass="RulesDialogViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cZb-aK-r9X">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="409"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rules" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpE-mA-1Eb">
@@ -614,7 +614,7 @@ Squirrel Monkey</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorum ipsum dolor sit" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28K-gl-nR0">
-                                <rect key="frame" x="4" y="69" width="406" height="739"/>
+                                <rect key="frame" x="4" y="69" width="406" height="340"/>
                                 <fontDescription key="fontDescription" name="SkylarkITCTT" family="Skylark ITC TT" pointSize="24"/>
                                 <color key="textColor" name="PapayaWhip"/>
                                 <nil key="highlightedColor"/>
@@ -1880,7 +1880,7 @@ Squirrel Monkey</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="as0-mZ-4TL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="qYe-Xb-bpc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="357.97101449275362" y="766.40625"/>
+            <point key="canvasLocation" x="1064" y="563"/>
         </scene>
         <!--En Keyboard View Controller-->
         <scene sceneID="hxP-No-MPh">
@@ -2592,6 +2592,9 @@ Squirrel Monkey</string>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="mDoneBtnClicked" destination="QnE-gd-dgI" eventType="touchUpInside" id="gVv-cF-LZV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="Sienna"/>
@@ -2614,6 +2617,7 @@ Squirrel Monkey</string>
                         <outlet property="mDoneBtn" destination="pbb-XX-QUa" id="dcf-OT-CfI"/>
                         <outlet property="mTextField" destination="8eG-Ux-c2n" id="Uif-px-2xC"/>
                         <outlet property="mWonLbl" destination="WEw-sC-nNr" id="RrQ-8E-Teq"/>
+                        <segue destination="ILn-7d-NsC" kind="presentation" identifier="inputToHighscores" id="8AM-2F-Npc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qDb-ML-zhV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3239,7 +3243,8 @@ Squirrel Monkey</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7qv-2q-bdO"/>
-        <segue reference="u7i-Pf-mtY"/>
+        <segue reference="hTS-oN-Biy"/>
+        <segue reference="8AM-2F-Npc"/>
         <segue reference="K62-qO-rxu"/>
     </inferredMetricsTieBreakers>
 </document>

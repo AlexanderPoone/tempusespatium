@@ -958,10 +958,10 @@ Squirrel Monkey</string>
                                 </connections>
                             </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="sXu-ir-me7">
-                                <rect key="frame" x="10" y="6.5" width="377.5" height="73.5"/>
+                                <rect key="frame" x="10" y="6.5" width="396" height="73.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNd-bS-YgY">
-                                        <rect key="frame" x="0.0" y="22" width="42" height="30"/>
+                                        <rect key="frame" x="0.0" y="22" width="59" height="30"/>
                                         <color key="backgroundColor" name="info"/>
                                         <state key="normal" title="Pause">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -977,14 +977,17 @@ Squirrel Monkey</string>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0v-cc-gYm" customClass="DACircularProgressView">
-                                        <rect key="frame" x="48" y="0.0" width="62" height="73.5"/>
+                                        <rect key="frame" x="65" y="0.0" width="73.5" height="73.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="E0v-cc-gYm" secondAttribute="height" multiplier="1:1" id="Ukl-ak-Lj5"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WqO-Lr-n9a" customClass="YLProgressBar">
-                                        <rect key="frame" x="116" y="11.5" width="200" height="50.5"/>
+                                        <rect key="frame" x="144.5" y="11.5" width="199.5" height="50.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ukw-iE-ung">
-                                                <rect key="frame" x="67" y="15" width="82" height="20.5"/>
+                                                <rect key="frame" x="67" y="15" width="81.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1004,8 +1007,11 @@ Squirrel Monkey</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GG9-jI-7HA">
-                                        <rect key="frame" x="322" y="22" width="30" height="30"/>
+                                        <rect key="frame" x="350" y="22" width="10" height="30"/>
                                         <color key="backgroundColor" name="warning"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="10" id="qQ4-wN-od5"/>
+                                        </constraints>
                                         <state key="normal" title=" ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -1020,7 +1026,10 @@ Squirrel Monkey</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyj-Iy-coH">
-                                        <rect key="frame" x="358" y="26.5" width="19.5" height="20.5"/>
+                                        <rect key="frame" x="366" y="26.5" width="30" height="20.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="ytX-pQ-VhI"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" name="danger"/>
                                         <nil key="highlightedColor"/>
@@ -1044,7 +1053,7 @@ Squirrel Monkey</string>
                             <constraint firstItem="sXu-ir-me7" firstAttribute="leading" secondItem="dtE-m9-vEx" secondAttribute="leading" constant="10" id="dJm-gz-7wr"/>
                             <constraint firstItem="fPj-Bf-DeI" firstAttribute="top" secondItem="TMr-t2-DLU" secondAttribute="top" constant="88" id="sEd-G7-zMS"/>
                             <constraint firstItem="fPj-Bf-DeI" firstAttribute="leading" secondItem="dtE-m9-vEx" secondAttribute="leading" id="tzD-fS-aDd"/>
-                            <constraint firstItem="dtE-m9-vEx" firstAttribute="trailing" secondItem="sXu-ir-me7" secondAttribute="trailing" constant="26.5" id="vfu-ZM-eme"/>
+                            <constraint firstItem="dtE-m9-vEx" firstAttribute="trailing" secondItem="sXu-ir-me7" secondAttribute="trailing" constant="8" id="vfu-ZM-eme"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dtE-m9-vEx"/>
                     </view>
@@ -1072,16 +1081,16 @@ Squirrel Monkey</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhf-Xp-jdT">
-                                <rect key="frame" x="0.0" y="201" width="414" height="120"/>
+                                <rect key="frame" x="0.0" y="221" width="414" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="07B-bI-m2t"/>
+                                    <constraint firstAttribute="height" constant="100" id="07B-bI-m2t"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="Dp9-ms-kcD" kind="embed" id="zSm-bi-OTn"/>
                                 </connections>
                             </containerView>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DM1-Qp-LhK">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="201"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="221"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -1102,6 +1111,7 @@ Squirrel Monkey</string>
                         <viewLayoutGuide key="safeArea" id="H6Y-g3-ceF"/>
                     </view>
                     <connections>
+                        <outlet property="mKeyboardArea" destination="qhf-Xp-jdT" id="HuM-6o-npE"/>
                         <outlet property="mWebView" destination="DM1-Qp-LhK" id="oEG-we-elM"/>
                     </connections>
                 </viewController>
@@ -1357,7 +1367,6 @@ Squirrel Monkey</string>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rou-R3-x5Q" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="67" width="414" height="761"/>
-                                <color key="backgroundColor" name="warning"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which country does this anthem belong to?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Gg-cZ-tVE">
                                 <rect key="frame" x="40.5" y="44" width="333" height="21"/>
@@ -1418,7 +1427,7 @@ Squirrel Monkey</string>
         <!--Fr Keyboard View Controller-->
         <scene sceneID="nfe-pe-q0C">
             <objects>
-                <viewController id="9OJ-lJ-Z1Q" customClass="fr_KeyboardViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="fr_KeyboardViewController" id="9OJ-lJ-Z1Q" customClass="fr_KeyboardViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ci6-Kx-fxV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1882,19 +1891,19 @@ Squirrel Monkey</string>
         <!--En Keyboard View Controller-->
         <scene sceneID="hxP-No-MPh">
             <objects>
-                <viewController id="Dp9-ms-kcD" customClass="en_KeyboardViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="en_KeyboardViewController" id="Dp9-ms-kcD" customClass="en_KeyboardViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sjt-xT-iWi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Emb-Ro-pQ4">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQi-Gf-8cJ">
-                                        <rect key="frame" x="57" y="0.0" width="300" height="40"/>
+                                        <rect key="frame" x="57" y="0.0" width="300" height="33.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOb-Ph-MnM">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="q">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1904,7 +1913,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AxS-Xm-WST">
-                                                <rect key="frame" x="30" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="30" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="w">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1914,7 +1923,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tue-Qm-GJi">
-                                                <rect key="frame" x="60" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="60" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="e">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1924,7 +1933,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="km2-NH-u9M">
-                                                <rect key="frame" x="90" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="90" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="r">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1934,7 +1943,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2QP-Zz-kCD">
-                                                <rect key="frame" x="120" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="120" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="t">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1944,7 +1953,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLY-7c-ueE">
-                                                <rect key="frame" x="150" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="150" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="y">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1954,7 +1963,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOb-FP-me5">
-                                                <rect key="frame" x="180" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="180" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="u">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1964,7 +1973,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dzw-c1-h4d">
-                                                <rect key="frame" x="210" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="210" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="i">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1974,7 +1983,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxu-uu-Lqk">
-                                                <rect key="frame" x="240" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="240" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="o">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1984,7 +1993,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7M-7Z-ISd">
-                                                <rect key="frame" x="270" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="270" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="p">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -1996,10 +2005,10 @@ Squirrel Monkey</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84E-oy-P6l">
-                                        <rect key="frame" x="72" y="40" width="270" height="40"/>
+                                        <rect key="frame" x="72" y="33.5" width="270" height="33"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFw-TB-oVO">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="33"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="a">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2009,7 +2018,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4V-ng-x8S">
-                                                <rect key="frame" x="30" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="30" y="0.0" width="30" height="33"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="s">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2019,7 +2028,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXP-O5-yqI">
-                                                <rect key="frame" x="60" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="60" y="0.0" width="30" height="33"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="d">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2029,7 +2038,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Be0-cR-sEb">
-                                                <rect key="frame" x="90" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="90" y="0.0" width="30" height="33"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="f">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2039,7 +2048,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcp-AG-8bI">
-                                                <rect key="frame" x="120" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="120" y="0.0" width="30" height="33"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="g">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2049,7 +2058,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7g-gK-9qm">
-                                                <rect key="frame" x="150" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="150" y="0.0" width="30" height="33"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="h">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2059,7 +2068,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXx-sG-cD9">
-                                                <rect key="frame" x="180" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="180" y="0.0" width="30" height="33"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="j">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2069,7 +2078,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcg-eV-asM">
-                                                <rect key="frame" x="210" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="210" y="0.0" width="30" height="33"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="k">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2079,7 +2088,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXq-ub-MUJ">
-                                                <rect key="frame" x="240" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="240" y="0.0" width="30" height="33"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="l">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2091,10 +2100,10 @@ Squirrel Monkey</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X81-LH-Hno">
-                                        <rect key="frame" x="72" y="80" width="270" height="40"/>
+                                        <rect key="frame" x="72" y="66.5" width="270" height="33.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOO-kb-1db">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="Del">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2104,7 +2113,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Wa-6G-Yoj">
-                                                <rect key="frame" x="30" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="30" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="z">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2114,7 +2123,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6g-Wz-bAe">
-                                                <rect key="frame" x="60" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="60" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="x">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2124,7 +2133,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uM0-x1-3k9">
-                                                <rect key="frame" x="90" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="90" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="c">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2134,7 +2143,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmD-Cf-In1">
-                                                <rect key="frame" x="120" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="120" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="v">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2144,7 +2153,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYn-rB-1nm">
-                                                <rect key="frame" x="150" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="150" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="b">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2154,7 +2163,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYB-nL-irN">
-                                                <rect key="frame" x="180" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="180" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="n">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2164,7 +2173,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNe-Zc-mwR">
-                                                <rect key="frame" x="210" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="210" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="m">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2174,7 +2183,7 @@ Squirrel Monkey</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSF-BM-biI">
-                                                <rect key="frame" x="240" y="0.0" width="30" height="40"/>
+                                                <rect key="frame" x="240" y="0.0" width="30" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="⌫">
                                                     <color key="titleColor" name="CanaryYellow"/>
@@ -2205,7 +2214,7 @@ Squirrel Monkey</string>
         <!--Es Keyboard View Controller-->
         <scene sceneID="6GQ-UU-VlL">
             <objects>
-                <viewController id="wyg-wR-wmH" customClass="es_KeyboardViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="es_KeyboardViewController" id="wyg-wR-wmH" customClass="es_KeyboardViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WLt-fh-2nQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2564,13 +2573,13 @@ Squirrel Monkey</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEw-sC-nNr">
-                                <rect key="frame" x="4" y="4" width="406" height="680"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="4" y="4" width="406" height="380"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8eG-Ux-c2n">
-                                <rect key="frame" x="4" y="704" width="406" height="34"/>
+                                <rect key="frame" x="4" y="404" width="406" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="bTx-UC-ZFx"/>
                                 </constraints>
@@ -2583,19 +2592,26 @@ Squirrel Monkey</string>
                                     <constraint firstAttribute="height" constant="30" id="7AZ-Zt-fw6"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="Sienna"/>
                         <constraints>
                             <constraint firstItem="fgR-ZH-nvF" firstAttribute="bottom" secondItem="pbb-XX-QUa" secondAttribute="bottom" constant="20" id="2M4-JQ-dWQ"/>
                             <constraint firstItem="WEw-sC-nNr" firstAttribute="leading" secondItem="fgR-ZH-nvF" secondAttribute="leading" constant="4" id="9ht-fr-O35"/>
-                            <constraint firstItem="pbb-XX-QUa" firstAttribute="top" secondItem="8eG-Ux-c2n" secondAttribute="bottom" constant="20" id="CN8-UZ-1ti"/>
                             <constraint firstItem="8eG-Ux-c2n" firstAttribute="leading" secondItem="fgR-ZH-nvF" secondAttribute="leading" constant="4" id="MRg-Nc-sVl"/>
                             <constraint firstItem="WEw-sC-nNr" firstAttribute="top" secondItem="fgR-ZH-nvF" secondAttribute="top" constant="4" id="PtC-ye-Vmu"/>
                             <constraint firstItem="fgR-ZH-nvF" firstAttribute="trailing" secondItem="8eG-Ux-c2n" secondAttribute="trailing" constant="4" id="XJS-Ng-mot"/>
                             <constraint firstItem="fgR-ZH-nvF" firstAttribute="trailing" secondItem="WEw-sC-nNr" secondAttribute="trailing" constant="4" id="Ych-aU-QLz"/>
+                            <constraint firstItem="8eG-Ux-c2n" firstAttribute="centerX" secondItem="vRn-XK-U8O" secondAttribute="centerX" id="brl-4V-aVI"/>
                             <constraint firstItem="8eG-Ux-c2n" firstAttribute="top" secondItem="WEw-sC-nNr" secondAttribute="bottom" constant="20" id="lSi-PG-wUg"/>
                             <constraint firstItem="pbb-XX-QUa" firstAttribute="centerX" secondItem="vRn-XK-U8O" secondAttribute="centerX" id="rwX-kE-Bpg"/>
+                            <constraint firstItem="8eG-Ux-c2n" firstAttribute="centerY" secondItem="vRn-XK-U8O" secondAttribute="centerY" id="sRh-pz-Uq8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fgR-ZH-nvF"/>
                     </view>
@@ -2699,7 +2715,7 @@ Squirrel Monkey</string>
         <!--De Keyboard View Controller-->
         <scene sceneID="wTG-VH-T7O">
             <objects>
-                <viewController id="Lgm-MN-2wd" customClass="de_KeyboardViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="de_KeyboardViewController" id="Lgm-MN-2wd" customClass="de_KeyboardViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lOl-mq-P5F">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3080,7 +3096,6 @@ Squirrel Monkey</string>
                             </pickerView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yXE-Ss-xxR">
                                 <rect key="frame" x="4" y="69" width="406" height="80"/>
-                                <color key="backgroundColor" name="Amber"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="bGN-3O-BH6"/>
                                 </constraints>
@@ -3163,9 +3178,6 @@ Squirrel Monkey</string>
         <image name="AS" width="21" height="15"/>
         <namedColor name="AliceBlue">
             <color red="0.94117647058823528" green="0.97254901960784312" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Amber">
-            <color red="1" green="0.74901960784313726" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="BlueDialogBackground">
             <color red="0.39215686274509803" green="0.58431372549019611" blue="0.92941176470588238" alpha="0.62000000476837158" colorSpace="custom" customColorSpace="sRGB"/>

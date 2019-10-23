@@ -60,6 +60,8 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
     @IBOutlet weak var mYellowBtn: UIButton!
     
+    private let mPreferences = UserDefaults.standard
+    
     @objc func aClicked() {
         print("A Clicked")
         if let view1 = mFragmentContainer.subviews.first {
@@ -99,6 +101,10 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
             controller.mMonthScroller.dataSource = mMonthDelegate
             controller.mMonthScroller.delegate = mMonthDelegate
             controller.mMonthScroller.selectRow((0..<controller.mMonthScroller.numberOfRows(inComponent: 0)).randomElement()!, inComponent: 0, animated: false)
+            
+            let url = URL(string: "https://upload.wikimedia.org/wikipedia/commons/8/85/Tank_Battle_in_Golan_Heights_-_Flickr_-_The_Central_Intelligence_Agency.jpg")
+            let data = try! Data(contentsOf: url!)
+            controller.mHintPic.image = UIImage(data: data)
         }
     }
     
@@ -179,8 +185,7 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
         super.viewDidLoad()
         
         mScoreBar.progress = 0
-        mScoreBar.stripesColor = UIColor(named: "warning")!
-        mScoreBar.tintColor = UIColor(named: "warning")!
+        mScoreBar.stripesColor = UIColor(named: self.mPreferences.string(forKey: "PREF_PLAYER_1_THEME")!)!
         mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), 0)
         
         mPauseBtn.setIcon(icon: .fontAwesomeSolid(.pause), iconSize: nil, color: .white, backgroundColor: UIColor(named: "info")!, forState: .normal)

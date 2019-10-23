@@ -27,7 +27,7 @@ enter_keyword = "Enter keyword to search for a theme!";
 gameplay_language = "Мова гри: ";
 any_topic = "Тема: ";
 
-highscores_enter_name = "{md_sentiment_very_satisfied} Congrats, you won!\nEnter your name:";
+highscores_enter_name = "  Congrats, you won!\nEnter your name:";
 
 level = "Level %d";
 rules_tirade = "The project is named Tempus E Spatium (Latin for Time and Space, which is often prefixed by “lost in”) as the questions focus on history and geography. Quiz types include: Drag and drop the national flags to the right continent, listen to the national anthem and choose the correct flag, and complete the word. Despite the name of the app, the last type can be of any question type.\n\nThe questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he will lose 5 points.";

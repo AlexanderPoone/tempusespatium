@@ -27,6 +27,8 @@ class SelectionViewController: UIViewController, GADBannerViewDelegate {
     @IBOutlet weak var mHighscoresBtn: UIButton!
     @IBOutlet weak var mQuitBtn: UIButton!
     
+    private let mPreferences = UserDefaults.standard
+    
     @IBAction func unwindToSelectionViewController(segue: UIStoryboardSegue) {
     }
     
@@ -147,6 +149,11 @@ class SelectionViewController: UIViewController, GADBannerViewDelegate {
         
         beep = setupAudioPlayer(withFile: "beep_space_button", type: "wav")
         swoosh = setupAudioPlayer(withFile: "space_swoosh", type: "wav")
+        
+        if mPreferences.string(forKey: "PREF_PLAYER_1_THEME") == nil && mPreferences.string(forKey: "PREF_PLAYER_2_THEME") == nil {
+            mPreferences.set("CosmicLatte", forKey: "PREF_PLAYER_1_THEME")
+            mPreferences.set("Lavender", forKey: "PREF_PLAYER_2_THEME")
+        }
         
         view.backgroundColor = UIColor(patternImage: UIImage(named: "navajo")!)
         

@@ -13,13 +13,27 @@ class BlanksGameViewController: UIViewController {
 
     @IBOutlet weak var mWebView: WKWebView!
     
+    @IBOutlet weak var mKeyboardArea: UIView!
+    
+    private let mPreferences = UserDefaults.standard
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        mWebView.loadHTMLString("<html><head></head><body><small>Test!</small></body></html>", baseURL: nil)
+        mWebView.loadHTMLString("<html><head></head><body style=\"background-color:\(self.mPreferences.string(forKey: "PREF_PLAYER_1_THEME")!);\"><small>Test!</small></body></html>", baseURL: nil)
         mWebView.scrollView.panGestureRecognizer.isEnabled = false
         mWebView.scrollView.bounces = false
-        // Do any additional setup after loading the view.
+
+        if let keyboard = mKeyboardArea.subviews.first {
+        keyboard.removeFromSuperview()
+        let controller = storyboard!.instantiateViewController(withIdentifier: "fr_KeyboardViewController") as! fr_KeyboardViewController
+        controller.view.frame = mKeyboardArea.bounds
+        controller.willMove(toParent: self)
+        mKeyboardArea.addSubview(controller.view)
+        addChild(controller)
+        
+        controller.didMove(toParent: self)
+        }
     }
     
 

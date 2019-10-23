@@ -1176,7 +1176,7 @@ Squirrel Monkey</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" name="CanaryYellow"/>
+                                                <color key="backgroundColor" name="Honeydew"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="ZEP-d3-jj1" secondAttribute="trailing" constant="4" id="B50-Qc-22G"/>
                                                     <constraint firstItem="rb2-tx-tT2" firstAttribute="trailing" secondItem="hUr-i8-rsK" secondAttribute="trailing" id="SxR-F1-BAi"/>
@@ -2593,7 +2593,7 @@ Squirrel Monkey</string>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEw-sC-nNr">
                                 <rect key="frame" x="4" y="4" width="406" height="380"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

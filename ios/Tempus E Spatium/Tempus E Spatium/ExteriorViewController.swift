@@ -23,7 +23,7 @@ class MonthPickerDelegate: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-
+        
         let string = String(Array(1...12)[row])
         return NSAttributedString(string: string, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
@@ -41,7 +41,7 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-
+        
         let string = String(Array(1912...1949)[row])
         return NSAttributedString(string: string, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
@@ -53,11 +53,11 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var mFragmentContainer: UIView!
     
     @IBOutlet weak var mScoreBar: YLProgressBar!
-        
+    
     @IBOutlet weak var mScoreText: UILabel!
-
+    
     @IBOutlet weak var mScoreChangeLbl: UILabel!
-        
+    
     @IBOutlet weak var mYellowBtn: UIButton!
     
     private let mPreferences = UserDefaults.standard
@@ -115,23 +115,30 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     @objc func dClicked() {
         print("D Clicked")
+        reveal()
     }
     
     func reveal() {
-        mScoreText.text = String(format: NSLocalizedString("", comment: ""), 12)
+        if let ctrl = controller {
+            mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), 12)
+            ctrl.mIndicatorA.setIcon(icon: .googleMaterialDesign(.newReleases), iconSize: 24, color: .white, bgColor: UIColor(named: "Amber")!)
+            ctrl.mClickAreaA.backgroundColor = UIColor(named: "Amber")!
+        }
     }
+    
+    var controller:FlagGameViewController?
     
     @IBAction func mYellowTest(_ sender: Any) {
         if let view1 = mFragmentContainer.subviews.first {
             view1.removeFromSuperview()
             
-            let controller = storyboard!.instantiateViewController(withIdentifier: "FlagGameViewController") as! FlagGameViewController
-            controller.view.frame = mFragmentContainer.bounds
-            controller.willMove(toParent: self)
-            mFragmentContainer.addSubview(controller.view)
-            addChild(controller)
-            controller.didMove(toParent: self)
-            controller.view.backgroundColor = view.backgroundColor
+            controller = storyboard!.instantiateViewController(withIdentifier: "FlagGameViewController") as! FlagGameViewController
+            controller!.view.frame = mFragmentContainer.bounds
+            controller!.willMove(toParent: self)
+            mFragmentContainer.addSubview(controller!.view)
+            addChild(controller!)
+            controller!.didMove(toParent: self)
+            controller!.view.backgroundColor = view.backgroundColor
             
             //AlamoFire here!
             AF.request("https://en.wikipedia.org/wiki/Wikipedia:Lists_of_popular_pages_by_WikiProject")
@@ -150,32 +157,31 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
             let populationNumberFormatter = NumberFormatter()
             populationNumberFormatter.numberStyle = .decimal
             
-            controller.mQuestion.text = "\u{1F465}: \(populationNumberFormatter.string(from: NSNumber(value: population))!) (2019)"
+            controller!.mQuestion.text = "\u{1F465}: \(populationNumberFormatter.string(from: NSNumber(value: population))!) (2019)"
             
             let aClickedList = UITapGestureRecognizer(target: self, action: #selector(aClicked))
-            controller.mClickAreaA.addGestureRecognizer(aClickedList)
+            controller!.mClickAreaA.addGestureRecognizer(aClickedList)
             
             let bClickedList = UITapGestureRecognizer(target: self, action: #selector(bClicked))
-            controller.mClickAreaB.addGestureRecognizer(bClickedList)
+            controller!.mClickAreaB.addGestureRecognizer(bClickedList)
             
             let cClickedList = UITapGestureRecognizer(target: self, action: #selector(cClicked))
-            controller.mClickAreaC.addGestureRecognizer(cClickedList)
+            controller!.mClickAreaC.addGestureRecognizer(cClickedList)
             
             let dClickedList = UITapGestureRecognizer(target: self, action: #selector(dClicked))
-            controller.mClickAreaD.addGestureRecognizer(dClickedList)
+            controller!.mClickAreaD.addGestureRecognizer(dClickedList)
             
-            controller.mIndicatorA.setIcon(icon: .googleMaterialDesign(.newReleases), iconSize: 24, color: .white, bgColor: UIColor(named: "Amber")!)
-            controller.mIndicatorB.setIcon(icon: .googleMaterialDesign(.check), iconSize: 24, color: .white, bgColor: UIColor(named: "success")!)
-            controller.mIndicatorC.setIcon(icon: .googleMaterialDesign(.close), iconSize: 24, color: .white, bgColor: UIColor(named: "danger")!)
+            controller!.mIndicatorB.setIcon(icon: .googleMaterialDesign(.check), iconSize: 24, color: .white, bgColor: UIColor(named: "success")!)
+            controller!.mIndicatorC.setIcon(icon: .googleMaterialDesign(.close), iconSize: 24, color: .white, bgColor: UIColor(named: "danger")!)
             
             var svg1:SVGKImage = SVGKImage(contentsOf: URL(string: "https://upload.wikimedia.org/wikipedia/commons/d/de/Coat_of_arms_of_Botswana.svg"))
             let fast = SVGKFastImageView(svgkImage: svg1)!
             let aspect = fast.frame.width / fast.frame.height
             fast.contentMode = .scaleAspectFill
             fast.frame = CGRect(x: 0, y: 0, width: 90 * aspect, height: 90)
-//            print(controller.mFlagA.frame)
-            controller.mFlagA.contentMode = .scaleAspectFill
-            controller.mFlagA.addSubview(fast)
+            //            print(controller.mFlagA.frame)
+            controller!.mFlagA.contentMode = .scaleAspectFill
+            controller!.mFlagA.addSubview(fast)
             
             self.mScoreBar.progress = 0.7
             self.mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), 70)

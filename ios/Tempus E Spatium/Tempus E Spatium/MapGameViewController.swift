@@ -26,6 +26,7 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
         if let marker = mMarker {
             marker.map = nil
         }
+        mMap.animate(toZoom: 0)
     }
     
     var mMarker:GMSMarker?

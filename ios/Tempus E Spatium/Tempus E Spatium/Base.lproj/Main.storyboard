@@ -7,6 +7,20 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="baker_signet_bt.ttf">
+            <string>BakerSignetBT-Roman</string>
+        </array>
+        <array key="ermis_pro_bold.otf">
+            <string>ErmisProBold</string>
+        </array>
+        <array key="ermis_pro_bold_italic.otf">
+            <string>ErmisProBoldItalic</string>
+        </array>
+        <array key="skylark_itc_tt.ttf">
+            <string>SkylarkITCTT</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="LWX-HO-R1R">
@@ -667,7 +681,7 @@ Squirrel Monkey</string>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locale:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rR7-Gg-Efk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locale:" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rR7-Gg-Efk">
                                 <rect key="frame" x="20" y="130.5" width="65" height="40"/>
                                 <fontDescription key="fontDescription" name="BakerSignetBT-Roman" family="BakerSignet BT" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -704,7 +718,7 @@ Squirrel Monkey</string>
                                     <action selector="mResetClicked" destination="hT1-jj-w0B" eventType="touchUpInside" id="w24-QS-hfS"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Any topic:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hxx-z7-GEg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Any topic:" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hxx-z7-GEg">
                                 <rect key="frame" x="20" y="200" width="65" height="21"/>
                                 <fontDescription key="fontDescription" name="BakerSignetBT-Roman" family="BakerSignet BT" pointSize="17"/>
                                 <nil key="textColor"/>

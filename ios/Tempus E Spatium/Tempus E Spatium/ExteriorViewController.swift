@@ -104,7 +104,7 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     @objc func cClicked() {
         print("C Clicked")
-        performSegue(withIdentifier: "toHighscoreInputDialog", sender: nil)
+        parent!.performSegue(withIdentifier: "toHighscoreInputDialog", sender: nil)
     }
     
     @objc func dClicked() {

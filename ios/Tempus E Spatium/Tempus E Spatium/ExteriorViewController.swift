@@ -48,7 +48,7 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     @IBOutlet weak var mPauseBtn: UIButton!
     
-    @IBOutlet weak var mDonutTime: DACircularProgressView!
+    @IBOutlet weak var mDonutTime: DALabeledCircularProgressView!
     
     @IBOutlet weak var mFragmentContainer: UIView!
     
@@ -192,9 +192,9 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
         mPauseBtn.setIcon(icon: .fontAwesomeSolid(.pause), iconSize: nil, color: .white, backgroundColor: UIColor(named: "info")!, forState: .normal)
         mDonutTime.setProgress(0.5, animated: true)
         mDonutTime.roundedCorners = 5
-        mDonutTime.trackTintColor = UIColor(named: "info")!
-        mDonutTime.progressTintColor = UIColor(named: "warning")!
-        mDonutTime.largeContentTitle = "0"
+        mDonutTime.trackTintColor = UIColor(named: "BlueDialogBackground")!
+        mDonutTime.progressTintColor = UIColor(named: "Liberty")!
+        mDonutTime.progressLabel.text = String(12)
     }
     
 }

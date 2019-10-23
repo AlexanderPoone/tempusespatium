@@ -970,7 +970,7 @@ Squirrel Monkey</string>
                                             <action selector="mPauseBtnClicked:" destination="irv-bc-jdo" eventType="touchUpInside" id="mcT-r9-V17"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0v-cc-gYm" customClass="DACircularProgressView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0v-cc-gYm" customClass="DALabeledCircularProgressView">
                                         <rect key="frame" x="65" y="0.0" width="73.5" height="73.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -1052,7 +1052,7 @@ Squirrel Monkey</string>
                         <viewLayoutGuide key="safeArea" id="dtE-m9-vEx"/>
                     </view>
                     <connections>
-                        <outlet property="mDonutTime" destination="E0v-cc-gYm" id="IJT-eW-dRB"/>
+                        <outlet property="mDonutTime" destination="E0v-cc-gYm" id="bjh-hY-MBs"/>
                         <outlet property="mFragmentContainer" destination="fPj-Bf-DeI" id="rS6-ml-Vrq"/>
                         <outlet property="mPauseBtn" destination="QNd-bS-YgY" id="2LB-mR-9Tv"/>
                         <outlet property="mScoreBar" destination="WqO-Lr-n9a" id="u6x-rq-rUH"/>

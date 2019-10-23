@@ -185,6 +185,7 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
         super.viewDidLoad()
         
         mScoreBar.progress = 0
+        mScoreBar.trackTintColor = view.backgroundColor!
         mScoreBar.stripesColor = UIColor(named: self.mPreferences.string(forKey: "PREF_PLAYER_1_THEME")!)!
         mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), 0)
         

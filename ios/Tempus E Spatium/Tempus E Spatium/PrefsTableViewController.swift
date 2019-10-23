@@ -127,6 +127,7 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
             self.mLocaleSubtitle.text = item
             
             self.mPreferences.set(langs[item]![2], forKey: "PREF_LOCALE")
+            self.mPreferences.synchronize()
 
             UserDefaults.standard.set([langs[item]![2]], forKey: "AppleLanguages")     //zh-Hant-HK
             UserDefaults.standard.synchronize()
@@ -170,7 +171,7 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
             self.mDifficultySubtitle1.text = item
             self.mDifficultySubtitle2.text = difficulties[item]
             self.mPreferences.set(index, forKey: "PREF_DIFFICULTY")
-            
+            self.mPreferences.synchronize()
         }
         
         mDifficultyDropDown!.bottomOffset = CGPoint(x: 0, y:(mDifficultyDropDown!.anchorView!.plainView.bounds.height))
@@ -197,6 +198,7 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
             
             cell.mFlag.backgroundColor = UIColor(named: item)!
             self.mPreferences.set(item, forKey: "PREF_PLAYER_1_THEME")
+            self.mPreferences.synchronize()
         }
         
         mPlayer1ThemeDropDown!.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -226,6 +228,7 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
             
             cell.mFlag.backgroundColor = UIColor(named: item)!
             self.mPreferences.set(item, forKey: "PREF_PLAYER_2_THEME")
+            self.mPreferences.synchronize()
         }
         
         mPlayer2ThemeDropDown!.selectionAction = { [unowned self] (index: Int, item: String) in

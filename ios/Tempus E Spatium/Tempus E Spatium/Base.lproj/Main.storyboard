@@ -46,17 +46,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uor-9k-EWU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tempus E Spatium" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uor-9k-EWU">
                                 <rect key="frame" x="82.5" y="425" width="249.5" height="46.5"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Tempus E Spatium">
-                                        <attributes>
-                                            <color key="NSColor" name="AliceBlue"/>
-                                            <font key="NSFont" size="36" name="BakerSignetBT-Roman"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <fontDescription key="fontDescription" name="BakerSignetBT-Roman" family="BakerSignet BT" pointSize="36"/>
+                                <color key="textColor" name="AliceBlue"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" name="DarkCyan"/>
                                 <size key="shadowOffset" width="-3" height="3"/>
@@ -227,6 +220,7 @@ Squirrel Monkey</string>
                     <navigationItem key="navigationItem" id="UVT-tU-9yk"/>
                     <connections>
                         <outlet property="mAdView" destination="Gi0-kJ-4Ls" id="0dL-Ij-76D"/>
+                        <outlet property="mGameTitle" destination="Uor-9k-EWU" id="E4a-6f-fBv"/>
                         <outlet property="mHighscoresBtn" destination="usy-Mc-hCN" id="bCE-or-iDA"/>
                         <outlet property="mPlayBtn" destination="VlX-51-0OC" id="izq-6L-x3o"/>
                         <outlet property="mQuitBtn" destination="g9L-lE-Le6" id="mlb-Sh-gsT"/>

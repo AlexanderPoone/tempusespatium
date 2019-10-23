@@ -19,6 +19,7 @@ class SelectionViewController: UIViewController, GADBannerViewDelegate {
     var beep, swoosh: AVAudioPlayer?
     var player : AVPlayer?
     
+    @IBOutlet weak var mGameTitle: UILabel!
     @IBOutlet weak var mAdView: GADBannerView!
     
     @IBOutlet weak var mPlayBtn: UIButton!
@@ -146,16 +147,19 @@ class SelectionViewController: UIViewController, GADBannerViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         beep = setupAudioPlayer(withFile: "beep_space_button", type: "wav")
         swoosh = setupAudioPlayer(withFile: "space_swoosh", type: "wav")
         
         if mPreferences.string(forKey: "PREF_PLAYER_1_THEME") == nil && mPreferences.string(forKey: "PREF_PLAYER_2_THEME") == nil {
             mPreferences.set("CosmicLatte", forKey: "PREF_PLAYER_1_THEME")
             mPreferences.set("Lavender", forKey: "PREF_PLAYER_2_THEME")
+            mPreferences.synchronize()
         }
         
         view.backgroundColor = UIColor(patternImage: UIImage(named: "navajo")!)
+        
+        mGameTitle.text = NSLocalizedString("app_name", comment: "")
         
         mPlayBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.gamepad), iconColor: .white, postfixText: NSLocalizedString("play", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "info")!, forState: .normal, textSize: nil, iconSize: nil)
         

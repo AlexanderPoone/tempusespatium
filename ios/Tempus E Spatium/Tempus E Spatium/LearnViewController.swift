@@ -23,25 +23,50 @@ class LearnViewController: UIViewController {
     @IBOutlet weak var mWhite: UIView!
     @IBOutlet weak var mDark: UIView!
     
+    private let mPreferences = UserDefaults.standard
+    
     @objc func mSolarizedClicked() {
                 mHeader.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.book), iconColor: UIColor(named: "warning")!, postfixText: NSLocalizedString("learn", comment: ""), postfixTextColor: UIColor(named: "warning")!, size: nil, iconSize: nil)
         view.backgroundColor = UIColor(named: "CosmicLatte")!
+        mThemeLbl.textColor = UIColor(named: "warning")!
+        mPreferences.set(0, forKey: "PREF_LEARNING_THEME")
+        mPreferences.synchronize()
     }
     
     @objc func mWhiteClicked() {
                 mHeader.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.book), iconColor: UIColor(named: "warning")!, postfixText: NSLocalizedString("learn", comment: ""), postfixTextColor: UIColor(named: "warning")!, size: nil, iconSize: nil)
         view.backgroundColor = .white
+        mThemeLbl.textColor = UIColor(named: "warning")!
+        mPreferences.set(1, forKey: "PREF_LEARNING_THEME")
+        mPreferences.synchronize()
     }
     
     @objc func mDarkClicked() {
         mHeader.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.book), iconColor: .white, postfixText: NSLocalizedString("learn", comment: ""), postfixTextColor: .white, size: nil, iconSize: nil)
         view.backgroundColor = UIColor(named: "CanonicalAubergine")!
+        mThemeLbl.textColor = .white
+        mPreferences.set(2, forKey: "PREF_LEARNING_THEME")
+        mPreferences.synchronize()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mHeader.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.book), iconColor: UIColor(named: "warning")!, postfixText: NSLocalizedString("learn", comment: ""), postfixTextColor: UIColor(named: "warning")!, size: nil, iconSize: nil)
+        if let theme = mPreferences.object(forKey: "PREF_LEARNING_THEME") {
+        switch theme as! Int {
+        case 0:
+            mSolarizedClicked()
+        case 1:
+            mWhiteClicked()
+        case 2:
+            mDarkClicked()
+        default:
+            break
+        }
+        } else {
+            mSolarizedClicked()
+        }
+        
         mWebView.load(URLRequest(url: URL(string: mUrl!)!))
 
         mThemeLbl.text = NSLocalizedString("learning_theme", comment: "")

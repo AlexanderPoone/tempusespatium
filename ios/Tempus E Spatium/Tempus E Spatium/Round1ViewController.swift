@@ -17,7 +17,7 @@ class Round1ViewController: UIViewController {
     var mSecs:CGFloat = 0, mMaxTime:CGFloat = 0
     var mCooldownSecs:CGFloat = 5
     
-    var mPointsA, mPointsB
+    var mPointsA = 0, mPointsB = 0
     
     var mArticles:[String:String]?
     

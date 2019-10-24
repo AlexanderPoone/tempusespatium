@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftIcons
+import Alamofire
 
 class Round1ViewController: UIViewController {
     
@@ -15,6 +16,8 @@ class Round1ViewController: UIViewController {
     
     var mSecs:CGFloat = 0, mMaxTime:CGFloat = 0
     var mCooldownSecs:CGFloat = 5
+    
+    var mPointsA, mPointsB
     
     var mArticles:[String:String]?
     
@@ -112,6 +115,61 @@ class Round1ViewController: UIViewController {
     
     func replaceFragment() {
         // if marks >= 380 then go to EndgameViewController return
+        if mPointsA >= 380 {
+                            if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
+                    showLoadingDialog()
+                    view1.removeFromSuperview()
+                    let controller = storyboard!.instantiateViewController(withIdentifier: "EndGameViewController") as! EndGameViewController
+                    controller.view.frame = mPlayer1!.mFragmentContainer.bounds
+                    controller.willMove(toParent: self)
+                    mPlayer1!.mFragmentContainer.addSubview(controller.view)
+                    mPlayer1!.addChild(controller)
+                    closeLoadingDialog()
+                    controller.didMove(toParent: self)
+                    controller.view.backgroundColor = mPlayer1!.view.backgroundColor
+                }
+                if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
+                    showLoadingDialog()
+                    view2.removeFromSuperview()
+                    let controller = storyboard!.instantiateViewController(withIdentifier: "EndGameViewController") as! EndGameViewController
+                    controller.view.frame = mPlayer2!.mFragmentContainer.bounds
+                    controller.willMove(toParent: self)
+                    mPlayer2!.mFragmentContainer.addSubview(controller.view)
+                    mPlayer2!.addChild(controller)
+                    closeLoadingDialog()
+                    controller.didMove(toParent: self)
+                    controller.view.backgroundColor = mPlayer2!.view.backgroundColor
+                }
+            performSegue(withIdentifier: "toHighscoreInputDialog", sender: nil)
+            return
+        } else if mPointsB >= 380 {
+            if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
+                showLoadingDialog()
+                view1.removeFromSuperview()
+                let controller = storyboard!.instantiateViewController(withIdentifier: "EndGameViewController") as! EndGameViewController
+                controller.view.frame = mPlayer1!.mFragmentContainer.bounds
+                controller.willMove(toParent: self)
+                mPlayer1!.mFragmentContainer.addSubview(controller.view)
+                mPlayer1!.addChild(controller)
+                closeLoadingDialog()
+                controller.didMove(toParent: self)
+                controller.view.backgroundColor = mPlayer1!.view.backgroundColor
+            }
+            if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
+                showLoadingDialog()
+                view2.removeFromSuperview()
+                let controller = storyboard!.instantiateViewController(withIdentifier: "EndGameViewController") as! EndGameViewController
+                controller.view.frame = mPlayer2!.mFragmentContainer.bounds
+                controller.willMove(toParent: self)
+                mPlayer2!.mFragmentContainer.addSubview(controller.view)
+                mPlayer2!.addChild(controller)
+                closeLoadingDialog()
+                controller.didMove(toParent: self)
+                controller.view.backgroundColor = mPlayer2!.view.backgroundColor
+            }
+            performSegue(withIdentifier: "toHighscoreInputDialog", sender: nil)
+            return
+        }
         
         var x:Int = (0...4).randomElement()!
         while x == mQuestionType {
@@ -173,7 +231,17 @@ class Round1ViewController: UIViewController {
             }
             ORDER BY ?countryLabel
             """
-            "https://query.wikidata.org/sparql?format=json&query="
+            AF.request("https://query.wikidata.org/sparql?format=json&query=\(sparql.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")
+                .validate(statusCode: 200..<300)
+                //            .validate(contentType: ["application/json"])
+                .responseData { response in
+                    switch response.result {
+                    case .success(let value):
+                        break
+                    case .failure(let error):
+                            break
+                    }
+            }
             if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
                 showLoadingDialog()
                 view1.removeFromSuperview()

@@ -65,12 +65,14 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @objc func aClicked() {
         print("A Clicked")
         if let view1 = mFragmentContainer.subviews.first {
+            showLoadingDialog()
             view1.removeFromSuperview()
             let controller = storyboard!.instantiateViewController(withIdentifier: "MapGameViewController") as! MapGameViewController
             controller.view.frame = mFragmentContainer.bounds
             controller.willMove(toParent: self)
             mFragmentContainer.addSubview(controller.view)
             addChild(controller)
+            closeLoadingDialog()
             controller.didMove(toParent: self)
             controller.view.backgroundColor = view.backgroundColor
         }
@@ -78,33 +80,42 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     let mMonthDelegate = MonthPickerDelegate() //Must be a member, since dataSource and delegate are weak
     
+    @objc func incorrect() {
+        dController!.mYearScroller.backgroundColor = UIColor(named: "Firebrick")!
+        dController!.mMonthScroller.backgroundColor = UIColor(named: "IndianRed")!
+        dController!.mYearScroller.isUserInteractionEnabled = false
+        dController!.mMonthScroller.isUserInteractionEnabled = false
+    }
+    
     @objc func bClicked() {
         print("B Clicked")
         if let view1 = mFragmentContainer.subviews.first {
+            showLoadingDialog()
             view1.removeFromSuperview()
-            let controller = storyboard!.instantiateViewController(withIdentifier: "DateGameViewController") as! DateGameViewController
-            controller.view.frame = mFragmentContainer.bounds
-            controller.willMove(toParent: self)
-            mFragmentContainer.addSubview(controller.view)
-            addChild(controller)
-            
-            controller.didMove(toParent: self)
-            controller.view.backgroundColor = view.backgroundColor
+            dController = storyboard!.instantiateViewController(withIdentifier: "DateGameViewController") as! DateGameViewController
+            dController!.view.frame = mFragmentContainer.bounds
+            dController!.willMove(toParent: self)
+            mFragmentContainer.addSubview(dController!.view)
+            addChild(dController!)
+            closeLoadingDialog()
+            dController!.didMove(toParent: self)
+            dController!.view.backgroundColor = view.backgroundColor
             
             //            controller.mYear = 1937
             //            controller.mMonth = 7
             //
-            controller.mYearScroller.dataSource = self
-            controller.mYearScroller.delegate = self
-            controller.mYearScroller.selectRow((0..<controller.mYearScroller.numberOfRows(inComponent: 0)).randomElement()!, inComponent: 0, animated: false)
+            dController!.mYearScroller.dataSource = self
+            dController!.mYearScroller.delegate = self
+            dController!.mYearScroller.selectRow((0..<dController!.mYearScroller.numberOfRows(inComponent: 0)).randomElement()!, inComponent: 0, animated: false)
             
-            controller.mMonthScroller.dataSource = mMonthDelegate
-            controller.mMonthScroller.delegate = mMonthDelegate
-            controller.mMonthScroller.selectRow((0..<controller.mMonthScroller.numberOfRows(inComponent: 0)).randomElement()!, inComponent: 0, animated: false)
+            dController!.mMonthScroller.dataSource = mMonthDelegate
+            dController!.mMonthScroller.delegate = mMonthDelegate
+            dController!.mMonthScroller.selectRow((0..<dController!.mMonthScroller.numberOfRows(inComponent: 0)).randomElement()!, inComponent: 0, animated: false)
+            dController!.mSubmitBtn.addTarget(self, action: #selector(incorrect), for: .touchDown)
             
             let url = URL(string: "https://upload.wikimedia.org/wikipedia/commons/8/85/Tank_Battle_in_Golan_Heights_-_Flickr_-_The_Central_Intelligence_Agency.jpg")
             let data = try! Data(contentsOf: url!)
-            controller.mHintPic.image = UIImage(data: data)
+            dController!.mHintPic.image = UIImage(data: data)
         }
     }
     
@@ -119,26 +130,43 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     func reveal() {
-        if let ctrl = controller {
+        if let ctrl = fController {
             mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), 12)
             ctrl.mIndicatorA.setIcon(icon: .googleMaterialDesign(.newReleases), iconSize: 24, color: .white, bgColor: UIColor(named: "Amber")!)
             ctrl.mClickAreaA.backgroundColor = UIColor(named: "Amber")!
         }
     }
     
-    var controller:FlagGameViewController?
+    var fController:FlagGameViewController?
+    var dController:DateGameViewController?
+    
+    func showLoadingDialog() {
+        let alert = UIAlertController(title: nil, message: NSLocalizedString("loading", comment: ""), preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = .medium
+        loadingIndicator.startAnimating()
+        
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: false)
+    }
+    
+    func closeLoadingDialog() {
+        dismiss(animated: false)
+    }
     
     @IBAction func mYellowTest(_ sender: Any) {
         if let view1 = mFragmentContainer.subviews.first {
             view1.removeFromSuperview()
             
-            controller = storyboard!.instantiateViewController(withIdentifier: "FlagGameViewController") as! FlagGameViewController
-            controller!.view.frame = mFragmentContainer.bounds
-            controller!.willMove(toParent: self)
-            mFragmentContainer.addSubview(controller!.view)
-            addChild(controller!)
-            controller!.didMove(toParent: self)
-            controller!.view.backgroundColor = view.backgroundColor
+            fController = storyboard!.instantiateViewController(withIdentifier: "FlagGameViewController") as! FlagGameViewController
+            fController!.view.frame = mFragmentContainer.bounds
+            fController!.willMove(toParent: self)
+            mFragmentContainer.addSubview(fController!.view)
+            addChild(fController!)
+            fController!.didMove(toParent: self)
+            fController!.view.backgroundColor = view.backgroundColor
             
             //AlamoFire here!
             AF.request("https://en.wikipedia.org/wiki/Wikipedia:Lists_of_popular_pages_by_WikiProject")
@@ -157,22 +185,22 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
             let populationNumberFormatter = NumberFormatter()
             populationNumberFormatter.numberStyle = .decimal
             
-            controller!.mQuestion.text = "\u{1F465}: \(populationNumberFormatter.string(from: NSNumber(value: population))!) (2019)"
+            fController!.mQuestion.text = "\u{1F465}: \(populationNumberFormatter.string(from: NSNumber(value: population))!) (2019)"
             
             let aClickedList = UITapGestureRecognizer(target: self, action: #selector(aClicked))
-            controller!.mClickAreaA.addGestureRecognizer(aClickedList)
+            fController!.mClickAreaA.addGestureRecognizer(aClickedList)
             
             let bClickedList = UITapGestureRecognizer(target: self, action: #selector(bClicked))
-            controller!.mClickAreaB.addGestureRecognizer(bClickedList)
+            fController!.mClickAreaB.addGestureRecognizer(bClickedList)
             
             let cClickedList = UITapGestureRecognizer(target: self, action: #selector(cClicked))
-            controller!.mClickAreaC.addGestureRecognizer(cClickedList)
+            fController!.mClickAreaC.addGestureRecognizer(cClickedList)
             
             let dClickedList = UITapGestureRecognizer(target: self, action: #selector(dClicked))
-            controller!.mClickAreaD.addGestureRecognizer(dClickedList)
+            fController!.mClickAreaD.addGestureRecognizer(dClickedList)
             
-            controller!.mIndicatorB.setIcon(icon: .googleMaterialDesign(.check), iconSize: 24, color: .white, bgColor: UIColor(named: "success")!)
-            controller!.mIndicatorC.setIcon(icon: .googleMaterialDesign(.close), iconSize: 24, color: .white, bgColor: UIColor(named: "danger")!)
+            fController!.mIndicatorB.setIcon(icon: .googleMaterialDesign(.check), iconSize: 24, color: .white, bgColor: UIColor(named: "success")!)
+            fController!.mIndicatorC.setIcon(icon: .googleMaterialDesign(.close), iconSize: 24, color: .white, bgColor: UIColor(named: "danger")!)
             
             var svg1:SVGKImage = SVGKImage(contentsOf: URL(string: "https://upload.wikimedia.org/wikipedia/commons/d/de/Coat_of_arms_of_Botswana.svg"))
             let fast = SVGKFastImageView(svgkImage: svg1)!
@@ -180,8 +208,8 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
             fast.contentMode = .scaleAspectFill
             fast.frame = CGRect(x: 0, y: 0, width: 90 * aspect, height: 90)
             //            print(controller.mFlagA.frame)
-            controller!.mFlagA.contentMode = .scaleAspectFill
-            controller!.mFlagA.addSubview(fast)
+            fController!.mFlagA.contentMode = .scaleAspectFill
+            fController!.mFlagA.addSubview(fast)
             
             self.mScoreBar.progress = 0.7
             self.mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), 70)

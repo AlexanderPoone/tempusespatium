@@ -34,15 +34,24 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
     
     
     var mMarker:GMSMarker?
+    var mOgvPlayerView:OGVPlayerView?
+    var mJson:JSON?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let ogvPlayerView = OGVPlayerView()
-        ogvPlayerView.frame = CGRect(x: 0,y: 0,width: 0,height: 0)
-        view.addSubview(ogvPlayerView)
-        ogvPlayerView.sourceURL = URL(string: "http://commons.wikimedia.org/wiki/Special:FilePath/United%20States%20Navy%20Band%20-%20O%20Canada.ogg")!
-        ogvPlayerView.play()
+//        let exterior = parent! as! ExteriorViewController
+//        exterior.showLoadingDialog()
+        
+        let states = Bundle.main.url(forResource: "states_of_the_world", withExtension: "geojson")!
+        let jsonData = try! Data(contentsOf: states)
+        mJson = try! JSON(data: jsonData)
+        
+        mOgvPlayerView = OGVPlayerView()
+        mOgvPlayerView!.frame = .null
+        view.addSubview(mOgvPlayerView!)
+        mOgvPlayerView!.sourceURL = URL(string: "http://commons.wikimedia.org/wiki/Special:FilePath/United%20States%20Navy%20Band%20-%20O%20Canada.ogg")!
+        mOgvPlayerView!.play()
 //        let ogvKit = OGVInputStream(url: URL(string: "")!)
 
         mResetBtn.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.undo), iconColor: .white, postfixText: NSLocalizedString("reset", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "danger")!, forState: .normal, textSize: nil, iconSize: nil)
@@ -56,6 +65,8 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
         
         mMap.mapStyle = try! GMSMapStyle(jsonString: "[{\"elementType\":\"geometry.stroke\",\"stylers\":[{\"visibility\":\"off\"}]},{\"elementType\":\"labels\",\"stylers\":[{\"visibility\":\"off\"}]}]")
         mSubmitBtn.addTarget(nil, action: #selector(submitMakeshift), for: .touchDown)
+        
+//        exterior.closeLoadingDialog()
     }
     
     @objc func submitMakeshift() {
@@ -63,8 +74,11 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
     }
     
     func revealAnswer(_ state:String) {
-        
         mMap.settings.scrollGestures = false
+        if let player = mOgvPlayerView {
+            player.pause()
+            mOgvPlayerView = nil
+        }
         
         if let marker = mMarker {
             let geocoder = GMSGeocoder()
@@ -82,11 +96,9 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
             }
         }
         
-        let states = Bundle.main.url(forResource: "states_of_the_world", withExtension: "geojson")!
-        let jsonData = try! Data(contentsOf: states)
-        let json = try! JSON(data: jsonData)
+
         
-        let features = json["features"].filter { (arg0) -> Bool in
+        let features = mJson!["features"].filter { (arg0) -> Bool in
             
             //            let (String, JSON) = arg0
             if let countryName = arg0.1["properties"]["ADMIN"].string {

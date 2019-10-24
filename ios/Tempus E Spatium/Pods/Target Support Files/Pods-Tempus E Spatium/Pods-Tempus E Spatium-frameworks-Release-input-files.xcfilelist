@@ -6,6 +6,7 @@ ${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework
 ${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework
 ${BUILT_PRODUCTS_DIR}/FlagKit/FlagKit.framework
 ${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework
+${BUILT_PRODUCTS_DIR}/OGVKit/OGVKit.framework
 ${BUILT_PRODUCTS_DIR}/Ono/Ono.framework
 ${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework
 ${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework
@@ -14,4 +15,7 @@ ${BUILT_PRODUCTS_DIR}/SwiftIcons/SwiftIcons.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
 ${BUILT_PRODUCTS_DIR}/TTGTagCollectionView/TTGTagCollectionView.framework
 ${BUILT_PRODUCTS_DIR}/YLProgressBar/YLProgressBar.framework
+${BUILT_PRODUCTS_DIR}/libogg/ogg.framework
+${BUILT_PRODUCTS_DIR}/liboggz/oggz.framework
+${BUILT_PRODUCTS_DIR}/libvorbis/vorbis.framework
 ${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework

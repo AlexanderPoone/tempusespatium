@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import SwiftIcons
 import SwiftyJSON
+import OGVKit
 
 class MapGameViewController: UIViewController, GMSMapViewDelegate {
     
@@ -28,7 +29,6 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
             marker.map = nil
         }
         mMap.animate(toZoom: 0)
-        revealAnswer(["Philippines", "Maldives", "Comoros", "France", "Bangladesh"].randomElement()!)
     }
     
     
@@ -38,6 +38,13 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let ogvPlayerView = OGVPlayerView()
+        ogvPlayerView.frame = CGRect(x: 0,y: 0,width: 0,height: 0)
+        view.addSubview(ogvPlayerView)
+        ogvPlayerView.sourceURL = URL(string: "http://commons.wikimedia.org/wiki/Special:FilePath/United%20States%20Navy%20Band%20-%20O%20Canada.ogg")!
+        ogvPlayerView.play()
+//        let ogvKit = OGVInputStream(url: URL(string: "")!)
+
         mResetBtn.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.undo), iconColor: .white, postfixText: NSLocalizedString("reset", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "danger")!, forState: .normal, textSize: nil, iconSize: nil)
         
         mSubmitBtn.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.paperPlane), iconColor: .white, postfixText: NSLocalizedString("submit", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "success")!, forState: .normal, textSize: nil, iconSize: nil)
@@ -48,13 +55,32 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
         mMap.camera = GMSCameraPosition(latitude: CLLocationDegrees(exactly: 0)!, longitude: CLLocationDegrees(exactly: 0)!, zoom: 0)
         
         mMap.mapStyle = try! GMSMapStyle(jsonString: "[{\"elementType\":\"geometry.stroke\",\"stylers\":[{\"visibility\":\"off\"}]},{\"elementType\":\"labels\",\"stylers\":[{\"visibility\":\"off\"}]}]")
-        //GeoJSON
-        revealAnswer("Eswatini")
+        mSubmitBtn.addTarget(nil, action: #selector(submitMakeshift), for: .touchDown)
+    }
+    
+    @objc func submitMakeshift() {
+        revealAnswer(["Philippines", "Maldives", "Comoros", "France", "South Africa", "East Timor"].randomElement()!)
     }
     
     func revealAnswer(_ state:String) {
         
-        mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(state)\n\(NSLocalizedString("you_chose", comment: ""))"
+        mMap.settings.scrollGestures = false
+        
+        if let marker = mMarker {
+            let geocoder = GMSGeocoder()
+            geocoder.reverseGeocodeCoordinate(marker.position) { (res, err) in
+                if let res2 = res {
+                if let playerState = res2.firstResult()!.country {
+                    self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(state)\n\(NSLocalizedString("you_chose", comment: "")) \(playerState)"
+                    
+                } else {
+                    self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(state)"
+                }
+                } else {
+                    self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(state)"
+                }
+            }
+        }
         
         let states = Bundle.main.url(forResource: "states_of_the_world", withExtension: "geojson")!
         let jsonData = try! Data(contentsOf: states)
@@ -70,7 +96,8 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
             }
         }
         
-        var avgLat:Double = 0, avgLng:Double = 0
+        //        var avgLat:Double = 0, avgLng:Double = 0
+        var bounds = GMSCoordinateBounds()
         
         if features.count > 0 {
             let node = features[0].1["geometry"]
@@ -89,19 +116,22 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
                     arr = y.arrayValue
                 }
                 for x in arr {
-                    polygonPath.add(CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: x[1].doubleValue)!, longitude: CLLocationDegrees(exactly: x[0].doubleValue)!))
-                    avgLat += x[1].doubleValue
-                    avgLng += x[0].doubleValue
+                    let coords = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: x[1].doubleValue)!, longitude: CLLocationDegrees(exactly: x[0].doubleValue)!)
+                    polygonPath.add(coords)
+                    bounds = bounds.includingCoordinate(coords)
+                    //                    avgLat += x[1].doubleValue
+                    //                    avgLng += x[0].doubleValue
                 }
-                avgLat /= Double(arr.count)
-                avgLng /= Double(arr.count)
+                //                avgLat /= Double(arr.count)
+                //                avgLng /= Double(arr.count)
                 
                 print("Test \(polygonPath)")
                 polygon.path = polygonPath
                 polygon.map = mMap
                 
             }
-            mMap.animate(toLocation: CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly:avgLat)!, longitude: CLLocationDegrees(exactly:avgLng)!))
+            let camUpdate = GMSCameraUpdate.fit(bounds)
+            mMap.animate(with: camUpdate)
         }
         
     }

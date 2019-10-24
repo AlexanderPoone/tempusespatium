@@ -1,0 +1,7 @@
+framework module oggz {
+  umbrella header "oggz.h"
+  module oggz {
+    header "oggz.h"
+    export *
+  }
+}

@@ -1,0 +1,12 @@
+framework module vorbis {
+  module vorbisfile {
+    header "vorbisfile.h"
+    header "codec.h"
+    export *
+  }
+  module vorbisenc {
+    header "vorbisenc.h"
+    header "codec.h"
+    export *
+  }
+}

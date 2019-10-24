@@ -20,6 +20,7 @@
   },
   "swift_versions": [
     "5.0",
+    "5.1",
     "5.1"
   ],
   "source_files": "Source/*.swift",

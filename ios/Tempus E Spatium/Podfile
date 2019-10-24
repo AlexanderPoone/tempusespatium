@@ -1,6 +1,9 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '13.0'
 
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/brion/OGVKit-Specs.git'
+
 target 'Tempus E Spatium' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
@@ -20,6 +23,7 @@ target 'Tempus E Spatium' do
   pod 'FlagKit'
   pod 'SwiftyJSON'
   pod 'FMDB'
+  pod 'OGVKit/Ogg/Vorbis'
   
   # Pods for Tempus E Spatium
 

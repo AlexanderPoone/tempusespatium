@@ -38,11 +38,29 @@ PODS:
   - "GoogleUtilities/NSData+zlib (6.3.1)"
   - GoogleUtilities/Reachability (6.3.1):
     - GoogleUtilities/Logger
-  - nanopb (0.3.901):
-    - nanopb/decode (= 0.3.901)
-    - nanopb/encode (= 0.3.901)
-  - nanopb/decode (0.3.901)
-  - nanopb/encode (0.3.901)
+  - libogg (1.3.3)
+  - liboggz (1.2.0-1):
+    - libogg (>= 1.0)
+  - libvorbis (1.3.5):
+    - libogg (>= 1.0)
+  - nanopb (0.3.904):
+    - nanopb/decode (= 0.3.904)
+    - nanopb/encode (= 0.3.904)
+  - nanopb/decode (0.3.904)
+  - nanopb/encode (0.3.904)
+  - OGVKit/Core (0.5.13)
+  - OGVKit/libskeleton (0.5.13):
+    - libogg
+  - OGVKit/Ogg/Vorbis (0.5.13):
+    - OGVKit/OggDemuxer
+    - OGVKit/VorbisDecoder
+  - OGVKit/OggDemuxer (0.5.13):
+    - liboggz (= 1.2.0-1)
+    - OGVKit/Core
+    - OGVKit/libskeleton (~> 0.4)
+  - OGVKit/VorbisDecoder (0.5.13):
+    - libvorbis
+    - OGVKit/Core
   - Ono (2.1.2)
   - ReachabilitySwift (4.3.1)
   - SearchTextField (1.2.4)
@@ -61,6 +79,7 @@ DEPENDENCIES:
   - FMDB
   - Google-Mobile-Ads-SDK
   - GoogleMaps
+  - OGVKit/Ogg/Vorbis
   - Ono
   - ReachabilitySwift (~> 4.3.1)
   - SearchTextField
@@ -71,7 +90,12 @@ DEPENDENCIES:
   - YLProgressBar
 
 SPEC REPOS:
-  trunk:
+  https://github.com/brion/OGVKit-Specs.git:
+    - libogg
+    - liboggz
+    - libvorbis
+    - OGVKit
+  https://github.com/CocoaPods/Specs.git:
     - CocoaLumberjack
     - DACircularProgress
     - DropDown
@@ -107,7 +131,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SVGKit/SVGKit.git
 
 SPEC CHECKSUMS:
-  Alamofire: 616173279c55fca0c71278ec5f42fa61ee7fa806
+  Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
   CocoaLumberjack: 78b0c238666f4f58db069738ec176f4519557516
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
@@ -117,7 +141,11 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 434cc7be25e71dc04b8d0e3079125127b330e84a
   GoogleMaps: 32ca02de09de357a10ac773f2c70f1986751392d
   GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
-  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  libogg: 35e313159a7270931d0f0f208c2d5f60bc05399b
+  liboggz: 976a3ffd70b71e8c4faa06a298547038ab03c567
+  libvorbis: b2c6a2c2bb22447d80403981185b213cf688fae7
+  nanopb: 06f6030d554e6473f5e172460173fcf80f5548f4
+  OGVKit: 0e63492407aa2f3734ff18670ca09ecfe63d34e7
   Ono: 26a7c1fc4df13ece7747560a1d80655807a8a000
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   SearchTextField: 40dc3cc57def5a211f263cac263622c163bbc25a
@@ -127,6 +155,6 @@ SPEC CHECKSUMS:
   TTGTagCollectionView: 86fcbfa6a7493c9e860b01c2e693cffc8acf6de1
   YLProgressBar: 0c0796a6e9b5e5d5040d15c8911e802b67ccb939
 
-PODFILE CHECKSUM: 51aaa2ee20dc53919d12d218c2163f7e68a56a77
+PODFILE CHECKSUM: 7e00720b13e2f861d475f9a068cf8f0c7e34b9e9
 
 COCOAPODS: 1.8.0

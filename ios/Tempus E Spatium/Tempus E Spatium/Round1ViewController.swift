@@ -9,6 +9,7 @@
 import UIKit
 import SwiftIcons
 import Alamofire
+import SwiftyJSON
 
 class Round1ViewController: UIViewController {
     
@@ -27,6 +28,8 @@ class Round1ViewController: UIViewController {
     var mCoolDownTimer:Timer?
     
     var mQuestionType:Int? = 5
+
+    private let mPreferences = UserDefaults.standard
     
     @IBAction func unwindToRound1ViewController(segue: UIStoryboardSegue) {
     }
@@ -221,39 +224,42 @@ class Round1ViewController: UIViewController {
             mSecs = 60
             mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         case 1:
+            let savedLocale = mPreferences.string(forKey: "PREF_LOCALE")!
             let sparql = """
-            SELECT DISTINCT ?country ?countryLabel ?country_EN ?country_FR ?anthemLabel ?anthem_FR ?audioLabel
+            SELECT DISTINCT ?countryLabel ?country_local ?anthemLabel ?anthem_local ?audioLabel
             WHERE
             {
             ?country wdt:P31 wd:Q3624078 .
-            #not a former country
             FILTER NOT EXISTS {?country wdt:P31 wd:Q3024240}
-            #and no an ancient civilisation (needed to exclude ancient Egypt)
             FILTER NOT EXISTS {?country wdt:P31 wd:Q28171280}
             ?country wdt:P85 ?anthem.
             ?anthem wdt:P51 ?audio.
-
             SERVICE wikibase:label { bd:serviceParam wikibase:language "en".
             }
-            SERVICE wikibase:label { bd:serviceParam wikibase:language "en".
-            ?country rdfs:label ?country_EN.
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(savedLocale)".
+            ?country rdfs:label ?country_local.
             } hint:Prior hint:runLast false.
-            SERVICE wikibase:label { bd:serviceParam wikibase:language "fr".
-            ?country rdfs:label ?country_FR.
-            } hint:Prior hint:runLast false.
-            SERVICE wikibase:label { bd:serviceParam wikibase:language "fr".
-            ?anthem rdfs:label ?anthem_FR.
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(savedLocale)".
+            ?anthem rdfs:label ?anthem_local.
             } hint:Prior hint:runLast false.
             }
             ORDER BY ?countryLabel
             """
+            print("https://query.wikidata.org/sparql?format=json&query=\(sparql.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")
             AF.request("https://query.wikidata.org/sparql?format=json&query=\(sparql.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")
                 .validate(statusCode: 200..<300)
                 //            .validate(contentType: ["application/json"])
                 .responseData { response in
                     switch response.result {
                     case .success(let value):
-                        break
+                        let json = JSON(value)
+                        for x in json.arrayValue {
+                            print(x["countryLabel"].stringValue)
+                            print(x["country_local"].stringValue)
+                            print(x["anthemLabel"].stringValue)
+                            print(x["anthem_local"].stringValue)
+                            print(x["audioLabel"].stringValue)
+                        }
                     case .failure(let error):
                             break
                     }

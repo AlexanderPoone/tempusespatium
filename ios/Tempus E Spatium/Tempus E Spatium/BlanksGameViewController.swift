@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import SwiftIcons
 
 extension UIColor {
     var hexString: String {
@@ -39,11 +40,46 @@ class BlanksGameViewController: UIViewController {
     @IBOutlet weak var mKeyboardArea: UIView!
     
     private let mPreferences = UserDefaults.standard
+    
+    private let mContentController = WKUserContentController()
 
+    
+    @IBOutlet weak var mResetBtn: UIButton!
+    
+    @IBOutlet weak var mSubmitBtn: UIButton!
+    
+    @IBAction func mReset(_ sender: Any) {
+        mWebView.evaluateJavaScript("document.write('asdf');", completionHandler: nil)
+//        let script = "document.write('asdf');"
+//        let userScript = WKUserScript(source: script, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+//
+//        mContentController.addUserScript(userScript)
+//        mWebView.configuration.userContentController = mContentController
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mResetBtn.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.undo), iconColor: .white, postfixText: NSLocalizedString("reset", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "danger")!, forState: .normal, textSize: nil, iconSize: nil)
+        
+        mSubmitBtn.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.paperPlane), iconColor: .white, postfixText: NSLocalizedString("submit", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "success")!, forState: .normal, textSize: nil, iconSize: nil)
+        
+        
+//        let script =    """
+//                        var script = document.createElement('script');
+//                        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=default&#038;ver=1.3.8';
+//                        script.type = 'text/javascript';
+//                        document.getElementsByTagName('head')[0].appendChild(script);
+//                        """
+//        let userScript = WKUserScript(source: script, injectionTime: .atDocumentStart, forMainFrameOnly: true)
+//
+//
+//        mContentController.addUserScript(userScript)
+//
+//        mWebView.configuration.userContentController = mContentController
+        
 
-        mWebView.loadHTMLString("<html><head></head><body style=\"background-color:\(UIColor(named: self.mPreferences.string(forKey: "PREF_PLAYER_1_THEME")!)!.hexString);\"><small>Test!</small></body></html>", baseURL: nil)
         mWebView.scrollView.panGestureRecognizer.isEnabled = false
         mWebView.scrollView.bounces = false
 
@@ -57,7 +93,8 @@ class BlanksGameViewController: UIViewController {
         
         controller.didMove(toParent: self)
         }
-    }
+        
+  }
     
 
     /*

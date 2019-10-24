@@ -75,6 +75,8 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
     
     func revealAnswer(_ state:String) {
         mMap.settings.scrollGestures = false
+        mMap.settings.zoomGestures = false
+
         if let player = mOgvPlayerView {
             player.pause()
             mOgvPlayerView = nil

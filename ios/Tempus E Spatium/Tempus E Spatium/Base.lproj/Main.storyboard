@@ -1069,7 +1069,7 @@ Squirrel Monkey</string>
         <!--Blanks Game View Controller-->
         <scene sceneID="3sQ-kh-Gd8">
             <objects>
-                <viewController id="m2p-0p-NAM" customClass="BlanksGameViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BlanksGameViewController" id="m2p-0p-NAM" customClass="BlanksGameViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cnd-2Y-3OJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="321"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1083,8 +1083,35 @@ Squirrel Monkey</string>
                                     <segue destination="Dp9-ms-kcD" kind="embed" id="zSm-bi-OTn"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5eQ-1Z-Lzu">
+                                <rect key="frame" x="364" y="189" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbH-M4-udh">
+                                <rect key="frame" x="310" y="189" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Sty-xB-4bL"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="mReset:" destination="m2p-0p-NAM" eventType="touchUpInside" id="v4D-ZO-gMI"/>
+                                    <action selector="mResetBtnClicked:" destination="hDW-zZ-rCB" eventType="touchUpInside" id="JHv-P0-83C"/>
+                                </connections>
+                            </button>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DM1-Qp-LhK">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="221"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="187"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -1095,17 +1122,23 @@ Squirrel Monkey</string>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="qhf-Xp-jdT" firstAttribute="bottom" secondItem="H6Y-g3-ceF" secondAttribute="bottom" id="2yu-aa-041"/>
+                            <constraint firstItem="qhf-Xp-jdT" firstAttribute="top" secondItem="5eQ-1Z-Lzu" secondAttribute="bottom" constant="2" id="EM8-4D-VYz"/>
                             <constraint firstItem="DM1-Qp-LhK" firstAttribute="trailing" secondItem="H6Y-g3-ceF" secondAttribute="trailing" id="SX1-Mi-Cmh"/>
                             <constraint firstItem="qhf-Xp-jdT" firstAttribute="trailing" secondItem="H6Y-g3-ceF" secondAttribute="trailing" id="e28-N6-rIb"/>
+                            <constraint firstItem="5eQ-1Z-Lzu" firstAttribute="centerY" secondItem="rbH-M4-udh" secondAttribute="centerY" id="ex8-uj-XBX"/>
                             <constraint firstItem="DM1-Qp-LhK" firstAttribute="top" secondItem="cnd-2Y-3OJ" secondAttribute="top" id="k64-pF-qn8"/>
-                            <constraint firstItem="qhf-Xp-jdT" firstAttribute="top" secondItem="DM1-Qp-LhK" secondAttribute="bottom" id="kbc-y8-0BG"/>
                             <constraint firstItem="DM1-Qp-LhK" firstAttribute="leading" secondItem="H6Y-g3-ceF" secondAttribute="leading" id="t9h-w3-d41"/>
+                            <constraint firstItem="5eQ-1Z-Lzu" firstAttribute="top" secondItem="DM1-Qp-LhK" secondAttribute="bottom" constant="2" id="tfm-nL-Yyg"/>
+                            <constraint firstItem="5eQ-1Z-Lzu" firstAttribute="leading" secondItem="rbH-M4-udh" secondAttribute="trailing" constant="8" id="vKC-Ht-vv7"/>
+                            <constraint firstItem="H6Y-g3-ceF" firstAttribute="trailing" secondItem="5eQ-1Z-Lzu" secondAttribute="trailing" constant="4" id="y9Z-9r-KdA"/>
                             <constraint firstItem="qhf-Xp-jdT" firstAttribute="leading" secondItem="H6Y-g3-ceF" secondAttribute="leading" id="yqc-x5-4Ac"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="H6Y-g3-ceF"/>
                     </view>
                     <connections>
                         <outlet property="mKeyboardArea" destination="qhf-Xp-jdT" id="HuM-6o-npE"/>
+                        <outlet property="mResetBtn" destination="rbH-M4-udh" id="mUa-xg-IIV"/>
+                        <outlet property="mSubmitBtn" destination="5eQ-1Z-Lzu" id="I62-Ri-Smu"/>
                         <outlet property="mWebView" destination="DM1-Qp-LhK" id="oEG-we-elM"/>
                     </connections>
                 </viewController>
@@ -1116,7 +1149,7 @@ Squirrel Monkey</string>
         <!--Endgame View Controller-->
         <scene sceneID="HEa-fY-ZmB">
             <objects>
-                <viewController id="jm8-uP-jxe" customClass="EndgameViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EndgameViewController" id="jm8-uP-jxe" customClass="EndgameViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KYw-ZH-daW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

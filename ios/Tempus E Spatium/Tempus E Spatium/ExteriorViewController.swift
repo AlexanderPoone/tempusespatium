@@ -12,6 +12,7 @@ import YLProgressBar
 import DACircularProgress
 import SVGKit
 import Alamofire
+import Ono
 
 class MonthPickerDelegate: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -229,12 +230,33 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
         mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), 0)
         
         mPauseBtn.setIcon(icon: .fontAwesomeSolid(.pause), iconSize: nil, color: .white, backgroundColor: UIColor(named: "info")!, forState: .normal)
-        mDonutTime.setProgress(0.5, animated: true)
         mDonutTime.roundedCorners = 5
         mDonutTime.trackTintColor = UIColor(named: "BlueDialogBackground")!
         mDonutTime.progressTintColor = UIColor(named: "Liberty")!
-        mDonutTime.progressLabel.text = String(12)
         mDonutTime.progressLabel.textColor = UIColor(named: "MidnightBlue")!
+        
+        AF.request("https://en.wikipedia.org/wiki/Queen_Mab_(poem)")
+            .validate(statusCode: 200..<300)
+            .responseData { response in
+                switch response.result {
+                case .success(let value):
+                    let blanks = self.children.first! as! BlanksGameViewController
+                    blanks.view.backgroundColor = self.view.backgroundColor
+
+                    let html1 = "<html><head></head><body style=\"background-color:\(self.view.backgroundColor!.hexString);\">"
+                    let html2 = "</body></html>"
+                    
+                    let document = try! ONOXMLDocument(data: response.data)
+                    document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[1]/a") { (element, _, _) in
+                        
+                        var ele:String = element.stringValue!
+                    }
+                    
+                    blanks.mWebView.loadHTMLString("\(html1)<small>Test!</small>\(html2)", baseURL: nil)
+                case .failure(let error):
+                    print(error)
+                }
+        }
     }
     
 }

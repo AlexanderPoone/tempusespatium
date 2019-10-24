@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		425D4D37123F2DA94562D37C /* Pods_Tempus_E_Spatium_Tempus_E_SpatiumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC481EB22D19F28E075D659 /* Pods_Tempus_E_Spatium_Tempus_E_SpatiumUITests.framework */; };
+		4B0AD9EF2361FDCE00CEB6D7 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AD9EE2361FDCE00CEB6D7 /* Gif.swift */; };
+		4B0AD9F12361FF9700CEB6D7 /* well_done.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4B0AD9F02361FF9600CEB6D7 /* well_done.gif */; };
 		4B2BE09C235C3604009E6765 /* PauseDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2BE09B235C3604009E6765 /* PauseDialogViewController.swift */; };
 		4B2BE09E235CA483009E6765 /* RulesDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2BE09D235CA482009E6765 /* RulesDialogViewController.swift */; };
 		4B2BE0A0235CA49B009E6765 /* HighscoresDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2BE09F235CA49B009E6765 /* HighscoresDialogViewController.swift */; };
@@ -52,7 +54,6 @@
 		4BA58042234DA7CA00BA6314 /* es_KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA58041234DA7CA00BA6314 /* es_KeyboardViewController.swift */; };
 		4BFE5188234730A000A5574C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE5187234730A000A5574C /* AppDelegate.swift */; };
 		4BFE518A234730A000A5574C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE5189234730A000A5574C /* SceneDelegate.swift */; };
-		4BFE518C234730A000A5574C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE518B234730A000A5574C /* ViewController.swift */; };
 		4BFE518F234730A000A5574C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BFE518D234730A000A5574C /* Main.storyboard */; };
 		4BFE5191234730B500A5574C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BFE5190234730B500A5574C /* Assets.xcassets */; };
 		4BFE5194234730B500A5574C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BFE5192234730B500A5574C /* LaunchScreen.storyboard */; };
@@ -85,6 +86,8 @@
 		3022C463C48E3ACE96FFA4D0 /* Pods-Tempus E Spatium-Tempus E SpatiumUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tempus E Spatium-Tempus E SpatiumUITests.release.xcconfig"; path = "Target Support Files/Pods-Tempus E Spatium-Tempus E SpatiumUITests/Pods-Tempus E Spatium-Tempus E SpatiumUITests.release.xcconfig"; sourceTree = "<group>"; };
 		352C6DF257D7B9CCAB2F23BE /* Pods-Tempus E Spatium.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tempus E Spatium.release.xcconfig"; path = "Target Support Files/Pods-Tempus E Spatium/Pods-Tempus E Spatium.release.xcconfig"; sourceTree = "<group>"; };
 		48E365537441B4C116B76BC6 /* Pods_Tempus_E_Spatium.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tempus_E_Spatium.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B0AD9EE2361FDCE00CEB6D7 /* Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
+		4B0AD9F02361FF9600CEB6D7 /* well_done.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = well_done.gif; sourceTree = "<group>"; };
 		4B2BE09B235C3604009E6765 /* PauseDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseDialogViewController.swift; sourceTree = "<group>"; };
 		4B2BE09D235CA482009E6765 /* RulesDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesDialogViewController.swift; sourceTree = "<group>"; };
 		4B2BE09F235CA49B009E6765 /* HighscoresDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoresDialogViewController.swift; sourceTree = "<group>"; };
@@ -136,7 +139,6 @@
 		4BFE51842347309F00A5574C /* Tempus E Spatium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tempus E Spatium.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BFE5187234730A000A5574C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BFE5189234730A000A5574C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4BFE518B234730A000A5574C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4BFE518E234730A000A5574C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4BFE5190234730B500A5574C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BFE5193234730B500A5574C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				4B8A850E235A0EC100846A2E /* space_swoosh.wav */,
 				4B6D96D62354C89B00D0DA0F /* player_1_wins.gif */,
 				4B6D96D52354C89A00D0DA0F /* player_2_wins.gif */,
+				4B0AD9F02361FF9600CEB6D7 /* well_done.gif */,
 				4BFE5187234730A000A5574C /* AppDelegate.swift */,
 				4B756D7E2349DC8D005CD85A /* Localizable.strings */,
 				4BA5803D234DA78D00BA6314 /* en_KeyboardViewController.swift */,
@@ -243,7 +246,6 @@
 				4B7F5AB423545EBF003C88A4 /* de_KeyboardViewController.swift */,
 				4B2BE0A1235DB7A6009E6765 /* HighscoresDBManager.swift */,
 				4BFE5189234730A000A5574C /* SceneDelegate.swift */,
-				4BFE518B234730A000A5574C /* ViewController.swift */,
 				4BFE518D234730A000A5574C /* Main.storyboard */,
 				4B8A85092359E4C200846A2E /* LocaleCurrentSelectionWithArrowView.swift */,
 				4B2BE09B235C3604009E6765 /* PauseDialogViewController.swift */,
@@ -260,6 +262,7 @@
 				4B2BE0A7235DF2ED009E6765 /* skylark_itc_tt.ttf */,
 				4B8A85032359BD6500846A2E /* LocaleDropDownTableViewCell.swift */,
 				4B8A85042359BD6600846A2E /* LocaleDropDownTableViewCell.xib */,
+				4B0AD9EE2361FDCE00CEB6D7 /* Gif.swift */,
 				4B6D96DF2354DD2D00D0DA0F /* LearnViewController.swift */,
 				4BFE5190234730B500A5574C /* Assets.xcassets */,
 				4BFE5192234730B500A5574C /* LaunchScreen.storyboard */,
@@ -428,6 +431,7 @@
 				4B8077FC235EF053000F8941 /* kozminpro_heavy.otf in Resources */,
 				4B8078012360753F000F8941 /* states_of_the_world.geojson in Resources */,
 				4B8077FD235EF053000F8941 /* skylark_itc_tt.ttf in Resources */,
+				4B0AD9F12361FF9700CEB6D7 /* well_done.gif in Resources */,
 				4BFE5194234730B500A5574C /* LaunchScreen.storyboard in Resources */,
 				4B756D802349DC8E005CD85A /* Localizable.strings in Resources */,
 				4B6D96D82354C89B00D0DA0F /* player_1_wins.gif in Resources */,
@@ -601,7 +605,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B6D96DC2354D58500D0DA0F /* FlagGameViewController.swift in Sources */,
-				4BFE518C234730A000A5574C /* ViewController.swift in Sources */,
 				4B8A85082359CC8600846A2E /* ExteriorViewController.swift in Sources */,
 				4B7F5AB523545EBF003C88A4 /* de_KeyboardViewController.swift in Sources */,
 				4BA58042234DA7CA00BA6314 /* es_KeyboardViewController.swift in Sources */,
@@ -623,6 +626,7 @@
 				4B8077FF235F8243000F8941 /* InputHighscoreViewController.swift in Sources */,
 				4B2BE0A0235CA49B009E6765 /* HighscoresDialogViewController.swift in Sources */,
 				4BA58040234DA7A900BA6314 /* fr_KeyboardViewController.swift in Sources */,
+				4B0AD9EF2361FDCE00CEB6D7 /* Gif.swift in Sources */,
 				4B2BE09E235CA483009E6765 /* RulesDialogViewController.swift in Sources */,
 				4B6D96DE2354D99400D0DA0F /* MapGameViewController.swift in Sources */,
 				4B8A85052359BD6600846A2E /* LocaleDropDownTableViewCell.swift in Sources */,

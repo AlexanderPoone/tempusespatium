@@ -119,7 +119,7 @@ class Round1ViewController: UIViewController {
                             if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
                     showLoadingDialog()
                     view1.removeFromSuperview()
-                    let controller = storyboard!.instantiateViewController(withIdentifier: "EndGameViewController") as! EndGameViewController
+                    let controller = storyboard!.instantiateViewController(withIdentifier: "EndgameViewController") as! EndgameViewController
                     controller.view.frame = mPlayer1!.mFragmentContainer.bounds
                     controller.willMove(toParent: self)
                     mPlayer1!.mFragmentContainer.addSubview(controller.view)
@@ -127,11 +127,15 @@ class Round1ViewController: UIViewController {
                     closeLoadingDialog()
                     controller.didMove(toParent: self)
                     controller.view.backgroundColor = mPlayer1!.view.backgroundColor
+                                let bluetoothGif = UIImage.gifImageWithName("player_1_wins")
+                                let imageView = UIImageView(image: bluetoothGif)
+                                imageView.frame = controller.mAnimation.bounds
+                                controller.mAnimation.addSubview(imageView)
                 }
                 if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
                     showLoadingDialog()
                     view2.removeFromSuperview()
-                    let controller = storyboard!.instantiateViewController(withIdentifier: "EndGameViewController") as! EndGameViewController
+                    let controller = storyboard!.instantiateViewController(withIdentifier: "EndgameViewController") as! EndgameViewController
                     controller.view.frame = mPlayer2!.mFragmentContainer.bounds
                     controller.willMove(toParent: self)
                     mPlayer2!.mFragmentContainer.addSubview(controller.view)
@@ -139,6 +143,10 @@ class Round1ViewController: UIViewController {
                     closeLoadingDialog()
                     controller.didMove(toParent: self)
                     controller.view.backgroundColor = mPlayer2!.view.backgroundColor
+                    let bluetoothGif = UIImage.gifImageWithName("well_done")
+                    let imageView = UIImageView(image: bluetoothGif)
+                    imageView.frame = controller.mAnimation.bounds
+                    controller.mAnimation.addSubview(imageView)
                 }
             performSegue(withIdentifier: "toHighscoreInputDialog", sender: nil)
             return
@@ -146,7 +154,7 @@ class Round1ViewController: UIViewController {
             if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
                 showLoadingDialog()
                 view1.removeFromSuperview()
-                let controller = storyboard!.instantiateViewController(withIdentifier: "EndGameViewController") as! EndGameViewController
+                let controller = storyboard!.instantiateViewController(withIdentifier: "EndgameViewController") as! EndgameViewController
                 controller.view.frame = mPlayer1!.mFragmentContainer.bounds
                 controller.willMove(toParent: self)
                 mPlayer1!.mFragmentContainer.addSubview(controller.view)
@@ -154,11 +162,15 @@ class Round1ViewController: UIViewController {
                 closeLoadingDialog()
                 controller.didMove(toParent: self)
                 controller.view.backgroundColor = mPlayer1!.view.backgroundColor
+                let bluetoothGif = UIImage.gifImageWithName("well_done")
+                let imageView = UIImageView(image: bluetoothGif)
+                imageView.frame = controller.mAnimation.bounds
+                controller.mAnimation.addSubview(imageView)
             }
             if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
                 showLoadingDialog()
                 view2.removeFromSuperview()
-                let controller = storyboard!.instantiateViewController(withIdentifier: "EndGameViewController") as! EndGameViewController
+                let controller = storyboard!.instantiateViewController(withIdentifier: "EndgameViewController") as! EndgameViewController
                 controller.view.frame = mPlayer2!.mFragmentContainer.bounds
                 controller.willMove(toParent: self)
                 mPlayer2!.mFragmentContainer.addSubview(controller.view)
@@ -166,6 +178,10 @@ class Round1ViewController: UIViewController {
                 closeLoadingDialog()
                 controller.didMove(toParent: self)
                 controller.view.backgroundColor = mPlayer2!.view.backgroundColor
+                let bluetoothGif = UIImage.gifImageWithName("player_2_wins")
+                let imageView = UIImageView(image: bluetoothGif)
+                imageView.frame = controller.mAnimation.bounds
+                controller.mAnimation.addSubview(imageView)
             }
             performSegue(withIdentifier: "toHighscoreInputDialog", sender: nil)
             return

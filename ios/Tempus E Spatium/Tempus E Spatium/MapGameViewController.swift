@@ -47,11 +47,11 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
         let jsonData = try! Data(contentsOf: states)
         mJson = try! JSON(data: jsonData)
         
-        mOgvPlayerView = OGVPlayerView()
-        mOgvPlayerView!.frame = .null
-        view.addSubview(mOgvPlayerView!)
-        mOgvPlayerView!.sourceURL = URL(string: "http://commons.wikimedia.org/wiki/Special:FilePath/United%20States%20Navy%20Band%20-%20O%20Canada.ogg")!
-        mOgvPlayerView!.play()
+//        mOgvPlayerView = OGVPlayerView()
+//        mOgvPlayerView!.frame = .null
+//        view.addSubview(mOgvPlayerView!)
+//        mOgvPlayerView!.sourceURL = URL(string: "http://commons.wikimedia.org/wiki/Special:FilePath/United%20States%20Navy%20Band%20-%20O%20Canada.ogg")!
+//        mOgvPlayerView!.play()
 //        let ogvKit = OGVInputStream(url: URL(string: "")!)
 
         mResetBtn.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.undo), iconColor: .white, postfixText: NSLocalizedString("reset", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "danger")!, forState: .normal, textSize: nil, iconSize: nil)

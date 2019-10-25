@@ -10,6 +10,8 @@ import UIKit
 import SwiftIcons
 import Alamofire
 import SwiftyJSON
+import SVGKit
+import OGVKit
 
 class Round1ViewController: UIViewController {
     
@@ -28,7 +30,7 @@ class Round1ViewController: UIViewController {
     var mCoolDownTimer:Timer?
     
     var mQuestionType:Int? = 5
-
+    
     private let mPreferences = UserDefaults.standard
     
     @IBAction func unwindToRound1ViewController(segue: UIStoryboardSegue) {
@@ -119,38 +121,38 @@ class Round1ViewController: UIViewController {
     func replaceFragment() {
         // if marks >= 380 then go to EndgameViewController return
         if mPointsA >= 380 {
-                            if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
-                    showLoadingDialog()
-                    view1.removeFromSuperview()
-                    let controller = storyboard!.instantiateViewController(withIdentifier: "EndgameViewController") as! EndgameViewController
-                    controller.view.frame = mPlayer1!.mFragmentContainer.bounds
-                    controller.willMove(toParent: self)
-                    mPlayer1!.mFragmentContainer.addSubview(controller.view)
-                    mPlayer1!.addChild(controller)
-                    closeLoadingDialog()
-                    controller.didMove(toParent: self)
-                    controller.view.backgroundColor = mPlayer1!.view.backgroundColor
-                                let bluetoothGif = UIImage.gifImageWithName("player_1_wins")
-                                let imageView = UIImageView(image: bluetoothGif)
-                                imageView.frame = controller.mAnimation.bounds
-                                controller.mAnimation.addSubview(imageView)
-                }
-                if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
-                    showLoadingDialog()
-                    view2.removeFromSuperview()
-                    let controller = storyboard!.instantiateViewController(withIdentifier: "EndgameViewController") as! EndgameViewController
-                    controller.view.frame = mPlayer2!.mFragmentContainer.bounds
-                    controller.willMove(toParent: self)
-                    mPlayer2!.mFragmentContainer.addSubview(controller.view)
-                    mPlayer2!.addChild(controller)
-                    closeLoadingDialog()
-                    controller.didMove(toParent: self)
-                    controller.view.backgroundColor = mPlayer2!.view.backgroundColor
-                    let bluetoothGif = UIImage.gifImageWithName("well_done")
-                    let imageView = UIImageView(image: bluetoothGif)
-                    imageView.frame = controller.mAnimation.bounds
-                    controller.mAnimation.addSubview(imageView)
-                }
+            if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
+                showLoadingDialog()
+                view1.removeFromSuperview()
+                let controller = storyboard!.instantiateViewController(withIdentifier: "EndgameViewController") as! EndgameViewController
+                controller.view.frame = mPlayer1!.mFragmentContainer.bounds
+                controller.willMove(toParent: self)
+                mPlayer1!.mFragmentContainer.addSubview(controller.view)
+                mPlayer1!.addChild(controller)
+                closeLoadingDialog()
+                controller.didMove(toParent: self)
+                controller.view.backgroundColor = mPlayer1!.view.backgroundColor
+                let bluetoothGif = UIImage.gifImageWithName("player_1_wins")
+                let imageView = UIImageView(image: bluetoothGif)
+                imageView.frame = controller.mAnimation.bounds
+                controller.mAnimation.addSubview(imageView)
+            }
+            if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
+                showLoadingDialog()
+                view2.removeFromSuperview()
+                let controller = storyboard!.instantiateViewController(withIdentifier: "EndgameViewController") as! EndgameViewController
+                controller.view.frame = mPlayer2!.mFragmentContainer.bounds
+                controller.willMove(toParent: self)
+                mPlayer2!.mFragmentContainer.addSubview(controller.view)
+                mPlayer2!.addChild(controller)
+                closeLoadingDialog()
+                controller.didMove(toParent: self)
+                controller.view.backgroundColor = mPlayer2!.view.backgroundColor
+                let bluetoothGif = UIImage.gifImageWithName("well_done")
+                let imageView = UIImageView(image: bluetoothGif)
+                imageView.frame = controller.mAnimation.bounds
+                controller.mAnimation.addSubview(imageView)
+            }
             performSegue(withIdentifier: "toHighscoreInputDialog", sender: nil)
             return
         } else if mPointsB >= 380 {
@@ -220,10 +222,261 @@ class Round1ViewController: UIViewController {
                 controller.didMove(toParent: self)
                 controller.view.backgroundColor = mPlayer2!.view.backgroundColor
             }
-            mMaxTime = 60
-            mSecs = 60
+            mMaxTime = 6
+            mSecs = 6
             mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         case 1:
+            showLoadingDialog()
+            if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
+                view1.removeFromSuperview()
+            }
+            let controller = storyboard!.instantiateViewController(withIdentifier: "DateGameViewController") as! DateGameViewController
+            controller.view.frame = mPlayer1!.mFragmentContainer.bounds
+            controller.view.backgroundColor = mPlayer1!.view.backgroundColor
+            
+            if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
+                view2.removeFromSuperview()
+            }
+            let controller2 = storyboard!.instantiateViewController(withIdentifier: "DateGameViewController") as! DateGameViewController
+            controller2.view.frame = mPlayer2!.mFragmentContainer.bounds
+            controller2.view.backgroundColor = mPlayer2!.view.backgroundColor
+            
+            
+            let savedLocale = mPreferences.string(forKey: "PREF_LOCALE")!
+            let sparql =
+            """
+            #defaultView:Timeline
+            SELECT DISTINCT ?eventLabel ?dateLabel ?coordLabel ?img
+            WHERE
+            {
+            { ?event wdt:P31* wd:Q178561. }
+            ?event wdt:P585+ ?date.
+            ?event wdt:P18+ ?img.
+            OPTIONAL { ?event wdt:P625 ?coord }
+            FILTER(YEAR(?date) > 1900).
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(savedLocale)" }
+            FILTER(EXISTS {
+            ?event rdfs:label ?lang_label.
+            FILTER(LANG(?lang_label) = "\(savedLocale)")
+            })
+            }
+            ORDER BY DESC(?dateLabel)
+            """
+            print("https://query.wikidata.org/sparql?format=json&query=\(sparql.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")
+            AF.request("https://query.wikidata.org/sparql?format=json&query=\(sparql.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")
+                .validate(statusCode: 200..<300)
+                //            .validate(contentType: ["application/json"])
+                .responseData { response in
+                    switch response.result {
+                    case .success(let value):
+                        let json = JSON(value)
+                        
+                        let chosen = json["results"]["bindings"].arrayValue.randomElement()!
+                        
+                        controller.willMove(toParent: self)
+                        self.mPlayer1!.mFragmentContainer.addSubview(controller.view)
+                        self.mPlayer1!.addChild(controller)
+                        controller.didMove(toParent: self)
+                        
+                        controller2.willMove(toParent: self)
+                        self.mPlayer2!.mFragmentContainer.addSubview(controller2.view)
+                        self.mPlayer2!.addChild(controller2)
+                        controller2.didMove(toParent: self)
+                        
+                        controller.mQuestion.text = chosen["eventLabel"]["value"].stringValue
+                        controller2.mQuestion.text = chosen["eventLabel"]["value"].stringValue
+                        let url = URL(string: chosen["img"]["value"].stringValue)!
+                        let data = try! Data(contentsOf: url)
+                        controller.mHintPic.image = UIImage(data: data)
+                        controller2.mHintPic.image = UIImage(data: data)
+                        
+                        self.mMaxTime = 10
+                        self.mSecs = 10
+                        self.mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateCounter), userInfo: nil, repeats: true)
+                        
+                        self.closeLoadingDialog()
+                    case .failure(let error):
+                        print("asdfasdf\(error.errorDescription!)")
+                        print("asdfasdf\(error)")
+                        
+                    }
+            }
+        case 2:
+            showLoadingDialog()
+            if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
+                view1.removeFromSuperview()
+            }
+            let controller = storyboard!.instantiateViewController(withIdentifier: "FlagGameViewController") as! FlagGameViewController
+            controller.view.frame = mPlayer1!.mFragmentContainer.bounds
+            controller.view.backgroundColor = mPlayer1!.view.backgroundColor
+            
+            
+            if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
+                view2.removeFromSuperview()
+            }
+            let controller2 = storyboard!.instantiateViewController(withIdentifier: "FlagGameViewController") as! FlagGameViewController
+            controller2.view.frame = mPlayer2!.mFragmentContainer.bounds
+            controller2.view.backgroundColor = mPlayer2!.view.backgroundColor
+            
+            
+            
+            let savedLocale = mPreferences.string(forKey: "PREF_LOCALE")!
+            let sparql = """
+            SELECT DISTINCT ?countryLabel ?capitalLabel ?flagLabel ?armsLabel ?imgLabel ?population
+            ?country_local ?capital_local
+            WHERE
+            {
+            ?country wdt:P31 wd:Q3624078.
+            FILTER NOT EXISTS {?country wdt:P31 wd:Q3024240}
+            FILTER NOT EXISTS {?country wdt:P31 wd:Q28171280}
+            ?country wdt:P36 ?capital.
+            ?country wdt:P41 ?flag.
+            ?country wdt:P94 ?arms.
+            ?capital wdt:P18 ?img.
+            ?country wdt:P1082 ?population.
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(savedLocale)".
+            ?country rdfs:label ?country_local.
+            } hint:Prior hint:runLast false.
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(savedLocale)".
+            ?capital rdfs:label ?capital_local.
+            } hint:Prior hint:runLast false.
+            }
+            ORDER BY ?countryLabel
+            """
+            print("https://query.wikidata.org/sparql?format=json&query=\(sparql.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")
+            AF.request("https://query.wikidata.org/sparql?format=json&query=\(sparql.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")
+                .validate(statusCode: 200..<300)
+                //            .validate(contentType: ["application/json"])
+                .responseData { response in
+                    switch response.result {
+                    case .success(let value):
+                        let json = JSON(value)
+                        
+                        let list = json["results"]["bindings"].arrayValue
+                        var randNumbers:[Int] = [(0..<list.count).randomElement()!]
+                        
+                        var tmp = (0..<list.count).randomElement()!
+                        while randNumbers.contains(tmp) {
+                            tmp = (0..<list.count).randomElement()!
+                        }
+                        randNumbers.append(tmp)
+                        
+                        tmp = (0..<list.count).randomElement()!
+                        while randNumbers.contains(tmp) {
+                            tmp = (0..<list.count).randomElement()!
+                        }
+                        randNumbers.append(tmp)
+                        
+                        tmp = (0..<list.count).randomElement()!
+                        while randNumbers.contains(tmp) {
+                            tmp = (0..<list.count).randomElement()!
+                        }
+                        randNumbers.append(tmp)
+                        
+                        let choosen = list[randNumbers[(0...3).randomElement()!]]
+                        
+                        controller.willMove(toParent: self)
+                        self.mPlayer1!.mFragmentContainer.addSubview(controller.view)
+                        self.mPlayer1!.addChild(controller)
+                        controller.didMove(toParent: self)
+                        
+                        controller2.willMove(toParent: self)
+                        self.mPlayer2!.mFragmentContainer.addSubview(controller2.view)
+                        self.self.mPlayer2!.addChild(controller2)
+                        controller2.didMove(toParent: self)
+                        
+                        
+                        let svg1:SVGKImage = SVGKImage(contentsOf: URL(string: list[0]["armsLabel"]["value"].stringValue)!)
+                        let fast = SVGKFastImageView(svgkImage: svg1)!
+                        let aspect = fast.frame.width / fast.frame.height
+                        fast.contentMode = .scaleAspectFill
+                        fast.frame = CGRect(x: 0, y: 0, width: 90 * aspect, height: 90)
+                        //            print(controller.mFlagA.frame)
+                        controller.mFlagA.contentMode = .scaleAspectFill
+                        controller.mFlagA.addSubview(fast)
+                        
+                        controller2.mFlagA.contentMode = .scaleAspectFill
+                        controller2.mFlagA.addSubview(fast)
+                        
+                        let svg2:SVGKImage = SVGKImage(contentsOf: URL(string: list[1]["armsLabel"]["value"].stringValue)!)
+                        let fast2 = SVGKFastImageView(svgkImage: svg2)!
+                        let aspect2 = fast2.frame.width / fast2.frame.height
+                        fast2.contentMode = .scaleAspectFill
+                        fast2.frame = CGRect(x: 0, y: 0, width: 90 * aspect2, height: 90)
+                        //            print(controller.mFlagA.frame)
+                        controller.mFlagB.contentMode = .scaleAspectFill
+                        controller.mFlagB.addSubview(fast2)
+                        
+                        controller2.mFlagB.contentMode = .scaleAspectFill
+                        controller2.mFlagB.addSubview(fast2)
+                        
+                        let svg3:SVGKImage = SVGKImage(contentsOf: URL(string: list[2]["armsLabel"]["value"].stringValue)!)
+                        let fast3 = SVGKFastImageView(svgkImage: svg3)!
+                        let aspect3 = fast3.frame.width / fast3.frame.height
+                        fast3.contentMode = .scaleAspectFill
+                        fast3.frame = CGRect(x: 0, y: 0, width: 90 * aspect3, height: 90)
+                        //            print(controller.mFlagA.frame)
+                        controller.mFlagC.contentMode = .scaleAspectFill
+                        controller.mFlagC.addSubview(fast3)
+                        
+                        controller2.mFlagC.contentMode = .scaleAspectFill
+                        controller2.mFlagC.addSubview(fast3)
+                        
+                        let svg4:SVGKImage = SVGKImage(contentsOf: URL(string: list[3]["armsLabel"]["value"].stringValue)!)
+                        let fast4 = SVGKFastImageView(svgkImage: svg4)!
+                        let aspect4 = fast4.frame.width / fast4.frame.height
+                        fast4.contentMode = .scaleAspectFill
+                        fast4.frame = CGRect(x: 0, y: 0, width: 90 * aspect4, height: 90)
+                        //            print(controller.mFlagA.frame)
+                        controller.mFlagD.contentMode = .scaleAspectFill
+                        controller.mFlagD.addSubview(fast4)
+                        
+                        controller2.mFlagD.contentMode = .scaleAspectFill
+                        controller2.mFlagD.addSubview(fast4)
+                        
+                        //                        print(choosen["countryLabel"]["value"].stringValue)
+                        //
+                        //
+                        //                        for x in randNumbers {
+                        //                            print(list[x]["countryLabel"]["value"].stringValue)
+                        //                            print(list[x]["country_local"]["value"].stringValue)
+                        //                            print(list[x]["anthemLabel"]["value"].stringValue)
+                        //                            print(list[x]["anthem_local"]["value"].stringValue)
+                        //                            print(list[x]["audioLabel"]["value"].stringValue)
+                        //                        }
+                        
+                        self.mMaxTime = 10
+                        self.mSecs = 10
+                        self.mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateCounter), userInfo: nil, repeats: true)
+                        
+                        self.closeLoadingDialog()
+                    case .failure(let error):
+                        print("asdfasdf\(error.errorDescription!)")
+                        print("asdfasdf\(error)")
+                        
+                    }
+            }
+        case 3:
+            showLoadingDialog()
+            if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
+                view1.removeFromSuperview()
+            }
+            if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
+                showLoadingDialog()
+                view2.removeFromSuperview()
+            }
+            
+            let controller = storyboard!.instantiateViewController(withIdentifier: "MapGameViewController") as! MapGameViewController
+            controller.view.frame = mPlayer1!.mFragmentContainer.bounds
+            controller.view.backgroundColor = mPlayer1!.view.backgroundColor
+            controller.willMove(toParent: self)
+            
+            
+            let controller2 = storyboard!.instantiateViewController(withIdentifier: "MapGameViewController") as! MapGameViewController
+            controller2.view.frame = mPlayer2!.mFragmentContainer.bounds
+            controller2.view.backgroundColor = mPlayer2!.view.backgroundColor
+            
             let savedLocale = mPreferences.string(forKey: "PREF_LOCALE")!
             let sparql = """
             SELECT DISTINCT ?countryLabel ?country_local ?anthemLabel ?anthem_local ?audioLabel
@@ -253,128 +506,181 @@ class Round1ViewController: UIViewController {
                     switch response.result {
                     case .success(let value):
                         let json = JSON(value)
-                        for x in json.arrayValue {
-                            print(x["countryLabel"].stringValue)
-                            print(x["country_local"].stringValue)
-                            print(x["anthemLabel"].stringValue)
-                            print(x["anthem_local"].stringValue)
-                            print(x["audioLabel"].stringValue)
-                        }
+                        
+                        let chosen = json["results"]["bindings"].arrayValue.randomElement()!
+                        
+                        let mOgvPlayerView = OGVPlayerView()
+                        mOgvPlayerView.frame = .null
+                        controller.view.addSubview(mOgvPlayerView)
+                        mOgvPlayerView.sourceURL = URL(string: chosen["audioLabel"]["value"].stringValue)!
+                        mOgvPlayerView.play()
+                        
+                        self.mPlayer1!.mFragmentContainer.addSubview(controller.view)
+                        self.mPlayer1!.addChild(controller)
+                        self.closeLoadingDialog()
+                        controller.didMove(toParent: self)
+                        
+                        self.mPlayer2!.mFragmentContainer.addSubview(controller2.view)
+                        self.mPlayer2!.addChild(controller2)
+                        self.closeLoadingDialog()
+                        controller2.didMove(toParent: self)
+                        
+                        self.closeLoadingDialog()
+                        
+                        self.mMaxTime = 10
+                        self.mSecs = 10
+                        self.mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateCounter), userInfo: nil, repeats: true)
+                        
+                        //                let list = json["results"]["bindings"].arrayValue
+                        //                var randNumbers:[Int] = [(0..<list.count).randomElement()!]
+                        //
+                        //                var tmp = (0..<list.count).randomElement()!
+                        //                while randNumbers.contains(tmp) {
+                        //                    tmp = (0..<list.count).randomElement()!
+                        //                }
+                        //                randNumbers.append(tmp)
+                        //
+                        //                tmp = (0..<list.count).randomElement()!
+                        //                while randNumbers.contains(tmp) {
+                        //                    tmp = (0..<list.count).randomElement()!
+                        //                }
+                        //                randNumbers.append(tmp)
+                        //
+                        //                tmp = (0..<list.count).randomElement()!
+                        //                while randNumbers.contains(tmp) {
+                        //                    tmp = (0..<list.count).randomElement()!
+                        //                }
+                        //                randNumbers.append(tmp)
+                        //
+                        //                let choosen = list[randNumbers[(0...3).randomElement()!]]
+                        //                print(choosen["countryLabel"]["value"].stringValue)
+                        //
+                        //
+                        //                for x in randNumbers {
+                        //                    print(list[x]["countryLabel"]["value"].stringValue)
+                        //                    print(list[x]["country_local"]["value"].stringValue)
+                        //                    print(list[x]["anthemLabel"]["value"].stringValue)
+                        //                    print(list[x]["anthem_local"]["value"].stringValue)
+                        //                    print(list[x]["audioLabel"]["value"].stringValue)
+                    //                }
                     case .failure(let error):
-                            break
+                        print("asdfasdf\(error.errorDescription!)")
+                        print("asdfasdf\(error)")
+                        
                     }
             }
-            if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
-                showLoadingDialog()
-                view1.removeFromSuperview()
-                let controller = storyboard!.instantiateViewController(withIdentifier: "DateGameViewController") as! DateGameViewController
-                controller.view.frame = mPlayer1!.mFragmentContainer.bounds
-                controller.willMove(toParent: self)
-                mPlayer1!.mFragmentContainer.addSubview(controller.view)
-                mPlayer1!.addChild(controller)
-                closeLoadingDialog()
-                controller.didMove(toParent: self)
-                controller.view.backgroundColor = mPlayer1!.view.backgroundColor
-            }
-            if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
-                showLoadingDialog()
-                view2.removeFromSuperview()
-                let controller = storyboard!.instantiateViewController(withIdentifier: "DateGameViewController") as! DateGameViewController
-                controller.view.frame = mPlayer2!.mFragmentContainer.bounds
-                controller.willMove(toParent: self)
-                mPlayer2!.mFragmentContainer.addSubview(controller.view)
-                mPlayer2!.addChild(controller)
-                closeLoadingDialog()
-                controller.didMove(toParent: self)
-                controller.view.backgroundColor = mPlayer2!.view.backgroundColor
-            }
-            mMaxTime = 10
-            mSecs = 10
-            mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-        case 2:
-            if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
-                showLoadingDialog()
-                view1.removeFromSuperview()
-                let controller = storyboard!.instantiateViewController(withIdentifier: "FlagGameViewController") as! FlagGameViewController
-                controller.view.frame = mPlayer1!.mFragmentContainer.bounds
-                controller.willMove(toParent: self)
-                mPlayer1!.mFragmentContainer.addSubview(controller.view)
-                mPlayer1!.addChild(controller)
-                closeLoadingDialog()
-                controller.didMove(toParent: self)
-                controller.view.backgroundColor = mPlayer1!.view.backgroundColor
-            }
-            if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
-                showLoadingDialog()
-                view2.removeFromSuperview()
-                let controller = storyboard!.instantiateViewController(withIdentifier: "FlagGameViewController") as! FlagGameViewController
-                controller.view.frame = mPlayer2!.mFragmentContainer.bounds
-                controller.willMove(toParent: self)
-                mPlayer2!.mFragmentContainer.addSubview(controller.view)
-                mPlayer2!.addChild(controller)
-                closeLoadingDialog()
-                controller.didMove(toParent: self)
-                controller.view.backgroundColor = mPlayer2!.view.backgroundColor
-            }
-            mMaxTime = 10
-            mSecs = 10
-            mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-        case 3:
-            if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
-                showLoadingDialog()
-                view1.removeFromSuperview()
-                let controller = storyboard!.instantiateViewController(withIdentifier: "MapGameViewController") as! MapGameViewController
-                controller.view.frame = mPlayer1!.mFragmentContainer.bounds
-                controller.willMove(toParent: self)
-                mPlayer1!.mFragmentContainer.addSubview(controller.view)
-                mPlayer1!.addChild(controller)
-                closeLoadingDialog()
-                controller.didMove(toParent: self)
-                controller.view.backgroundColor = mPlayer1!.view.backgroundColor
-            }
-            if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
-                showLoadingDialog()
-                view2.removeFromSuperview()
-                let controller = storyboard!.instantiateViewController(withIdentifier: "MapGameViewController") as! MapGameViewController
-                controller.view.frame = mPlayer2!.mFragmentContainer.bounds
-                controller.willMove(toParent: self)
-                mPlayer2!.mFragmentContainer.addSubview(controller.view)
-                mPlayer2!.addChild(controller)
-                closeLoadingDialog()
-                controller.didMove(toParent: self)
-                controller.view.backgroundColor = mPlayer2!.view.backgroundColor
-            }
-            mMaxTime = 10
-            mSecs = 10
-            mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         case 4:
+            showLoadingDialog()
             if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
-                showLoadingDialog()
                 view1.removeFromSuperview()
-                let controller = storyboard!.instantiateViewController(withIdentifier: "MapGameViewController") as! MapGameViewController
-                controller.view.frame = mPlayer1!.mFragmentContainer.bounds
-                controller.willMove(toParent: self)
-                mPlayer1!.mFragmentContainer.addSubview(controller.view)
-                mPlayer1!.addChild(controller)
-                closeLoadingDialog()
-                controller.didMove(toParent: self)
-                controller.view.backgroundColor = mPlayer1!.view.backgroundColor
             }
             if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
                 showLoadingDialog()
                 view2.removeFromSuperview()
-                let controller = storyboard!.instantiateViewController(withIdentifier: "MapGameViewController") as! MapGameViewController
-                controller.view.frame = mPlayer2!.mFragmentContainer.bounds
-                controller.willMove(toParent: self)
-                mPlayer2!.mFragmentContainer.addSubview(controller.view)
-                mPlayer2!.addChild(controller)
-                closeLoadingDialog()
-                controller.didMove(toParent: self)
-                controller.view.backgroundColor = mPlayer2!.view.backgroundColor
             }
-            mMaxTime = 10
-            mSecs = 10
-            mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+            
+            let controller = storyboard!.instantiateViewController(withIdentifier: "MapGameViewController") as! MapGameViewController
+            controller.view.frame = mPlayer1!.mFragmentContainer.bounds
+            controller.view.backgroundColor = mPlayer1!.view.backgroundColor
+            controller.willMove(toParent: self)
+            
+            
+            let controller2 = storyboard!.instantiateViewController(withIdentifier: "MapGameViewController") as! MapGameViewController
+            controller2.view.frame = mPlayer2!.mFragmentContainer.bounds
+            controller2.view.backgroundColor = mPlayer2!.view.backgroundColor
+            
+            let savedLocale = mPreferences.string(forKey: "PREF_LOCALE")!
+            let sparql = """
+            SELECT DISTINCT ?countryLabel ?country_local ?anthemLabel ?anthem_local ?audioLabel
+            WHERE
+            {
+            ?country wdt:P31 wd:Q3624078 .
+            FILTER NOT EXISTS {?country wdt:P31 wd:Q3024240}
+            FILTER NOT EXISTS {?country wdt:P31 wd:Q28171280}
+            ?country wdt:P85 ?anthem.
+            ?anthem wdt:P51 ?audio.
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "en".
+            }
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(savedLocale)".
+            ?country rdfs:label ?country_local.
+            } hint:Prior hint:runLast false.
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(savedLocale)".
+            ?anthem rdfs:label ?anthem_local.
+            } hint:Prior hint:runLast false.
+            }
+            ORDER BY ?countryLabel
+            """
+            print("https://query.wikidata.org/sparql?format=json&query=\(sparql.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")
+            AF.request("https://query.wikidata.org/sparql?format=json&query=\(sparql.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")
+                .validate(statusCode: 200..<300)
+                //            .validate(contentType: ["application/json"])
+                .responseData { response in
+                    switch response.result {
+                    case .success(let value):
+                        let json = JSON(value)
+                        
+                        let chosen = json["results"]["bindings"].arrayValue.randomElement()!
+                        
+                        let mOgvPlayerView = OGVPlayerView()
+                        mOgvPlayerView.frame = .null
+                        controller.view.addSubview(mOgvPlayerView)
+                        mOgvPlayerView.sourceURL = URL(string: chosen["audioLabel"]["value"].stringValue)!
+                        mOgvPlayerView.play()
+                        
+                        self.mPlayer1!.mFragmentContainer.addSubview(controller.view)
+                        self.mPlayer1!.addChild(controller)
+                        self.closeLoadingDialog()
+                        controller.didMove(toParent: self)
+                        
+                        self.mPlayer2!.mFragmentContainer.addSubview(controller2.view)
+                        self.mPlayer2!.addChild(controller2)
+                        self.closeLoadingDialog()
+                        controller2.didMove(toParent: self)
+                        
+                        self.closeLoadingDialog()
+                        
+                        self.mMaxTime = 10
+                        self.mSecs = 10
+                        self.mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateCounter), userInfo: nil, repeats: true)
+                        
+                        //                let list = json["results"]["bindings"].arrayValue
+                        //                var randNumbers:[Int] = [(0..<list.count).randomElement()!]
+                        //
+                        //                var tmp = (0..<list.count).randomElement()!
+                        //                while randNumbers.contains(tmp) {
+                        //                    tmp = (0..<list.count).randomElement()!
+                        //                }
+                        //                randNumbers.append(tmp)
+                        //
+                        //                tmp = (0..<list.count).randomElement()!
+                        //                while randNumbers.contains(tmp) {
+                        //                    tmp = (0..<list.count).randomElement()!
+                        //                }
+                        //                randNumbers.append(tmp)
+                        //
+                        //                tmp = (0..<list.count).randomElement()!
+                        //                while randNumbers.contains(tmp) {
+                        //                    tmp = (0..<list.count).randomElement()!
+                        //                }
+                        //                randNumbers.append(tmp)
+                        //
+                        //                let choosen = list[randNumbers[(0...3).randomElement()!]]
+                        //                print(choosen["countryLabel"]["value"].stringValue)
+                        //
+                        //
+                        //                for x in randNumbers {
+                        //                    print(list[x]["countryLabel"]["value"].stringValue)
+                        //                    print(list[x]["country_local"]["value"].stringValue)
+                        //                    print(list[x]["anthemLabel"]["value"].stringValue)
+                        //                    print(list[x]["anthem_local"]["value"].stringValue)
+                        //                    print(list[x]["audioLabel"]["value"].stringValue)
+                    //                }
+                    case .failure(let error):
+                        print("asdfasdf\(error.errorDescription!)")
+                        print("asdfasdf\(error)")
+                        
+                    }
+            }
         default:
             break
         }

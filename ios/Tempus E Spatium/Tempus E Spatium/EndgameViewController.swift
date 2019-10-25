@@ -1,12 +1,5 @@
-//
-//  EndgameViewController.swift
-//  Tempus E Spatium
-//
-//  Created by Victor Poon on 15/10/2019.
-//  Copyright © 2019 SoftFeta. All rights reserved.
-//
-
 import UIKit
+import SwiftIcons
 
 class EndgameViewController: UIViewController {
 
@@ -17,7 +10,8 @@ class EndgameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+       mReturnBtn!.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.signOutAlt), iconColor: .white, postfixText: NSLocalizedString("return_main_menu", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "danger")!, forState: .normal, textSize: nil, iconSize: nil)
+        
     }
 
 }

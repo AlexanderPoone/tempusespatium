@@ -412,7 +412,10 @@ class Round1ViewController: UIViewController {
                         }
                         randNumbers.append(tmp)
                         
-                        let choosen = list[randNumbers[(0...3).randomElement()!]]
+                        let correntIdx = (0...3).randomElement()!
+                        controller.mCorrectAns = correntIdx
+                        controller2.mCorrectAns = correntIdx
+                        let choosen = list[randNumbers[correntIdx]]
                         
                         //TODO: How to reveal.
                         

@@ -87,7 +87,7 @@ class Round1ViewController: UIViewController {
         case 2:
             let controller = mPlayer1!.children.first! as! FlagGameViewController
             let controller2 = mPlayer2!.children.first! as! FlagGameViewController
-            controller1.reveal()
+            controller.reveal()
             controller2.reveal()
             break
         case 3:

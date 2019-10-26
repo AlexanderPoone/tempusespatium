@@ -601,7 +601,7 @@ Squirrel Monkey</string>
             <objects>
                 <viewController id="dbP-aI-9J0" customClass="RulesDialogViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cZb-aK-r9X">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="409"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="426"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rules" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpE-mA-1Eb">
@@ -614,7 +614,7 @@ Squirrel Monkey</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorum ipsum dolor sit" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28K-gl-nR0">
-                                <rect key="frame" x="4" y="69" width="406" height="340"/>
+                                <rect key="frame" x="4" y="69" width="406" height="357"/>
                                 <fontDescription key="fontDescription" name="SkylarkITCTT" family="Skylark ITC TT" pointSize="24"/>
                                 <color key="textColor" name="PapayaWhip"/>
                                 <nil key="highlightedColor"/>
@@ -823,13 +823,13 @@ Squirrel Monkey</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jp5-C7-R72">
-                                <rect key="frame" x="0.0" y="44" width="414" height="409"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="426"/>
                                 <connections>
                                     <segue destination="irv-bc-jdo" kind="embed" id="7qv-2q-bdO"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUa-t1-Ufo">
-                                <rect key="frame" x="0.0" y="453" width="414" height="409"/>
+                                <rect key="frame" x="0.0" y="470" width="414" height="426"/>
                                 <connections>
                                     <segue destination="irv-bc-jdo" kind="embed" id="fQP-TU-G3W"/>
                                 </connections>
@@ -839,7 +839,7 @@ Squirrel Monkey</string>
                         <constraints>
                             <constraint firstItem="Jp5-C7-R72" firstAttribute="leading" secondItem="bUa-t1-Ufo" secondAttribute="leading" id="1WL-dr-lar"/>
                             <constraint firstItem="bUa-t1-Ufo" firstAttribute="top" secondItem="Jp5-C7-R72" secondAttribute="bottom" id="7po-Ho-hvK"/>
-                            <constraint firstItem="bUa-t1-Ufo" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" constant="-34" id="K33-aw-h4S"/>
+                            <constraint firstItem="bUa-t1-Ufo" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="K33-aw-h4S"/>
                             <constraint firstItem="Jp5-C7-R72" firstAttribute="trailing" secondItem="bUa-t1-Ufo" secondAttribute="trailing" id="LPi-58-ipY"/>
                             <constraint firstItem="bUa-t1-Ufo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YHI-qQ-q7C"/>
                             <constraint firstItem="Jp5-C7-R72" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YnF-b3-8Ml"/>
@@ -942,20 +942,20 @@ Squirrel Monkey</string>
             <objects>
                 <viewController id="irv-bc-jdo" customClass="ExteriorViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TMr-t2-DLU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="409"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="426"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fPj-Bf-DeI">
-                                <rect key="frame" x="0.0" y="88" width="414" height="321"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="338"/>
                                 <connections>
                                     <segue destination="m2p-0p-NAM" kind="embed" id="6lT-pP-06K"/>
                                 </connections>
                             </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="sXu-ir-me7">
-                                <rect key="frame" x="10" y="6.5" width="396" height="73.5"/>
+                                <rect key="frame" x="10" y="-10.5" width="396" height="90.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNd-bS-YgY">
-                                        <rect key="frame" x="0.0" y="22" width="59" height="30"/>
+                                        <rect key="frame" x="0.0" y="30.5" width="42" height="30"/>
                                         <color key="backgroundColor" name="info"/>
                                         <state key="normal" title="Pause">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -971,17 +971,17 @@ Squirrel Monkey</string>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0v-cc-gYm" customClass="DALabeledCircularProgressView">
-                                        <rect key="frame" x="65" y="0.0" width="73.5" height="73.5"/>
+                                        <rect key="frame" x="48" y="0.0" width="90.5" height="90.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="E0v-cc-gYm" secondAttribute="height" multiplier="1:1" id="Ukl-ak-Lj5"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WqO-Lr-n9a" customClass="YLProgressBar">
-                                        <rect key="frame" x="144.5" y="11.5" width="199.5" height="50.5"/>
+                                        <rect key="frame" x="144.5" y="11.5" width="199.5" height="67.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ukw-iE-ung">
-                                                <rect key="frame" x="67" y="15" width="81.5" height="20.5"/>
+                                                <rect key="frame" x="67" y="15" width="81.5" height="37.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1001,7 +1001,7 @@ Squirrel Monkey</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GG9-jI-7HA">
-                                        <rect key="frame" x="350" y="22" width="10" height="30"/>
+                                        <rect key="frame" x="350" y="30.5" width="10" height="30"/>
                                         <color key="backgroundColor" name="warning"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="10" id="qQ4-wN-od5"/>
@@ -1019,8 +1019,8 @@ Squirrel Monkey</string>
                                             <action selector="mYellowTest:" destination="irv-bc-jdo" eventType="touchUpInside" id="fGT-3w-LLP"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyj-Iy-coH">
-                                        <rect key="frame" x="366" y="26.5" width="30" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyj-Iy-coH">
+                                        <rect key="frame" x="366" y="26.5" width="30" height="37.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="ytX-pQ-VhI"/>
                                         </constraints>
@@ -1071,11 +1071,11 @@ Squirrel Monkey</string>
             <objects>
                 <viewController storyboardIdentifier="BlanksGameViewController" id="m2p-0p-NAM" customClass="BlanksGameViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cnd-2Y-3OJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="321"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="338"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhf-Xp-jdT">
-                                <rect key="frame" x="0.0" y="221" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="238" width="414" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="07B-bI-m2t"/>
                                 </constraints>
@@ -1084,7 +1084,7 @@ Squirrel Monkey</string>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5eQ-1Z-Lzu">
-                                <rect key="frame" x="364" y="189" width="46" height="30"/>
+                                <rect key="frame" x="364" y="206" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1094,7 +1094,7 @@ Squirrel Monkey</string>
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbH-M4-udh">
-                                <rect key="frame" x="310" y="189" width="46" height="30"/>
+                                <rect key="frame" x="310" y="206" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Sty-xB-4bL"/>
                                 </constraints>
@@ -1111,7 +1111,7 @@ Squirrel Monkey</string>
                                 </connections>
                             </button>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DM1-Qp-LhK">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="187"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="204"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -1855,7 +1855,7 @@ Squirrel Monkey</string>
             <objects>
                 <viewController id="sNO-tf-6qG" customClass="PauseDialogViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="1w7-Zv-UnH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="409"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="426"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="45" id="39o-ny-a7L">
@@ -3151,18 +3151,18 @@ Squirrel Monkey</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B02-pl-fxz">
-                                <rect key="frame" x="4" y="153" width="252" height="675"/>
+                                <rect key="frame" x="4" y="182" width="252" height="646"/>
                                 <color key="backgroundColor" name="ForestGreen"/>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VSa-EI-fSQ">
-                                <rect key="frame" x="260" y="153" width="150" height="675"/>
+                                <rect key="frame" x="260" y="182" width="150" height="646"/>
                                 <color key="backgroundColor" name="AndroidGreen"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="UdA-US-oUc"/>
                                 </constraints>
                             </pickerView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yXE-Ss-xxR">
-                                <rect key="frame" x="4" y="69" width="406" height="80"/>
+                                <rect key="frame" x="4" y="98" width="406" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="bGN-3O-BH6"/>
                                 </constraints>
@@ -3178,9 +3178,9 @@ Squirrel Monkey</string>
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxS-zc-d2u">
-                                <rect key="frame" x="8" y="44" width="398" height="21"/>
+                                <rect key="frame" x="8" y="44" width="398" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="deU-mq-Mxp"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Woo-gh-lyW"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="Which country does this anthem belong to?">

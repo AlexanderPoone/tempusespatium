@@ -61,6 +61,8 @@ class DateGameViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
     var mEvent:String?
     
+    var mPointChange = 0
+    
     let mMonthDelegate = MonthPickerDelegate() //Must be a member, since dataSource and delegate are weak
     
     @IBAction func mResetBtnClicked(_ sender: Any) {
@@ -94,6 +96,13 @@ class DateGameViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     func reveal() {
+        if mYear! == mYearScroller.selectedRow(inComponent: 0) - mLowerBoundYear! {
+            mPointChange += 1
+            if mMonth! == mMonthScroller.selectedRow(inComponent: 0) + 1 {
+                mPointChange += 5
+            }
+        }
+        
         mYearScroller.backgroundColor = UIColor(named: "Firebrick")!
         mMonthScroller.backgroundColor = UIColor(named: "IndianRed")!
         mYearScroller.isUserInteractionEnabled = false

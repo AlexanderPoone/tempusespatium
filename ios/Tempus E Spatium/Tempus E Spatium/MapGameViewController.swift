@@ -40,6 +40,8 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
     
     var mPolygons:[GMSPolygon] = [], mBounds = GMSCoordinateBounds()
     
+    var mPointChange = -5
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -142,8 +144,9 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
             geocoder.reverseGeocodeCoordinate(marker.position) { (res, err) in
                 if let res2 = res {
                     if let playerState = res2.firstResult()!.country {
-                        //TODO: compare
-                        
+                        if self.mCorrectAnswer! == playerState {
+                            self.mPointChange = 5
+                        }
                         self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(self.mCorrectAnswer!)\n\(NSLocalizedString("you_chose", comment: "")) \(playerState)"
                     } else {
                         self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(self.mCorrectAnswer!)"

@@ -48,6 +48,8 @@ class BlanksGameViewController: UIViewController {
     
     @IBOutlet weak var mSubmitBtn: UIButton!
     
+    var mPointChange = 0
+    
     @IBAction func mReset(_ sender: Any) {
         mWebView.evaluateJavaScript("document.write('asdf');", completionHandler: nil)
 //        let script = "document.write('asdf');"

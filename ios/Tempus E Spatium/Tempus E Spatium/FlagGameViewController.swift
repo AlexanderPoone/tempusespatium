@@ -34,18 +34,20 @@ class FlagGameViewController: UIViewController {
     var mUserAns = -1
     var mCorrectAns:Int?
     
+    var mPointChange = -5
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        //        mQuestion.text = mQuestionStr!
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        //        mQuestion.text = mQuestionStr!
+//    }
     
     func reveal() {
         
         if mUserAns == mCorrectAns! {
+            mPointChanged = 5
             switch mUserAns {
             case 0:
                 mIndicatorA.setIcon(icon: .googleMaterialDesign(.check), iconSize: 24, color: .white, bgColor: UIColor(named: "success")!)
@@ -62,7 +64,7 @@ class FlagGameViewController: UIViewController {
             default:
                 break
             }
-        } else {    //
+        } else {
             switch mUserAns {
             case 0:
                 mIndicatorA.setIcon(icon: .googleMaterialDesign(.close), iconSize: 24, color: .white, bgColor: UIColor(named: "danger")!)

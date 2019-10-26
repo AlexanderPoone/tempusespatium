@@ -35,6 +35,8 @@ class Round1ViewController: UIViewController {
     
     private let mPreferences = UserDefaults.standard
     
+    private var mFlagTmp:Int?
+    
     @IBAction func unwindToRound1ViewController(segue: UIStoryboardSegue) {
     }
     
@@ -59,6 +61,10 @@ class Round1ViewController: UIViewController {
     }
     
     @objc func stopCounterAndReveal() {
+        mPlayer1!.mDonutTime!.progress = 0
+        mPlayer2!.mDonutTime!.progress = 0
+        mPlayer1!.mDonutTime!.progressLabel.text = "0"
+        mPlayer2!.mDonutTime!.progressLabel.text = "0"
         mTimer!.invalidate()
         mTimer = nil
         reveal()
@@ -66,44 +72,138 @@ class Round1ViewController: UIViewController {
         mCoolDownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(coolDown), userInfo: nil, repeats: true)
     }
     
+    @objc func flagClicked(_ sender: UIGestureRecognizer) {
+        print("hi")
+        mFlagTmp = sender.view!.tag
+        stopCounterAndReveal()
+    }
+    
     func reveal() {
         //        mPlayer1!.mDonutTime!.progress = 0
         //        mPlayer2!.mDonutTime!.progress = 0
         //        mPlayer1!.mDonutTime!.progressLabel.text = "0"
         //        mPlayer2!.mDonutTime!.progressLabel.text = "0"
+        var player1Change = 0, player2Change = 0
+        
         switch mQuestionType! {
         case 0:
             let controller = mPlayer1!.children.first! as! BlanksGameViewController
             let controller2 = mPlayer2!.children.first! as! BlanksGameViewController
             //            controller1.reveal()
             //            controller2.reveal()
-            break
         case 1:
             let controller = mPlayer1!.children.first! as! DateGameViewController
             let controller2 = mPlayer2!.children.first! as! DateGameViewController
+            controller.mResetBtn.isUserInteractionEnabled = false
+            controller.mSubmitBtn.isUserInteractionEnabled = false
+            
+            controller2.mResetBtn.isUserInteractionEnabled = false
+            controller2.mSubmitBtn.isUserInteractionEnabled = false
             controller.reveal()
             controller2.reveal()
-            break
+            
+            if controller.mPointChange > 0 {
+                player1Change = controller.mPointChange
+                player2Change = controller.mPointChange * -1
+            } else if controller2.mPointChange > 0 {
+                player1Change = controller2.mPointChange * -1
+                player2Change = controller2.mPointChange
+            } else {
+                player1Change = -5
+                player2Change = -5
+            }
         case 2:
             let controller = mPlayer1!.children.first! as! FlagGameViewController
             let controller2 = mPlayer2!.children.first! as! FlagGameViewController
+            if let tmp = mFlagTmp {
+                switch tmp {
+                case 0:
+                    controller.mUserAns = 0
+                case 1:
+                    controller.mUserAns = 1
+                case 2:
+                    controller.mUserAns = 2
+                case 3:
+                    controller.mUserAns = 3
+                case 4:
+                    controller2.mUserAns = 0
+                case 5:
+                    controller2.mUserAns = 1
+                case 6:
+                    controller2.mUserAns = 2
+                case 7:
+                    controller2.mUserAns = 3
+                default:
+                    break
+                }
+            }
+            mFlagTmp = nil
+            
+            controller.mClickAreaA.isUserInteractionEnabled = false
+            controller.mClickAreaB.isUserInteractionEnabled = false
+            controller.mClickAreaC.isUserInteractionEnabled = false
+            controller.mClickAreaD.isUserInteractionEnabled = false
+            
+            controller2.mClickAreaA.isUserInteractionEnabled = false
+            controller2.mClickAreaB.isUserInteractionEnabled = false
+            controller2.mClickAreaC.isUserInteractionEnabled = false
+            controller2.mClickAreaD.isUserInteractionEnabled = false
             controller.reveal()
             controller2.reveal()
-            break
+            
+            if controller.mPointChange > 0 {
+                player1Change = controller.mPointChange
+                player2Change = controller.mPointChange * -1
+            } else if controller2.mPointChange > 0 {
+                player1Change = controller2.mPointChange * -1
+                player2Change = controller2.mPointChange
+            } else {
+                player1Change = -5
+                player2Change = -5
+            }
         case 3:
             let controller = mPlayer1!.children.first! as! MapGameViewController
             let controller2 = mPlayer2!.children.first! as! MapGameViewController
+            controller.mResetBtn.isUserInteractionEnabled = false
+            controller.mSubmitBtn.isUserInteractionEnabled = false
+            
+            controller2.mResetBtn.isUserInteractionEnabled = false
+            controller2.mSubmitBtn.isUserInteractionEnabled = false
             controller.reveal()
             controller2.reveal()
+            
+            player1Change = controller.mPointChange
+            player2Change = controller2.mPointChange
             break
         case 4:
             let controller = mPlayer1!.children.first! as! MapGameViewController
             let controller2 = mPlayer2!.children.first! as! MapGameViewController
+            controller.mResetBtn.isUserInteractionEnabled = false
+            controller.mSubmitBtn.isUserInteractionEnabled = false
+            
+            controller2.mResetBtn.isUserInteractionEnabled = false
+            controller2.mSubmitBtn.isUserInteractionEnabled = false
             controller.reveal()
             controller2.reveal()
-            break
+            
+            player1Change = controller.mPointChange
+            player2Change = controller2.mPointChange
         default:
             break
+        }
+        if player1Change >= 0 {
+            mPlayer1!.mScoreChangeLbl!.text = "+\(player1Change)"
+            mPlayer1!.mScoreChangeLbl!.textColor = UIColor(named: "AndroidGreen")!
+        } else {
+            mPlayer1!.mScoreChangeLbl!.text = "-\(player1Change)"
+            mPlayer1!.mScoreChangeLbl!.textColor = UIColor(named: "Firebrick")!
+        }
+        if player2Change >= 0 {
+            mPlayer2!.mScoreChangeLbl!.text = "+\(player2Change)"
+            mPlayer2!.mScoreChangeLbl!.textColor = UIColor(named: "AndroidGreen")!
+        } else {
+            mPlayer2!.mScoreChangeLbl!.text = "-\(player2Change)"
+            mPlayer2!.mScoreChangeLbl!.textColor = UIColor(named: "Firebrick")!
         }
     }
     
@@ -256,7 +356,7 @@ class Round1ViewController: UIViewController {
             controller2.view.backgroundColor = mPlayer2!.view.backgroundColor
             
             
-            let savedLocale = mPreferences.string(forKey: "PREF_LOCALE")!
+            //            let savedLocale = mPreferences.string(forKey: "PREF_LOCALE")!
             let sparql =
             """
             #defaultView:Timeline
@@ -358,7 +458,7 @@ class Round1ViewController: UIViewController {
             
             
             
-            let savedLocale = mPreferences.string(forKey: "PREF_LOCALE")!
+            //            let savedLocale = mPreferences.string(forKey: "PREF_LOCALE")!
             let sparql = """
             SELECT DISTINCT ?countryLabel ?capitalLabel ?flagLabel ?armsLabel ?imgLabel ?population
             ?country_local ?capital_local
@@ -512,6 +612,31 @@ class Round1ViewController: UIViewController {
                         controller.mQuestion.text = choosen[countryCapitalOrPopulation]["value"].stringValue
                         controller2.mQuestion.text = choosen[countryCapitalOrPopulation]["value"].stringValue
                         
+                        let clicked = UITapGestureRecognizer(target: self, action: #selector(self.flagClicked)) //(_:)
+                        controller.mClickAreaA.tag = 0
+                        controller.mClickAreaA.addGestureRecognizer(clicked)
+                        let clicked1 = UITapGestureRecognizer(target: self, action: #selector(self.flagClicked)) //(_:)
+                        controller.mClickAreaB.tag = 1
+                        controller.mClickAreaB.addGestureRecognizer(clicked1)
+                        let clicked2 = UITapGestureRecognizer(target: self, action: #selector(self.flagClicked)) //(_:)
+                        controller.mClickAreaC.tag = 2
+                        controller.mClickAreaC.addGestureRecognizer(clicked2)
+                        let clicked3 = UITapGestureRecognizer(target: self, action: #selector(self.flagClicked)) //(_:)
+                        controller.mClickAreaD.tag = 3
+                        controller.mClickAreaD.addGestureRecognizer(clicked3)
+                        
+                        let clicked4 = UITapGestureRecognizer(target: self, action: #selector(self.flagClicked)) //(_:)
+                        controller2.mClickAreaA.tag = 4
+                        controller2.mClickAreaA.addGestureRecognizer(clicked4)
+                        let clicked5 = UITapGestureRecognizer(target: self, action: #selector(self.flagClicked)) //(_:)
+                        controller2.mClickAreaB.tag = 5
+                        controller2.mClickAreaB.addGestureRecognizer(clicked5)
+                        let clicked6 = UITapGestureRecognizer(target: self, action: #selector(self.flagClicked)) //(_:)
+                        controller2.mClickAreaC.tag = 6
+                        controller2.mClickAreaC.addGestureRecognizer(clicked6)
+                        let clicked7 = UITapGestureRecognizer(target: self, action: #selector(self.flagClicked)) //(_:)
+                        controller2.mClickAreaD.tag = 7
+                        controller2.mClickAreaD.addGestureRecognizer(clicked7)
                         //                        print(choosen["countryLabel"]["value"].stringValue)
                         //
                         //
@@ -805,11 +930,5 @@ class Round1ViewController: UIViewController {
         mMaxTime = 10
         mSecs = 10
         mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-        
-        mPlayer1!.mScoreChangeLbl!.text = "+0"
-        mPlayer1!.mScoreChangeLbl!.textColor = UIColor(named: "AndroidGreen")!
-        
-        mPlayer2!.mScoreChangeLbl!.text = "-10"
-        mPlayer2!.mScoreChangeLbl!.textColor = UIColor(named: "Firebrick")!
     }
 }

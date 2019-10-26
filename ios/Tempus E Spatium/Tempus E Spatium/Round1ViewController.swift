@@ -61,40 +61,49 @@ class Round1ViewController: UIViewController {
     }
     
     func reveal() {
-        mPlayer1!.mDonutTime!.progress = 0
-        mPlayer2!.mDonutTime!.progress = 0
-        mPlayer1!.mDonutTime!.progressLabel.text = "0"
-        mPlayer2!.mDonutTime!.progressLabel.text = "0"
+        //        mPlayer1!.mDonutTime!.progress = 0
+        //        mPlayer2!.mDonutTime!.progress = 0
+        //        mPlayer1!.mDonutTime!.progressLabel.text = "0"
+        //        mPlayer2!.mDonutTime!.progressLabel.text = "0"
         switch mQuestionType! {
         case 0:
-            let controller1 = mPlayer1!.children.first! as! BlanksGameViewController
+            let controller = mPlayer1!.children.first! as! BlanksGameViewController
             let controller2 = mPlayer2!.children.first! as! BlanksGameViewController
             //            controller1.reveal()
             //            controller2.reveal()
             break
         case 1:
-            let controller1 = mPlayer1!.children.first! as! DateGameViewController
+            let controller = mPlayer1!.children.first! as! DateGameViewController
             let controller2 = mPlayer2!.children.first! as! DateGameViewController
-            //            controller1.reveal()
-            //            controller2.reveal()
+            controller.reveal()
+            controller2.reveal()
             break
         case 2:
-            let controller1 = mPlayer1!.children.first! as! FlagGameViewController
+            let controller = mPlayer1!.children.first! as! FlagGameViewController
             let controller2 = mPlayer2!.children.first! as! FlagGameViewController
             //            controller1.reveal()
             //            controller2.reveal()
             break
         case 3:
-            let controller1 = mPlayer1!.children.first! as! DateGameViewController
-            let controller2 = mPlayer2!.children.first! as! DateGameViewController
-            //            controller1.reveal()
-            //            controller2.reveal()
+            let controller = mPlayer1!.children.first! as! MapGameViewController
+            let controller2 = mPlayer2!.children.first! as! MapGameViewController
+            
+            if let player = controller.mOgvPlayerView {
+                player.pause()
+                controller.mOgvPlayerView = nil
+            }
+            controller1.reveal()
+            controller2.reveal()
             break
         case 4:
-            let controller1 = mPlayer1!.children.first! as! BlanksGameViewController
-            let controller2 = mPlayer2!.children.first! as! BlanksGameViewController
-            //            controller1.reveal()
-            //            controller2.reveal()
+            let controller = mPlayer1!.children.first! as! MapGameViewController
+            let controller2 = mPlayer2!.children.first! as! MapGameViewController
+            if let player = controller.mOgvPlayerView {
+                player.pause()
+                controller.mOgvPlayerView = nil
+            }
+            controller1.reveal()
+            controller2.reveal()
             break
         default:
             break
@@ -196,11 +205,13 @@ class Round1ViewController: UIViewController {
         while x == mQuestionType {
             x = (0...4).randomElement()!
         }
-        switch x {
+        mQuestionType = x
+        switch mQuestionType {
         case 0:
             if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
                 showLoadingDialog()
                 view1.removeFromSuperview()
+                mPlayer1!.children.first!.removeFromParent()
                 let controller = storyboard!.instantiateViewController(withIdentifier: "BlanksGameViewController") as! BlanksGameViewController
                 controller.view.frame = mPlayer1!.mFragmentContainer.bounds
                 controller.willMove(toParent: self)
@@ -213,6 +224,7 @@ class Round1ViewController: UIViewController {
             if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
                 showLoadingDialog()
                 view2.removeFromSuperview()
+                mPlayer2!.children.first!.removeFromParent()
                 let controller = storyboard!.instantiateViewController(withIdentifier: "BlanksGameViewController") as! BlanksGameViewController
                 controller.view.frame = mPlayer2!.mFragmentContainer.bounds
                 controller.willMove(toParent: self)
@@ -230,6 +242,7 @@ class Round1ViewController: UIViewController {
             if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
                 view1.removeFromSuperview()
             }
+            mPlayer1!.children.first!.removeFromParent()
             let controller = storyboard!.instantiateViewController(withIdentifier: "DateGameViewController") as! DateGameViewController
             controller.view.frame = mPlayer1!.mFragmentContainer.bounds
             controller.view.backgroundColor = mPlayer1!.view.backgroundColor
@@ -237,6 +250,7 @@ class Round1ViewController: UIViewController {
             if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
                 view2.removeFromSuperview()
             }
+            mPlayer2!.children.first!.removeFromParent()
             let controller2 = storyboard!.instantiateViewController(withIdentifier: "DateGameViewController") as! DateGameViewController
             controller2.view.frame = mPlayer2!.mFragmentContainer.bounds
             controller2.view.backgroundColor = mPlayer2!.view.backgroundColor
@@ -272,6 +286,31 @@ class Round1ViewController: UIViewController {
                         let json = JSON(value)
                         
                         let chosen = json["results"]["bindings"].arrayValue.randomElement()!
+                        print("qswdef")
+                        print(chosen)
+                        print(chosen["eventLabel"]["value"].stringValue)
+                        controller.mEvent = chosen["eventLabel"]["value"].stringValue
+                        controller2.mEvent = chosen["eventLabel"]["value"].stringValue
+                        
+                        let date = chosen["dateLabel"]["value"].stringValue
+                        let year = Int(date.prefix(4))!
+                        let month = Int(date[date.index(date.startIndex, offsetBy: 5)...date.index(date.startIndex, offsetBy: 6)])!
+                        let lowerBound = year - (0...50).randomElement()!
+                        let upperBound = year + 50
+                        
+                        controller.mYear = year
+                        controller2.mYear = year
+                        controller.mMonth = month
+                        controller2.mMonth = month
+                        controller.mLowerBoundYear = lowerBound
+                        controller2.mLowerBoundYear = lowerBound
+                        controller.mUpperBoundYear = upperBound
+                        controller2.mUpperBoundYear = upperBound
+                        
+                        let url = URL(string: chosen["img"]["value"].stringValue)!
+                        let data = try! Data(contentsOf: url)
+                        controller.mHintPic.image = UIImage(data: data)
+                        controller2.mHintPic.image = UIImage(data: data)
                         
                         controller.willMove(toParent: self)
                         self.mPlayer1!.mFragmentContainer.addSubview(controller.view)
@@ -282,13 +321,6 @@ class Round1ViewController: UIViewController {
                         self.mPlayer2!.mFragmentContainer.addSubview(controller2.view)
                         self.mPlayer2!.addChild(controller2)
                         controller2.didMove(toParent: self)
-                        
-                        controller.mQuestion.text = chosen["eventLabel"]["value"].stringValue
-                        controller2.mQuestion.text = chosen["eventLabel"]["value"].stringValue
-                        let url = URL(string: chosen["img"]["value"].stringValue)!
-                        let data = try! Data(contentsOf: url)
-                        controller.mHintPic.image = UIImage(data: data)
-                        controller2.mHintPic.image = UIImage(data: data)
                         
                         self.mMaxTime = 10
                         self.mSecs = 10
@@ -306,6 +338,7 @@ class Round1ViewController: UIViewController {
             if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
                 view1.removeFromSuperview()
             }
+            mPlayer1!.children.first!.removeFromParent()
             let controller = storyboard!.instantiateViewController(withIdentifier: "FlagGameViewController") as! FlagGameViewController
             controller.view.frame = mPlayer1!.mFragmentContainer.bounds
             controller.view.backgroundColor = mPlayer1!.view.backgroundColor
@@ -314,6 +347,7 @@ class Round1ViewController: UIViewController {
             if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
                 view2.removeFromSuperview()
             }
+            mPlayer2!.children.first!.removeFromParent()
             let controller2 = storyboard!.instantiateViewController(withIdentifier: "FlagGameViewController") as! FlagGameViewController
             controller2.view.frame = mPlayer2!.mFragmentContainer.bounds
             controller2.view.backgroundColor = mPlayer2!.view.backgroundColor
@@ -462,10 +496,12 @@ class Round1ViewController: UIViewController {
             if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
                 view1.removeFromSuperview()
             }
+            mPlayer1!.children.first!.removeFromParent()
             if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
                 showLoadingDialog()
                 view2.removeFromSuperview()
             }
+            mPlayer2!.children.first!.removeFromParent()
             
             let controller = storyboard!.instantiateViewController(withIdentifier: "MapGameViewController") as! MapGameViewController
             controller.view.frame = mPlayer1!.mFragmentContainer.bounds
@@ -514,6 +550,11 @@ class Round1ViewController: UIViewController {
                         controller.view.addSubview(mOgvPlayerView)
                         mOgvPlayerView.sourceURL = URL(string: chosen["audioLabel"]["value"].stringValue)!
                         mOgvPlayerView.play()
+                        
+                        controller.mCorrectAnswerEn = chosen["countryLabel"]["value"].stringValue
+                        controller2.mCorrectAnswerEn = chosen["countryLabel"]["value"].stringValue
+                        controller.mCorrectAnswer = chosen["country_local"]["value"].stringValue
+                        controller2.mCorrectAnswer = chosen["country_local"]["value"].stringValue
                         
                         self.mPlayer1!.mFragmentContainer.addSubview(controller.view)
                         self.mPlayer1!.addChild(controller)
@@ -574,10 +615,13 @@ class Round1ViewController: UIViewController {
             if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
                 view1.removeFromSuperview()
             }
+            mPlayer1!.children.first!.removeFromParent()
+            
             if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
                 showLoadingDialog()
                 view2.removeFromSuperview()
             }
+            mPlayer2!.children.first!.removeFromParent()
             
             let controller = storyboard!.instantiateViewController(withIdentifier: "MapGameViewController") as! MapGameViewController
             controller.view.frame = mPlayer1!.mFragmentContainer.bounds

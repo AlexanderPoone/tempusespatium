@@ -37,6 +37,8 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
     var mOgvPlayerView:OGVPlayerView?
     var mJson:JSON?
     
+    var mCorrectAnswer:String?, mCorrectAnswerEn:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,10 +72,10 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
     }
     
     @objc func submitMakeshift() {
-        revealAnswer(["Philippines", "Maldives", "Comoros", "France", "South Africa", "East Timor"].randomElement()!)
+        reveal() //["Philippines", "Maldives", "Comoros", "France", "South Africa", "East Timor"].randomElement()!
     }
     
-    func revealAnswer(_ state:String) {
+    func reveal() {
         mMap.settings.scrollGestures = false
         mMap.settings.zoomGestures = false
 
@@ -87,13 +89,13 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
             geocoder.reverseGeocodeCoordinate(marker.position) { (res, err) in
                 if let res2 = res {
                 if let playerState = res2.firstResult()!.country {
-                    self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(state)\n\(NSLocalizedString("you_chose", comment: "")) \(playerState)"
+                    self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(self.mCorrectAnswer!)\n\(NSLocalizedString("you_chose", comment: "")) \(playerState)"
                     
                 } else {
-                    self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(state)"
+                    self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(self.mCorrectAnswer!)"
                 }
                 } else {
-                    self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(state)"
+                    self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(self.mCorrectAnswer!)"
                 }
             }
         }
@@ -104,7 +106,7 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
             
             //            let (String, JSON) = arg0
             if let countryName = arg0.1["properties"]["ADMIN"].string {
-                return countryName == state
+                return countryName == mCorrectAnswerEn!
             } else {
                 return false
             }

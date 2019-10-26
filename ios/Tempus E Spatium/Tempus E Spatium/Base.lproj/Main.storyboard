@@ -1240,7 +1240,7 @@ Squirrel Monkey</string>
                                                 <rect key="frame" x="209" y="0.0" width="205" height="394"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AI" translatesAutoresizingMaskIntoConstraints="NO" id="oWi-kV-oOt">
-                                                        <rect key="frame" x="0.0" y="0.0" width="205" height="394"/>
+                                                        <rect key="frame" x="4" y="4" width="197" height="386"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                 <integer key="value" value="10"/>
@@ -1249,7 +1249,7 @@ Squirrel Monkey</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbF-1u-dN4">
-                                                        <rect key="frame" x="197" y="0.0" width="0.0" height="0.0"/>
+                                                        <rect key="frame" x="197" y="4" width="0.0" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1257,11 +1257,11 @@ Squirrel Monkey</string>
                                                 </subviews>
                                                 <color key="backgroundColor" name="Honeydew"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="oWi-kV-oOt" secondAttribute="trailing" id="88O-Tk-Cq7"/>
-                                                    <constraint firstAttribute="bottom" secondItem="oWi-kV-oOt" secondAttribute="bottom" id="ZDa-Ir-gjN"/>
+                                                    <constraint firstAttribute="trailing" secondItem="oWi-kV-oOt" secondAttribute="trailing" constant="4" id="88O-Tk-Cq7"/>
+                                                    <constraint firstAttribute="bottom" secondItem="oWi-kV-oOt" secondAttribute="bottom" constant="4" id="ZDa-Ir-gjN"/>
                                                     <constraint firstItem="jbF-1u-dN4" firstAttribute="trailing" secondItem="Mbm-tV-04a" secondAttribute="trailingMargin" id="cQS-et-fA5"/>
-                                                    <constraint firstItem="oWi-kV-oOt" firstAttribute="leading" secondItem="Mbm-tV-04a" secondAttribute="leading" id="fmk-QR-HcC"/>
-                                                    <constraint firstItem="oWi-kV-oOt" firstAttribute="top" secondItem="Mbm-tV-04a" secondAttribute="top" id="fwv-1f-1yN"/>
+                                                    <constraint firstItem="oWi-kV-oOt" firstAttribute="leading" secondItem="Mbm-tV-04a" secondAttribute="leading" constant="4" id="fmk-QR-HcC"/>
+                                                    <constraint firstItem="oWi-kV-oOt" firstAttribute="top" secondItem="Mbm-tV-04a" secondAttribute="top" constant="4" id="fwv-1f-1yN"/>
                                                     <constraint firstItem="jbF-1u-dN4" firstAttribute="top" secondItem="oWi-kV-oOt" secondAttribute="top" id="gtl-SJ-h0Y"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
@@ -1280,7 +1280,7 @@ Squirrel Monkey</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="205" height="394"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AS" translatesAutoresizingMaskIntoConstraints="NO" id="jl1-bg-U16">
-                                                        <rect key="frame" x="0.0" y="0.0" width="205" height="394"/>
+                                                        <rect key="frame" x="4" y="4" width="197" height="386"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                 <integer key="value" value="10"/>
@@ -1289,7 +1289,7 @@ Squirrel Monkey</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQC-0b-OR6">
-                                                        <rect key="frame" x="205" y="0.0" width="0.0" height="0.0"/>
+                                                        <rect key="frame" x="201" y="4" width="0.0" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1297,11 +1297,11 @@ Squirrel Monkey</string>
                                                 </subviews>
                                                 <color key="backgroundColor" name="Honeydew"/>
                                                 <constraints>
-                                                    <constraint firstItem="jl1-bg-U16" firstAttribute="leading" secondItem="rTo-rM-H6w" secondAttribute="leading" id="EVR-k9-Z94"/>
-                                                    <constraint firstAttribute="trailing" secondItem="jl1-bg-U16" secondAttribute="trailing" id="HQa-jJ-2Fb"/>
+                                                    <constraint firstItem="jl1-bg-U16" firstAttribute="leading" secondItem="rTo-rM-H6w" secondAttribute="leading" constant="4" id="EVR-k9-Z94"/>
+                                                    <constraint firstAttribute="trailing" secondItem="jl1-bg-U16" secondAttribute="trailing" constant="4" id="HQa-jJ-2Fb"/>
                                                     <constraint firstItem="RQC-0b-OR6" firstAttribute="top" secondItem="jl1-bg-U16" secondAttribute="top" id="Xqs-bx-fqL"/>
-                                                    <constraint firstAttribute="bottom" secondItem="jl1-bg-U16" secondAttribute="bottom" id="a5d-x2-3Xi"/>
-                                                    <constraint firstItem="jl1-bg-U16" firstAttribute="top" secondItem="rTo-rM-H6w" secondAttribute="top" id="grv-Vm-8Gg"/>
+                                                    <constraint firstAttribute="bottom" secondItem="jl1-bg-U16" secondAttribute="bottom" constant="4" id="a5d-x2-3Xi"/>
+                                                    <constraint firstItem="jl1-bg-U16" firstAttribute="top" secondItem="rTo-rM-H6w" secondAttribute="top" constant="4" id="grv-Vm-8Gg"/>
                                                     <constraint firstItem="RQC-0b-OR6" firstAttribute="trailing" secondItem="jl1-bg-U16" secondAttribute="trailing" id="yNw-0Z-l89"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
@@ -1315,7 +1315,7 @@ Squirrel Monkey</string>
                                                 <rect key="frame" x="209" y="0.0" width="205" height="394"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AL" translatesAutoresizingMaskIntoConstraints="NO" id="zox-aj-K9v">
-                                                        <rect key="frame" x="0.0" y="0.0" width="205" height="394"/>
+                                                        <rect key="frame" x="4" y="4" width="197" height="386"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                 <integer key="value" value="10"/>
@@ -1324,7 +1324,7 @@ Squirrel Monkey</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xf-Ah-PmS">
-                                                        <rect key="frame" x="197" y="0.0" width="0.0" height="0.0"/>
+                                                        <rect key="frame" x="197" y="4" width="0.0" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1332,12 +1332,12 @@ Squirrel Monkey</string>
                                                 </subviews>
                                                 <color key="backgroundColor" name="Honeydew"/>
                                                 <constraints>
-                                                    <constraint firstItem="zox-aj-K9v" firstAttribute="top" secondItem="kfq-NK-Sqs" secondAttribute="top" id="CFF-Y2-QhD"/>
+                                                    <constraint firstItem="zox-aj-K9v" firstAttribute="top" secondItem="kfq-NK-Sqs" secondAttribute="top" constant="4" id="CFF-Y2-QhD"/>
                                                     <constraint firstItem="9Xf-Ah-PmS" firstAttribute="top" secondItem="zox-aj-K9v" secondAttribute="top" id="Mtb-J9-s6e"/>
                                                     <constraint firstItem="9Xf-Ah-PmS" firstAttribute="trailing" secondItem="kfq-NK-Sqs" secondAttribute="trailingMargin" id="Nyy-oB-mRl"/>
-                                                    <constraint firstAttribute="trailing" secondItem="zox-aj-K9v" secondAttribute="trailing" id="YsY-ip-3pe"/>
-                                                    <constraint firstItem="zox-aj-K9v" firstAttribute="leading" secondItem="kfq-NK-Sqs" secondAttribute="leading" id="hLc-Ct-rMI"/>
-                                                    <constraint firstAttribute="bottom" secondItem="zox-aj-K9v" secondAttribute="bottom" id="nqK-BK-pPH"/>
+                                                    <constraint firstAttribute="trailing" secondItem="zox-aj-K9v" secondAttribute="trailing" constant="4" id="YsY-ip-3pe"/>
+                                                    <constraint firstItem="zox-aj-K9v" firstAttribute="leading" secondItem="kfq-NK-Sqs" secondAttribute="leading" constant="4" id="hLc-Ct-rMI"/>
+                                                    <constraint firstAttribute="bottom" secondItem="zox-aj-K9v" secondAttribute="bottom" constant="4" id="nqK-BK-pPH"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

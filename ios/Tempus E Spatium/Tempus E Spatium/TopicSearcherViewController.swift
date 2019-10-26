@@ -126,6 +126,8 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
     
     private var mQuestionLang:String?
     
+    private var mGameplayLanguage:String?
+    
     //    func textTagCollectionView(_ textTagCollectionView: TTGTextTagCollectionView!, updateContentSize contentSize: CGSize) {
     //
     //    }
@@ -587,13 +589,11 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
         //        mTagsView.textFont = UIFont.systemFont(ofSize: 24)
         //        mTagsView.cornerRadius = 15
         //        mTagsView.delegate = self
+        let langs:[String:[String]] = ["English": ["English", "GB", "en"], "català": ["Catalan", "AD", "ca"], "français": ["French","FR", "fr"], "Deutsch": ["German", "DE", "de"], "español": ["Spanish","ES", "es"], "Українська": ["Ukrainian","UA", "uk"]]
         
         mLocaleDropDown = DropDown()
         
         mLocaleDropDown!.anchorView = mLocaleCurrentSelection
-        
-        let langs:[String:[String]] = ["English": ["English", "GB"], "català": ["Catalan", "AD"], "français": ["French","FR"], "Deutsch": ["German", "DE"], "español": ["Spanish","ES"], "Українська": ["Ukrainian","UA"]]
-        
         
         mLocaleDropDown!.dataSource = Array(langs.keys)
         
@@ -608,6 +608,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
         }
         
         mLocaleDropDown!.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.mGameplayLanguage = langs[item]![2]
             self.mLocaleCurrentSelection.mSelection.text = item
             self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
             let iso = langs[item]![1]
@@ -650,6 +651,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
         if savedLocale != nil {
             switch savedLocale! {
             case "en":
+                mGameplayLanguage = "en"
                 let item = "English"
                 self.mLocaleCurrentSelection.mSelection.text = item
                 self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
@@ -658,6 +660,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                 self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
                 english()
             case "ca":
+                mGameplayLanguage = "ca"
                 let item = "català"
                 self.mLocaleCurrentSelection.mSelection.text = item
                 self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
@@ -666,6 +669,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                 self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
                 catala()
             case "fr":
+                mGameplayLanguage = "fr"
                 let item = "français"
                 self.mLocaleCurrentSelection.mSelection.text = item
                 self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
@@ -674,6 +678,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                 self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
                 francais()
             case "es":
+                mGameplayLanguage = "es"
                 let item = "español"
                 self.mLocaleCurrentSelection.mSelection.text = item
                 self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
@@ -682,6 +687,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                 self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
                 espanol()
             case "de":
+                mGameplayLanguage = "de"
                 let item = "Deutsch"
                 self.mLocaleCurrentSelection.mSelection.text = item
                 self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
@@ -690,6 +696,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                 self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
                 deutsch()
             case "uk":
+                mGameplayLanguage = "uk"
                 let item = "Українська"
                 self.mLocaleCurrentSelection.mSelection.text = item
                 self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
@@ -698,6 +705,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                 self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
                 ukraiynska()
             default:
+                mGameplayLanguage = "en"
                 let item = "English"
                 self.mLocaleCurrentSelection.mSelection.text = item
                 self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
@@ -707,6 +715,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                 english()
             }
         } else {
+            mGameplayLanguage = "en"
             let item = "English"
             self.mLocaleCurrentSelection.mSelection.text = item
             self.mLocaleCurrentSelection.mSubtitle.text = langs[item]![0]
@@ -728,6 +737,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
         switch segue.identifier {
         case "launchRound1":
             let destinationVC = segue.destination as! Round1ViewController
+            destinationVC.mGameplayLocale = mGameplayLanguage!
         case "popUpLearn":
             let destinationVC = segue.destination as! LearnViewController
             destinationVC.mUrl = (sender as! String)

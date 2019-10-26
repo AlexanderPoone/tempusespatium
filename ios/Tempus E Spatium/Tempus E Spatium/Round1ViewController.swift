@@ -31,6 +31,8 @@ class Round1ViewController: UIViewController {
     
     var mQuestionType:Int? = 5
     
+    var mGameplayLocale:String?
+    
     private let mPreferences = UserDefaults.standard
     
     @IBAction func unwindToRound1ViewController(segue: UIStoryboardSegue) {
@@ -48,8 +50,8 @@ class Round1ViewController: UIViewController {
     }
     
     @objc func coolDown() {
-        mSecs -= 1
-        if mSecs < 0 {
+        mCooldownSecs -= 1
+        if mCooldownSecs < 0 {
             mCoolDownTimer!.invalidate()
             mCoolDownTimer = nil
             replaceFragment()
@@ -85,27 +87,18 @@ class Round1ViewController: UIViewController {
         case 2:
             let controller = mPlayer1!.children.first! as! FlagGameViewController
             let controller2 = mPlayer2!.children.first! as! FlagGameViewController
-            //            controller1.reveal()
-            //            controller2.reveal()
+            controller1.reveal()
+            controller2.reveal()
             break
         case 3:
             let controller = mPlayer1!.children.first! as! MapGameViewController
             let controller2 = mPlayer2!.children.first! as! MapGameViewController
-            
-            if let player = controller.mOgvPlayerView {
-                player.pause()
-                controller.mOgvPlayerView = nil
-            }
             controller.reveal()
             controller2.reveal()
             break
         case 4:
             let controller = mPlayer1!.children.first! as! MapGameViewController
             let controller2 = mPlayer2!.children.first! as! MapGameViewController
-            if let player = controller.mOgvPlayerView {
-                player.pause()
-                controller.mOgvPlayerView = nil
-            }
             controller.reveal()
             controller2.reveal()
             break
@@ -132,6 +125,9 @@ class Round1ViewController: UIViewController {
     }
     
     func replaceFragment() {
+        mPlayer1!.mDonutTime.progressLabel.text = ""
+        mPlayer2!.mDonutTime.progressLabel.text = ""
+        
         // if marks >= 380 then go to EndgameViewController return
         if mPointsA >= 380 {
             if let view1 = mPlayer1!.mFragmentContainer.subviews.first {
@@ -238,8 +234,8 @@ class Round1ViewController: UIViewController {
                 controller.didMove(toParent: self)
                 controller.view.backgroundColor = mPlayer2!.view.backgroundColor
             }
-            mMaxTime = 6
-            mSecs = 6
+            mMaxTime = 3
+            mSecs = 3
             mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         case 1:
             showLoadingDialog()
@@ -272,10 +268,10 @@ class Round1ViewController: UIViewController {
             ?event wdt:P18+ ?img.
             OPTIONAL { ?event wdt:P625 ?coord }
             FILTER(YEAR(?date) > 1900).
-            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(savedLocale)" }
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(self.mGameplayLocale!)" }
             FILTER(EXISTS {
             ?event rdfs:label ?lang_label.
-            FILTER(LANG(?lang_label) = "\(savedLocale)")
+            FILTER(LANG(?lang_label) = "\(self.mGameplayLocale!)")
             })
             }
             ORDER BY DESC(?dateLabel)
@@ -299,6 +295,7 @@ class Round1ViewController: UIViewController {
                         let date = chosen["dateLabel"]["value"].stringValue
                         let year = Int(date.prefix(4))!
                         let month = Int(date[date.index(date.startIndex, offsetBy: 5)...date.index(date.startIndex, offsetBy: 6)])!
+                        print("qzwxec \(date[date.index(date.startIndex, offsetBy: 5)...date.index(date.startIndex, offsetBy: 6)])")
                         let lowerBound = year - (0...50).randomElement()!
                         let upperBound = year + 50
                         
@@ -376,10 +373,10 @@ class Round1ViewController: UIViewController {
             ?capital wdt:P18 ?img.
             ?country wdt:P1082 ?population.
             SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
-            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(savedLocale)".
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(self.mGameplayLocale!)".
             ?country rdfs:label ?country_local.
             } hint:Prior hint:runLast false.
-            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(savedLocale)".
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(self.mGameplayLocale!)".
             ?capital rdfs:label ?capital_local.
             } hint:Prior hint:runLast false.
             }
@@ -429,7 +426,9 @@ class Round1ViewController: UIViewController {
                         self.self.mPlayer2!.addChild(controller2)
                         controller2.didMove(toParent: self)
                         
-                        let svg1:SVGKImage = SVGKImage(contentsOf: URL(string: list[0]["armsLabel"]["value"].stringValue)!)
+                        let flagOrArms = ["flag", "arms"].randomElement()!
+                        
+                        let svg1:SVGKImage = SVGKImage(contentsOf: URL(string: list[randNumbers[0]]["\(flagOrArms)Label"]["value"].stringValue)!)
                         let fast = SVGKFastImageView(svgkImage: svg1)!
                         let aspect = fast.frame.width / fast.frame.height
                         fast.contentMode = .scaleAspectFill
@@ -438,10 +437,16 @@ class Round1ViewController: UIViewController {
                         controller.mFlagA.contentMode = .scaleAspectFill
                         controller.mFlagA.addSubview(fast)
                         
+                        let svg1_:SVGKImage = SVGKImage(contentsOf: URL(string: list[randNumbers[0]]["\(flagOrArms)Label"]["value"].stringValue)!)
+                        let fast_ = SVGKFastImageView(svgkImage: svg1_)!
+                        let aspect_ = fast_.frame.width / fast_.frame.height
+                        fast_.contentMode = .scaleAspectFill
+                        fast_.frame = CGRect(x: 0, y: 0, width: 90 * aspect_, height: 90)
+                        //            print(controller.mFlagA.frame)
                         controller2.mFlagA.contentMode = .scaleAspectFill
-                        controller2.mFlagA.addSubview(fast)
+                        controller2.mFlagA.addSubview(fast_)
                         
-                        let svg2:SVGKImage = SVGKImage(contentsOf: URL(string: list[1]["armsLabel"]["value"].stringValue)!)
+                        let svg2:SVGKImage = SVGKImage(contentsOf: URL(string: list[randNumbers[1]]["\(flagOrArms)Label"]["value"].stringValue)!)
                         let fast2 = SVGKFastImageView(svgkImage: svg2)!
                         let aspect2 = fast2.frame.width / fast2.frame.height
                         fast2.contentMode = .scaleAspectFill
@@ -450,10 +455,18 @@ class Round1ViewController: UIViewController {
                         controller.mFlagB.contentMode = .scaleAspectFill
                         controller.mFlagB.addSubview(fast2)
                         
+                        let svg2_:SVGKImage = SVGKImage(contentsOf: URL(string: list[randNumbers[1]]["\(flagOrArms)Label"]["value"].stringValue)!)
+                        let fast2_ = SVGKFastImageView(svgkImage: svg2_)!
+                        let aspect2_ = fast2_.frame.width / fast2_.frame.height
+                        fast2_.contentMode = .scaleAspectFill
+                        fast2_.frame = CGRect(x: 0, y: 0, width: 90 * aspect2_, height: 90)
+                        //            print(controller.mFlagA.frame)
                         controller2.mFlagB.contentMode = .scaleAspectFill
-                        controller2.mFlagB.addSubview(fast2)
+                        controller2.mFlagB.addSubview(fast2_)
                         
-                        let svg3:SVGKImage = SVGKImage(contentsOf: URL(string: list[2]["armsLabel"]["value"].stringValue)!)
+                        
+                        
+                        let svg3:SVGKImage = SVGKImage(contentsOf: URL(string: list[randNumbers[2]]["\(flagOrArms)Label"]["value"].stringValue)!)
                         let fast3 = SVGKFastImageView(svgkImage: svg3)!
                         let aspect3 = fast3.frame.width / fast3.frame.height
                         fast3.contentMode = .scaleAspectFill
@@ -462,10 +475,18 @@ class Round1ViewController: UIViewController {
                         controller.mFlagC.contentMode = .scaleAspectFill
                         controller.mFlagC.addSubview(fast3)
                         
+                        let svg3_:SVGKImage = SVGKImage(contentsOf: URL(string: list[randNumbers[2]]["\(flagOrArms)Label"]["value"].stringValue)!)
+                        let fast3_ = SVGKFastImageView(svgkImage: svg3_)!
+                        let aspect3_ = fast3_.frame.width / fast3_.frame.height
+                        fast3_.contentMode = .scaleAspectFill
+                        fast3_.frame = CGRect(x: 0, y: 0, width: 90 * aspect3_, height: 90)
+                        //            print(controller.mFlagA.frame)
                         controller2.mFlagC.contentMode = .scaleAspectFill
-                        controller2.mFlagC.addSubview(fast3)
+                        controller2.mFlagC.addSubview(fast3_)
                         
-                        let svg4:SVGKImage = SVGKImage(contentsOf: URL(string: list[3]["armsLabel"]["value"].stringValue)!)
+                        
+                        
+                        let svg4:SVGKImage = SVGKImage(contentsOf: URL(string: list[randNumbers[3]]["\(flagOrArms)Label"]["value"].stringValue)!)
                         let fast4 = SVGKFastImageView(svgkImage: svg4)!
                         let aspect4 = fast4.frame.width / fast4.frame.height
                         fast4.contentMode = .scaleAspectFill
@@ -474,8 +495,19 @@ class Round1ViewController: UIViewController {
                         controller.mFlagD.contentMode = .scaleAspectFill
                         controller.mFlagD.addSubview(fast4)
                         
+                        let svg4_:SVGKImage = SVGKImage(contentsOf: URL(string: list[randNumbers[3]]["\(flagOrArms)Label"]["value"].stringValue)!)
+                        let fast4_ = SVGKFastImageView(svgkImage: svg4_)!
+                        let aspect4_ = fast4_.frame.width / fast4_.frame.height
+                        fast4_.contentMode = .scaleAspectFill
+                        fast4_.frame = CGRect(x: 0, y: 0, width: 90 * aspect4_, height: 90)
+                        //            print(controller.mFlagA.frame)
                         controller2.mFlagD.contentMode = .scaleAspectFill
-                        controller2.mFlagD.addSubview(fast4)
+                        controller2.mFlagD.addSubview(fast4_)
+                        
+                        let countryCapitalOrPopulation = ["country_local", "capital_local", "population"].randomElement()!
+                        
+                        controller.mQuestion.text = choosen[countryCapitalOrPopulation]["value"].stringValue
+                        controller2.mQuestion.text = choosen[countryCapitalOrPopulation]["value"].stringValue
                         
                         //                        print(choosen["countryLabel"]["value"].stringValue)
                         //
@@ -521,7 +553,6 @@ class Round1ViewController: UIViewController {
             controller2.view.frame = mPlayer2!.mFragmentContainer.bounds
             controller2.view.backgroundColor = mPlayer2!.view.backgroundColor
             
-            let savedLocale = mPreferences.string(forKey: "PREF_LOCALE")!
             let sparql = """
             SELECT DISTINCT ?countryLabel ?country_local ?anthemLabel ?anthem_local ?audioLabel
             WHERE
@@ -533,10 +564,10 @@ class Round1ViewController: UIViewController {
             ?anthem wdt:P51 ?audio.
             SERVICE wikibase:label { bd:serviceParam wikibase:language "en".
             }
-            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(savedLocale)".
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(self.mGameplayLocale!)".
             ?country rdfs:label ?country_local.
             } hint:Prior hint:runLast false.
-            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(savedLocale)".
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(self.mGameplayLocale!)".
             ?anthem rdfs:label ?anthem_local.
             } hint:Prior hint:runLast false.
             }
@@ -553,11 +584,17 @@ class Round1ViewController: UIViewController {
                         
                         let chosen = json["results"]["bindings"].arrayValue.randomElement()!
                         
-                        controller.mOgvPlayerView = OGVPlayerView()
-                        controller.mOgvPlayerView!.frame = .null
-                        controller.view.addSubview(controller.mOgvPlayerView!)
-                        controller.mOgvPlayerView!.sourceURL = URL(string: chosen["audioLabel"]["value"].stringValue)!
-                        controller.mOgvPlayerView!.play()
+                        let audioUrl = chosen["audioLabel"]["value"].stringValue
+                        
+                        //Check wheter it is an OGG(A) or MP3
+                        if audioUrl.suffix(3) == "mp3" {
+                        } else {
+                            controller.mOgvPlayerView = OGVPlayerView()
+                            controller.mOgvPlayerView!.frame = .null
+                            controller.view.addSubview(controller.mOgvPlayerView!)
+                            controller.mOgvPlayerView!.sourceURL = URL(string: audioUrl)!
+                            controller.mOgvPlayerView!.play()
+                        }
                         
                         controller.mCorrectAnswerEn = chosen["countryLabel"]["value"].stringValue
                         controller2.mCorrectAnswerEn = chosen["countryLabel"]["value"].stringValue
@@ -643,7 +680,6 @@ class Round1ViewController: UIViewController {
             controller2.view.frame = mPlayer2!.mFragmentContainer.bounds
             controller2.view.backgroundColor = mPlayer2!.view.backgroundColor
             
-            let savedLocale = mPreferences.string(forKey: "PREF_LOCALE")!
             let sparql = """
             SELECT DISTINCT ?countryLabel ?country_local ?anthemLabel ?anthem_local ?audioLabel
             WHERE
@@ -655,10 +691,10 @@ class Round1ViewController: UIViewController {
             ?anthem wdt:P51 ?audio.
             SERVICE wikibase:label { bd:serviceParam wikibase:language "en".
             }
-            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(savedLocale)".
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(self.mGameplayLocale!)".
             ?country rdfs:label ?country_local.
             } hint:Prior hint:runLast false.
-            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(savedLocale)".
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "\(self.mGameplayLocale!)".
             ?anthem rdfs:label ?anthem_local.
             } hint:Prior hint:runLast false.
             }
@@ -675,11 +711,17 @@ class Round1ViewController: UIViewController {
                         
                         let chosen = json["results"]["bindings"].arrayValue.randomElement()!
                         
-                        let mOgvPlayerView = OGVPlayerView()
-                        mOgvPlayerView.frame = .null
-                        controller.view.addSubview(mOgvPlayerView)
-                        mOgvPlayerView.sourceURL = URL(string: chosen["audioLabel"]["value"].stringValue)!
-                        mOgvPlayerView.play()
+                        let audioUrl = chosen["audioLabel"]["value"].stringValue
+                        
+                        //Check wheter it is an OGG(A) or MP3
+                        if audioUrl.suffix(3) == "mp3" {
+                        } else {
+                            controller.mOgvPlayerView = OGVPlayerView()
+                            controller.mOgvPlayerView!.frame = .null
+                            controller.view.addSubview(controller.mOgvPlayerView!)
+                            controller.mOgvPlayerView!.sourceURL = URL(string: audioUrl)!
+                            controller.mOgvPlayerView!.play()
+                        }
                         
                         controller.mCorrectAnswerEn = chosen["countryLabel"]["value"].stringValue
                         controller2.mCorrectAnswerEn = chosen["countryLabel"]["value"].stringValue

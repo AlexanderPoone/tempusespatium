@@ -32,30 +32,28 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
     }
     
     
-    
     var mMarker:GMSMarker?
     var mOgvPlayerView:OGVPlayerView?
     var mJson:JSON?
     
     var mCorrectAnswer:String?, mCorrectAnswerEn:String?
     
+    var mPolygons:[GMSPolygon] = [], mBounds = GMSCoordinateBounds()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let exterior = parent! as! ExteriorViewController
-//        exterior.showLoadingDialog()
         
         let states = Bundle.main.url(forResource: "states_of_the_world", withExtension: "geojson")!
         let jsonData = try! Data(contentsOf: states)
         mJson = try! JSON(data: jsonData)
         
-//        mOgvPlayerView = OGVPlayerView()
-//        mOgvPlayerView!.frame = .null
-//        view.addSubview(mOgvPlayerView!)
-//        mOgvPlayerView!.sourceURL = URL(string: "http://commons.wikimedia.org/wiki/Special:FilePath/United%20States%20Navy%20Band%20-%20O%20Canada.ogg")!
-//        mOgvPlayerView!.play()
-//        let ogvKit = OGVInputStream(url: URL(string: "")!)
-
+        //        mOgvPlayerView = OGVPlayerView()
+        //        mOgvPlayerView!.frame = .null
+        //        view.addSubview(mOgvPlayerView!)
+        //        mOgvPlayerView!.sourceURL = URL(string: "http://commons.wikimedia.org/wiki/Special:FilePath/United%20States%20Navy%20Band%20-%20O%20Canada.ogg")!
+        //        mOgvPlayerView!.play()
+        //        let ogvKit = OGVInputStream(url: URL(string: "")!)
+        
         mResetBtn.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.undo), iconColor: .white, postfixText: NSLocalizedString("reset", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "danger")!, forState: .normal, textSize: nil, iconSize: nil)
         
         mSubmitBtn.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.paperPlane), iconColor: .white, postfixText: NSLocalizedString("submit", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "success")!, forState: .normal, textSize: nil, iconSize: nil)
@@ -66,42 +64,9 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
         mMap.camera = GMSCameraPosition(latitude: CLLocationDegrees(exactly: 0)!, longitude: CLLocationDegrees(exactly: 0)!, zoom: 0)
         
         mMap.mapStyle = try! GMSMapStyle(jsonString: "[{\"elementType\":\"geometry.stroke\",\"stylers\":[{\"visibility\":\"off\"}]},{\"elementType\":\"labels\",\"stylers\":[{\"visibility\":\"off\"}]}]")
-
-//        exterior.closeLoadingDialog()
     }
     
-    @objc func submitMakeshift() {
-//        (parent as! Round1ViewController)
-//        reveal() //["Philippines", "Maldives", "Comoros", "France", "South Africa", "East Timor"].randomElement()!
-    }
-    
-    func reveal() {
-        mMap.settings.scrollGestures = false
-        mMap.settings.zoomGestures = false
-
-        if let player = mOgvPlayerView {
-            player.pause()
-            mOgvPlayerView = nil
-        }
-        
-        if let marker = mMarker {
-            let geocoder = GMSGeocoder()
-            geocoder.reverseGeocodeCoordinate(marker.position) { (res, err) in
-                if let res2 = res {
-                if let playerState = res2.firstResult()!.country {
-                    self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(self.mCorrectAnswer!)\n\(NSLocalizedString("you_chose", comment: "")) \(playerState)"
-                    
-                } else {
-                    self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(self.mCorrectAnswer!)"
-                }
-                } else {
-                    self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(self.mCorrectAnswer!)"
-                }
-            }
-        }
-        
-
-        
+    override func viewWillAppear(_ animated: Bool) {
         let features = mJson!["features"].filter { (arg0) -> Bool in
             
             //            let (String, JSON) = arg0
@@ -113,7 +78,6 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
         }
         
         //        var avgLat:Double = 0, avgLng:Double = 0
-        var bounds = GMSCoordinateBounds()
         
         if features.count > 0 {
             let node = features[0].1["geometry"]
@@ -134,7 +98,7 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
                 for x in arr {
                     let coords = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: x[1].doubleValue)!, longitude: CLLocationDegrees(exactly: x[0].doubleValue)!)
                     polygonPath.add(coords)
-                    bounds = bounds.includingCoordinate(coords)
+                    mBounds = mBounds.includingCoordinate(coords)
                     //                    avgLat += x[1].doubleValue
                     //                    avgLng += x[0].doubleValue
                 }
@@ -143,12 +107,55 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
                 
                 print("Test \(polygonPath)")
                 polygon.path = polygonPath
-                polygon.map = mMap
-                
+                mPolygons.append(polygon)
             }
-            let camUpdate = GMSCameraUpdate.fit(bounds)
+        }
+    }
+    
+    @objc func submitMakeshift() {
+        //        (parent as! Round1ViewController)
+        //        reveal() //["Philippines", "Maldives", "Comoros", "France", "South Africa", "East Timor"].randomElement()!
+    }
+    
+    
+    func reveal() {
+        mMap.settings.scrollGestures = false
+        mMap.settings.zoomGestures = false
+        
+        if mPolygons.count > 0 {
+            for p in mPolygons {
+                p.map = mMap
+            }
+            
+            let camUpdate = GMSCameraUpdate.fit(mBounds)
             mMap.animate(with: camUpdate)
         }
+        
+        if mOgvPlayerView != nil {
+            print("try to pause")
+            mOgvPlayerView!.pause()
+            mOgvPlayerView = nil
+        }
+        
+        if let marker = mMarker {
+            let geocoder = GMSGeocoder()
+            geocoder.reverseGeocodeCoordinate(marker.position) { (res, err) in
+                if let res2 = res {
+                    if let playerState = res2.firstResult()!.country {
+                        //TODO: compare
+                        
+                        self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(self.mCorrectAnswer!)\n\(NSLocalizedString("you_chose", comment: "")) \(playerState)"
+                    } else {
+                        self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(self.mCorrectAnswer!)"
+                    }
+                } else {
+                    self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(self.mCorrectAnswer!)"
+                }
+            }
+        } else {
+            self.mAnswerLbl.text = "\(NSLocalizedString("answer", comment: "")) \(self.mCorrectAnswer!)"
+        }
+        
         
     }
     

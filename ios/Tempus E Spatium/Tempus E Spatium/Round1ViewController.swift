@@ -553,11 +553,11 @@ class Round1ViewController: UIViewController {
                         
                         let chosen = json["results"]["bindings"].arrayValue.randomElement()!
                         
-                        let mOgvPlayerView = OGVPlayerView()
-                        mOgvPlayerView.frame = .null
-                        controller.view.addSubview(mOgvPlayerView)
-                        mOgvPlayerView.sourceURL = URL(string: chosen["audioLabel"]["value"].stringValue)!
-                        mOgvPlayerView.play()
+                        controller.mOgvPlayerView = OGVPlayerView()
+                        controller.mOgvPlayerView!.frame = .null
+                        controller.view.addSubview(controller.mOgvPlayerView!)
+                        controller.mOgvPlayerView!.sourceURL = URL(string: chosen["audioLabel"]["value"].stringValue)!
+                        controller.mOgvPlayerView!.play()
                         
                         controller.mCorrectAnswerEn = chosen["countryLabel"]["value"].stringValue
                         controller2.mCorrectAnswerEn = chosen["countryLabel"]["value"].stringValue

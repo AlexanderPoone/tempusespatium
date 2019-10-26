@@ -6,7 +6,7 @@
   Copyright © 2019 SoftFeta. All rights reserved.
 */
 
-app_name = "Tempus E Spatium";
+app_name = "時地人";
 
 play = " 開始遊戲！";
 rules = " 規則";
@@ -15,30 +15,30 @@ settings = " 設定";
 highscores = " 高分榜";
 quit = " 結束遊戲";
 
-articles_covered = "Articles covered: ";
-learn_sub = "Click on the badge to revise now!";
+articles_covered = "涵蓋條目：";
+learn_sub = "按字立即溫習！";
 
 resume = " 繼續遊戲";
-return_main_menu = " Return to main menu";
-topic_searcher_heading = "Search for ANY topic";
-loading = "Loading, please wait…";
-enter_keyword = "Enter keyword to search for a theme!";
+return_main_menu = " 返回主目錄";
+topic_searcher_heading = "儘管搜索*任何*題目！";
+loading = "載入中，請稍候…";
+enter_keyword = "輸入關鍵字搜索題目！";
 
-gameplay_language = "Langue des questions: ";
+gameplay_language = "題目語言：";
 any_topic = "任何題目";
 
-highscores_enter_name = "{md_sentiment_very_satisfied} Congrats, you won!\nEnter your name:";
+highscores_enter_name = " 恭喜，你贏了！\n輸入你的名稱：";
 
-level = "Level %d";
+level = "關卡 %d";
 rules_tirade = "The project is named Tempus E Spatium (Latin for Time and Space, which is often prefixed by “lost in”) as the questions focus on history and geography. Quiz types include: Drag and drop the national flags to the right continent, listen to the national anthem and choose the correct flag, and complete the word. Despite the name of the app, the last type can be of any question type.\n\nThe questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he will lose 5 points.";
 
-pref_general = "Gameplay";
+pref_general = "一般設定";
 pref_general_locale = "介面語言";
-pref_version = "Version";
+pref_version = "版本";
 pref_player_1_theme = "Player 1 Theme";
 pref_player_2_theme = "Player 2 Theme";
 
-pref_gameplay = "Gameplay";
+pref_gameplay = "遊戲設定";
 pref_difficulty = "Difficulty";
 pref_difficulty_hard = "Hard";
 pref_difficulty_hard_sub = "30 seconds for fill in the blanks, 10 for other types";
@@ -52,29 +52,29 @@ question_anthem = "Which country does this anthem belong to?";
 question_flags = "Choose the matching flag.";
 question_history = "When did the historical event %s take place?";
 
-bar_points = "Points: %d";
-submit = " Submit!";
-reset = " Reset";
+bar_points = "分數：%d";
+submit = " 提交！";
+reset = " 重設";
 a = "A. ";
 b = "B. ";
 c = "C. ";
 d = "D. ";
 
-paused = " Game paused";
+paused = " 遊戲暫停";
 
 simple_ime = "Simple IME";
 subtype_en_US = "English (US)";
 
-answer = "Answer:";
-you_chose = "You chose:";
-anthem_name = "Anthem name:";
-learning_theme = "Theme: ";
+answer = "答案：";
+you_chose = "你選了：";
+anthem_name = "曲名：";
+learning_theme = "主題：";
 
-err_no_network = "You need a network connection to play the game !";
-lbl_music = "Music:\nSquirrel Monkey";
-really_quit = "Do you really want to quit the game?";
-yes = "Yes";
-no = "No";
+err_no_network = "遊戲需要網絡連線！";
+lbl_music = "音樂：\nSquirrel Monkey";
+really_quit = "你真的想離開嗎？";
+yes = "是";
+no = "否";
 
-customise_here = " Customise here (optional)";
-submit_and_play = " Submit and play!";
+customise_here = " 按此自訂（可略過）";
+submit_and_play = " 提交並開始遊戲！";

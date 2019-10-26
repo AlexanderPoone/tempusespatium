@@ -66,13 +66,13 @@ class MapGameViewController: UIViewController, GMSMapViewDelegate {
         mMap.camera = GMSCameraPosition(latitude: CLLocationDegrees(exactly: 0)!, longitude: CLLocationDegrees(exactly: 0)!, zoom: 0)
         
         mMap.mapStyle = try! GMSMapStyle(jsonString: "[{\"elementType\":\"geometry.stroke\",\"stylers\":[{\"visibility\":\"off\"}]},{\"elementType\":\"labels\",\"stylers\":[{\"visibility\":\"off\"}]}]")
-        mSubmitBtn.addTarget(nil, action: #selector(submitMakeshift), for: .touchDown)
-        
+
 //        exterior.closeLoadingDialog()
     }
     
     @objc func submitMakeshift() {
-        reveal() //["Philippines", "Maldives", "Comoros", "France", "South Africa", "East Timor"].randomElement()!
+//        (parent as! Round1ViewController)
+//        reveal() //["Philippines", "Maldives", "Comoros", "France", "South Africa", "East Timor"].randomElement()!
     }
     
     func reveal() {

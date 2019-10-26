@@ -43,11 +43,7 @@ class Round1ViewController: UIViewController {
         mPlayer2!.mDonutTime!.progressLabel.text = String(Int(mSecs))
         mSecs -= 1
         if mSecs < 0 {
-            mTimer!.invalidate()
-            mTimer = nil
-            reveal()
-            mCooldownSecs = 5
-            mCoolDownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(coolDown), userInfo: nil, repeats: true)
+            stopCounterAndReveal()
         }
     }
     
@@ -58,6 +54,14 @@ class Round1ViewController: UIViewController {
             mCoolDownTimer = nil
             replaceFragment()
         }
+    }
+    
+    @objc func stopCounterAndReveal() {
+        mTimer!.invalidate()
+        mTimer = nil
+        reveal()
+        mCooldownSecs = 5
+        mCoolDownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(coolDown), userInfo: nil, repeats: true)
     }
     
     func reveal() {
@@ -92,7 +96,7 @@ class Round1ViewController: UIViewController {
                 player.pause()
                 controller.mOgvPlayerView = nil
             }
-            controller1.reveal()
+            controller.reveal()
             controller2.reveal()
             break
         case 4:
@@ -102,7 +106,7 @@ class Round1ViewController: UIViewController {
                 player.pause()
                 controller.mOgvPlayerView = nil
             }
-            controller1.reveal()
+            controller.reveal()
             controller2.reveal()
             break
         default:
@@ -312,6 +316,9 @@ class Round1ViewController: UIViewController {
                         controller.mHintPic.image = UIImage(data: data)
                         controller2.mHintPic.image = UIImage(data: data)
                         
+                        controller.mSubmitBtn.addTarget(nil, action: #selector(self.stopCounterAndReveal), for: .touchDown)
+                        controller2.mSubmitBtn.addTarget(nil, action: #selector(self.stopCounterAndReveal), for: .touchDown)
+                        
                         controller.willMove(toParent: self)
                         self.mPlayer1!.mFragmentContainer.addSubview(controller.view)
                         self.mPlayer1!.addChild(controller)
@@ -410,6 +417,8 @@ class Round1ViewController: UIViewController {
                         
                         let choosen = list[randNumbers[(0...3).randomElement()!]]
                         
+                        //TODO: How to reveal.
+                        
                         controller.willMove(toParent: self)
                         self.mPlayer1!.mFragmentContainer.addSubview(controller.view)
                         self.mPlayer1!.addChild(controller)
@@ -419,7 +428,6 @@ class Round1ViewController: UIViewController {
                         self.mPlayer2!.mFragmentContainer.addSubview(controller2.view)
                         self.self.mPlayer2!.addChild(controller2)
                         controller2.didMove(toParent: self)
-                        
                         
                         let svg1:SVGKImage = SVGKImage(contentsOf: URL(string: list[0]["armsLabel"]["value"].stringValue)!)
                         let fast = SVGKFastImageView(svgkImage: svg1)!
@@ -556,6 +564,9 @@ class Round1ViewController: UIViewController {
                         controller.mCorrectAnswer = chosen["country_local"]["value"].stringValue
                         controller2.mCorrectAnswer = chosen["country_local"]["value"].stringValue
                         
+                        controller.mSubmitBtn.addTarget(nil, action: #selector(self.stopCounterAndReveal), for: .touchDown)
+                        controller2.mSubmitBtn.addTarget(nil, action: #selector(self.stopCounterAndReveal), for: .touchDown)
+                        
                         self.mPlayer1!.mFragmentContainer.addSubview(controller.view)
                         self.mPlayer1!.addChild(controller)
                         self.closeLoadingDialog()
@@ -616,7 +627,6 @@ class Round1ViewController: UIViewController {
                 view1.removeFromSuperview()
             }
             mPlayer1!.children.first!.removeFromParent()
-            
             if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
                 showLoadingDialog()
                 view2.removeFromSuperview()
@@ -670,6 +680,14 @@ class Round1ViewController: UIViewController {
                         controller.view.addSubview(mOgvPlayerView)
                         mOgvPlayerView.sourceURL = URL(string: chosen["audioLabel"]["value"].stringValue)!
                         mOgvPlayerView.play()
+                        
+                        controller.mCorrectAnswerEn = chosen["countryLabel"]["value"].stringValue
+                        controller2.mCorrectAnswerEn = chosen["countryLabel"]["value"].stringValue
+                        controller.mCorrectAnswer = chosen["country_local"]["value"].stringValue
+                        controller2.mCorrectAnswer = chosen["country_local"]["value"].stringValue
+                        
+                        controller.mSubmitBtn.addTarget(nil, action: #selector(self.stopCounterAndReveal), for: .touchDown)
+                        controller2.mSubmitBtn.addTarget(nil, action: #selector(self.stopCounterAndReveal), for: .touchDown)
                         
                         self.mPlayer1!.mFragmentContainer.addSubview(controller.view)
                         self.mPlayer1!.addChild(controller)

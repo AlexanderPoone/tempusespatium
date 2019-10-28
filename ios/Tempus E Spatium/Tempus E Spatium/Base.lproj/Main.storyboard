@@ -47,7 +47,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tempus E Spatium" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uor-9k-EWU">
-                                <rect key="frame" x="54.5" y="425.5" width="305.5" height="45"/>
+                                <rect key="frame" x="82.5" y="425" width="249.5" height="46.5"/>
                                 <fontDescription key="fontDescription" name="BakerSignetBT-Roman" family="BakerSignet BT" pointSize="36"/>
                                 <color key="textColor" name="AliceBlue"/>
                                 <nil key="highlightedColor"/>
@@ -55,13 +55,13 @@
                                 <size key="shadowOffset" width="-3" height="3"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wYY-oT-K47">
-                                <rect key="frame" x="4" y="474.5" width="406" height="333.5"/>
+                                <rect key="frame" x="4" y="475.5" width="406" height="332.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3ke-jl-tgt">
-                                        <rect key="frame" x="0.0" y="0.0" width="406" height="240"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="406" height="245"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VlX-51-0OC">
-                                                <rect key="frame" x="0.0" y="0.0" width="406" height="32"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="406" height="33"/>
                                                 <color key="backgroundColor" name="info"/>
                                                 <fontDescription key="fontDescription" name="ErmisProBoldItalic" family="Ermis Pro" pointSize="17"/>
                                                 <state key="normal" title="play">
@@ -78,7 +78,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xtn-j2-YWm">
-                                                <rect key="frame" x="0.0" y="52" width="406" height="32"/>
+                                                <rect key="frame" x="0.0" y="53" width="406" height="33"/>
                                                 <color key="backgroundColor" name="success"/>
                                                 <fontDescription key="fontDescription" name="ErmisProBold" family="Ermis Pro Bold" pointSize="17"/>
                                                 <state key="normal" title="rules">
@@ -96,7 +96,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eST-H6-VZP">
-                                                <rect key="frame" x="0.0" y="104" width="406" height="32"/>
+                                                <rect key="frame" x="0.0" y="106" width="406" height="33"/>
                                                 <color key="backgroundColor" name="secondary"/>
                                                 <fontDescription key="fontDescription" name="ErmisProBold" family="Ermis Pro Bold" pointSize="17"/>
                                                 <state key="normal" title="settings">
@@ -114,7 +114,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usy-Mc-hCN">
-                                                <rect key="frame" x="0.0" y="156" width="406" height="32"/>
+                                                <rect key="frame" x="0.0" y="159" width="406" height="33"/>
                                                 <color key="backgroundColor" name="warning"/>
                                                 <fontDescription key="fontDescription" name="ErmisProBold" family="Ermis Pro Bold" pointSize="17"/>
                                                 <state key="normal" title="highscores">
@@ -132,7 +132,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9L-lE-Le6">
-                                                <rect key="frame" x="0.0" y="208" width="406" height="32"/>
+                                                <rect key="frame" x="0.0" y="212" width="406" height="33"/>
                                                 <color key="backgroundColor" name="danger"/>
                                                 <fontDescription key="fontDescription" name="ErmisProBold" family="Ermis Pro Bold" pointSize="17"/>
                                                 <state key="normal" title="quit">
@@ -508,14 +508,14 @@ Squirrel Monkey</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="lasciaChioPianga" id="Bdq-nk-dPM" customClass="HighscoresDialogTableViewCell" customModule="Tempus_E_Spatium" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="308" height="43"/>
+                                        <rect key="frame" x="0.0" y="28" width="308" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bdq-nk-dPM" id="bq9-fI-va2">
-                                            <rect key="frame" x="0.0" y="0.0" width="308" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="308" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ArT-Pm-n1y">
-                                                    <rect key="frame" x="16" y="11" width="30" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="30" height="21.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="BTs-SH-6SC"/>
                                                     </constraints>
@@ -524,13 +524,13 @@ Squirrel Monkey</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joe Bloggs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzs-el-JPx">
-                                                    <rect key="frame" x="49" y="11" width="85" height="21"/>
+                                                    <rect key="frame" x="49" y="11" width="85" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="Sienna"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1800" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiW-hP-YSc">
-                                                    <rect key="frame" x="187" y="11" width="39" height="21"/>
+                                                    <rect key="frame" x="187" y="11" width="39" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="Sienna"/>
                                                     <nil key="highlightedColor"/>
@@ -651,7 +651,7 @@ Squirrel Monkey</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IU5-bs-tqv">
-                                <rect key="frame" x="214" y="243" width="180" height="30"/>
+                                <rect key="frame" x="214" y="244.5" width="180" height="30"/>
                                 <color key="backgroundColor" name="info"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="IU5-bs-tqv" secondAttribute="height" multiplier="60:10" id="MJq-cC-sOE"/>
@@ -670,31 +670,31 @@ Squirrel Monkey</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select ANY Topic" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoH-Sw-cOZ">
-                                <rect key="frame" x="4" y="74" width="406" height="42"/>
+                                <rect key="frame" x="4" y="74" width="406" height="43.5"/>
                                 <fontDescription key="fontDescription" name="BakerSignetBT-Roman" family="BakerSignet BT" pointSize="36"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locale:" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rR7-Gg-Efk">
-                                <rect key="frame" x="20" y="129" width="77" height="40"/>
+                                <rect key="frame" x="20" y="130.5" width="65" height="40"/>
                                 <fontDescription key="fontDescription" name="BakerSignetBT-Roman" family="BakerSignet BT" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xrc-yY-p4v" customClass="LocaleCurrentSelectionWithArrowView" customModule="Tempus_E_Spatium" customModuleProvider="target">
-                                <rect key="frame" x="101" y="124" width="293" height="50"/>
+                                <rect key="frame" x="89" y="125.5" width="305" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="N9H-XV-hMZ"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Articles covered:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9N-ZI-qIv">
-                                <rect key="frame" x="20" y="308" width="374" height="20"/>
+                                <rect key="frame" x="20" y="309.5" width="374" height="21"/>
                                 <fontDescription key="fontDescription" name="BakerSignetBT-Roman" family="BakerSignet BT" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCU-7E-8W5">
-                                <rect key="frame" x="120" y="243" width="90" height="30"/>
+                                <rect key="frame" x="120" y="244.5" width="90" height="30"/>
                                 <color key="backgroundColor" name="danger"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KCU-7E-8W5" secondAttribute="height" multiplier="30:10" id="A9O-YM-sNZ"/>
@@ -713,13 +713,13 @@ Squirrel Monkey</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Any topic:" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hxx-z7-GEg">
-                                <rect key="frame" x="20" y="199" width="77" height="20"/>
+                                <rect key="frame" x="20" y="200" width="65" height="21"/>
                                 <fontDescription key="fontDescription" name="BakerSignetBT-Roman" family="BakerSignet BT" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kS0-dc-jhZ" customClass="SearchTextField" customModule="SearchTextField">
-                                <rect key="frame" x="101" y="192" width="293" height="34"/>
+                                <rect key="frame" x="89" y="193.5" width="305" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="ZyW-aC-2P3"/>
                                 </constraints>
@@ -746,13 +746,13 @@ Squirrel Monkey</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click on a badge above to revise now!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htx-RY-lln">
-                                <rect key="frame" x="62" y="776" width="290" height="20"/>
+                                <rect key="frame" x="87.5" y="775" width="239.5" height="21"/>
                                 <fontDescription key="fontDescription" name="BakerSignetBT-Roman" family="BakerSignet BT" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJU-2T-LYv" customClass="TTGTextTagCollectionView">
-                                <rect key="frame" x="0.0" y="336" width="414" height="432"/>
+                                <rect key="frame" x="0.0" y="338.5" width="414" height="428.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -981,7 +981,7 @@ Squirrel Monkey</string>
                                         <rect key="frame" x="144.5" y="11.5" width="199.5" height="67.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ukw-iE-ung">
-                                                <rect key="frame" x="67" y="15" width="81.5" height="37.5"/>
+                                                <rect key="frame" x="59" y="23.5" width="81.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -989,10 +989,8 @@ Squirrel Monkey</string>
                                         </subviews>
                                         <color key="backgroundColor" name="Lavender"/>
                                         <constraints>
-                                            <constraint firstItem="Ukw-iE-ung" firstAttribute="top" secondItem="WqO-Lr-n9a" secondAttribute="top" constant="15" id="0ZE-Q5-F7e"/>
-                                            <constraint firstItem="Ukw-iE-ung" firstAttribute="leading" secondItem="WqO-Lr-n9a" secondAttribute="leading" constant="67" id="2gA-yX-GVM"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ukw-iE-ung" secondAttribute="trailing" constant="51" id="BiI-rj-vlK"/>
-                                            <constraint firstItem="Ukw-iE-ung" firstAttribute="centerY" secondItem="WqO-Lr-n9a" secondAttribute="centerY" id="FfB-4v-6E9"/>
+                                            <constraint firstItem="Ukw-iE-ung" firstAttribute="centerY" secondItem="WqO-Lr-n9a" secondAttribute="centerY" id="dq9-Nt-2fy"/>
+                                            <constraint firstItem="Ukw-iE-ung" firstAttribute="centerX" secondItem="WqO-Lr-n9a" secondAttribute="centerX" id="x0J-BK-xIH"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="progress">
@@ -1354,7 +1352,7 @@ Squirrel Monkey</string>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Noukachott" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kd3-Lg-7jb">
-                                <rect key="frame" x="155" y="44" width="104.5" height="24"/>
+                                <rect key="frame" x="156.5" y="44" width="101.5" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="O2J-iB-bV5"/>
                                 </constraints>

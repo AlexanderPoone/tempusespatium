@@ -218,28 +218,28 @@ class ExteriorViewController: UIViewController, UIPickerViewDataSource, UIPicker
         mDonutTime.progressTintColor = UIColor(named: "Liberty")!
         mDonutTime.progressLabel.textColor = UIColor(named: "MidnightBlue")!
         
-        AF.request("https://en.wikipedia.org/wiki/Queen_Mab_(poem)")
-            .validate(statusCode: 200..<300)
-            .responseData { response in
-                switch response.result {
-                case .success(let value):
-                    let blanks = self.children.first! as! BlanksGameViewController
-                    blanks.view.backgroundColor = self.view.backgroundColor
-
-                    let html1 = "<html><head></head><body style=\"background-color:\(self.view.backgroundColor!.hexString);\">"
-                    let html2 = "</body></html>"
-                    
-                    let document = try! ONOXMLDocument(data: response.data)
-                    document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[1]/a") { (element, _, _) in
-                        
-                        var ele:String = element.stringValue!
-                    }
-                    
-                    blanks.mWebView.loadHTMLString("\(html1)<small>Test!</small>\(html2)", baseURL: nil)
-                case .failure(let error):
-                    print(error)
-                }
-        }
+//        AF.request("https://en.wikipedia.org/wiki/Queen_Mab_(poem)")
+//            .validate(statusCode: 200..<300)
+//            .responseData { response in
+//                switch response.result {
+//                case .success(let value):
+//                    let blanks = self.children.first! as! BlanksGameViewController
+//                    blanks.view.backgroundColor = self.view.backgroundColor
+//
+//                    let html1 = "<html><head></head><body style=\"background-color:\(self.view.backgroundColor!.hexString);\">"
+//                    let html2 = "</body></html>"
+//
+//                    let document = try! ONOXMLDocument(data: response.data)
+//                    document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[1]/a") { (element, _, _) in
+//
+//                        var ele:String = element.stringValue!
+//                    }
+//
+//                    blanks.mWebView.loadHTMLString("\(html1)<small>Test!</small>\(html2)", baseURL: nil)
+//                case .failure(let error):
+//                    print(error)
+//                }
+//        }
     }
     
 }

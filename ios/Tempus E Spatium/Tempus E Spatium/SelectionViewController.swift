@@ -152,6 +152,7 @@ class SelectionViewController: UIViewController, GADBannerViewDelegate {
         swoosh = setupAudioPlayer(withFile: "space_swoosh", type: "wav")
         
         if mPreferences.string(forKey: "PREF_PLAYER_1_THEME") == nil && mPreferences.string(forKey: "PREF_PLAYER_2_THEME") == nil {
+            mPreferences.set(0, forKey: "PREF_DIFFICULTY")
             mPreferences.set("CosmicLatte", forKey: "PREF_PLAYER_1_THEME")
             mPreferences.set("Lavender", forKey: "PREF_PLAYER_2_THEME")
             mPreferences.synchronize()

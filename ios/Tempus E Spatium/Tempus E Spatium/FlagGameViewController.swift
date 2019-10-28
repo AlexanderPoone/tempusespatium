@@ -47,7 +47,7 @@ class FlagGameViewController: UIViewController {
     func reveal() {
         
         if mUserAns == mCorrectAns! {
-            mPointChanged = 5
+            mPointChange = 5
             switch mUserAns {
             case 0:
                 mIndicatorA.setIcon(icon: .googleMaterialDesign(.check), iconSize: 24, color: .white, bgColor: UIColor(named: "success")!)

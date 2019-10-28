@@ -17,24 +17,24 @@ extension UIColor {
         let g = colorRef?[1] ?? 0
         let b = ((colorRef?.count ?? 0) > 2 ? colorRef?[2] : g) ?? 0
         let a = cgColor.alpha
-
+        
         var color = String(
             format: "#%02lX%02lX%02lX",
             lroundf(Float(r * 255)),
             lroundf(Float(g * 255)),
             lroundf(Float(b * 255))
         )
-
+        
         if a < 1 {
             color += String(format: "%02lX", lroundf(Float(a)))
         }
-
+        
         return color
     }
 }
 
 class BlanksGameViewController: UIViewController {
-
+    
     @IBOutlet weak var mWebView: WKWebView!
     
     @IBOutlet weak var mKeyboardArea: UIView!
@@ -42,7 +42,7 @@ class BlanksGameViewController: UIViewController {
     private let mPreferences = UserDefaults.standard
     
     private let mContentController = WKUserContentController()
-
+    
     
     @IBOutlet weak var mResetBtn: UIButton!
     
@@ -52,12 +52,12 @@ class BlanksGameViewController: UIViewController {
     
     @IBAction func mReset(_ sender: Any) {
         mWebView.evaluateJavaScript("document.write('asdf');", completionHandler: nil)
-//        let script = "document.write('asdf');"
-//        let userScript = WKUserScript(source: script, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
-//
-//        mContentController.addUserScript(userScript)
-//        mWebView.configuration.userContentController = mContentController
-
+        //        let script = "document.write('asdf');"
+        //        let userScript = WKUserScript(source: script, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        //
+        //        mContentController.addUserScript(userScript)
+        //        mWebView.configuration.userContentController = mContentController
+        
     }
     
     override func viewDidLoad() {
@@ -68,45 +68,40 @@ class BlanksGameViewController: UIViewController {
         mSubmitBtn.setIcon(prefixText: "", prefixTextColor: .white, icon: .fontAwesomeSolid(.paperPlane), iconColor: .white, postfixText: NSLocalizedString("submit", comment: ""), postfixTextColor: .white, backgroundColor: UIColor(named: "success")!, forState: .normal, textSize: nil, iconSize: nil)
         
         
-//        let script =    """
-//                        var script = document.createElement('script');
-//                        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=default&#038;ver=1.3.8';
-//                        script.type = 'text/javascript';
-//                        document.getElementsByTagName('head')[0].appendChild(script);
-//                        """
-//        let userScript = WKUserScript(source: script, injectionTime: .atDocumentStart, forMainFrameOnly: true)
-//
-//
-//        mContentController.addUserScript(userScript)
-//
-//        mWebView.configuration.userContentController = mContentController
+        //        let script =    """
+        //                        var script = document.createElement('script');
+        //                        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=default&#038;ver=1.3.8';
+        //                        script.type = 'text/javascript';
+        //                        document.getElementsByTagName('head')[0].appendChild(script);
+        //                        """
+        //        let userScript = WKUserScript(source: script, injectionTime: .atDocumentStart, forMainFrameOnly: true)
+        //
+        //
+        //        mContentController.addUserScript(userScript)
+        //
+        //        mWebView.configuration.userContentController = mContentController
         
-
+        
         mWebView.scrollView.panGestureRecognizer.isEnabled = false
         mWebView.scrollView.bounces = false
-
-        if let keyboard = mKeyboardArea.subviews.first {
-        keyboard.removeFromSuperview()
-        let controller = storyboard!.instantiateViewController(withIdentifier: "fr_KeyboardViewController") as! fr_KeyboardViewController
-        controller.view.frame = mKeyboardArea.bounds
-        controller.willMove(toParent: self)
-        mKeyboardArea.addSubview(controller.view)
-        addChild(controller)
         
-        controller.didMove(toParent: self)
+        if let keyboard = mKeyboardArea.subviews.first {
+            keyboard.removeFromSuperview()
+            let controller = storyboard!.instantiateViewController(withIdentifier: "fr_KeyboardViewController") as! fr_KeyboardViewController
+            controller.view.frame = mKeyboardArea.bounds
+            controller.willMove(toParent: self)
+            mKeyboardArea.addSubview(controller.view)
+            addChild(controller)
+            
+            controller.didMove(toParent: self)
         }
         
-  }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
+    
+    func reveal() {
+        mWebView.evaluateJavaScript("reveal();") { (any, err) in
+             
+        }
+    }
+    
 }

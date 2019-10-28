@@ -17,25 +17,27 @@ class Round1ViewController: UIViewController {
     
     @IBOutlet weak var mPlayer1Container: UIView!
     
-    var mSecs:CGFloat = 0, mMaxTime:CGFloat = 0
-    var mCooldownSecs:CGFloat = 5
+    private var mSecs:CGFloat = 0, mMaxTime:CGFloat = 0
+    private var mCooldownSecs:CGFloat = 5
     
-    var mPointsA = 0, mPointsB = 0
+    private var mPointsA = 0, mPointsB = 0
     
     var mArticles:[String:String]?
     
-    var mPlayer1:ExteriorViewController?
-    var mPlayer2:ExteriorViewController?
-    var mTimer:Timer?
-    var mCoolDownTimer:Timer?
+    private var mPlayer1:ExteriorViewController?
+    private var mPlayer2:ExteriorViewController?
+    private var mTimer:Timer?
+    private var mCoolDownTimer:Timer?
     
-    var mQuestionType:Int? = 5
+    private var mQuestionType:Int? = 5
     
     var mGameplayLocale:String?
     
     private let mPreferences = UserDefaults.standard
     
     private var mFlagTmp:Int?
+    
+    private var mBlanksDuration:CGFloat?, mOthersDuration:CGFloat?
     
     @IBAction func unwindToRound1ViewController(segue: UIStoryboardSegue) {
     }
@@ -89,8 +91,16 @@ class Round1ViewController: UIViewController {
         case 0:
             let controller = mPlayer1!.children.first! as! BlanksGameViewController
             let controller2 = mPlayer2!.children.first! as! BlanksGameViewController
-            //            controller1.reveal()
-            //            controller2.reveal()
+            controller.mWebView.isUserInteractionEnabled = false
+            controller.mResetBtn.isUserInteractionEnabled = false
+            controller.mSubmitBtn.isUserInteractionEnabled = false
+            
+            controller2.mWebView.isUserInteractionEnabled = false
+            controller2.mResetBtn.isUserInteractionEnabled = false
+            controller2.mSubmitBtn.isUserInteractionEnabled = false
+            
+            controller.reveal()
+            controller2.reveal()
         case 1:
             let controller = mPlayer1!.children.first! as! DateGameViewController
             let controller2 = mPlayer2!.children.first! as! DateGameViewController
@@ -191,18 +201,25 @@ class Round1ViewController: UIViewController {
         default:
             break
         }
+        mPointsA += player1Change
+        mPointsB += player2Change
+        mPlayer1!.mScoreBar.progress =  CGFloat(mPointsA) / 380.0
+        mPlayer2!.mScoreBar.progress =  CGFloat(mPointsB) / 380.0
+        mPlayer1!.mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), mPointsA)
+        mPlayer2!.mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), mPointsB)
+        
         if player1Change >= 0 {
             mPlayer1!.mScoreChangeLbl!.text = "+\(player1Change)"
             mPlayer1!.mScoreChangeLbl!.textColor = UIColor(named: "AndroidGreen")!
         } else {
-            mPlayer1!.mScoreChangeLbl!.text = "-\(player1Change)"
+            mPlayer1!.mScoreChangeLbl!.text = "\(player1Change)"
             mPlayer1!.mScoreChangeLbl!.textColor = UIColor(named: "Firebrick")!
         }
         if player2Change >= 0 {
             mPlayer2!.mScoreChangeLbl!.text = "+\(player2Change)"
             mPlayer2!.mScoreChangeLbl!.textColor = UIColor(named: "AndroidGreen")!
         } else {
-            mPlayer2!.mScoreChangeLbl!.text = "-\(player2Change)"
+            mPlayer2!.mScoreChangeLbl!.text = "\(player2Change)"
             mPlayer2!.mScoreChangeLbl!.textColor = UIColor(named: "Firebrick")!
         }
     }
@@ -648,8 +665,8 @@ class Round1ViewController: UIViewController {
                         //                            print(list[x]["audioLabel"]["value"].stringValue)
                         //                        }
                         
-                        self.mMaxTime = 10
-                        self.mSecs = 10
+                        self.mMaxTime = self.mOthersDuration!
+                        self.mSecs = self.mOthersDuration!
                         self.mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateCounter), userInfo: nil, repeats: true)
                         
                         self.closeLoadingDialog()
@@ -744,8 +761,8 @@ class Round1ViewController: UIViewController {
                         
                         self.closeLoadingDialog()
                         
-                        self.mMaxTime = 10
-                        self.mSecs = 10
+                        self.mMaxTime = self.mOthersDuration!
+                        self.mSecs = self.mOthersDuration!
                         self.mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateCounter), userInfo: nil, repeats: true)
                         
                         //                let list = json["results"]["bindings"].arrayValue
@@ -871,8 +888,8 @@ class Round1ViewController: UIViewController {
                         
                         self.closeLoadingDialog()
                         
-                        self.mMaxTime = 10
-                        self.mSecs = 10
+                        self.mMaxTime = self.mOthersDuration!
+                        self.mSecs = self.mOthersDuration!
                         self.mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateCounter), userInfo: nil, repeats: true)
                         
                         //                let list = json["results"]["bindings"].arrayValue
@@ -921,14 +938,30 @@ class Round1ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mPlayer1Container.transform =  CGAffineTransform(rotationAngle: .pi)
+        switch mPreferences.integer(forKey: "PREF_DIFFICULTY") {
+        case 0:
+            mBlanksDuration = 6 //60
+            mOthersDuration = 10
+        case 1:
+            mBlanksDuration = 4 //40
+            mOthersDuration = 6
+        case 2:
+            mBlanksDuration = 3 //36
+            mOthersDuration = 5
+        default:
+            break
+        }
+        
+        mPlayer1Container.transform = CGAffineTransform(rotationAngle: .pi)
         
         mPlayer1 = (children.first! as! ExteriorViewController)
         mPlayer2 = (children.last! as! ExteriorViewController)
         mPlayer1!.view.backgroundColor = UIColor(named: "CosmicLatte")!
         
-        mMaxTime = 10
-        mSecs = 10
-        mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        replaceFragment()
+        //
+        //        mMaxTime = 10
+        //        mSecs = 10
+        //        mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
     }
 }

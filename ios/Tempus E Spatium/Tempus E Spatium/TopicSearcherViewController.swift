@@ -213,7 +213,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
         mTopicAutocomplete.filterStrings([])
         self.mTopics.removeAll(keepingCapacity: true)
         
-        AF.request("https://en.wikipedia.org/wiki/Wikipedia:Lists_of_popular_pages_by_WikiProject")
+        AF.request("https://ca.wikipedia.org/wiki/Categoria:Viquiprojectes")
             .validate(statusCode: 200..<300)
             //            .validate(contentType: ["application/json"])
             .responseData { response in

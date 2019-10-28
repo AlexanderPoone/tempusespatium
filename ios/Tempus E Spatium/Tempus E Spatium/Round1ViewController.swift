@@ -38,7 +38,7 @@ class Round1ViewController: UIViewController {
     private var mFlagTmp:Int?
     
     private var mBlanksDuration:CGFloat?, mOthersDuration:CGFloat?
-    
+        
     @IBAction func unwindToRound1ViewController(segue: UIStoryboardSegue) {
     }
     
@@ -54,8 +54,12 @@ class Round1ViewController: UIViewController {
     }
     
     @objc func coolDown() {
+        mPlayer1!.mCooldownTxt.text = String(Int(mCooldownSecs))
+        mPlayer2!.mCooldownTxt.text = String(Int(mCooldownSecs))
         mCooldownSecs -= 1
         if mCooldownSecs < 0 {
+            mPlayer1!.mCooldownTxt.text = ""
+            mPlayer2!.mCooldownTxt.text = ""
             mCoolDownTimer!.invalidate()
             mCoolDownTimer = nil
             replaceFragment()
@@ -935,6 +939,15 @@ class Round1ViewController: UIViewController {
         }
     }
     
+    @objc func mCheat() {
+        mPointsA += 380
+        mPointsB += 380
+        mPlayer1!.mScoreBar.progress =  CGFloat(mPointsA) / 380.0
+        mPlayer2!.mScoreBar.progress =  CGFloat(mPointsB) / 380.0
+        mPlayer1!.mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), mPointsA)
+        mPlayer2!.mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), mPointsB)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -956,12 +969,15 @@ class Round1ViewController: UIViewController {
         
         mPlayer1 = (children.first! as! ExteriorViewController)
         mPlayer2 = (children.last! as! ExteriorViewController)
-        mPlayer1!.view.backgroundColor = UIColor(named: "CosmicLatte")!
-        
+        mPlayer1!.view.backgroundColor = UIColor(named: mPreferences.string(forKey: "PREF_PLAYER_1_THEME")!)!
+        mPlayer2!.view.backgroundColor = UIColor(named: mPreferences.string(forKey: "PREF_PLAYER_2_THEME")!)!
+
+        mPlayer1!.mYellowBtn.addTarget(self, action: #selector(mCheat), for: .touchDown)
+        mPlayer2!.mYellowBtn.addTarget(self, action: #selector(mCheat), for: .touchDown)
+
         replaceFragment()
-        //
-        //        mMaxTime = 10
-        //        mSecs = 10
-        //        mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+//                mMaxTime = 10
+//                mSecs = 10
+//                mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
     }
 }

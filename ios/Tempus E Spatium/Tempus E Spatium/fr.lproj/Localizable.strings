@@ -30,7 +30,7 @@ any_topic = "Thème: ";
 highscores_enter_name = " Félicitations, vous avez gagné !\nEntrez votre nom:";
 
 level = "Niveau %d";
-rules_tirade = "<p>The project is named Tempus E Spatium (Latin for Time and Space, which is often prefixed by “lost in”) as the questions focus on history and geography. Quiz types include: Drag and drop the national flags to the right continent, listen to the national anthem and choose the correct flag, and complete the word. Despite the name of the app, the last type can be of any question type.</p><br /><p>The questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he will lose 5 points.</p>";
+rules_tirade = "The project is named Tempus E Spatium (Latin for Time and Space, which is often prefixed by “lost in”) as the questions focus on history and geography. Quiz types include: Drag and drop the national flags to the right continent, listen to the national anthem and choose the correct flag, and complete the word. Despite the name of the app, the last type can be of any question type.\n\nThe questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he or she will lose 5 points.\n\nThe year range of the Date Game varies by difficulty, too (Hard: 20 years; Insane 50 years; Hysterical 100 years)!";
 
 pref_general = "Général";
 pref_general_locale = "Langue d'interface";
@@ -48,9 +48,9 @@ pref_difficulty_hysterical = "|-|y5tÉr1q|_|e";
 pref_difficulty_hysterical_sub = "18 seconds pour le jeu de choix multiples, 5 pour les autres";
 
 question_anagram = "Reassemble the letters.";
-question_anthem = "Which country does this anthem belong to?";
+question_anthem = "À quel pays l'hymne appartient ?";
 question_flags = "Choose the matching flag.";
-question_history = "When did the historical event %s take place?";
+question_history = "Quand s'est passé l'évènement %s ?";
 
 bar_points = "Points: %d";
 submit = " Envoyer !";
@@ -72,7 +72,7 @@ learning_theme = "Thème: ";
 
 err_no_network = "Il faut une connexion de l'Internet !";
 lbl_music = "Musique:\nSquirrel Monkey";
-really_quit = "Do you really want to quit the game?";
+really_quit = "Voulez-vous vraiment quitter le jeu ?";
 yes = "Oui";
 no = "Non";
 

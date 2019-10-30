@@ -6,7 +6,7 @@
   Copyright © 2019 SoftFeta. All rights reserved.
 */
 
-app_name = "時地人";
+app_name = "時．地．人（一切隨機）"; //那些事．那些地．那些人
 
 play = " 開始遊戲！";
 rules = " 規則";
@@ -30,7 +30,7 @@ any_topic = "任何題目";
 highscores_enter_name = " 恭喜，你贏了！\n輸入你的名稱：";
 
 level = "關卡 %d";
-rules_tirade = "The project is named Tempus E Spatium (Latin for Time and Space, which is often prefixed by “lost in”) as the questions focus on history and geography. Quiz types include: Drag and drop the national flags to the right continent, listen to the national anthem and choose the correct flag, and complete the word. Despite the name of the app, the last type can be of any question type.\n\nThe questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he will lose 5 points.";
+rules_tirade = "The project is named Tempus E Spatium (Latin for Time and Space, which is often prefixed by “lost in”) as the questions focus on history and geography. Quiz types include: Drag and drop the national flags to the right continent, listen to the national anthem and choose the correct flag, and complete the word. Despite the name of the app, the last type can be of any question type.\n\nThe questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he or she will lose 5 points.\n\nThe year range of the Date Game varies by difficulty, too (Hard: 20 years; Insane 50 years; Hysterical 100 years)!";
 
 pref_general = "一般設定";
 pref_general_locale = "介面語言";
@@ -48,9 +48,9 @@ pref_difficulty_hysterical = "集體歇斯底里！";
 pref_difficulty_hysterical_sub = "填充題36秒，其他題型5秒";
 
 question_anagram = "Reassemble the letters.";
-question_anthem = "Which country does this anthem belong to?";
+question_anthem = "這是哪國家的國歌？";
 question_flags = "Choose the matching flag.";
-question_history = "When did the historical event %s take place?";
+question_history = "歷史事件 %s 在何年何月發生？";
 
 bar_points = "分數：%d";
 submit = " 提交！";

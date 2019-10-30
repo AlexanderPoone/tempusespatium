@@ -1,0 +1,80 @@
+/*
+  Localizable.strings
+  Tempus E Spatium
+
+  Created by Victor Poon on 6/10/2019.
+  Copyright © 2019 SoftFeta. All rights reserved.
+*/
+
+app_name = "时．地．人（一切随机）";
+
+play = " 开始游戏！";
+rules = " 规则";
+learn = " 学习";
+settings = " 设定";
+highscores = " 高分榜";
+quit = " 结束游戏";
+
+articles_covered = "涵盖条目：";
+learn_sub = "按字立即温习！";
+
+resume = " 继续游戏";
+return_main_menu = " 返回主目录";
+topic_searcher_heading = "尽管搜索*任何*题目！";
+loading = "载入中，请稍候…";
+enter_keyword = "输入关键字搜索题目！";
+
+gameplay_language = "题目语言：";
+any_topic = "任何题目";
+
+highscores_enter_name = " 恭喜，你赢了！\n输入你的名称：";
+
+level = "关卡 %d";
+rules_tirade = "The project is named Tempus E Spatium (Latin for Time and Space, which is often prefixed by “lost in”) as the questions focus on history and geography. Quiz types include: Drag and drop the national flags to the right continent, listen to the national anthem and choose the correct flag, and complete the word. Despite the name of the app, the last type can be of any question type.\n\nThe questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he or she will lose 5 points.\n\nThe year range of the Date Game varies by difficulty, too (Hard: 20 years; Insane 50 years; Hysterical 100 years)!";
+
+pref_general = "一般设定";
+pref_general_locale = "介面语言";
+pref_version = "版本";
+pref_player_1_theme = "玩家一主题";
+pref_player_2_theme = "玩家二主题";
+
+pref_gameplay = "游戏设定";
+pref_difficulty = "难度";
+pref_difficulty_hard = "难";
+pref_difficulty_hard_sub = "填充题60秒，其他题型10秒";
+pref_difficulty_insane = "疯狂";
+pref_difficulty_insane_sub = "填充题40秒，其他题型6秒";
+pref_difficulty_hysterical = "集体歇斯底里！";
+pref_difficulty_hysterical_sub = "填充题36秒，其他题型5秒";
+
+question_anagram = "Reassemble the letters.";
+question_anthem = "这是哪国家的国歌？";
+question_flags = "Choose the matching flag.";
+question_history = "历史事件 %s 在何年何月发生？";
+
+bar_points = "分数：%d";
+submit = " 提交！";
+reset = " 重设";
+a = "A. ";
+b = "B. ";
+c = "C. ";
+d = "D. ";
+
+paused = " 游戏暂停";
+
+simple_ime = "Simple IME";
+subtype_en_US = "English (US)";
+
+answer = "答案：";
+you_chose = "你选了：";
+anthem_name = "曲名：";
+learning_theme = "主题：";
+
+err_no_network = "游戏需要网络连线！";
+lbl_music = "音乐：\nSquirrel Monkey";
+really_quit = "你真的想离开吗？";
+yes = "是";
+no = "否";
+
+customise_here = " 按此自订（可略过）";
+submit_and_play = " 提交并开始游戏！";

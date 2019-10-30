@@ -38,7 +38,7 @@ class Round1ViewController: UIViewController {
     private var mFlagTmp:Int?
     
     private var mBlanksDuration:CGFloat?, mOthersDuration:CGFloat?
-        
+    
     @IBAction func unwindToRound1ViewController(segue: UIStoryboardSegue) {
     }
     
@@ -263,9 +263,12 @@ class Round1ViewController: UIViewController {
                 controller.didMove(toParent: self)
                 controller.view.backgroundColor = mPlayer1!.view.backgroundColor
                 let bluetoothGif = UIImage.gifImageWithName("player_1_wins")
-                let imageView = UIImageView(image: bluetoothGif)
-                imageView.frame = controller.mAnimation.bounds
-                controller.mAnimation.addSubview(imageView)
+                controller.mAnimation.contentMode = .scaleAspectFit
+                controller.mAnimation.image = bluetoothGif
+//                imageView.frame = controller.mAnimation.bounds
+//                imageView.center = CGPoint(x: controller.mAnimation.bounds.size.width  / 2,
+//                y: controller.mAnimation.bounds.size.height / 2)
+//                controller.mAnimation.addSubview(imageView)
             }
             if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
                 showLoadingDialog()
@@ -279,9 +282,11 @@ class Round1ViewController: UIViewController {
                 controller.didMove(toParent: self)
                 controller.view.backgroundColor = mPlayer2!.view.backgroundColor
                 let bluetoothGif = UIImage.gifImageWithName("well_done")
-                let imageView = UIImageView(image: bluetoothGif)
-                imageView.frame = controller.mAnimation.bounds
-                controller.mAnimation.addSubview(imageView)
+                controller.mAnimation.contentMode = .scaleAspectFit
+                controller.mAnimation.image = bluetoothGif
+//                let imageView = UIImageView(image: bluetoothGif)
+//                imageView.frame = controller.mAnimation.bounds
+//                controller.mAnimation.addSubview(imageView)
             }
             performSegue(withIdentifier: "toHighscoreInputDialog", sender: nil)
             return
@@ -736,6 +741,7 @@ class Round1ViewController: UIViewController {
                         let audioUrl = chosen["audioLabel"]["value"].stringValue
                         
                         //Check wheter it is an OGG(A) or MP3
+                        print(audioUrl)
                         if audioUrl.suffix(3) == "mp3" {
                         } else {
                             controller.mOgvPlayerView = OGVPlayerView()
@@ -939,13 +945,16 @@ class Round1ViewController: UIViewController {
         }
     }
     
-    @objc func mCheat() {
-        mPointsA += 380
-        mPointsB += 380
-        mPlayer1!.mScoreBar.progress =  CGFloat(mPointsA) / 380.0
-        mPlayer2!.mScoreBar.progress =  CGFloat(mPointsB) / 380.0
-        mPlayer1!.mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), mPointsA)
-        mPlayer2!.mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), mPointsB)
+    @objc func mCheat(_ sender: UIButton) {
+        if sender.tag == 0 {
+            mPointsA += 380
+            mPlayer1!.mScoreBar.progress =  CGFloat(mPointsA) / 380.0
+            mPlayer1!.mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), mPointsA)
+        } else {
+            mPointsB += 380
+            mPlayer2!.mScoreBar.progress =  CGFloat(mPointsB) / 380.0
+            mPlayer2!.mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), mPointsB)
+        }
     }
     
     override func viewDidLoad() {
@@ -971,13 +980,15 @@ class Round1ViewController: UIViewController {
         mPlayer2 = (children.last! as! ExteriorViewController)
         mPlayer1!.view.backgroundColor = UIColor(named: mPreferences.string(forKey: "PREF_PLAYER_1_THEME")!)!
         mPlayer2!.view.backgroundColor = UIColor(named: mPreferences.string(forKey: "PREF_PLAYER_2_THEME")!)!
-
+        
+        mPlayer1!.mYellowBtn.tag = 0
         mPlayer1!.mYellowBtn.addTarget(self, action: #selector(mCheat), for: .touchDown)
+        mPlayer1!.mYellowBtn.tag = 1
         mPlayer2!.mYellowBtn.addTarget(self, action: #selector(mCheat), for: .touchDown)
-
+        
         replaceFragment()
-//                mMaxTime = 10
-//                mSecs = 10
-//                mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        //                mMaxTime = 10
+        //                mSecs = 10
+        //                mTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
     }
 }

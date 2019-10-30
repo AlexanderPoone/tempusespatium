@@ -16,7 +16,7 @@ highscores = " Highscores";
 quit = " Deixar";
 
 articles_covered = "Articles coberts: ";
-learn_sub = "Click on the badge to revise now!";
+learn_sub = "Feu clic a l'etiqueta per revisar-la!";
 
 resume = " Reanudar";
 return_main_menu = " Tornar al menú principal";
@@ -24,7 +24,7 @@ topic_searcher_heading = "Cerca TOTS els temes!";
 loading = "Carregant, espereu…";
 enter_keyword = "Cerca";
 
-gameplay_language = "Idioma de preguntas: ";
+gameplay_language = "Idioma dels preguntes: ";
 any_topic = "Tema: ";
 
 highscores_enter_name = "{md_sentiment_very_satisfied} Congrats, you won!\nEnter your name:";
@@ -77,4 +77,4 @@ yes = "Sí";
 no = "No";
 
 customise_here = " Customise here (optional)";
-submit_and_play = " Submit and play!";
+submit_and_play = " Envia i juga!";

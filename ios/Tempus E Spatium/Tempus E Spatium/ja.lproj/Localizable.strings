@@ -72,7 +72,7 @@ learning_theme = "主题：";
 
 err_no_network = "游戏需要网络连线！";
 lbl_music = "音楽：\nSquirrel Monkey";
-really_quit = "你真的想离开吗？";
+really_quit = "本当にゲームを終了しますか？";
 yes = "はい";
 no = "いいえ";
 

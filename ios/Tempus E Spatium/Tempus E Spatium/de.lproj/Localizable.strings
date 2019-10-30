@@ -72,7 +72,7 @@ learning_theme = "Thema: ";
 
 err_no_network = "No té accés a Internet!";
 lbl_music = "Music:\nSquirrel Monkey";
-really_quit = "Do you really want to quit the game?";
+really_quit = "Möchten Sie das Spiel wirklich beenden?";
 yes = "Ja";
 no = "Nee";
 

@@ -41,11 +41,11 @@ pref_player_2_theme = "Tema de Jugador 2";
 pref_gameplay = "Juego";
 pref_difficulty = "Dificuldad";
 pref_difficulty_hard = "Difícil";
-pref_difficulty_hard_sub = "30 seconds for fill in the blanks, 10 for other types";
+pref_difficulty_hard_sub = "30 segundos para \"llenar los espacios\", 10 para otros tipos";
 pref_difficulty_insane = "LoC0";
-pref_difficulty_insane_sub = "20 seconds for fill in the blanks, 6 for other types";
+pref_difficulty_insane_sub = "20 segundos para \"llenar los espacios\", 6 para otros tipos";
 pref_difficulty_hysterical = "¡|-|y5t3r1c4l!";
-pref_difficulty_hysterical_sub = "18 seconds for fill in the blanks, 5 for other type";
+pref_difficulty_hysterical_sub = "18 segundos para \"llenar los espacios\", 5 para otros tipos";
 
 question_anagram = "Reassemble the letters.";
 question_anthem = "¿De qué país es este himno?";

@@ -27,7 +27,7 @@ enter_keyword = "Cerca";
 gameplay_language = "Idioma dels preguntes: ";
 any_topic = "Tema: ";
 
-highscores_enter_name = "{md_sentiment_very_satisfied} Congrats, you won!\nEnter your name:";
+highscores_enter_name = "{md_sentiment_very_satisfied} Enhorabona, heu guanyat! \ NEscriviu el vostre nom:";
 
 level = "Nivel %d";
 rules_tirade = "The project is named Tempus E Spatium (Latin for Time and Space, which is often prefixed by “lost in”) as the questions focus on history and geography. Quiz types include: Drag and drop the national flags to the right continent, listen to the national anthem and choose the correct flag, and complete the word. Despite the name of the app, the last type can be of any question type.\n\nThe questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he or she will lose 5 points.\n\nThe year range of the Date Game varies by difficulty, too (Hard: 20 years; Insane 50 years; Hysterical 100 years)!";
@@ -41,16 +41,17 @@ pref_player_2_theme = "Tema de Jugador 2";
 pref_gameplay = "Joc";
 pref_difficulty = "Dificultat";
 pref_difficulty_hard = "Dur";
-pref_difficulty_hard_sub = "30 seconds for fill in the blanks, 10 for other types";
+pref_difficulty_hard_sub = "30 segons per a \"fill in the blanks\", 10 per a altres tipus";
 pref_difficulty_insane = "BoIg";
-pref_difficulty_insane_sub = "20 seconds for fill in the blanks, 6 for other types";
-pref_difficulty_hysterical = "hYsTeRiCaL";
-pref_difficulty_hysterical_sub = "18 seconds for fill in the blanks, 5 for other type";
+pref_difficulty_insane_sub = "20 segons per a \"fill in the blanks\", 6 per a altres tipus";
+pref_difficulty_hysterical = "hIsTèRiC";
+pref_difficulty_hysterical_sub = "18 segons per a \"fill in the blanks\", 5 per a altres tipus";
 
 question_anagram = "Reassemble the letters.";
-question_anthem = "Which country does this anthem belong to?";
+question_anthem = "De quin país és aquest himne?";
 question_flags = "Choose the matching flag.";
-question_history = "When did the historical event %s take place?";
+question_history_1 = "Quan va succeir l'esdeveniment històric ";
+question_history_2 = " ?";
 
 bar_points = "Punts: %d";
 submit = " Envia!";

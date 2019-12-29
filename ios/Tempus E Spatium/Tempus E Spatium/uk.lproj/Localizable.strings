@@ -15,24 +15,24 @@ settings = " Параметри";
 highscores = " Хайскор";
 quit = " Вийти з гри";
 
-articles_covered = "Articles covered: ";
-learn_sub = "Click on the badge to revise now!";
+articles_covered = "Статті охоплені: ";
+learn_sub = "Клацніть на значку, щоб переглянути зараз!";
 
 resume = " Повернутися";
 return_main_menu = " Вийти до головного меню";
-topic_searcher_heading = "Search for ANY topic";
-loading = "Carregant, espereu…";
-enter_keyword = "Enter keyword to search for a theme!";
+topic_searcher_heading = "Шукайте БУДЬ-ЯКУ тему";
+loading = "Завантаження, будь ласка, зачекайте...";
+enter_keyword = "Введіть ключове слово для пошуку теми!";
 
 gameplay_language = "Мова гри: ";
 any_topic = "Тема: ";
 
-highscores_enter_name = "  Congrats, you won!\nEnter your name:";
+highscores_enter_name = "  З повагою, ви виграли!\nВведіть своє ім’я:";
 
-level = "Level %d";
+level = "Рівень %d";
 rules_tirade = "The project is named Tempus E Spatium (Latin for Time and Space, which is often prefixed by “lost in”) as the questions focus on history and geography. Quiz types include: Drag and drop the national flags to the right continent, listen to the national anthem and choose the correct flag, and complete the word. Despite the name of the app, the last type can be of any question type.\n\nThe questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he or she will lose 5 points.\n\nThe year range of the Date Game varies by difficulty, too (Hard: 20 years; Insane 50 years; Hysterical 100 years)!";
 
-pref_general = "General";
+pref_general = "Генеральний";
 pref_general_locale = "Мова UI";
 pref_version = "Версія";
 pref_player_1_theme = "Тема гравця 1";
@@ -44,13 +44,14 @@ pref_difficulty_hard = "Складна";
 pref_difficulty_hard_sub = "30 seconds for fill in the blanks, 10 for other types";
 pref_difficulty_insane = "БоЖеВіЛьНиЙ";
 pref_difficulty_insane_sub = "20 seconds for fill in the blanks, 6 for other types";
-pref_difficulty_hysterical = "hYsTeRiCaL";
-pref_difficulty_hysterical_sub = "18 seconds for fill in the blanks, 5 for other type";
+pref_difficulty_hysterical = "іСтЕрИчНиЙ";
+pref_difficulty_hysterical_sub = "18 seconds for fill in the blanks, 5 for other types";
 
 question_anagram = "Reassemble the letters.";
-question_anthem = "Which country does this anthem belong to?";
+question_anthem = "До якої країни належить цей гімн?";
 question_flags = "Choose the matching flag.";
-question_history = "When did the historical event %s take place?";
+question_history_1 = "Коли сталася історична подія ";
+question_history_2 = " ?";
 
 bar_points = "Балів: %d";
 submit = " Надіслати!";
@@ -60,13 +61,13 @@ b = "B. ";
 c = "C. ";
 d = "D. ";
 
-paused = " Game paused";
+paused = " Гра призупинена";
 
 simple_ime = "Simple IME";
 subtype_en_US = "English (US)";
 
 answer = "Рішення:";
-you_chose = "You chose:";
+you_chose = "Ви вибрали:";
 anthem_name = "Гімн назви:";
 learning_theme = "Тема: ";
 

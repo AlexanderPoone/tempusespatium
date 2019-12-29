@@ -52,6 +52,7 @@
 		4BA5803E234DA78D00BA6314 /* en_KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5803D234DA78D00BA6314 /* en_KeyboardViewController.swift */; };
 		4BA58040234DA7A900BA6314 /* fr_KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5803F234DA7A900BA6314 /* fr_KeyboardViewController.swift */; };
 		4BA58042234DA7CA00BA6314 /* es_KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA58041234DA7CA00BA6314 /* es_KeyboardViewController.swift */; };
+		4BC55C49237A67B70052B6F0 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC55C48237A67B70052B6F0 /* GameKit.framework */; };
 		4BFE5188234730A000A5574C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE5187234730A000A5574C /* AppDelegate.swift */; };
 		4BFE518A234730A000A5574C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE5189234730A000A5574C /* SceneDelegate.swift */; };
 		4BFE518F234730A000A5574C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BFE518D234730A000A5574C /* Main.storyboard */; };
@@ -138,6 +139,7 @@
 		4BA5803D234DA78D00BA6314 /* en_KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = en_KeyboardViewController.swift; sourceTree = "<group>"; };
 		4BA5803F234DA7A900BA6314 /* fr_KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fr_KeyboardViewController.swift; sourceTree = "<group>"; };
 		4BA58041234DA7CA00BA6314 /* es_KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = es_KeyboardViewController.swift; sourceTree = "<group>"; };
+		4BC55C48237A67B70052B6F0 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		4BFE51842347309F00A5574C /* Tempus E Spatium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tempus E Spatium.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BFE5187234730A000A5574C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BFE5189234730A000A5574C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8E5D7EA553906F65F9EC3FC /* Pods_Tempus_E_Spatium.framework in Frameworks */,
+				4BC55C49237A67B70052B6F0 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +191,7 @@
 		21BC775328B8BCAC7EE30B82 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4BC55C48237A67B70052B6F0 /* GameKit.framework */,
 				48E365537441B4C116B76BC6 /* Pods_Tempus_E_Spatium.framework */,
 				0DC481EB22D19F28E075D659 /* Pods_Tempus_E_Spatium_Tempus_E_SpatiumUITests.framework */,
 				784734A2352667DA723CCA69 /* Pods_Tempus_E_SpatiumTests.framework */,
@@ -827,16 +831,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 94RT5FA8WL;
 				INFOPLIST_FILE = "Tempus E Spatium/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tempusespatium.Tempus-E-Spatium";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "com.tempusespatium.Tempus-E-Spatium AppStore";
+				PROVISIONING_PROFILE = "97a3e5fd-cafe-42c1-b7b4-96dba0f46ffa";
+				PROVISIONING_PROFILE_SPECIFIER = "com.tempusespatium.Tempus-E-Spatium AppStore 1572949104";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -850,16 +856,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 94RT5FA8WL;
 				INFOPLIST_FILE = "Tempus E Spatium/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tempusespatium.Tempus-E-Spatium";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "com.tempusespatium.Tempus-E-Spatium AppStore";
+				PROVISIONING_PROFILE = "97a3e5fd-cafe-42c1-b7b4-96dba0f46ffa";
+				PROVISIONING_PROFILE_SPECIFIER = "com.tempusespatium.Tempus-E-Spatium AppStore 1572949104";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -883,6 +891,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tempusespatium.Tempus-E-SpatiumTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "97a3e5fd-cafe-42c1-b7b4-96dba0f46ffa";
+				PROVISIONING_PROFILE_SPECIFIER = "com.tempusespatium.Tempus-E-Spatium AppStore";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tempus E Spatium.app/Tempus E Spatium";
@@ -906,6 +916,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tempusespatium.Tempus-E-SpatiumTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "97a3e5fd-cafe-42c1-b7b4-96dba0f46ffa";
+				PROVISIONING_PROFILE_SPECIFIER = "com.tempusespatium.Tempus-E-Spatium AppStore";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tempus E Spatium.app/Tempus E Spatium";
@@ -927,6 +939,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tempusespatium.Tempus-E-SpatiumUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "97a3e5fd-cafe-42c1-b7b4-96dba0f46ffa";
+				PROVISIONING_PROFILE_SPECIFIER = "com.tempusespatium.Tempus-E-Spatium AppStore";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Tempus E Spatium";
@@ -948,6 +962,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tempusespatium.Tempus-E-SpatiumUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "97a3e5fd-cafe-42c1-b7b4-96dba0f46ffa";
+				PROVISIONING_PROFILE_SPECIFIER = "com.tempusespatium.Tempus-E-Spatium AppStore";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Tempus E Spatium";

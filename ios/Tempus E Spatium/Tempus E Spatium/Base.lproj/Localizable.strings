@@ -43,11 +43,11 @@ pref_player_2_theme = "Player 2 Theme";
 pref_gameplay = "Gameplay";
 pref_difficulty = "Difficulty";
 pref_difficulty_hard = "Hard";
-pref_difficulty_hard_sub = "60 seconds for fill in the blanks, 10 for other types";
+pref_difficulty_hard_sub = "30 seconds for fill in the blanks, 10 for other types";
 pref_difficulty_insane = "InSaNe";
-pref_difficulty_insane_sub = "40 seconds for fill in the blanks, 6 for other types";
+pref_difficulty_insane_sub = "20 seconds for fill in the blanks, 6 for other types";
 pref_difficulty_hysterical = "|-|y5t3r1c4l !";
-pref_difficulty_hysterical_sub = "36 seconds for fill in the blanks, 5 for other types";
+pref_difficulty_hysterical_sub = "18 seconds for fill in the blanks, 5 for other types";
 
 question_anagram = "Reassemble the letters.";
 question_anthem = "Which country does this anthem belong to?";

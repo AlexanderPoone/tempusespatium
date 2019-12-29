@@ -209,7 +209,7 @@ class ExteriorViewController: UIViewController { //, UIPickerViewDataSource, UIP
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        mYellowBtn.isHidden = true
         mScoreBar.progress = 0
         mScoreBar.stripesColor = UIColor(named: self.mPreferences.string(forKey: "PREF_PLAYER_1_THEME")!)!
         mScoreText.text = String(format: NSLocalizedString("bar_points", comment: ""), 0)

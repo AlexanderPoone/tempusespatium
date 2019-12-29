@@ -48,9 +48,10 @@ pref_difficulty_hysterical = "¡|-|y5t3r1c4l!";
 pref_difficulty_hysterical_sub = "18 seconds for fill in the blanks, 5 for other type";
 
 question_anagram = "Reassemble the letters.";
-question_anthem = "Which country does this anthem belong to?";
+question_anthem = "¿De qué país es este himno?";
 question_flags = "Choose the matching flag.";
-question_history = "When did the historical event %s take place?";
+question_history_1 = "¿Cuándo sucedió el acontecimiento histórico ";
+question_history_2 = " ?";
 
 bar_points = "Puntos: %d";
 submit = " ¡Enviar!";

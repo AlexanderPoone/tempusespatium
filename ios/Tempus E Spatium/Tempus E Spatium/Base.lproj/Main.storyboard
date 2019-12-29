@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bmh-AF-lHu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bmh-AF-lHu">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15508"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -508,14 +508,14 @@ Squirrel Monkey</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="lasciaChioPianga" id="Bdq-nk-dPM" customClass="HighscoresDialogTableViewCell" customModule="Tempus_E_Spatium" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="308" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="308" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bdq-nk-dPM" id="bq9-fI-va2">
-                                            <rect key="frame" x="0.0" y="0.0" width="308" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="308" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ArT-Pm-n1y">
-                                                    <rect key="frame" x="16" y="11" width="30" height="21.5"/>
+                                                    <rect key="frame" x="16" y="11" width="30" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="BTs-SH-6SC"/>
                                                     </constraints>
@@ -524,13 +524,13 @@ Squirrel Monkey</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joe Bloggs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzs-el-JPx">
-                                                    <rect key="frame" x="49" y="11" width="85" height="21.5"/>
+                                                    <rect key="frame" x="49" y="11" width="85" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="Sienna"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1800" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiW-hP-YSc">
-                                                    <rect key="frame" x="187" y="11" width="39" height="21.5"/>
+                                                    <rect key="frame" x="187" y="11" width="39" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="Sienna"/>
                                                     <nil key="highlightedColor"/>
@@ -601,7 +601,7 @@ Squirrel Monkey</string>
             <objects>
                 <viewController id="dbP-aI-9J0" customClass="RulesDialogViewController" customModule="Tempus_E_Spatium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cZb-aK-r9X">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="426"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rules" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpE-mA-1Eb">
@@ -614,7 +614,7 @@ Squirrel Monkey</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorum ipsum dolor sit" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28K-gl-nR0">
-                                <rect key="frame" x="4" y="69" width="406" height="739"/>
+                                <rect key="frame" x="4" y="69" width="406" height="357"/>
                                 <fontDescription key="fontDescription" name="SkylarkITCTT" family="Skylark ITC TT" pointSize="24"/>
                                 <color key="textColor" name="PapayaWhip"/>
                                 <nil key="highlightedColor"/>
@@ -1167,7 +1167,16 @@ Squirrel Monkey</string>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DN6-aj-WIl">
                                 <rect key="frame" x="184" y="832" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Yva-ul-TWQ"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="b0n-Py-owD" kind="unwind" unwindAction="unwindToSelectionViewControllerWithSegue:" id="mhl-1F-oW6"/>
                                 </connections>
@@ -1178,7 +1187,7 @@ Squirrel Monkey</string>
                             <constraint firstItem="DN6-aj-WIl" firstAttribute="centerX" secondItem="Qhv-Hy-pCc" secondAttribute="centerX" id="6jO-0P-ELc"/>
                             <constraint firstItem="Qhv-Hy-pCc" firstAttribute="top" secondItem="3ui-bL-1Hb" secondAttribute="top" id="BCG-QI-vXn"/>
                             <constraint firstItem="Qhv-Hy-pCc" firstAttribute="leading" secondItem="3ui-bL-1Hb" secondAttribute="leading" id="Ue9-rh-f64"/>
-                            <constraint firstItem="DN6-aj-WIl" firstAttribute="top" secondItem="Qhv-Hy-pCc" secondAttribute="bottom" constant="8" id="oKd-he-sJs"/>
+                            <constraint firstItem="Qhv-Hy-pCc" firstAttribute="bottom" secondItem="DN6-aj-WIl" secondAttribute="top" constant="-8" id="oKd-he-sJs"/>
                             <constraint firstItem="Qhv-Hy-pCc" firstAttribute="centerX" secondItem="KYw-ZH-daW" secondAttribute="centerX" id="sVb-7Z-qkb"/>
                             <constraint firstItem="DN6-aj-WIl" firstAttribute="bottom" secondItem="3ui-bL-1Hb" secondAttribute="bottom" id="z6q-Cf-pMs"/>
                         </constraints>
@@ -3161,15 +3170,15 @@ Squirrel Monkey</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B02-pl-fxz">
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B02-pl-fxz">
                                 <rect key="frame" x="4" y="182" width="252" height="646"/>
                                 <color key="backgroundColor" name="ForestGreen"/>
                             </pickerView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VSa-EI-fSQ">
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VSa-EI-fSQ">
                                 <rect key="frame" x="260" y="182" width="150" height="646"/>
                                 <color key="backgroundColor" name="AndroidGreen"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="UdA-US-oUc"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="UdA-US-oUc"/>
                                 </constraints>
                             </pickerView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yXE-Ss-xxR">
@@ -3317,7 +3326,7 @@ Squirrel Monkey</string>
             <color red="0.8666666666666667" green="0.28235294117647058" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="danger">
-            <color red="0.86299997568130493" green="0.20800000429153442" blue="0.27099999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.86274509803921573" green="0.20784313725490197" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="info">
             <color red="0.090000003576278687" green="0.63499999046325684" blue="0.72200000286102295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3334,7 +3343,7 @@ Squirrel Monkey</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7qv-2q-bdO"/>
-        <segue reference="u7i-Pf-mtY"/>
+        <segue reference="hTS-oN-Biy"/>
         <segue reference="yhJ-Ni-QFe"/>
         <segue reference="K62-qO-rxu"/>
     </inferredMetricsTieBreakers>

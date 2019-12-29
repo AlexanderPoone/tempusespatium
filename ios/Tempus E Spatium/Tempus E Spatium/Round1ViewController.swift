@@ -12,6 +12,7 @@ import Alamofire
 import SwiftyJSON
 import SVGKit
 import OGVKit
+import GameKit
 
 class Round1ViewController: UIViewController {
     
@@ -303,9 +304,11 @@ class Round1ViewController: UIViewController {
                 controller.didMove(toParent: self)
                 controller.view.backgroundColor = mPlayer1!.view.backgroundColor
                 let bluetoothGif = UIImage.gifImageWithName("well_done")
-                let imageView = UIImageView(image: bluetoothGif)
-                imageView.frame = controller.mAnimation.bounds
-                controller.mAnimation.addSubview(imageView)
+                controller.mAnimation.contentMode = .scaleAspectFit
+                controller.mAnimation.image = bluetoothGif
+//                let imageView = UIImageView(image: bluetoothGif)
+//                imageView.frame = controller.mAnimation.bounds
+//                controller.mAnimation.addSubview(imageView)
             }
             if let view2 = mPlayer2!.mFragmentContainer.subviews.first {
                 showLoadingDialog()
@@ -320,8 +323,10 @@ class Round1ViewController: UIViewController {
                 controller.view.backgroundColor = mPlayer2!.view.backgroundColor
                 let bluetoothGif = UIImage.gifImageWithName("player_2_wins")
                 let imageView = UIImageView(image: bluetoothGif)
-                imageView.frame = controller.mAnimation.bounds
-                controller.mAnimation.addSubview(imageView)
+                controller.mAnimation.contentMode = .scaleAspectFit
+                controller.mAnimation.image = bluetoothGif
+//                imageView.frame = controller.mAnimation.bounds
+//                controller.mAnimation.addSubview(imageView)
             }
             performSegue(withIdentifier: "toHighscoreInputDialog", sender: nil)
             return
@@ -983,7 +988,7 @@ class Round1ViewController: UIViewController {
         
         mPlayer1!.mYellowBtn.tag = 0
         mPlayer1!.mYellowBtn.addTarget(self, action: #selector(mCheat), for: .touchDown)
-        mPlayer1!.mYellowBtn.tag = 1
+        mPlayer2!.mYellowBtn.tag = 1
         mPlayer2!.mYellowBtn.addTarget(self, action: #selector(mCheat), for: .touchDown)
         
         replaceFragment()

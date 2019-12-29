@@ -9,19 +9,19 @@
 app_name = "时．地．人（一切随机）";
 
 play = " スタート！";
-rules = " 规则";
-learn = " 学习";
-settings = " 设定";
+rules = " 規則";
+learn = " 勉強";
+settings = " 設定";
 highscores = " 高分榜";
 quit = " 終了";
 
 articles_covered = "涵盖条目：";
 learn_sub = "按字立即温习！";
 
-resume = " 继续游戏";
+resume = " ゲームを続ける";
 return_main_menu = " 返回主目录";
 topic_searcher_heading = "尽管搜索*任何*题目！";
-loading = "载入中，请稍候…";
+loading = "読み込み中。。。待って下さい";
 enter_keyword = "输入关键字搜索题目！";
 
 gameplay_language = "题目语言：";
@@ -29,52 +29,54 @@ any_topic = "任何题目";
 
 highscores_enter_name = " 恭喜，你赢了！\n输入你的名称：";
 
-level = "关卡 %d";
+level = "レベル %d";
 rules_tirade = "The project is named Tempus E Spatium (Latin for Time and Space, which is often prefixed by “lost in”) as the questions focus on history and geography. Quiz types include: Drag and drop the national flags to the right continent, listen to the national anthem and choose the correct flag, and complete the word. Despite the name of the app, the last type can be of any question type.\n\nThe questions are timed five seconds each (three on hard difficulty). If a player did not answer in time, he or she will lose 5 points.\n\nThe year range of the Date Game varies by difficulty, too (Hard: 20 years; Insane 50 years; Hysterical 100 years)!";
 
 pref_general = "一般设定";
 pref_general_locale = "言語";
 pref_version = "バージョン";
-pref_player_1_theme = "玩家一主题";
-pref_player_2_theme = "玩家二主题";
+pref_player_1_theme = "プレイヤー1テーマ";
+pref_player_2_theme = "プレイヤー2テーマ";
 
-pref_gameplay = "游戏设定";
-pref_difficulty = "难度";
+pref_gameplay = "ゲーム設定";
+pref_difficulty = "難易度";
 pref_difficulty_hard = "難い";
-pref_difficulty_hard_sub = "填充题60秒，其他题型10秒";
+pref_difficulty_hard_sub = "空白の質問を30秒間、その他の質問を10秒間入力します";
 pref_difficulty_insane = "狂しい";
-pref_difficulty_insane_sub = "填充题40秒，其他题型6秒";
-pref_difficulty_hysterical = "集体歇斯底里！";
-pref_difficulty_hysterical_sub = "填充题36秒，其他题型5秒";
+pref_difficulty_insane_sub = "空白の質問を20秒間、その他の質問を6秒間入力します";
+pref_difficulty_hysterical = "集団ヒステリー！";
+pref_difficulty_hysterical_sub = "空白の質問を18秒間、その他の質問を5秒間入力します";
 
 question_anagram = "Reassemble the letters.";
-question_anthem = "这是哪国家的国歌？";
+question_anthem = "ここはどの国の国歌？";
 question_flags = "Choose the matching flag.";
-question_history = "历史事件 %s 在何年何月发生？";
+//question_history = "歷史事件 %s 在何年何月發生？";
+question_history_1 = "歴史的出来事 ";
+question_history_2 = "は何年何月発生しましたか？";
 
-bar_points = "分数：%d";
-submit = " 提交！";
-reset = " 重设";
+bar_points = "得点：%d";
+submit = " 提出！";
+reset = " リセット";
 a = "A. ";
 b = "B. ";
 c = "C. ";
 d = "D. ";
 
-paused = " 游戏暂停";
+paused = " ゲームが一時停止しました";
 
 simple_ime = "Simple IME";
 subtype_en_US = "English (US)";
 
-answer = "答案：";
-you_chose = "你选了：";
+answer = "答え：";
+you_chose = "あなたは選びました：";
 anthem_name = "曲名：";
-learning_theme = "主题：";
+learning_theme = "テーマ：";
 
-err_no_network = "游戏需要网络连线！";
+err_no_network = "ゲームにはインターネット接続が必要です！";
 lbl_music = "音楽：\nSquirrel Monkey";
 really_quit = "本当にゲームを終了しますか？";
 yes = "はい";
 no = "いいえ";
 
-customise_here = " 按此自订（可略过）";
-submit_and_play = " 提交并开始游戏！";
+customise_here = " カスタマイズするにはここをクリック（必要なし）";
+submit_and_play = " 提交并ゲームを起動！";

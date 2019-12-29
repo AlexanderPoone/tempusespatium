@@ -41,16 +41,18 @@ pref_player_2_theme = "玩家二主題";
 pref_gameplay = "遊戲設定";
 pref_difficulty = "難度";
 pref_difficulty_hard = "難";
-pref_difficulty_hard_sub = "填充題60秒，其他題型10秒";
+pref_difficulty_hard_sub = "填充題30秒，其他題型10秒";
 pref_difficulty_insane = "瘋狂";
-pref_difficulty_insane_sub = "填充題40秒，其他題型6秒";
+pref_difficulty_insane_sub = "填充題20秒，其他題型6秒";
 pref_difficulty_hysterical = "集體歇斯底里！";
-pref_difficulty_hysterical_sub = "填充題36秒，其他題型5秒";
+pref_difficulty_hysterical_sub = "填充題18秒，其他題型5秒";
 
 question_anagram = "Reassemble the letters.";
 question_anthem = "這是哪國家的國歌？";
 question_flags = "Choose the matching flag.";
-question_history = "歷史事件 %s 在何年何月發生？";
+//question_history = "歷史事件 %s 在何年何月發生？";
+question_history_1 = "歷史事件";
+question_history_2 = "在何年何月發生？";
 
 bar_points = "分數：%d";
 submit = " 提交！";

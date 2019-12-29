@@ -96,7 +96,7 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
         //        request.testDevices = ["f040a2fc154731455d1ae667f42eb08c"]
         mAdView2.adSize = GADAdSize(size: CGSize(width: 300, height: 250), flags: 0)
         mAdView2.load(request2)
-                
+        
         
         let langs:[String:[String]] = ["繁體中文": ["Chinese (Authentic)", "TW", "zh-Hant", "請重新開啟應用程式。", "確定"], "简体中文": ["Chinese (Simplified)", "CN", "zh-Hans", "请重新开启应用程式。", "确定"], "English (UK)": ["English", "GB", "en", "Please relaunch the app.", "OK"], "català": ["Catalan", "AD", "ca", "Reinicieu l'aplicació per favor.", "D'acord"], "français": ["French","FR", "fr", "Priez de redémarrer l'appli.", "OK"], "Deutsch": ["German", "DE", "de", "Wieder öffnet die Applikation bitte.", "OK"], "español": ["Spanish","ES", "es", "Reinicie la aplicación por favor.", "Aceptar"], "日本語": ["Japanese", "JP", "ja", "アプリを再起動して下さい。", "OK"], "Українська": ["Ukrainian","UA", "uk", "Відкрий додаток знову, будь ласка.", "OK"]]
         
@@ -104,6 +104,30 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
             for x in langs.keys {
                 if langs[x]![2] == savedLocale {
                     self.mLocaleSubtitle.text = x
+                }
+            }
+        } else {
+            let reference = (UserDefaults.standard.array(forKey: "AppleLanguages") as! [String])[0]
+            if reference.contains("Hant") {
+                self.mLocaleSubtitle.text = "繁體中文"
+            } else if reference.contains("Hans") {
+                self.mLocaleSubtitle.text = "简体中文"
+            } else {
+                switch reference {
+                case "fr":
+                    self.mLocaleSubtitle.text = "français"
+                case "ca":
+                    self.mLocaleSubtitle.text = "català"
+                case "de":
+                    self.mLocaleSubtitle.text = "Deutsch"
+                case "es":
+                    self.mLocaleSubtitle.text = "español"
+                case "ja":
+                    self.mLocaleSubtitle.text = "日本語"
+                case "uk":
+                    self.mLocaleSubtitle.text = "Українська"
+                default:
+                    self.mLocaleSubtitle.text = "English (UK)"
                 }
             }
         }
@@ -128,7 +152,7 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
             
             self.mPreferences.set(langs[item]![2], forKey: "PREF_LOCALE")
             self.mPreferences.synchronize()
-
+            
             UserDefaults.standard.set([langs[item]![2]], forKey: "AppleLanguages")     //zh-Hant-HK
             UserDefaults.standard.synchronize()
             
@@ -197,12 +221,12 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
             cell.mSubtitle.text = item
             
             cell.mFlag.backgroundColor = UIColor(named: item)!
-            self.mPreferences.set(item, forKey: "PREF_PLAYER_1_THEME")
-            self.mPreferences.synchronize()
         }
         
         mPlayer1ThemeDropDown!.selectionAction = { [unowned self] (index: Int, item: String) in
             self.mPlayer1ThemeSubtitle.text = item
+            self.mPreferences.set(item, forKey: "PREF_PLAYER_1_THEME")
+            self.mPreferences.synchronize()
         }
         
         mPlayer1ThemeDropDown!.bottomOffset = CGPoint(x: 0, y:(mPlayer1ThemeDropDown!.anchorView!.plainView.bounds.height))
@@ -227,12 +251,12 @@ class PrefsTableViewController: UITableViewController, GADBannerViewDelegate {
             cell.mSubtitle.text = item
             
             cell.mFlag.backgroundColor = UIColor(named: item)!
-            self.mPreferences.set(item, forKey: "PREF_PLAYER_2_THEME")
-            self.mPreferences.synchronize()
         }
         
         mPlayer2ThemeDropDown!.selectionAction = { [unowned self] (index: Int, item: String) in
             self.mPlayer2ThemeSubtitle.text = item
+            self.mPreferences.set(item, forKey: "PREF_PLAYER_2_THEME")
+            self.mPreferences.synchronize()
         }
         
         mPlayer2ThemeDropDown!.bottomOffset = CGPoint(x: 0, y:(mPlayer2ThemeDropDown!.anchorView!.plainView.bounds.height))

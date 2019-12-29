@@ -41,16 +41,17 @@ pref_player_2_theme = "Tema de Jugador 2";
 pref_gameplay = "Spiel";
 pref_difficulty = "Schwierigkeit";
 pref_difficulty_hard = "ScHwEr";
-pref_difficulty_hard_sub = "30 seconds for fill in the blanks, 10 for other types";
+pref_difficulty_hard_sub = "30 Sekunden für „Füllen die Lücken“, 10 für andere Typen";
 pref_difficulty_insane = "BoIg";
-pref_difficulty_insane_sub = "20 seconds for fill in the blanks, 6 for other types";
+pref_difficulty_insane_sub = "20 Sekunden für „Füllen die Lücken“, 6 für andere Typen";
 pref_difficulty_hysterical = "hYsTeRiCaL";
-pref_difficulty_hysterical_sub = "18 seconds for fill in the blanks, 5 for other type";
+pref_difficulty_hysterical_sub = "18 Sekunden für „Füllen die Lücken“, 5 für andere Typen";
 
 question_anagram = "Reassemble the letters.";
-question_anthem = "Which country does this anthem belong to?";
+question_anthem = "Zu welchem Land gehört diese Hymne?";
 question_flags = "Choose the matching flag.";
-question_history = "When did the historical event %s take place?";
+question_history_1 = "Wann fand das historische Ereignis ";
+question_history_2 = " statt?";
 
 bar_points = "Punkte: %d";
 submit = " Senden!";

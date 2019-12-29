@@ -50,7 +50,9 @@ pref_difficulty_hysterical_sub = "18 seconds pour le jeu de choix multiples, 5 p
 question_anagram = "Reassemble the letters.";
 question_anthem = "À quel pays l'hymne appartient ?";
 question_flags = "Choose the matching flag.";
-question_history = "Quand s'est passé l'évènement %s ?";
+//question_history = "Quand s'est passé l'évènement %s ?";
+question_history_1 = "Quand s'est passé l'évènement historique ";
+question_history_2 = " ?";
 
 bar_points = "Points: %d";
 submit = " Envoyer !";

@@ -97,6 +97,9 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
         }
     }
     
+    //TODO
+    private var mArticlesIncluded:[String] = []
+    //TODO
     
     @IBOutlet weak var mLocaleLbl: UILabel!
     
@@ -128,6 +131,8 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
     
     private var mGameplayLanguage:String?
     
+    private var mLatch = 0
+    
     //    func textTagCollectionView(_ textTagCollectionView: TTGTextTagCollectionView!, updateContentSize contentSize: CGSize) {
     //
     //    }
@@ -141,7 +146,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
     //
     //    }
     
-    func english() {
+    private func english() {
         mTopicAutocomplete.filterStrings([])
         self.mTopics.removeAll(keepingCapacity: true)
         
@@ -209,7 +214,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
         }
     }
     
-    func catala() {
+    private func catala() {
         mTopicAutocomplete.filterStrings([])
         self.mTopics.removeAll(keepingCapacity: true)
         
@@ -221,15 +226,12 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                 case .success(let value):
                     print("asdfsuccess")
                     do {
+                        // Skip "Usuari"
+                        
                         let document = try ONOXMLDocument(data: response.data)
-                        document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[1]/a") { (element, _, _) in
-                            
+                        document.enumerateElements(withXPath: "//*[@id=\"mw-subcategories\"]/div/div/div/ul/li/div/div[1]/a") { (element, _, _) in
                             var ele:String = element.stringValue!
                             ele.removingRegexMatches("Wikipedia:(WikiProject )?")
-                            ele.removingRegexMatches("/(Popular|Most-viewed|Favourite) pages")
-                            ele.removingRegexMatches("/(Popular|Article hits)")
-                            ele.removingRegexMatches("( task force| work group)")
-                            ele.removingRegexMatches("Taskforces/(BPH/)?")
                             self.mTopics[ele.replacingOccurrences(of: "/", with: " > ")] = (element.value(forAttribute: "href") as! String)
                             
                         }
@@ -241,8 +243,8 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                         self.mTopicAutocomplete.itemSelectionHandler = { filteredResults, itemPosition in
                             let item = filteredResults[itemPosition]
                             self.mTopicAutocomplete.text = item.title
-                            print("https://en.wikipedia.org\(self.mTopics[item.title]!)")
-                            AF.request("https://en.wikipedia.org\(self.mTopics[item.title]!)")
+                            print("https://ca.wikipedia.org\(self.mTopics[item.title]!)")
+                            AF.request("https://ca.wikipedia.org\(self.mTopics[item.title]!)")
                                 .validate(statusCode: 200..<300)
                                 //            .validate(contentType: ["application/json"])
                                 .responseData { response in
@@ -277,7 +279,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
         }
     }
     
-    func francais() {
+    private func francais() {
         mTopicAutocomplete.filterStrings([])
         self.mTopics.removeAll(keepingCapacity: true)
         
@@ -307,8 +309,8 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                         self.mTopicAutocomplete.itemSelectionHandler = { filteredResults, itemPosition in
                             let item = filteredResults[itemPosition]
                             self.mTopicAutocomplete.text = item.title
-                            print("https://en.wikipedia.org\(self.mTopics[item.title]!)")
-                            AF.request("https://en.wikipedia.org\(self.mTopics[item.title]!)")
+                            print("https://fr.wikipedia.org\(self.mTopics[item.title]!)")
+                            AF.request("https://fr.wikipedia.org\(self.mTopics[item.title]!)")
                                 .validate(statusCode: 200..<300)
                                 //            .validate(contentType: ["application/json"])
                                 .responseData { response in
@@ -318,6 +320,8 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                                         var articlesIncluded:[String] = []
                                         do {
                                             let document = try ONOXMLDocument(data: response.data)
+                                            
+                                            //Strip "Discussion:"
                                             document.enumerateElements(withXPath: "//*[@id='mw-pages']/div[2]/div/div/ul/li/a") { (element, _, _) in
                                                 articlesIncluded.append(element.stringValue!)
                                             }
@@ -343,7 +347,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
         }
     }
     
-    func espanol() {
+    private func espanol() {
         mTopicAutocomplete.filterStrings([])
         self.mTopics.removeAll(keepingCapacity: true)
         
@@ -372,8 +376,8 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                         self.mTopicAutocomplete.itemSelectionHandler = { filteredResults, itemPosition in
                             let item = filteredResults[itemPosition]
                             self.mTopicAutocomplete.text = item.title
-                            print("https://en.wikipedia.org\(self.mTopics[item.title]!)")
-                            AF.request("https://en.wikipedia.org\(self.mTopics[item.title]!)")
+                            print("https://es.wikipedia.org\(self.mTopics[item.title]!)")
+                            AF.request("https://es.wikipedia.org\(self.mTopics[item.title]!)")
                                 .validate(statusCode: 200..<300)
                                 //            .validate(contentType: ["application/json"])
                                 .responseData { response in
@@ -383,7 +387,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                                         var articlesIncluded:[String] = []
                                         do {
                                             let document = try ONOXMLDocument(data: response.data)
-                                            document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[2]/a") { (element, _, _) in
+                                            document.enumerateElements(withXPath: "//*[@id=\"mw-subcategories\"]/div/ul/li/div/div/a") { (element, _, _) in
                                                 articlesIncluded.append(element.stringValue!)
                                             }
                                         } catch {
@@ -408,30 +412,43 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
         }
     }
     
-    func deutsch() {
+    private func deutsch2() {
+        if mLatch == 2 {
+            mLatch = 0
+            // Propagate list
+            print(mArticlesIncluded)
+            self.mTagsView.removeAllTags()
+            self.mTagsView.addTags(mArticlesIncluded)
+        }
+    }
+    
+    private func deutsch(_ url:String, _ xpath:String) {
         mTopicAutocomplete.filterStrings([])
         self.mTopics.removeAll(keepingCapacity: true)
         
-        AF.request("https://en.wikipedia.org/wiki/Wikipedia:Lists_of_popular_pages_by_WikiProject")
+        AF.request(url)
             .validate(statusCode: 200..<300)
-            //            .validate(contentType: ["application/json"])
             .responseData { response in
                 switch response.result {
                 case .success(let value):
+                    
                     print("asdfsuccess")
                     do {
                         let document = try ONOXMLDocument(data: response.data)
-                        document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[1]/a") { (element, _, _) in
+                        document.enumerateElements(withXPath: xpath) { (element, _, _) in
+                            
+                            //TODO: b i
                             
                             var ele:String = element.stringValue!
-                            ele.removingRegexMatches("Wikipedia:(WikiProject )?")
-                            ele.removingRegexMatches("/(Popular|Most-viewed|Favourite) pages")
-                            ele.removingRegexMatches("/(Popular|Article hits)")
-                            ele.removingRegexMatches("( task force| work group)")
-                            ele.removingRegexMatches("Taskforces/(BPH/)?")
-                            self.mTopics[ele.replacingOccurrences(of: "/", with: " > ")] = (element.value(forAttribute: "href") as! String)
+                            ele.removingRegexMatches("^ ")
+                            self.mTopics[ele] = (element.value(forAttribute: "href") as! String)
                             
                         }
+                        
+                        //TODO
+                        self.mLatch += 1
+                        self.deutsch2()
+                        //TODO
                         
                         let keys = Array(self.mTopics.keys)
                         print(keys)
@@ -440,8 +457,8 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                         self.mTopicAutocomplete.itemSelectionHandler = { filteredResults, itemPosition in
                             let item = filteredResults[itemPosition]
                             self.mTopicAutocomplete.text = item.title
-                            print("https://en.wikipedia.org\(self.mTopics[item.title]!)")
-                            AF.request("https://en.wikipedia.org\(self.mTopics[item.title]!)")
+                            print("https://de.wikipedia.org\(self.mTopics[item.title]!)")
+                            AF.request("https://de.wikipedia.org\(self.mTopics[item.title]!)")
                                 .validate(statusCode: 200..<300)
                                 //            .validate(contentType: ["application/json"])
                                 .responseData { response in
@@ -451,7 +468,11 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                                         var articlesIncluded:[String] = []
                                         do {
                                             let document = try ONOXMLDocument(data: response.data)
-                                            document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[2]/a") { (element, _, _) in
+                                            
+                                            //                                                    mArts.put(test.item(i).getTextContent().replaceFirst("(Categoría )?[Dd]iscusión:", ""), "https://es.wikipedia.org" + test.item(i).getAttributes().getNamedItem("href").getTextContent().replaceFirst("(Categor%C3%ADa_)?[Dd]iscusi%C3%B3n:", ""));
+
+                                            
+                                            document.enumerateElements(withXPath: xpath) { (element, _, _) in
                                                 articlesIncluded.append(element.stringValue!)
                                             }
                                         } catch {
@@ -476,30 +497,43 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
         }
     }
     
-    func ukraiynska() {
+    private func ukrainyska2() {
+        if mLatch == 2 {
+            mLatch = 0
+            // Propagate list
+            print(mArticlesIncluded)
+            self.mTagsView.removeAllTags()
+            self.mTagsView.addTags(mArticlesIncluded)
+        }
+    }
+    
+    private func ukraiynska(_ url:String, _ xpath:String) {
         mTopicAutocomplete.filterStrings([])
         self.mTopics.removeAll(keepingCapacity: true)
         
-        AF.request("https://en.wikipedia.org/wiki/Wikipedia:Lists_of_popular_pages_by_WikiProject")
+        AF.request(url)
             .validate(statusCode: 200..<300)
-            //            .validate(contentType: ["application/json"])
             .responseData { response in
                 switch response.result {
                 case .success(let value):
                     print("asdfsuccess")
                     do {
                         let document = try ONOXMLDocument(data: response.data)
-                        document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[1]/a") { (element, _, _) in
+                        document.enumerateElements(withXPath: xpath) { (element, _, _) in
+                            
+                            //TODO: b i
+                            //Skip "Інш"
                             
                             var ele:String = element.stringValue!
-                            ele.removingRegexMatches("Wikipedia:(WikiProject )?")
-                            ele.removingRegexMatches("/(Popular|Most-viewed|Favourite) pages")
-                            ele.removingRegexMatches("/(Popular|Article hits)")
-                            ele.removingRegexMatches("( task force| work group)")
-                            ele.removingRegexMatches("Taskforces/(BPH/)?")
+                            ele.removingRegexMatches("^ ")
                             self.mTopics[ele.replacingOccurrences(of: "/", with: " > ")] = (element.value(forAttribute: "href") as! String)
                             
                         }
+                        
+                        //TODO
+                        self.mLatch += 1
+                        self.ukrainyska2()
+                        //TODO
                         
                         let keys = Array(self.mTopics.keys)
                         print(keys)
@@ -508,8 +542,8 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                         self.mTopicAutocomplete.itemSelectionHandler = { filteredResults, itemPosition in
                             let item = filteredResults[itemPosition]
                             self.mTopicAutocomplete.text = item.title
-                            print("https://en.wikipedia.org\(self.mTopics[item.title]!)")
-                            AF.request("https://en.wikipedia.org\(self.mTopics[item.title]!)")
+                            print("https://uk.wikipedia.org\(self.mTopics[item.title]!)")
+                            AF.request("https://uk.wikipedia.org\(self.mTopics[item.title]!)")
                                 .validate(statusCode: 200..<300)
                                 //            .validate(contentType: ["application/json"])
                                 .responseData { response in
@@ -519,7 +553,7 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                                         var articlesIncluded:[String] = []
                                         do {
                                             let document = try ONOXMLDocument(data: response.data)
-                                            document.enumerateElements(withXPath: "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td[2]/a") { (element, _, _) in
+                                            document.enumerateElements(withXPath: xpath) { (element, _, _) in
                                                 articlesIncluded.append(element.stringValue!)
                                             }
                                         } catch {
@@ -547,8 +581,6 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
     @objc func mShowDropDown(tapGestureRecognizer:UITapGestureRecognizer) {
         mLocaleDropDown!.show()
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -621,13 +653,15 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
             case "AD":
                 self.catala()
             case "DE":
-                self.deutsch()
+                self.deutsch("https://de.wikipedia.org/wiki/Wikipedia:Exzellente_Artikel", "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/p")
+                self.deutsch("https://de.wikipedia.org/wiki/Wikipedia:Lesenswerte_Artikel", "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/p[b/text()=\"%s\"]/a[not(.//img)]")
             case "ES":
                 self.espanol()
             case "FR":
                 self.francais()
             case "UA":
-                self.ukraiynska()
+                self.ukraiynska("https://uk.wikipedia.org/wiki/%D0%92%D1%96%D0%BA%D1%96%D0%BF%D0%B5%D0%B4%D1%96%D1%8F:%D0%94%D0%BE%D0%B1%D1%80%D1%96_%D1%81%D1%82%D0%B0%D1%82%D1%82%D1%96", "//*[@id=\"mw-content-text\"]/div/table[2]/tbody/tr[2]/td/ul//li")
+                self.ukraiynska("https://uk.wikipedia.org/wiki/%D0%92%D1%96%D0%BA%D1%96%D0%BF%D0%B5%D0%B4%D1%96%D1%8F:%D0%92%D0%B8%D0%B1%D1%80%D0%B0%D0%BD%D1%96_%D1%81%D1%82%D0%B0%D1%82%D1%82%D1%96", "//*[@id=\"mw-content-text\"]/div/table[2]/tr[2]/td/ul//li[b/text()=\("TODO")]/a")
             default:
                 break
             }
@@ -694,7 +728,8 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                 let iso = langs[item]![1]
                 let flag = Flag(countryCode: iso)!
                 self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
-                deutsch()
+                deutsch("https://de.wikipedia.org/wiki/Wikipedia:Exzellente_Artikel", "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/p")
+                deutsch("https://de.wikipedia.org/wiki/Wikipedia:Lesenswerte_Artikel", "//*[@id=\"mw-content-text\"]/div/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/p[b/text()=\"%s\"]/a[not(.//img)]")
             case "uk":
                 mGameplayLanguage = "uk"
                 let item = "Українська"
@@ -703,7 +738,8 @@ class TopicSearcherViewController: UIViewController, TTGTextTagCollectionViewDel
                 let iso = langs[item]![1]
                 let flag = Flag(countryCode: iso)!
                 self.mLocaleCurrentSelection.mFlag.image = flag.originalImage
-                ukraiynska()
+                ukraiynska("https://uk.wikipedia.org/wiki/%D0%92%D1%96%D0%BA%D1%96%D0%BF%D0%B5%D0%B4%D1%96%D1%8F:%D0%94%D0%BE%D0%B1%D1%80%D1%96_%D1%81%D1%82%D0%B0%D1%82%D1%82%D1%96", "//*[@id=\"mw-content-text\"]/div/table[2]/tbody/tr[2]/td/ul//li")
+                ukraiynska("https://uk.wikipedia.org/wiki/%D0%92%D1%96%D0%BA%D1%96%D0%BF%D0%B5%D0%B4%D1%96%D1%8F:%D0%92%D0%B8%D0%B1%D1%80%D0%B0%D0%BD%D1%96_%D1%81%D1%82%D0%B0%D1%82%D1%82%D1%96", "//*[@id=\"mw-content-text\"]/div/table[2]/tr[2]/td/ul//li[b/text()=\("TODO")]/a")
             default:
                 mGameplayLanguage = "en"
                 let item = "English"

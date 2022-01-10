@@ -1,5 +1,12 @@
 # This repo is being refactored
 
+TODOs:
+* Rebranding
+* UI Overhaul
+* Setting up for a more unified experience
+
+------------------------------
+
 Tempus E Spatium (pronounced _TEM-poo-se-SPA-ti-oom_) is _Latin for space and time_. It is an edutainment app for adult learners by exploiting the Semantic Web.
 
 [README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)

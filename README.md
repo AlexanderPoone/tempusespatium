@@ -4,6 +4,7 @@ TODOs:
 * Rebranding
 * UI Overhaul
 * Setting up for a more unified experience
+* Algorithm Overhaul (add topic modelling)
 
 ------------------------------
 

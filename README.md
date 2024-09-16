@@ -1,9 +1,10 @@
 # This repo is being revamped
+[Podfile](ios/Tempus%20E%20Spatium/Podfile)
 * Sounds (`correctDing.wav`, `incorrectBuzz.wav`, `scoreIncreaseCashierSound.wav`, `trumpetSolSolDo2Yay.wav`): OK, I made them on MuseScore (exported to mp3), thus no copyright materials needed
 * Select relaxing music while learning `[pull down: none, Green Hills, Pagodes, Soirée dans Grenade] [Custom]`: OK, ditto [app/src/main/res/raw](app/src/main/res/raw) | [ios/Tempus E Spatium/Tempus E Spatium](ios/Tempus%20E%20Spatium/Tempus%20E%20Spatium)
-<!-- 青山 -->
-<!-- 樓 -->
-<!-- 格拉納達黃昏 -->
+<!-- bgmusic_green_hills 青山 -->
+<!-- bgmusic_pagodes 塔樓 -->
+<!-- bgmusic_soiree_dans_grenade 格拉納達黃昏 -->
 * Website version (Vue3,Vuetify,[Flario](https://store.vuetifyjs.com/products/flairo-theme-pro): keep GitHub, X [change from bird to X https://fontawesome.com/icons/x-twitter], YouTube and WhatsApp [https://fontawesome.com/icons/whatsapp]): front page started (`LEARN WITHOUT LOSING INNER PEACE`) but not finished, merged with personal site & redirect to GooglePlay/AppStore using promo images
 
 TODOs:
@@ -32,7 +33,7 @@ Table `setArticles`: article | setName | lastRefreshedDate | creationDate
 2. Themes:
   * Relaxed Bears (bg: #C78311, #FEF0CB; txt: #FDD000, #F19EB4)
   * Fire & Ice (#FD7A2D, #B1F3FC; bg/txt opposite)
-  * Yin Yang (#282631 off-black, #FEF8DE off-white)
+  * Zen (#282631 off-black, #FEF8DE off-white) <!-- Yin yang-->
   * Spring (#FF44BB, #FFB847)
   * Summer (#46A266, #BADC66)
   * Autumn (#FF4300, #FFB800)

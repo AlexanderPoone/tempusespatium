@@ -2,6 +2,11 @@
 
 TODOs:
 * Custom articles (auto-complete just like Wikipedia)
+```
+  [_____________________________]
+  [_Kalman filter_______________] (-)
+  [_Hungarian algorithm_________] (-)
+```
 * Custom brackets... Highlight text you want to make brackets -> \{Make bracket|Cancel\}
 
 ------------------------

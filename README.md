@@ -2,7 +2,7 @@
 
 TODOs:
 
-* Custom brackets...
+* Custom brackets... Highlight text you want to make brackets -> \{Make bracket|Cancel\}
 * Rebranding
 * UI Overhaul
 * Setting up for a more unified experience

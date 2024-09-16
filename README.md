@@ -1,8 +1,11 @@
 # This repo is being refactored
 
 TODOs:
-
+* Custom articles (auto-complete just like Wikipedia)
 * Custom brackets... Highlight text you want to make brackets -> \{Make bracket|Cancel\}
+
+
+
 * Rebranding
 * UI Overhaul
 * Setting up for a more unified experience

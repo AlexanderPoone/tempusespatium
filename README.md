@@ -1,6 +1,8 @@
 # This repo is being refactored
 
 TODOs:
+
+* Custom brackets...
 * Rebranding
 * UI Overhaul
 * Setting up for a more unified experience

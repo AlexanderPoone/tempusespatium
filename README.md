@@ -29,7 +29,10 @@ Saved to SQLite/FMDB [ios/Tempus E Spatium/Tempus E Spatium/HighscoresDBManager.
 Table `sets`: setname | historicHigh | playedTimes | lastPlayedDate | creationDate | modifyDate
 
 Table `setArticles`: article | setName | lastRefreshedDate | creationDate
-
+```swift
+let TABLE_SETS = "sets"
+let TABLE_SET_ARTICLES = "setArticles"
+```
 2. Themes:
   * Relaxed Bears (bg: #C78311, #FEF0CB; txt: #FDD000, #F19EB4)
   * Fire & Ice (#FD7A2D, #B1F3FC; bg/txt opposite)

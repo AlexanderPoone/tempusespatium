@@ -43,7 +43,7 @@ Table `setArticles`: article | setName | lastRefreshedDate | creationDate
 4. Switch to `view binding`
 5. Add IPA game in custom mode -- similar vowels, diphthongs, consonants (e.g., sibilants) [Japanese would be easier to make though]
 6. 'Series' on WikiData? (under research; `GestureDetector.SimpleOnGestureListener` maybe? I can use free versions of Symphony/Piano Concerto No. X)
-  * Five hearts at the beginning
+  * Five `heart_full.jpg` (Vs. `heart_empty.jpg`) at the beginning
   * Just follow only connect's style, then tweak (maybe honeydew instead of soda blue?).
   * Luminescent shading
   * Rounded corners

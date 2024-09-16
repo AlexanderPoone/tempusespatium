@@ -52,6 +52,32 @@ Table `setArticles`: article | setName | lastRefreshedDate | creationDate
   * [DB Browser for SQLite download](https://sqlitebrowser.org/) (Done.)
 7. `Translations (add more locales!) + SQLite tables initial values + XPath` should compile to both OSes
   * `compile_translations.py`
+```心卜* Yin Yang (#282631 off-black, #FEF8DE off-white)
+  * Spring (#FF44BB, #FFB847)
+  * Summer (#46A266, #BADC66)
+  * Autumn (#FF4300, #FFB800)
+  * Winter (#0041DE, #00B9A2)
+3. Custom brackets...
+  * Default: highlight all for you `[Reset to default]`
+  * Highlight text you want to make brackets -> `[Make bracket|Cancel]`
+4. Switch to `view binding`
+5. Add IPA game in custom mode -- similar vowels, diphthongs, consonants (e.g., sibilants) [Japanese would be easier to make though]
+6. 'Series' on WikiData? (under research; `GestureDetector.SimpleOnGestureListener` maybe? I can use free versions of Symphony/Piano Concerto No. X)
+  * Five `heart_full.jpg` (Vs. `heart_empty.jpg`) at the beginning
+  * Just follow only connect's style, then tweak (maybe honeydew instead of soda blue?).
+  * Luminescent shading
+  * Rounded corners
+  * Translation animation + Set colour (tween animation?) and texts on the fly
+  * Question bank schema? <!-- Copy for goodness sake -->
+  * [DB Browser for SQLite download](https://sqlitebrowser.org/) (Done.)
+7. `Translations (add more locales!) + SQLite tables initial values + XPath` should compile to both OSes
+  * `compile_translations.py`
+```py
+import pandas as pd
+
+df = pd.read_excel('locale.xlsx')
+df['en']
+```
   * `compile_sqlite.py`
   * `compile_xpath.py`
 ------------------------

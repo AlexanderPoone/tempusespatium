@@ -11,6 +11,10 @@ Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 
 [OK] [Cancel]
 ```
+* Themes:
+  * Yan & Yang
+  * Fire & Ice
+  * ...
 * Custom brackets...
   * Default: highlight all for you `[Reset to default]`
   * Highlight text you want to make brackets -> `[Make bracket|Cancel]`

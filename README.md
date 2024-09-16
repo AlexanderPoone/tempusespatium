@@ -31,7 +31,7 @@ Table `setArticles`: article | setName | lastRefreshedDate | creationDate
 
 2. Themes:
   * Relaxed Bears (bg: #C78311, #FEF0CB; txt: #FDD000, #F19EB4)
-  * Fire & Ice (#FD7A2D, #B1F3FC)
+  * Fire & Ice (#FD7A2D, #B1F3FC; bg/txt opposite)
   * Yin Yang (#282631 off-black, #FEF8DE off-white)
   * Spring (#FF44BB, #FFB847)
   * Summer (#46A266, #BADC66)
@@ -43,13 +43,17 @@ Table `setArticles`: article | setName | lastRefreshedDate | creationDate
 4. Switch to `view binding`
 5. Add IPA game in custom mode -- similar vowels, dipthrongs, consonants (e.g., sibilants) [Japanese would be easier to make though]
 6. 'Series' on WikiData? (under research; `GestureDetector.SimpleOnGestureListener` maybe? I can use free versions of Symphony/Piano Concerto No. X)
-* Just follow only connect's style, then tweak (maybe honeydew instead of soda blue?).
-* Shading
-* Rounded corners
-* Translation animation + Set colour (tween animation?) and texts on the fly
-* SQLite editor download (add to README...)
+  * Just follow only connect's style, then tweak (maybe honeydew instead of soda blue?).
+  * Luminescent shading
+  * Rounded corners
+  * Translation animation + Set colour (tween animation?) and texts on the fly
+  * Question bank schema? <!-- Copy for goodness sake -->
+  * SQLite editor download (Done.)
 
-7. Locale + initial tables + XPath should compile to both OSes
+7. `Translations + SQLite tables initial values + XPath` should compile to both OSes
+  * `compile_translations.py`
+  * `compile_sqlite.py`
+  * `compile_xpath.py`
 ------------------------
 
 * Rebranding

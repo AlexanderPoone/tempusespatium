@@ -52,6 +52,11 @@ Need a table for these XPaths. Todo.
 
 lang | delimitedXpaths
 
+```py
+for s in delimitedXpath.split('|'):
+    err = driver.execute_script(s)
+```
+
 How deep?
 
 ------------------------------

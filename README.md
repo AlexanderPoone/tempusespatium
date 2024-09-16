@@ -41,7 +41,7 @@ Table `setArticles`: article | setName | lastRefreshedDate | creationDate
   * Default: highlight all for you `[Reset to default]`
   * Highlight text you want to make brackets -> `[Make bracket|Cancel]`
 4. Switch to `view binding`
-5. Add IPA game in custom mode -- similar vowels, dipthrongs, consonants (e.g., sibilants) [Japanese would be easier to make though]
+5. Add IPA game in custom mode -- similar vowels, diphthongs, consonants (e.g., sibilants) [Japanese would be easier to make though]
 6. 'Series' on WikiData? (under research; `GestureDetector.SimpleOnGestureListener` maybe? I can use free versions of Symphony/Piano Concerto No. X)
   * Five hearts at the beginning
   * Just follow only connect's style, then tweak (maybe honeydew instead of soda blue?).
@@ -50,7 +50,7 @@ Table `setArticles`: article | setName | lastRefreshedDate | creationDate
   * Translation animation + Set colour (tween animation?) and texts on the fly
   * Question bank schema? <!-- Copy for goodness sake -->
   * [DB Browser for SQLite download](https://sqlitebrowser.org/) (Done.)
-7. `Translations + SQLite tables initial values + XPath` should compile to both OSes
+7. `Translations (add more locales!) + SQLite tables initial values + XPath` should compile to both OSes
   * `compile_translations.py`
   * `compile_sqlite.py`
   * `compile_xpath.py`

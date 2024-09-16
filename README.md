@@ -4,7 +4,7 @@
 <!-- 青山 -->
 <!-- 樓 -->
 <!-- 格拉納達黃昏 -->
-* Website version (Vue3,Vuetify,Flario): not done, redirect to GooglePlay/AppStore using promo images
+* Website version (Vue3,Vuetify,[Flario](https://store.vuetifyjs.com/products/flairo-theme-pro)): not done, redirect to GooglePlay/AppStore using promo images
 
 TODOs:
 1. **WikiProject sets** Vs. **custom sets of articles** (auto-complete just like Wikipedia)
@@ -50,7 +50,6 @@ Table `setArticles`: article | setName | lastRefreshedDate | creationDate
   * Translation animation + Set colour (tween animation?) and texts on the fly
   * Question bank schema? <!-- Copy for goodness sake -->
   * [DB Browser for SQLite download](https://sqlitebrowser.org/) (Done.)
-
 7. `Translations + SQLite tables initial values + XPath` should compile to both OSes
   * `compile_translations.py`
   * `compile_sqlite.py`

@@ -1,4 +1,5 @@
 # This repo is being revamped
+* Sounds (dings, buzzes, sol-sol-sol-do's): OK
 
 TODOs:
 1. **WikiProject sets** Vs. **custom sets of articles** (auto-complete just like Wikipedia)

@@ -1,7 +1,7 @@
 # This repo is being revamped
 
 TODOs:
-* Custom articles (auto-complete just like Wikipedia)
+1. Custom articles (auto-complete just like Wikipedia)
 ```
 Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 
@@ -11,14 +11,14 @@ Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 
 [OK] [Cancel]
 ```
-* Themes:
+2. Themes:
   * Yan & Yang
   * Fire & Ice
   * ...
-* Custom brackets...
+3. Custom brackets...
   * Default: highlight all for you `[Reset to default]`
   * Highlight text you want to make brackets -> `[Make bracket|Cancel]`
-* Switch to `view binding`
+4. Switch to `view binding`
 ------------------------
 
 * Rebranding

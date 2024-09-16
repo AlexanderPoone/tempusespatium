@@ -8,9 +8,12 @@ Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
   [_____________________________]
   [_Kalman filter_______________] (-) <- read-only text field
   [_Hungarian algorithm_________] (-)
+If time allowed, disable shuffle, drag to move
 
 [OK] [Cancel]
 ```
+Saved to SQLite.
+
 2. Themes:
   * Yan & Yang (off-black, off-white)
   * Fire & Ice (#FD7A2D, #B1F3FC)

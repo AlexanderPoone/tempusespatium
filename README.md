@@ -7,10 +7,12 @@ TODOs:
 [Refresh all articles]
 Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 
-  [_____________________________]
-  [_Kalman filter_______________] (-) <- read-only text field
-  [_Hungarian algorithm_________] (-)
-If time allowed, disable shuffle, drag to move
+This is a RecyclerView:
+
+  [___________________________________]
+  [_(img) Kalman filter_______________] (-) <- read-only text field
+  [_(img) Hungarian algorithm_________] (-)
+If time allowed, disable shuffle, drag to move.
 
 [OK] [Cancel]
 ```

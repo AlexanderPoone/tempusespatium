@@ -54,9 +54,17 @@ Table `setArticles`: article | setName | lastRefreshedDate | creationDate
   * `compile_translations.py`
 ```py
 import pandas as pd
+from xml.dom.minidom import parseString
 
 df = pd.read_excel('locale.xlsx')
-df['en']
+android = '<?xml version="1.0" encoding="utf-8"?><resources>'
+for i,r in df.iterrows():
+  android += f'<string name="{r["key"]}">{r["en"]}</string>'
+android += '</resources>'
+
+dom = parseString(android)
+android = dom.toprettyxml()
+print(android)
 ```
   * `compile_sqlite.py`
   * `compile_xpath.py`

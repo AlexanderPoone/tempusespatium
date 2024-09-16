@@ -24,8 +24,9 @@ Table `sets`: setname | historicHigh | playedTimes | lastPlayedDate | creationDa
 Table `setArticles`: article | setName | lastRefreshedDate | creationDate
 
 2. Themes:
-  * Yan & Yang (off-black, off-white)
+  * Relaxed Bears (bg: #C78311, #FEF0CB; txt: #FDD000, #F19EB4)
   * Fire & Ice (#FD7A2D, #B1F3FC)
+  * Yin Yang (off-black, off-white)
   * Spring (#FF44BB, #FFB847)
   * Summer (#46A266, #BADC66)
   * Autumn (#FF4300, #FFB800)

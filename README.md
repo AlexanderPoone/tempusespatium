@@ -1,5 +1,5 @@
 # This repo is being revamped
-* Sounds (dings, buzzes, score increase sound, trumpet sol-sol-sol-do's): OK, I made them on MuseScore (exported to mp3), thus no copyright materials needed
+* Sounds (`correctDing.wav`, `incorrectBuzz.wav`, `scoreIncreaseCashierSound.wav`, `trumpetSolSolDo2.wav`): OK, I made them on MuseScore (exported to mp3), thus no copyright materials needed
 * Select relaxing music while learning `[pull down: none, Green Hills, Pagodes, Soirée dans Grenade] [Custom]`: OK, ditto [app/src/main/res/raw](app/src/main/res/raw) | [ios/Tempus E Spatium/Tempus E Spatium](ios/Tempus%20E%20Spatium/Tempus%20E%20Spatium)
 <!-- 青山 -->
 <!-- 樓 -->

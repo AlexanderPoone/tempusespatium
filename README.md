@@ -18,7 +18,7 @@ If time allowed, disable shuffle, drag to move.
 
 [OK] [Cancel]
 ```
-Saved to SQLite.
+Saved to SQLite/FMDB.
 
 Table `sets`: setname | historicHigh | playedTimes | lastPlayedDate | creationDate | modifyDate
 

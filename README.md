@@ -18,6 +18,8 @@ If time allowed, disable shuffle, drag to move.
 
 [OK] [Cancel]
 ```
+Also Quizlet.
+
 Saved to SQLite/FMDB [ios/Tempus E Spatium/Tempus E Spatium/HighscoresDBManager.swift](ios/Tempus%20E%20Spatium/Tempus%20E%20Spatium/HighscoresDBManager.swift).
 
 Table `sets`: setname | historicHigh | playedTimes | lastPlayedDate | creationDate | modifyDate

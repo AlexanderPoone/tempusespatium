@@ -15,8 +15,9 @@ If time allowed, disable shuffle, drag to move
 ```
 Saved to SQLite.
 
-setname | historicHigh
-article | setName | lastRefreshed
+`sets`: setname | historicHigh
+
+`setArticles`: article | setName | lastRefreshed
 
 2. Themes:
   * Yan & Yang (off-black, off-white)

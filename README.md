@@ -1,7 +1,7 @@
 # This repo is being revamped
 
 TODOs:
-1. Custom articles (auto-complete just like Wikipedia)
+1. **WikiProject sets** Vs. **custom sets of articles** (auto-complete just like Wikipedia)
 ```
 Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 

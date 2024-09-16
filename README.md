@@ -56,6 +56,7 @@ Table `setArticles`: article | setName | lastRefreshedDate | creationDate
 import pandas as pd
 from xml.dom.minidom import parseString
 
+# Android strings
 df = pd.read_excel('locale.xlsx')
 android = '<?xml version="1.0" encoding="utf-8"?><resources>'
 for i,r in df.iterrows():
@@ -65,6 +66,11 @@ android += '</resources>'
 dom = parseString(android)
 android = dom.toprettyxml()
 print(android)
+
+# TODO: iOS strings
+ios = ''
+
+print(ios)
 ```
   * `compile_sqlite.py`
   * `compile_xpath.py`

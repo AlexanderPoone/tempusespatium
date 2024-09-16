@@ -26,7 +26,7 @@ Table `setArticles`: article | setName | lastRefreshedDate | creationDate
 2. Themes:
   * Relaxed Bears (bg: #C78311, #FEF0CB; txt: #FDD000, #F19EB4)
   * Fire & Ice (#FD7A2D, #B1F3FC)
-  * Yin Yang (off-black, off-white)
+  * Yin Yang (#282631 off-black, #FEF8DE off-white)
   * Spring (#FF44BB, #FFB847)
   * Summer (#46A266, #BADC66)
   * Autumn (#FF4300, #FFB800)

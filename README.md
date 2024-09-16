@@ -6,7 +6,7 @@ TODOs:
 Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 
   [_____________________________]
-  [_Kalman filter_______________] (-)
+  [_Kalman filter_______________] (-) <- read-only text field
   [_Hungarian algorithm_________] (-)
 
 [OK] [Cancel]

@@ -49,7 +49,7 @@ Table `setArticles`: article | setName | lastRefreshedDate | creationDate
   * Rounded corners
   * Translation animation + Set colour (tween animation?) and texts on the fly
   * Question bank schema? <!-- Copy for goodness sake -->
-  * [DB Browser for SQLite download](https://sqlitebrowser.org/) (Done.)
+  * ~~[DB Browser for SQLite download](https://sqlitebrowser.org/)~~ (Done.)
 7. `Translations (add more locales!) + SQLite tables initial values + XPath` should compile to both OSes
   * `compile_translations.py`
 ```py

@@ -43,6 +43,7 @@ Table `setArticles`: article | setName | lastRefreshedDate | creationDate
 4. Switch to `view binding`
 5. Add IPA game in custom mode -- similar vowels, dipthrongs, consonants (e.g., sibilants) [Japanese would be easier to make though]
 6. 'Series' on WikiData? (under research; `GestureDetector.SimpleOnGestureListener` maybe? I can use free versions of Symphony/Piano Concerto No. X)
+  * Five lives at the beginning
   * Just follow only connect's style, then tweak (maybe honeydew instead of soda blue?).
   * Luminescent shading
   * Rounded corners
@@ -63,18 +64,15 @@ Table `setArticles`: article | setName | lastRefreshedDate | creationDate
 
 ------------------------------
 
-## Unit Test: Are WikiProjects' XPaths Working?
-Need a table for these XPaths. Todo.
+### Unit Test: Are WikiProjects' XPaths Working?
+Need a table for these XPaths. TODO.
 
 lang | delimitedXpaths
 
 ```py
 for s in delimitedXpath.split('|'):
-    err = driver.execute_script(s)
+    err = driver.execute_script(s)    # How deep?
 ```
-
-How deep?
-
 ------------------------------
 
 Tempus E Spatium (pronounced _TEM-poo-se-SPA-ti-oom_) is _Latin for space and time_. It is an edutainment app for adult learners by exploiting the Semantic Web.

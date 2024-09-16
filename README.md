@@ -3,6 +3,7 @@
 TODOs:
 1. **WikiProject sets** Vs. **custom sets of articles** (auto-complete just like Wikipedia)
 ```
+[Refresh all articles]
 Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 
   [_____________________________]
@@ -13,6 +14,9 @@ If time allowed, disable shuffle, drag to move
 [OK] [Cancel]
 ```
 Saved to SQLite.
+
+setname | historicHigh
+article | setName | lastRefreshed
 
 2. Themes:
   * Yan & Yang (off-black, off-white)

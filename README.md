@@ -1,5 +1,5 @@
 # This repo is being revamped
-* Sounds (dings, buzzes, sol-sol-sol-do's): OK
+* Sounds (dings, buzzes, trumpet sol-sol-sol-do's): OK, I made them on MuseScore, thus no copyright materials needed
 
 TODOs:
 1. **WikiProject sets** Vs. **custom sets of articles** (auto-complete just like Wikipedia)

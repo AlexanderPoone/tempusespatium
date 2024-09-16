@@ -19,9 +19,9 @@ If time allowed, disable shuffle, drag to move.
 ```
 Saved to SQLite.
 
-`sets`: setname | historicHigh
+Table `sets`: setname | historicHigh | playedTimes | lastPlayedDate | creationDate | modifyDate
 
-`setArticles`: article | setName | lastRefreshed
+Table `setArticles`: article | setName | lastRefreshedDate | creationDate
 
 2. Themes:
   * Yan & Yang (off-black, off-white)

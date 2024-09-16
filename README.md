@@ -4,7 +4,7 @@
 <!-- 青山 -->
 <!-- 樓 -->
 <!-- 格拉納達黃昏 -->
-* Website version (Vue3,Vuetify,[Flario](https://store.vuetifyjs.com/products/flairo-theme-pro)): not done, redirect to GooglePlay/AppStore using promo images
+* Website version (Vue3,Vuetify,[Flario](https://store.vuetifyjs.com/products/flairo-theme-pro)): front page started (inner peace) but not finished, merged with personal site & redirect to GooglePlay/AppStore using promo images
 
 TODOs:
 1. **WikiProject sets** Vs. **custom sets of articles** (auto-complete just like Wikipedia)

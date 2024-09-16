@@ -37,7 +37,7 @@ Table `setArticles`: article | setName | lastRefreshedDate | creationDate
   * Highlight text you want to make brackets -> `[Make bracket|Cancel]`
 4. Switch to `view binding`
 5. Add IPA game in custom mode -- similar vowels, dipthrongs, consonants (e.g., sibilants) [Japanese would be easier to make though]
-6. 'Series' on WikiData? (under research)
+6. 'Series' on WikiData? (under research; `GestureDetector.SimpleOnGestureListener` maybe?)
 ------------------------
 
 * Rebranding

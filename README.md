@@ -1,6 +1,6 @@
 # This repo is being revamped
 * Sounds (dings, buzzes, trumpet sol-sol-sol-do's): OK, I made them on MuseScore (exported to mp3), thus no copyright materials needed
-* Select relaxing music while learning
+* Select relaxing music while learning (default: Green Hills, Pagodes): OK, ditto
 
 TODOs:
 1. **WikiProject sets** Vs. **custom sets of articles** (auto-complete just like Wikipedia)

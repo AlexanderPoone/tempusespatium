@@ -1,6 +1,6 @@
 # This repo is being revamped
 * Sounds (dings, buzzes, trumpet sol-sol-sol-do's): OK, I made them on MuseScore (exported to mp3), thus no copyright materials needed
-* Select relaxing music while learning (default: Green Hills, Pagodes): OK, ditto
+* Select relaxing music while learning `[pull down: none, Green Hills, Pagodes, Soirée dans Grenade] [Custom]`: OK, ditto
 * Website version (Vue3): not done, redirect to app store using promo images
 
 TODOs:

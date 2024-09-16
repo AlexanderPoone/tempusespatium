@@ -48,6 +48,10 @@ Table `setArticles`: article | setName | lastRefreshedDate | creationDate
 ## Unit Test: Are WikiProjects' XPaths Working?
 Need a table for these XPaths. Todo.
 
+lang | delimitedXpaths
+
+How deep?
+
 ------------------------------
 
 Tempus E Spatium (pronounced _TEM-poo-se-SPA-ti-oom_) is _Latin for space and time_. It is an edutainment app for adult learners by exploiting the Semantic Web.

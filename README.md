@@ -10,9 +10,9 @@ Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 
 This is a RecyclerView:
 
-  [___________________________________]
-  [_(img) Kalman filter_______________] (-) <- read-only text field
-  [_(img) Hungarian algorithm_________] (-)
+  [________________________________________]
+  [_(img) Kalman filter__(smallDesc)_______] (-) <- read-only text field
+  [_(img) Hungarian algorithm__(smallDesc)_] (-)
 If time allowed, disable shuffle, drag to move.
 
 [OK] [Cancel]

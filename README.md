@@ -40,6 +40,13 @@ Table `setArticles`: article | setName | lastRefreshedDate | creationDate
 4. Switch to `view binding`
 5. Add IPA game in custom mode -- similar vowels, dipthrongs, consonants (e.g., sibilants) [Japanese would be easier to make though]
 6. 'Series' on WikiData? (under research; `GestureDetector.SimpleOnGestureListener` maybe? I can use free versions of Symphony/Piano Concerto No. X)
+* Just follow only connect's style, then tweak (maybe honeydew instead of soda blue?).
+* Shading
+* Rounded corners
+* Translation animation + Set colour (tween animation?) and texts on the fly
+* SQLite editor download (add to README...)
+
+7. Locale + initial tables + XPath should compile to both OSes
 ------------------------
 
 * Rebranding

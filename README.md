@@ -29,6 +29,7 @@ article | setName | lastRefreshed
   * Default: highlight all for you `[Reset to default]`
   * Highlight text you want to make brackets -> `[Make bracket|Cancel]`
 4. Switch to `view binding`
+5. Add IPA game in custom mode -- similar vowels, dipthrongs, consonants (e.g., sibilants)
 ------------------------
 
 * Rebranding

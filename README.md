@@ -12,9 +12,12 @@ Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 [OK] [Cancel]
 ```
 2. Themes:
-  * Yan & Yang
-  * Fire & Ice
-  * ...
+  * Yan & Yang (off-black, off-white)
+  * Fire & Ice (#FD7A2D, #B1F3FC)
+  * Spring (#FF44BB, #FFB847)
+  * Summer (#46A266, #BADC66)
+  * Autumn (#FF4300, #FFB800)
+  * Winter (#0041DE, #00B9A2)
 3. Custom brackets...
   * Default: highlight all for you `[Reset to default]`
   * Highlight text you want to make brackets -> `[Make bracket|Cancel]`

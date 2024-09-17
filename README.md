@@ -38,15 +38,15 @@ let TABLE_SETS = "sets"
 let TABLE_SET_ARTICLES = "setArticles"
 ```
 2. Themes:
-  * Relaxed Bears (bg: #C78311, #FEF0CB; txt: #FDD000, #F19EB4)
-  * Fire & Ice (#FD7A2D, #B1F3FC; bg/txt opposite)
-  * Zen (#282631 off-black, #FEF8DE off-white) <!-- Yin yang-->
-  * Spring (#FF44BB, #FFB847)
-  * Summer (#46A266, #BADC66)
-  * Autumn (#FF4300, #FFB800)
-  * Winter (#0041DE, #00B9A2)
+  * Relaxed Bears (bg: #C78311, #FEF0CB; txt: #FDD000, #F19EB4) <!-- 懶熊 -->
+  * Fire & Ice (#FD7A2D, #B1F3FC; bg/txt opposite) <!-- 冰火 -->
+  * Zen (#282631 off-black, #FEF8DE off-white) <!-- Yin yang-->  <!-- 禪 -->
+  * Spring (#FF44BB, #FFB847) <!-- 春 -->
+  * Summer (#46A266, #BADC66) <!-- 夏 -->
+  * Autumn (#FF4300, #FFB800) <!-- 秋 -->
+  * Winter (#0041DE, #00B9A2) <!-- 冬 -->
 3. Custom brackets...
-  * Default: highlight all for you `[Reset to default]`
+  * Default: highlight all for you `[Reset to default]` <!-- 重設 -->
   * Highlight text you want to make brackets -> `[Make bracket|Cancel]`
 4. Switch to `view binding`
 5. Add IPA game in custom mode -- similar vowels, diphthongs, consonants (e.g., sibilants) [Japanese would be easier to make though]

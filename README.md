@@ -61,6 +61,37 @@ INSERT INTO connectingWall ('clue1', 'clue2', 'clue3', 'clue4', 'clue5', 'clue6'
 6. 'Series' on WikiData? (under research; `GestureDetector.SimpleOnGestureListener` maybe? I can use free versions of Symphony/Piano Concerto No. X)
 ```java
 Collections.shuffle(Arrays.asList(integerArray));
+
+@onClick
+void onClickListener(Block block) {
+  mSelectedBlks.append(block);
+  if (mSelectedBlks.length() == 4) {
+    // check if correct
+    if (correct) {
+      // play shift animation
+      for (var selected: mSelectedBlks) {
+        selected.clickable = false;
+      }
+      mStockpiled += 1;
+      if (mStockpiled == 4) {
+        mAudioPlayer.play(R.raw.shave_and_a_haircut_two_piece);
+      }
+    } else {
+      // incorrect
+      mLives -= 1;
+      mHeartRecyclerView.getElement(mLives).setDrawable(R.drawable.heart_empty);    // starts from 0
+      if (mLives == 0) {
+        mView.setClickable = false;
+      }
+    }
+  }
+  // reset block colour
+  for (var bk: mBlks) {
+    if (bk.clickable) {
+      bk.setColor(R.color.honeydew);
+    }
+  }
+}
 ```
 Wall Solved Sound Effect: `shavedAndAHaircutTwoPiece.mp3`
   * Five `heart_full.jpg` (Vs. `heart_empty.jpg`) at the beginning (horizontal `RecyclerView`, dock at top-right corner)

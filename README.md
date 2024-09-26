@@ -17,14 +17,14 @@ TODOs:
 [Refresh all articles]
 Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 
-This is a RecyclerView:
+// This is a RecyclerView:
 
   [________________________________________]
   [_(img) Kalman filter__(smallDesc)_______] (-) <- read-only text field
   [_(img) Hungarian algorithm__(smallDesc)_] (-)
-If time allowed, disable shuffle, drag to move.
+// If time is allowed, disable shuffle, drag to move.
 
-[OK] [Cancel]
+[R.string.ok] [R.string.cancel]
 ```
 Also Quizlet.
 

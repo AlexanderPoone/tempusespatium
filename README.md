@@ -29,17 +29,22 @@ Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 Also Quizlet.
 
 Saved to SQLite/FMDB [ios/Tempus E Spatium/Tempus E Spatium/HighscoresDBManager.swift](ios/Tempus%20E%20Spatium/Tempus%20E%20Spatium/HighscoresDBManager.swift):
-```sql
-INSERT INTO sets
+
+```swift
+let TABLE_SETS = "sets"
+let TABLE_SET_ARTICLES = "setArticles"
+let TABLE_CONNECTING_WALL = "connectingWall"
 ```
 
 Table `sets`: setname | historicHigh | playedTimes | lastPlayedDate | creationDate | modifyDate
 
 Table `setArticles`: article | setName | lastRefreshedDate | creationDate
-```swift
-let TABLE_SETS = "sets"
-let TABLE_SET_ARTICLES = "setArticles"
+
+Table `connectingWall`:
+```sql
+INSERT INTO connectingWall ('clue1', 'clue2', 'clue3', 'clue4', 'clue5', 'clue6', 'clue7', 'clue8', 'clue9', 'clue10', 'clue11', 'clue12', 'clue13', 'clue14', 'clue15', 'clue16', 'conn1', 'conn2', 'conn3', 'conn4') VALUES ('clue1', 'clue2', 'clue3', 'clue4', 'clue5', 'clue6', 'clue7', 'clue8', 'clue9', 'clue10', 'clue11', 'clue12', 'clue13', 'clue14', 'clue15', 'clue16', 'conn1', 'conn2', 'conn3', 'conn4')
 ```
+
 2. Themes:
   * Relaxed Bears (bg: #C78311, #FEF0CB; txt: #FDD000, #F19EB4) <!-- 懶熊 -->
   * Fire & Ice (#FD7A2D, #B1F3FC; bg/txt opposite) <!-- 冰火 -->

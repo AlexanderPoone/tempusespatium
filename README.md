@@ -63,8 +63,8 @@ INSERT INTO connectingWall ('clue1', 'clue2', 'clue3', 'clue4', 'clue5', 'clue6'
 Collections.shuffle(Arrays.asList(integerArray));
 ```
 Wall Solved Sound Effect: `shavedAndAHaircutTwoPiece.mp3`
-  * Five `heart_full.jpg` (Vs. `heart_empty.jpg`) at the beginning
-  * Just follow only connect's style, then tweak (maybe honeydew instead of soda blue?).
+  * Five `heart_full.jpg` (Vs. `heart_empty.jpg`) at the beginning (horizontal `RecyclerView`, dock at top-right corner)
+  * Three colours: `selected` (red), `unselected` (maybe honeydew instead of soda blue?), and `solved` (maybe yellow?)
   * Style: Luminescent shading // Rounded corners // Dosis font
   * Translation animation + Set colour (tween animation?) and texts on the fly
   * ~~Question bank schema? <!-- Copy for goodness sake -->~~ // ~~[DB Browser for SQLite download](https://sqlitebrowser.org/)~~ (Done.)

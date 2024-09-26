@@ -7,7 +7,7 @@
 <!-- bgmusic_green_hills 青山 -->
 <!-- bgmusic_pagodes 塔樓 -->
 <!-- bgmusic_soiree_dans_grenade 格拉納達黃昏 -->
-* Website version (Vue3,Vuetify,[Flario](https://store.vuetifyjs.com/products/flairo-theme-pro): keep GitHub, X [change from bird to X https://fontawesome.com/icons/x-twitter], YouTube and WhatsApp [https://fontawesome.com/icons/whatsapp]): front page started (`LEARN ANY TOPIC (WITHOUT LOSING INNER PEACE)`) but not finished, merged with personal site & redirect to GooglePlay/AppStore using promo images
+* Website version (Vue3,Vuetify,[Flario](https://store.vuetifyjs.com/products/flairo-theme-pro): keep GitHub, X [change from bird to X https://fontawesome.com/icons/x-twitter], YouTube and WhatsApp [+44] [https://fontawesome.com/icons/whatsapp]): front page started (`LEARN ANY TOPIC (WITHOUT LOSING INNER PEACE)`) but not finished, merged with personal site & redirect to GooglePlay/AppStore using promo images
 ```html
 <i class="fa-brands fa-x-twitter fa-xl fa-fw"></i>
 <i class="fa-brands fa-whatsapp fa-xl fa-fw"></i>

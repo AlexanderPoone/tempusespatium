@@ -1,21 +1,24 @@
 # This repo is being revamped
 *Learn any topic (without losing inner peace)*
-```js
-/* PaxAcademica plc
-
+```html
+/* PaxAcademica plc */
+<style>
+  <!-- fade in/out goes here -->
+</style>
 <p><i class="fa-globe fa-xl fa-fw"></i>&nbsp;&nbsp;Learn in <tt id="lingo"></tt></p>
 <p><i class="fa-scroll fa-xl fa-fw"></i>&nbsp;&nbsp;Learn <tt id="topic"></tt></p>
-*/
-const lingos = ['catala', 'francais', 'espanol', '日本語', '中文'];
-const topics = ['Phonology', 'Medieval History', 'Forestry', 'Robotics'];
-let cnt = 0;
-let fadeIn = function() {
-  querySelector('#lingo').innerText = lingos[cnt % lingos.length];
-  querySelector('#topic').innerText = topics[cnt % topics.length];
-  cnt += 1;
-};
-fadeIn();
-setInterval(fadeIn, 3000);
+<script>
+  const lingos = ['catala', 'francais', 'espanol', '日本語', '中文'];
+  const topics = ['Phonology', 'Medieval History', 'Forestry', 'Robotics'];
+  let cnt = 0;
+  let fadeIn = function() {
+    querySelector('#lingo').innerText = lingos[cnt % lingos.length];
+    querySelector('#topic').innerText = topics[cnt % topics.length];
+    cnt += 1;
+  };
+  fadeIn();
+  setInterval(fadeIn, 3000);
+</script>
 ```
 
 [Podfile](ios/Tempus%20E%20Spatium/Podfile)

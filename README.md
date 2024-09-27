@@ -101,7 +101,7 @@ void onClickListener(Block block) {
       mLives -= 1;
       mHeartRecyclerView.getElement(mLives).setDrawable(R.drawable.heart_empty);    // starts from 0
       if (mLives == 0) {
-        mView.setClickable = false;
+        mView.clickable = false;  // controller.mClickArea.isUserInteractionEnabled = false
       }
     }
   }

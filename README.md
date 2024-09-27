@@ -40,9 +40,9 @@ Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 
 // This is a `RecyclerView` of my `BeninView`
 
-  [_______________________________________________]
-  [_(imgPicasso) Kalman filter__(smallDesc)_______] (-) <- read-only text field
-  [_(imgPicasso) Hungarian algorithm__(smallDesc)_] (-)
+  [___________________________________________________________________]
+  [_(Glide.with(this).load().into()) Kalman filter__(smallDesc)_______] (-) <- read-only text field
+  [_(Glide.with(this).load().into()) Hungarian algorithm__(smallDesc)_] (-)
 // If time is allowed, disable shuffle, drag to move.
 
 [R.string.ok] [R.string.cancel]

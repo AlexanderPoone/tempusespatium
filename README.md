@@ -38,7 +38,7 @@ TODOs:
 [Refresh all articles]
 Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 
-// This is a `RecyclerView` of my `Beninview`
+// This is a `RecyclerView` of my `BeninView`
 
   [_______________________________________________]
   [_(imgPicasso) Kalman filter__(smallDesc)_______] (-) <- read-only text field

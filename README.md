@@ -3,7 +3,7 @@
 ```html
 /* PaxAcademica plc */
 <style>
-  <!-- fade in/out goes here -- animation: opacity 80% 3s-->
+  <!-- fade in/out goes here -- animation: opacity 0% 100% 3s-->
 </style>
 <p><i class="fa-scroll fa-xl fa-fw"></i>&nbsp;&nbsp;Learn anything about <tt id="topic"></tt></p>
 <p><i class="fa-globe fa-xl fa-fw"></i>&nbsp;&nbsp;Learn in <tt id="lingo"></tt></p>

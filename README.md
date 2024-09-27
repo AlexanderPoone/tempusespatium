@@ -148,7 +148,7 @@ Wall Solved Sound Effect: `shavedAndAHaircutTwoPiece.mp3`
 import pandas as pd
 from xml.dom.minidom import parseString
 
-ANDROID_OUT_PATH = 'app/src/java/hk/edy/cuhk/cse/tempusespatium/res/values/strings.xml'
+ANDROID_OUT_PATH = 'app/src/java/hk/edu/cuhk/cse/tempusespatium/res/values/strings.xml'
 IOS_OUT_PATH = '"ios/Tempus E Spatium/Tempus E Spatium/Base.lproj/Localizable.strings"'
 
 # Android strings

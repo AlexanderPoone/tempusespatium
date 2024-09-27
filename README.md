@@ -64,11 +64,25 @@ INSERT INTO connectingWall ('clue1', 'clue2', 'clue3', 'clue4', 'clue5', 'clue6'
 ```java
 Collections.shuffle(Arrays.asList(integerArray));
 
+List<String> mSelectedBlks = new ArrayList<>();
+List<String> mLstGrp1;
+List<String> mLstGrp2;
+List<String> mLstGrp3;
+List<String> mLstGrp4;
+AudioPlayer mAudioPlayer = new AudioPlayer();
+int mLives = 5;
+RecyclerView mHeartRecyclerView = this.findViewById(R.id.hearts);
+Fragment mPlayer1View = this.findViewById(R.id.player1), mPlayer2View = this.findViewById(R.id.player2), mView = this.findViewById(R.id.view);
+
 @onClick
 void onClickListener(Block block) {
   mSelectedBlks.append(block);
   if (mSelectedBlks.length() == 4) {
     // check if correct
+    boolean correct = false;
+    while (mLstGrp1.containsAll(mSelectedBlks) || mLstGrp2.containsAll(mSelectedBlks) || mLstGrp3.containsAll(mSelectedBlks) || mLstGrp4.containsAll(mSelectedBlks)) {
+      
+    }
     if (correct) {
       // play shift animation
       for (var selected: mSelectedBlks) {
@@ -77,6 +91,10 @@ void onClickListener(Block block) {
       mStockpiled += 1;
       if (mStockpiled == 4) {
         mAudioPlayer.play(R.raw.shave_and_a_haircut_two_piece);
+
+        // winning condition
+        mPlayer1View.lock();
+        mPlayer2View.lock();
       }
     } else {
       // incorrect

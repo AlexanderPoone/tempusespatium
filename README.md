@@ -80,8 +80,8 @@ void onClickListener(Block block) {
   if (mSelectedBlks.length() == 4) {
     // check if correct
     boolean correct = false;
-    while (mLstGrp1.containsAll(mSelectedBlks) || mLstGrp2.containsAll(mSelectedBlks) || mLstGrp3.containsAll(mSelectedBlks) || mLstGrp4.containsAll(mSelectedBlks)) {
-      
+    if (mLstGrp1.containsAll(mSelectedBlks) || mLstGrp2.containsAll(mSelectedBlks) || mLstGrp3.containsAll(mSelectedBlks) || mLstGrp4.containsAll(mSelectedBlks)) {
+      correct = true;
     }
     if (correct) {
       // play shift animation

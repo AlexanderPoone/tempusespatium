@@ -1,6 +1,7 @@
 # This repo is being revamped
 *Learn any topic (without losing inner peace)*
 ```js
+/* PaxAcademica plc */
 const lingos = ['catala', 'francais', 'espanol', '日本語', '中文'];
 const topics = ['Phonology', 'Medieval History', 'Forestry', 'Robotics'];
 let cnt = 0;

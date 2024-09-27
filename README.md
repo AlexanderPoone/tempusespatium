@@ -5,8 +5,8 @@
 <style>
   <!-- fade in/out goes here -->
 </style>
+<p><i class="fa-scroll fa-xl fa-fw"></i>&nbsp;&nbsp;Learn anything about <tt id="topic"></tt></p>
 <p><i class="fa-globe fa-xl fa-fw"></i>&nbsp;&nbsp;Learn in <tt id="lingo"></tt></p>
-<p><i class="fa-scroll fa-xl fa-fw"></i>&nbsp;&nbsp;Learn <tt id="topic"></tt></p>
 <script>
   const lingos = ['catala', 'francais', 'espanol', '日本語', '中文'];
   const topics = ['Phonology', 'Medieval History', 'Forestry', 'Robotics'];

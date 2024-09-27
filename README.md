@@ -97,7 +97,11 @@ void onClickListener(Block block) {
 ```
 Wall Solved Sound Effect: `shavedAndAHaircutTwoPiece.mp3`
   * Five `heart_full.jpg` (Vs. `heart_empty.jpg`) at the beginning (horizontal `RecyclerView`, dock at top-right corner)
-  * Three colours: `selected` (red), `unselected` (maybe honeydew instead of soda blue?), and `solved` (maybe yellow?)
+  * Three colours: ~~`selected` (red), `unselected` (maybe honeydew instead of soda blue?), and `solved` (maybe yellow?)~~
+    * [all radial gradient]
+    * #1A7D6E (teal, solved)
+    * #032960 (navy, selected)
+    * #ACD7FB (sky, unselected)
   * Style: Luminescent shading // Rounded corners // Dosis font
   * Translation animation + Set colour (tween animation?) and texts on the fly
   * ~~Question bank schema? <!-- Copy for goodness sake -->~~ // ~~[DB Browser for SQLite download](https://sqlitebrowser.org/)~~ (Done.)

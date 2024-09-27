@@ -148,6 +148,9 @@ Wall Solved Sound Effect: `shavedAndAHaircutTwoPiece.mp3`
 import pandas as pd
 from xml.dom.minidom import parseString
 
+ANDROID_OUT_PATH = 'app/src/java/hk/edy/cuhk/cse/tempusespatium/res/values/strings.xml'
+IOS_OUT_PATH = '"ios/Tempus E Spatium/Tempus E Spatium/Base.lproj/Localizable.strings"'
+
 # Android strings
 df = pd.read_excel('locale.xlsx')
 android = '<?xml version="1.0" encoding="utf-8"?><resources>'
@@ -158,9 +161,13 @@ android += '</resources>'
 dom = parseString(android)
 android = dom.toprettyxml()
 print(android)
+with open(ANDROID_OUT_PATH, 'w', encoding='utf-8') as f:
+  f.write(android)
 
 # TODO: iOS strings
 ios = ''
+with open(IOS_OUT_PATH, 'w', encoding='utf-8') as f:
+  f.write(ios)
 
 print(ios)
 ```

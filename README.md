@@ -104,7 +104,7 @@ void onClickListener(Block block) {
     }
     if (correct) {
       // play shift animation
-      for (var selected: mSelectedBlks) {
+      for (Block selected: mSelectedBlks) {
         selected.clickable = false;
       }
       mStockpiled += 1;
@@ -125,7 +125,7 @@ void onClickListener(Block block) {
     }
   }
   // reset block colour
-  for (var bk: mBlks) {
+  for (Block bk: mBlks) {
     if (bk.clickable) {
       bk.setColor(R.color.honeydew);
     }

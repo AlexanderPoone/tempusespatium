@@ -41,12 +41,17 @@ Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 // This is a `RecyclerView` of my `BeninView`
 
   [__Autocomplete-dropdown_______________________________________________________]
-  [_(Glide.with(this).load().into(mSqrPreview)) Kalman filter__(smallDesc)_______] (-) <- read-only text field
-  [_(Glide.with(this).load().into(mSqrPreview)) Hungarian algorithm__(smallDesc)_] (-)
+  [_R.id.sqrPreview | Kalman filter__(smallDesc)_______] (-) <- read-only text field
+  [_R.id.sqrPreview | Hungarian algorithm__(smallDesc)_] (-)
 // If time is allowed, disable shuffle, drag to move.
 
 [R.string.ok] [R.string.cancel]
 ```
+```java
+mSqrPreview = findViewById(R.id.sqrPreview);
+Glide.with(this).load().into(mSqrPreview);
+```
+
 Also Quizlet.
 
 Saved to SQLite/FMDB [ios/Tempus E Spatium/Tempus E Spatium/HighscoresDBManager.swift](ios/Tempus%20E%20Spatium/Tempus%20E%20Spatium/HighscoresDBManager.swift):

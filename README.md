@@ -98,7 +98,7 @@ findViewById(R.id.block14),
 findViewById(R.id.block15),
 findViewById(R.id.block16)  ];   																			  // fixed sized, use array instead of list
 
-int[] randOrder = Collections.shuffle(Arrays.asList(Integer.Range(16)));							      // fixed sized, array 1 to 16
+int[] mRandOrder = Collections.shuffle(Arrays.asList(Integer.Range(16)));							      // fixed sized, array 1 to 16
 
 List<String> mSelectedBlks = new ArrayList<>();
 String[] mClues = await database.rawQuery('SELECT * FROM connectingWall ORDER BY RANDOM() LIMIT 1;');	  // get random row from DB
@@ -114,7 +114,7 @@ Fragment mPlayer1View = this.findViewById(R.id.player1), mPlayer2View = this.fin
 // TODO: z-rotate the wall
 void newWall() {
   for (int x = 0; x < 16; x++) {
-   mViews[mRand[x]].setText(mClues[x]);
+   mViews[mRandOrder[x]].setText(mClues[x]);
   }
 }
 

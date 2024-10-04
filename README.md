@@ -120,7 +120,7 @@ int mLives = 5, mGrpsDone = 0;
 RecyclerView mHeartRecyclerView = this.findViewById(R.id.hearts);
 Fragment mPlayer1View = this.findViewById(R.id.player1), mPlayer2View = this.findViewById(R.id.player2), mView = this.findViewById(R.id.view);
 
-// TODO: z-rotate the wall
+// TODO: Animation -- z-rotate the wall 180 degrees
 void newWall() {
   mLives = 5;
   mGrpsDone = 0;

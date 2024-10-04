@@ -48,8 +48,10 @@ Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 [R.string.ok] [R.string.cancel]
 ```
 ```java
-mSqrPreview = findViewById(R.id.sqrPreview);
-Glide.with(this).load().into(mSqrPreview);
+RecycledView {    // not a typo
+  mSqrPreview = findViewById(R.id.sqrPreview);
+  Glide.with(this).load().into(mSqrPreview);
+}
 ```
 
 Also Quizlet.

@@ -41,8 +41,8 @@ Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 // This is a `RecyclerView` of my `BeninView`
 
   [__Autocomplete-dropdown_______________________________________________________]
-  [_R.id.sqrPreview | Kalman filter__(smallDesc)_______] (-) <- read-only text field
-  [_R.id.sqrPreview | Hungarian algorithm__(smallDesc)_] (-)
+  [_R.id.sqrPreview | Kalman filter__(R.id.smallDesc)_______] (-) <- read-only text field
+  [_R.id.sqrPreview | Hungarian algorithm__(R.id.smallDesc)_] (-)
 // If time is allowed, disable shuffle, drag to move.
 
 [R.string.ok] [R.string.cancel]

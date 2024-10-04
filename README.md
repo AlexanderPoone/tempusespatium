@@ -112,10 +112,10 @@ RecyclerView mHeartRecyclerView = this.findViewById(R.id.hearts);
 Fragment mPlayer1View = this.findViewById(R.id.player1), mPlayer2View = this.findViewById(R.id.player2), mView = this.findViewById(R.id.view);
 
 // TODO: z-rotate the wall
-function newWall() {
-	for (int x = 0; x < 16; x++) {
-		mViews[mRand[x]].setText(mClues[x]);
-	}
+void newWall() {
+  for (int x = 0; x < 16; x++) {
+   mViews[mRand[x]].setText(mClues[x]);
+  }
 }
 
 @onClick

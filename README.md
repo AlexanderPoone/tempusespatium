@@ -81,22 +81,22 @@ INSERT INTO connectingWall ('clue1', 'clue2', 'clue3', 'clue4', 'clue5', 'clue6'
 5. Add IPA game in custom mode -- similar vowels, diphthongs, consonants (e.g., sibilants) [Japanese would be easier to make though]
 6. 'Series' on WikiData? (under research; `GestureDetector.SimpleOnGestureListener` maybe? I can use free versions of Symphony/Piano Concerto No. X)
 ```java
-Block[] mViews = [ findViewById(block1),
-findViewById(block2),
-findViewById(block3),
-findViewById(block4),
-findViewById(block5),
-findViewById(block6),
-findViewById(block7),
-findViewById(block8),
-findViewById(block9),
-findViewById(block10),
-findViewById(block11),
-findViewById(block12),
-findViewById(block13),
-findViewById(block14),
-findViewById(block15),
-findViewById(block16)  ];   																			  // fixed sized, use array instead of list
+Block[] mViews = [ findViewById(R.id.block1),
+findViewById(R.id.block2),
+findViewById(R.id.block3),
+findViewById(R.id.block4),
+findViewById(R.id.block5),
+findViewById(R.id.block6),
+findViewById(R.id.block7),
+findViewById(R.id.block8),
+findViewById(R.id.block9),
+findViewById(R.id.block10),
+findViewById(R.id.block11),
+findViewById(R.id.block12),
+findViewById(R.id.block13),
+findViewById(R.id.block14),
+findViewById(R.id.block15),
+findViewById(R.id.block16)  ];   																			  // fixed sized, use array instead of list
 
 int[] randOrder = Collections.shuffle(Arrays.asList(Integer.Range(16)));							      // fixed sized, array 1 to 16
 

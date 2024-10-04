@@ -81,17 +81,42 @@ INSERT INTO connectingWall ('clue1', 'clue2', 'clue3', 'clue4', 'clue5', 'clue6'
 5. Add IPA game in custom mode -- similar vowels, diphthongs, consonants (e.g., sibilants) [Japanese would be easier to make though]
 6. 'Series' on WikiData? (under research; `GestureDetector.SimpleOnGestureListener` maybe? I can use free versions of Symphony/Piano Concerto No. X)
 ```java
-Collections.shuffle(Arrays.asList(integerArray));
+Block[] mViews = [ findViewById(block1),
+findViewById(block2),
+findViewById(block3),
+findViewById(block4),
+findViewById(block5),
+findViewById(block6),
+findViewById(block7),
+findViewById(block8),
+findViewById(block9),
+findViewById(block10),
+findViewById(block11),
+findViewById(block12),
+findViewById(block13),
+findViewById(block14),
+findViewById(block15),
+findViewById(block16)  ];   																			  // fixed sized, use array instead of list
+
+int[] randOrder = Collections.shuffle(Arrays.asList(Integer.Range(16)));							      // fixed sized, array 1 to 16
 
 List<String> mSelectedBlks = new ArrayList<>();
-List<String> mLstGrp1;
-List<String> mLstGrp2;
-List<String> mLstGrp3;
-List<String> mLstGrp4;
+String[] mClues = await database.rawQuery('SELECT * FROM connectingWall ORDER BY RANDOM() LIMIT 1;');	  // get random row from DB
+List<String> mLstGrp1 = Arrays.copyOfRange(mClues, 0, 4);
+List<String> mLstGrp2 = Arrays.copyOfRange(mClues, 4, 8);
+List<String> mLstGrp3 = Arrays.copyOfRange(mClues, 8, 12);
+List<String> mLstGrp4 = Arrays.copyOfRange(mClues, 12, 16);
 AudioPlayer mAudioPlayer = new AudioPlayer();
 int mLives = 5;
 RecyclerView mHeartRecyclerView = this.findViewById(R.id.hearts);
 Fragment mPlayer1View = this.findViewById(R.id.player1), mPlayer2View = this.findViewById(R.id.player2), mView = this.findViewById(R.id.view);
+
+// TODO: z-rotate the wall
+function newWall() {
+	for (int x = 0; x < 16; x++) {
+		mViews[mRand[x]].setText(mClues[x]);
+	}
+}
 
 @onClick
 void onClickListener(Block block) {

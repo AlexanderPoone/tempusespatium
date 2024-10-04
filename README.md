@@ -116,12 +116,14 @@ List<String> mLstGrp2 = Arrays.copyOfRange(mClues, 4, 8);
 List<String> mLstGrp3 = Arrays.copyOfRange(mClues, 8, 12);
 List<String> mLstGrp4 = Arrays.copyOfRange(mClues, 12, 16);
 AudioPlayer mAudioPlayer = new AudioPlayer();
-int mLives = 5;
+int mLives = 5, mGrpsDone = 0;
 RecyclerView mHeartRecyclerView = this.findViewById(R.id.hearts);
 Fragment mPlayer1View = this.findViewById(R.id.player1), mPlayer2View = this.findViewById(R.id.player2), mView = this.findViewById(R.id.view);
 
 // TODO: z-rotate the wall
 void newWall() {
+  mLives = 5;
+  mGrpsDone = 0;
   for (int x = 0; x < 16; x++) {
    mViews[mRandOrder[x]].setText(mClues[x]);
   }
@@ -141,8 +143,8 @@ void onClickListener(Block block) {
       for (Block selected: mSelectedBlks) {
         selected.clickable = false;
       }
-      mStockpiled += 1;
-      if (mStockpiled == 4) {
+      mGrpsDone += 1;
+      if (mGrpsDone == 4) {
         mAudioPlayer.play(R.raw.shave_and_a_haircut_two_piece);
 
         // winning condition

@@ -90,80 +90,86 @@ INSERT INTO connectingWall ('clue1', 'clue2', 'clue3', 'clue4', 'clue5', 'clue6'
 5. Add IPA game in custom mode -- similar vowels, diphthongs, consonants (e.g., sibilants) [Japanese would be easier to make though]
 6. 'Series' on WikiData? (under research; `GestureDetector.SimpleOnGestureListener` maybe? I can use free versions of Symphony/Piano Concerto No. X)
 ```java
-Block[] mViews = [ findViewById(R.id.block1),
-findViewById(R.id.block2),
-findViewById(R.id.block3),
-findViewById(R.id.block4),
-findViewById(R.id.block5),
-findViewById(R.id.block6),
-findViewById(R.id.block7),
-findViewById(R.id.block8),
-findViewById(R.id.block9),
-findViewById(R.id.block10),
-findViewById(R.id.block11),
-findViewById(R.id.block12),
-findViewById(R.id.block13),
-findViewById(R.id.block14),
-findViewById(R.id.block15),
-findViewById(R.id.block16)  ];   																			  // fixed sized, use array instead of list
+public class Fragment {
+  Block[] mViews = { findViewById(R.id.block1),
+      findViewById(R.id.block2),
+      findViewById(R.id.block3),
+      findViewById(R.id.block4),
+      findViewById(R.id.block5),
+      findViewById(R.id.block6),
+      findViewById(R.id.block7),
+      findViewById(R.id.block8),
+      findViewById(R.id.block9),
+      findViewById(R.id.block10),
+      findViewById(R.id.block11),
+      findViewById(R.id.block12),
+      findViewById(R.id.block13),
+      findViewById(R.id.block14),
+      findViewById(R.id.block15),
+      findViewById(R.id.block16) }; // fixed sized, use array instead of list
 
-int[] mRandOrder = Collections.shuffle(Arrays.asList(Integer.Range(16)));							      // fixed sized, array 1 to 16
+  int[] mRandOrder = Collections.shuffle(Arrays.asList(Integer.Range(16))); // fixed sized, array 1 to 16
 
-List<String> mSelectedBlks = new ArrayList<>();
-String[] mClues = await database.rawQuery('SELECT * FROM connectingWall ORDER BY RANDOM() LIMIT 1;');	  // get random row from DB
-List<String> mLstGrp1 = Arrays.copyOfRange(mClues, 0, 4);
-List<String> mLstGrp2 = Arrays.copyOfRange(mClues, 4, 8);
-List<String> mLstGrp3 = Arrays.copyOfRange(mClues, 8, 12);
-List<String> mLstGrp4 = Arrays.copyOfRange(mClues, 12, 16);
-AudioPlayer mAudioPlayer = new AudioPlayer();
-int mLives = 5, mGrpsDone = 0;
-RecyclerView mHeartRecyclerView = this.findViewById(R.id.hearts);
-Fragment mPlayer1View = this.findViewById(R.id.player1), mPlayer2View = this.findViewById(R.id.player2), mView = this.findViewById(R.id.view);
+  List<String> mSelectedBlks = new ArrayList<>();
+  // await
+  String[] mClues = database.rawQuery("SELECT * FROM connectingWall ORDER BY RANDOM() LIMIT 1;"); // get random row from
+                                                                                                  // DB
+  List<String> mLstGrp1 = Arrays.copyOfRange(mClues, 0, 4);
+  List<String> mLstGrp2 = Arrays.copyOfRange(mClues, 4, 8);
+  List<String> mLstGrp3 = Arrays.copyOfRange(mClues, 8, 12);
+  List<String> mLstGrp4 = Arrays.copyOfRange(mClues, 12, 16);
+  AudioPlayer mAudioPlayer = new AudioPlayer();
+  int mLives = 5, mGrpsDone = 0;
+  RecyclerView mHeartRecyclerView = this.findViewById(R.id.hearts);
+  Fragment mPlayer1View = this.findViewById(R.id.player1), mPlayer2View = this.findViewById(R.id.player2),
+      mView = this.findViewById(R.id.view);
 
-// TODO: Animation -- z-rotate the wall 180 degrees
-void newWall() {
-  mLives = 5;
-  mGrpsDone = 0;
-  for (int x = 0; x < 16; x++) {
-   mViews[mRandOrder[x]].setText(mClues[x]);
-  }
-}
-
-@onClick
-void onClickListener(Block block) {
-  mSelectedBlks.append(block);
-  if (mSelectedBlks.length() == 4) {
-    // check if correct
-    boolean correct = false;
-    if (mLstGrp1.containsAll(mSelectedBlks) || mLstGrp2.containsAll(mSelectedBlks) || mLstGrp3.containsAll(mSelectedBlks) || mLstGrp4.containsAll(mSelectedBlks)) {
-      correct = true;
-    }
-    if (correct) {
-      // play shift animation
-      for (Block selected: mSelectedBlks) {
-        selected.clickable = false;
-      }
-      mGrpsDone += 1;
-      if (mGrpsDone == 4) {
-        mAudioPlayer.play(R.raw.shave_and_a_haircut_two_piece);
-
-        // winning condition
-        mPlayer1View.lock();
-        mPlayer2View.lock();
-      }
-    } else {
-      // incorrect
-      mLives -= 1;
-      mHeartRecyclerView.getElement(mLives).setDrawable(R.drawable.heart_empty);    // starts from 0
-      if (mLives == 0) {
-        mView.clickable = false;  // controller.mClickArea.isUserInteractionEnabled = false
-      }
+  // TODO: Animation -- z-rotate the wall 180 degrees
+  void newWall() {
+    mLives = 5;
+    mGrpsDone = 0;
+    for (int x = 0; x < 16; x++) {
+      mViews[mRandOrder[x]].setText(mClues[x]);
     }
   }
-  // reset block colour
-  for (Block bk: mBlks) {
-    if (bk.clickable) {
-      bk.setColor(R.color.honeydew);
+
+  @onClick
+  void onClickListener(Block block) {
+    mSelectedBlks.append(block);
+    if (mSelectedBlks.length() == 4) {
+      // check if correct
+      boolean correct = false;
+      if (mLstGrp1.containsAll(mSelectedBlks) || mLstGrp2.containsAll(mSelectedBlks)
+          || mLstGrp3.containsAll(mSelectedBlks) || mLstGrp4.containsAll(mSelectedBlks)) {
+        correct = true;
+      }
+      if (correct) {
+        // play shift animation
+        for (Block selected : mSelectedBlks) {
+          selected.clickable = false;
+        }
+        mGrpsDone += 1;
+        if (mGrpsDone == 4) {
+          mAudioPlayer.play(R.raw.shave_and_a_haircut_two_piece);
+
+          // winning condition
+          mPlayer1View.lock();
+          mPlayer2View.lock();
+        }
+      } else {
+        // incorrect
+        mLives -= 1;
+        mHeartRecyclerView.getElement(mLives).setDrawable(R.drawable.heart_empty); // starts from 0
+        if (mLives == 0) {
+          mView.clickable = false; // controller.mClickArea.isUserInteractionEnabled = false
+        }
+      }
+    }
+    // reset block colour
+    for (Block bk : mBlks) {
+      if (bk.clickable) {
+        bk.setColor(R.color.honeydew);
+      }
     }
   }
 }

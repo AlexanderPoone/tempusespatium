@@ -200,20 +200,20 @@ IOS_OUT_PATH = '"ios/Tempus E Spatium/Tempus E Spatium/Base.lproj/Localizable.st
 # Android strings
 df = pd.read_excel('locale.xlsx')
 android = '<?xml version="1.0" encoding="utf-8"?><resources>'
-for i,r in df.iterrows():
-  android += f'<string name="{r["key"]}">{r["en"]}</string>'
+for i, r in df.iterrows():
+    android += f'<string name="{r["key"]}">{r["en"]}</string>'
 android += '</resources>'
 
 dom = parseString(android)
 android = dom.toprettyxml()
 print(android)
 with open(ANDROID_OUT_PATH, 'w', encoding='utf-8') as f:
-  f.write(android)
+    f.write(android)
 
 # TODO: iOS strings
 ios = ''
 with open(IOS_OUT_PATH, 'w', encoding='utf-8') as f:
-  f.write(ios)
+    f.write(ios)
 
 print(ios)
 ```

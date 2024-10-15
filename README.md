@@ -29,10 +29,6 @@
 <!-- bgmusic_lhiver 冬 -->
 
 <!-- Unused: --><!-- bgmusic_pagodes 塔樓 --><!-- bgmusic_soiree_dans_grenade 格拉納達黃昏 -->
-* Website version (Vue3,Vuetify,[Flario](https://store.vuetifyjs.com/products/flairo-theme-pro) [essays = postings]: keep GitHub, X [change from bird to X https://fontawesome.com/icons/x-twitter], YouTube and WhatsApp [+44] [https://fontawesome.com/icons/whatsapp]): front page started (`LEARN ANY TOPIC (WITHOUT LOSING INNER PEACE)`) but not finished, merged with personal site & redirect to GooglePlay/AppStore using promo images
-```html
-<i class="fa-brands fa-x-twitter fa-xl fa-fw"></i> | <i class="fa-brands fa-whatsapp fa-xl fa-fw"></i>
-```
 
 TODOs:
 1. **WikiProject sets** Vs. **custom sets of articles** (auto-complete just like Wikipedia)

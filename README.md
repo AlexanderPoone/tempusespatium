@@ -189,34 +189,6 @@ Wall Solved Sound Effect: `shavedAndAHaircutTwoPiece.mp3`
   * Translation animation + Set colour (tween animation?) and texts on the fly
   * ~~Question bank schema? <!-- Copy for goodness sake -->~~ // ~~[DB Browser for SQLite download](https://sqlitebrowser.org/)~~ (Done.)
 7. `Translations (add more locales!) + SQLite tables initial values + XPath` should compile to both OSes
-  * `compile_translations.py`
-```py
-import pandas as pd
-from xml.dom.minidom import parseString
-
-ANDROID_OUT_PATH = 'app/src/java/hk/edu/cuhk/cse/tempusespatium/res/values/strings.xml'
-IOS_OUT_PATH = '"ios/Tempus E Spatium/Tempus E Spatium/Base.lproj/Localizable.strings"'
-
-# Android strings
-df = pd.read_excel('locale.xlsx')
-android = '<?xml version="1.0" encoding="utf-8"?><resources>'
-for i, r in df.iterrows():
-    android += f'<string name="{r["key"]}">{r["en"]}</string>'
-android += '</resources>'
-
-dom = parseString(android)
-android = dom.toprettyxml()
-print(android)
-with open(ANDROID_OUT_PATH, 'w', encoding='utf-8') as f:
-    f.write(android)
-
-# TODO: iOS strings
-ios = ''
-with open(IOS_OUT_PATH, 'w', encoding='utf-8') as f:
-    f.write(ios)
-
-print(ios)
-```
   * `compile_sqlite.py`
 ```py3
 import pandas as pd

@@ -1,5 +1,8 @@
-# This repo is being revamped
 *Learn any topic (without losing inner peace)*
+
+> [!IMPORTANT]
+> This repo is being revamped.
+
 ```html
 /* PaxAcademica plc */
 <style>

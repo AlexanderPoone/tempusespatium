@@ -10,7 +10,6 @@
 TODOs:
 1. **WikiProject sets**
 2. **Custom sets of articles** (one set can include multiple topics; auto-complete just like Wikipedia)
-3. **Custom field location** (this requires a highlighting library, and a bottom popup)
 ```
 [Refresh all articles]
 Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
@@ -64,7 +63,7 @@ INSERT INTO connectingWall ('clue1', 'clue2', 'clue3', 'clue4', 'clue5', 'clue6'
   * Summer (#46A266, #BADC66) <!-- 夏 -->
   * Autumn (#FF4300, #FFB800) <!-- 秋 -->
   * Winter (#0041DE, #00B9A2) <!-- 冬 -->
-3. Custom brackets...
+3. **Custom brackets** (this requires a highlighting library, and a bottom popup)
   * Default: highlight all for you `[Reset to default]` <!-- 重設 -->
   * Highlight text you want to make brackets -> `[Make bracket|Cancel]`
 4. Switch to `view binding`

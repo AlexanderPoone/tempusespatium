@@ -41,9 +41,13 @@ let TABLE_SET_ARTICLES = "setArticles"
 let TABLE_CONNECTING_WALL = "connectingWall"
 ```
 
-Table `sets`: setName | historicHigh | playedTimes | lastPlayedDate | creationDate | modifyDate
+Table `sets`: 
+setName | historicHigh | playedTimes | lastPlayedDate | creationDate | modifyDate
+-------|--------------|-------------|----------------|---------------|------------
 
-Table `setArticles`: article | setName | lastRefreshedDate | creationDate
+Table `setArticles`: 
+article | setName | lastRefreshedDate | creationDate
+-------|--------------|-------------|----------------
 
 Table `connectingWall`:
 ```sql
@@ -185,7 +189,8 @@ https://github.com/AlexanderPoone/tempusespatium/blob/aac6f923cf0172410501aac7ab
 Need a table for these XPaths. TODO.
 
 lang | delimitedXpaths
-
+-----|----------------
+en   | `[]`
   * `compile_xpath.py`
 ```py3
 import pandas as pd

@@ -9,12 +9,12 @@
 
 TODOs:
 1. Support of other Wikimedia Projects + Quizlet
-2. **Custom Fine-grained Syllabus** (one set can include multiple **WikiProjects**; and you can remove articles from a WikiProject)
+2. **Custom fine-grained syllabus** (one set can include multiple **WikiProjects**; and you can remove articles from a WikiProject)
 ```java
-/* FineGrainedSyllabusActivity.dart */
+/* NewFineGrainedSetActivity.dart */
 
 [Refresh all articles]
-Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
+Set name: [_2020-01-01 00:02:04______] // ← cannot be empty !
 
 // This is a `RecyclerView` of my `BeninView`
 

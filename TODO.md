@@ -46,7 +46,7 @@ String(PK) | Int | Int | Timestamp | Timestamp | Timestamp
 Table `setArticles`: 
 setName | article | lastRefreshedDate | creationDate | source
 -------|--------------|-------------|----------------|----------
-String(PK) | String(PK) | Timestamp | Timestamp | URL
+String(PK) | String(PK) | Timestamp | Timestamp | URL (for Revision)
 
 Table `connectingWall`:
 ```sql

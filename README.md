@@ -1,4 +1,4 @@
-## *Learn any topic (without losing inner peace)*
+## *Learn any topic in any language (without losing inner peace)*
 
 > [!IMPORTANT]
 > This repo is being revamped. There is a messy [**list of to-do items**](TODO.md).

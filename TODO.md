@@ -192,7 +192,7 @@ Need a table for these XPaths. TODO.
 
 lang | delimitedXpaths
 -----|----------------
-en   | `[String, String, String...]`
+String(PK) | `[String, String, String...]`
   * `compile_xpath.py`
 ```py3
 import pandas as pd

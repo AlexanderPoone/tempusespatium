@@ -3,27 +3,6 @@
 > [!IMPORTANT]
 > This repo is being revamped.
 
-```html
-/* PaxAcademica plc */
-<style>
-  <!-- fade in/out goes here -- animation: opacity 0% 100% 3s-->
-</style>
-<p><i class="fa-scroll fa-xl fa-fw"></i>&nbsp;&nbsp;Learn anything about <tt id="topic"></tt></p>
-<p><i class="fa-globe fa-xl fa-fw"></i>&nbsp;&nbsp;Learn in <tt id="lingo"></tt></p>
-<script>
-  const lingos = ['catala', 'francais', 'espanol', '日本語', '中文'];
-  const topics = ['Phonology', 'Medieval History', 'Forestry', 'Robotics'];
-  let cnt = 0;
-  let fadeIn = function() {
-    querySelector('#lingo').innerText = lingos[cnt % lingos.length];
-    querySelector('#topic').innerText = topics[cnt % topics.length];
-    cnt += 1;
-  };
-  fadeIn();
-  setInterval(fadeIn, 3000);
-</script>
-```
-
 [Podfile](ios/Tempus%20E%20Spatium/Podfile)
 * Sounds (`correctDing.wav`, `incorrectBuzz.wav`, `scoreIncreaseCashierSound.wav`, `trumpetSolSolDo2Yay.wav`): OK, I made them on MuseScore (exported to mp3), thus no copyright materials needed https://pixabay.com/sound-effects/search/whoosh/
 * Select relaxing music while learning `[pull down: none, Green Hills, Pagodes, Soirée dans Grenade] [Custom]`: OK, ditto [app/src/main/res/raw](app/src/main/res/raw) | [ios/Tempus E Spatium/Tempus E Spatium](ios/Tempus%20E%20Spatium/Tempus%20E%20Spatium)

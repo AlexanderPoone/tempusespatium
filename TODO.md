@@ -30,7 +30,7 @@ RecycledView {    // not a typo
 }
 ```
 
-Saved to SQLite/FMDB [ios/Tempus E Spatium/Tempus E Spatium/HighscoresDBManager.swift](ios/Tempus%20E%20Spatium/Tempus%20E%20Spatium/HighscoresDBManager.swift):
+Saved to SQLite (FMDB → sqflite) [ios/Tempus E Spatium/Tempus E Spatium/HighscoresDBManager.swift](ios/Tempus%20E%20Spatium/Tempus%20E%20Spatium/HighscoresDBManager.swift):
 
 ```swift
 let TABLE_SETS = "sets"

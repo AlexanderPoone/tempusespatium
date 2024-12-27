@@ -8,8 +8,8 @@
 <!-- Unused: --><!-- bgmusic_pagodes 塔樓 --><!-- bgmusic_soiree_dans_grenade 格拉納達黃昏 -->
 
 TODOs:
-1. **WikiProject sets**
-2. **Custom sets of articles** (one set can include multiple topics; auto-complete just like Wikipedia)
+1. Support of other Wikimedia Projects + Quizlet
+2. **Custom sets of articles** (one set can include multiple **WikiProject**s; auto-complete just like Wikipedia)
 ```
 [Refresh all articles]
 Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
@@ -29,8 +29,6 @@ RecycledView {    // not a typo
   Glide.with(this).load().into(mSqrPreview);
 }
 ```
-
-Also Quizlet.
 
 Saved to SQLite/FMDB [ios/Tempus E Spatium/Tempus E Spatium/HighscoresDBManager.swift](ios/Tempus%20E%20Spatium/Tempus%20E%20Spatium/HighscoresDBManager.swift):
 

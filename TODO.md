@@ -24,7 +24,7 @@ Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 [R.string.ok] [R.string.cancel]
 ```
 ```java
-RecycledView {    // not a typo
+BeninView {    // recycled by RecyclerView
   mSquarePreview = findViewById(R.id.squarePreview);
   Glide.with(this).load().into(mSquarePreview);
 }

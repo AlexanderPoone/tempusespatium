@@ -61,7 +61,7 @@ INSERT INTO connectingWall ('clue1', 'clue2', 'clue3', 'clue4', 'clue5', 'clue6'
   * Summer (#46A266, #BADC66) <!-- 夏 -->
   * Autumn (#FF4300, #FFB800) <!-- 秋 -->
   * Winter (#0041DE, #00B9A2) <!-- 冬 -->
-3. **Custom brackets** (this requires a highlighting library, and a bottom popup)
+3. **Custom brackets** (this requires replacing `<a>` with some `<span class="">` and adding `<style>` for the highlight effect, and a bottom popup)
   * Default: highlight all for you `[Reset to default]` <!-- 重設 -->
   * Highlight text you want to make brackets -> `[Make bracket|Cancel]`
 4. Switch to `view binding`

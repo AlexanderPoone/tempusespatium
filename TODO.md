@@ -1,6 +1,6 @@
 [Podfile](ios/Tempus%20E%20Spatium/Podfile)
 * Sounds (`correctDing.wav`, `incorrectBuzz.wav`, `scoreIncreaseCashierSound.wav`, `trumpetSolSolDo2Yay.wav`): OK, I made them on MuseScore (exported to mp3), thus no copyright materials needed https://pixabay.com/sound-effects/search/whoosh/
-* Select relaxing music while learning `[pull down: none, Green Hills, Derry Air, L'hiver] [Custom]`: OK, ditto [app/src/main/res/raw](app/src/main/res/raw) | [ios/Tempus E Spatium/Tempus E Spatium](ios/Tempus%20E%20Spatium/Tempus%20E%20Spatium)
+* Select relaxing music while learning `[pull down: none, Green Hills, Derry Air, L'hiver] [Custom]`: OK, ditto<br>(Resources folders: [app/src/main/res/raw](app/src/main/res/raw) | [ios/Tempus E Spatium/Tempus E Spatium](ios/Tempus%20E%20Spatium/Tempus%20E%20Spatium))
 ```xml
 <!-- bgmusic_green_hills 青山 -->
 <!-- bgmusic_derry_air 倫敦德里小調 -->

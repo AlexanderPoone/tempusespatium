@@ -54,16 +54,16 @@ INSERT INTO connectingWall ('clue1', 'clue2', 'clue3', 'clue4', 'clue5', 'clue6'
 ```
 
 2. Themes:
-  * Relaxed Bears (bg: #C78311, #FEF0CB; txt: #FDD000, #F19EB4) <!-- 懶熊 -->
-  * Fire & Ice (#FD7A2D, #B1F3FC; bg/txt opposite) <!-- 冰火 -->
-  * Zen (#282631 off-black, #FEF8DE off-white) <!-- Yin yang-->  <!-- 禪 -->
-  * Spring (#FF44BB, #FFB847) <!-- 春 -->
-  * Summer (#46A266, #BADC66) <!-- 夏 -->
-  * Autumn (#FF4300, #FFB800) <!-- 秋 -->
-  * Winter (#0041DE, #00B9A2) <!-- 冬 -->
+    * Relaxed Bears (bg: #C78311, #FEF0CB; txt: #FDD000, #F19EB4) <!-- 懶熊 -->
+    * Fire & Ice (#FD7A2D, #B1F3FC; bg/txt opposite) <!-- 冰火 -->
+    * Zen (#282631 off-black, #FEF8DE off-white) <!-- Yin yang-->  <!-- 禪 -->
+    * Spring (#FF44BB, #FFB847) <!-- 春 -->
+    * Summer (#46A266, #BADC66) <!-- 夏 -->
+    * Autumn (#FF4300, #FFB800) <!-- 秋 -->
+    * Winter (#0041DE, #00B9A2) <!-- 冬 -->
 3. **Custom brackets** (this requires replacing `<a>` with some `<span class="">` and adding `<style>` for the highlight effect, and a bottom popup)
-  * Default: highlight all for you `[Reset to default]` <!-- 重設 -->
-  * Highlight text you want to make brackets -> `[Make bracket|Cancel]`
+    * Default: highlight all for you `[Reset to default]` <!-- 重設 -->
+    * Highlight text you want to make brackets -> `[Make bracket|Cancel]`
 4. Switch to `view binding`
 5. Add IPA game in custom mode -- similar vowels, diphthongs, consonants (e.g., sibilants) [Japanese would be easier to make though]
 6. 'Series' on WikiData? (under research; `GestureDetector.SimpleOnGestureListener` maybe? I can use free versions of Symphony/Piano Concerto No. X)

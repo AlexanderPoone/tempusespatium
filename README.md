@@ -1,7 +1,7 @@
-*Learn any topic (without losing inner peace)*
+## *Learn any topic (without losing inner peace)*
 
 > [!IMPORTANT]
-> This repo is being revamped. There is a [messy list of to-do items](TODO.md).
+> This repo is being revamped. There is a messy [**list of to-do items**](TODO.md).
 
 Tempus E Spatium (pronounced _TEM-poo-se-SPA-ti-oom_) is _Latin for space and time_. It is an edutainment app for adult learners by exploiting the Semantic Web.
 

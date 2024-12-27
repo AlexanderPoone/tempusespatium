@@ -5,8 +5,6 @@
 <!-- bgmusic_derry_air 倫敦德里小調 -->
 <!-- bgmusic_lhiver 冬 -->
 
-<!-- Unused: --><!-- bgmusic_pagodes 塔樓 --><!-- bgmusic_soiree_dans_grenade 格拉納達黃昏 -->
-
 TODOs:
 1. Support of other Wikimedia Projects + Quizlet
 2. **Custom sets of articles** (one set can include multiple **WikiProject**s; auto-complete just like Wikipedia)
@@ -30,7 +28,7 @@ RecycledView {    // not a typo
 }
 ```
 
-Saved to SQLite (FMDB → sqflite) [ios/Tempus E Spatium/Tempus E Spatium/HighscoresDBManager.swift](ios/Tempus%20E%20Spatium/Tempus%20E%20Spatium/HighscoresDBManager.swift):
+Saved to SQLite (FMDB [ios/Tempus E Spatium/Tempus E Spatium/HighscoresDBManager.swift](ios/Tempus%20E%20Spatium/Tempus%20E%20Spatium/HighscoresDBManager.swift) → sqflite):
 
 ```swift
 let TABLE_SETS = "sets"

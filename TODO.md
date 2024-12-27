@@ -39,7 +39,7 @@ let TABLE_SET_ARTICLES = "setArticles"
 let TABLE_CONNECTING_WALL = "connectingWall"
 ```
 
-Table `sets`: setname | historicHigh | playedTimes | lastPlayedDate | creationDate | modifyDate
+Table `sets`: setName | historicHigh | playedTimes | lastPlayedDate | creationDate | modifyDate
 
 Table `setArticles`: article | setName | lastRefreshedDate | creationDate
 

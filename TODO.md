@@ -170,15 +170,6 @@ import pandas as pd
 
 # TODO
 ```
-  * `compile_xpath.py`
-```py3
-import pandas as pd
-from selenium import webdriver
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
-
-# TODO
-```
 Ono:
 https://github.com/AlexanderPoone/tempusespatium/blob/aac6f923cf0172410501aac7ab3080312bb6d8ca/ios/Tempus%20E%20Spatium/Tempus%20E%20Spatium/ExteriorViewController.swift#L235
 ------------------------
@@ -195,7 +186,13 @@ Need a table for these XPaths. TODO.
 
 lang | delimitedXpaths
 
-```py
+  * `compile_xpath.py`
+```py3
+import pandas as pd
+from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
+
 for s in delimitedXpath.split('|'):
     err = driver.execute_script(s)    # How deep?
 ```

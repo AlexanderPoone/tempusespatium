@@ -10,8 +10,8 @@
 TODOs:
 1. Support of other Wikimedia Projects + Quizlet
 2. **Custom Fine-grained Syllabus** (one set can include multiple **WikiProjects**; and you can remove articles from a WikiProject)
-```
-// FineGrainedSyllabusActivity.dart
+```java
+/* FineGrainedSyllabusActivity.dart */
 
 [Refresh all articles]
 Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
@@ -26,7 +26,7 @@ Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 [R.string.ok] [R.string.cancel]
 ```
 ```java
-// BeninView.dart
+/* BeninView.dart */
 
 BeninView {    // recycled by RecyclerView
   mSquarePreview = findViewById(R.id.squarePreview);

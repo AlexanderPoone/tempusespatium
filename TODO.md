@@ -44,10 +44,12 @@ let TABLE_CONNECTING_WALL = "connectingWall"
 Table `sets`: 
 setName | historicHigh | playedTimes | lastPlayedDate | creationDate | modifyDate
 -------|--------------|-------------|----------------|---------------|------------
+String | Int | Int | Timestamp | Timestamp | Timestamp
 
 Table `setArticles`: 
 article | setName | lastRefreshedDate | creationDate
 -------|--------------|-------------|----------------
+String | String | Timestamp | Timestamp
 
 Table `connectingWall`:
 ```sql

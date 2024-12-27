@@ -5,7 +5,7 @@
 
 Tempus E Spatium (pronounced _TEM-poo-se-SPA-ti-oom_) is _Latin for space and time_. It is an edutainment app for adult learners by exploiting the Semantic Web.
 
-AI models like LLMs are totally ineffective at generating question banks compared to using the Semantic Web, particularly for topics that require highly specific knowledge, as well as those containing tricks and red herrings.
+AI models like LLMs are totally ineffective at generating question banks compared to using the Semantic Web, particularly for topics that require highly specific knowledge, as well as those involving a specific format (e.g., the 'Only Connect' type), and also those containing tricks and red herrings.
 
 [README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
 

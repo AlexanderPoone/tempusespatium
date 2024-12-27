@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > This repo is being revamped. There is a messy [**list of to-do items**](TODO.md).
 
-Tempus E Spatium (pronounced _TEM-poo-se-SPA-ti-oom_) is _Latin for space and time_. It is an edutainment app for adult learners by exploiting the Semantic Web.
+Tempus E Spatium (pronounced _TEM-poo-se-SPA-ti-oom_) is _Latin for space and time_. It is an edutainment app for adult learners by exploiting the Semantic Web. AI still sucks at generating question banks, especially those with high expertise; and those with tricks and red herrings.
 
 [README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
 

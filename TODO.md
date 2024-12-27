@@ -8,7 +8,9 @@
 <!-- Unused: --><!-- bgmusic_pagodes 塔樓 --><!-- bgmusic_soiree_dans_grenade 格拉納達黃昏 -->
 
 TODOs:
-1. **WikiProject sets** Vs. **custom sets of articles** (auto-complete just like Wikipedia)
+1. **WikiProject sets**
+2. **Custom sets of articles** (one set can include multiple topics; auto-complete just like Wikipedia)
+3. **Custom field location** (this requires a highlighting library, and a bottom popup)
 ```
 [Refresh all articles]
 Set name: [_2020-01-01 00:02:04______] <- cannot be empty !

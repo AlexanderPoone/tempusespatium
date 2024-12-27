@@ -1,3 +1,5 @@
+*.pem
+
 # Built application files
 *.apk
 *.ap_

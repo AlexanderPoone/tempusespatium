@@ -9,8 +9,10 @@
 
 TODOs:
 1. Support of other Wikimedia Projects + Quizlet
-2. **Custom sets of articles** (one set can include multiple **WikiProjects**; and you can remove articles from a WikiProject)
+2. **Custom Fine-grained Syllabus** (one set can include multiple **WikiProjects**; and you can remove articles from a WikiProject)
 ```
+// FineGrainedSyllabusActivity.dart
+
 [Refresh all articles]
 Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
 

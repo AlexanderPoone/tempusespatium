@@ -153,7 +153,7 @@ Bottom navy blue bar (Bold Dosis):
 * State1: [_TextEdit______] [_->_]
 * State2: [_TickOrCross_] Real Theme
 
-Wall Solved Sound Effect: `shavedAndAHaircutTwoPiece.mp3`
+Wall Solved Sound Effect: `shavedAndAHaircutTwoPiece.mp3` (MuseScore)
   * Five `heart_full.jpg` (Vs. `heart_empty.jpg`) at the beginning (horizontal `RecyclerView`, dock at top-right corner)
   * Three colours: ~~`selected` (red), `unselected` (maybe honeydew instead of soda blue?), and `solved` (maybe yellow?)~~
     * [all radial gradient]

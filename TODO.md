@@ -1,6 +1,6 @@
 [Podfile](ios/Tempus%20E%20Spatium/Podfile)
 * Sounds (`correctDing.wav`, `incorrectBuzz.wav`, `scoreIncreaseCashierSound.wav`, `trumpetSolSolDo2Yay.wav`): OK, I made them on MuseScore (exported to mp3), thus no copyright materials needed https://pixabay.com/sound-effects/search/whoosh/
-* Select relaxing music while learning `[pull down: none, Green Hills, Derry Air, L'hiver] [Custom]`: OK, ditto [app/src/main/res/raw](app/src/main/res/raw) | [ios/Tempus E Spatium/Tempus E Spatium](ios/Tempus%20E%20Spatium/Tempus%20E%20Spatium)
+* Select relaxing music while learning `[pull down: none, Green Hills, Derry Air, L'hiver] [Custom]`: OK, ditto<br>(Resources folders: [app/src/main/res/raw](app/src/main/res/raw) | [ios/Tempus E Spatium/Tempus E Spatium](ios/Tempus%20E%20Spatium/Tempus%20E%20Spatium))
 ```xml
 <!-- bgmusic_green_hills 青山 -->
 <!-- bgmusic_derry_air 倫敦德里小調 -->
@@ -9,24 +9,28 @@
 
 TODOs:
 1. Support of other Wikimedia Projects + Quizlet
-2. **Custom sets of articles** (one set can include multiple **WikiProject**s; auto-complete just like Wikipedia)
-```
+2. **Custom fine-grained syllabus** (one set can include multiple **WikiProjects**; and you can remove articles from a WikiProject)
+```java
+/* NewFineGrainedSetActivity.dart */
+
 [Refresh all articles]
-Set name: [_2020-01-01 00:02:04______] <- cannot be empty !
+Set name: [_2020-01-01 00:02:04______] // ← cannot be empty !
 
 // This is a `RecyclerView` of my `BeninView`
 
   [__Autocomplete-dropdown_______________________________________________________]
-  [_R.id.sqrPreview | Kalman filter__(R.id.smallDesc)_______] (-) <- read-only text field
-  [_R.id.sqrPreview | Hungarian algorithm__(R.id.smallDesc)_] (-)
-// If time is allowed, disable shuffle, drag to move.
+  [_R.id.squarePreview | Kalman filter__(R.id.smallDesc)_______] (-)  // ← read-only text field, instead of label
+  [_R.id.squarePreview | Hungarian algorithm__(R.id.smallDesc)_] (-)
+// If time is allowed, disable shuffle, drag to move article order.
 
 [R.string.ok] [R.string.cancel]
 ```
 ```java
-RecycledView {    // not a typo
-  mSqrPreview = findViewById(R.id.sqrPreview);
-  Glide.with(this).load().into(mSqrPreview);
+/* BeninView.dart */
+
+BeninView {    // recycled by RecyclerView
+  mSquarePreview = findViewById(R.id.squarePreview);
+  Glide.with(this).load().into(mSquarePreview);
 }
 ```
 
@@ -54,16 +58,16 @@ INSERT INTO connectingWall ('clue1', 'clue2', 'clue3', 'clue4', 'clue5', 'clue6'
 ```
 
 2. Themes:
-  * Relaxed Bears (bg: #C78311, #FEF0CB; txt: #FDD000, #F19EB4) <!-- 懶熊 -->
-  * Fire & Ice (#FD7A2D, #B1F3FC; bg/txt opposite) <!-- 冰火 -->
-  * Zen (#282631 off-black, #FEF8DE off-white) <!-- Yin yang-->  <!-- 禪 -->
-  * Spring (#FF44BB, #FFB847) <!-- 春 -->
-  * Summer (#46A266, #BADC66) <!-- 夏 -->
-  * Autumn (#FF4300, #FFB800) <!-- 秋 -->
-  * Winter (#0041DE, #00B9A2) <!-- 冬 -->
-3. **Custom brackets** (this requires a highlighting library, and a bottom popup)
-  * Default: highlight all for you `[Reset to default]` <!-- 重設 -->
-  * Highlight text you want to make brackets -> `[Make bracket|Cancel]`
+    * Relaxed Bears (bg: #C78311, #FEF0CB; txt: #FDD000, #F19EB4) <!-- 懶熊 -->
+    * Fire & Ice (#FD7A2D, #B1F3FC; bg/txt opposite) <!-- 冰火 -->
+    * Zen (#282631 off-black, #FEF8DE off-white) <!-- Yin yang-->  <!-- 禪 -->
+    * Spring (#FF44BB, #FFB847) <!-- 春 -->
+    * Summer (#46A266, #BADC66) <!-- 夏 -->
+    * Autumn (#FF4300, #FFB800) <!-- 秋 -->
+    * Winter (#0041DE, #00B9A2) <!-- 冬 -->
+3. **Custom brackets** (this requires replacing `<a>` with some `<span class="">` and adding `<style>` for the highlight effect, and a bottom popup)
+    * Default: highlight all for you `[Reset to default]` <!-- 重設 -->
+    * Highlight text you want to make brackets -> `[Make bracket|Cancel]`
 4. Switch to `view binding`
 5. Add IPA game in custom mode -- similar vowels, diphthongs, consonants (e.g., sibilants) [Japanese would be easier to make though]
 6. 'Series' on WikiData? (under research; `GestureDetector.SimpleOnGestureListener` maybe? I can use free versions of Symphony/Piano Concerto No. X)

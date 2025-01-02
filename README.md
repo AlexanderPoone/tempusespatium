@@ -7,27 +7,8 @@ Tempus E Spatium (pronounced _TEM-poo-se-SPA-ti-oom_) is _Latin for space and ti
 
 AI models like LLMs are totally **ineffective** at generating question banks compared to using the Semantic Web, particularly for topics that require highly specific knowledge, as well as those involving a specific format (e.g., the 'Only Connect' type), and also those containing tricks and red herrings.
 
-[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
+[README](https://github.com/SoftFeta/tempusespatium/raw/master/README.pptx)
 
-[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
-
-[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
-
-[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
-
-[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
-
-[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
-
-[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
-
-[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
-
-[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
-
-[README](https://github.com/SoftFeta/tempusespatium/raw/master/shitty_ppt.pptx)
-
-###### Wow, GitHub supports SPARQL syntax highlighting...
 ```sparql
 #defaultView:Timeline
 SELECT DISTINCT ?eventLabel ?date ?dateLabel ?coord ?img
